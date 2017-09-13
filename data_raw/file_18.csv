@@ -1,0 +1,193 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, PCT0130001, 18, 9
+- Male, PCT0130002, 18, 9
+--- Under 5 years, PCT0130003, 18, 9
+--- 5 to 9 years, PCT0130004, 18, 9
+--- 10 to 14 years, PCT0130005, 18, 9
+--- 15 to 17 years, PCT0130006, 18, 9
+--- 18 and 19 years, PCT0130007, 18, 9
+--- 20 years, PCT0130008, 18, 9
+--- 21 years, PCT0130009, 18, 9
+--- 22 to 24 years, PCT0130010, 18, 9
+--- 25 to 29 years, PCT0130011, 18, 9
+--- 30 to 34 years, PCT0130012, 18, 9
+--- 35 to 39 years, PCT0130013, 18, 9
+--- 40 to 44 years, PCT0130014, 18, 9
+--- 45 to 49 years, PCT0130015, 18, 9
+--- 50 to 54 years, PCT0130016, 18, 9
+--- 55 to 59 years, PCT0130017, 18, 9
+--- 60 and 61 years, PCT0130018, 18, 9
+--- 62 to 64 years, PCT0130019, 18, 9
+--- 65 and 66 years, PCT0130020, 18, 9
+--- 67 to 69 years, PCT0130021, 18, 9
+--- 70 to 74 years, PCT0130022, 18, 9
+--- 75 to 79 years, PCT0130023, 18, 9
+--- 80 to 84 years, PCT0130024, 18, 9
+--- 85 years and over, PCT0130025, 18, 9
+- Female, PCT0130026, 18, 9
+--- Under 5 years, PCT0130027, 18, 9
+--- 5 to 9 years, PCT0130028, 18, 9
+--- 10 to 14 years, PCT0130029, 18, 9
+--- 15 to 17 years, PCT0130030, 18, 9
+--- 18 and 19 years, PCT0130031, 18, 9
+--- 20 years, PCT0130032, 18, 9
+--- 21 years, PCT0130033, 18, 9
+--- 22 to 24 years, PCT0130034, 18, 9
+--- 25 to 29 years, PCT0130035, 18, 9
+--- 30 to 34 years, PCT0130036, 18, 9
+--- 35 to 39 years, PCT0130037, 18, 9
+--- 40 to 44 years, PCT0130038, 18, 9
+--- 45 to 49 years, PCT0130039, 18, 9
+--- 50 to 54 years, PCT0130040, 18, 9
+--- 55 to 59 years, PCT0130041, 18, 9
+--- 60 and 61 years, PCT0130042, 18, 9
+--- 62 to 64 years, PCT0130043, 18, 9
+--- 65 and 66 years, PCT0130044, 18, 9
+--- 67 to 69 years, PCT0130045, 18, 9
+--- 70 to 74 years, PCT0130046, 18, 9
+--- 75 to 79 years, PCT0130047, 18, 9
+--- 80 to 84 years, PCT0130048, 18, 9
+--- 85 years and over, PCT0130049, 18, 9
+Total, PCT0140001, 18, 9
+- Household has three or more generations, PCT0140002, 18, 9
+- Household does not have three or more generations, PCT0140003, 18, 9
+Total, PCT0150001, 18, 9
+- Husband-wife households, PCT0150002, 18, 9
+--- Male householder, PCT0150003, 18, 9
+----- With related children under 18 years, PCT0150004, 18, 9
+------- With own children under 18 years, PCT0150005, 18, 9
+------- No own children under 18 years, PCT0150006, 18, 9
+----- No related children under 18 years, PCT0150007, 18, 9
+--- Female householder, PCT0150008, 18, 9
+----- With related children under 18 years, PCT0150009, 18, 9
+------- With own children under 18 years, PCT0150010, 18, 9
+------- No own children under 18 years, PCT0150011, 18, 9
+----- No related children under 18 years, PCT0150012, 18, 9
+- Unmarried-partner households, PCT0150013, 18, 9
+--- Male householder and male partner, PCT0150014, 18, 9
+----- With related children under 18 years, PCT0150015, 18, 9
+------- With own children under 18 years, PCT0150016, 18, 9
+------- No own children under 18 years, PCT0150017, 18, 9
+----- No related children under 18 years, PCT0150018, 18, 9
+--- Male householder and female partner, PCT0150019, 18, 9
+----- With related children under 18 years, PCT0150020, 18, 9
+------- With own children under 18 years, PCT0150021, 18, 9
+------- No own children under 18 years, PCT0150022, 18, 9
+----- No related children under 18 years, PCT0150023, 18, 9
+--- Female householder and female partner, PCT0150024, 18, 9
+----- With related children under 18 years, PCT0150025, 18, 9
+------- With own children under 18 years, PCT0150026, 18, 9
+------- No own children under 18 years, PCT0150027, 18, 9
+----- No related children under 18 years, PCT0150028, 18, 9
+--- Female householder and male partner, PCT0150029, 18, 9
+----- With related children under 18 years, PCT0150030, 18, 9
+------- With own children under 18 years, PCT0150031, 18, 9
+------- No own children under 18 years, PCT0150032, 18, 9
+----- No related children under 18 years, PCT0150033, 18, 9
+- All other households, PCT0150034, 18, 9
+Total, PCT0160001, 18, 9
+- Family households, PCT0160002, 18, 9
+--- Husband-wife family, PCT0160003, 18, 9
+----- With no children under 18 years, PCT0160004, 18, 9
+----- With one child under 18 years, PCT0160005, 18, 9
+----- With two children under 18 years, PCT0160006, 18, 9
+----- With three children under 18 years, PCT0160007, 18, 9
+----- With four or more children under 18 years, PCT0160008, 18, 9
+--- Male householder; no wife present, PCT0160009, 18, 9
+----- With no children under 18 years, PCT0160010, 18, 9
+----- With one child under 18 years, PCT0160011, 18, 9
+----- With two children under 18 years, PCT0160012, 18, 9
+----- With three children under 18 years, PCT0160013, 18, 9
+----- With four or more children under 18 years, PCT0160014, 18, 9
+--- Female householder; no husband present, PCT0160015, 18, 9
+----- With no children under 18 years, PCT0160016, 18, 9
+----- With one child under 18 years, PCT0160017, 18, 9
+----- With two children under 18 years, PCT0160018, 18, 9
+----- With three children under 18 years, PCT0160019, 18, 9
+----- With four or more children under 18 years, PCT0160020, 18, 9
+- Nonfamily households, PCT0160021, 18, 9
+--- With no children under 18 years, PCT0160022, 18, 9
+--- With one child under 18 years, PCT0160023, 18, 9
+--- With two children under 18 years, PCT0160024, 18, 9
+--- With three children under 18 years, PCT0160025, 18, 9
+--- With four or more children under 18 years, PCT0160026, 18, 9
+Total, PCT0170001, 18, 9
+- Unmarried partner of householder present, PCT0170002, 18, 9
+--- In family households, PCT0170003, 18, 9
+----- In male householder and male partner households, PCT0170004, 18, 9
+----- In male householder and female partner households, PCT0170005, 18, 9
+----- In female householder and female partner households, PCT0170006, 18, 9
+----- In female householder and male partner households, PCT0170007, 18, 9
+--- In nonfamily households, PCT0170008, 18, 9
+----- In male householder and male partner households, PCT0170009, 18, 9
+----- In male householder and female partner households, PCT0170010, 18, 9
+----- In female householder and female partner households, PCT0170011, 18, 9
+----- In female householder and male partner households, PCT0170012, 18, 9
+- No unmarried partner of householder present, PCT0170013, 18, 9
+--- In family households, PCT0170014, 18, 9
+----- In husband-wife family households, PCT0170015, 18, 9
+----- In male householder; no wife present; family households, PCT0170016, 18, 9
+----- In female householder; no husband present; family households, PCT0170017, 18, 9
+--- In nonfamily households, PCT0170018, 18, 9
+Total, PCT0180001, 18, 9
+- Male householder, PCT0180002, 18, 9
+--- Living alone, PCT0180003, 18, 9
+----- Householder 15 to 64 years, PCT0180004, 18, 9
+----- Householder 65 years and over, PCT0180005, 18, 9
+--- Not living alone, PCT0180006, 18, 9
+----- Householder 15 to 64 years, PCT0180007, 18, 9
+----- Householder 65 years and over, PCT0180008, 18, 9
+- Female householder, PCT0180009, 18, 9
+--- Living alone, PCT0180010, 18, 9
+----- Householder 15 to 64 years, PCT0180011, 18, 9
+----- Householder 65 years and over, PCT0180012, 18, 9
+--- Not living alone, PCT0180013, 18, 9
+----- Householder 15 to 64 years, PCT0180014, 18, 9
+----- Householder 65 years and over, PCT0180015, 18, 9
+Total, PCT0190001, 18, 9
+- In family households, PCT0190002, 18, 9
+--- Roomer or boarder, PCT0190003, 18, 9
+--- Housemate or roommate, PCT0190004, 18, 9
+--- Unmarried partner, PCT0190005, 18, 9
+--- Other nonrelatives, PCT0190006, 18, 9
+- In nonfamily households, PCT0190007, 18, 9
+--- Roomer or boarder, PCT0190008, 18, 9
+--- Housemate or roommate, PCT0190009, 18, 9
+--- Unmarried partner, PCT0190010, 18, 9
+--- Other nonrelatives, PCT0190011, 18, 9
+Total, PCT0200001, 18, 9
+- Institutionalized population (101–106; 201–203; 301; 401–405), PCT0200002, 18, 9
+--- Correctional facilities for adults (101–106), PCT0200003, 18, 9
+----- Federal detention centers (101), PCT0200004, 18, 9
+----- Federal prisons (102), PCT0200005, 18, 9
+----- State prisons (103), PCT0200006, 18, 9
+----- Local jails and other municipal confinement facilities (104), PCT0200007, 18, 9
+----- Correctional residential facilities (105), PCT0200008, 18, 9
+----- Military disciplinary barracks and jails (106), PCT0200009, 18, 9
+--- Juvenile facilities (201–203), PCT0200010, 18, 9
+----- Group homes for juveniles (non-correctional) (201), PCT0200011, 18, 9
+----- Residential treatment centers for juveniles (non-correctional) (202), PCT0200012, 18, 9
+----- Correctional facilities intended for juveniles (203), PCT0200013, 18, 9
+--- Nursing facilities/Skilled-nursing facilities (301), PCT0200014, 18, 9
+--- Other institutional facilities (401–405), PCT0200015, 18, 9
+----- Mental (Psychiatric) hospitals and psychiatric units in other hospitals (401), PCT0200016, 18, 9
+----- Hospitals with patients who have no usual home elsewhere (402), PCT0200017, 18, 9
+----- In-patient hospice facilities (403), PCT0200018, 18, 9
+----- Military treatment facilities with assigned patients (404), PCT0200019, 18, 9
+----- Residential schools for people with disabilities (405), PCT0200020, 18, 9
+- Noninstitutionalized population (501; 601–602; 701–702; 704; 706; 801–802; 900–901; 903–904), PCT0200021, 18, 9
+--- College/University student housing (501), PCT0200022, 18, 9
+--- Military quarters (601–602), PCT0200023, 18, 9
+----- Military barracks and dormitories (nondisciplinary) (601), PCT0200024, 18, 9
+----- Military ships (602), PCT0200025, 18, 9
+--- Other noninstitutional facilities (701–702; 704; 706; 801–802; 900–901; 903–904), PCT0200026, 18, 9
+----- Emergency and transitional shelters (with sleeping facilities) for people experiencing homelessness (701), PCT0200027, 18, 9
+----- Group homes intended for adults (801), PCT0200028, 18, 9
+----- Residential treatment centers for adults (802), PCT0200029, 18, 9
+----- Maritime/merchant vessels (900), PCT0200030, 18, 9
+----- Workers’ group living quarters and Job Corps centers (901), PCT0200031, 18, 9
+----- Other noninstitutional facilities (702; 704; 706; 903–904), PCT0200032, 18, 9

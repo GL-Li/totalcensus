@@ -1,0 +1,11 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, H0020001, 43, 9
+- Urban, H0020002, 43, 9
+--- Inside urbanized areas, H0020003, 43, 9
+--- Inside urban clusters, H0020004, 43, 9
+- Rural, H0020005, 43, 9
+- Not defined for this file, H0020006, 43, 9

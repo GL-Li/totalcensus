@@ -1,0 +1,254 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, P017B001, 09, 9
+- Under 18 years, P017B002, 09, 9
+- 18 years and over, P017B003, 09, 9
+Total, P017C001, 09, 9
+- Under 18 years, P017C002, 09, 9
+- 18 years and over, P017C003, 09, 9
+Total, P017D001, 09, 9
+- Under 18 years, P017D002, 09, 9
+- 18 years and over, P017D003, 09, 9
+Total, P017E001, 09, 9
+- Under 18 years, P017E002, 09, 9
+- 18 years and over, P017E003, 09, 9
+Total, P017F001, 09, 9
+- Under 18 years, P017F002, 09, 9
+18 years and over, P017F003, 09, 9
+Total, P017G001, 09, 9
+- Under 18 years, P017G002, 09, 9
+- 18 years and over, P017G003, 09, 9
+Total, P017H001, 09, 9
+- Under 18 years, P017H002, 09, 9
+- 18 years and over, P017H003, 09, 9
+Total, P017I001, 09, 9
+- Under 18 years, P017I002, 09, 9
+- 18 years and over, P017I003, 09, 9
+Total, P018A001, 09, 9
+- Family households, P018A002, 09, 9
+--- Husband-wife family, P018A003, 09, 9
+--- Other family, P018A004, 09, 9
+----- Male householder; no wife present, P018A005, 09, 9
+----- Female householder; no husband present, P018A006, 09, 9
+- Nonfamily households, P018A007, 09, 9
+--- Householder living alone, P018A008, 09, 9
+--- Householder not living alone, P018A009, 09, 9
+Total, P018B001, 09, 9
+- Family households, P018B002, 09, 9
+--- Husband-wife family, P018B003, 09, 9
+--- Other family, P018B004, 09, 9
+----- Male householder; no wife present, P018B005, 09, 9
+----- Female householder; no husband present, P018B006, 09, 9
+- Nonfamily households, P018B007, 09, 9
+--- Householder living alone, P018B008, 09, 9
+--- Householder not living alone, P018B009, 09, 9
+Total, P018C001, 09, 9
+- Family households, P018C002, 09, 9
+--- Husband-wife family, P018C003, 09, 9
+--- Other family, P018C004, 09, 9
+----- Male householder; no wife present, P018C005, 09, 9
+----- Female householder; no husband present, P018C006, 09, 9
+- Nonfamily households, P018C007, 09, 9
+--- Householder living alone, P018C008, 09, 9
+--- Householder not living alone, P018C009, 09, 9
+Total, P018D001, 09, 9
+- Family households, P018D002, 09, 9
+--- Husband-wife family, P018D003, 09, 9
+--- Other family, P018D004, 09, 9
+----- Male householder; no wife present, P018D005, 09, 9
+----- Female householder; no husband present, P018D006, 09, 9
+- Nonfamily households, P018D007, 09, 9
+--- Householder living alone, P018D008, 09, 9
+--- Householder not living alone, P018D009, 09, 9
+Total, P018E001, 09, 9
+- Family households, P018E002, 09, 9
+--- Husband-wife family, P018E003, 09, 9
+--- Other family, P018E004, 09, 9
+------ Male householder; no wife present, P018E005, 09, 9
+----- Female householder; no husband present, P018E006, 09, 9
+- Nonfamily households, P018E007, 09, 9
+--- Householder living alone, P018E008, 09, 9
+--- Householder not living alone, P018E009, 09, 9
+Total, P018F001, 09, 9
+- Family households, P018F002, 09, 9
+--- Husband-wife family, P018F003, 09, 9
+--- Other family, P018F004, 09, 9
+----- Male householder; no wife present, P018F005, 09, 9
+----- Female householder; no husband present, P018F006, 09, 9
+- Nonfamily households, P018F007, 09, 9
+--- Householder living alone, P018F008, 09, 9
+--- Householder not living alone, P018F009, 09, 9
+Total, P018G001, 09, 9
+- Family households, P018G002, 09, 9
+--- Husband-wife family, P018G003, 09, 9
+--- Other family, P018G004, 09, 9
+----- Male householder; no wife present, P018G005, 09, 9
+----- Female householder; no husband present, P018G006, 09, 9
+- Nonfamily households, P018G007, 09, 9
+--- Householder living alone, P018G008, 09, 9
+--- Householder not living alone, P018G009, 09, 9
+Total, P018H001, 09, 9
+- Family households, P018H002, 09, 9
+--- Husband-wife family, P018H003, 09, 9
+--- Other family, P018H004, 09, 9
+----- Male householder; no wife present, P018H005, 09, 9
+----- Female householder; no husband present, P018H006, 09, 9
+- Nonfamily households, P018H007, 09, 9
+--- Householder living alone, P018H008, 09, 9
+--- Householder not living alone, P018H009, 09, 9
+Total, P018I001, 09, 9
+- Family households, P018I002, 09, 9
+--- Husband-wife family, P018I003, 09, 9
+--- Other family, P018I004, 09, 9
+----- Male householder; no wife present, P018I005, 09, 9
+----- Female householder; no husband present, P018I006, 09, 9
+- Nonfamily households, P018I007, 09, 9
+--- Householder living alone, P018I008, 09, 9
+--- Householder not living alone, P018I009, 09, 9
+Total, P028A001, 09, 9
+- Family households, P028A002, 09, 9
+--- 2-person household, P028A003, 09, 9
+--- 3-person household, P028A004, 09, 9
+--- 4-person household, P028A005, 09, 9
+--- 5-person household, P028A006, 09, 9
+--- 6-person household, P028A007, 09, 9
+--- 7-or-more-person household, P028A008, 09, 9
+- Nonfamily households, P028A009, 09, 9
+--- 1-person household, P028A010, 09, 9
+--- 2-person household, P028A011, 09, 9
+--- 3-person household, P028A012, 09, 9
+--- 4-person household, P028A013, 09, 9
+--- 5-person household, P028A014, 09, 9
+--- 6-person household, P028A015, 09, 9
+--- 7-or-more-person household, P028A016, 09, 9
+Total, P028B001, 09, 9
+- Family households, P028B002, 09, 9
+--- 2-person household, P028B003, 09, 9
+--- 3-person household, P028B004, 09, 9
+--- 4-person household, P028B005, 09, 9
+--- 5-person household, P028B006, 09, 9
+--- 6-person household, P028B007, 09, 9
+--- 7-or-more-person household, P028B008, 09, 9
+- Nonfamily households, P028B009, 09, 9
+--- 1-person household, P028B010, 09, 9
+--- 2-person household, P028B011, 09, 9
+--- 3-person household, P028B012, 09, 9
+--- 4-person household, P028B013, 09, 9
+--- 5-person household, P028B014, 09, 9
+--- 6-person household, P028B015, 09, 9
+--- 7-or-more-person household, P028B016, 09, 9
+Total, P028C001, 09, 9
+- Family households, P028C002, 09, 9
+--- 2-person household, P028C003, 09, 9
+--- 3-person household, P028C004, 09, 9
+--- 4-person household, P028C005, 09, 9
+--- 5-person household, P028C006, 09, 9
+--- 6-person household, P028C007, 09, 9
+--- 7-or-more-person household, P028C008, 09, 9
+- Nonfamily households, P028C009, 09, 9
+--- 1-person household, P028C010, 09, 9
+--- 2-person household, P028C011, 09, 9
+--- 3-person household, P028C012, 09, 9
+--- 4-person household, P028C013, 09, 9
+--- 5-person household, P028C014, 09, 9
+--- 6-person household, P028C015, 09, 9
+--- 7-or-more-person household, P028C016, 09, 9
+Total, P028D001, 09, 9
+- Family households, P028D002, 09, 9
+--- 2-person household, P028D003, 09, 9
+--- 3-person household, P028D004, 09, 9
+--- 4-person household, P028D005, 09, 9
+--- 5-person household, P028D006, 09, 9
+--- 6-person household, P028D007, 09, 9
+--- 7-or-more-person household, P028D008, 09, 9
+- Nonfamily households, P028D009, 09, 9
+--- 1-person household, P028D010, 09, 9
+--- 2-person household, P028D011, 09, 9
+--- 3-person household, P028D012, 09, 9
+--- 4-person household, P028D013, 09, 9
+--- 5-person household, P028D014, 09, 9
+--- 6-person household, P028D015, 09, 9
+--- 7-or-more-person household, P028D016, 09, 9
+Total, P028E001, 09, 9
+- Family households, P028E002, 09, 9
+--- 2-person household, P028E003, 09, 9
+--- 3-person household, P028E004, 09, 9
+--- 4-person household, P028E005, 09, 9
+--- 5-person household, P028E006, 09, 9
+--- 6-person household, P028E007, 09, 9
+--- 7-or-more-person household, P028E008, 09, 9
+- Nonfamily households, P028E009, 09, 9
+--- 1-person household, P028E010, 09, 9
+--- 2-person household, P028E011, 09, 9
+--- 3-person household, P028E012, 09, 9
+--- 4-person household, P028E013, 09, 9
+--- 5-person household, P028E014, 09, 9
+--- 6-person household, P028E015, 09, 9
+--- 7-or-more-person household, P028E016, 09, 9
+Total, P028F001, 09, 9
+- Family households, P028F002, 09, 9
+--- 2-person household, P028F003, 09, 9
+--- 3-person household, P028F004, 09, 9
+--- 4-person household, P028F005, 09, 9
+--- 5-person household, P028F006, 09, 9
+--- 6-person household, P028F007, 09, 9
+--- 7-or-more-person household, P028F008, 09, 9
+- Nonfamily households, P028F009, 09, 9
+--- 1-person household, P028F010, 09, 9
+--- 2-person household, P028F011, 09, 9
+--- 3-person household, P028F012, 09, 9
+--- 4-person household, P028F013, 09, 9
+--- 5-person household, P028F014, 09, 9
+--- 6-person household, P028F015, 09, 9
+--- 7-or-more-person household, P028F016, 09, 9
+Total, P028G001, 09, 9
+- Family households, P028G002, 09, 9
+--- 2-person household, P028G003, 09, 9
+--- 3-person household, P028G004, 09, 9
+--- 4-person household, P028G005, 09, 9
+--- 5-person household, P028G006, 09, 9
+--- 6-person household, P028G007, 09, 9
+--- 7-or-more-person household, P028G008, 09, 9
+- Nonfamily households, P028G009, 09, 9
+--- 1-person household, P028G010, 09, 9
+--- 2-person household, P028G011, 09, 9
+--- 3-person household, P028G012, 09, 9
+--- 4-person household, P028G013, 09, 9
+--- 5-person household, P028G014, 09, 9
+--- 6-person household, P028G015, 09, 9
+--- 7-or-more-person household, P028G016, 09, 9
+Total, P028H001, 09, 9
+- Family households, P028H002, 09, 9
+--- 2-person household, P028H003, 09, 9
+--- 3-person household, P028H004, 09, 9
+--- 4-person household, P028H005, 09, 9
+--- 5-person household, P028H006, 09, 9
+--- 6-person household, P028H007, 09, 9
+--- 7-or-more-person household, P028H008, 09, 9
+- Nonfamily households, P028H009, 09, 9
+--- 1-person household, P028H010, 09, 9
+--- 2-person household, P028H011, 09, 9
+--- 3-person household, P028H012, 09, 9
+--- 4-person household, P028H013, 09, 9
+--- 5-person household, P028H014, 09, 9
+--- 6-person household, P028H015, 09, 9
+--- 7-or-more-person household, P028H016, 09, 9
+Total, P028I001, 09, 9
+- Family households, P028I002, 09, 9
+--- 2-person household, P028I003, 09, 9
+--- 3-person household, P028I004, 09, 9
+--- 4-person household, P028I005, 09, 9
+--- 5-person household, P028I006, 09, 9
+--- 6-person household, P028I007, 09, 9
+--- 7-or-more-person household, P028I008, 09, 9
+- Nonfamily households, P028I009, 09, 9
+--- 1-person household, P028I010, 09, 9
+--- 2-person household, P028I011, 09, 9
+--- 3-person household, P028I012, 09, 9
+--- 4-person household, P028I013, 09, 9
+--- 5-person household, P028I014, 09, 9
+--- 6-person household, P028I015, 09, 9
+--- 7-or-more-person household, P028I016, 09, 9

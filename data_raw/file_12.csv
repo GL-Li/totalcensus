@@ -1,0 +1,256 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, P034F001, 12, 9
+- In households, P034F002, 12, 9
+--- In family households, P034F003, 12, 9
+----- Householder, P034F004, 12, 9
+------- Male, P034F005, 12, 9
+------- Female, P034F006, 12, 9
+----- Spouse, P034F007, 12, 9
+----- Parent, P034F008, 12, 9
+----- Parent-in-law, P034F009, 12, 9
+----- Other relatives, P034F010, 12, 9
+----- Nonrelatives, P034F011, 12, 9
+--- In nonfamily households, P034F012, 12, 9
+----- Male householder, P034F013, 12, 9
+------- Living alone, P034F014, 12, 9
+------- Not living alone, P034F015, 12, 9
+----- Female householder, P034F016, 12, 9
+------- Living alone, P034F017, 12, 9
+------- Not living alone, P034F018, 12, 9
+----- Nonrelatives, P034F019, 12, 9
+- In group quarters, P034F020, 12, 9
+--- Institutionalized population, P034F021, 12, 9
+--- Noninstitutionalized population, P034F022, 12, 9
+Total, P034G001, 12, 9
+- In households, P034G002, 12, 9
+--- In family households, P034G003, 12, 9
+----- Householder, P034G004, 12, 9
+------- Male, P034G005, 12, 9
+------- Female, P034G006, 12, 9
+----- Spouse, P034G007, 12, 9
+----- Parent, P034G008, 12, 9
+----- Parent-in-law, P034G009, 12, 9
+----- Other relatives, P034G010, 12, 9
+----- Nonrelatives, P034G011, 12, 9
+--- In nonfamily households, P034G012, 12, 9
+----- Male householder, P034G013, 12, 9
+------- Living alone, P034G014, 12, 9
+------- Not living alone, P034G015, 12, 9
+----- Female householder, P034G016, 12, 9
+------- Living alone, P034G017, 12, 9
+------- Not living alone, P034G018, 12, 9
+----- Nonrelatives, P034G019, 12, 9
+- In group quarters, P034G020, 12, 9
+--- Institutionalized population, P034G021, 12, 9
+--- Noninstitutionalized population, P034G022, 12, 9
+Total, P034H001, 12, 9
+- In households, P034H002, 12, 9
+--- In family households, P034H003, 12, 9
+----- Householder, P034H004, 12, 9
+------- Male, P034H005, 12, 9
+------- Female, P034H006, 12, 9
+----- Spouse, P034H007, 12, 9
+----- Parent, P034H008, 12, 9
+----- Parent-in-law, P034H009, 12, 9
+----- Other relatives, P034H010, 12, 9
+----- Nonrelatives, P034H011, 12, 9
+--- In nonfamily households, P034H012, 12, 9
+----- Male householder, P034H013, 12, 9
+------- Living alone, P034H014, 12, 9
+------- Not living alone, P034H015, 12, 9
+----- Female householder, P034H016, 12, 9
+------- Living alone, P034H017, 12, 9
+------- Not living alone, P034H018, 12, 9
+----- Nonrelatives, P034H019, 12, 9
+- In group quarters, P034H020, 12, 9
+--- Institutionalized population, P034H021, 12, 9
+--- Noninstitutionalized population, P034H022, 12, 9
+Total, P034I001, 12, 9
+- In households, P034I002, 12, 9
+--- In family households, P034I003, 12, 9
+----- Householder, P034I004, 12, 9
+------- Male, P034I005, 12, 9
+------- Female, P034I006, 12, 9
+----- Spouse, P034I007, 12, 9
+----- Parent, P034I008, 12, 9
+----- Parent-in-law, P034I009, 12, 9
+----- Other relatives, P034I010, 12, 9
+----- Nonrelatives, P034I011, 12, 9
+--- In nonfamily households, P034I012, 12, 9
+----- Male householder, P034I013, 12, 9
+------- Living alone, P034I014, 12, 9
+------- Not living alone, P034I015, 12, 9
+----- Female householder, P034I016, 12, 9
+------- Living alone, P034I017, 12, 9
+------- Not living alone, P034I018, 12, 9
+----- Nonrelatives, P034I019, 12, 9
+- In group quarters, P034I020, 12, 9
+--- Institutionalized population, P034I021, 12, 9
+--- Noninstitutionalized population, P034I022, 12, 9
+Total, P035A001, 12, 9
+Total, P035B001, 12, 9
+Total, P035C001, 12, 9
+Total, P035D001, 12, 9
+Total, P035E001, 12, 9
+Total, P035F001, 12, 9
+Total, P035G001, 12, 9
+Total, P035H001, 12, 9
+Total, P035I001, 12, 9
+Total, P036A001, 12, 9
+- Under 18 years, P036A002, 12, 9
+- 18 years and over, P036A003, 12, 9
+Total, P036B001, 12, 9
+- Under 18 years, P036B002, 12, 9
+- 18 years and over, P036B003, 12, 9
+Total, P036C001, 12, 9
+- Under 18 years, P036C002, 12, 9
+- 18 years and over, P036C003, 12, 9
+Total, P036D001, 12, 9
+- Under 18 years, P036D002, 12, 9
+- 18 years and over, P036D003, 12, 9
+Total, P036E001, 12, 9
+- Under 18 years, P036E002, 12, 9
+- 18 years and over, P036E003, 12, 9
+Total, P036F001, 12, 9
+- Under 18 years, P036F002, 12, 9
+- 18 years and over, P036F003, 12, 9
+Total, P036G001, 12, 9
+- Under 18 years, P036G002, 12, 9
+- 18 years and over, P036G003, 12, 9
+Total, P036H001, 12, 9
+- Under 18 years, P036H002, 12, 9
+- 18 years and over, P036H003, 12, 9
+Total, P036I001, 12, 9
+- Under 18 years, P036I002, 12, 9
+- 18 years and over, P036I003, 12, 9
+Total, P037A001, 12, 9
+- Under 18 years, P037A002, 12, 9
+- 18 years and over, P037A003, 12, 9
+Total, P037B001, 12, 9
+- Under 18 years, P037B002, 12, 9
+- 18 years and over, P037B003, 12, 9
+Total, P037C001, 12, 9
+- Under 18 years, P037C002, 12, 9
+- 18 years and over, P037C003, 12, 9
+Total, P037D001, 12, 9
+- Under 18 years, P037D002, 12, 9
+- 18 years and over, P037D003, 12, 9
+Total, P037E001, 12, 9
+- Under 18 years, P037E002, 12, 9
+- 18 years and over, P037E003, 12, 9
+Total, P037F001, 12, 9
+- Under 18 years, P037F002, 12, 9
+- 18 years and over, P037F003, 12, 9
+Total, P037G001, 12, 9
+- Under 18 years, P037G002, 12, 9
+- 18 years and over, P037G003, 12, 9
+Total, P037H001, 12, 9
+- Under 18 years, P037H002, 12, 9
+- 18 years and over, P037H003, 12, 9
+Total, P037I001, 12, 9
+- Under 18 years, P037I002, 12, 9
+- 18 years and over, P037I003, 12, 9
+Total, P038A001, 12, 9
+- Husband-wife family, P038A002, 12, 9
+--- With own children under 18 years, P038A003, 12, 9
+----- Under 6 years only, P038A004, 12, 9
+----- Under 6 years and 6 to 17 years, P038A005, 12, 9
+----- 6 to 17 years only, P038A006, 12, 9
+--- No own children under 18 years, P038A007, 12, 9
+- Other family, P038A008, 12, 9
+--- Male householder; no wife present, P038A009, 12, 9
+----- With own children under 18 years, P038A010, 12, 9
+------- Under 6 years only, P038A011, 12, 9
+------- Under 6 years and 6 to 17 years, P038A012, 12, 9
+------- 6 to 17 years only, P038A013, 12, 9
+----- No own children under 18 years, P038A014, 12, 9
+--- Female householder; no husband present, P038A015, 12, 9
+----- With own children under 18 years, P038A016, 12, 9
+------- Under 6 years only, P038A017, 12, 9
+------- Under 6 years and 6 to 17 years, P038A018, 12, 9
+------- 6 to 17 years only, P038A019, 12, 9
+----- No own children under 18 years, P038A020, 12, 9
+Total, P038B001, 12, 9
+- Husband-wife family, P038B002, 12, 9
+--- With own children under 18 years, P038B003, 12, 9
+----- Under 6 years only, P038B004, 12, 9
+----- Under 6 years and 6 to 17 years, P038B005, 12, 9
+----- 6 to 17 years only, P038B006, 12, 9
+--- No own children under 18 years, P038B007, 12, 9
+- Other family, P038B008, 12, 9
+--- Male householder; no wife present, P038B009, 12, 9
+----- With own children under 18 years, P038B010, 12, 9
+------- Under 6 years only, P038B011, 12, 9
+------- Under 6 years and 6 to 17 years, P038B012, 12, 9
+------- 6 to 17 years only, P038B013, 12, 9
+----- No own children under 18 years, P038B014, 12, 9
+--- Female householder; no husband present, P038B015, 12, 9
+----- With own children under 18 years, P038B016, 12, 9
+------- Under 6 years only, P038B017, 12, 9
+------- Under 6 years and 6 to 17 years, P038B018, 12, 9
+------- 6 to 17 years only, P038B019, 12, 9
+----- No own children under 18 years, P038B020, 12, 9
+Total, P038C001, 12, 9
+- Husband-wife family, P038C002, 12, 9
+--- With own children under 18 years, P038C003, 12, 9
+----- Under 6 years only, P038C004, 12, 9
+----- Under 6 years and 6 to 17 years, P038C005, 12, 9
+----- 6 to 17 years only, P038C006, 12, 9
+--- No own children under 18 years, P038C007, 12, 9
+- Other family, P038C008, 12, 9
+--- Male householder; no wife present, P038C009, 12, 9
+----- With own children under 18 years, P038C010, 12, 9
+------- Under 6 years only, P038C011, 12, 9
+------- Under 6 years and 6 to 17 years, P038C012, 12, 9
+------- 6 to 17 years only, P038C013, 12, 9
+----- No own children under 18 years, P038C014, 12, 9
+--- Female householder; no husband present, P038C015, 12, 9
+----- With own children under 18 years, P038C016, 12, 9
+------- Under 6 years only, P038C017, 12, 9
+------- Under 6 years and 6 to 17 years, P038C018, 12, 9
+------- 6 to 17 years only, P038C019, 12, 9
+----- No own children under 18 years, P038C020, 12, 9
+Total, P038D001, 12, 9
+- Husband-wife family, P038D002, 12, 9
+--- With own children under 18 years, P038D003, 12, 9
+----- Under 6 years only, P038D004, 12, 9
+----- Under 6 years and 6 to 17 years, P038D005, 12, 9
+----- 6 to 17 years only, P038D006, 12, 9
+--- No own children under 18 years, P038D007, 12, 9
+- Other family, P038D008, 12, 9
+--- Male householder; no wife present, P038D009, 12, 9
+----- With own children under 18 years, P038D010, 12, 9
+------- Under 6 years only, P038D011, 12, 9
+------- Under 6 years and 6 to 17 years, P038D012, 12, 9
+------- 6 to 17 years only, P038D013, 12, 9
+----- No own children under 18 years, P038D014, 12, 9
+--- Female householder; no husband present, P038D015, 12, 9
+----- With own children under 18 years, P038D016, 12, 9
+------- Under 6 years only, P038D017, 12, 9
+------- Under 6 years and 6 to 17 years, P038D018, 12, 9
+------- 6 to 17 years only, P038D019, 12, 9
+----- No own children under 18 years, P038D020, 12, 9
+Total, P038E001, 12, 9
+- Husband-wife family, P038E002, 12, 9
+--- With own children under 18 years, P038E003, 12, 9
+----- Under 6 years only, P038E004, 12, 9
+----- Under 6 years and 6 to 17 years, P038E005, 12, 9
+----- 6 to 17 years only, P038E006, 12, 9
+--- No own children under 18 years, P038E007, 12, 9
+- Other family, P038E008, 12, 9
+--- Male householder; no wife present, P038E009, 12, 9
+----- With own children under 18 years, P038E010, 12, 9
+------- Under 6 years only, P038E011, 12, 9
+------- Under 6 years and 6 to 17 years, P038E012, 12, 9
+------- 6 to 17 years only, P038E013, 12, 9
+----- No own children under 18 years, P038E014, 12, 9
+--- Female householder; no husband present, P038E015, 12, 9
+----- With own children under 18 years, P038E016, 12, 9
+------- Under 6 years only, P038E017, 12, 9
+------- Under 6 years and 6 to 17 years, P038E018, 12, 9
+------- 6 to 17 years only, P038E019, 12, 9
+----- No own children under 18 years, P038E020, 12, 9

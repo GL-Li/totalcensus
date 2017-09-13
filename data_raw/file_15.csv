@@ -1,0 +1,256 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total tribes tallied (300 A01–M38 M41–R98 S01–Z99), PCT0010001, 15, 9
+- American Indian tribes; specified (A01–M38 T01–Z99), PCT0010002, 15, 9
+--- Apache (A09–A23), PCT0010003, 15, 9
+--- Arapaho (A24–A33), PCT0010004, 15, 9
+--- Blackfeet (A45–A50), PCT0010005, 15, 9
+--- Canadian and French American Indian (T01–V23), PCT0010006, 15, 9
+--- Central American Indian (V24–V83), PCT0010007, 15, 9
+--- Cherokee (B21–B39), PCT0010008, 15, 9
+--- Cheyenne (B40–B45), PCT0010009, 15, 9
+--- Chickasaw (B53–B56), PCT0010010, 15, 9
+--- Chippewa (B67–B99), PCT0010011, 15, 9
+--- Choctaw (C08–C16), PCT0010012, 15, 9
+--- Colville (C35–C38), PCT0010013, 15, 9
+--- Comanche (C39–C43), PCT0010014, 15, 9
+--- Cree (C59–C63), PCT0010015, 15, 9
+--- Creek (C64–C80), PCT0010016, 15, 9
+--- Crow (C83–C86), PCT0010017, 15, 9
+--- Delaware (C93–D04), PCT0010018, 15, 9
+--- Hopi (D74–D75), PCT0010019, 15, 9
+--- Houma (D78–D86), PCT0010020, 15, 9
+--- Iroquois (D93–E09), PCT0010021, 15, 9
+--- Kiowa (E30–E36), PCT0010022, 15, 9
+--- Lumbee (E78–E83), PCT0010023, 15, 9
+--- Menominee (F11–F14), PCT0010024, 15, 9
+--- Mexican American Indian (V84–W66), PCT0010025, 15, 9
+--- Navajo (F62–F70), PCT0010026, 15, 9
+--- Osage (G04–G09), PCT0010027, 15, 9
+--- Ottawa (G14–G22), PCT0010028, 15, 9
+--- Paiute (G23–G49), PCT0010029, 15, 9
+--- Pima (G84–G91), PCT0010030, 15, 9
+--- Potawatomi (H21–H33), PCT0010031, 15, 9
+--- Pueblo (H38–H65), PCT0010032, 15, 9
+--- Puget Sound Salish (H70–H92), PCT0010033, 15, 9
+--- Seminole (J47–J57), PCT0010034, 15, 9
+--- Shoshone (J81–J92), PCT0010035, 15, 9
+--- Sioux (K16–K53), PCT0010036, 15, 9
+--- South American Indian (W67–X24), PCT0010037, 15, 9
+--- Spanish American Indian (X25–Z99), PCT0010038, 15, 9
+--- Tohono O’Odham (K78–K86), PCT0010039, 15, 9
+--- Ute (L06–L14), PCT0010040, 15, 9
+--- Yakama (L79–L84), PCT0010041, 15, 9
+--- Yaqui (L91–L99), PCT0010042, 15, 9
+--- Yuman (M22–M33), PCT0010043, 15, 9
+--- All other American Indian tribes (A01–A08 A34–A44 A51–B20 B46–B52 B57–B66 C01–C07 C17–C34 C44–C58 C81–C82 C87–C92 D05–D73 D76–D77; D87–D92; E10–E29; E37–E77; E84–F10; F15–F61; F71–G03; G10–G13; G50–G83; G92–H20; H34–H37; H66–H69; H93–J46; J58–J80; J93–K15; K54–K77; K87–L05; L15–L78; L85–L90; M01–M21; M34–M38), PCT0010044, 15, 9
+- American Indian tribes; not specified (M41–M43), PCT0010045, 15, 9
+- Alaska Native tribes; specified (M52–R98; S01–S99), PCT0010046, 15, 9
+--- Alaskan Athabascan (M52–N27), PCT0010047, 15, 9
+--- Aleut (R11–R98; S01–S99), PCT0010048, 15, 9
+--- Inupiat (N67–P29; P33–P37), PCT0010049, 15, 9
+--- Tlingit–Haida (N28–N55; N59–N66), PCT0010050, 15, 9
+--- Tsimshian (N56–N58), PCT0010051, 15, 9
+--- Yup’ik (P30–P32; P38–R10), PCT0010052, 15, 9
+- Alaska Native tribes; not specified (M44–M51), PCT0010053, 15, 9
+- American Indian or Alaska Native tribes; not specified (300), PCT0010054, 15, 9
+Total tribes tallied (300; A01–Z99) & (300; A01–Z99), PCT0020001, 15, 9
+- American Indian tribes; specified (A01–M38; T01–Z99) & (300; A01–Z99), PCT0020002, 15, 9
+--- Apache (A09–A23) & (300; A01–Z99), PCT0020003, 15, 9
+--- Arapaho (A24–A33) & (300; A01–Z99), PCT0020004, 15, 9
+--- Blackfeet (A45–A50) & (300; A01–Z99), PCT0020005, 15, 9
+--- Canadian and French American Indian (T01–V23) & (300; A01–Z99), PCT0020006, 15, 9
+--- Central American Indian (V24–V83) & (300; A01–Z99), PCT0020007, 15, 9
+--- Cherokee (B21–B39) & (300; A01–Z99), PCT0020008, 15, 9
+--- Cheyenne (B40–B45) & (300; A01–Z99), PCT0020009, 15, 9
+--- Chickasaw (B53–B56) & (300; A01–Z99), PCT0020010, 15, 9
+--- Chippewa (B67–B99) & (300; A01–Z99), PCT0020011, 15, 9
+--- Choctaw (C08–C16) & (300; A01–Z99), PCT0020012, 15, 9
+--- Colville (C35–C38) & (300; A01–Z99), PCT0020013, 15, 9
+--- Comanche (C39–C43) & (300; A01–Z99), PCT0020014, 15, 9
+--- Cree (C59–C63) & (300; A01–Z99), PCT0020015, 15, 9
+--- Creek (C64–C80) & (300; A01–Z99), PCT0020016, 15, 9
+--- Crow (C83–C86) & (300; A01–Z99), PCT0020017, 15, 9
+--- Delaware (C93–D04) & (300; A01–Z99), PCT0020018, 15, 9
+--- Hopi (D74–D75) & (300; A01–Z99), PCT0020019, 15, 9
+--- Houma (D78–D86) & (300; A01–Z99), PCT0020020, 15, 9
+--- Iroquois (D93–E09) & (300; A01–Z99), PCT0020021, 15, 9
+--- Kiowa (E30–E36) & (300; A01–Z99), PCT0020022, 15, 9
+--- Lumbee (E78–E83) & (300; A01–Z99), PCT0020023, 15, 9
+--- Menominee (F11–F14) & (300; A01–Z99), PCT0020024, 15, 9
+--- Mexican American Indian (V84–W66) & (300; A01–Z99), PCT0020025, 15, 9
+--- Navajo (F62–F70) & (300; A01–Z99), PCT0020026, 15, 9
+--- Osage (G04–G09) & (300; A01–Z99), PCT0020027, 15, 9
+--- Ottawa (G14–G22) & (300; A01–Z99), PCT0020028, 15, 9
+--- Paiute (G23–G49) & (300; A01–Z99), PCT0020029, 15, 9
+--- Pima (G84–G91) & (300; A01–Z99), PCT0020030, 15, 9
+--- Potawatomi (H21–H33) & (300; A01–Z99), PCT0020031, 15, 9
+--- Pueblo (H38–H65) & (300; A01–Z99), PCT0020032, 15, 9
+--- Puget Sound Salish (H70–H92) & (300; A01–Z99), PCT0020033, 15, 9
+--- Seminole (J47–J57) & (300; A01–Z99), PCT0020034, 15, 9
+--- Shoshone (J81–J92) & (300; A01–Z99), PCT0020035, 15, 9
+--- Sioux (K16–K53) & (300; A01–Z99), PCT0020036, 15, 9
+--- South American Indian (W67–X24) & (300; A01–Z99), PCT0020037, 15, 9
+--- Spanish American Indian (X25–Z99) & (300; A01–Z99), PCT0020038, 15, 9
+--- Tohono O’Odham (K78–K86) & (300; A01–Z99), PCT0020039, 15, 9
+--- Ute (L06–L14) & (300; A01–Z99), PCT0020040, 15, 9
+--- Yakama (L79–L84) & (300; A01–Z99), PCT0020041, 15, 9
+--- Yaqui (L91–L99) & (300; A01–Z99), PCT0020042, 15, 9
+--- Yuman (M22–M33) & (300; A01–Z99), PCT0020043, 15, 9
+--- All other American Indian tribes (A01–A08; A34–A44; A51–B20; B46–B52; B57–B66; C01–C07; C17–C34; C44–C58; C81–C82; C87–C92; D05–D73; D76–D77; D87–D92; E10–E29; E37–E77;E84–F10; F15–F61; F71–G03; G10–G13; G50–G83; G92–H20; H34–H37; H66–H69; H93–J46; J58–J80; J93–K15; K54–K77; K87–L05; L15–L78; L85–L90; M01–M21; M34–M38) & (300; A01–Z99), PCT0020044, 15, 9
+- American Indian tribes; not specified (M41–M43) & (300; A01–Z99), PCT0020045, 15, 9
+- Alaska Native tribes; specified (M52–R98; S01–S99) & (300; A01–Z99), PCT0020046, 15, 9
+--- Alaskan Athabascan (M52–N27) & (300; A01–Z99), PCT0020047, 15, 9
+--- Aleut (R11–R98; S01–S99) & (300; A01–Z99), PCT0020048, 15, 9
+--- Inupiat (N67–P29; P33–P37) & (300; A01–Z99), PCT0020049, 15, 9
+--- Tlingit-Haida (N28–N55; N59–N66) & (300; A01–Z99), PCT0020050, 15, 9
+--- Tsimshian (N56–N58) & (300; A01–Z99), PCT0020051, 15, 9
+--- Yup’ik (P30–P32; P38–R10) & (300; A01–Z99), PCT0020052, 15, 9
+- Alaska Native tribes; not specified (M44–M51) & (300; A01–Z99), PCT0020053, 15, 9
+- American Indian or Alaska Native tribes; not specified (300), PCT0020054, 15, 9
+Total tribes tallied (300; A01–Z99) & (100–299) or (300; A01–Z99) or (400–999), PCT0030001, 15, 9
+- American Indian tribes; specified (A01–M38; T01–Z99) & (100–299) or (300; A01–Z99) or (400–999), PCT0030002, 15, 9
+--- Apache (A09–A23) & (100–299) or (300; A01–Z99) or (400–999), PCT0030003, 15, 9
+--- Arapaho (A24–A33) & (100–299) or (300; A01–Z99) or (400–999), PCT0030004, 15, 9
+--- Blackfeet (A45–A50) & (100–299) or (300; A01–Z99) or (400–999), PCT0030005, 15, 9
+---  Canadian and French American Indian (T01–V23) & (100–299) or (300; A01–Z99) or (400–999), PCT0030006, 15, 9
+--- Central American Indian (V24–V83) & (100–299) or (300; A01–Z99) or (400–999), PCT0030007, 15, 9
+--- Cherokee (B21–B39) & (100–299) or (300; A01–Z99) or (400–999), PCT0030008, 15, 9
+--- Cheyenne (B40–B45) & (100–299) or (300; A01–Z99) or (400–999), PCT0030009, 15, 9
+--- Chickasaw (B53–B56) & (100–299) or (300; A01–Z99) or (400–999), PCT0030010, 15, 9
+--- Chippewa (B67–B99) & (100–299) or (300; A01–Z99) or (400–999), PCT0030011, 15, 9
+--- Choctaw (C08–C16) & (100–299) or (300; A01–Z99) or (400–999), PCT0030012, 15, 9
+--- Colville (C35–C38) & (100–299) or (300; A01–Z99) or (400–999), PCT0030013, 15, 9
+--- Comanche (C39–C43) & (100–299) or (300; A01–Z99) or (400–999), PCT0030014, 15, 9
+--- Cree (C59–C63) & (100–299) or (300; A01–Z99) or (400–999), PCT0030015, 15, 9
+--- Creek (C64–C80) & (100–299) or (300; A01–Z99) or (400–999), PCT0030016, 15, 9
+--- Crow (C83–C86) & (100–299) or (300; A01–Z99) or (400–999), PCT0030017, 15, 9
+--- Delaware (C93–D04) & (100–299) or (300; A01–Z99) or (400–999), PCT0030018, 15, 9
+--- Hopi (D74–D75) & (100–299) or (300; A01–Z99) or (400–999), PCT0030019, 15, 9
+--- Houma (D78–D86) & (100–299) or (300; A01–Z99) or (400–999), PCT0030020, 15, 9
+--- Iroquois (D93–E09) & (100–299) or (300; A01–Z99) or (400–999), PCT0030021, 15, 9
+--- Kiowa (E30–E36) & (100–299) or (300; A01–Z99) or (400–999), PCT0030022, 15, 9
+--- Lumbee (E78–E83) & (100–299) or (300; A01–Z99) or (400–999), PCT0030023, 15, 9
+--- Menominee (F11–F14) & (100–299) or (300; A01–Z99) or (400–999), PCT0030024, 15, 9
+--- Mexican American Indian (V84–W66) & (100–299) or (300; A01–Z99) or (400–999), PCT0030025, 15, 9
+--- Navajo (F62–F70) & (100–299) or (300; A01–Z99) or (400–999), PCT0030026, 15, 9
+--- Osage (G04–G09) & (100–299) or (300; A01–Z99) or (400–999), PCT0030027, 15, 9
+--- Ottawa (G14–G22) & (100–299) or (300; A01–Z99) or (400–999), PCT0030028, 15, 9
+--- Paiute (G23–G49) & (100–299) or (300; A01–Z99) or (400–999), PCT0030029, 15, 9
+--- Pima (G84–G91) & (100–299) or (300; A01–Z99) or (400–999), PCT0030030, 15, 9
+--- Potawatomi (H21–H33) & (100–299) or (300; A01–Z99) or (400–999), PCT0030031, 15, 9
+--- Pueblo (H38–H65) & (100–299) or (300; A01–Z99) or (400–999), PCT0030032, 15, 9
+--- Puget Sound Salish (H70–H92) & (100–299) or (300; A01–Z99) or (400–999), PCT0030033, 15, 9
+--- Seminole (J47–J57) & (100–299) or (300; A01–Z99) or (400–999), PCT0030034, 15, 9
+--- Shoshone (J81–J92) & (100–299) or (300; A01–Z99) or (400–999), PCT0030035, 15, 9
+--- Sioux (K16–K53) & (100–299) or (300; A01–Z99) or (400–999), PCT0030036, 15, 9
+--- South American Indian (W67–X24) & (100–299) or (300; A01–Z99) or (400–999), PCT0030037, 15, 9
+--- Spanish American Indian (X25–Z99) & (100–299) or (300; A01–Z99) or (400–999), PCT0030038, 15, 9
+--- Tohono O’Odham (K78–K86) & (100–299) or (300; A01–Z99) or (400–999), PCT0030039, 15, 9
+--- Ute (L06–L14) & (100–299) or (300; A01–Z99) or (400–999), PCT0030040, 15, 9
+--- Yakama (L79–L84) & (100–299) or (300; A01–Z99) or (400–999), PCT0030041, 15, 9
+--- Yaqui (L91–L99) & (100–299) or (300; A01–Z99) or (400–999), PCT0030042, 15, 9
+--- Yuman (M22–M33) & (100–299) or (300; A01–Z99) or (400–999), PCT0030043, 15, 9
+--- All other American Indian tribes (A01–A08; A34–A44; A51–B20; B46–B52; B57–B66; C01–C07; C17–C34; C44–C58; C81–C82; C87–C92; D05–D73; D76–D77; D87–D92; E10–E29; E37–E77; E84–F10; F15–F61; F71–G03; G10–G13; G50–G83; G92–H20; H34–H37; H66–H69; H93–J46; J58–J80; J93–K15; K54–K77; K87–L05; L15–L78; L85–L90; M01–M21; M34–M38) & (100–299) or (300; A01–Z99) or (400–999), PCT0030044, 15, 9
+- American Indian tribes; not specified (M40–M43) & (100–299) or (300; A01–Z99) or (400–999), PCT0030045, 15, 9
+- Alaska Native tribes; specified (M52–R98; S01–S99) & (100–299) or (300; A01–Z99) or (400–999), PCT0030046, 15, 9
+--- Alaskan Athabascan (M52–N27) & (100–299) or (300; A01–Z99) or (400–999), PCT0030047, 15, 9
+--- Aleut (R11–R98; S01–S99) & (100–299) or (300; A01–Z99) or (400–999), PCT0030048, 15, 9
+--- Inupiat (N67–P29; P33–P37) & (100–299) or (300; A01–Z99) or (400–999), PCT0030049, 15, 9
+--- Tlingit–Haida (N28–N55; N59–N66) & (100–299) or (300; A01–Z99) or (400–999), PCT0030050, 15, 9
+--- Tsimshian (N56–N58) & (100–299) or (300; A01–Z99) or (400–999), PCT0030051, 15, 9
+--- Yup’ik (P30–P32; P38–R10) & (100–299) or (300; A01–Z99) or (400–999), PCT0030052, 15, 9
+- Alaska Native tribes; not specified (M44–M51; R99) & (100–299) or (300; A01–Z99) or (400–999), PCT0030053, 15, 9
+- American Indian or Alaska Native tribes; not specified (M39); (300) & (100–299) or (400–999), PCT0030054, 15, 9
+Total, PCT0040001, 15, 9
+- American Indian alone (People who reported a specific American Indian tribe only) (A01–M38; T01–Z99), PCT0040002, 15, 9
+- Alaska Native alone (People who reported a specific Alaska Native tribe only) (M52–R98), PCT0040003, 15, 9
+- American Indian and Alaska Native alone (People who reported both a specific American Indian tribe(s) and a specific Alaska Native tribe(s) and no other race) (A01–M38; T01–Z99) & (M52–R98), PCT0040004, 15, 9
+- American Indian in combination with one or more other races (People who reported a specific American Indian tribe and reported one or more other races) (A01–M38; T01–Z99) & (100–299) or (400–999), PCT0040005, 15, 9
+- Alaska Native in combination with one or more other races (People who reported a specific Alaska Native tribe and reported one or more other races) (M52–R98) & (100–299) or (400–999), PCT0040006, 15, 9
+- American Indian and Alaska Native in combination with one or more other races (People who reported both a specific American Indian tribe and a specific Alaska Native tribe and reported one or more other races) (A01–M38; T01–Z99) & (M52–R98) & (100–299) or (400–999), PCT0040007, 15, 9
+- Unspecified American Indian and Alaska Native alone (People who marked the American Indian or Alaska Native checkbox (300); or people who did not report a specific tribe) (M39–M51; R99) either alone; or in combination with a specific American Indian tribe (A01–M38; T01–Z99) or in combination with a specific Alaska Native tribe (M52–R98), PCT0040008, 15, 9
+- Unspecified American Indian and Alaska Native in combination with one or more other races (100–299) or (400–999) (People who marked the American Indian or Alaska Native checkbox (300); or people who did not report a specific tribe (M39–M51; R99) either alone; or in combination with a specific American Indian tribe (A01–M38; T01–Z99) or in combination with a specific Alaska Native tribe (M52–R98), PCT0040009, 15, 9
+Total (400–479; 481–499), PCT0050001, 15, 9
+- Asian Indian (400–401), PCT0050002, 15, 9
+- Bangladeshi (402), PCT0050003, 15, 9
+- Bhutanese (403), PCT0050004, 15, 9
+- Burmese (404), PCT0050005, 15, 9
+- Cambodian (405–409), PCT0050006, 15, 9
+- Chinese (except Taiwanese) (410–411), PCT0050007, 15, 9
+- Filipino (420–421), PCT0050008, 15, 9
+- Hmong (422), PCT0050009, 15, 9
+- Indonesian (423–429), PCT0050010, 15, 9
+- Japanese (430–439), PCT0050011, 15, 9
+- Korean (440–441), PCT0050012, 15, 9
+- Laotian (442), PCT0050013, 15, 9
+- Malaysian (443), PCT0050014, 15, 9
+- Nepalese (472), PCT0050015, 15, 9
+- Pakistani (445), PCT0050016, 15, 9
+- Sri Lankan (446), PCT0050017, 15, 9
+- Taiwanese (412–419), PCT0050018, 15, 9
+- Thai (447–449), PCT0050019, 15, 9
+- Vietnamese (450–459), PCT0050020, 15, 9
+- Other Asian; specified (444; 465; 470–471; 473–479), PCT0050021, 15, 9
+- Other Asian; not specified (460–464; 466–469; 481–499), PCT0050022, 15, 9
+Total Asian categories tallied (400–499) & (400–499), PCT0060001, 15, 9
+- Asian Indian (400–401) & (400–499), PCT0060002, 15, 9
+- Bangladeshi (402) & (400–499), PCT0060003, 15, 9
+- Bhutanese (403) & (400–499), PCT0060004, 15, 9
+- Burmese (404) & (400–499), PCT0060005, 15, 9
+- Cambodian (405–409) & (400–499), PCT0060006, 15, 9
+- Chinese (except Taiwanese) (410–411) & (400–499), PCT0060007, 15, 9
+- Filipino (420–421) & (400–499), PCT0060008, 15, 9
+- Hmong (422) & (400–499), PCT0060009, 15, 9
+- Indonesian (423–429) & (400–499), PCT0060010, 15, 9
+- Japanese (430–439) & (400–499), PCT0060011, 15, 9
+- Korean (440–441) & (400–499), PCT0060012, 15, 9
+- Laotian (442) & (400–499), PCT0060013, 15, 9
+- Malaysian (443) & (400–499), PCT0060014, 15, 9
+- Nepalese (472) & (400–499), PCT0060015, 15, 9
+- Pakistani (445) & (400–499), PCT0060016, 15, 9
+- Sri Lankan (446) & (400–499), PCT0060017, 15, 9
+- Taiwanese (412–419) & (400–499), PCT0060018, 15, 9
+- Thai (447–449) & (400–499), PCT0060019, 15, 9
+- Vietnamese (450–459) & (400–499), PCT0060020, 15, 9
+- Other Asian; specified (444; 465; 470–471; 473–479) & (400–499), PCT0060021, 15, 9
+- Other Asian; not specified (460–464; 466–469; 480–499) & (400–499), PCT0060022, 15, 9
+Total Asian categories tallied (400–499) & (100–299) or (300; A01–Z99) or (400–999), PCT0070001, 15, 9
+- Asian Indian (400–401) & (100–299) or (300; A01–Z99) or (400–999), PCT0070002, 15, 9
+- Bangladeshi (402) & (100–299) or (300; A01–Z99) or (400–999), PCT0070003, 15, 9
+- Bhutanese (403) & (100–299) or (300; A01–Z99) or (400–999), PCT0070004, 15, 9
+- Burmese (404) & (100–299) or (300; A01–Z99) or (400–999), PCT0070005, 15, 9
+- Cambodian (405–409) & (100–299) or (300; A01–Z99) or (400–999), PCT0070006, 15, 9
+- Chinese (except Taiwanese) (410–411) & (100–299) or (300; A01–Z99) or (400–999), PCT0070007, 15, 9
+- Filipino (420–421) & (100–299) or (300; A01–Z99) or (400–999), PCT0070008, 15, 9
+- Hmong (422) & (100–299) or (300; A01–Z99) or (400–999), PCT0070009, 15, 9
+- Indonesian (423–429) & (100–299) or (300; A01–Z99) or (400–999), PCT0070010, 15, 9
+- Japanese (430–439) & (100–299) or (300; A01–Z99) or (400–999), PCT0070011, 15, 9
+- Korean (440–441) & (100–299) or (300; A01–Z99) or (400–999), PCT0070012, 15, 9
+- Laotian (442) & (100–299) or (300; A01–Z99) or (400–999), PCT0070013, 15, 9
+- Malaysian (443) & (100–299) or (300; A01–Z99) or (400–999), PCT0070014, 15, 9
+- Nepalese (472) & (100–299) or (300; A01–Z99) or (400–999), PCT0070015, 15, 9
+- Pakistani (445) & (100–299) or (300; A01–Z99) or (400–999), PCT0070016, 15, 9
+- Sri Lankan (446) & (100–299) or (300; A01–Z99) or (400–999), PCT0070017, 15, 9
+- Taiwanese (412–419) & (100–299) or (300; A01–Z99) or (400–999), PCT0070018, 15, 9
+- Thai (447–449) & (100–299) or (300; A01–Z99) or (400–999), PCT0070019, 15, 9
+- Vietnamese (450–459) & (100–299) or (300; A01–Z99) or (400–999), PCT0070020, 15, 9
+- Other Asian; specified (444; 465; 470–471; 473–479) & (100–299) or (300; A01–Z99) or (400–999), PCT0070021, 15, 9
+- Other Asian; not specified (460–464; 466–469; 480–499) & (100–299) or (300; A01–Z99) or (400–999), PCT0070022, 15, 9
+Total (500–549; 551–599), PCT0080001, 15, 9
+- Polynesian (500–519), PCT0080002, 15, 9
+--- Native Hawaiian (500–503), PCT0080003, 15, 9
+--- Samoan (510–511), PCT0080004, 15, 9
+--- Tongan (513), PCT0080005, 15, 9
+--- Other Polynesian (504–509; 512; 514–519), PCT0080006, 15, 9
+- Micronesian (520–529; 531–541), PCT0080007, 15, 9
+--- Guamanian or Chamorro (520–522), PCT0080008, 15, 9
+--- Marshallese (532), PCT0080009, 15, 9
+--- Other Micronesian (523–529; 531; 533–541), PCT0080010, 15, 9
+- Melanesian (542–546), PCT0080011, 15, 9
+--- Fijian (542), PCT0080012, 15, 9
+--- Other Melanesian (543–546), PCT0080013, 15, 9
+- Other Pacific Islander; not specified (530; 547–549; 551–599), PCT0080014, 15, 9

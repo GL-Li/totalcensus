@@ -1,0 +1,131 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, H017D0001, 46, 9
+- Owner occupied, H017D0002, 46, 9
+--- Householder 15 to 24 years, H017D0003, 46, 9
+--- Householder 25 to 34 years, H017D0004, 46, 9
+--- Householder 35 to 44 years, H017D0005, 46, 9
+--- Householder 45 to 54 years, H017D0006, 46, 9
+--- Householder 55 to 59 years, H017D0007, 46, 9
+--- Householder 60 to 64 years, H017D0008, 46, 9
+--- Householder 65 to 74 years, H017D0009, 46, 9
+--- Householder 75 to 84 years, H017D0010, 46, 9
+--- Householder 85 years and over, H017D0011, 46, 9
+- Renter occupied, H017D0012, 46, 9
+--- Householder 15 to 24 years, H017D0013, 46, 9
+--- Householder 25 to 34 years, H017D0014, 46, 9
+--- Householder 35 to 44 years, H017D0015, 46, 9
+--- Householder 45 to 54 years, H017D0016, 46, 9
+--- Householder 55 to 59 years, H017D0017, 46, 9
+--- Householder 60 to 64 years, H017D0018, 46, 9
+--- Householder 65 to 74 years, H017D0019, 46, 9
+--- Householder 75 to 84 years, H017D0020, 46, 9
+--- Householder 85 years and over, H017D0021, 46, 9
+Total, H017E0001, 46, 9
+- Owner occupied, H017E0002, 46, 9
+--- Householder 15 to 24 years, H017E0003, 46, 9
+--- Householder 25 to 34 years, H017E0004, 46, 9
+--- Householder 35 to 44 years, H017E0005, 46, 9
+--- Householder 45 to 54 years, H017E0006, 46, 9
+--- Householder 55 to 59 years, H017E0007, 46, 9
+--- Householder 60 to 64 years, H017E0008, 46, 9
+--- Householder 65 to 74 years, H017E0009, 46, 9
+--- Householder 75 to 84 years, H017E0010, 46, 9
+--- Householder 85 years and over, H017E0011, 46, 9
+- Renter occupied, H017E0012, 46, 9
+--- Householder 15 to 24 years, H017E0013, 46, 9
+--- Householder 25 to 34 years, H017E0014, 46, 9
+--- Householder 35 to 44 years, H017E0015, 46, 9
+--- Householder 45 to 54 years, H017E0016, 46, 9
+--- Householder 55 to 59 years, H017E0017, 46, 9
+--- Householder 60 to 64 years, H017E0018, 46, 9
+--- Householder 65 to 74 years, H017E0019, 46, 9
+--- Householder 75 to 84 years, H017E0020, 46, 9
+--- Householder 85 years and over, H017E0021, 46, 9
+Total, H017F0001, 46, 9
+- Owner occupied, H017F0002, 46, 9
+--- Householder 15 to 24 years, H017F0003, 46, 9
+--- Householder 25 to 34 years, H017F0004, 46, 9
+--- Householder 35 to 44 years, H017F0005, 46, 9
+--- Householder 45 to 54 years, H017F0006, 46, 9
+--- Householder 55 to 59 years, H017F0007, 46, 9
+--- Householder 60 to 64 years, H017F0008, 46, 9
+--- Householder 65 to 74 years, H017F0009, 46, 9
+--- Householder 75 to 84 years, H017F0010, 46, 9
+--- Householder 85 years and over, H017F0011, 46, 9
+- Renter occupied, H017F0012, 46, 9
+--- Householder 15 to 24 years, H017F0013, 46, 9
+--- Householder 25 to 34 years, H017F0014, 46, 9
+--- Householder 35 to 44 years, H017F0015, 46, 9
+--- Householder 45 to 54 years, H017F0016, 46, 9
+--- Householder 55 to 59 years, H017F0017, 46, 9
+--- Householder 60 to 64 years, H017F0018, 46, 9
+--- Householder 65 to 74 years, H017F0019, 46, 9
+--- Householder 75 to 84 years, H017F0020, 46, 9
+--- Householder 85 years and over, H017F0021, 46, 9
+Total, H017G0001, 46, 9
+- Owner occupied, H017G0002, 46, 9
+--- Householder 15 to 24 years, H017G0003, 46, 9
+--- Householder 25 to 34 years, H017G0004, 46, 9
+--- Householder 35 to 44 years, H017G0005, 46, 9
+--- Householder 45 to 54 years, H017G0006, 46, 9
+--- Householder 55 to 59 years, H017G0007, 46, 9
+--- Householder 60 to 64 years, H017G0008, 46, 9
+--- Householder 65 to 74 years, H017G0009, 46, 9
+--- Householder 75 to 84 years, H017G0010, 46, 9
+--- Householder 85 years and over, H017G0011, 46, 9
+- Renter occupied, H017G0012, 46, 9
+--- Householder 15 to 24 years, H017G0013, 46, 9
+--- Householder 25 to 34 years, H017G0014, 46, 9
+--- Householder 35 to 44 years, H017G0015, 46, 9
+--- Householder 45 to 54 years, H017G0016, 46, 9
+--- Householder 55 to 59 years, H017G0017, 46, 9
+--- Householder 60 to 64 years, H017G0018, 46, 9
+--- Householder 65 to 74 years, H017G0019, 46, 9
+--- Householder 75 to 84 years, H017G0020, 46, 9
+--- Householder 85 years and over, H017G0021, 46, 9
+Total, H017H0001, 46, 9
+- Owner occupied, H017H0002, 46, 9
+--- Householder 15 to 24 years, H017H0003, 46, 9
+--- Householder 25 to 34 years, H017H0004, 46, 9
+--- Householder 35 to 44 years, H017H0005, 46, 9
+--- Householder 45 to 54 years, H017H0006, 46, 9
+--- Householder 55 to 59 years, H017H0007, 46, 9
+--- Householder 60 to 64 years, H017H0008, 46, 9
+--- Householder 65 to 74 years, H017H0009, 46, 9
+--- Householder 75 to 84 years, H017H0010, 46, 9
+--- Householder 85 years and over, H017H0011, 46, 9
+- Renter occupied, H017H0012, 46, 9
+--- Householder 15 to 24 years, H017H0013, 46, 9
+--- Householder 25 to 34 years, H017H0014, 46, 9
+--- Householder 35 to 44 years, H017H0015, 46, 9
+--- Householder 45 to 54 years, H017H0016, 46, 9
+--- Householder 55 to 59 years, H017H0017, 46, 9
+--- Householder 60 to 64 years, H017H0018, 46, 9
+--- Householder 65 to 74 years, H017H0019, 46, 9
+--- Householder 75 to 84 years, H017H0020, 46, 9
+--- Householder 85 years and over, H017H0021, 46, 9
+Total, H017I0001, 46, 9
+- Owner occupied, H017I0002, 46, 9
+--- Householder 15 to 24 years, H017I0003, 46, 9
+--- Householder 25 to 34 years, H017I0004, 46, 9
+--- Householder 35 to 44 years, H017I0005, 46, 9
+--- Householder 45 to 54 years, H017I0006, 46, 9
+--- Householder 55 to 59 years, H017I0007, 46, 9
+--- Householder 60 to 64 years, H017I0008, 46, 9
+--- Householder 65 to 74 years, H017I0009, 46, 9
+--- Householder 75 to 84 years, H017I0010, 46, 9
+--- Householder 85 years and over, H017I0011, 46, 9
+- Renter occupied, H017I0012, 46, 9
+--- Householder 15 to 24 years, H017I0013, 46, 9
+--- Householder 25 to 34 years, H017I0014, 46, 9
+--- Householder 35 to 44 years, H017I0015, 46, 9
+--- Householder 45 to 54 years, H017I0016, 46, 9
+--- Householder 55 to 59 years, H017I0017, 46, 9
+--- Householder 60 to 64 years, H017I0018, 46, 9
+--- Householder 65 to 74 years, H017I0019, 46, 9
+--- Householder 75 to 84 years, H017I0020, 46, 9
+--- Householder 85 years and over, H017I0021, 46, 9

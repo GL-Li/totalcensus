@@ -1,0 +1,245 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, P038F001, 13, 9
+- Husband-wife family, P038F002, 13, 9
+--- With own children under 18 years, P038F003, 13, 9
+----- Under 6 years only, P038F004, 13, 9
+----- Under 6 years and 6 to 17 years, P038F005, 13, 9
+----- 6 to 17 years only, P038F006, 13, 9
+--- No own children under 18 years, P038F007, 13, 9
+- Other family, P038F008, 13, 9
+--- Male householder; no wife present, P038F009, 13, 9
+----- With own children under 18 years, P038F010, 13, 9
+------- Under 6 years only, P038F011, 13, 9
+------- Under 6 years and 6 to 17 years, P038F012, 13, 9
+------- 6 to 17 years only, P038F013, 13, 9
+----- No own children under 18 years, P038F014, 13, 9
+--- Female householder; no husband present, P038F015, 13, 9
+----- With own children under 18 years, P038F016, 13, 9
+------- Under 6 years only, P038F017, 13, 9
+------- Under 6 years and 6 to 17 years, P038F018, 13, 9
+------- 6 to 17 years only, P038F019, 13, 9
+----- No own children under 18 years, P038F020, 13, 9
+Total, P038G001, 13, 9
+- Husband-wife family, P038G002, 13, 9
+--- With own children under 18 years, P038G003, 13, 9
+----- Under 6 years only, P038G004, 13, 9
+----- Under 6 years and 6 to 17 years, P038G005, 13, 9
+----- 6 to 17 years only, P038G006, 13, 9
+--- No own children under 18 years, P038G007, 13, 9
+- Other family, P038G008, 13, 9
+--- Male householder; no wife present, P038G009, 13, 9
+----- With own children under 18 years, P038G010, 13, 9
+------- Under 6 years only, P038G011, 13, 9
+------- Under 6 years and 6 to 17 years, P038G012, 13, 9
+------- 6 to 17 years only, P038G013, 13, 9
+----- No own children under 18 years, P038G014, 13, 9
+--- Female householder; no husband present, P038G015, 13, 9
+----- With own children under 18 years, P038G016, 13, 9
+------- Under 6 years only, P038G017, 13, 9
+------- Under 6 years and 6 to 17 years, P038G018, 13, 9
+------- 6 to 17 years only, P038G019, 13, 9
+----- No own children under 18 years, P038G020, 13, 9
+Total, P038H001, 13, 9
+- Husband-wife family, P038H002, 13, 9
+--- With own children under 18 years, P038H003, 13, 9
+----- Under 6 years only, P038H004, 13, 9
+----- Under 6 years and 6 to 17 years, P038H005, 13, 9
+----- 6 to 17 years only, P038H006, 13, 9
+--- No own children under 18 years, P038H007, 13, 9
+- Other family, P038H008, 13, 9
+--- Male householder; no wife present, P038H009, 13, 9
+-----  With own children under 18 years, P038H010, 13, 9
+------- Under 6 years only, P038H011, 13, 9
+------- Under 6 years and 6 to 17 years, P038H012, 13, 9
+------- 6 to 17 years only, P038H013, 13, 9
+----- No own children under 18 years, P038H014, 13, 9
+--- Female householder; no husband present, P038H015, 13, 9
+----- With own children under 18 years, P038H016, 13, 9
+------- Under 6 years only, P038H017, 13, 9
+------- Under 6 years and 6 to 17 years, P038H018, 13, 9
+------- 6 to 17 years only, P038H019, 13, 9
+----- No own children under 18 years, P038H020, 13, 9
+Total, P038I001, 13, 9
+- Husband-wife family, P038I002, 13, 9
+--- With own children under 18 years, P038I003, 13, 9
+----- Under 6 years only, P038I004, 13, 9
+----- Under 6 years and 6 to 17 years, P038I005, 13, 9
+----- 6 to 17 years only, P038I006, 13, 9
+--- No own children under 18 years, P038I007, 13, 9
+- Other family, P038I008, 13, 9
+--- Male householder; no wife present, P038I009, 13, 9
+----- With own children under 18 years, P038I010, 13, 9
+------- Under 6 years only, P038I011, 13, 9
+------- Under 6 years and 6 to 17 years, P038I012, 13, 9
+------- 6 to 17 years only, P038I013, 13, 9
+----- No own children under 18 years, P038I014, 13, 9
+--- Female householder; no husband present, P038I015, 13, 9
+----- With own children under 18 years, P038I016, 13, 9
+------- Under 6 years only, P038I017, 13, 9
+------- Under 6 years and 6 to 17 years, P038I018, 13, 9
+------- 6 to 17 years only, P038I019, 13, 9
+----- No own children under 18 years, P038I020, 13, 9
+Total, P039A001, 13, 9
+- Husband-wife family, P039A002, 13, 9
+--- With related children under 18 years, P039A003, 13, 9
+----- Under 6 years only, P039A004, 13, 9
+----- Under 6 years and 6 to 17 years, P039A005, 13, 9
+----- 6 to 17 years only, P039A006, 13, 9
+--- No related children under 18 years, P039A007, 13, 9
+- Other family, P039A008, 13, 9
+--- Male householder; no wife present, P039A009, 13, 9
+----- With related children under 18 years, P039A010, 13, 9
+------- Under 6 years only, P039A011, 13, 9
+------- Under 6 years and 6 to 17 years, P039A012, 13, 9
+------- 6 to 17 years only, P039A013, 13, 9
+----- No related children under 18 years, P039A014, 13, 9
+--- Female householder; no husband present, P039A015, 13, 9
+----- With related children under 18 years, P039A016, 13, 9
+------- Under 6 years only, P039A017, 13, 9
+------- Under 6 years and 6 to 17 years, P039A018, 13, 9
+------- 6 to 17 years only, P039A019, 13, 9
+----- No related children under 18 years, P039A020, 13, 9
+Total, P039B001, 13, 9
+- Husband-wife family, P039B002, 13, 9
+--- With related children under 18 years, P039B003, 13, 9
+----- Under 6 years only, P039B004, 13, 9
+----- Under 6 years and 6 to 17 years, P039B005, 13, 9
+----- 6 to 17 years only, P039B006, 13, 9
+--- No related children under 18 years, P039B007, 13, 9
+- Other family, P039B008, 13, 9
+--- Male householder; no wife present, P039B009, 13, 9
+----- With related children under 18 years, P039B010, 13, 9
+------- Under 6 years only, P039B011, 13, 9
+------- Under 6 years and 6 to 17 years, P039B012, 13, 9
+------- 6 to 17 years only, P039B013, 13, 9
+----- No related children under 18 years, P039B014, 13, 9
+--- Female householder; no husband present, P039B015, 13, 9
+----- With related children under 18 years, P039B016, 13, 9
+------- Under 6 years only, P039B017, 13, 9
+------- Under 6 years and 6 to 17 years, P039B018, 13, 9
+------- 6 to 17 years only, P039B019, 13, 9
+----- No related children under 18 years, P039B020, 13, 9
+Total, P039C001, 13, 9
+- Husband-wife family, P039C002, 13, 9
+--- With related children under 18 years, P039C003, 13, 9
+----- Under 6 years only, P039C004, 13, 9
+----- Under 6 years and 6 to 17 years, P039C005, 13, 9
+----- 6 to 17 years only, P039C006, 13, 9
+--- No related children under 18 years, P039C007, 13, 9
+-Other family, P039C008, 13, 9
+--- Male householder; no wife present, P039C009, 13, 9
+----- With related children under 18 years, P039C010, 13, 9
+------- Under 6 years only, P039C011, 13, 9
+------- Under 6 years and 6 to 17 years, P039C012, 13, 9
+------- 6 to 17 years only, P039C013, 13, 9
+----- No related children under 18 years, P039C014, 13, 9
+--- Female householder; no husband present, P039C015, 13, 9
+----- With related children under 18 years, P039C016, 13, 9
+------- Under 6 years only, P039C017, 13, 9
+------- Under 6 years and 6 to 17 years, P039C018, 13, 9
+------- 6 to 17 years only, P039C019, 13, 9
+----- No related children under 18 years, P039C020, 13, 9
+Total, P039D001, 13, 9
+- Husband-wife family, P039D002, 13, 9
+--- With related children under 18 years, P039D003, 13, 9
+----- Under 6 years only, P039D004, 13, 9
+----- Under 6 years and 6 to 17 years, P039D005, 13, 9
+----- 6 to 17 years only, P039D006, 13, 9
+--- No related children under 18 years, P039D007, 13, 9
+- Other family, P039D008, 13, 9
+--- Male householder; no wife present, P039D009, 13, 9
+----- With related children under 18 years, P039D010, 13, 9
+------- Under 6 years only, P039D011, 13, 9
+------- Under 6 years and 6 to 17 years, P039D012, 13, 9
+------- 6 to 17 years only, P039D013, 13, 9
+----- No related children under 18 years, P039D014, 13, 9
+--- Female householder; no husband present, P039D015, 13, 9
+----- With related children under 18 years, P039D016, 13, 9
+------- Under 6 years only, P039D017, 13, 9
+------- Under 6 years and 6 to 17 years, P039D018, 13, 9
+------- 6 to 17 years only, P039D019, 13, 9
+----- No related children under 18 years, P039D020, 13, 9
+Total, P039E001, 13, 9
+- Husband-wife family, P039E002, 13, 9
+--- With related children under 18 years, P039E003, 13, 9
+----- Under 6 years only, P039E004, 13, 9
+----- Under 6 years and 6 to 17 years, P039E005, 13, 9
+----- 6 to 17 years only, P039E006, 13, 9
+--- No related children under 18 years, P039E007, 13, 9
+- Other family, P039E008, 13, 9
+--- Male householder; no wife present, P039E009, 13, 9
+----- With related children under 18 years, P039E010, 13, 9
+------- Under 6 years only, P039E011, 13, 9
+------- Under 6 years and 6 to 17 years, P039E012, 13, 9
+------- 6 to 17 years only, P039E013, 13, 9
+----- No related children under 18 years, P039E014, 13, 9
+--- Female householder; no husband present, P039E015, 13, 9
+----- With related children under 18 years, P039E016, 13, 9
+------- Under 6 years only, P039E017, 13, 9
+------- Under 6 years and 6 to 17 years, P039E018, 13, 9
+------- 6 to 17 years only, P039E019, 13, 9
+----- No related children under 18 years, P039E020, 13, 9
+Total, P039F001, 13, 9
+- Husband-wife family, P039F002, 13, 9
+--- With related children under 18 years, P039F003, 13, 9
+----- Under 6 years only, P039F004, 13, 9
+----- Under 6 years and 6 to 17 years, P039F005, 13, 9
+----- 6 to 17 years only, P039F006, 13, 9
+--- No related children under 18 years, P039F007, 13, 9
+- Other family, P039F008, 13, 9
+--- Male householder; no wife present, P039F009, 13, 9
+----- With related children under 18 years, P039F010, 13, 9
+------- Under 6 years only, P039F011, 13, 9
+------- Under 6 years and 6 to 17 years, P039F012, 13, 9
+------- 6 to 17 years only, P039F013, 13, 9
+----- No related children under 18 years, P039F014, 13, 9
+--- Female householder; no husband present, P039F015, 13, 9
+----- With related children under 18 years, P039F016, 13, 9
+------- Under 6 years only, P039F017, 13, 9
+------- Under 6 years and 6 to 17 years, P039F018, 13, 9
+------- 6 to 17 years only, P039F019, 13, 9
+----- No related children under 18 years, P039F020, 13, 9
+Total, P039G001, 13, 9
+- Husband-wife family, P039G002, 13, 9
+--- With related children under 18 years, P039G003, 13, 9
+----- Under 6 years only, P039G004, 13, 9
+----- Under 6 years and 6 to 17 years, P039G005, 13, 9
+----- 6 to 17 years only, P039G006, 13, 9
+--- No related children under 18 years, P039G007, 13, 9
+- Other family, P039G008, 13, 9
+--- Male householder; no wife present, P039G009, 13, 9
+----- With related children under 18 years, P039G010, 13, 9
+------- Under 6 years only, P039G011, 13, 9
+------- Under 6 years and 6 to 17 years, P039G012, 13, 9
+------- 6 to 17 years only, P039G013, 13, 9
+----- No related children under 18 years, P039G014, 13, 9
+--- Female householder; no husband present, P039G015, 13, 9
+----- With related children under 18 years, P039G016, 13, 9
+------- Under 6 years only, P039G017, 13, 9
+------- Under 6 years and 6 to 17 years, P039G018, 13, 9
+------- 6 to 17 years only, P039G019, 13, 9
+----- No related children under 18 years, P039G020, 13, 9
+Total, P039H001, 13, 9
+- Husband-wife family, P039H002, 13, 9
+--- With related children under 18 years, P039H003, 13, 9
+----- Under 6 years only, P039H004, 13, 9
+----- Under 6 years and 6 to 17 years, P039H005, 13, 9
+----- 6 to 17 years only, P039H006, 13, 9
+--- No related children under 18 years, P039H007, 13, 9
+- Other family, P039H008, 13, 9
+--- Male householder; no wife present, P039H009, 13, 9
+----- With related children under 18 years, P039H010, 13, 9
+------- Under 6 years only, P039H011, 13, 9
+------- Under 6 years and 6 to 17 years, P039H012, 13, 9
+------- 6 to 17 years only, P039H013, 13, 9
+----- No related children under 18 years, P039H014, 13, 9
+--- Female householder; no husband present, P039H015, 13, 9
+----- With related children under 18 years, P039H016, 13, 9
+------- Under 6 years only, P039H017, 13, 9
+------- Under 6 years and 6 to 17 years, P039H018, 13, 9
+------- 6 to 17 years only, P039H019, 13, 9
+----- No related children under 18 years, P039H020, 13, 9

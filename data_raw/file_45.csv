@@ -1,0 +1,260 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Population in occupied housing units, H011G0001, 45, 9
+- Owned with a mortgage or a loan, H011G0002, 45, 9
+- Owned free and clear, H011G0003, 45, 9
+- Renter occupied, H011G0004, 45, 9
+Population in occupied housing units, H011H0001, 45, 9
+- Owned with a mortgage or a loan, H011H0002, 45, 9
+- Owned free and clear, H011H0003, 45, 9
+- Renter occupied, H011H0004, 45, 9
+Population in occupied housing units, H011I0001, 45, 9
+- Owned with a mortgage or a loan, H011I0002, 45, 9
+- Owned free and clear, H011I0003, 45, 9
+- Renter occupied, H011I0004, 45, 9
+Total, H012A0001, 45, 9
+- Owner occupied, H012A0002, 45, 9
+- Renter occupied, H012A0003, 45, 9
+Total, H012B0001, 45, 9
+- Owner occupied, H012B0002, 45, 9
+- Renter occupied, H012B0003, 45, 9
+Total, H012C0001, 45, 9
+- Owner occupied, H012C0002, 45, 9
+- Renter occupied, H012C0003, 45, 9
+Total, H012D0001, 45, 9
+- Owner occupied, H012D0002, 45, 9
+- Renter occupied, H012D0003, 45, 9
+Total, H012E0001, 45, 9
+- Owner occupied, H012E0002, 45, 9
+- Renter occupied, H012E0003, 45, 9
+Total, H012F0001, 45, 9
+- Owner occupied, H012F0002, 45, 9
+- Renter occupied, H012F0003, 45, 9
+Total, H012G0001, 45, 9
+- Owner occupied, H012G0002, 45, 9
+- Renter occupied, H012G0003, 45, 9
+Total, H012H0001, 45, 9
+- Owner occupied, H012H0002, 45, 9
+- Renter occupied, H012H0003, 45, 9
+Total, H012I0001, 45, 9
+- Owner occupied, H012I0002, 45, 9
+- Renter occupied, H012I0003, 45, 9
+Total, H016A0001, 45, 9
+- Owner occupied, H016A0002, 45, 9
+--- 1-person household, H016A0003, 45, 9
+--- 2-person household, H016A0004, 45, 9
+--- 3-person household, H016A0005, 45, 9
+--- 4-person household, H016A0006, 45, 9
+--- 5-person household, H016A0007, 45, 9
+--- 6-person household, H016A0008, 45, 9
+--- 7-or-more-person household, H016A0009, 45, 9
+- Renter occupied, H016A0010, 45, 9
+--- 1-person household, H016A0011, 45, 9
+--- 2-person household, H016A0012, 45, 9
+--- 3-person household, H016A0013, 45, 9
+--- 4-person household, H016A0014, 45, 9
+--- 5-person household, H016A0015, 45, 9
+--- 6-person household, H016A0016, 45, 9
+--- 7-or-more-person household, H016A0017, 45, 9
+Total, H016B0001, 45, 9
+- Owner occupied, H016B0002, 45, 9
+--- 1-person household, H016B0003, 45, 9
+--- 2-person household, H016B0004, 45, 9
+--- 3-person household, H016B0005, 45, 9
+--- 4-person household, H016B0006, 45, 9
+--- 5-person household, H016B0007, 45, 9
+--- 6-person household, H016B0008, 45, 9
+--- 7-or-more-person household, H016B0009, 45, 9
+- Renter occupied, H016B0010, 45, 9
+--- 1-person household, H016B0011, 45, 9
+--- 2-person household, H016B0012, 45, 9
+--- 3-person household, H016B0013, 45, 9
+--- 4-person household, H016B0014, 45, 9
+--- 5-person household, H016B0015, 45, 9
+--- 6-person household, H016B0016, 45, 9
+--- 7-or-more-person household, H016B0017, 45, 9
+Total, H016C0001, 45, 9
+- Owner occupied, H016C0002, 45, 9
+--- 1-person household, H016C0003, 45, 9
+--- 2-person household, H016C0004, 45, 9
+--- 3-person household, H016C0005, 45, 9
+--- 4-person household, H016C0006, 45, 9
+--- 5-person household, H016C0007, 45, 9
+--- 6-person household, H016C0008, 45, 9
+--- 7-or-more-person household, H016C0009, 45, 9
+- Renter occupied, H016C0010, 45, 9
+--- 1-person household, H016C0011, 45, 9
+--- 2-person household, H016C0012, 45, 9
+--- 3-person household, H016C0013, 45, 9
+--- 4-person household, H016C0014, 45, 9
+--- 5-person household, H016C0015, 45, 9
+--- 6-person household, H016C0016, 45, 9
+--- 7-or-more-person household, H016C0017, 45, 9
+Total, H016D0001, 45, 9
+- Owner occupied, H016D0002, 45, 9
+--- 1-person household, H016D0003, 45, 9
+--- 2-person household, H016D0004, 45, 9
+--- 3-person household, H016D0005, 45, 9
+--- 4-person household, H016D0006, 45, 9
+--- 5-person household, H016D0007, 45, 9
+--- 6-person household, H016D0008, 45, 9
+--- 7-or-more-person household, H016D0009, 45, 9
+- Renter occupied, H016D0010, 45, 9
+--- 1-person household, H016D0011, 45, 9
+--- 2-person household, H016D0012, 45, 9
+--- 3-person household, H016D0013, 45, 9
+--- 4-person household, H016D0014, 45, 9
+--- 5-person household, H016D0015, 45, 9
+--- 6-person household, H016D0016, 45, 9
+--- 7-or-more-person household, H016D0017, 45, 9
+Total, H016E0001, 45, 9
+- Owner occupied, H016E0002, 45, 9
+--- 1-person household, H016E0003, 45, 9
+--- 2-person household, H016E0004, 45, 9
+--- 3-person household, H016E0005, 45, 9
+--- 4-person household, H016E0006, 45, 9
+--- 5-person household, H016E0007, 45, 9
+--- 6-person household, H016E0008, 45, 9
+--- 7-or-more-person household, H016E0009, 45, 9
+- Renter occupied, H016E0010, 45, 9
+--- 1-person household, H016E0011, 45, 9
+--- 2-person household, H016E0012, 45, 9
+--- 3-person household, H016E0013, 45, 9
+--- 4-person household, H016E0014, 45, 9
+--- 5-person household, H016E0015, 45, 9
+--- 6-person household, H016E0016, 45, 9
+--- 7-or-more-person household, H016E0017, 45, 9
+Total, H016F0001, 45, 9
+- Owner occupied, H016F0002, 45, 9
+--- 1-person household, H016F0003, 45, 9
+--- 2-person household, H016F0004, 45, 9
+--- 3-person household, H016F0005, 45, 9
+--- 4-person household, H016F0006, 45, 9
+--- 5-person household, H016F0007, 45, 9
+--- 6-person household, H016F0008, 45, 9
+--- 7-or-more-person household, H016F0009, 45, 9
+- Renter occupied, H016F0010, 45, 9
+--- 1-person household, H016F0011, 45, 9
+--- 2-person household, H016F0012, 45, 9
+--- 3-person household, H016F0013, 45, 9
+--- 4-person household, H016F0014, 45, 9
+--- 5-person household, H016F0015, 45, 9
+--- 6-person household, H016F0016, 45, 9
+--- 7-or-more-person household, H016F0017, 45, 9
+Total, H016G0001, 45, 9
+- Owner occupied, H016G0002, 45, 9
+--- 1-person household, H016G0003, 45, 9
+--- 2-person household, H016G0004, 45, 9
+--- 3-person household, H016G0005, 45, 9
+--- 4-person household, H016G0006, 45, 9
+--- 5-person household, H016G0007, 45, 9
+--- 6-person household, H016G0008, 45, 9
+--- 7-or-more-person household, H016G0009, 45, 9
+- Renter occupied, H016G0010, 45, 9
+--- 1-person household, H016G0011, 45, 9
+--- 2-person household, H016G0012, 45, 9
+--- 3-person household, H016G0013, 45, 9
+--- 4-person household, H016G0014, 45, 9
+--- 5-person household, H016G0015, 45, 9
+--- 6-person household, H016G0016, 45, 9
+--- 7-or-more-person household, H016G0017, 45, 9
+Total, H016H0001, 45, 9
+- Owner occupied, H016H0002, 45, 9
+--- 1-person household, H016H0003, 45, 9
+--- 2-person household, H016H0004, 45, 9
+--- 3-person household, H016H0005, 45, 9
+--- 4-person household, H016H0006, 45, 9
+--- 5-person household, H016H0007, 45, 9
+--- 6-person household, H016H0008, 45, 9
+--- 7-or-more-person household, H016H0009, 45, 9
+- Renter occupied, H016H0010, 45, 9
+--- 1-person household, H016H0011, 45, 9
+--- 2-person household, H016H0012, 45, 9
+--- 3-person household, H016H0013, 45, 9
+--- 4-person household, H016H0014, 45, 9
+--- 5-person household, H016H0015, 45, 9
+--- 6-person household, H016H0016, 45, 9
+--- 7-or-more-person household, H016H0017, 45, 9
+Total, H016I0001, 45, 9
+- Owner occupied, H016I0002, 45, 9
+--- 1-person household, H016I0003, 45, 9
+--- 2-person household, H016I0004, 45, 9
+--- 3-person household, H016I0005, 45, 9
+--- 4-person household, H016I0006, 45, 9
+--- 5-person household, H016I0007, 45, 9
+--- 6-person household, H016I0008, 45, 9
+--- 7-or-more-person household, H016I0009, 45, 9
+- Renter occupied, H016I0010, 45, 9
+--- 1-person household, H016I0011, 45, 9
+--- 2-person household, H016I0012, 45, 9
+--- 3-person household, H016I0013, 45, 9
+--- 4-person household, H016I0014, 45, 9
+--- 5-person household, H016I0015, 45, 9
+--- 6-person household, H016I0016, 45, 9
+--- 7-or-more-person household, H016I0017, 45, 9
+Total, H017A0001, 45, 9
+- Owner occupied, H017A0002, 45, 9
+--- Householder 15 to 24 years, H017A0003, 45, 9
+--- Householder 25 to 34 years, H017A0004, 45, 9
+--- Householder 35 to 44 years, H017A0005, 45, 9
+--- Householder 45 to 54 years, H017A0006, 45, 9
+--- Householder 55 to 59 years, H017A0007, 45, 9
+--- Householder 60 to 64 years, H017A0008, 45, 9
+--- Householder 65 to 74 years, H017A0009, 45, 9
+--- Householder 75 to 84 years, H017A0010, 45, 9
+--- Householder 85 years and over, H017A0011, 45, 9
+- Renter occupied, H017A0012, 45, 9
+--- Householder 15 to 24 years, H017A0013, 45, 9
+--- Householder 25 to 34 years, H017A0014, 45, 9
+--- Householder 35 to 44 years, H017A0015, 45, 9
+--- Householder 45 to 54 years, H017A0016, 45, 9
+--- Householder 55 to 59 years, H017A0017, 45, 9
+--- Householder 60 to 64 years, H017A0018, 45, 9
+--- Householder 65 to 74 years, H017A0019, 45, 9
+--- Householder 75 to 84 years, H017A0020, 45, 9
+--- Householder 85 years and over, H017A0021, 45, 9
+Total, H017B0001, 45, 9
+- Owner occupied, H017B0002, 45, 9
+--- Householder 15 to 24 years, H017B0003, 45, 9
+--- Householder 25 to 34 years, H017B0004, 45, 9
+--- Householder 35 to 44 years, H017B0005, 45, 9
+--- Householder 45 to 54 years, H017B0006, 45, 9
+--- Householder 55 to 59 years, H017B0007, 45, 9
+--- Householder 60 to 64 years, H017B0008, 45, 9
+--- Householder 65 to 74 years, H017B0009, 45, 9
+--- Householder 75 to 84 years, H017B0010, 45, 9
+--- Householder 85 years and over, H017B0011, 45, 9
+- Renter occupied, H017B0012, 45, 9
+--- Householder 15 to 24 years, H017B0013, 45, 9
+--- Householder 25 to 34 years, H017B0014, 45, 9
+--- Householder 35 to 44 years, H017B0015, 45, 9
+--- Householder 45 to 54 years, H017B0016, 45, 9
+--- Householder 55 to 59 years, H017B0017, 45, 9
+--- Householder 60 to 64 years, H017B0018, 45, 9
+--- Householder 65 to 74 years, H017B0019, 45, 9
+--- Householder 75 to 84 years, H017B0020, 45, 9
+--- Householder 85 years and over, H017B0021, 45, 9
+Total, H017C0001, 45, 9
+- Owner occupied, H017C0002, 45, 9
+--- Householder 15 to 24 years, H017C0003, 45, 9
+--- Householder 25 to 34 years, H017C0004, 45, 9
+--- Householder 35 to 44 years, H017C0005, 45, 9
+--- Householder 45 to 54 years, H017C0006, 45, 9
+--- Householder 55 to 59 years, H017C0007, 45, 9
+--- Householder 60 to 64 years, H017C0008, 45, 9
+--- Householder 65 to 74 years, H017C0009, 45, 9
+--- Householder 75 to 84 years, H017C0010, 45, 9
+--- Householder 85 years and over, H017C0011, 45, 9
+- Renter occupied, H017C0012, 45, 9
+--- Householder 15 to 24 years, H017C0013, 45, 9
+--- Householder 25 to 34 years, H017C0014, 45, 9
+--- Householder 35 to 44 years, H017C0015, 45, 9
+--- Householder 45 to 54 years, H017C0016, 45, 9
+--- Householder 55 to 59 years, H017C0017, 45, 9
+--- Householder 60 to 64 years, H017C0018, 45, 9
+--- Householder 65 to 74 years, H017C0019, 45, 9
+--- Householder 75 to 84 years, H017C0020, 45, 9
+--- Householder 85 years and over, H017C0021, 45, 9

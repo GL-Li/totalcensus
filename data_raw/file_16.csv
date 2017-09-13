@@ -1,0 +1,64 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total Native Hawaiian and Other Pacific Islander categories tallied (500–599) & (500–599), PCT0090001, 16, 9
+- Polynesian (500–519) & (500–599), PCT0090002, 16, 9
+--- Native Hawaiian (500–503) & (500–599), PCT0090003, 16, 9
+--- Samoan (510–511) & (500–599), PCT0090004, 16, 9
+--- Tongan (513) & (500–599), PCT0090005, 16, 9
+--- Other Polynesian (504–509; 512; 514–519) & (500–599), PCT0090006, 16, 9
+- Micronesian (520–529; 531–541) & (500–599), PCT0090007, 16, 9
+--- Guamanian or Chamorro (520–522) & (500–599), PCT0090008, 16, 9
+--- Marshallese (532) & (500–599), PCT0090009, 16, 9
+--- Other Micronesian (523–529; 531; 533–541) & (500–599), PCT0090010, 16, 9
+- Melanesian (542–546) & (500–599), PCT0090011, 16, 9
+--- Fijian (542) & (500–599), PCT0090012, 16, 9
+--- Other Melanesian (543–546) & (500–599), PCT0090013, 16, 9
+- Other Pacific Islander; not specified (530; 547–599) & (500–599), PCT0090014, 16, 9
+Total Native Hawaiian and Other Pacific Islander categories tallied (500–599) & (100–299) or (300; A01– Z99) or (400–999), PCT0100001, 16, 9
+- Polynesian (500–519) & (100–299) or (300; A01–Z99) or (400–999), PCT0100002, 16, 9
+--- Native Hawaiian (500–503) & (100–299) or (300; A01–Z99) or (400–999), PCT0100003, 16, 9
+--- Samoan (510–511) & (100–299) or (300; A01– Z99) or (400–999), PCT0100004, 16, 9
+--- Tongan (513) & (100–299) or (300; A01–Z99) or (400–999), PCT0100005, 16, 9
+--- Other Polynesian (504–509; 512; 514–519) & (100–299) or (300; A01–Z99) or (400–999), PCT0100006, 16, 9
+- Micronesian (520–529; 531–541) & (100–299) or (300; A01–Z99) or (400–999), PCT0100007, 16, 9
+--- Guamanian or Chamorro (520–522) & (100–299) or (300; A01–Z99) or (400–999), PCT0100008, 16, 9
+--- Marshallese (532) & (100–299) or (300; A01–Z99) or (400–999), PCT0100009, 16, 9
+--- Other Micronesian (523–529; 531; 533–541) & (100–299) or (300; A01–Z99) or (400–999), PCT0100010, 16, 9
+- Melanesian (542–546) & (100–299) or (300; A01–Z99) or (400–999), PCT0100011, 16, 9
+--- Fijian (542) & (100–299) or (300; A01–Z99) or (400–999), PCT0100012, 16, 9
+--- Other Melanesian (543–546) & (100–299) or (300; A01–Z99) or (400–999), PCT0100013, 16, 9
+- Other Pacific Islander; not specified (530; 547–599) & (100–299) or (300; A01–Z99) or (400–999), PCT0100014, 16, 9
+Total, PCT0110001, 16, 9
+- Not Hispanic or Latino (001–199; 300–999), PCT0110002, 16, 9
+- Hispanic or Latino (200–299), PCT0110003, 16, 9
+--- Mexican (210–220), PCT0110004, 16, 9
+--- Puerto Rican (260–269), PCT0110005, 16, 9
+--- Cuban (270–274), PCT0110006, 16, 9
+--- Dominican (275–279), PCT0110007, 16, 9
+--- Central American (excluding Mexican) (221–230), PCT0110008, 16, 9
+----- Costa Rican (221), PCT0110009, 16, 9
+----- Guatemalan (222), PCT0110010, 16, 9
+----- Honduran (223), PCT0110011, 16, 9
+----- Nicaraguan (224), PCT0110012, 16, 9
+----- Panamanian (225), PCT0110013, 16, 9
+----- Salvadoran (226), PCT0110014, 16, 9
+----- Other Central American (227–230), PCT0110015, 16, 9
+--- South American (231–249), PCT0110016, 16, 9
+----- Argentinean (231), PCT0110017, 16, 9
+----- Bolivian (232), PCT0110018, 16, 9
+----- Chilean (233), PCT0110019, 16, 9
+----- Colombian (234), PCT0110020, 16, 9
+----- Ecuadorian (235), PCT0110021, 16, 9
+----- Paraguayan (236), PCT0110022, 16, 9
+----- Peruvian (237), PCT0110023, 16, 9
+----- Uruguayan (238), PCT0110024, 16, 9
+----- Venezuelan (239), PCT0110025, 16, 9
+----- Other South American (240–249), PCT0110026, 16, 9
+--- Other Hispanic or Latino (200–209; 250–259; 280–299), PCT0110027, 16, 9
+----- Spaniard (200–209), PCT0110028, 16, 9
+----- Spanish (282), PCT0110029, 16, 9
+----- Spanish American (286), PCT0110030, 16, 9
+----- All other Hispanic or Latino (250–259; 280–281; 283–285; 287–299), PCT0110031, 16, 9

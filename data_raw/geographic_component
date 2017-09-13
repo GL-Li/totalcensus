@@ -1,0 +1,114 @@
+00 Not a geographic component
+01 Urban
+04 Urban—in urbanized area
+05 Urban—in urbanized area of 5,000,000 or more population
+06 Urban—in urbanized area of 2,500,000 to 4,999,999 population
+07 Urban—in urbanized area of 1,000,000 to 2,499,999 population
+08 Urban—in urbanized area of 500,000 to 999,999 population
+09 Urban—in urbanized area of 250,000 to 499,999 population
+10 Urban—in urbanized area of 100,000 to 249,999 population
+11 Urban—in urbanized area of 50,000 to 99,999 population
+28 Urban—in urban cluster
+29 Urban—in urban cluster of 25,000 to 49,999 population
+30 Urban—in urban cluster of 10,000 to 24,999 population
+31 Urban—in urban cluster of 5,000 to 9,999 population
+32 Urban—in urban cluster of 2,500 to 4,999 population
+43 Rural
+44 Rural—place
+45 Rural—place of 2,500 or more population
+46 Rural—place of 1,000 to 2,499 population
+47 Rural—place of less than 1,000 population
+48 Rural—not in place
+49 Rural—farm
+50 Urban portion of extended place
+51 Rural portion of extended place
+89 American Indian Reservation and Trust Land—Federal
+90 American Indian Reservation and Trust Land—State
+91 Oklahoma Tribal Statistical Area
+92 Tribal Designated Statistical Area
+93 Alaska Native Village Statistical Area
+94 State Designated Tribal Statistical Area
+95 Hawaiian Home Land
+A0 In metropolitan or micropolitan statistical area
+A1 In metropolitan or micropolitan statistical area—in principal city
+A2 In metropolitan or micropolitan statistical area—not in principal city
+A3 In metropolitan or micropolitan statistical area—urban
+A4 In metropolitan or micropolitan statistical area—urban—in urbanized area
+A5 In metropolitan or micropolitan statistical area—urban—in urban cluster
+A6 In metropolitan or micropolitan statistical area—rural
+A7 In metropolitan or micropolitan statistical area of 5,000,000 or more population
+A8 In metropolitan or micropolitan statistical area of 2,500,000 to 4,999,999 population
+A9 In metropolitan or micropolitan statistical area of 1,000,000 to 2,499,999 population
+AA In metropolitan or micropolitan statistical area of 500,000 to 999,999 population
+AB In metropolitan or micropolitan statistical area of 250,000 to 499,999 population
+AC In metropolitan or micropolitan statistical area of 100,000 to 249,999 population
+AD In metropolitan or micropolitan statistical area of 50,000 to 99,999 population
+AE In metropolitan or micropolitan statistical area of 25,000 to 49,999 population
+AF In metropolitan or micropolitan statistical area of less than 25,000 population
+C0 In metropolitan statistical area
+C1 In metropolitan statistical area—in principal city
+C2 In metropolitan statistical area—not in principal city
+C3 In metropolitan statistical area—urban
+C4 In metropolitan statistical area—urban—in urbanized area
+C5 In metropolitan statistical area—urban—in urban cluster
+C6 In metropolitan statistical area—rural
+C7 In metropolitan statistical area of 5,000,000 or more population
+C8 In metropolitan statistical area of 2,500,000 to 4,999,999 population
+C9 In metropolitan statistical area of 1,000,000 to 2,499,999 population
+CA In metropolitan statistical area of 500,000 to 999,999 population
+CB In metropolitan statistical area of 250,000 to 499,999 population
+CC In metropolitan statistical area of 100,000 to 249,999 population
+CD In metropolitan statistical area of less than 100,000 population
+CE In metropolitan statistical area of 5,000,000 or more population—in principal city
+CF In metropolitan statistical area of 5,000,000 or more population—not in principal city
+CG In metropolitan statistical area of 2,500,000 to 4,999,999 population—in principal city
+CH In metropolitan statistical area of 2,500,000 to 4,999,999 population—not in principal city
+CJ In metropolitan statistical area of 1,000,000 to 2,499,999 population—in principal city
+CK In metropolitan statistical area of 1,000,000 to 2,499,999 population—not in principal city
+CL In metropolitan statistical area of 500,000 to 999,999 population—in principal city
+CM In metropolitan statistical area of 500,000 to 999,999 population—not in principal city
+CN In metropolitan statistical area of 250,000 to 499,999 population—in principal city
+CP In metropolitan statistical area of 250,000 to 499,999 population—not in principal city
+CQ In metropolitan statistical area of 100,000 to 249,999 population—in principal city
+CR In metropolitan statistical area of 100,000 to 249,999 population—not in principal city
+CS In metropolitan statistical area of less than 100,000 population—in principal city
+CT In metropolitan statistical area of less than 100,000 population—not in principal city
+E0 In micropolitan statistical area
+E1 In micropolitan statistical area—in principal city
+E2 In micropolitan statistical area—not in principal city
+E3 In micropolitan statistical area—urban
+E4 In micropolitan statistical area—urban—in urbanized area
+E5 In micropolitan statistical area—urban—in urban cluster
+E6 In micropolitan statistical area—rural
+E7 In micropolitan statistical area of 100,000 or more population
+E8 In micropolitan statistical area of 50,000 to 99,999 population
+E9 In micropolitan statistical area of 25,000 to 49,999 population
+EA In micropolitan statistical area of less than 25,000 population
+EB In micropolitan statistical area of 100,000 or more population—in principal city
+EC In micropolitan statistical area of 100,000 or more population—not in principal city
+ED In micropolitan statistical area of 50,000 to 99,999 population—in principal city
+EE In micropolitan statistical area of 50,000 to 99,999 population—not in principal city
+EF In micropolitan statistical area of 25,000 to 49,999 population—in principal city
+EG In micropolitan statistical area of 25,000 to 49,999 population—not in principal city
+EH In micropolitan statistical area of less than 25,000 population—in principal city
+EJ In micropolitan statistical area of less than 25,000 population—not in principal city
+G0 Not in metropolitan or micropolitan statistical area
+G1 Not in metropolitan or micropolitan statistical area—urban
+G2 Not in metropolitan or micropolitan statistical area—urban—in urbanized area
+G3 Not in metropolitan or micropolitan statistical area—urban—in urban cluster
+G4 Not in metropolitan or micropolitan statistical area—rural
+H0 Not in metropolitan statistical area
+H1 Not in metropolitan statistical area—urban
+H2 Not in metropolitan statistical area—urban—in urbanized area
+H3 Not in metropolitan statistical area—urban—in urban cluster
+H4 Not in metropolitan statistical area—rural
+J0 In combined statistical area
+L0 Not in combined statistical area
+M0 In New England city and town area
+M1 In New England city and town area—in principal city
+M2 In New England city and town area—not in principal city
+M3 In New England city and town area—urban
+M4 In New England city and town area—urban—in urbanized area
+M5 In New England city and town area—urban—in urban cluster
+M6 In New England city and town area—rural
+P0 In combined New England city and town area

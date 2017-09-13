@@ -1,0 +1,337 @@
+number, field, universe
+P0010, P1. TOTAL POPULATION, Universe: Total population
+P0020, P2. URBAN AND RURAL (Urban/Rural Update only), Universe: Total population
+P0030, P3. RACE, Universe: Total population
+P0040, P4. HISPANIC OR LATINO ORIGIN, Universe: Total population
+P0050, P5. HISPANIC OR LATINO ORIGIN BY RACE, Universe: Total population
+P0060, P6. RACE (TOTAL RACES TALLIED), Universe: Total races tallied
+P0070, P7. HISPANIC OR LATINO ORIGIN BY RACE (TOTAL RACES TALLIED), Universe: Total races tallied
+P0080, P8. RACE, Universe: Total population
+P0090, P9. HISPANIC OR LATINO AND NOT HISPANIC OR LATINO BY RACE, Universe: Total population
+P0100, P10. RACE FOR THE POPULATION 18 YEARS AND OVER, Universe: Population 18 years and over
+P0110, P11. HISPANIC OR LATINO AND NOT HISPANIC OR LATINO BY RACE FOR THE POPULATION 18 YEARS AND OVER, Universe: Population 18 years and over
+P0120, P12. SEX BY AGE, Universe: Total population
+P0130, P13. MEDIAN AGE BY SEX, Universe: Total population
+P0140, P14. SEX BY AGE FOR THE POPULATION UNDER 20 YEARS, Universe: Population under 20 years
+P0150, P15. HISPANIC OR LATINO ORIGIN OF HOUSEHOLDER BY RACE OF HOUSEHOLDER, Universe: Households
+P0160, P16. POPULATION IN HOUSEHOLDS BY AGE, Universe: Population in households
+P0170, P17. AVERAGE HOUSEHOLD SIZE BY AGE, Universe: Households Average household size
+P0180, P18. HOUSEHOLD TYPE, Universe: Households
+P0190, P19. HOUSEHOLD SIZE BY HOUSEHOLD TYPE BY PRESENCE OF OWN CHILDREN, Universe: Households
+P0200, P20. HOUSEHOLDS BY PRESENCE OF PEOPLE UNDER 18 YEARS BY HOUSEHOLD TYPE BY AGE OF PEOPLE UNDER 18 YEARS, Universe: Households
+P0210, P21. HOUSEHOLDS BY AGE OF HOUSEHOLDER BY HOUSEHOLD TYPE BY PRESENCE OF RELATED CHILDREN, Universe: Households
+P022, P22. HOUSEHOLD TYPE BY AGE OF HOUSEHOLDER, Universe: Households
+P0230, P23. HOUSEHOLDS BY PRESENCE OF PEOPLE 60 YEARS AND OVER BY HOUSEHOLD TYPE, Universe: Households
+P0240, P24. HOUSEHOLDS BY PRESENCE OF PEOPLE 60 YEARS AND OVER; HOUSEHOLD SIZE; AND HOUSEHOLD TYPE, Universe: Households
+P0250, P25. HOUSEHOLDS BY PRESENCE OF PEOPLE 65 YEARS AND OVER; HOUSEHOLD SIZE; AND HOUSEHOLD TYPE, Universe: Households
+P0260, P26. HOUSEHOLDS BY PRESENCE OF PEOPLE 75 YEARS AND OVER; HOUSEHOLD SIZE; AND HOUSEHOLD TYPE, Universe: Households
+P0270, P27. HOUSEHOLDS BY PRESENCE OF NONRELATIVES, Universe: Households
+P0280, P28. HOUSEHOLD TYPE BY HOUSEHOLD SIZE, Universe: Households
+P0290, P29. HOUSEHOLD TYPE BY RELATIONSHIP, Universe: Total population
+P0300, P30. HOUSEHOLD TYPE FOR THE POPULATION IN HOUSEHOLDS, Universe: Population in households
+P0310, P31. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION UNDER 18 YEARS, Universe: Population under 18 years
+P0320, P32. HOUSEHOLD TYPE BY RELATIONSHIP BY AGE FOR THE POPULATION UNDER 18 YEARS, Universe: Population under 18 years
+P0330, P33. HOUSEHOLD TYPE FOR THE POPULATION UNDER 18 YEARS IN HOUSEHOLDS (EXCLUDING HOUSEHOLDERS; SPOUSES; AND UNMARRIED PARTNERS), Universe: Population under 18 years in households
+P0340, P34. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION 65 YEARS AND OVER, Universe: Population 65 years and over
+P0350, P35. FAMILIES, Universe: Families
+P0360, P36. POPULATION IN FAMILIES BY AGE, Universe: Population in families
+P0370, P37. AVERAGE FAMILY SIZE BY AGE, Universe: Families Average family size
+P0380, P38. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN, Universe: Families
+P0390, P39. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN, Universe: Families
+P0400, P40. FAMILY TYPE AND AGE FOR OWN CHILDREN UNDER 18 YEARS, Universe: Own children under 18 years
+P0410, P41. AGE OF GRANDCHILDREN UNDER 18 YEARS LIVING WITH A GRANDPARENT HOUSEHOLDER, Universe: Grandchildren under 18 years living with a grandparent householder
+P0420, P42. GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE, Universe: Population in group quarters
+P0430, P43. GROUP QUARTERS POPULATION BY SEX BY AGE BY GROUP QUARTERS TYPE, Universe: Population in group quarters
+P0440, P44. POPULATION SUBSTITUTED, Universe: Total population
+P0450, P45. ALLOCATION OF POPULATION ITEMS, Universe: Population not substituted
+P0460, P46. ALLOCATION OF RACE, Universe: Population not substituted
+P0470, P47. ALLOCATION OF HISPANIC OR LATINO ORIGIN, Universe: Population not substituted
+P0480, P48. ALLOCATION OF SEX, Universe: Population not substituted
+P0490, P49. ALLOCATION OF AGE, Universe: Population not substituted
+P0500, P50. ALLOCATION OF RELATIONSHIP, Universe: Population in households not substituted
+P0510, P51. ALLOCATION OF POPULATION ITEMS FOR THE POPULATION IN GROUP QUARTERS, Universe: Population in group quarters
+P012A, P12A. SEX BY AGE (WHITE ALONE), Universe: People who are White alone
+P012B, P12B. SEX BY AGE (BLACK OR AFRICAN AMERICAN ALONE), Universe: People who are Black or African American alone
+P012C, P12C. SEX BY AGE (AMERICAN INDIAN AND ALASKA NATIVE ALONE), Universe: People who are American Indian and Alaska Native alone
+P012D, P12D. SEX BY AGE (ASIAN ALONE), Universe: People who are Asian alone
+P012E, P12E. SEX BY AGE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE), Universe: People who are Native Hawaiian and Other Pacific Islander alone
+P012F, P12F. SEX BY AGE (SOME OTHER RACE ALONE), Universe: People who are Some Other Race alone
+P012G, P12G. SEX BY AGE (TWO OR MORE RACES), Universe: People who are Two or More Races
+P012H, P12H. SEX BY AGE (HISPANIC OR LATINO), Universe: People who are Hispanic or Latino
+P012I, P12I. SEX BY AGE (WHITE ALONE NOT HISPANIC OR LATINO), Universe: People who are White alone not Hispanic or Latino
+P013A, P13A. MEDIAN AGE BY SEX (WHITE ALONE), Universe: People who are White alone Median age
+P013B, P13B. MEDIAN AGE BY SEX (BLACK OR AFRICAN AMERICAN ALONE), Universe: People who are Black or African American alone Median age
+P013C, P13C. MEDIAN AGE BY SEX (AMERICAN INDIAN AND ALASKA NATIVE ALONE), Universe: People who are American Indian and Alaska Native alone Median age
+P013D, P13D. MEDIAN AGE BY SEX (ASIAN ALONE), Universe: People who are Asian alone Median age
+P013E, P13E. MEDIAN AGE BY SEX (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE), Universe: People who are Native Hawaiian and Other Pacific Islander alone Median ag
+P013F, P13F. MEDIAN AGE BY SEX (SOME OTHER RACE ALONE), Universe: People who are Some Other Race alone Median age
+P013G, P13G. MEDIAN AGE BY SEX (TWO OR MORE RACES), Universe: People who are Two or More Races Median age
+P013H, P13H. MEDIAN AGE BY SEX (HISPANIC OR LATINO), Universe: People who are Hispanic or Latino Median age
+P013I, P13I. MEDIAN AGE BY SEX (WHITE ALONE NOT HISPANIC OR LATINO), Universe: People who are White alone not Hispanic or Latino Median age
+P016A, P16A. POPULATION IN HOUSEHOLDS BY AGE (WHITE ALONE HOUSEHOLDER), Universe: Population in households with a householder who is White alone
+P016B, P16B. POPULATION IN HOUSEHOLDS BY AGE (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER), Universe: Population in households with a householder who is Black or African American alone
+P016C, P16C. POPULATION IN HOUSEHOLDS BY AGE (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER), Universe: Population in households with a householder who is American Indian and Alaska Native alone
+P016D, P16D. POPULATION IN HOUSEHOLDS BY AGE (ASIAN ALONE HOUSEHOLDER), Universe: Population in households with a householder who is Asian alone
+P016E, P16E. POPULATION IN HOUSEHOLDS BY AGE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER), Universe: Population in households with a householder who is Native Hawaiian and Other Pacific Islander alone
+P016F, P16F. POPULATION IN HOUSEHOLDS BY AGE (SOME OTHER RACE ALONE HOUSEHOLDER), Universe: Population in households with a householder who is Some Other Race alone
+P016G, P16G. POPULATION IN HOUSEHOLDS BY AGE (TWO OR MORE RACES HOUSEHOLDER), Universe: Population in households with a householder who is Two or More Races
+P016H, P16H. POPULATION IN HOUSEHOLDS BY AGE (HISPANIC OR LATINO HOUSEHOLDER), Universe: Population in households with a householder who is Hispanic or Latino
+P016I, P16I. POPULATION IN HOUSEHOLDS BY AGE (WHITE ALONE NOT HISPANIC OR LATINO HOUSEHOLDER), Universe: Population in households with a householder who is White alone not Hispanic or Latino
+P017A, P17A. AVERAGE HOUSEHOLD SIZE BY AGE (WHITE ALONE HOUSEHOLDER), Universe: Households with a householder who is White alone Average household size
+P017B, P17B. AVERAGE HOUSEHOLD SIZE BY AGE (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER), Universe: Households with a householder who is Black or African American alone Average household size
+P017C, P17C. AVERAGE HOUSEHOLD SIZE BY AGE (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER), Universe: Households with a householder who is American Indian and Alaska Native alone Average household size
+P017D, P17D. AVERAGE HOUSEHOLD SIZE BY AGE (ASIAN ALONE HOUSEHOLDER), Universe: Households with a householder who is Asian alone Average household size
+P017E, P17E. AVERAGE HOUSEHOLD SIZE BY AGE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER), Universe: Households with a householder who is Native Hawaiian and Other Pacific Islander alone Average household size
+P017F, P17F. AVERAGE HOUSEHOLD SIZE BY AGE (SOME OTHER RACE ALONE HOUSEHOLDER), Universe: Households with a householder who is Some Other Race alone Average household size
+P017G, P17G. AVERAGE HOUSEHOLD SIZE BY AGE (TWO OR MORE RACES HOUSEHOLDER), Universe: Households with a householder who is Two or More Races Average household size
+P017H, P17H. AVERAGE HOUSEHOLD SIZE BY AGE (HISPANIC OR LATINO HOUSEHOLDER), Universe: Households with a householder who is Hispanic or Latino Average household size
+P017I, P17I. AVERAGE HOUSEHOLD SIZE BY AGE (WHITE ALONE NOT HISPANIC OR LATINO HOUSEHOLDER), Universe: Households with a householder who is White alone not Hispanic or Latino Average household size
+P018A, P18A. HOUSEHOLD TYPE (WHITE ALONE HOUSEHOLDER), Universe: Households with a householder who is White alone
+P018B, P18B. HOUSEHOLD TYPE (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER), Universe: Households with a householder who is Black or African American alone
+P018C, P18C. HOUSEHOLD TYPE (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER), Universe: Households with a householder who is American Indian and Alaska Native alone
+P018D, P18D. HOUSEHOLD TYPE (ASIAN ALONE HOUSEHOLDER), Universe: Households with a householder who is Asian alone
+P018E, P18E. HOUSEHOLD TYPE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER), Universe: Households with a householder who is Native Hawaiian and Other Pacific Islander alone
+P018F, P18F. HOUSEHOLD TYPE (SOME OTHER RACE ALONE HOUSEHOLDER), Universe: Households with a householder who is Some Other Race alone
+P018G, P18G. HOUSEHOLD TYPE (TWO OR MORE RACES HOUSEHOLDER), Universe: Households with a householder who is Two or More Races
+P018H, P18H. HOUSEHOLD TYPE (HISPANIC OR LATINO HOUSEHOLDER), Universe: Households with a householder who is Hispanic or Latino
+P018I, P18I. HOUSEHOLD TYPE (WHITE ALONE NOT HISPANIC OR LATINO HOUSEHOLDER), Universe: Households with a householder who is White alone not Hispanic or Latino
+P028A, P28A. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (WHITE ALONE HOUSEHOLDER), Universe: Households with a householder who is White alone
+P028B, P28B. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER), Universe: Households with a householder who is Black or African American alone
+P028C, P28C. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER), Universe: Households with a householder who is American Indian and Alaska Native alone
+P028D, P28D. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (ASIAN ALONE HOUSEHOLDER), Universe: Households with a householder who is Asian alone
+P028E, P28E. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER), Universe: Households with a householder who is Native Hawaiian and Other Pacific Islander alone
+P028F, P28F. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (SOME OTHER RACE ALONE HOUSEHOLDER), Universe: Households with a householder who is Some Other Race alone
+P028G, P28G. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (TWO OR MORE RACES HOUSEHOLDER), Universe: Households with a householder who is Two or More Races
+P028H, P28H. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (HISPANIC OR LATINO HOUSEHOLDER), Universe: Households with a householder who is Hispanic or Latino
+P028I, P28I. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (WHITE ALONE NOT HISPANIC OR LATINO HOUSEHOLDER), Universe: Households with a householder who is White alone not Hispanic or Latino
+P029A, P29A. HOUSEHOLD TYPE BY RELATIONSHIP (WHITE ALONE), Universe: People who are White alone
+P029B, P29B. HOUSEHOLD TYPE BY RELATIONSHIP (BLACK OR AFRICAN AMERICAN ALONE), Universe: People who are Black or African American alone
+P029C, P29C. HOUSEHOLD TYPE BY RELATIONSHIP (AMERICAN INDIAN AND ALASKA NATIVE ALONE), Universe: People who are American Indian and Alaska Native alone
+P029D, P29D. HOUSEHOLD TYPE BY RELATIONSHIP (ASIAN ALONE), Universe: People who are Asian alone
+P029E, P29E. HOUSEHOLD TYPE BY RELATIONSHIP (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE), Universe: People who are Native Hawaiian and Other Pacific Islander alone
+P029F, P29F. HOUSEHOLD TYPE BY RELATIONSHIP (SOME OTHER RACE ALONE), Universe: People who are Some Other Race alone
+P029G, HOUSEHOLD TYPE BY RELATIONSHIP (TWO OR MORE RACES), Universe: People who are Two or More Races
+P029H, P29H. HOUSEHOLD TYPE BY RELATIONSHIP (HISPANIC OR LATINO), Universe: People who are Hispanic or Latino
+P029I, P29I. HOUSEHOLD TYPE BY RELATIONSHIP (WHITE ALONE NOT HISPANIC OR LATINO), Universe: People who are White alone not Hispanic or Latino
+P031A, P31A. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION UNDER 18 YEARS (WHITE ALONE), Universe: People under 18 years who are White alone
+P031B, P31B. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION UNDER 18 YEARS (BLACK OR AFRICAN AMERICAN ALONE), Universe: People under 18 years who are Black or African American alone
+P031C, P31C. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION UNDER 18 YEARS (AMERICAN INDIAN AND ALASKA NATIVE ALONE), Universe: People under 18 years who are American Indian and Alaska Native alone
+P031D, P31D. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION UNDER 18 YEARS (ASIAN ALONE), Universe: People under 18 years who are Asian alone
+P031E, P31E. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION UNDER 18 YEARS (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE), Universe: People under 18 years who are Native Hawaiian and Other Pacific Islander alone
+P031F, P31F. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION UNDER 18 YEARS (SOME OTHER RACE ALONE), Universe: People under 18 years who are Some Other Race alone
+P031G, P31G. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION UNDER 18 YEARS (TWO OR MORE RACES), Universe: People under 18 years who are Two or More Races
+P031H, P31H. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION UNDER 18 YEARS (HISPANIC OR LATINO), Universe: People under 18 years who are Hispanic or Latino
+P031I, P31I. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION UNDER 18 YEARS (WHITE ALONE NOT HISPANIC OR LATINO), Universe: People under 18 years who are White alone not Hispanic or Latino
+P034A, P34A. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION 65 YEARS AND OVER (WHITE ALONE), Universe: People 65 years and over who are White alone
+P034B, P34B. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION 65 YEARS AND OVER (BLACK OR AFRICAN AMERICAN ALONE), Universe: People 65 years and over who are Black or African American alone
+P034C, P34C. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION 65 YEARS AND OVER (AMERICAN INDIAN AND ALASKA NATIVE ALONE), Universe: People 65 years and over who are American Indian and Alaska Native alone
+P034D, P34D. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION 65 YEARS AND OVER (ASIAN ALONE), Universe: People 65 years and over who are Asian alone
+P034E, P34E. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION 65 YEARS AND OVER (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE), Universe: People 65 years and over who are Native Hawaiian and Other Pacific Islander alone
+P034F, P34F. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION 65 YEARS AND OVER (SOME OTHER RACE ALONE), Universe: People 65 years and over who are Some Other Race alone
+P034G, P34G. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION 65 YEARS AND OVER (TWO OR MORE RACES), Universe: People 65 years and over who are Two or More Races
+P034H, P34H. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION 65 YEARS AND OVER (HISPANIC OR LATINO), Universe: People 65 years and over who are Hispanic or Latino
+P034I, P34I. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION 65 YEARS AND OVER (WHITE ALONE NOT HISPANIC OR LATINO), Universe: People 65 years and over who are White alone not Hispanic or Latino
+P035A, P35A. FAMILIES (WHITE ALONE HOUSEHOLDER), Universe: Families with a householder who is White alone
+P035B, P35B. FAMILIES (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER), Universe: Families with a householder who is Black or African American alone
+P035C, P35C. FAMILIES (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER), Universe: Families with a householder who is American Indian and Alaska Native alone
+P035D, P35D. FAMILIES (ASIAN ALONE HOUSEHOLDER), Universe: Families with a householder who is Asian alone
+P035E, P35E. FAMILIES (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER), Universe: Families with a householder who is Native Hawaiian and Other Pacific Islander alone
+P035F, P35F. FAMILIES (SOME OTHER RACE ALONE HOUSEHOLDER), Universe: Families with a householder who is Some Other Race alone
+P035G, P35G. FAMILIES (TWO OR MORE RACES HOUSEHOLDER), Universe: Families with a householder who is Two or More Races
+P035H, P35H. FAMILIES (HISPANIC OR LATINO HOUSEHOLDER), Universe: Families with a householder who is Hispanic or Latino
+P035I, P35I. FAMILIES (WHITE ALONE NOT HISPANIC OR LATINO HOUSEHOLDER), Universe: Families with a householder who is White alone not Hispanic or Latino
+P036A, P36A. POPULATION IN FAMILIES BY AGE (WHITE ALONE HOUSEHOLDER), Universe: Population in families with a householder who is White alone
+P036B, P36B. POPULATION IN FAMILIES BY AGE (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER), Universe: Population in families with a householder who is Black or African American alone
+P036C, P36C. POPULATION IN FAMILIES BY AGE (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER), Universe: Population in families with a householder who is American Indian and Alaska Native alone
+P036D, P36D. POPULATION IN FAMILIES BY AGE (ASIAN ALONE HOUSEHOLDER), Universe: Population in families with a householder who is Asian alone
+P036E, P36E. POPULATION IN FAMILIES BY AGE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER), Universe: Population in families with a householder who is Native Hawaiian and Other Pacific Islander alone
+P036F, P36F. POPULATION IN FAMILIES BY AGE (SOME OTHER RACE ALONE HOUSEHOLDER), Universe: Population in families with a householder who is Some Other Race alone
+P036G, POPULATION IN FAMILIES BY AGE (TWO OR MORE RACES HOUSEHOLDER), Universe: Population in families with a householder who is Two or More Races
+P036H, P36H. POPULATION IN FAMILIES BY AGE (HISPANIC OR LATINO HOUSEHOLDER), Universe: Population in families with a householder who is Hispanic or Latino
+P036I, P36I. POPULATION IN FAMILIES BY AGE (WHITE ALONE NOT HISPANIC OR LATINO HOUSEHOLDER), Universe: Population in families with a householder who is White alone not Hispanic or Latino
+P037A, P37A. AVERAGE FAMILY SIZE BY AGE (WHITE ALONE HOUSEHOLDER), Universe: Families with a householder who is White alone Average family size
+P037B, P37B. AVERAGE FAMILY SIZE BY AGE (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER), Universe: Families with a householder who is Black or African American alone Average family size
+P037C, P37C. AVERAGE FAMILY SIZE BY AGE (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER), Universe: Families with a householder who is American Indian and Alaska Native alone Average family size
+P037D, P37D. AVERAGE FAMILY SIZE BY AGE (ASIAN ALONE HOUSEHOLDER), Universe: Families with a householder who is Asian alone Average family size
+P037E, P37E. AVERAGE FAMILY SIZE BY AGE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER), Universe: Families with a householder who is Native Hawaiian and Other Pacific Islander alone Average family size
+P037F, P37F. AVERAGE FAMILY SIZE BY AGE (SOME OTHER RACE ALONE HOUSEHOLDER), Universe: Families with a householder who is Some Other Race alone Average family size
+P037G, P37G. AVERAGE FAMILY SIZE BY AGE (TWO OR MORE RACES HOUSEHOLDER), Universe: Families with a householder who is Two or More Races Average family size
+P037H, P37H. AVERAGE FAMILY SIZE BY AGE (HISPANIC OR LATINO HOUSEHOLDER), Universe: Families with a householder who is Hispanic or Latino Average family size
+P037I, P37I. AVERAGE FAMILY SIZE BY AGE (WHITE ALONE NOT HISPANIC OR LATINO HOUSEHOLDER), Universe: Families with a householder who is White alone not Hispanic or Latino Average family size
+P038A, P38A. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (WHITE ALONE HOUSEHOLDER), Universe: Families with a householder who is White alone
+P038B, P38B. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER), Universe: Families with a householder who is Black or African American alone
+P038C, P38C. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER), Universe: Families with a householder who is American Indian and Alaska Native alone
+P038D, P38D. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (ASIAN ALONE HOUSEHOLDER), Universe: Families with a householder who is Asian alone
+P038E, P38E. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER), Universe: Families with a householder who is Native Hawaiian and Other Pacific Islander alone
+P038F, P38F. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (SOME OTHER RACE ALONE HOUSEHOLDER), Universe: Families with a householder who is Some Other Race alone
+P038G, P38G. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (TWO OR MORE RACES HOUSEHOLDER), Universe: Families with a householder who is Two or More Races
+P038H, P38H. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (HISPANIC OR LATINO HOUSEHOLDER), Universe: Families with a householder who is Hispanic or Latino
+P038I, P38I. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (WHITE ALONE NOT HISPANIC OR LATINO HOUSEHOLDER), Universe: Families with a householder who is White alone not Hispanic or Latino
+P039A, P39A. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (WHITE ALONE HOUSEHOLDER), Universe: Families with a householder who is White alone
+P039B, P39B. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER), Universe: Families with a householder who is Black or African American alone
+P039C, P39C. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER), Universe: Families with a householder who is American Indian and Alaska Native alone
+P039D, P39D. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (ASIAN ALONE HOUSEHOLDER), Universe: Families with a householder who is Asian alone
+P039E, P39E. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER), Universe: Families with a householder who is Native Hawaiian and Other Pacific Islander alone
+P039F, P39F. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (SOME OTHER RACE ALONE HOUSEHOLDER), Universe: Families with a householder who is Some Other Race alone
+P039G, P39G. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (TWO OR MORE RACES HOUSEHOLDER), Universe: Families with a householder who is Two or More Races
+P039H, P39H. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (HISPANIC OR LATINO HOUSEHOLDER), Universe: Families with a householder who is Hispanic or Latino alone
+P039I, P39I. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (WHITE ALONE NOT HISPANIC OR LATINO HOUSEHOLDER), Universe: Families with a householder who is White alone not Hispanic or Latino
+PCT0010, PCT1. AMERICAN INDIAN AND ALASKA NATIVE ALONE WITH ONE TRIBE REPORTED FOR SELECTED TRIBES, Universe: People who are American Indian and Alaska Native alone—total tribes tallied for people with one tribe only and people with no tribe reported
+PCT0020, PCT2. AMERICAN INDIAN AND ALASKA NATIVE ALONE WITH ONE OR MORE TRIBES REPORTED FOR SELECTED TRIBES, Universe: People who are American Indian and Alaska Native alone—total tribes tallied for people with one or more tribes and people with no tribe reported
+PCT0030, PCT3. AMERICAN INDIAN AND ALASKA NATIVE ALONE OR IN COMBINATION WITH ONE OR MORE OTHER RACES AND WITH ONE OR MORE TRIBES REPORTED FOR SELECTED TRIBES, Universe: People who are American Indian and Alaska Native alone or in combination with one or more other races—total tribes tallied for people with one or more tribes and people with no tribe reported
+PCT0040, PCT4. AMERICAN INDIAN AND ALASKA NATIVE ALONE OR IN COMBINATION WITH ONE OR MORE OTHER RACES, Universe: People who are American Indian or Alaska Native alone or in combination with one or more other races
+PCT0050, PCT5. ASIAN ALONE WITH ONE ASIAN CATEGORY FOR SELECTED GROUPS, Universe: Total Asian categories tallied for people with one Asian category only and people with no specific Asian category reported
+PCT0060, PCT6. ASIAN ALONE WITH ONE OR MORE ASIAN CATEGORIES FOR SELECTED GROUPS, Universe: Total Asian categories tallied for people with one or more Asian categories only and people with no specific Asian category reported
+PCT0070, PCT7. ASIAN ALONE OR IN COMBINATION WITH ONE OR MORE OTHER RACES AND WITH ONE OR MORE ASIAN CATEGORIES FOR SELECTED GROUPS, Universe: Total Asian categories tallied and people with no specific Asian category reported
+PCT0080, PCT8. NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE WITH ONE NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER CATEGORY FOR SELECTED GROUPS, Universe: Total Native Hawaiian and Other Pacific Islander categories tallied for people with one Native Hawaiian and Other Pacific Islander category only and people with no specific Native Hawaiian and Other Pacific Islander category reported
+PCT0090, PCT9. NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE WITH ONE OR MORE NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER CATEGORIES FOR SELECTED GROUPS, Universe: Total Native Hawaiian and Other Pacific Islander categories tallied for people with one or more Native Hawaiian and Other Pacific Islander category only and people with no specific Native Hawaiian and Other Pacific Islander category reported
+PCT0100, PCT10. NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE OR IN COMBINATION WITH ONE OR MORE RACES AND WITH ONE OR MORE NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER CATEGORIES FOR SELECTED GROUPS, Universe: Total Native Hawaiian and Other Pacific Islander categories tallied and people with no specific Native Hawaiian and Other Pacific Islander category reported
+PCT0110, PCT11. HISPANIC OR LATINO BY SPECIFIC ORIGIN, Universe: Total population
+PCT0120, PCT12. SEX BY AGE, Universe: Total population
+PCT0130, PCT13. SEX BY AGE FOR THE POPULATION IN HOUSEHOLDS, Universe: Population in households
+PCT0140, PCT14. PRESENCE OF MULTIGENERATIONAL HOUSEHOLDS, Universe: Households
+PCT0150, PCT15. HUSBAND-WIFE AND UNMARRIED-PARTNER HOUSEHOLDS BY SEX OF PARTNER BY PRESENCE OF RELATED AND OWN CHILDREN UNDER 18 YEARS, Universe: Households
+PCT0160, PCT16. HOUSEHOLD TYPE BY NUMBER OF PEOPLE UNDER 18 YEARS (EXCLUDING HOUSEHOLDERS; SPOUSES; AND UNMARRIED PARTNERS), Universe: Households
+PCT0170, PCT17. PRESENCE OF UNMARRIED PARTNER OF HOUSEHOLDER BY HOUSEHOLD TYPE FOR THE POPULATION UNDER 18 YEARS IN HOUSEHOLDS (EXCLUDING HOUSEHOLDERS; SPOUSES; AND UNMARRIED PARTNERS), Universe: Population under 18 years in households (excluding householders; spouses; and unmarried partners)
+PCT0180, PCT18. NONFAMILY HOUSEHOLDS BY SEX OF HOUSEHOLDER BY LIVING ALONE BY AGE OF HOUSEHOLDER, Universe: Nonfamily households
+PCT0190, PCT19. NONRELATIVES BY HOUSEHOLD TYPE, Universe: Nonrelatives
+PCT0200, PCT20. GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE, Universe: Population in group quarters
+PCT0210, PCT21. GROUP QUARTERS POPULATION BY SEX BY AGE BY GROUP QUARTERS TYPE, Universe: Population in group quarters
+PCT0220, PCT22. GROUP QUARTERS POPULATION BY SEX BY GROUP QUARTERS TYPE FOR THE POPULATION 18 YEARS AND OVER, Universe: Population 18 years and over in group quarters
+PCT012A, PCT12A. SEX BY AGE (WHITE ALONE), Universe: People who are White alone
+PCT012B, PCT12B. SEX BY AGE (BLACK OR AFRICAN AMERICAN ALONE), Universe: People who are Black or African American alone
+PCT012C, PCT12C. SEX BY AGE (AMERICAN INDIAN AND ALASKA NATIVE ALONE), Universe: People who are American Indian and Alaska Native alone
+PCT012D, PCT12D. SEX BY AGE (ASIAN ALONE), Universe: People who are Asian alone
+PCT012E, PCT12E. SEX BY AGE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE), Universe: People who are Native Hawaiian and Other Pacific Islander alone
+PCT012F, PCT12F. SEX BY AGE (SOME OTHER RACE ALONE), Universe: People who are Some Other Race alone
+PCT012G, PCT12G. SEX BY AGE (TWO OR MORE RACES), Universe: People who are Two or More Races
+PCT012H, PCT12H. SEX BY AGE (HISPANIC OR LATINO), Universe: People who are Hispanic or Latino
+PCT012I, PCT12I. SEX BY AGE (WHITE ALONE NOT HISPANIC OR LATINO), Universe: People who are White alone not Hispanic or Latino
+PCT012J, PCT12J. SEX BY AGE (BLACK OR AFRICAN AMERICAN ALONE NOT HISPANIC OR LATINO), Universe: People who are Black or African American alone not Hispanic or Latino
+PCT012K, PCT12K. SEX BY AGE (AMERICAN INDIAN AND ALASKA NATIVE ALONE NOT HISPANIC OR LATINO), Universe: People who are American Indian and Alaska Native alone not Hispanic or Latino
+PCT012L, PCT12L. SEX BY AGE (ASIAN ALONE NOT HISPANIC OR LATINO), Universe: People who are Asian alone not Hispanic or Latino
+PCT012M, PCT12M. SEX BY AGE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE NOT HISPANIC OR LATINO), Universe: People who are Native Hawaiian and Other Pacific Islander alone not Hispanic or Latino
+PCT012N, PCT12N. SEX BY AGE (SOME OTHER RACE ALONE NOT HISPANIC OR LATINO), Universe: People who are Some Other Race alone not Hispanic or Latino
+PCT012O, PCT12O. SEX BY AGE (TWO OR MORE RACES NOT HISPANIC OR LATINO), Universe: People who are Two or More Races not Hispanic or Latino
+PCT013A, PCT13A. SEX BY AGE FOR THE POPULATION IN HOUSEHOLDS (WHITE ALONE), Universe: Population in households who are White alone
+PCT013B, PCT13B. SEX BY AGE FOR THE POPULATION IN HOUSEHOLDS (BLACK OR AFRICAN AMERICAN ALONE), Universe: Population in households who are Black or African American alone
+PCT013C, PCT13C. SEX BY AGE FOR THE POPULATION IN HOUSEHOLDS (AMERICAN INDIAN AND ALASKA NATIVE ALONE), Universe: Population in households who are American Indian and Alaska Native alone
+PCT013D, PCT13D. SEX BY AGE FOR THE POPULATION IN HOUSEHOLDS (ASIAN ALONE), Universe: Population in households who are Asian alone
+PCT013E, PCT13E. SEX BY AGE FOR THE POPULATION IN HOUSEHOLDS (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE), Universe: Population in households who are Native Hawaiian and Other Pacific Islander alone
+PCT013F, PCT13F. SEX BY AGE FOR THE POPULATION IN HOUSEHOLDS (SOME OTHER RACE ALONE), Universe: Population in households who are Some Other Race alone
+PCT013G, PCT13G. SEX BY AGE FOR THE POPULATION IN HOUSEHOLDS (TWO OR MORE RACES), Universe: Population in households who are Two or More Races
+PCT013H, PCT13H. SEX BY AGE FOR THE POPULATION IN HOUSEHOLDS (HISPANIC OR LATINO), Universe: Population in households who are Hispanic or Latino
+PCT013I, PCT13I. SEX BY AGE FOR THE POPULATION IN HOUSEHOLDS (WHITE ALONE NOT HISPANIC OR LATINO), Universe: Population in households who are White alone not Hispanic or Latino
+PCT014A, PCT14A. PRESENCE OF MULTIGENERATIONAL HOUSEHOLDS (WHITE ALONE HOUSEHOLDER), Universe: Households with a householder who is White alone
+PCT014B, PCT14B. PRESENCE OF MULTIGENERATIONAL HOUSEHOLDS (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER), Universe: Households with a householder who is Black or African American alone
+PCT014C, PCT14C. PRESENCE OF MULTIGENERATIONAL HOUSEHOLDS (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER), Universe: Households with a householder who is American Indian and Alaska Native alone
+PCT014D, PCT14D. PRESENCE OF MULTIGENERATIONAL HOUSEHOLDS (ASIAN ALONE HOUSEHOLDER), Universe: Households with a householder who is Asian alone
+PCT014E, PCT14E. PRESENCE OF MULTIGENERATIONAL HOUSEHOLDS (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER), Universe: Households with a householder who is Native Hawaiian and Other Pacific Islander alone
+PCT014F, PCT14F. PRESENCE OF MULTIGENERATIONAL HOUSEHOLDS (SOME OTHER RACE ALONE HOUSEHOLDER), Universe: Households with a householder who is Some Other Race alone
+PCT014G, PCT14G. PRESENCE OF MULTIGENERATIONAL HOUSEHOLDS (TWO OR MORE RACES HOUSEHOLDER), Universe: Households with a householder who is Two or More Races
+PCT014H, PCT14H. PRESENCE OF MULTIGENERATIONAL HOUSEHOLDS (HISPANIC OR LATINO HOUSEHOLDER), Universe: Households with a householder who is Hispanic or Latino
+PCT014I, PCT14I. PRESENCE OF MULTIGENERATIONAL HOUSEHOLDS (WHITE ALONE NOT HISPANIC OR LATINO HOUSEHOLDER), Universe: Households with a householder who is White alone not Hispanic or Latino
+PCT019A, PCT19A. NONRELATIVES BY HOUSEHOLD TYPE (WHITE ALONE), Universe: Nonrelatives who are White alone
+PCT019B, PCT19B. NONRELATIVES BY HOUSEHOLD TYPE (BLACK OR AFRICAN AMERICAN ALONE), Universe: Nonrelatives who are Black or African American alone
+PCT019C, PCT19C. NONRELATIVES BY HOUSEHOLD TYPE (AMERICAN INDIAN AND ALASKA NATIVE ALONE), Universe: Nonrelatives who are American Indian and Alaska Native alone
+PCT019D, PCT19D. NONRELATIVES BY HOUSEHOLD TYPE (ASIAN ALONE), Universe: Nonrelatives who are Asian alone
+PCT019E, PCT19E. NONRELATIVES BY HOUSEHOLD TYPE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE), Universe: Nonrelatives who are Native Hawaiian and Other Pacific Islander alone
+PCT019F, PCT19F. NONRELATIVES BY HOUSEHOLD TYPE (SOME OTHER RACE ALONE), Universe: Nonrelatives who are Some Other Race alone
+PCT019G, PCT19G. NONRELATIVES BY HOUSEHOLD TYPE (TWO OR MORE RACES), Universe: Nonrelatives who are Two or More Races
+PCT019H, PCT19H. NONRELATIVES BY HOUSEHOLD TYPE (HISPANIC OR LATINO), Universe: Nonrelatives who are Hispanic or Latino
+PCT019I, PCT19I. NONRELATIVES BY HOUSEHOLD TYPE (WHITE ALONE NOT HISPANIC OR LATINO), Universe: Nonrelatives who are White alone not Hispanic or Latino
+PCT020A, PCT20A. GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE (WHITE ALONE), Universe: Population in group quarters who are White alone
+PCT020B, PCT20B. GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE (BLACK OR AFRICAN AMERICAN ALONE), Universe: Population in group quarters who are Black or African American alone
+PCT020C, PCT20C. GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE (AMERICAN INDIAN AND ALASKA NATIVE ALONE), Universe: Population in group quarters who are American Indian and Alaska Native alone
+PCT020D, PCT20D. GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE (ASIAN ALONE), Universe: Population in group quarters who are Asian alone
+PCT020E, PCT20E. GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE), Universe: Population in group quarters who are Native Hawaiian and Other Pacific Islander alone
+PCT020F, PCT20F. GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE (SOME OTHER RACE ALONE), Universe: Population in group quarters who are Some Other Race alone
+PCT020G, PCT20G. GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE (TWO OR MORE RACES), Universe: Population in group quarters who are Two or More Races
+PCT020H, PCT20H. GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE (HISPANIC OR LATINO), Universe: Population in group quarters who are Hispanic or Latino
+PCT020I, PCT20I. GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE (WHITE ALONE NOT HISPANIC OR LATINO), Universe: Population in group quarters who are White alone not Hispanic or Latino
+PCT022A, PCT22A. GROUP QUARTERS POPULATION BY SEX BY GROUP QUARTERS TYPE FOR THE POPULATION 18 YEARS AND OVER (WHITE ALONE), Universe: Population 18 years and over in group quarters who are White alone
+PCT022B, PCT22B. GROUP QUARTERS POPULATION BY SEX BY GROUP QUARTERS TYPE FOR THE POPULATION 18 YEARS AND OVER (BLACK OR AFRICAN AMERICAN ALONE), Universe: Population 18 years and over in group quarters who are Black or African American alone
+PCT022C, PCT22C. GROUP QUARTERS POPULATION BY SEX BY GROUP QUARTERS TYPE FOR THE POPULATION 18 YEARS AND OVER (AMERICAN INDIAN AND ALASKA NATIVE ALONE), Universe: Population 18 years and over in group quarters who are American Indian and Alaska Native alone
+PCT022D, PCT22D. GROUP QUARTERS POPULATION BY SEX BY GROUP QUARTERS TYPE FOR THE POPULATION 18 YEARS AND OVER (ASIAN ALONE), Universe: Population 18 years and over in group quarters who are Asian alone
+PCT022E, PCT22E. GROUP QUARTERS POPULATION BY SEX BY GROUP QUARTERS TYPE FOR THE POPULATION 18 YEARS AND OVER (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE), Universe: Population 18 years and over in group quarters who are Native Hawaiian and Other Pacific Islander alone
+PCT022F, PCT22F. GROUP QUARTERS POPULATION BY SEX BY GROUP QUARTERS TYPE FOR THE POPULATION 18 YEARS AND OVER (SOME OTHER RACE ALONE), Universe: Population 18 years and over in group quarters who are Some Other Race alone
+PCT022G, PCT22G. GROUP QUARTERS POPULATION BY SEX BY GROUP QUARTERS TYPE FOR THE POPULATION 18 YEARS AND OVER (TWO OR MORE RACES), Universe: Population 18 years and over in group quarters who are Two or More Races
+PCT022H, PCT22H. GROUP QUARTERS POPULATION BY SEX BY GROUP QUARTERS TYPE FOR THE POPULATION 18 YEARS AND OVER (HISPANIC OR LATINO), Universe: Population 18 years and over in group quarters who are Hispanic or Latino
+PCT022I, PCT22I. GROUP QUARTERS POPULATION BY SEX BY GROUP QUARTERS TYPE FOR THE POPULATION 18 YEARS AND OVER (WHITE ALONE NOT HISPANIC OR  LATINO), Universe: Population 18 years and over in group quarters who are White alone not Hispanic or Latino
+PCO0010, PCO1. GROUP QUARTERS POPULATION BY SEX BY AGE, Universe: Population in group quarters
+PCO0020, PCO2. GROUP QUARTERS POPULATION IN INSTITUTIONAL FACILITIES BY SEX BY AGE, Universe: Institutionalized population
+PCO0030, PCO3. GROUP QUARTERS POPULATION IN CORRECTIONAL FACILITIES FOR ADULTS BY SEX BY AGE, Universe: Population in correctional facilities for adults
+PCO0040, PCO4. GROUP QUARTERS POPULATION IN JUVENILE FACILITIES BY SEX BY AGE, Universe: Population in juvenile facilities
+PCO0050, PCO5. GROUP QUARTERS POPULATION IN NURSING FACILITIES/SKILLED-NURSING FACILITIES BY SEX BY AGE, Universe: Population in nursing facilities/skilled-nursing facilities
+PCO0060, PCO6. GROUP QUARTERS POPULATION IN OTHER INSTITUTIONAL FACILITIES BY SEX BY AGE, Universe: Population in other institutional facilities
+PCO0070, PCO7. GROUP QUARTERS POPULATION IN NONINSTITUTIONAL FACILITIES BY SEX BY AGE, Universe: Noninstitutionalized population
+PCO0080, PCO8. GROUP QUARTERS POPULATION IN COLLEGE/UNIVERSITY STUDENT HOUSING BY SEX BY AGE, Universe: Population in college/university student housing
+PCO0090, PCO9. GROUP QUARTERS POPULATION IN MILITARY QUARTERS BY SEX BY AGE, Universe: Population in military quarters
+PCO0100, PCO10. GROUP QUARTERS POPULATION IN OTHER NONINSTITUTIONAL FACILITIES BY SEX BY AGE, Universe: Population in other noninstitutional facilitie
+H0010, H1. HOUSING UNITS, Universe: Housing units
+H0020, H2. URBAN AND RURAL (Urban/Rural Update only), Universe: Housing units
+H0030, H3. OCCUPANCY STATUS, Universe: Housing units
+H0040, H4. TENURE, Universe: Occupied housing units
+H0050, H5. VACANCY STATUS, Universe: Vacant housing units
+H0060, H6. RACE OF HOUSEHOLDER, Universe: Occupied housing units
+H0070, H7. HISPANIC OR LATINO ORIGIN OF HOUSEHOLDER BY RACE OF HOUSEHOLDER, Universe: Occupied housing units
+H0080, H8. TOTAL RACES TALLIED FOR HOUSEHOLDERS, Universe: Total races tallied for householders in occupied housing units
+H0090, H9. HISPANIC OR LATINO ORIGIN OF HOUSEHOLDERS BY TOTAL RACES TALLIED, Universe: Total races tallied for householders in occupied housing units
+H0100, H10. TOTAL POPULATION IN OCCUPIED HOUSING UNITS, Universe: Population in occupied housing units
+H0110, H11. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE, Universe: Population in occupied housing units
+H0120, H12. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE, Universe: Occupied housing units Average household size
+H0130, H13. HOUSEHOLD SIZE, Universe: Occupied housing units
+H0140, H14. TENURE BY RACE OF HOUSEHOLDER, Universe: Occupied housing units
+H0150, H15. TENURE BY HISPANIC OR LATINO ORIGIN OF HOUSEHOLDER, Universe: Occupied housing units
+H0160, H16. TENURE BY HOUSEHOLD SIZE, Universe: Occupied housing units
+H0170, H17. TENURE BY AGE OF HOUSEHOLDER, Universe: Occupied housing units
+H0180, H18. TENURE BY HOUSEHOLD TYPE BY AGE OF HOUSEHOLDER, Universe: Occupied housing units
+H0190, H19. TENURE BY PRESENCE OF PEOPLE UNDER 18 YEARS (EXCLUDING HOUSEHOLDERS SPOUSES AND UNMARRIED PARTNERS), Universe: Occupied housing units
+H0200, H20. OCCUPIED HOUSING UNITS SUBSTITUTED, Universe: Occupied housing units
+H0210, H21. ALLOCATION OF VACANCY STATUS, Universe: Vacant housing units
+H0220, H22. ALLOCATION OF TENURE, Universe: Occupied housing units not substituted
+H011A0, H11A. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (WHITE ALONE HOUSEHOLDER), Universe: Population in occupied housing units with a householder who is White alone
+H011B0, H11B. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER), Universe: Population in occupied housing units with a householder who is Black or African American alone
+H011C0, H11C. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER), Universe: Population in occupied housing units with a householder who is American Indian and Alaska Native alone
+H011D0, H11D. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (ASIAN ALONE HOUSEHOLDER), Universe: Population in occupied housing units with a householder who is Asian alone
+H011E0, H11E. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER), Universe: Population in occupied housing units with a householder who is Native Hawaiian and Other Pacific Islander alone
+H011F0, H11F. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (SOME OTHER RACE ALONE HOUSEHOLDER), Universe: Population in occupied housing units with a householder who is Some Other Race alone
+H011G0, H11G. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (TWO OR MORE RACES HOUSEHOLDER), Universe: Population in occupied housing units with a householder who is Two or More Races
+H011H0, H11H. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (HISPANIC OR LATINO HOUSEHOLDER), Universe: Population in occupied housing units with a householder who is Hispanic or Latino
+H011I0, H11I. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (WHITE ALONE NOT HISPANIC OR LATINO HOUSEHOLDER), Universe: Population in occupied housing units with a householder who is White alone not Hispanic or Latino
+H012A0, H12A. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (WHITE ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is White alone Average household size
+H012B0, H12B. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is Black or African American alone Average household size
+H012C0, H12C. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is American Indian and Alaska Native alone Average household size
+H012D0, H12D. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (ASIAN ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is Asian alone Average household size
+H012E0, H12E. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is Native Hawaiian and Other Pacific Islander alone Average household size
+H012F0, H12F. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (SOME OTHER RACE ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is Some Other Race alone Average household size
+H012G0, H12G. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (TWO OR MORE RACES HOUSEHOLDER), Universe: Occupied housing units with a householder who is Two or More Races Average household size
+H012H0, H12H. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (HISPANIC OR LATINO HOUSEHOLDER), Universe: Occupied housing units with a householder who is Hispanic or Latino Average household size
+H012I0, H12I. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (WHITE ALONE NOT HISPANIC OR LATINO HOUSEHOLDER), Universe: Occupied housing units with a householder who is White alone not Hispanic or Latino Average household size
+H016A0, H16A. TENURE BY HOUSEHOLD SIZE (WHITE ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is White alone
+H016B0, H16B. TENURE BY HOUSEHOLD SIZE (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is Black or African American alone
+H016C0, H16C. TENURE BY HOUSEHOLD SIZE (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is American Indian and Alaska Native alone
+H016D0, H16D. TENURE BY HOUSEHOLD SIZE (ASIAN ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is Asian alone
+H016E0, H16E. TENURE BY HOUSEHOLD SIZE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is Native Hawaiian and Other Pacific Islander alone
+H016F0, H16F. TENURE BY HOUSEHOLD SIZE (SOME OTHER RACE ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is Some Other Race alone
+H016G0, H16G. TENURE BY HOUSEHOLD SIZE (TWO OR MORE RACES HOUSEHOLDER), Universe: Occupied housing units with a householder who is Two or More Races
+H016H0, H16H. TENURE BY HOUSEHOLD SIZE (HISPANIC OR LATINO HOUSEHOLDER), Universe: Occupied housing units with a householder who is Hispanic or Latino
+H016I0, H16I. TENURE BY HOUSEHOLD SIZE (WHITE ALONE NOT HISPANIC OR LATINO HOUSEHOLDER), Universe: Occupied housing units with a householder who is White alone not Hispanic or Latino
+H017A0, H17A. TENURE BY AGE OF HOUSEHOLDER (WHITE ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is White alone
+H017B0, H17B. TENURE BY AGE OF HOUSEHOLDER (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is Black or African American alone
+H017C0, H17C. TENURE BY AGE OF HOUSEHOLDER (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is American Indian and Alaska Native alone
+H017D0, H17D. TENURE BY AGE OF HOUSEHOLDER (ASIAN ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is Asian alone
+H017E0, H17E. TENURE BY AGE OF HOUSEHOLDER (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is Native Hawaiian and Other Pacific Islander alone
+H017F0, H17F. TENURE BY AGE OF HOUSEHOLDER (SOME OTHER RACE ALONE HOUSEHOLDER), Universe: Occupied housing units with a householder who is Some Other Race alone
+H017G0, H17G. TENURE BY AGE OF HOUSEHOLDER (TWO OR MORE RACES HOUSEHOLDER), Universe: Occupied housing units with a householder who is Two or More Races
+H017H0, H17H. TENURE BY AGE OF HOUSEHOLDER (HISPANIC OR LATINO HOUSEHOLDER), Universe: Occupied housing units with a householder who is Hispanic or Latino
+H017I0, H17I. TENURE BY AGE OF HOUSEHOLDER (WHITE ALONE HOUSEHOLDER NOT HISPANIC OR LATINO), Universe: Occupied housing units with a householder who is White alone not Hispanic or Latino
+HCT0010, HCT1. TENURE BY HISPANIC OR LATINO ORIGIN OF HOUSEHOLDER BY RACE OF HOUSEHOLDER, Universe: Occupied housing units
+HCT0020, HCT2. TENURE BY PRESENCE AND AGE OF OWN CHILDREN, Universe: Occupied housing units
+HCT0030, HCT3. TENURE BY PRESENCE AND AGE OF RELATED CHILDREN, Universe: Occupied housing units
+HCT0040, HCT4. TENURE BY PRESENCE AND AGE OF PEOPLE UNDER 18 YEARS BY HOUSEHOLD TYPE (EXCLUDING HOUSEHOLDERS SPOUSES AND UNMARRIED PARTNERS), Universe: Occupied housing units
+PCT0230, PCT23. RACE, Universe: Total population
+PCT0240, PCT24. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION 65 YEARS AND OVER, Universe: Population 65 years and over
+
+
+

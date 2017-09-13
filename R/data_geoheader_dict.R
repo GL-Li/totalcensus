@@ -5,7 +5,7 @@
 #'
 #' @docType data
 #'
-#' @usage data("geo_header_dictionary")
+#' @usage data("geo_header")
 #'
 #' @format data.table
 #'
@@ -16,4 +16,4 @@
 #' page 2-8
 #'
 #'
-"geo_dict"
+"geoheader_dict"

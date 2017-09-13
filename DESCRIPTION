@@ -1,6 +1,6 @@
-Package: rawcensus
+Package: rawcensus2010
 Type: Package
-Title: Process full census 2010 summary file 1
+Title: Extract any data in census 2010 summary file 1 with urban/rural update
 Version: 0.1.0
 Author: GL Li
 Maintainer: GL Li <liguanglai@gmail.com>
@@ -11,8 +11,8 @@ License: MIT
 Encoding: UTF-8
 LazyData: true
 Imports:
-    stringr (>= 1.2.0),
-    magrittr (>= 1.5)
+    stringr (>= 1.2.0)
 Depends: 
-    data.table (>= 1.10.1)
+    data.table (>= 1.10.1),
+    magrittr (>= 1.5)
 RoxygenNote: 6.0.1

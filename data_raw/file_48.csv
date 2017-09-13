@@ -1,0 +1,52 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, PCT0230001, 48, 9
+- Population of one race, PCT0230002, 48, 9
+--- White, PCT0230003, 48, 9
+--- Black or African American, PCT0230004, 48, 9
+--- American Indian and Alaska Native, PCT0230005, 48, 9
+--- Asian, PCT0230006, 48, 9
+----- Asian Indian, PCT0230007, 48, 9
+----- Chinese (including Taiwanese), PCT0230008, 48, 9
+----- Filipino, PCT0230009, 48, 9
+----- Japanese, PCT0230010, 48, 9
+----- Korean, PCT0230011, 48, 9
+----- Vietnamese, PCT0230012, 48, 9
+----- Other Asian, PCT0230013, 48, 9
+--- Native Hawaiian and Other Pacific Islander, PCT0230014, 48, 9
+----- Native Hawaiian, PCT0230015, 48, 9
+----- Guamanian or Chamorro, PCT0230016, 48, 9
+----- Samoan, PCT0230017, 48, 9
+----- Other Pacific Islander, PCT0230018, 48, 9
+--- Some Other Race, PCT0230019, 48, 9
+- Population of Two or More Races, PCT0230020, 48, 9
+--- White; American Indian and Alaska Native, PCT0230021, 48, 9
+--- White; Asian, PCT0230022, 48, 9
+--- White; Black or African American, PCT0230023, 48, 9
+--- White; Some Other Race, PCT0230024, 48, 9
+Total, PCT0240001, 48, 9
+- In households, PCT0240002, 48, 9
+--- In family households, PCT0240003, 48, 9
+----- Householder, PCT0240004, 48, 9
+------- Male, PCT0240005, 48, 9
+------- Female, PCT0240006, 48, 9
+----- Spouse, PCT0240007, 48, 9
+----- Child, PCT0240008, 48, 9
+----- Parent, PCT0240009, 48, 9
+----- Parent-in-law, PCT0240010, 48, 9
+----- Other relatives, PCT0240011, 48, 9
+----- Nonrelatives, PCT0240012, 48, 9
+--- In nonfamily households, PCT0240013, 48, 9
+----- Male householder, PCT0240014, 48, 9
+------- Living alone, PCT0240015, 48, 9
+------- Not living alone, PCT0240016, 48, 9
+----- Female householder, PCT0240017, 48, 9
+------- Living alone, PCT0240018, 48, 9
+------- Not living alone, PCT0240019, 48, 9
+----- Nonrelatives, PCT0240020, 48, 9
+- In group quarters, PCT0240021, 48, 9
+--- Institutionalized population, PCT0240022, 48, 9
+--- Noninstitutionalized population, PCT0240023, 48, 9

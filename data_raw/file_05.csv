@@ -1,0 +1,250 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, P0150001, 05, 9
+- Not Hispanic or Latino householder, P0150002, 05, 9
+--- Householder who is White alone, P0150003, 05, 9
+--- Householder who is Black or African American alone, P0150004, 05, 9
+--- Householder who is American Indian and Alaska Native alone, P0150005, 05, 9
+--- Householder who is Asian alone, P0150006, 05, 9
+--- Householder who is Native Hawaiian and Other Pacific Islander alone, P0150007, 05, 9
+--- Householder who is Some Other Race alone, P0150008, 05, 9
+--- Householder who is Two or More Races, P0150009, 05, 9
+- Hispanic or Latino householder, P0150010, 05, 9
+--- Householder who is White alone, P0150011, 05, 9
+--- Householder who is Black or African American alone, P0150012, 05, 9
+--- Householder who is American Indian and Alaska Native alone, P0150013, 05, 9
+--- Householder who is Asian alone, P0150014, 05, 9
+--- Householder who is Native Hawaiian and Other Pacific Islander alone, P0150015, 05, 9
+--- Householder who is Some Other Race alone, P0150016, 05, 9
+--- Householder who is Two or More Races, P0150017, 05, 9
+Total, P0160001, 05, 9
+- Under 18 years, P0160002, 05, 9
+- 18 years and over, P0160003, 05, 9
+Total, P0170001, 05, 9
+- Under 18 years, P0170002, 05, 9
+- 18 years and over, P0170003, 05, 9
+Total, P0180001, 05, 9
+- Family households, P0180002, 05, 9
+--- Husband-wife family, P0180003, 05, 9
+--- Other family, P0180004, 05, 9
+----- Male householder no wife present, P0180005, 05, 9
+----- Female householder no husband present, P0180006, 05, 9
+- Nonfamily households, P0180007, 05, 9
+--- Householder living alone, P0180008, 05, 9
+--- Householder not living alone, P0180009, 05, 9
+Total, P0190001, 05, 9
+- 1-person household, P0190002, 05, 9
+--- Male householder, P0190003, 05, 9
+--- Female householder, P0190004, 05, 9
+- 2-or-more-person household, P0190005, 05, 9
+--- Family households, P0190006, 05, 9
+----- Husband-wife family, P0190007, 05, 9
+------- With own children under 18 years, P0190008, 05, 9
+------- No own children under 18 years, P0190009, 05, 9
+----- Other family, P0190010, 05, 9
+------- Male householder no wife present, P0190011, 05, 9
+--------- With own children under 18 years, P0190012, 05, 9
+--------- No own children under 18 years, P0190013, 05, 9
+------- Female householder no husband present, P0190014, 05, 9
+--------- With own children under 18 years, P0190015, 05, 9
+--------- No own children under 18 years, P0190016, 05, 9
+--- Nonfamily households, P0190017, 05, 9
+----- Male householder, P0190018, 05, 9
+----- Female householder, P0190019, 05, 9
+Total, P0200001, 05, 9
+- Households with one or more people under 18 years, P0200002, 05, 9
+--- Family households, P0200003, 05, 9
+----- Husband-wife family, P0200004, 05, 9
+------- Under 6 years only, P0200005, 05, 9
+------- Under 6 years and 6 to 17 years, P0200006, 05, 9
+------- 6 to 17 years only, P0200007, 05, 9
+----- Other family, P0200008, 05, 9
+------- Male householder no wife present, P0200009, 05, 9
+--------- Under 6 years only, P0200010, 05, 9
+--------- Under 6 years and 6 to 17 years, P0200011, 05, 9
+--------- 6 to 17 years only, P0200012, 05, 9
+------- Female householder no husband present, P0200013, 05, 9
+--------- Under 6 years only, P0200014, 05, 9
+--------- Under 6 years and 6 to 17 years, P0200015, 05, 9
+--------- 6 to 17 years only, P0200016, 05, 9
+--- Nonfamily households, P0200017, 05, 9
+----- Male householder, P0200018, 05, 9
+------- Under 6 years only, P0200019, 05, 9
+------- Under 6 years and 6 to 17 years, P0200020, 05, 9
+------- 6 to 17 years only, P0200021, 05, 9
+----- Female householder, P0200022, 05, 9
+------- Under 6 years only, P0200023, 05, 9
+------- Under 6 years and 6 to 17 years, P0200024, 05, 9
+------- 6 to 17 years only, P0200025, 05, 9
+- Households with no people under 18 years, P0200026, 05, 9
+--- Family households, P0200027, 05, 9
+----- Husband-wife family, P0200028, 05, 9
+----- Other family, P0200029, 05, 9
+------- Male householder no wife present, P0200030, 05, 9
+------- Female householder no husband present, P0200031, 05, 9
+--- Nonfamily households, P0200032, 05, 9
+----- Male householder, P0200033, 05, 9
+----- Female householder, P0200034, 05, 9
+Total, P0210001, 05, 9
+- Householder 15 to 64 years, P0210002, 05, 9
+--- Family households, P0210003, 05, 9
+----- Husband-wife family, P0210004, 05, 9
+------- With related children under 18 years, P0210005, 05, 9
+------- No related children under 18 years, P0210006, 05, 9
+----- Other family, P0210007, 05, 9
+------- Male householder no wife present, P0210008, 05, 9
+--------- With related children under 18 years, P0210009, 05, 9
+--------- No related children under 18 years, P0210010, 05, 9
+------- Female householder no husband present, P0210011, 05, 9
+--------- With related children under 18 years, P0210012, 05, 9
+--------- No related children under 18 years, P0210013, 05, 9
+--- Nonfamily households, P0210014, 05, 9
+----- Householder living alone, P0210015, 05, 9
+----- Householder not living alone, P0210016, 05, 9
+- Householder 65 years and over, P0210017, 05, 9
+--- Family households, P0210018, 05, 9
+----- Husband-wife family, P0210019, 05, 9
+------- With related children under 18 years, P0210020, 05, 9
+------- No related children under 18 years, P0210021, 05, 9
+----- Other family, P0210022, 05, 9
+------- Male householder no wife present, P0210023, 05, 9
+--------- With related children under 18 years, P0210024, 05, 9
+--------- No related children under 18 years, P0210025, 05, 9
+------- Female householder no husband present, P0210026, 05, 9
+--------- With related children under 18 years, P0210027, 05, 9
+--------- No related children under 18 years, P0210028, 05, 9
+--- Nonfamily households, P0210029, 05, 9
+----- Householder living alone, P0210030, 05, 9
+----- Householder not living alone, P0210031, 05, 9
+Total, P0220001, 05, 9
+- Family households, P0220002, 05, 9
+--- Householder 15 to 24 years, P0220003, 05, 9
+--- Householder 25 to 34 years, P0220004, 05, 9
+--- Householder 35 to 44 years, P0220005, 05, 9
+--- Householder 45 to 54 years, P0220006, 05, 9
+--- Householder 55 to 59 years, P0220007, 05, 9
+--- Householder 60 to 64 years, P0220008, 05, 9
+--- Householder 65 to 74 years, P0220009, 05, 9
+--- Householder 75 to 84 years, P0220010, 05, 9
+--- Householder 85 years and over, P0220011, 05, 9
+--- Nonfamily households, P0220012, 05, 9
+--- Householder 15 to 24 years, P0220013, 05, 9
+--- Householder 25 to 34 years, P0220014, 05, 9
+--- Householder 35 to 44 years, P0220015, 05, 9
+--- Householder 45 to 54 years, P0220016, 05, 9
+--- Householder 55 to 59 years, P0220017, 05, 9
+--- Householder 60 to 64 years, P0220018, 05, 9
+--- Householder 65 to 74 years, P0220019, 05, 9
+--- Householder 75 to 84 years, P0220020, 05, 9
+--- Householder 85 years and over, P0220021, 05, 9
+Total, P0230001, 05, 9
+- Households with one or more people 60 years and over, P0230002, 05, 9
+--- Family households, P0230003, 05, 9
+----- Husband-wife family, P0230004, 05, 9
+----- Other family, P0230005, 05, 9
+------- Male householder no wife present, P0230006, 05, 9
+------- Female householder no husband present, P0230007, 05, 9
+--- Nonfamily households, P0230008, 05, 9
+- Households with no people 60 years and over, P0230009, 05, 9
+--- Family households, P0230010, 05, 9
+----- Husband-wife family, P0230011, 05, 9
+----- Other family, P0230012, 05, 9
+------- Male householder no wife present, P0230013, 05, 9
+------- Female householder no husband present, P0230014, 05, 9
+--- Nonfamily households, P0230015, 05, 9
+Total, P0240001, 05, 9
+- Households with one or more people 60 years and over, P0240002, 05, 9
+--- 1-person household, P0240003, 05, 9
+--- 2-or-more-person household, P0240004, 05, 9
+----- Family households, P0240005, 05, 9
+----- Nonfamily households, P0240006, 05, 9
+- Households with no people 60 years and over, P0240007, 05, 9
+--- 1-person household, P0240008, 05, 9
+--- 2-or-more-person household, P0240009, 05, 9
+----- Family households, P0240010, 05, 9
+----- Nonfamily households, P0240011, 05, 9
+Total, P0250001, 05, 9
+- Households with one or more people 65 years and over, P0250002, 05, 9
+--- 1-person household, P0250003, 05, 9
+--- 2-or-more-person household, P0250004, 05, 9
+----- Family households, P0250005, 05, 9
+----- Nonfamily households, P0250006, 05, 9
+- Households with no people 65 years and over, P0250007, 05, 9
+--- 1-person household, P0250008, 05, 9
+--- 2-or-more-person household, P0250009, 05, 9
+----- Family households, P0250010, 05, 9
+----- Nonfamily households, P0250011, 05, 9
+Total, P0260001, 05, 9
+- Households with one or more people 75 years and over, P0260002, 05, 9
+--- 1-person household, P0260003, 05, 9
+--- 2-or-more-person household, P0260004, 05, 9
+----- Family households, P0260005, 05, 9
+----- Nonfamily households, P0260006, 05, 9
+- Households with no people 75 years and over, P0260007, 05, 9
+--- 1-person household, P0260008, 05, 9
+--- 2-or-more-person household, P0260009, 05, 9
+----- Family households, P0260010, 05, 9
+----- Nonfamily households, P0260011, 05, 9
+Total, P0270001, 05, 9
+- Households with one or more nonrelatives, P0270002, 05, 9
+- Households with no nonrelatives, P0270003, 05, 9
+Total, P0280001, 05, 9
+- Family households, P0280002, 05, 9
+--- 2-person household, P0280003, 05, 9
+--- 3-person household, P0280004, 05, 9
+--- 4-person household, P0280005, 05, 9
+--- 5-person household, P0280006, 05, 9
+--- 6-person household, P0280007, 05, 9
+--- 7-or-more-person household, P0280008, 05, 9
+- Nonfamily households, P0280009, 05, 9
+--- 1-person household, P0280010, 05, 9
+--- 2-person household, P0280011, 05, 9
+--- 3-person household, P0280012, 05, 9
+--- 4-person household, P0280013, 05, 9
+--- 5-person household, P0280014, 05, 9
+--- 6-person household, P0280015, 05, 9
+--- 7-or-more-person household, P0280016, 05, 9
+Total, P0290001, 05, 9
+- In households, P0290002, 05, 9
+--- In family households, P0290003, 05, 9
+----- Householder, P0290004, 05, 9
+------- Male, P0290005, 05, 9
+------- Female, P0290006, 05, 9
+----- Spouse, P0290007, 05, 9
+----- Biological child, P0290008, 05, 9
+----- Adopted child, P0290009, 05, 9
+----- Stepchild, P0290010, 05, 9
+----- Grandchild, P0290011, 05, 9
+----- Brother or sister, P0290012, 05, 9
+----- Parent, P0290013, 05, 9
+----- Parent-in-law, P0290014, 05, 9
+----- Son-in-law or daughter-in-law, P0290015, 05, 9
+----- Other relatives, P0290016, 05, 9
+----- Nonrelatives, P0290017, 05, 9
+--- In nonfamily households, P0290018, 05, 9
+----- Male householder, P0290019, 05, 9
+------- Living alone, P0290020, 05, 9
+------- Not living alone, P0290021, 05, 9
+----- Female householder, P0290022, 05, 9
+------- Living alone, P0290023, 05, 9
+------- Not living alone, P0290024, 05, 9
+----- Nonrelatives, P0290025, 05, 9
+- In group quarters, P0290026, 05, 9
+--- Institutionalized population, P0290027, 05, 9
+--- Noninstitutionalized population, P0290028, 05, 9
+Total, P0300001, 05, 9
+- In family households, P0300002, 05, 9
+--- In husband-wife family, P0300003, 05, 9
+--- In other family, P0300004, 05, 9
+----- In male householder no wife present family, P0300005, 05, 9
+----- In female householder no husband present family, P0300006, 05, 9
+- In nonfamily households, P0300007, 05, 9
+--- In households with a male householder, P0300008, 05, 9
+----- In 1-person household, P0300009, 05, 9
+----- In 2-or-more-person household, P0300010, 05, 9
+--- In households with a female householder, P0300011, 05, 9
+----- In 1-person household, P0300012, 05, 9
+----- In 2-or-more-person household, P0300013, 05, 9

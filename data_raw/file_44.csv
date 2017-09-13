@@ -1,0 +1,254 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, H0030001, 44, 9
+- Occupied, H0030002, 44, 9
+- Vacant, H0030003, 44, 9
+Total, H0040001, 44, 9
+- Owned with a mortgage or a loan, H0040002, 44, 9
+- Owned free and clear, H0040003, 44, 9
+- Renter-occupied, H0040004, 44, 9
+Total, H0050001, 44, 9
+- For rent, H0050002, 44, 9
+- Rented; not occupied, H0050003, 44, 9
+- For sale only, H0050004, 44, 9
+- Sold; not occupied, H0050005, 44, 9
+- For seasonal; recreational; or occasional use, H0050006, 44, 9
+- For migrant workers, H0050007, 44, 9
+- Other vacant, H0050008, 44, 9
+Total, H0060001, 44, 9
+- Householder who is White alone, H0060002, 44, 9
+- Householder who is Black or African American alone, H0060003, 44, 9
+- Householder who is American Indian and Alaska Native alone, H0060004, 44, 9
+- Householder who is Asian alone, H0060005, 44, 9
+- Householder who is Native Hawaiian and Other Pacific Islander alone, H0060006, 44, 9
+- Householder who is Some Other Race alone, H0060007, 44, 9
+- Householder who is Two or More Races, H0060008, 44, 9
+Total, H0070001, 44, 9
+- Not Hispanic or Latino householder, H0070002, 44, 9
+--- Householder who is White alone, H0070003, 44, 9
+--- Householder who is Black or African American alone, H0070004, 44, 9
+--- Householder who is American Indian and Alaska Native alone, H0070005, 44, 9
+--- Householder who is Asian alone, H0070006, 44, 9
+--- Householder who is Native Hawaiian and Other Pacific Islander alone, H0070007, 44, 9
+--- Householder who is Some Other Race alone, H0070008, 44, 9
+--- Householder who is Two or More Races, H0070009, 44, 9
+- Hispanic or Latino householder, H0070010, 44, 9
+--- Householder who is White alone, H0070011, 44, 9
+--- Householder who is Black or African American alone, H0070012, 44, 9
+--- Householder who is American Indian and Alaska Native alone, H0070013, 44, 9
+--- Householder who is Asian alone, H0070014, 44, 9
+--- Householder who is Native Hawaiian and Other Pacific Islander alone, H0070015, 44, 9
+--- Householder who is Some Other Race alone, H0070016, 44, 9
+--- Householder who is Two or More Races, H0070017, 44, 9
+Total races tallied for householders, H0080001, 44, 9
+- White alone or in combination with one or more other races, H0080002, 44, 9
+- Black or African American alone or in combination with one or more other races, H0080003, 44, 9
+- American Indian and Alaska Native alone or in combination with one or more other races, H0080004, 44, 9
+- Asian alone or in combination with one or more other races, H0080005, 44, 9
+- Native Hawaiian and Other Pacific Islander alone or in combination with one or more other races, H0080006, 44, 9
+- Some Other Race alone or in combination with one or more other races, H0080007, 44, 9
+Total races tallied for householders, H0090001, 44, 9
+- Total races tallied for Not Hispanic or Latino householders, H0090002, 44, 9
+--- White alone or in combination with one or more other races, H0090003, 44, 9
+--- Black or African American alone or in combination with one or more other races, H0090004, 44, 9
+--- American Indian and Alaska Native alone or in combination with one or more other races, H0090005, 44, 9
+--- Asian alone or in combination with one or more other races, H0090006, 44, 9
+--- Native Hawaiian and Other Pacific Islander alone or in combination with one or more other races, H0090007, 44, 9
+--- Some Other Race alone or in combination with one or more other races, H0090008, 44, 9
+- Total races tallied for Hispanic or Latino householders, H0090009, 44, 9
+--- White alone or in combination with one or more other races, H0090010, 44, 9
+--- Black or African American alone or in combination with one or more other races, H0090011, 44, 9
+--- American Indian and Alaska Native alone or in combination with one or more other races, H0090012, 44, 9
+--- Asian alone or in combination with one or more other races, H0090013, 44, 9
+--- Native Hawaiian and Other Pacific Islander alone or in combination with one or more other races, H0090014, 44, 9
+--- Some Other Race alone or in combination with one or more other races, H0090015, 44, 9
+Total, H0100001, 44, 9
+Total population in occupied housing units, H0110001, 44, 9
+- Owned with a mortgage or a loan, H0110002, 44, 9
+- Owned free and clear, H0110003, 44, 9
+- Renter-occupied, H0110004, 44, 9
+Total, H0120001, 44, 9
+- Owner-occupied, H0120002, 44, 9
+- Renter-occupied, H0120003, 44, 9
+Total, H0130001, 44, 9
+- 1-person household, H0130002, 44, 9
+- 2-person household, H0130003, 44, 9
+- 3-person household, H0130004, 44, 9
+- 4-person household, H0130005, 44, 9
+- 5-person household, H0130006, 44, 9
+- 6-person household, H0130007, 44, 9
+- 7-or-more-person household, H0130008, 44, 9
+Total, H0140001, 44, 9
+- Owner occupied, H0140002, 44, 9
+--- Householder who is White alone, H0140003, 44, 9
+--- Householder who is Black or African American alone, H0140004, 44, 9
+--- Householder who is American Indian and Alaska Native alone, H0140005, 44, 9
+--- Householder who is Asian alone, H0140006, 44, 9
+--- Householder who is Native Hawaiian and Other Pacific Islander alone, H0140007, 44, 9
+--- Householder who is Some Other Race alone, H0140008, 44, 9
+--- Householder who is Two or More Races, H0140009, 44, 9
+- Renter occupied, H0140010, 44, 9
+--- Householder who is White alone, H0140011, 44, 9
+--- Householder who is Black or African American alone, H0140012, 44, 9
+--- Householder who is American Indian and Alaska Native alone, H0140013, 44, 9
+--- Householder who is Asian alone, H0140014, 44, 9
+--- Householder who is Native Hawaiian and Other Pacific Islander alone, H0140015, 44, 9
+--- Householder who is Some Other Race alone, H0140016, 44, 9
+--- Householder who is Two or More Races, H0140017, 44, 9
+Total, H0150001, 44, 9
+- Owner occupied, H0150002, 44, 9
+--- Not Hispanic or Latino householder, H0150003, 44, 9
+--- Hispanic or Latino householder, H0150004, 44, 9
+- Renter occupied, H0150005, 44, 9
+--- Not Hispanic or Latino householder, H0150006, 44, 9
+--- Hispanic or Latino householder, H0150007, 44, 9
+Total, H0160001, 44, 9
+- Owner occupied, H0160002, 44, 9
+--- 1-person household, H0160003, 44, 9
+--- 2-person household, H0160004, 44, 9
+--- 3-person household, H0160005, 44, 9
+--- 4-person household, H0160006, 44, 9
+--- 5-person household, H0160007, 44, 9
+--- 6-person household, H0160008, 44, 9
+--- 7-or-more-person household, H0160009, 44, 9
+- Renter occupied, H0160010, 44, 9
+--- 1-person household, H0160011, 44, 9
+--- 2-person household, H0160012, 44, 9
+--- 3-person household, H0160013, 44, 9
+--- 4-person household, H0160014, 44, 9
+--- 5-person household, H0160015, 44, 9
+--- 6-person household, H0160016, 44, 9
+--- 7-or-more-person household, H0160017, 44, 9
+Total, H0170001, 44, 9
+- Owner occupied, H0170002, 44, 9
+--- Householder 15 to 24 years, H0170003, 44, 9
+--- Householder 25 to 34 years, H0170004, 44, 9
+--- Householder 35 to 44 years, H0170005, 44, 9
+--- Householder 45 to 54 years, H0170006, 44, 9
+--- Householder 55 to 59 years, H0170007, 44, 9
+--- Householder 60 to 64 years, H0170008, 44, 9
+--- Householder 65 to 74 years, H0170009, 44, 9
+--- Householder 75 to 84 years, H0170010, 44, 9
+--- Householder 85 years and over, H0170011, 44, 9
+- Renter occupied, H0170012, 44, 9
+--- Householder 15 to 24 years, H0170013, 44, 9
+--- Householder 25 to 34 years, H0170014, 44, 9
+--- Householder 35 to 44 years, H0170015, 44, 9
+--- Householder 45 to 54 years, H0170016, 44, 9
+--- Householder 55 to 59 years, H0170017, 44, 9
+--- Householder 60 to 64 years, H0170018, 44, 9
+--- Householder 65 to 74 years, H0170019, 44, 9
+--- Householder 75 to 84 years, H0170020, 44, 9
+--- Householder 85 years and over, H0170021, 44, 9
+Total, H0180001, 44, 9
+- Owner occupied, H0180002, 44, 9
+--- Family households, H0180003, 44, 9
+----- Husband-wife family, H0180004, 44, 9
+------- Householder 15 to 34 years, H0180005, 44, 9
+------- Householder 35 to 64 years, H0180006, 44, 9
+------- Householder 65 years and over, H0180007, 44, 9
+----- Other family, H0180008, 44, 9
+------- Male householder; no wife present, H0180009, 44, 9
+--------- Householder 15 to 34 years, H0180010, 44, 9
+--------- Householder 35 to 64 years, H0180011, 44, 9
+--------- Householder 65 years and over, H0180012, 44, 9
+------- Female householder; no husband present, H0180013, 44, 9
+--------- Householder 15 to 34 years, H0180014, 44, 9
+--------- Householder 35 to 64 years, H0180015, 44, 9
+--------- Householder 65 years and over, H0180016, 44, 9
+--- Nonfamily households, H0180017, 44, 9
+----- Male householder, H0180018, 44, 9
+------- Living alone, H0180019, 44, 9
+--------- Householder 15 to 34 years, H0180020, 44, 9
+--------- Householder 35 to 64 years, H0180021, 44, 9
+--------- Householder 65 years and over, H0180022, 44, 9
+------- Not living alone, H0180023, 44, 9
+--------- Householder 15 to 34 years, H0180024, 44, 9
+--------- Householder 35 to 64 years, H0180025, 44, 9
+--------- Householder 65 years and over, H0180026, 44, 9
+----- Female householder, H0180027, 44, 9
+------- Living alone, H0180028, 44, 9
+--------- Householder 15 to 34 years, H0180029, 44, 9
+--------- Householder 35 to 64 years, H0180030, 44, 9
+--------- Householder 65 years and over, H0180031, 44, 9
+------- Not living alone, H0180032, 44, 9
+--------- Householder 15 to 34 years, H0180033, 44, 9
+--------- Householder 35 to 64 years, H0180034, 44, 9
+--------- Householder 65 years and over, H0180035, 44, 9
+- Renter occupied, H0180036, 44, 9
+--- Family households, H0180037, 44, 9
+----- Husband-wife family, H0180038, 44, 9
+------- Householder 15 to 34 years, H0180039, 44, 9
+------- Householder 35 to 64 years, H0180040, 44, 9
+------- Householder 65 years and over, H0180041, 44, 9
+----- Other family, H0180042, 44, 9
+------- Male householder; no wife present, H0180043, 44, 9
+--------- Householder 15 to 34 years, H0180044, 44, 9
+--------- Householder 35 to 64 years, H0180045, 44, 9
+--------- Householder 65 years and over, H0180046, 44, 9
+------- Female householder; no husband present, H0180047, 44, 9
+--------- Householder 15 to 34 years, H0180048, 44, 9
+--------- Householder 35 to 64 years, H0180049, 44, 9
+--------- Householder 65 years and over, H0180050, 44, 9
+--- Nonfamily households, H0180051, 44, 9
+----- Male householder, H0180052, 44, 9
+------- Living alone, H0180053, 44, 9
+--------- Householder 15 to 34 years, H0180054, 44, 9
+--------- Householder 35 to 64 years, H0180055, 44, 9
+--------- Householder 65 years and over, H0180056, 44, 9
+------- Not living alone, H0180057, 44, 9
+--------- Householder 15 to 34 years, H0180058, 44, 9
+--------- Householder 35 to 64 years, H0180059, 44, 9
+--------- Householder 65 years and over, H0180060, 44, 9
+----- Female householder, H0180061, 44, 9
+------- Living alone, H0180062, 44, 9
+--------- Householder 15 to 34 years, H0180063, 44, 9
+--------- Householder 35 to 64 years, H0180064, 44, 9
+--------- Householder 65 years and over, H0180065, 44, 9
+------- Not living alone, H0180066, 44, 9
+--------- Householder 15 to 34 years, H0180067, 44, 9
+--------- Householder 35 to 64 years, H0180068, 44, 9
+--------- Householder 65 years and over, H0180069, 44, 9
+Total, H0190001, 44, 9
+- Owner-occupied, H0190002, 44, 9
+--- With children under 18 years, H0190003, 44, 9
+--- No children under 18 years, H0190004, 44, 9
+- Renter-occupied, H0190005, 44, 9
+--- With children under 18 years, H0190006, 44, 9
+--- No children under 18 years, H0190007, 44, 9
+Total, H0200001, 44, 9
+- Substituted, H0200002, 44, 9
+- Not substituted, H0200003, 44, 9
+Total, H0210001, 44, 9
+- Allocated, H0210002, 44, 9
+- Not allocated, H0210003, 44, 9
+Total, H0220001, 44, 9
+- Allocated, H0220002, 44, 9
+- Not allocated, H0220003, 44, 9
+Population in occupied housing units, H011A0001, 44, 9
+- Owned with a mortgage or a loan, H011A0002, 44, 9
+- Owned free and clear, H011A0003, 44, 9
+- Renter occupied, H011A0004, 44, 9
+Population in occupied housing units, H011B0001, 44, 9
+- Owned with a mortgage or a loan, H011B0002, 44, 9
+- Owned free and clear, H011B0003, 44, 9
+- Renter occupied, H011B0004, 44, 9
+Population in occupied housing units, H011C0001, 44, 9
+- Owned with a mortgage or a loan, H011C0002, 44, 9
+- Owned free and clear, H011C0003, 44, 9
+- Renter occupied, H011C0004, 44, 9
+Population in occupied housing units, H011D0001, 44, 9
+- Owned with a mortgage or a loan, H011D0002, 44, 9
+- Owned free and clear, H011D0003, 44, 9
+- Renter occupied, H011D0004, 44, 9
+Population in occupied housing units, H011E0001, 44, 9
+- Owned with a mortgage or a loan, H011E0002, 44, 9
+- Owned free and clear, H011E0003, 44, 9
+- Renter occupied, H011E0004, 44, 9
+Population in occupied housing units, H011F0001, 44, 9
+- Owned with a mortgage or a loan, H011F0002, 44, 9
+- Owned free and clear, H011F0003, 44, 9
+- Renter occupied, H011F0004, 44, 9

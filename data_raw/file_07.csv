@@ -1,0 +1,256 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, P0500001, 07, 9
+- Allocated, P0500002, 07, 9
+- Not allocated, P0500003, 07, 9
+Total, P0510001, 07, 9
+- No items allocated, P0510002, 07, 9
+- One or more items allocated, P0510003, 07, 9
+Total, P012A001, 07, 9
+- Male, P012A002, 07, 9
+--- Under 5 years, P012A003, 07, 9
+--- 5 to 9 years, P012A004, 07, 9
+--- 10 to 14 years, P012A005, 07, 9
+--- 15 to 17 years, P012A006, 07, 9
+--- 18 and 19 years, P012A007, 07, 9
+--- 20 years, P012A008, 07, 9
+--- 21 years, P012A009, 07, 9
+--- 22 to 24 years, P012A010, 07, 9
+--- 25 to 29 years, P012A011, 07, 9
+--- 30 to 34 years, P012A012, 07, 9
+--- 35 to 39 years, P012A013, 07, 9
+--- 40 to 44 years, P012A014, 07, 9
+--- 45 to 49 years, P012A015, 07, 9
+--- 50 to 54 years, P012A016, 07, 9
+--- 55 to 59 years, P012A017, 07, 9
+--- 60 and 61 years, P012A018, 07, 9
+--- 62 to 64 years, P012A019, 07, 9
+--- 65 and 66 years, P012A020, 07, 9
+--- 67 to 69 years, P012A021, 07, 9
+--- 70 to 74 years, P012A022, 07, 9
+--- 75 to 79 years, P012A023, 07, 9
+--- 80 to 84 years, P012A024, 07, 9
+--- 85 years and over, P012A025, 07, 9
+- Female, P012A026, 07, 9
+--- Under 5 years, P012A027, 07, 9
+--- 5 to 9 years, P012A028, 07, 9
+--- 10 to 14 years, P012A029, 07, 9
+--- 15 to 17 years, P012A030, 07, 9
+--- 18 and 19 years, P012A031, 07, 9
+--- 20 years, P012A032, 07, 9
+--- 21 years, P012A033, 07, 9
+--- 22 to 24 years, P012A034, 07, 9
+--- 25 to 29 years, P012A035, 07, 9
+--- 30 to 34 years, P012A036, 07, 9
+--- 35 to 39 years, P012A037, 07, 9
+--- 40 to 44 years, P012A038, 07, 9
+--- 45 to 49 years, P012A039, 07, 9
+--- 50 to 54 years, P012A040, 07, 9
+--- 55 to 59 years, P012A041, 07, 9
+--- 60 and 61 years, P012A042, 07, 9
+--- 62 to 64 years, P012A043, 07, 9
+--- 65 and 66 years, P012A044, 07, 9
+--- 67 to 69 years, P012A045, 07, 9
+--- 70 to 74 years, P012A046, 07, 9
+--- 75 to 79 years, P012A047, 07, 9
+--- 80 to 84 years, P012A048, 07, 9
+--- 85 years and over, P012A049, 07, 9
+Total, P012B001, 07, 9
+- Male, P012B002, 07, 9
+--- Under 5 years, P012B003, 07, 9
+--- 5 to 9 years, P012B004, 07, 9
+--- 10 to 14 years, P012B005, 07, 9
+--- 15 to 17 years, P012B006, 07, 9
+--- 18 and 19 years, P012B007, 07, 9
+--- 20 years, P012B008, 07, 9
+--- 21 years, P012B009, 07, 9
+--- 22 to 24 years, P012B010, 07, 9
+--- 25 to 29 years, P012B011, 07, 9
+--- 30 to 34 years, P012B012, 07, 9
+--- 35 to 39 years, P012B013, 07, 9
+--- 40 to 44 years, P012B014, 07, 9
+--- 45 to 49 years, P012B015, 07, 9
+--- 50 to 54 years, P012B016, 07, 9
+--- 55 to 59 years, P012B017, 07, 9
+--- 60 and 61 years, P012B018, 07, 9
+--- 62 to 64 years, P012B019, 07, 9
+--- 65 and 66 years, P012B020, 07, 9
+--- 67 to 69 years, P012B021, 07, 9
+--- 70 to 74 years, P012B022, 07, 9
+--- 75 to 79 years, P012B023, 07, 9
+--- 80 to 84 years, P012B024, 07, 9
+--- 85 years and over, P012B025, 07, 9
+- Female, P012B026, 07, 9
+--- Under 5 years, P012B027, 07, 9
+--- 5 to 9 years, P012B028, 07, 9
+--- 10 to 14 years, P012B029, 07, 9
+--- 15 to 17 years, P012B030, 07, 9
+--- 18 and 19 years, P012B031, 07, 9
+--- 20 years, P012B032, 07, 9
+--- 21 years, P012B033, 07, 9
+--- 22 to 24 years, P012B034, 07, 9
+--- 25 to 29 years, P012B035, 07, 9
+--- 30 to 34 years, P012B036, 07, 9
+--- 35 to 39 years, P012B037, 07, 9
+--- 40 to 44 years, P012B038, 07, 9
+--- 45 to 49 years, P012B039, 07, 9
+--- 50 to 54 years, P012B040, 07, 9
+--- 55 to 59 years, P012B041, 07, 9
+--- 60 and 61 years, P012B042, 07, 9
+--- 62 to 64 years, P012B043, 07, 9
+--- 65 and 66 years, P012B044, 07, 9
+--- 67 to 69 years, P012B045, 07, 9
+--- 70 to 74 years, P012B046, 07, 9
+--- 75 to 79 years, P012B047, 07, 9
+--- 80 to 84 years, P012B048, 07, 9
+--- 85 years and over, P012B049, 07, 9
+Total, P012C001, 07, 9
+- Male, P012C002, 07, 9
+--- Under 5 years, P012C003, 07, 9
+--- 5 to 9 years, P012C004, 07, 9
+--- 10 to 14 years, P012C005, 07, 9
+--- 15 to 17 years, P012C006, 07, 9
+--- 18 and 19 years, P012C007, 07, 9
+--- 20 years, P012C008, 07, 9
+--- 21 years, P012C009, 07, 9
+--- 22 to 24 years, P012C010, 07, 9
+--- 25 to 29 years, P012C011, 07, 9
+--- 30 to 34 years, P012C012, 07, 9
+--- 35 to 39 years, P012C013, 07, 9
+--- 40 to 44 years, P012C014, 07, 9
+--- 45 to 49 years, P012C015, 07, 9
+--- 50 to 54 years, P012C016, 07, 9
+--- 55 to 59 years, P012C017, 07, 9
+--- 60 and 61 years, P012C018, 07, 9
+--- 62 to 64 years, P012C019, 07, 9
+--- 65 and 66 years, P012C020, 07, 9
+--- 67 to 69 years, P012C021, 07, 9
+--- 70 to 74 years, P012C022, 07, 9
+--- 75 to 79 years, P012C023, 07, 9
+--- 80 to 84 years, P012C024, 07, 9
+--- 85 years and over, P012C025, 07, 9
+- Female, P012C026, 07, 9
+--- Under 5 years, P012C027, 07, 9
+--- 5 to 9 years, P012C028, 07, 9
+--- 10 to 14 years, P012C029, 07, 9
+--- 15 to 17 years, P012C030, 07, 9
+--- 18 and 19 years, P012C031, 07, 9
+--- 20 years, P012C032, 07, 9
+--- 21 years, P012C033, 07, 9
+--- 22 to 24 years, P012C034, 07, 9
+--- 25 to 29 years, P012C035, 07, 9
+--- 30 to 34 years, P012C036, 07, 9
+--- 35 to 39 years, P012C037, 07, 9
+--- 40 to 44 years, P012C038, 07, 9
+--- 45 to 49 years, P012C039, 07, 9
+--- 50 to 54 years, P012C040, 07, 9
+--- 55 to 59 years, P012C041, 07, 9
+--- 60 and 61 years, P012C042, 07, 9
+--- 62 to 64 years, P012C043, 07, 9
+--- 65 and 66 years, P012C044, 07, 9
+--- 67 to 69 years, P012C045, 07, 9
+--- 70 to 74 years, P012C046, 07, 9
+--- 75 to 79 years, P012C047, 07, 9
+--- 80 to 84 years, P012C048, 07, 9
+--- 85 years and over, P012C049, 07, 9
+Total, P012D001, 07, 9
+- Male, P012D002, 07, 9
+--- Under 5 years, P012D003, 07, 9
+--- 5 to 9 years, P012D004, 07, 9
+--- 10 to 14 years, P012D005, 07, 9
+--- 15 to 17 years, P012D006, 07, 9
+--- 18 and 19 years, P012D007, 07, 9
+--- 20 years, P012D008, 07, 9
+--- 21 years, P012D009, 07, 9
+--- 22 to 24 years, P012D010, 07, 9
+--- 25 to 29 years, P012D011, 07, 9
+--- 30 to 34 years, P012D012, 07, 9
+--- 35 to 39 years, P012D013, 07, 9
+--- 40 to 44 years, P012D014, 07, 9
+--- 45 to 49 years, P012D015, 07, 9
+--- 50 to 54 years, P012D016, 07, 9
+--- 55 to 59 years, P012D017, 07, 9
+--- 60 and 61 years, P012D018, 07, 9
+--- 62 to 64 years, P012D019, 07, 9
+--- 65 and 66 years, P012D020, 07, 9
+--- 67 to 69 years, P012D021, 07, 9
+--- 70 to 74 years, P012D022, 07, 9
+--- 75 to 79 years, P012D023, 07, 9
+--- 80 to 84 years, P012D024, 07, 9
+--- 85 years and over, P012D025, 07, 9
+- Female, P012D026, 07, 9
+--- Under 5 years, P012D027, 07, 9
+--- 5 to 9 years, P012D028, 07, 9
+--- 10 to 14 years, P012D029, 07, 9
+--- 15 to 17 years, P012D030, 07, 9
+--- 18 and 19 years, P012D031, 07, 9
+--- 20 years, P012D032, 07, 9
+--- 21 years, P012D033, 07, 9
+--- 22 to 24 years, P012D034, 07, 9
+--- 25 to 29 years, P012D035, 07, 9
+--- 30 to 34 years, P012D036, 07, 9
+--- 35 to 39 years, P012D037, 07, 9
+--- 40 to 44 years, P012D038, 07, 9
+--- 45 to 49 years, P012D039, 07, 9
+--- 50 to 54 years, P012D040, 07, 9
+--- 55 to 59 years, P012D041, 07, 9
+--- 60 and 61 years, P012D042, 07, 9
+--- 62 to 64 years, P012D043, 07, 9
+--- 65 and 66 years, P012D044, 07, 9
+--- 67 to 69 years, P012D045, 07, 9
+--- 70 to 74 years, P012D046, 07, 9
+--- 75 to 79 years, P012D047, 07, 9
+--- 80 to 84 years, P012D048, 07, 9
+--- 85 years and over, P012D049, 07, 9
+Total, P012E001, 07, 9
+- Male, P012E002, 07, 9
+--- Under 5 years, P012E003, 07, 9
+--- 5 to 9 years, P012E004, 07, 9
+--- 10 to 14 years, P012E005, 07, 9
+--- 15 to 17 years, P012E006, 07, 9
+--- 18 and 19 years, P012E007, 07, 9
+--- 20 years, P012E008, 07, 9
+--- 21 years, P012E009, 07, 9
+--- 22 to 24 years, P012E010, 07, 9
+--- 25 to 29 years, P012E011, 07, 9
+--- 30 to 34 years, P012E012, 07, 9
+--- 35 to 39 years, P012E013, 07, 9
+--- 40 to 44 years, P012E014, 07, 9
+--- 45 to 49 years, P012E015, 07, 9
+--- 50 to 54 years, P012E016, 07, 9
+--- 55 to 59 years, P012E017, 07, 9
+--- 60 and 61 years, P012E018, 07, 9
+--- 62 to 64 years, P012E019, 07, 9
+--- 65 and 66 years, P012E020, 07, 9
+--- 67 to 69 years, P012E021, 07, 9
+--- 70 to 74 years, P012E022, 07, 9
+--- 75 to 79 years, P012E023, 07, 9
+--- 80 to 84 years, P012E024, 07, 9
+--- 85 years and over, P012E025, 07, 9
+- Female, P012E026, 07, 9
+--- Under 5 years, P012E027, 07, 9
+--- 5 to 9 years, P012E028, 07, 9
+--- 10 to 14 years, P012E029, 07, 9
+--- 15 to 17 years, P012E030, 07, 9
+--- 18 and 19 years, P012E031, 07, 9
+--- 20 years, P012E032, 07, 9
+--- 21 years, P012E033, 07, 9
+--- 22 to 24 years, P012E034, 07, 9
+--- 25 to 29 years, P012E035, 07, 9
+--- 30 to 34 years, P012E036, 07, 9
+--- 35 to 39 years, P012E037, 07, 9
+--- 40 to 44 years, P012E038, 07, 9
+--- 45 to 49 years, P012E039, 07, 9
+--- 50 to 54 years, P012E040, 07, 9
+--- 55 to 59 years, P012E041, 07, 9
+--- 60 and 61 years, P012E042, 07, 9
+--- 62 to 64 years, P012E043, 07, 9
+--- 65 and 66 years, P012E044, 07, 9
+--- 67 to 69 years, P012E045, 07, 9
+--- 70 to 74 years, P012E046, 07, 9
+--- 75 to 79 years, P012E047, 07, 9
+--- 80 to 84 years, P012E048, 07, 9
+--- 85 years and over, P012E049, 07, 9

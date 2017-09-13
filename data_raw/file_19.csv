@@ -1,0 +1,221 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, PCT0210001, 19, 9
+- Male, PCT0210002, 19, 9
+--- Under 18 years, PCT0210003, 19, 9
+----- Institutionalized population (101–106; 201–203; 301; 401–405), PCT0210004, 19, 9
+------- Correctional facilities for adults (101–106), PCT0210005, 19, 9
+--------- Federal detention centers (101), PCT0210006, 19, 9
+--------- Federal prisons (102), PCT0210007, 19, 9
+--------- State prisons (103), PCT0210008, 19, 9
+--------- Local jails and other municipal confinement facilities (104), PCT0210009, 19, 9
+--------- Correctional residential facilities (105), PCT0210010, 19, 9
+--------- Military disciplinary barracks and jails (106), PCT0210011, 19, 9
+------- Juvenile facilities (201–203), PCT0210012, 19, 9
+--------- Group homes for juveniles (noncorrectional) (201), PCT0210013, 19, 9
+--------- Residential treatment centers for juveniles (non-correctional) (202), PCT0210014, 19, 9
+--------- Correctional facilities intended for juveniles (203), PCT0210015, 19, 9
+------- Nursing facilities/Skilled-nursing facilities (301), PCT0210016, 19, 9
+------- Other institutional facilities (401–405), PCT0210017, 19, 9
+--------- Mental (Psychiatric) hospitals and psychiatric units in other hospitals (401), PCT0210018, 19, 9
+--------- Hospitals with patients who have no usual home elsewhere (402), PCT0210019, 19, 9
+--------- In-patient hospice facilities (403), PCT0210020, 19, 9
+--------- Military treatment facilities with assigned patients (404), PCT0210021, 19, 9
+--------- Residential schools for people with disabilities (405), PCT0210022, 19, 9
+----- Noninstitutionalized population (501; 601–602; 701–702; 704; 706; 801–802; 900–901; 903–904), PCT0210023, 19, 9
+------- College/University student housing (501), PCT0210024, 19, 9
+------- Military quarters (601–602), PCT0210025, 19, 9
+--------- Military barracks and dormitories (non-disciplinary) (601), PCT0210026, 19, 9
+--------- Military ships (602), PCT0210027, 19, 9
+------- Other noninstitutional facilities (701– 702; 704; 706; 801–802; 900–901; 903–904), PCT0210028, 19, 9
+--------- Emergency and transitional shelters (with sleeping facilities) for people experiencing homelessness (701), PCT0210029, 19, 9
+--------- Group homes intended for adults (801), PCT0210030, 19, 9
+--------- Residential treatment centers for adults (802), PCT0210031, 19, 9
+--------- Maritime/merchant vessels (900), PCT0210032, 19, 9
+--------- Workers’ group living quarters and Job Corps centers (901), PCT0210033, 19, 9
+--------- Other noninstitutional facilities (702; 704; 706; 903–904), PCT0210034, 19, 9
+--- 18 to 64 years, PCT0210035, 19, 9
+----- Institutionalized population (101–106; 201–203; 301; 401–405), PCT0210036, 19, 9
+------- Correctional facilities for adults (101–106), PCT0210037, 19, 9
+--------- Federal detention centers (101), PCT0210038, 19, 9
+--------- Federal prisons (102), PCT0210039, 19, 9
+--------- State prisons (103), PCT0210040, 19, 9
+--------- Local jails and other municipal confinement facilities (104), PCT0210041, 19, 9
+--------- Correctional residential facilities (105), PCT0210042, 19, 9
+--------- Military disciplinary barracks and jails (106), PCT0210043, 19, 9
+------- Juvenile facilities (201–203), PCT0210044, 19, 9
+--------- Group homes for juveniles (noncorrectional) (201), PCT0210045, 19, 9
+--------- Residential treatment centers for juveniles (non-correctional) (202), PCT0210046, 19, 9
+--------- Correctional facilities intended for juveniles (203), PCT0210047, 19, 9
+------- Nursing facilities/Skilled-nursing facilities (301), PCT0210048, 19, 9
+------- Other institutional facilities (401–405), PCT0210049, 19, 9
+--------- Mental (Psychiatric) hospitals and psychiatric units in other hospitals (401), PCT0210050, 19, 9
+--------- Hospitals with patients who have no usual home elsewhere (402), PCT0210051, 19, 9
+--------- In-patient hospice facilities (403), PCT0210052, 19, 9
+--------- Military treatment facilities with assigned patients (404), PCT0210053, 19, 9
+--------- Residential schools for people with disabilities (405), PCT0210054, 19, 9
+----- Noninstitutionalized population (501; 601–602; 701–702; 704; 706; 801–802; 900–901; 903–904), PCT0210055, 19, 9
+------- College/University student housing (501), PCT0210056, 19, 9
+------- Military quarters (601–602), PCT0210057, 19, 9
+--------- Military barracks and dormitories (non-disciplinary) (601), PCT0210058, 19, 9
+--------- Military ships (602), PCT0210059, 19, 9
+------- Other noninstitutional facilities (701–702; 704; 706; 801–802; 900–901; 903–904), PCT0210060, 19, 9
+--------- Emergency and transitional shelters (with sleeping facilities) for people experiencing homelessness (701), PCT0210061, 19, 9
+--------- Group homes intended for adults (801), PCT0210062, 19, 9
+--------- Residential treatment centers for adults (802), PCT0210063, 19, 9
+--------- Maritime/merchant vessels (900), PCT0210064, 19, 9
+--------- Workers’ group living quarters and Job Corps centers (901), PCT0210065, 19, 9
+--------- Other noninstitutional facilities (702; 704; 706; 903–904), PCT0210066, 19, 9
+--- 65 years and over, PCT0210067, 19, 9
+----- Institutionalized population (101–106; 201–203; 301; 401–405), PCT0210068, 19, 9
+------- Correctional facilities for adults (101–106), PCT0210069, 19, 9
+--------- Federal detention centers (101), PCT0210070, 19, 9
+--------- Federal prisons (102), PCT0210071, 19, 9
+--------- State prisons (103), PCT0210072, 19, 9
+--------- Local jails and other municipal confinement facilities (104), PCT0210073, 19, 9
+--------- Correctional residential facilities (105), PCT0210074, 19, 9
+--------- Military disciplinary barracks and jails (106), PCT0210075, 19, 9
+------- Juvenile facilities (201–203), PCT0210076, 19, 9
+--------- Group homes for juveniles (noncorrectional) (201), PCT0210077, 19, 9
+--------- Residential treatment centers for juveniles (non-correctional) (202), PCT0210078, 19, 9
+--------- Correctional facilities intended for juveniles (203), PCT0210079, 19, 9
+------- Nursing facilities/Skilled-nursing facilities (301), PCT0210080, 19, 9
+------- Other institutional facilities (401–405), PCT0210081, 19, 9
+--------- Mental (Psychiatric) hospitals and psychiatric units in other hospitals (401), PCT0210082, 19, 9
+--------- Hospitals with patients who have no usual home elsewhere (402), PCT0210083, 19, 9
+--------- In-patient hospice facilities (403), PCT0210084, 19, 9
+--------- Military treatment facilities with assigned patients (404), PCT0210085, 19, 9
+--------- Residential schools for people with disabilities (405), PCT0210086, 19, 9
+----- Noninstitutionalized population (501; 601–602; 701–702; 704; 706; 801–802; 900–901; 903–904), PCT0210087, 19, 9
+------- College/University student housing (501), PCT0210088, 19, 9
+------- Military quarters (601–602), PCT0210089, 19, 9
+--------- Military barracks and dormitories (non-disciplinary) (601), PCT0210090, 19, 9
+--------- Military ships (602), PCT0210091, 19, 9
+------- Other noninstitutional facilities (701– 702; 704; 706; 801–802; 900–901; 903–904), PCT0210092, 19, 9
+--------- Emergency and transitional shelters (with sleeping facilities) for people experiencing homelessness (701), PCT0210093, 19, 9
+--------- Group homes intended for adults (801), PCT0210094, 19, 9
+--------- Residential treatment centers for adults (802), PCT0210095, 19, 9
+--------- Maritime/merchant vessels (900), PCT0210096, 19, 9
+--------- Workers’ group living quarters and Job Corps centers (901), PCT0210097, 19, 9
+--------- Other noninstitutional facilities (702; 704; 706; 903–904), PCT0210098, 19, 9
+- Female, PCT0210099, 19, 9
+--- Under 18 years, PCT0210100, 19, 9
+----- Institutionalized population (101–106; 201–203; 301; 401–405), PCT0210101, 19, 9
+------- Correctional facilities for adults (101–106), PCT0210102, 19, 9
+--------- Federal detention centers (101), PCT0210103, 19, 9
+--------- Federal prisons (102), PCT0210104, 19, 9
+--------- State prisons (103), PCT0210105, 19, 9
+--------- Local jails and other municipal confinement facilities (104), PCT0210106, 19, 9
+--------- Correctional residential facilities (105), PCT0210107, 19, 9
+--------- Military disciplinary barracks and jails (106), PCT0210108, 19, 9
+------- Juvenile facilities (201–203), PCT0210109, 19, 9
+--------- Group homes for juveniles (noncorrectional) (201), PCT0210110, 19, 9
+--------- Residential treatment centers for juveniles (non-correctional) (202), PCT0210111, 19, 9
+--------- Correctional facilities intended for juveniles (203), PCT0210112, 19, 9
+------- Nursing facilities/Skilled-nursing facilities (301), PCT0210113, 19, 9
+------- Other institutional facilities (401–405), PCT0210114, 19, 9
+--------- Mental (Psychiatric) hospitals and psychiatric units in other hospitals (401), PCT0210115, 19, 9
+--------- Hospitals with patients who have no usual home elsewhere (402), PCT0210116, 19, 9
+--------- In-patient hospice facilities (403), PCT0210117, 19, 9
+--------- Military treatment facilities with assigned patients (404), PCT0210118, 19, 9
+--------- Residential schools for people with disabilities (405), PCT0210119, 19, 9
+----- Noninstitutionalized population (501; 601–602; 701–702; 704; 706; 801–802; 900–901; 903–904), PCT0210120, 19, 9
+------- College/University student housing (501), PCT0210121, 19, 9
+------- Military quarters (601–602), PCT0210122, 19, 9
+--------- Military barracks and dormitories (non-disciplinary) (601), PCT0210123, 19, 9
+--------- Military ships (602), PCT0210124, 19, 9
+------- Other noninstitutional facilities (701– 702; 704; 706; 801–802; 900–901; 903–904), PCT0210125, 19, 9
+--------- Emergency and transitional shelters (with sleeping facilities) for people experiencing homelessness (701), PCT0210126, 19, 9
+--------- Group homes intended for adults (801), PCT0210127, 19, 9
+--------- Residential treatment centers for adults (802), PCT0210128, 19, 9
+--------- Maritime/merchant vessels (900), PCT0210129, 19, 9
+--------- Workers’ group living quarters and Job Corps centers (901), PCT0210130, 19, 9
+--------- Other noninstitutional facilities (702; 704; 706; 903–904), PCT0210131, 19, 9
+--- 18 to 64 years, PCT0210132, 19, 9
+----- Institutionalized population (101–106; 201–203; 301; 401–405), PCT0210133, 19, 9
+------- Correctional facilities for adults (101–106), PCT0210134, 19, 9
+--------- Federal detention centers (101), PCT0210135, 19, 9
+--------- Federal prisons (102), PCT0210136, 19, 9
+--------- State prisons (103), PCT0210137, 19, 9
+--------- Local jails and other municipal confinement facilities (104), PCT0210138, 19, 9
+--------- Correctional residential facilities (105), PCT0210139, 19, 9
+--------- Military disciplinary barracks and jails (106), PCT0210140, 19, 9
+------- Juvenile facilities (201–203), PCT0210141, 19, 9
+--------- Group homes for juveniles (noncorrectional) (201), PCT0210142, 19, 9
+--------- Residential treatment centers for juveniles (non-correctional) (202), PCT0210143, 19, 9
+--------- Correctional facilities intended for juveniles (203), PCT0210144, 19, 9
+--------- Nursing facilities/Skilled-nursing facilities (301), PCT0210145, 19, 9
+------- Other institutional facilities (401–405), PCT0210146, 19, 9
+--------- Mental (Psychiatric) hospitals and psychiatric units in other hospitals (401), PCT0210147, 19, 9
+--------- Hospitals with patients who have no usual home elsewhere (402), PCT0210148, 19, 9
+--------- In-patient hospice facilities (403), PCT0210149, 19, 9
+--------- Military treatment facilities with assigned patients (404), PCT0210150, 19, 9
+--------- Residential schools for people with disabilities (405), PCT0210151, 19, 9
+----- Noninstitutionalized population (501; 601–602; 701–702; 704; 706; 801–802; 900–901; 903–904), PCT0210152, 19, 9
+------- College/University student housing (501), PCT0210153, 19, 9
+------- Military quarters (601–602), PCT0210154, 19, 9
+--------- Military barracks and dormitories (non-disciplinary) (601), PCT0210155, 19, 9
+--------- Military ships (602), PCT0210156, 19, 9
+------- Other noninstitutional facilities (701– 702; 704; 706; 801–802; 900–901; 903–904), PCT0210157, 19, 9
+--------- Emergency and transitional shelters (with sleeping facilities) for people experiencing homelessness (701), PCT0210158, 19, 9
+--------- Group homes intended for adults (801), PCT0210159, 19, 9
+--------- Residential treatment centers for adults (802), PCT0210160, 19, 9
+--------- Maritime/merchant vessels (900), PCT0210161, 19, 9
+--------- Workers’ group living quarters and Job Corps centers (901), PCT0210162, 19, 9
+--------- Other noninstitutional facilities (702; 704; 706; 903–-904), PCT0210163, 19, 9
+--- 65 years and over, PCT0210164, 19, 9
+----- Institutionalized population (101–106; 201–203; 301; 401–405), PCT0210165, 19, 9
+------- Correctional facilities for adults (101–106), PCT0210166, 19, 9
+--------- Federal detention centers (101), PCT0210167, 19, 9
+--------- Federal prisons (102), PCT0210168, 19, 9
+--------- State prisons (103), PCT0210169, 19, 9
+--------- Local jails and other municipal confinement facilities (104), PCT0210170, 19, 9
+--------- Correctional residential facilities (105), PCT0210171, 19, 9
+--------- Military disciplinary barracks and jails (106), PCT0210172, 19, 9
+------- Juvenile facilities (201–203), PCT0210173, 19, 9
+--------- Group homes for juveniles (noncorrectional) (201), PCT0210174, 19, 9
+--------- Residential treatment centers for juveniles (non-correctional) (202), PCT0210175, 19, 9
+--------- Correctional facilities intended for juveniles (203), PCT0210176, 19, 9
+------- Nursing facilities/Skilled-nursing facilities (301), PCT0210177, 19, 9
+------- Other institutional facilities (401–405), PCT0210178, 19, 9
+--------- Mental (Psychiatric) hospitals and psychiatric units in other hospitals (401), PCT0210179, 19, 9
+--------- Hospitals with patients who have no usual home elsewhere (402), PCT0210180, 19, 9
+--------- In-patient hospice facilities (403), PCT0210181, 19, 9
+--------- Military treatment facilities with assigned patients (404), PCT0210182, 19, 9
+--------- Residential schools for people with disabilities (405), PCT0210183, 19, 9
+----- Noninstitutionalized population (501; 601–602; 701–702; 704; 706; 801–802; 900–901; 903–904), PCT0210184, 19, 9
+------- College/University student housing (501), PCT0210185, 19, 9
+------- Military quarters (601–602), PCT0210186, 19, 9
+--------- Military barracks and dormitories (non-disciplinary) (601), PCT0210187, 19, 9
+--------- Military ships (602), PCT0210188, 19, 9
+------- Other noninstitutional facilities (701–702; 704; 706; 801–802; 900–901; 903–904), PCT0210189, 19, 9
+--------- Emergency and transitional shelters (with sleeping facilities) for people experiencing homelessness (701), PCT0210190, 19, 9
+--------- Group homes intended for adults (801), PCT0210191, 19, 9
+--------- Residential treatment centers for adults (802), PCT0210192, 19, 9
+--------- Maritime/merchant vessels (900), PCT0210193, 19, 9
+--------- Workers’ group living quarters and Job Corps centers (901), PCT0210194, 19, 9
+--------- Other noninstitutional facilities (702; 704; 706; 903–904), PCT0210195, 19, 9
+Total, PCT0220001, 19, 9
+- Male, PCT0220002, 19, 9
+--- Institutionalized population (101–106; 201–203; 301; 401–405), PCT0220003, 19, 9
+----- Correctional facilities for adults (101–106), PCT0220004, 19, 9
+----- Juvenile facilities (201–203), PCT0220005, 19, 9
+----- Nursing facilities/skilled-nursing facilities (301), PCT0220006, 19, 9
+----- Other institutional facilities (401–405), PCT0220007, 19, 9
+--- Noninstitutionalized population (501; 601–602; 701–702; 704; 706; 801–802; 900–901; 903–904), PCT0220008, 19, 9
+----- College/university student housing (501), PCT0220009, 19, 9
+----- Military quarters (601–602), PCT0220010, 19, 9
+----- Other noninstitutional facilities (701–702; 704; 706; 801–802; 900–901; 903–904), PCT0220011, 19, 9
+- Female, PCT0220012, 19, 9
+--- Institutionalized population (101–106; 201–203; 301; 401–405), PCT0220013, 19, 9
+----- Correctional facilities for adults (101–106), PCT0220014, 19, 9
+----- Juvenile facilities (201–203), PCT0220015, 19, 9
+----- Nursing facilities/skilled-nursing facilities (301), PCT0220016, 19, 9
+----- Other institutional facilities (401–405), PCT0220017, 19, 9
+--- Noninstitutionalized population (501; 601–602; 701–702; 704; 706; 801–802; 900–901; 903–904), PCT0220018, 19, 9
+----- College/university student housing (501), PCT0220019, 19, 9
+----- Military quarters (601–602), PCT0220020, 19, 9
+----- Other noninstitutional facilities (701–702; 704; 706; 801–802; 900–901; 903–904), PCT0220021, 19, 9

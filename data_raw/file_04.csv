@@ -1,0 +1,244 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, P0100001, 04, 9
+- Population of one race, P0100002, 04, 9
+--- White alone, P0100003, 04, 9
+--- Black or African American alone, P0100004, 04, 9
+--- American Indian and Alaska Native alone, P0100005, 04, 9
+--- Asian alone, P0100006, 04, 9
+--- Native Hawaiian and Other Pacific Islander alone, P0100007, 04, 9
+--- Some Other Race alone, P0100008, 04, 9
+- Two or More Races, P0100009, 04, 9
+--- Population of two races, P0100010, 04, 9
+----- White; Black or African American, P0100011, 04, 9
+----- White; American Indian and Alaska Native, P0100012, 04, 9
+----- White; Asian, P0100013, 04, 9
+----- White; Native Hawaiian and Other Pacific Islander, P0100014, 04, 9
+----- White; Some Other Race, P0100015, 04, 9
+----- Black or African American; American Indian and Alaska Native, P0100016, 04, 9
+----- Black or African American; Asian, P0100017, 04, 9
+----- Black or African American; Native Hawaiian and Other Pacific Islander, P0100018, 04, 9
+----- Black or African American; Some Other Race, P0100019, 04, 9
+----- American Indian and Alaska Native; Asian, P0100020, 04, 9
+----- American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander, P0100021, 04, 9
+----- American Indian and Alaska Native; Some Other Race, P0100022, 04, 9
+----- Asian; Native Hawaiian and Other Pacific Islander, P0100023, 04, 9
+----- Asian; Some Other Race, P0100024, 04, 9
+----- Native Hawaiian and Other Pacific Islander; Some Other Race, P0100025, 04, 9
+--- Population of three races, P0100026, 04, 9
+----- White; Black or African American; American Indian and Alaska Native, P0100027, 04, 9
+----- White; Black or African American; Asian, P0100028, 04, 9
+----- White; Black or African American; Native Hawaiian and Other Pacific Islander, P0100029, 04, 9
+----- White; Black or African American; Some Other Race, P0100030, 04, 9
+----- White; American Indian and Alaska Native; Asian, P0100031, 04, 9
+----- White; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander, P0100032, 04, 9
+----- White; American Indian and Alaska Native; Some Other Race, P0100033, 04, 9
+----- White; Asian; Native Hawaiian and Other Pacific Islander, P0100034, 04, 9
+----- White; Asian; Some Other Race, P0100035, 04, 9
+----- White; Native Hawaiian and Other Pacific Islander; Some Other Race, P0100036, 04, 9
+----- Black or African American; American Indian and Alaska Native; Asian, P0100037, 04, 9
+----- Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander, P0100038, 04, 9
+----- Black or African American; American Indian and Alaska Native; Some Other Race, P0100039, 04, 9
+----- Black or African American; Asian; Native Hawaiian and Other Pacific Islander, P0100040, 04, 9
+----- Black or African American; Asian; Some Other Race, P0100041, 04, 9
+----- Black or African American; Native Hawaiian and Other Pacific Islander; Some Other Race, P0100042, 04, 9
+----- American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander, P0100043, 04, 9
+----- American Indian and Alaska Native; Asian; Some Other Race, P0100044, 04, 9
+----- American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some Other Race, P0100045, 04, 9
+----- Asian; Native Hawaiian and Other Pacific Islander; Some Other Race, P0100046, 04, 9
+--- Population of four races, P0100047, 04, 9
+----- White; Black or African American; American Indian and Alaska Native; Asian, P0100048, 04, 9
+----- White; Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander, P0100049, 04, 9
+----- White; Black or African American; American Indian and Alaska Native; Some Other Race, P0100050, 04, 9
+----- White; Black or African American; Asian; Native Hawaiian and Other Pacific Islander, P0100051, 04, 9
+----- White; Black or African American; Asian; Some Other Race, P0100052, 04, 9
+----- White; Black or African American; Native Hawaiian and Other Pacific Islander; Some Other Race, P0100053, 04, 9
+----- White; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander, P0100054, 04, 9
+----- White; American Indian and Alaska Native; Asian; Some Other Race, P0100055, 04, 9
+----- White; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some Other Race, P0100056, 04, 9
+----- White; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race, P0100057, 04, 9
+----- Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander, P0100058, 04, 9
+----- Black or African American; American Indian and Alaska Native; Asian; Some Other Race, P0100059, 04, 9
+----- Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some Other Race, P0100060, 04, 9
+----- Black or African American; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race, P0100061, 04, 9
+----- American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race, P0100062, 04, 9
+--- Population of five races, P0100063, 04, 9
+----- White; Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander, P0100064, 04, 9
+----- White; Black or African American; American Indian and Alaska Native; Asian; Some Other Race, P0100065, 04, 9
+----- White; Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some Other Race, P0100066, 04, 9
+----- White; Black or African American; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race, P0100067, 04, 9
+----- White; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race, P0100068, 04, 9
+----- Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race, P0100069, 04, 9
+--- Population of six races, P0100070, 04, 9
+----- White; Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race, P0100071, 04, 9
+Total, P0110001, 04, 9
+- Hispanic or Latino, P0110002, 04, 9
+- Not Hispanic or Latino, P0110003, 04, 9
+--- Population of one race, P0110004, 04, 9
+----- White alone, P0110005, 04, 9
+----- Black or African American alone, P0110006, 04, 9
+----- American Indian and Alaska Native alone, P0110007, 04, 9
+----- Asian alone, P0110008, 04, 9
+----- Native Hawaiian and Other Pacific Islander alone, P0110009, 04, 9
+----- Some Other Race alone, P0110010, 04, 9
+--- Two or More Races, P0110011, 04, 9
+----- Population of two races, P0110012, 04, 9
+------- White; Black or African American, P0110013, 04, 9
+------- White; American Indian and Alaska Native, P0110014, 04, 9
+------- White; Asian, P0110015, 04, 9
+------- White; Native Hawaiian and Other Pacific Islander, P0110016, 04, 9
+------- White; Some Other Race, P0110017, 04, 9
+------- Black or African American; American Indian and Alaska Native, P0110018, 04, 9
+------- Black or African American; Asian, P0110019, 04, 9
+------- Black or African American; Native Hawaiian and Other Pacific Islander, P0110020, 04, 9
+------- Black or African American; Some Other Race, P0110021, 04, 9
+------- American Indian and Alaska Native; Asian, P0110022, 04, 9
+------- American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander, P0110023, 04, 9
+------- American Indian and Alaska Native; Some Other Race, P0110024, 04, 9
+------- Asian; Native Hawaiian and Other Pacific Islander, P0110025, 04, 9
+------- Asian; Some Other Race, P0110026, 04, 9
+------- Native Hawaiian and Other Pacific Islander; Some Other Race, P0110027, 04, 9
+----- Population of three races, P0110028, 04, 9
+------- White; Black or African American; American Indian and Alaska Native, P0110029, 04, 9
+------- White; Black or African American; Asian, P0110030, 04, 9
+------- White; Black or African American; Native Hawaiian and Other Pacific Islander, P0110031, 04, 9
+------- White; Black or African American; Some Other Race, P0110032, 04, 9
+------- White; American Indian and Alaska Native; Asian, P0110033, 04, 9
+------- White; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander, P0110034, 04, 9
+------- White; American Indian and Alaska Native; Some Other Race, P0110035, 04, 9
+------- White; Asian; Native Hawaiian and Other Pacific Islander, P0110036, 04, 9
+------- White; Asian; Some Other Race, P0110037, 04, 9
+------- White; Native Hawaiian and Other Pacific Islander; Some Other Race, P0110038, 04, 9
+------- Black or African American; American Indian and Alaska Native; Asian, P0110039, 04, 9
+------- Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander, P0110040, 04, 9
+------- Black or African American; American Indian and Alaska Native; Some Other Race, P0110041, 04, 9
+------- Black or African American; Asian; Native Hawaiian and Other Pacific Islander, P0110042, 04, 9
+------- Black or African American; Asian; Some Other Race, P0110043, 04, 9
+------- Black or African American; Native Hawaiian and Other Pacific Islander; Some Other Race, P0110044, 04, 9
+------- American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander, P0110045, 04, 9
+------- American Indian and Alaska Native; Asian; Some Other Race, P0110046, 04, 9
+------- American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some Other Race, P0110047, 04, 9
+------- Asian; Native Hawaiian and Other Pacific Islander; Some Other Race, P0110048, 04, 9
+----- Population of four races, P0110049, 04, 9
+------- White; Black or African American; American Indian and Alaska Native; Asian, P0110050, 04, 9
+------- White; Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander, P0110051, 04, 9
+------- White; Black or African American; American Indian and Alaska Native; Some Other Race, P0110052, 04, 9
+------- White; Black or African American; Asian; Native Hawaiian and Other Pacific Islander, P0110053, 04, 9
+------- White; Black or African American; Asian; Some Other Race, P0110054, 04, 9
+------- White; Black or African American; Native Hawaiian and Other Pacific Islander; Some Other Race, P0110055, 04, 9
+------- White; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander, P0110056, 04, 9
+------- White; American Indian and Alaska Native; Asian; Some Other Race, P0110057, 04, 9
+------- White; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some Other Race, P0110058, 04, 9
+------- White; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race, P0110059, 04, 9
+------- Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander, P0110060, 04, 9
+------- Black or African American; American Indian and Alaska Native; Asian; Some Other Race, P0110061, 04, 9
+------- Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some Other Race, P0110062, 04, 9
+------- Black or African American; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race, P0110063, 04, 9
+------- American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race, P0110064, 04, 9
+----- Population of five races, P0110065, 04, 9
+------- White; Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander, P0110066, 04, 9
+------- White; Black or African American; American Indian and Alaska Native; Asian; Some Other Race, P0110067, 04, 9
+------- White; Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some Other Race, P0110068, 04, 9
+------- White; Black or African American; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race, P0110069, 04, 9
+------- White; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race, P0110070, 04, 9
+------- Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race, P0110071, 04, 9
+----- Population of six races, P0110072, 04, 9
+------- White; Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race, P0110073, 04, 9
+Total, P0120001, 04, 9
+- Male, P0120002, 04, 9
+--- Under 5 years, P0120003, 04, 9
+--- 5 to 9 years, P0120004, 04, 9
+--- 10 to 14 years, P0120005, 04, 9
+--- 15 to 17 years, P0120006, 04, 9
+--- 18 and 19 years, P0120007, 04, 9
+--- 20 years, P0120008, 04, 9
+--- 21 years, P0120009, 04, 9
+--- 22 to 24 years, P0120010, 04, 9
+--- 25 to 29 years, P0120011, 04, 9
+--- 30 to 34 years, P0120012, 04, 9
+--- 35 to 39 years, P0120013, 04, 9
+--- 40 to 44 years, P0120014, 04, 9
+--- 45 to 49 years, P0120015, 04, 9
+--- 50 to 54 years, P0120016, 04, 9
+--- 55 to 59 years, P0120017, 04, 9
+--- 60 and 61 years, P0120018, 04, 9
+--- 62 to 64 years, P0120019, 04, 9
+--- 65 and 66 years, P0120020, 04, 9
+--- 67 to 69 years, P0120021, 04, 9
+--- 70 to 74 years, P0120022, 04, 9
+--- 75 to 79 years, P0120023, 04, 9
+--- 80 to 84 years, P0120024, 04, 9
+--- 85 years and over, P0120025, 04, 9
+- Female, P0120026, 04, 9
+--- Under 5 years, P0120027, 04, 9
+--- 5 to 9 years, P0120028, 04, 9
+--- 10 to 14 years, P0120029, 04, 9
+--- 15 to 17 years, P0120030, 04, 9
+--- 18 and 19 years, P0120031, 04, 9
+--- 20 years, P0120032, 04, 9
+--- 21 years, P0120033, 04, 9
+--- 22 to 24 years, P0120034, 04, 9
+--- 25 to 29 years, P0120035, 04, 9
+--- 30 to 34 years, P0120036, 04, 9
+--- 35 to 39 years, P0120037, 04, 9
+--- 40 to 44 years, P0120038, 04, 9
+--- 45 to 49 years, P0120039, 04, 9
+--- 50 to 54 years, P0120040, 04, 9
+--- 55 to 59 years, P0120041, 04, 9
+--- 60 and 61 years, P0120042, 04, 9
+--- 62 to 64 years, P0120043, 04, 9
+--- 65 and 66 years, P0120044, 04, 9
+--- 67 to 69 years, P0120045, 04, 9
+--- 70 to 74 years, P0120046, 04, 9
+--- 75 to 79 years, P0120047, 04, 9
+--- 80 to 84 years, P0120048, 04, 9
+--- 85 years and over, P0120049, 04, 9
+Both sexes, P0130001, 04, 9
+Male, P0130002, 04, 9
+Female, P0130003, 04, 9
+Total, P0140001, 04, 9
+- Male, P0140002, 04, 9
+--- Under 1 year, P0140003, 04, 9
+--- 1 year, P0140004, 04, 9
+--- 2 years, P0140005, 04, 9
+--- 3 years, P0140006, 04, 9
+--- 4 years, P0140007, 04, 9
+--- 5 years, P0140008, 04, 9
+--- 6 years, P0140009, 04, 9
+--- 7 years, P0140010, 04, 9
+--- 8 years, P0140011, 04, 9
+--- 9 years, P0140012, 04, 9
+--- 10 years, P0140013, 04, 9
+--- 11 years, P0140014, 04, 9
+--- 12 years, P0140015, 04, 9
+--- 13 years, P0140016, 04, 9
+--- 14 years, P0140017, 04, 9
+--- 15 years, P0140018, 04, 9
+--- 16 years, P0140019, 04, 9
+--- 17 years, P0140020, 04, 9
+--- 18 years, P0140021, 04, 9
+--- 19 years, P0140022, 04, 9
+- Female, P0140023, 04, 9
+--- Under 1 year, P0140024, 04, 9
+--- 1 year, P0140025, 04, 9
+--- 2 years, P0140026, 04, 9
+--- 3 years, P0140027, 04, 9
+--- 4 years, P0140028, 04, 9
+--- 5 years, P0140029, 04, 9
+--- 6 years, P0140030, 04, 9
+--- 7 years, P0140031, 04, 9
+--- 8 years, P0140032, 04, 9
+--- 9 years, P0140033, 04, 9
+--- 10 years, P0140034, 04, 9
+--- 11 years, P0140035, 04, 9
+--- 12 years, P0140036, 04, 9
+--- 13 years, P0140037, 04, 9
+--- 14 years, P0140038, 04, 9
+--- 15 years, P0140039, 04, 9
+--- 16 years, P0140040, 04, 9
+--- 17 years, P0140041, 04, 9
+--- 18 years, P0140042, 04, 9
+--- 19 years, P0140043, 04, 9

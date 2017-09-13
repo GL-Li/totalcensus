@@ -1,0 +1,258 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, P012F001, 08, 9
+- Male, P012F002, 08, 9
+--- Under 5 years, P012F003, 08, 9
+--- 5 to 9 years, P012F004, 08, 9
+--- 10 to 14 years, P012F005, 08, 9
+--- 15 to 17 years, P012F006, 08, 9
+--- 18 and 19 years, P012F007, 08, 9
+--- 20 years, P012F008, 08, 9
+--- 21 years, P012F009, 08, 9
+--- 22 to 24 years, P012F010, 08, 9
+--- 25 to 29 years, P012F011, 08, 9
+--- 30 to 34 years, P012F012, 08, 9
+--- 35 to 39 years, P012F013, 08, 9
+--- 40 to 44 years, P012F014, 08, 9
+--- 45 to 49 years, P012F015, 08, 9
+--- 50 to 54 years, P012F016, 08, 9
+--- 55 to 59 years, P012F017, 08, 9
+--- 60 and 61 years, P012F018, 08, 9
+--- 62 to 64 years, P012F019, 08, 9
+--- 65 and 66 years, P012F020, 08, 9
+--- 67 to 69 years, P012F021, 08, 9
+--- 70 to 74 years, P012F022, 08, 9
+--- 75 to 79 years, P012F023, 08, 9
+--- 80 to 84 years, P012F024, 08, 9
+--- 85 years and over, P012F025, 08, 9
+- Female, P012F026, 08, 9
+--- Under 5 years, P012F027, 08, 9
+--- 5 to 9 years, P012F028, 08, 9
+--- 10 to 14 years, P012F029, 08, 9
+--- 15 to 17 years, P012F030, 08, 9
+--- 18 and 19 years, P012F031, 08, 9
+--- 20 years, P012F032, 08, 9
+--- 21 years, P012F033, 08, 9
+--- 22 to 24 years, P012F034, 08, 9
+--- 25 to 29 years, P012F035, 08, 9
+--- 30 to 34 years, P012F036, 08, 9
+--- 35 to 39 years, P012F037, 08, 9
+--- 40 to 44 years, P012F038, 08, 9
+--- 45 to 49 years, P012F039, 08, 9
+--- 50 to 54 years, P012F040, 08, 9
+--- 55 to 59 years, P012F041, 08, 9
+--- 60 and 61 years, P012F042, 08, 9
+--- 62 to 64 years, P012F043, 08, 9
+--- 65 and 66 years, P012F044, 08, 9
+--- 67 to 69 years, P012F045, 08, 9
+--- 70 to 74 years, P012F046, 08, 9
+--- 75 to 79 years, P012F047, 08, 9
+--- 80 to 84 years, P012F048, 08, 9
+--- 85 years and over, P012F049, 08, 9
+Total, P012G001, 08, 9
+- Male, P012G002, 08, 9
+--- Under 5 years, P012G003, 08, 9
+--- 5 to 9 years, P012G004, 08, 9
+--- 10 to 14 years, P012G005, 08, 9
+--- 15 to 17 years, P012G006, 08, 9
+--- 18 and 19 years, P012G007, 08, 9
+--- 20 years, P012G008, 08, 9
+--- 21 years, P012G009, 08, 9
+--- 22 to 24 years, P012G010, 08, 9
+--- 25 to 29 years, P012G011, 08, 9
+--- 30 to 34 years, P012G012, 08, 9
+--- 35 to 39 years, P012G013, 08, 9
+--- 40 to 44 years, P012G014, 08, 9
+--- 45 to 49 years, P012G015, 08, 9
+--- 50 to 54 years, P012G016, 08, 9
+--- 55 to 59 years, P012G017, 08, 9
+--- 60 and 61 years, P012G018, 08, 9
+--- 62 to 64 years, P012G019, 08, 9
+--- 65 and 66 years, P012G020, 08, 9
+--- 67 to 69 years, P012G021, 08, 9
+--- 70 to 74 years, P012G022, 08, 9
+--- 75 to 79 years, P012G023, 08, 9
+--- 80 to 84 years, P012G024, 08, 9
+--- 85 years and over, P012G025, 08, 9
+- Female, P012G026, 08, 9
+--- Under 5 years, P012G027, 08, 9
+--- 5 to 9 years, P012G028, 08, 9
+--- 10 to 14 years, P012G029, 08, 9
+--- 15 to 17 years, P012G030, 08, 9
+--- 18 and 19 years, P012G031, 08, 9
+--- 20 years, P012G032, 08, 9
+--- 21 years, P012G033, 08, 9
+--- 22 to 24 years, P012G034, 08, 9
+--- 25 to 29 years, P012G035, 08, 9
+--- 30 to 34 years, P012G036, 08, 9
+--- 35 to 39 years, P012G037, 08, 9
+--- 40 to 44 years, P012G038, 08, 9
+--- 45 to 49 years, P012G039, 08, 9
+--- 50 to 54 years, P012G040, 08, 9
+--- 55 to 59 years, P012G041, 08, 9
+--- 60 and 61 years, P012G042, 08, 9
+--- 62 to 64 years, P012G043, 08, 9
+--- 65 and 66 years, P012G044, 08, 9
+--- 67 to 69 years, P012G045, 08, 9
+--- 70 to 74 years, P012G046, 08, 9
+--- 75 to 79 years, P012G047, 08, 9
+--- 80 to 84 years, P012G048, 08, 9
+--- 85 years and over, P012G049, 08, 9
+Total, P012H001, 08, 9
+- Male, P012H002, 08, 9
+--- Under 5 years, P012H003, 08, 9
+--- 5 to 9 years, P012H004, 08, 9
+--- 10 to 14 years, P012H005, 08, 9
+--- 15 to 17 years, P012H006, 08, 9
+--- 18 and 19 years, P012H007, 08, 9
+--- 20 years, P012H008, 08, 9
+--- 21 years, P012H009, 08, 9
+--- 22 to 24 years, P012H010, 08, 9
+--- 25 to 29 years, P012H011, 08, 9
+--- 30 to 34 years, P012H012, 08, 9
+--- 35 to 39 years, P012H013, 08, 9
+--- 40 to 44 years, P012H014, 08, 9
+--- 45 to 49 years, P012H015, 08, 9
+--- 50 to 54 years, P012H016, 08, 9
+--- 55 to 59 years, P012H017, 08, 9
+--- 60 and 61 years, P012H018, 08, 9
+--- 62 to 64 years, P012H019, 08, 9
+--- 65 and 66 years, P012H020, 08, 9
+--- 67 to 69 years, P012H021, 08, 9
+--- 70 to 74 years, P012H022, 08, 9
+--- 75 to 79 years, P012H023, 08, 9
+--- 80 to 84 years, P012H024, 08, 9
+--- 85 years and over, P012H025, 08, 9
+- Female, P012H026, 08, 9
+--- Under 5 years, P012H027, 08, 9
+--- 5 to 9 years, P012H028, 08, 9
+--- 10 to 14 years, P012H029, 08, 9
+--- 15 to 17 years, P012H030, 08, 9
+--- 18 and 19 years, P012H031, 08, 9
+--- 20 years, P012H032, 08, 9
+--- 21 years, P012H033, 08, 9
+--- 22 to 24 years, P012H034, 08, 9
+--- 25 to 29 years, P012H035, 08, 9
+--- 30 to 34 years, P012H036, 08, 9
+--- 35 to 39 years, P012H037, 08, 9
+--- 40 to 44 years, P012H038, 08, 9
+--- 45 to 49 years, P012H039, 08, 9
+--- 50 to 54 years, P012H040, 08, 9
+--- 55 to 59 years, P012H041, 08, 9
+--- 60 and 61 years, P012H042, 08, 9
+--- 62 to 64 years, P012H043, 08, 9
+--- 65 and 66 years, P012H044, 08, 9
+--- 67 to 69 years, P012H045, 08, 9
+--- 70 to 74 years, P012H046, 08, 9
+--- 75 to 79 years, P012H047, 08, 9
+--- 80 to 84 years, P012H048, 08, 9
+--- 85 years and over, P012H049, 08, 9
+Total, P012I001, 08, 9
+- Male, P012I002, 08, 9
+--- Under 5 years, P012I003, 08, 9
+--- 5 to 9 years, P012I004, 08, 9
+--- 10 to 14 years, P012I005, 08, 9
+--- 15 to 17 years, P012I006, 08, 9
+--- 18 and 19 years, P012I007, 08, 9
+--- 20 years, P012I008, 08, 9
+--- 21 years, P012I009, 08, 9
+--- 22 to 24 years, P012I010, 08, 9
+--- 25 to 29 years, P012I011, 08, 9
+--- 30 to 34 years, P012I012, 08, 9
+--- 35 to 39 years, P012I013, 08, 9
+--- 40 to 44 years, P012I014, 08, 9
+--- 45 to 49 years, P012I015, 08, 9
+--- 50 to 54 years, P012I016, 08, 9
+--- 55 to 59 years, P012I017, 08, 9
+--- 60 and 61 years, P012I018, 08, 9
+--- 62 to 64 years, P012I019, 08, 9
+--- 65 and 66 years, P012I020, 08, 9
+--- 67 to 69 years, P012I021, 08, 9
+--- 70 to 74 years, P012I022, 08, 9
+--- 75 to 79 years, P012I023, 08, 9
+--- 80 to 84 years, P012I024, 08, 9
+--- 85 years and over, P012I025, 08, 9
+- Female, P012I026, 08, 9
+--- Under 5 years, P012I027, 08, 9
+--- 5 to 9 years, P012I028, 08, 9
+--- 10 to 14 years, P012I029, 08, 9
+--- 15 to 17 years, P012I030, 08, 9
+--- 18 and 19 years, P012I031, 08, 9
+--- 20 years, P012I032, 08, 9
+--- 21 years, P012I033, 08, 9
+--- 22 to 24 years, P012I034, 08, 9
+--- 25 to 29 years, P012I035, 08, 9
+--- 30 to 34 years, P012I036, 08, 9
+--- 35 to 39 years, P012I037, 08, 9
+--- 40 to 44 years, P012I038, 08, 9
+--- 45 to 49 years, P012I039, 08, 9
+--- 50 to 54 years, P012I040, 08, 9
+--- 55 to 59 years, P012I041, 08, 9
+--- 60 and 61 years, P012I042, 08, 9
+--- 62 to 64 years, P012I043, 08, 9
+--- 65 and 66 years, P012I044, 08, 9
+--- 67 to 69 years, P012I045, 08, 9
+--- 70 to 74 years, P012I046, 08, 9
+--- 75 to 79 years, P012I047, 08, 9
+--- 80 to 84 years, P012I048, 08, 9
+--- 85 years and over, P012I049, 08, 9
+Both sexes, P013A001, 08, 9
+- Male, P013A002, 08, 9
+- Female, P013A003, 08, 9
+Both sexes, P013B001, 08, 9
+- Male, P013B002, 08, 9
+- Female, P013B003, 08, 9
+Both sexes, P013C001, 08, 9
+- Male, P013C002, 08, 9
+- Female, P013C003, 08, 9
+Both sexes, P013D001, 08, 9
+- Male, P013D002, 08, 9
+- Female, P013D003, 08, 9
+Both sexes, P013E001, 08, 9
+- Male, P013E002, 08, 9
+- Female, P013E003, 08, 9
+Both sexes, P013F001, 08, 9
+- Male, P013F002, 08, 9
+- Female, P013F003, 08, 9
+Both sexes, P013G001, 08, 9
+- Male, P013G002, 08, 9
+- Female, P013G003, 08, 9
+Both sexes, P013H001, 08, 9
+- Male, P013H002, 08, 9
+- Female, P013H003, 08, 9
+Both sexes, P013I001, 08, 9
+- Male, P013I002, 08, 9
+- Female, P013I003, 08, 9
+Total, P016A001, 08, 9
+- Under 18 years, P016A002, 08, 9
+- 18 years and over, P016A003, 08, 9
+Total, P016B001, 08, 9
+- Under 18 years, P016B002, 08, 9
+- 18 years and over, P016B003, 08, 9
+Total, P016C001, 08, 9
+- Under 18 years, P016C002, 08, 9
+- 18 years and over, P016C003, 08, 9
+Total, P016D001, 08, 9
+- Under 18 years, P016D002, 08, 9
+- 18 years and over, P016D003, 08, 9
+Total, P016E001, 08, 9
+- Under 18 years, P016E002, 08, 9
+- 18 years and over, P016E003, 08, 9
+Total, P016F001, 08, 9
+- Under 18 years, P016F002, 08, 9
+- 18 years and over, P016F003, 08, 9
+Total, P016G001, 08, 9
+- Under 18 years, P016G002, 08, 9
+- 18 years and over, P016G003, 08, 9
+Total, P016H001, 08, 9
+- Under 18 years, P016H002, 08, 9
+- 18 years and over, P016H003, 08, 9
+Total, P016I001, 08, 9
+- Under 18 years, P016I002, 08, 9
+- 18 years and over, P016I003, 08, 9
+Total, P017A001, 08, 9
+- Under 18 years, P017A002, 08, 9
+- 18 years and over, P017A003, 08, 9

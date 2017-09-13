@@ -1,0 +1,79 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, HCT0010001, 47, 9
+- Owner occupied, HCT0010002, 47, 9
+--- Not Hispanic or Latino householder, HCT0010003, 47, 9
+----- Householder who is White alone, HCT0010004, 47, 9
+----- Householder who is Black or African American alone, HCT0010005, 47, 9
+----- Householder who is American Indian and Alaska Native alone, HCT0010006, 47, 9
+----- Householder who is Asian alone, HCT0010007, 47, 9
+----- Householder who is Native Hawaiian and Other Pacific Islander alone, HCT0010008, 47, 9
+----- Householder who is Some Other Race alone, HCT0010009, 47, 9
+----- Householder who is Two or More Races, HCT0010010, 47, 9
+--- Hispanic or Latino householder, HCT0010011, 47, 9
+----- Householder who is White alone, HCT0010012, 47, 9
+----- Householder who is Black or African American alone, HCT0010013, 47, 9
+----- Householder who is American Indian and Alaska Native alone, HCT0010014, 47, 9
+----- Householder who is Asian alone, HCT0010015, 47, 9
+----- Householder who is Native Hawaiian and Other Pacific Islander alone, HCT0010016, 47, 9
+----- Householder who is Some Other Race alone, HCT0010017, 47, 9
+----- Householder who is Two or More Races, HCT0010018, 47, 9
+- Renter occupied, HCT0010019, 47, 9
+--- Not Hispanic or Latino householder, HCT0010020, 47, 9
+----- Householder who is White alone, HCT0010021, 47, 9
+----- Householder who is Black or African American alone, HCT0010022, 47, 9
+----- Householder who is American Indian and Alaska Native alone, HCT0010023, 47, 9
+----- Householder who is Asian alone, HCT0010024, 47, 9
+----- Householder who is Native Hawaiian and Other Pacific Islander alone, HCT0010025, 47, 9
+----- Householder who is Some Other Race alone, HCT0010026, 47, 9
+----- Householder who is Two or More Races, HCT0010027, 47, 9
+--- Hispanic or Latino householder, HCT0010028, 47, 9
+----- Householder who is White alone, HCT0010029, 47, 9
+----- Householder who is Black or African American alone, HCT0010030, 47, 9
+----- Householder who is American Indian and Alaska Native alone, HCT0010031, 47, 9
+----- Householder who is Asian alone, HCT0010032, 47, 9
+----- Householder who is Native Hawaiian and Other Pacific Islander alone, HCT0010033, 47, 9
+----- Householder who is Some Other Race alone, HCT0010034, 47, 9
+----- Householder who is Two or More Races, HCT0010035, 47, 9
+Total, HCT0020001, 47, 9
+- Owner-occupied, HCT0020002, 47, 9
+--- With own children under 18 years, HCT0020003, 47, 9
+----- Under 6 years only, HCT0020004, 47, 9
+----- Under 6 years and 6 to 17 years, HCT0020005, 47, 9
+----- 6 to 17 years only, HCT0020006, 47, 9
+--- No own children under 18 years, HCT0020007, 47, 9
+- Renter-occupied, HCT0020008, 47, 9
+--- With own children under 18 years, HCT0020009, 47, 9
+----- Under 6 years only, HCT0020010, 47, 9
+----- Under 6 years and 6 to 17 years, HCT0020011, 47, 9
+----- 6 to 17 years only, HCT0020012, 47, 9
+--- No own children under 18 years, HCT0020013, 47, 9
+Total, HCT0030001, 47, 9
+- Owner-occupied, HCT0030002, 47, 9
+--- With related children under 18 years, HCT0030003, 47, 9
+----- Under 6 years only, HCT0030004, 47, 9
+----- Under 6 years and 6 to 17 years, HCT0030005, 47, 9
+----- 6 to 17 years only, HCT0030006, 47, 9
+--- No related children under 18 years, HCT0030007, 47, 9
+- Renter-occupied, HCT0030008, 47, 9
+--- With related children under 18 years, HCT0030009, 47, 9
+----- Under 6 years only, HCT0030010, 47, 9
+----- Under 6 years and 6 to 17 years, HCT0030011, 47, 9
+----- 6 to 17 years only, HCT0030012, 47, 9
+--- No related children under 18 years, HCT0030013, 47, 9
+Total, HCT0040001, 47, 9
+- Owner-occupied, HCT0040002, 47, 9
+--- With children under 18 years, HCT0040003, 47, 9
+----- Under 6 years only, HCT0040004, 47, 9
+----- Under 6 years and 6 to 17 years, HCT0040005, 47, 9
+----- 6 to 17 years only, HCT0040006, 47, 9
+--- No children under 18 years, HCT0040007, 47, 9
+- Renter-occupied, HCT0040008, 47, 9
+--- With children under 18 years, HCT0040009, 47, 9
+----- Under 6 years only, HCT0040010, 47, 9
+----- Under 6 years and 6 to 17 years, HCT0040011, 47, 9
+----- 6 to 17 years only, HCT0040012, 47, 9
+--- No children under 18 years, HCT0040013, 47, 9

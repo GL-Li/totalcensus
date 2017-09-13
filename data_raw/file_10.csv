@@ -1,0 +1,257 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, P029A001, 10, 9
+- In households, P029A002, 10, 9
+--- In family households, P029A003, 10, 9
+----- Householder, P029A004, 10, 9
+------- Male, P029A005, 10, 9
+------- Female, P029A006, 10, 9
+----- Spouse, P029A007, 10, 9
+----- Biological child, P029A008, 10, 9
+----- Adopted child, P029A009, 10, 9
+----- Stepchild, P029A010, 10, 9
+----- Grandchild, P029A011, 10, 9
+----- Brother or sister, P029A012, 10, 9
+----- Parent, P029A013, 10, 9
+----- Parent-in-law, P029A014, 10, 9
+----- Son-in-law or daughter-in-law, P029A015, 10, 9
+----- Other relatives, P029A016, 10, 9
+----- Nonrelatives, P029A017, 10, 9
+--- In nonfamily households, P029A018, 10, 9
+----- Male householder, P029A019, 10, 9
+------- Living alone, P029A020, 10, 9
+------- Not living alone, P029A021, 10, 9
+----- Female householder, P029A022, 10, 9
+------- Living alone, P029A023, 10, 9
+------- Not living alone, P029A024, 10, 9
+----- Nonrelatives, P029A025, 10, 9
+- In group quarters, P029A026, 10, 9
+--- Institutionalized population, P029A027, 10, 9
+--- Noninstitutionalized population, P029A028, 10, 9
+Total, P029B001, 10, 9
+- In households, P029B002, 10, 9
+--- In family households, P029B003, 10, 9
+----- Householder, P029B004, 10, 9
+------- Male, P029B005, 10, 9
+------- Female, P029B006, 10, 9
+----- Spouse, P029B007, 10, 9
+----- Biological child, P029B008, 10, 9
+----- Adopted child, P029B009, 10, 9
+----- Stepchild, P029B010, 10, 9
+----- Grandchild, P029B011, 10, 9
+----- Brother or sister, P029B012, 10, 9
+----- Parent, P029B013, 10, 9
+----- Parent-in-law, P029B014, 10, 9
+----- Son-in-law or daughter-in-law, P029B015, 10, 9
+----- Other relatives, P029B016, 10, 9
+----- Nonrelatives, P029B017, 10, 9
+--- In nonfamily households, P029B018, 10, 9
+----- Male householder, P029B019, 10, 9
+------- Living alone, P029B020, 10, 9
+------- Not living alone, P029B021, 10, 9
+----- Female householder, P029B022, 10, 9
+------- Living alone, P029B023, 10, 9
+------- Not living alone, P029B024, 10, 9
+----- Nonrelatives, P029B025, 10, 9
+- In group quarters, P029B026, 10, 9
+--- Institutionalized population, P029B027, 10, 9
+--- Noninstitutionalized population, P029B028, 10, 9
+Total, P029C001, 10, 9
+- In households, P029C002, 10, 9
+--- In family households, P029C003, 10, 9
+----- Householder, P029C004, 10, 9
+------- Male, P029C005, 10, 9
+------- Female, P029C006, 10, 9
+----- Spouse, P029C007, 10, 9
+----- Biological child, P029C008, 10, 9
+----- Adopted child, P029C009, 10, 9
+----- Stepchild, P029C010, 10, 9
+----- Grandchild, P029C011, 10, 9
+----- Brother or sister, P029C012, 10, 9
+----- Parent, P029C013, 10, 9
+----- Parent-in-law, P029C014, 10, 9
+----- Son-in-law or daughter-in-law, P029C015, 10, 9
+----- Other relatives, P029C016, 10, 9
+----- Nonrelatives, P029C017, 10, 9
+--- In nonfamily households, P029C018, 10, 9
+----- Male householder, P029C019, 10, 9
+------- Living alone, P029C020, 10, 9
+------- Not living alone, P029C021, 10, 9
+----- Female householder, P029C022, 10, 9
+------- Living alone, P029C023, 10, 9
+------- Not living alone, P029C024, 10, 9
+----- Nonrelatives, P029C025, 10, 9
+- In group quarters, P029C026, 10, 9
+--- Institutionalized population, P029C027, 10, 9
+--- Noninstitutionalized population, P029C028, 10, 9
+Total, P029D001, 10, 9
+- In households, P029D002, 10, 9
+--- In family households, P029D003, 10, 9
+----- Householder, P029D004, 10, 9
+------- Male, P029D005, 10, 9
+------- Female, P029D006, 10, 9
+----- Spouse, P029D007, 10, 9
+----- Biological child, P029D008, 10, 9
+----- Adopted child, P029D009, 10, 9
+----- Stepchild, P029D010, 10, 9
+----- Grandchild, P029D011, 10, 9
+----- Brother or sister, P029D012, 10, 9
+----- Parent, P029D013, 10, 9
+----- Parent-in-law, P029D014, 10, 9
+----- Son-in-law or daughter-in-law, P029D015, 10, 9
+----- Other relatives, P029D016, 10, 9
+----- Nonrelatives, P029D017, 10, 9
+--- In nonfamily households, P029D018, 10, 9
+----- Male householder, P029D019, 10, 9
+------- Living alone, P029D020, 10, 9
+------- Not living alone, P029D021, 10, 9
+----- Female householder, P029D022, 10, 9
+------- Living alone, P029D023, 10, 9
+------- Not living alone, P029D024, 10, 9
+----- Nonrelatives, P029D025, 10, 9
+- In group quarters, P029D026, 10, 9
+--- Institutionalized population, P029D027, 10, 9
+--- Noninstitutionalized population, P029D028, 10, 9
+Total, P029E001, 10, 9
+- In households, P029E002, 10, 9
+--- In family households, P029E003, 10, 9
+----- Householder, P029E004, 10, 9
+------- Male, P029E005, 10, 9
+------- Female, P029E006, 10, 9
+----- Spouse, P029E007, 10, 9
+----- Biological child, P029E008, 10, 9
+----- Adopted child, P029E009, 10, 9
+----- Stepchild, P029E010, 10, 9
+----- Grandchild, P029E011, 10, 9
+----- Brother or sister, P029E012, 10, 9
+----- Parent, P029E013, 10, 9
+----- Parent-in-law, P029E014, 10, 9
+----- Son-in-law or daughter-in-law, P029E015, 10, 9
+----- Other relatives, P029E016, 10, 9
+----- Nonrelatives, P029E017, 10, 9
+--- In nonfamily households, P029E018, 10, 9
+----- Male householder, P029E019, 10, 9
+------- Living alone, P029E020, 10, 9
+------- Not living alone, P029E021, 10, 9
+----- Female householder, P029E022, 10, 9
+------- Living alone, P029E023, 10, 9
+------- Not living alone, P029E024, 10, 9
+----- Nonrelatives, P029E025, 10, 9
+- In group quarters, P029E026, 10, 9
+--- Institutionalized population, P029E027, 10, 9
+--- Noninstitutionalized population, P029E028, 10, 9
+Total, P029F001, 10, 9
+- In households, P029F002, 10, 9
+--- In family households, P029F003, 10, 9
+----- Householder, P029F004, 10, 9
+------- Male, P029F005, 10, 9
+------- Female, P029F006, 10, 9
+----- Spouse, P029F007, 10, 9
+----- Biological child, P029F008, 10, 9
+----- Adopted child, P029F009, 10, 9
+----- Stepchild, P029F010, 10, 9
+----- Grandchild, P029F011, 10, 9
+----- Brother or sister, P029F012, 10, 9
+----- Parent, P029F013, 10, 9
+----- Parent-in-law, P029F014, 10, 9
+----- Son-in-law or daughter-in-law, P029F015, 10, 9
+----- Other relatives, P029F016, 10, 9
+----- Nonrelatives, P029F017, 10, 9
+--- In nonfamily households, P029F018, 10, 9
+----- Male householder, P029F019, 10, 9
+------- Living alone, P029F020, 10, 9
+------- Not living alone, P029F021, 10, 9
+----- Female householder, P029F022, 10, 9
+------- Living alone, P029F023, 10, 9
+------- Not living alone, P029F024, 10, 9
+----- Nonrelatives, P029F025, 10, 9
+- In group quarters, P029F026, 10, 9
+--- Institutionalized population, P029F027, 10, 9
+--- Noninstitutionalized population, P029F028, 10, 9
+Total, P029G001, 10, 9
+- In households, P029G002, 10, 9
+--- In family households, P029G003, 10, 9
+----- Householder, P029G004, 10, 9
+------- Male, P029G005, 10, 9
+------- Female, P029G006, 10, 9
+----- Spouse, P029G007, 10, 9
+----- Biological child, P029G008, 10, 9
+----- Adopted child, P029G009, 10, 9
+----- Stepchild, P029G010, 10, 9
+----- Grandchild, P029G011, 10, 9
+----- Brother or sister, P029G012, 10, 9
+----- Parent, P029G013, 10, 9
+----- Parent-in-law, P029G014, 10, 9
+----- Son-in-law or daughter-in-law, P029G015, 10, 9
+----- Other relatives, P029G016, 10, 9
+----- Nonrelatives, P029G017, 10, 9
+--- In nonfamily households, P029G018, 10, 9
+----- Male householder, P029G019, 10, 9
+------- Living alone, P029G020, 10, 9
+------- Not living alone, P029G021, 10, 9
+----- Female householder, P029G022, 10, 9
+------- Living alone, P029G023, 10, 9
+------- Not living alone, P029G024, 10, 9
+----- Nonrelatives, P029G025, 10, 9
+- In group quarters, P029G026, 10, 9
+--- Institutionalized population, P029G027, 10, 9
+--- Noninstitutionalized population, P029G028, 10, 9
+Total, P029H001, 10, 9
+- In households, P029H002, 10, 9
+--- In family households, P029H003, 10, 9
+----- Householder, P029H004, 10, 9
+------- Male, P029H005, 10, 9
+------- Female, P029H006, 10, 9
+----- Spouse, P029H007, 10, 9
+----- Biological child, P029H008, 10, 9
+----- Adopted child, P029H009, 10, 9
+----- Stepchild, P029H010, 10, 9
+----- Grandchild, P029H011, 10, 9
+----- Brother or sister, P029H012, 10, 9
+----- Parent, P029H013, 10, 9
+----- Parent-in-law, P029H014, 10, 9
+----- Son-in-law or daughter-in-law, P029H015, 10, 9
+----- Other relatives, P029H016, 10, 9
+----- Nonrelatives, P029H017, 10, 9
+--- In nonfamily households, P029H018, 10, 9
+----- Male householder, P029H019, 10, 9
+------- Living alone, P029H020, 10, 9
+------- Not living alone, P029H021, 10, 9
+----- Female householder, P029H022, 10, 9
+------- Living alone, P029H023, 10, 9
+------- Not living alone, P029H024, 10, 9
+----- Nonrelatives, P029H025, 10, 9
+- In group quarters, P029H026, 10, 9
+--- Institutionalized population, P029H027, 10, 9
+--- Noninstitutionalized population, P029H028, 10, 9
+Total, P029I001, 10, 9
+- In households, P029I002, 10, 9
+--- In family households, P029I003, 10, 9
+----- Householder, P029I004, 10, 9
+------- Male, P029I005, 10, 9
+------- Female, P029I006, 10, 9
+----- Spouse, P029I007, 10, 9
+----- Biological child, P029I008, 10, 9
+----- Adopted child, P029I009, 10, 9
+----- Stepchild, P029I010, 10, 9
+----- Grandchild, P029I011, 10, 9
+----- Brother or sister, P029I012, 10, 9
+----- Parent, P029I013, 10, 9
+----- Parent-in-law, P029I014, 10, 9
+----- Son-in-law or daughter-in-law, P029I015, 10, 9
+----- Other relatives, P029I016, 10, 9
+----- Nonrelatives, P029I017, 10, 9
+--- In nonfamily households, P029I018, 10, 9
+----- Male householder, P029I019, 10, 9
+------- Living alone, P029I020, 10, 9
+------- Not living alone, P029I021, 10, 9
+----- Female householder, P029I022, 10, 9
+------- Living alone, P029I023, 10, 9
+------- Not living alone, P029I024, 10, 9
+----- Nonrelatives, P029I025, 10, 9
+- In group quarters, P029I026, 10, 9
+--- Institutionalized population, P029I027, 10, 9
+--- Noninstitutionalized population, P029I028, 10, 9

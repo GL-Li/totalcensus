@@ -1,0 +1,259 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, P031A001, 11, 9
+- In households, P031A002, 11, 9
+--- Householder or spouse, P031A003, 11, 9
+--- Related child, P031A004, 11, 9
+----- Own child, P031A005, 11, 9
+------- In husband-wife family, P031A006, 11, 9
+------- In other family, P031A007, 11, 9
+--------- Male householder; no wife present, P031A008, 11, 9
+--------- Female householder; no husband present, P031A009, 11, 9
+----- Other relatives, P031A010, 11, 9
+------- Grandchild, P031A011, 11, 9
+------- Other relatives, P031A012, 11, 9
+--- Nonrelatives, P031A013, 11, 9
+- In group quarters, P031A014, 11, 9
+--- Institutionalized population, P031A015, 11, 9
+--- Noninstitutionalized population, P031A016, 11, 9
+Total, P031B001, 11, 9
+- In households, P031B002, 11, 9
+--- Householder or spouse, P031B003, 11, 9
+--- Related child, P031B004, 11, 9
+----- Own child, P031B005, 11, 9
+------- In husband-wife family, P031B006, 11, 9
+------- In other family, P031B007, 11, 9
+--------- Male householder; no wife present, P031B008, 11, 9
+--------- Female householder; no husband present, P031B009, 11, 9
+----- Other relatives, P031B010, 11, 9
+------- Grandchild, P031B011, 11, 9
+------- Other relatives, P031B012, 11, 9
+--- Nonrelatives, P031B013, 11, 9
+- In group quarters, P031B014, 11, 9
+--- Institutionalized population, P031B015, 11, 9
+--- Noninstitutionalized population, P031B016, 11, 9
+Total, P031C001, 11, 9
+- In households, P031C002, 11, 9
+--- Householder or spouse, P031C003, 11, 9
+--- Related child, P031C004, 11, 9
+----- Own child, P031C005, 11, 9
+------- In husband-wife family, P031C006, 11, 9
+------- In other family, P031C007, 11, 9
+--------- Male householder; no wife present, P031C008, 11, 9
+--------- Female householder; no husband present, P031C009, 11, 9
+----- Other relatives, P031C010, 11, 9
+------- Grandchild, P031C011, 11, 9
+------- Other relatives, P031C012, 11, 9
+--- Nonrelatives, P031C013, 11, 9
+- In group quarters, P031C014, 11, 9
+--- Institutionalized population, P031C015, 11, 9
+--- Noninstitutionalized population, P031C016, 11, 9
+Total, P031D001, 11, 9
+- In households, P031D002, 11, 9
+--- Householder or spouse, P031D003, 11, 9
+--- Related child, P031D004, 11, 9
+----- Own child, P031D005, 11, 9
+------- In husband-wife family, P031D006, 11, 9
+------- In other family, P031D007, 11, 9
+--------- Male householder; no wife present, P031D008, 11, 9
+--------- Female householder; no husband present, P031D009, 11, 9
+----- Other relatives, P031D010, 11, 9
+------- Grandchild, P031D011, 11, 9
+------- Other relatives, P031D012, 11, 9
+--- Nonrelatives, P031D013, 11, 9
+- In group quarters, P031D014, 11, 9
+--- Institutionalized population, P031D015, 11, 9
+--- Noninstitutionalized population, P031D016, 11, 9
+Total, P031E001, 11, 9
+- In households, P031E002, 11, 9
+--- Householder or spouse, P031E003, 11, 9
+--- Related child, P031E004, 11, 9
+----- Own child, P031E005, 11, 9
+------- In husband-wife family, P031E006, 11, 9
+------- In other family, P031E007, 11, 9
+--------- Male householder; no wife present, P031E008, 11, 9
+--------- Female householder; no husband present, P031E009, 11, 9
+----- Other relatives, P031E010, 11, 9
+------- Grandchild, P031E011, 11, 9
+------- Other relatives, P031E012, 11, 9
+--- Nonrelatives, P031E013, 11, 9
+- In group quarters, P031E014, 11, 9
+--- Institutionalized population, P031E015, 11, 9
+--- Noninstitutionalized population, P031E016, 11, 9
+Total, P031F001, 11, 9
+- In households, P031F002, 11, 9
+--- Householder or spouse, P031F003, 11, 9
+--- Related child, P031F004, 11, 9
+----- Own child, P031F005, 11, 9
+------- In husband-wife family, P031F006, 11, 9
+------- In other family, P031F007, 11, 9
+--------- Male householder; no wife present, P031F008, 11, 9
+--------- Female householder; no husband present, P031F009, 11, 9
+----- Other relatives, P031F010, 11, 9
+------- Grandchild, P031F011, 11, 9
+------- Other relatives, P031F012, 11, 9
+--- Nonrelatives, P031F013, 11, 9
+- In group quarters, P031F014, 11, 9
+--- Institutionalized population, P031F015, 11, 9
+--- Noninstitutionalized population, P031F016, 11, 9
+Total, P031G001, 11, 9
+- In households, P031G002, 11, 9
+--- Householder or spouse, P031G003, 11, 9
+--- Related child, P031G004, 11, 9
+----- Own child, P031G005, 11, 9
+------- In husband-wife family, P031G006, 11, 9
+------- In other family, P031G007, 11, 9
+--------- Male householder; no wife present, P031G008, 11, 9
+--------- Female householder; no husband present, P031G009, 11, 9
+----- Other relatives, P031G010, 11, 9
+------- Grandchild, P031G011, 11, 9
+------- Other relatives, P031G012, 11, 9
+--- Nonrelatives, P031G013, 11, 9
+- In group quarters, P031G014, 11, 9
+--- Institutionalized population, P031G015, 11, 9
+--- Noninstitutionalized population, P031G016, 11, 9
+Total, P031H001, 11, 9
+- In households, P031H002, 11, 9
+--- Householder or spouse, P031H003, 11, 9
+--- Related child, P031H004, 11, 9
+----- Own child, P031H005, 11, 9
+------- In husband-wife family, P031H006, 11, 9
+------- In other family, P031H007, 11, 9
+--------- Male householder; no wife present, P031H008, 11, 9
+--------- Female householder; no husband present, P031H009, 11, 9
+----- Other relatives, P031H010, 11, 9
+------- Grandchild, P031H011, 11, 9
+------- Other relatives, P031H012, 11, 9
+--- Nonrelatives, P031H013, 11, 9
+- In group quarters, P031H014, 11, 9
+--- Institutionalized population, P031H015, 11, 9
+--- Noninstitutionalized population, P031H016, 11, 9
+Total, P031I001, 11, 9
+- In households, P031I002, 11, 9
+--- Householder or spouse, P031I003, 11, 9
+--- Related child, P031I004, 11, 9
+----- Own child, P031I005, 11, 9
+------- In husband-wife family, P031I006, 11, 9
+------- In other family, P031I007, 11, 9
+--------- Male householder; no wife present, P031I008, 11, 9
+--------- Female householder; no husband present, P031I009, 11, 9
+----- Other relatives, P031I010, 11, 9
+------- Grandchild, P031I011, 11, 9
+------- Other relatives, P031I012, 11, 9
+--- Nonrelatives, P031I013, 11, 9
+- In group quarters, P031I014, 11, 9
+--- Institutionalized population, P031I015, 11, 9
+--- Noninstitutionalized population, P031I016, 11, 9
+Total, P034A001, 11, 9
+- In households, P034A002, 11, 9
+--- In family households, P034A003, 11, 9
+----- Householder, P034A004, 11, 9
+------- Male, P034A005, 11, 9
+------- Female, P034A006, 11, 9
+----- Spouse, P034A007, 11, 9
+----- Parent, P034A008, 11, 9
+----- Parent-in-law, P034A009, 11, 9
+----- Other relatives, P034A010, 11, 9
+----- Nonrelatives, P034A011, 11, 9
+--- In nonfamily households, P034A012, 11, 9
+----- Male householder, P034A013, 11, 9
+------- Living alone, P034A014, 11, 9
+------- Not living alone, P034A015, 11, 9
+----- Female householder, P034A016, 11, 9
+------- Living alone, P034A017, 11, 9
+------- Not living alone, P034A018, 11, 9
+----- Nonrelatives, P034A019, 11, 9
+- In group quarters, P034A020, 11, 9
+--- Institutionalized population, P034A021, 11, 9
+--- Noninstitutionalized population, P034A022, 11, 9
+Total, P034B001, 11, 9
+- In households, P034B002, 11, 9
+--- In family households, P034B003, 11, 9
+----- Householder, P034B004, 11, 9
+------- Male, P034B005, 11, 9
+------- Female, P034B006, 11, 9
+----- Spouse, P034B007, 11, 9
+----- Parent, P034B008, 11, 9
+----- Parent-in-law, P034B009, 11, 9
+----- Other relatives, P034B010, 11, 9
+----- Nonrelatives, P034B011, 11, 9
+--- In nonfamily households, P034B012, 11, 9
+----- Male householder, P034B013, 11, 9
+------- Living alone, P034B014, 11, 9
+------- Not living alone, P034B015, 11, 9
+----- Female householder, P034B016, 11, 9
+------- Living alone, P034B017, 11, 9
+------- Not living alone, P034B018, 11, 9
+----- Nonrelatives, P034B019, 11, 9
+- In group quarters, P034B020, 11, 9
+--- Institutionalized population, P034B021, 11, 9
+--- Noninstitutionalized population, P034B022, 11, 9
+Total, P034C001, 11, 9
+- In households, P034C002, 11, 9
+--- In family households, P034C003, 11, 9
+----- Householder, P034C004, 11, 9
+------- Male, P034C005, 11, 9
+------- Female, P034C006, 11, 9
+----- Spouse, P034C007, 11, 9
+----- Parent, P034C008, 11, 9
+----- Parent-in-law, P034C009, 11, 9
+----- Other relatives, P034C010, 11, 9
+----- Nonrelatives, P034C011, 11, 9
+--- In nonfamily households, P034C012, 11, 9
+----- Male householder, P034C013, 11, 9
+------- Living alone, P034C014, 11, 9
+------- Not living alone, P034C015, 11, 9
+----- Female householder, P034C016, 11, 9
+------- Living alone, P034C017, 11, 9
+------- Not living alone, P034C018, 11, 9
+----- Nonrelatives, P034C019, 11, 9
+- In group quarters, P034C020, 11, 9
+--- Institutionalized population, P034C021, 11, 9
+--- Noninstitutionalized population, P034C022, 11, 9
+Total, P034D001, 11, 9
+- In households, P034D002, 11, 9
+--- In family households, P034D003, 11, 9
+----- Householder, P034D004, 11, 9
+------- Male, P034D005, 11, 9
+------- Female, P034D006, 11, 9
+----- Spouse, P034D007, 11, 9
+----- Parent, P034D008, 11, 9
+----- Parent-in-law, P034D009, 11, 9
+----- Other relatives, P034D010, 11, 9
+----- Nonrelatives, P034D011, 11, 9
+--- In nonfamily households, P034D012, 11, 9
+----- Male householder, P034D013, 11, 9
+------- Living alone, P034D014, 11, 9
+------- Not living alone, P034D015, 11, 9
+----- Female householder, P034D016, 11, 9
+------- Living alone, P034D017, 11, 9
+------- Not living alone, P034D018, 11, 9
+----- Nonrelatives, P034D019, 11, 9
+- In group quarters, P034D020, 11, 9
+--- Institutionalized population, P034D021, 11, 9
+--- Noninstitutionalized population, P034D022, 11, 9
+Total, P034E001, 11, 9
+- In households, P034E002, 11, 9
+--- In family households, P034E003, 11, 9
+----- Householder, P034E004, 11, 9
+------- Male, P034E005, 11, 9
+------- Female, P034E006, 11, 9
+----- Spouse, P034E007, 11, 9
+----- Parent, P034E008, 11, 9
+----- Parent-in-law, P034E009, 11, 9
+----- Other relatives, P034E010, 11, 9
+----- Nonrelatives, P034E011, 11, 9
+--- In nonfamily households, P034E012, 11, 9
+----- Male householder, P034E013, 11, 9
+------- Living alone, P034E014, 11, 9
+------- Not living alone, P034E015, 11, 9
+----- Female householder, P034E016, 11, 9
+------- Living alone, P034E017, 11, 9
+------- Not living alone, P034E018, 11, 9
+----- Nonrelatives, P034E019, 11, 9
+- In group quarters, P034E020, 11, 9
+--- Institutionalized population, P034E021, 11, 9
+--- Noninstitutionalized population, P034E022, 11, 9

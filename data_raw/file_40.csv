@@ -1,0 +1,239 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, PCO0010001, 40, 9
+- Male, PCO0010002, 40, 9
+--- Under 5 years, PCO0010003, 40, 9
+--- 5 to 9 years, PCO0010004, 40, 9
+--- 10 to 14 years, PCO0010005, 40, 9
+--- 15 to 19 years, PCO0010006, 40, 9
+--- 20 to 24 years, PCO0010007, 40, 9
+--- 25 to 29 years, PCO0010008, 40, 9
+--- 30 to 34 years, PCO0010009, 40, 9
+--- 35 to 39 years, PCO0010010, 40, 9
+--- 40 to 44 years, PCO0010011, 40, 9
+--- 45 to 49 years, PCO0010012, 40, 9
+--- 50 to 54 years, PCO0010013, 40, 9
+--- 55 to 59 years, PCO0010014, 40, 9
+--- 60 to 64 years, PCO0010015, 40, 9
+--- 65 to 69 years, PCO0010016, 40, 9
+--- 70 to 74 years, PCO0010017, 40, 9
+--- 75 to 79 years, PCO0010018, 40, 9
+--- 80 to 84 years, PCO0010019, 40, 9
+--- 85 years and over, PCO0010020, 40, 9
+- Female, PCO0010021, 40, 9
+--- Under 5 years, PCO0010022, 40, 9
+--- 5 to 9 years, PCO0010023, 40, 9
+--- 10 to 14 years, PCO0010024, 40, 9
+--- 15 to 19 years, PCO0010025, 40, 9
+--- 20 to 24 years, PCO0010026, 40, 9
+--- 25 to 29 years, PCO0010027, 40, 9
+--- 30 to 34 years, PCO0010028, 40, 9
+--- 35 to 39 years, PCO0010029, 40, 9
+--- 40 to 44 years, PCO0010030, 40, 9
+--- 45 to 49 years, PCO0010031, 40, 9
+--- 50 to 54 years, PCO0010032, 40, 9
+--- 55 to 59 years, PCO0010033, 40, 9
+--- 60 to 64 years, PCO0010034, 40, 9
+--- 65 to 69 years, PCO0010035, 40, 9
+--- 70 to 74 years, PCO0010036, 40, 9
+--- 75 to 79 years, PCO0010037, 40, 9
+--- 80 to 84 years, PCO0010038, 40, 9
+--- 85 years and over, PCO0010039, 40, 9
+Total (101–106; 201–203; 301; 401–405), PCO0020001, 40, 9
+- Male, PCO0020002, 40, 9
+--- Under 5 years, PCO0020003, 40, 9
+--- 5 to 9 years, PCO0020004, 40, 9
+--- 10 to 14 years, PCO0020005, 40, 9
+--- 15 to 19 years, PCO0020006, 40, 9
+--- 20 to 24 years, PCO0020007, 40, 9
+--- 25 to 29 years, PCO0020008, 40, 9
+--- 30 to 34 years, PCO0020009, 40, 9
+--- 35 to 39 years, PCO0020010, 40, 9
+--- 40 to 44 years, PCO0020011, 40, 9
+--- 45 to 49 years, PCO0020012, 40, 9
+--- 50 to 54 years, PCO0020013, 40, 9
+--- 55 to 59 years, PCO0020014, 40, 9
+--- 60 to 64 years, PCO0020015, 40, 9
+--- 65 to 69 years, PCO0020016, 40, 9
+--- 70 to 74 years, PCO0020017, 40, 9
+--- 75 to 79 years, PCO0020018, 40, 9
+--- 80 to 84 years, PCO0020019, 40, 9
+--- 85 years and over, PCO0020020, 40, 9
+- Female, PCO0020021, 40, 9
+--- Under 5 years, PCO0020022, 40, 9
+--- 5 to 9 years, PCO0020023, 40, 9
+--- 10 to 14 years, PCO0020024, 40, 9
+--- 15 to 19 years, PCO0020025, 40, 9
+--- 20 to 24 years, PCO0020026, 40, 9
+--- 25 to 29 years, PCO0020027, 40, 9
+--- 30 to 34 years, PCO0020028, 40, 9
+--- 35 to 39 years, PCO0020029, 40, 9
+--- 40 to 44 years, PCO0020030, 40, 9
+--- 45 to 49 years, PCO0020031, 40, 9
+--- 50 to 54 years, PCO0020032, 40, 9
+--- 55 to 59 years, PCO0020033, 40, 9
+--- 60 to 64 years, PCO0020034, 40, 9
+--- 65 to 69 years, PCO0020035, 40, 9
+--- 70 to 74 years, PCO0020036, 40, 9
+--- 75 to 79 years, PCO0020037, 40, 9
+--- 80 to 84 years, PCO0020038, 40, 9
+--- 85 years and over, PCO0020039, 40, 9
+Total (101–106), PCO0030001, 40, 9
+- Male, PCO0030002, 40, 9
+--- Under 5 years, PCO0030003, 40, 9
+--- 5 to 9 years, PCO0030004, 40, 9
+--- 10 to 14 years, PCO0030005, 40, 9
+--- 15 to 19 years, PCO0030006, 40, 9
+--- 20 to 24 years, PCO0030007, 40, 9
+--- 25 to 29 years, PCO0030008, 40, 9
+--- 30 to 34 years, PCO0030009, 40, 9
+--- 35 to 39 years, PCO0030010, 40, 9
+--- 40 to 44 years, PCO0030011, 40, 9
+--- 45 to 49 years, PCO0030012, 40, 9
+--- 50 to 54 years, PCO0030013, 40, 9
+--- 55 to 59 years, PCO0030014, 40, 9
+--- 60 to 64 years, PCO0030015, 40, 9
+--- 65 to 69 years, PCO0030016, 40, 9
+--- 70 to 74 years, PCO0030017, 40, 9
+--- 75 to 79 years, PCO0030018, 40, 9
+--- 80 to 84 years, PCO0030019, 40, 9
+--- 85 years and over, PCO0030020, 40, 9
+- Female, PCO0030021, 40, 9
+--- Under 5 years, PCO0030022, 40, 9
+--- 5 to 9 years, PCO0030023, 40, 9
+--- 10 to 14 years, PCO0030024, 40, 9
+--- 15 to 19 years, PCO0030025, 40, 9
+--- 20 to 24 years, PCO0030026, 40, 9
+--- 25 to 29 years, PCO0030027, 40, 9
+--- 30 to 34 years, PCO0030028, 40, 9
+--- 35 to 39 years, PCO0030029, 40, 9
+--- 40 to 44 years, PCO0030030, 40, 9
+--- 45 to 49 years, PCO0030031, 40, 9
+--- 50 to 54 years, PCO0030032, 40, 9
+--- 55 to 59 years, PCO0030033, 40, 9
+--- 60 to 64 years, PCO0030034, 40, 9
+--- 65 to 69 years, PCO0030035, 40, 9
+--- 70 to 74 years, PCO0030036, 40, 9
+--- 75 to 79 years, PCO0030037, 40, 9
+--- 80 to 84 years, PCO0030038, 40, 9
+--- 85 years and over, PCO0030039, 40, 9
+Total (201–203), PCO0040001, 40, 9
+- Male, PCO0040002, 40, 9
+--- Under 5 years, PCO0040003, 40, 9
+--- 5 to 9 years, PCO0040004, 40, 9
+--- 10 to 14 years, PCO0040005, 40, 9
+--- 15 to 19 years, PCO0040006, 40, 9
+--- 20 to 24 years, PCO0040007, 40, 9
+--- 25 to 29 years, PCO0040008, 40, 9
+--- 30 to 34 years, PCO0040009, 40, 9
+--- 35 to 39 years, PCO0040010, 40, 9
+--- 40 to 44 years, PCO0040011, 40, 9
+--- 45 to 49 years, PCO0040012, 40, 9
+--- 50 to 54 years, PCO0040013, 40, 9
+--- 55 to 59 years, PCO0040014, 40, 9
+--- 60 to 64 years, PCO0040015, 40, 9
+--- 65 to 69 years, PCO0040016, 40, 9
+--- 70 to 74 years, PCO0040017, 40, 9
+--- 75 to 79 years, PCO0040018, 40, 9
+--- 80 to 84 years, PCO0040019, 40, 9
+--- 85 years and over, PCO0040020, 40, 9
+- Female, PCO0040021, 40, 9
+--- Under 5 years, PCO0040022, 40, 9
+--- 5 to 9 years, PCO0040023, 40, 9
+--- 10 to 14 years, PCO0040024, 40, 9
+--- 15 to 19 years, PCO0040025, 40, 9
+--- 20 to 24 years, PCO0040026, 40, 9
+--- 25 to 29 years, PCO0040027, 40, 9
+--- 30 to 34 years, PCO0040028, 40, 9
+--- 35 to 39 years, PCO0040029, 40, 9
+--- 40 to 44 years, PCO0040030, 40, 9
+--- 45 to 49 years, PCO0040031, 40, 9
+--- 50 to 54 years, PCO0040032, 40, 9
+--- 55 to 59 years, PCO0040033, 40, 9
+--- 60 to 64 years, PCO0040034, 40, 9
+--- 65 to 69 years, PCO0040035, 40, 9
+--- 70 to 74 years, PCO0040036, 40, 9
+--- 75 to 79 years, PCO0040037, 40, 9
+--- 80 to 84 years, PCO0040038, 40, 9
+--- 85 years and over, PCO0040039, 40, 9
+Total (301), PCO0050001, 40, 9
+- Male, PCO0050002, 40, 9
+--- Under 5 years, PCO0050003, 40, 9
+--- 5 to 9 years, PCO0050004, 40, 9
+--- 10 to 14 years, PCO0050005, 40, 9
+--- 15 to 19 years, PCO0050006, 40, 9
+--- 20 to 24 years, PCO0050007, 40, 9
+--- 25 to 29 years, PCO0050008, 40, 9
+--- 30 to 34 years, PCO0050009, 40, 9
+--- 35 to 39 years, PCO0050010, 40, 9
+--- 40 to 44 years, PCO0050011, 40, 9
+--- 45 to 49 years, PCO0050012, 40, 9
+--- 50 to 54 years, PCO0050013, 40, 9
+--- 55 to 59 years, PCO0050014, 40, 9
+--- 60 to 64 years, PCO0050015, 40, 9
+--- 65 to 69 years, PCO0050016, 40, 9
+--- 70 to 74 years, PCO0050017, 40, 9
+--- 75 to 79 years, PCO0050018, 40, 9
+--- 80 to 84 years, PCO0050019, 40, 9
+--- 85 years and over, PCO0050020, 40, 9
+- Female, PCO0050021, 40, 9
+--- Under 5 years, PCO0050022, 40, 9
+--- 5 to 9 years, PCO0050023, 40, 9
+--- 10 to 14 years, PCO0050024, 40, 9
+--- 15 to 19 years, PCO0050025, 40, 9
+--- 20 to 24 years, PCO0050026, 40, 9
+--- 25 to 29 years, PCO0050027, 40, 9
+--- 30 to 34 years, PCO0050028, 40, 9
+--- 35 to 39 years, PCO0050029, 40, 9
+--- 40 to 44 years, PCO0050030, 40, 9
+--- 45 to 49 years, PCO0050031, 40, 9
+--- 50 to 54 years, PCO0050032, 40, 9
+--- 55 to 59 years, PCO0050033, 40, 9
+--- 60 to 64 years, PCO0050034, 40, 9
+--- 65 to 69 years, PCO0050035, 40, 9
+--- 70 to 74 years, PCO0050036, 40, 9
+--- 75 to 79 years, PCO0050037, 40, 9
+--- 80 to 84 years, PCO0050038, 40, 9
+--- 85 years and over, PCO0050039, 40, 9
+Total (401–405), PCO0060001, 40, 9
+- Male, PCO0060002, 40, 9
+--- Under 5 years, PCO0060003, 40, 9
+--- 5 to 9 years, PCO0060004, 40, 9
+--- 10 to 14 years, PCO0060005, 40, 9
+--- 15 to 19 years, PCO0060006, 40, 9
+--- 20 to 24 years, PCO0060007, 40, 9
+--- 25 to 29 years, PCO0060008, 40, 9
+--- 30 to 34 years, PCO0060009, 40, 9
+--- 35 to 39 years, PCO0060010, 40, 9
+--- 40 to 44 years, PCO0060011, 40, 9
+--- 45 to 49 years, PCO0060012, 40, 9
+--- 50 to 54 years, PCO0060013, 40, 9
+--- 55 to 59 years, PCO0060014, 40, 9
+--- 60 to 64 years, PCO0060015, 40, 9
+--- 65 to 69 years, PCO0060016, 40, 9
+--- 70 to 74 years, PCO0060017, 40, 9
+--- 75 to 79 years, PCO0060018, 40, 9
+--- 80 to 84 years, PCO0060019, 40, 9
+--- 85 years and over, PCO0060020, 40, 9
+- Female, PCO0060021, 40, 9
+--- Under 5 years, PCO0060022, 40, 9
+--- 5 to 9 years, PCO0060023, 40, 9
+--- 10 to 14 years, PCO0060024, 40, 9
+--- 15 to 19 years, PCO0060025, 40, 9
+--- 20 to 24 years, PCO0060026, 40, 9
+--- 25 to 29 years, PCO0060027, 40, 9
+--- 30 to 34 years, PCO0060028, 40, 9
+--- 35 to 39 years, PCO0060029, 40, 9
+--- 40 to 44 years, PCO0060030, 40, 9
+--- 45 to 49 years, PCO0060031, 40, 9
+--- 50 to 54 years, PCO0060032, 40, 9
+--- 55 to 59 years, PCO0060033, 40, 9
+--- 60 to 64 years, PCO0060034, 40, 9
+--- 65 to 69 years, PCO0060035, 40, 9
+--- 70 to 74 years, PCO0060036, 40, 9
+--- 75 to 79 years, PCO0060037, 40, 9
+--- 80 to 84 years, PCO0060038, 40, 9
+--- 85 years and over, PCO0060039, 40, 9

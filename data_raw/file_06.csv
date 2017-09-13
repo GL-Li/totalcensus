@@ -1,0 +1,259 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, P0310001, 06, 9
+- In households, P0310002, 06, 9
+--- Householder or spouse, P0310003, 06, 9
+--- Related child, P0310004, 06, 9
+----- Own child, P0310005, 06, 9
+------- In husband-wife family, P0310006, 06, 9
+------- In other family, P0310007, 06, 9
+--------- In male householder no wife present family, P0310008, 06, 9
+--------- In female householder no husband present family, P0310009, 06, 9
+----- Other relatives, P0310010, 06, 9
+------- Grandchild, P0310011, 06, 9
+------- Other relatives, P0310012, 06, 9
+--- Nonrelatives, P0310013, 06, 9
+- In group quarters, P0310014, 06, 9
+--- Institutionalized population, P0310015, 06, 9
+--- Noninstitutionalized population, P0310016, 06, 9
+Total, P0320001, 06, 9
+- In households, P0320002, 06, 9
+--- Householder or spouse, P0320003, 06, 9
+--- Related child, P0320004, 06, 9
+----- Own child, P0320005, 06, 9
+------- Under 3 years, P0320006, 06, 9
+------- 3 and 4 years, P0320007, 06, 9
+------- 5 years, P0320008, 06, 9
+------- 6 to 11 years, P0320009, 06, 9
+------- 12 and 13 years, P0320010, 06, 9
+------- 14 years, P0320011, 06, 9
+------- 15 to 17 years, P0320012, 06, 9
+----- Other relatives, P0320013, 06, 9
+------- Under 3 years, P0320014, 06, 9
+------- 3 and 4 years, P0320015, 06, 9
+------- 5 years, P0320016, 06, 9
+------- 6 to 11 years, P0320017, 06, 9
+------- 12 and 13 years, P0320018, 06, 9
+------- 14 years, P0320019, 06, 9
+------- 15 to 17 years, P0320020, 06, 9
+--- Nonrelatives, P0320021, 06, 9
+----- Under 3 years, P0320022, 06, 9
+----- 3 and 4 years, P0320023, 06, 9
+----- 5 years, P0320024, 06, 9
+----- 6 to 11 years, P0320025, 06, 9
+----- 12 and 13 years, P0320026, 06, 9
+----- 14 years, P0320027, 06, 9
+----- 15 to 17 years, P0320028, 06, 9
+- In group quarters, P0320029, 06, 9
+--- Institutionalized population, P0320030, 06, 9
+----- Under 3 years, P0320031, 06, 9
+----- 3 and 4 years, P0320032, 06, 9
+----- 5 years, P0320033, 06, 9
+----- 6 to 11 years, P0320034, 06, 9
+----- 12 and 13 years, P0320035, 06, 9
+----- 14 years, P0320036, 06, 9
+----- 15 to 17 years, P0320037, 06, 9
+--- Noninstitutionalized population, P0320038, 06, 9
+----- Under 3 years, P0320039, 06, 9
+----- 3 and 4 years, P0320040, 06, 9
+----- 5 years, P0320041, 06, 9
+----- 6 to 11 years, P0320042, 06, 9
+----- 12 and 13 years, P0320043, 06, 9
+----- 14 years, P0320044, 06, 9
+----- 15 to 17 years, P0320045, 06, 9
+Total, P0330001, 06, 9
+- In family households, P0330002, 06, 9
+--- In husband-wife family, P0330003, 06, 9
+--- In other family, P0330004, 06, 9
+----- In male householder no wife present family, P0330005, 06, 9
+----- In female householder no husband present family, P0330006, 06, 9
+- In nonfamily households, P0330007, 06, 9
+Total, P0340001, 06, 9
+- In households, P0340002, 06, 9
+--- In family households, P0340003, 06, 9
+----- Householder, P0340004, 06, 9
+------- Male, P0340005, 06, 9
+------- Female, P0340006, 06, 9
+----- Spouse, P0340007, 06, 9
+----- Parent, P0340008, 06, 9
+----- Parent-in-law, P0340009, 06, 9
+----- Other relatives, P0340010, 06, 9
+----- Nonrelatives, P0340011, 06, 9
+--- In nonfamily households, P0340012, 06, 9
+----- Male householder, P0340013, 06, 9
+------- Living alone, P0340014, 06, 9
+------- Not living alone, P0340015, 06, 9
+----- Female householder, P0340016, 06, 9
+------- Living alone, P0340017, 06, 9
+------- Not living alone, P0340018, 06, 9
+----- Nonrelatives, P0340019, 06, 9
+- In group quarters, P0340020, 06, 9
+--- Institutionalized population, P0340021, 06, 9
+--- Noninstitutionalized population, P0340022, 06, 9
+Total, P0350001, 06, 9
+Total, P0360001, 06, 9
+- Under 18 years, P0360002, 06, 9
+- 18 years and over, P0360003, 06, 9
+Total, P0370001, 06, 9
+- Under 18 years, P0370002, 06, 9
+- 18 years and over, P0370003, 06, 9
+Total, P0380001, 06, 9
+- Husband-wife family, P0380002, 06, 9
+--- With own children under 18 years, P0380003, 06, 9
+----- Under 6 years only, P0380004, 06, 9
+----- Under 6 years and 6 to 17 years, P0380005, 06, 9
+---- 6 to 17 years only, P0380006, 06, 9
+--- No own children under 18 years, P0380007, 06, 9
+- Other family, P0380008, 06, 9
+--- Male householder no wife present, P0380009, 06, 9
+----- With own children under 18 years, P0380010, 06, 9
+------- Under 6 years only, P0380011, 06, 9
+------- Under 6 years and 6 to 17 years, P0380012, 06, 9
+------- 6 to 17 years only, P0380013, 06, 9
+----- No own children under 18 years, P0380014, 06, 9
+--- Female householder no husband present, P0380015, 06, 9
+----- With own children under 18 years, P0380016, 06, 9
+------- Under 6 years only, P0380017, 06, 9
+------- Under 6 years and 6 to 17 years, P0380018, 06, 9
+------- 6 to 17 years only, P0380019, 06, 9
+----- No own children under 18 years, P0380020, 06, 9
+Total, P0390001, 06, 9
+- Husband-wife family, P0390002, 06, 9
+--- With related children under 18 years, P0390003, 06, 9
+----- Under 6 years only, P0390004, 06, 9
+----- Under 6 years and 6 to 17 years, P0390005, 06, 9
+----- 6 to 17 years only, P0390006, 06, 9
+--- No related children under 18 years, P0390007, 06, 9
+- Other family, P0390008, 06, 9
+--- Male householder no wife present, P0390009, 06, 9
+----- With related children under 18 years, P0390010, 06, 9
+------- Under 6 years only, P0390011, 06, 9
+------- Under 6 years and 6 to 17 years, P0390012, 06, 9
+------- 6 to 17 years only, P0390013, 06, 9
+----- No related children under 18 years, P0390014, 06, 9
+--- Female householder no husband present, P0390015, 06, 9
+----- With related children under 18 years, P0390016, 06, 9
+------- Under 6 years only, P0390017, 06, 9
+------- Under 6 years and 6 to 17 years, P0390018, 06, 9
+------- 6 to 17 years only, P0390019, 06, 9
+----- No related children under 18 years, P0390020, 06, 9
+Total, P0400001, 06, 9
+- In husband-wife families, P0400002, 06, 9
+--- Under 3 years, P0400003, 06, 9
+--- 3 and 4 years, P0400004, 06, 9
+--- 5 years, P0400005, 06, 9
+--- 6 to 11 years, P0400006, 06, 9
+--- 12 to 17 years, P0400007, 06, 9
+- In other families, P0400008, 06, 9
+--- In male householder no wife present family, P0400009, 06, 9
+----- Under 3 years, P0400010, 06, 9
+----- 3 and 4 years, P0400011, 06, 9
+----- 5 years, P0400012, 06, 9
+----- 6 to 11 years, P0400013, 06, 9
+----- 12 to 17 years, P0400014, 06, 9
+--- In female householder no husband present family, P0400015, 06, 9
+----- Under 3 years, P0400016, 06, 9
+----- 3 and 4 years, P0400017, 06, 9
+----- 5 years, P0400018, 06, 9
+----- 6 to 11 years, P0400019, 06, 9
+----- 12 to 17 years, P0400020, 06, 9
+Total, P0410001, 06, 9
+- Under 3 years, P0410002, 06, 9
+- 3 and 4 years, P0410003, 06, 9
+- 5 years, P0410004, 06, 9
+- 6 to 11 years, P0410005, 06, 9
+- 12 to 17 years, P0410006, 06, 9
+Total, P0420001, 06, 9
+- Institutionalized population (101–106 201–203 301 401–405), P0420002, 06, 9
+--- Correctional facilities for adults (101–106), P0420003, 06, 9
+--- Juvenile facilities (201–203), P0420004, 06, 9
+--- Nursing facilities/Skilled-nursing facilities (301), P0420005, 06, 9
+--- Other institutional facilities (401–405), P0420006, 06, 9
+- Noninstitutionalized population (501 601–602 701–702 704 706 801–802 900–901 903–904), P0420007, 06, 9
+--- College/University student housing (501), P0420008, 06, 9
+--- Military quarters (601–602), P0420009, 06, 9
+--- Other noninstitutional facilities (701–702 704 706 801–802 900–901 903–904), P0420010, 06, 9
+Total, P0430001, 06, 9
+- Male, P0430002, 06, 9
+--- Under 18 years, P0430003, 06, 9
+----- Institutionalized population (101–106 201–203 301 401–405), P0430004, 06, 9
+------- Correctional facilities for adults (101–106), P0430005, 06, 9
+------- Juvenile facilities (201–203), P0430006, 06, 9
+------- Nursing facilities/Skilled-nursing facilities (301), P0430007, 06, 9
+------- Other institutional facilities (401–405), P0430008, 06, 9
+----- Noninstitutionalized population (501 601–602 701–702 704 706 801–802 900–901 903–904), P0430009, 06, 9
+------- College/University student housing (501), P0430010, 06, 9
+------- Military quarters (601–602), P0430011, 06, 9
+------- Other noninstitutional facilities (701–702 704 706 801–802 900–901 903–904), P0430012, 06, 9
+--- 18 to 64 years, P0430013, 06, 9
+----- Institutionalized population (101–106 201–203 301 401–405), P0430014, 06, 9
+------- Correctional facilities for adults (101–106), P0430015, 06, 9
+------- Juvenile facilities (201–203), P0430016, 06, 9
+------- Nursing facilities/Skilled-nursing facilities (301), P0430017, 06, 9
+------- Other institutional facilities (401–405), P0430018, 06, 9
+----- Noninstitutionalized population (501 601–602 701–702 704 706 801–802 900–901 903–904), P0430019, 06, 9
+------- College/University student housing (501), P0430020, 06, 9
+------- Military quarters (601–602), P0430021, 06, 9
+------- Other noninstitutional facilities (701–702 704 706 801–802 900–901 903–904), P0430022, 06, 9
+--- 65 years and over, P0430023, 06, 9
+----- Institutionalized population (101–106 201–203 301 401–405), P0430024, 06, 9
+------- Correctional facilities for adults (101–106), P0430025, 06, 9
+------- Juvenile facilities (201–203), P0430026, 06, 9
+------- Nursing facilities/Skilled-nursing facilities (301), P0430027, 06, 9
+------- Other institutional facilities (401–405), P0430028, 06, 9
+----- Noninstitutionalized population (501 601–602 701–702 704 706 801–802 900–901 903–904), P0430029, 06, 9
+------- College/University student housing (501), P0430030, 06, 9
+------- Military quarters (601–602), P0430031, 06, 9
+------- Other noninstitutional facilities (701–702 704 706 801–802 900–901 903–904), P0430032, 06, 9
+- Female, P0430033, 06, 9
+--- Under 18 years, P0430034, 06, 9
+----- Institutionalized population (101–106 201–203 301 401–405), P0430035, 06, 9
+------- Correctional facilities for adults (101–106), P0430036, 06, 9
+------- Juvenile facilities (201–203), P0430037, 06, 9
+------- Nursing facilities/Skilled-nursing facilities (301), P0430038, 06, 9
+------- Other institutional facilities (401–405), P0430039, 06, 9
+----- Noninstitutionalized population (501 601–602 701–702 704 706 801–802 900–901 903–904), P0430040, 06, 9
+------- College/University student housing (501), P0430041, 06, 9
+------- Military quarters (601–602), P0430042, 06, 9
+------- Other noninstitutional facilities (701–702 704 706 801–802 900–901 903–904), P0430043, 06, 9
+--- 18 to 64 years, P0430044, 06, 9
+----- Institutionalized population (101–106 201–203 301 401–405), P0430045, 06, 9
+------- Correctional facilities for adults (101–106), P0430046, 06, 9
+------- Juvenile facilities (201–203), P0430047, 06, 9
+------- Nursing facilities/Skilled-nursing facilities (301), P0430048, 06, 9
+------- Other institutional facilities (401–405), P0430049, 06, 9
+----- Noninstitutionalized population (501 601–602 701–702 704 706 801–802 900–901 903–904), P0430050, 06, 9
+------- College/University student housing (501), P0430051, 06, 9
+------- Military quarters (601–602), P0430052, 06, 9
+------- Other noninstitutional facilities (701–702 704 706 801–802 900–901 903–904), P0430053, 06, 9
+--- 65 years and over, P0430054, 06, 9
+----- Institutionalized population (101–106 201–203 301 401–405), P0430055, 06, 9
+------- Correctional facilities for adults (101–106), P0430056, 06, 9
+------- Juvenile facilities (201–203), P0430057, 06, 9
+------- Nursing facilities/Skilled-nursing facilities (301), P0430058, 06, 9
+------- Other institutional facilities (401–405), P0430059, 06, 9
+----- Noninstitutionalized population (501 601–602 701–702 704 706 801–802 900–901 903–904), P0430060, 06, 9
+------- College/University student housing (501), P0430061, 06, 9
+------- Military quarters (601–602), P0430062, 06, 9
+------- Other noninstitutional facilities (701–702 704 706 801–802 900–901 903–904), P0430063, 06, 9
+Total, P0440001, 06, 9
+- Not substituted, P0440002, 06, 9
+- Substituted, P0440003, 06, 9
+Total, P0450001, 06, 9
+- No items allocated, P0450002, 06, 9
+- One or more items allocated, P0450003, 06, 9
+Total, P0460001, 06, 9
+- Allocated, P0460002, 06, 9
+- Not allocated, P0460003, 06, 9
+Total, P0470001, 06, 9
+- Allocated, P0470002, 06, 9
+- Not allocated, P0470003, 06, 9
+Total, P0480001, 06, 9
+- Allocated, P0480002, 06, 9
+- Not allocated, P0480003, 06, 9
+Total, P0490001, 06, 9
+- Allocated, P0490002, 06, 9
+- Not allocated, P0490003, 06, 9

@@ -52,31 +52,3 @@ read_geographics <- function(path_to_census, state, field, show_progress = TRUE)
 
 
 
-#' Search for field reference with a keyword or search for the description of a
-#' a field from its reference.
-#'
-#' @param ref reference of a field such as "SUMLEV"
-#' @param keyword keyword in description
-#'
-#' @return data.table match the search criteria
-#'
-#' @examples
-#'
-#' @export
-search_geodict <- function(ref = NULL, keyword = NULL) {
-    if (!any(c(is.null(ref), is.null(keyword)))) {
-        stop("Please use only one of reference or keyword to search")
-    } else if (!is.null(ref)) {
-        # for geo_dict dataset to work properly as a data.table, have to place
-        # data.table in Depends in DESCRPTION file!!!!
-        dt <- geo_dict[tolower(reference) == tolower(ref)] %>%
-            .[, .(description, reference)]
-        return(dt)
-    } else if (!is.null(keyword)) {
-        dt <- geo_dict[grepl(keyword, tolower(description))] %>%
-            .[, .(description, reference)]
-        return(dt)
-    }
-}
-
-

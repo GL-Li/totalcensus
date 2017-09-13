@@ -1,0 +1,250 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, PCT013A001, 35, 9
+- Male, PCT013A002, 35, 9
+--- Under 5 years, PCT013A003, 35, 9
+--- 5 to 9 years, PCT013A004, 35, 9
+--- 10 to 14 years, PCT013A005, 35, 9
+--- 15 to 17 years, PCT013A006, 35, 9
+--- 18 and 19 years, PCT013A007, 35, 9
+--- 20 years, PCT013A008, 35, 9
+--- 21 years, PCT013A009, 35, 9
+--- 22 to 24 years, PCT013A010, 35, 9
+--- 25 to 29 years, PCT013A011, 35, 9
+--- 30 to 34 years, PCT013A012, 35, 9
+--- 35 to 39 years, PCT013A013, 35, 9
+--- 40 to 44 years, PCT013A014, 35, 9
+--- 45 to 49 years, PCT013A015, 35, 9
+--- 50 to 54 years, PCT013A016, 35, 9
+--- 55 to 59 years, PCT013A017, 35, 9
+--- 60 and 61 years, PCT013A018, 35, 9
+--- 62 to 64 years, PCT013A019, 35, 9
+--- 65 and 66 years, PCT013A020, 35, 9
+--- 67 to 69 years, PCT013A021, 35, 9
+--- 70 to 74 years, PCT013A022, 35, 9
+--- 75 to 79 years, PCT013A023, 35, 9
+--- 80 to 84 years, PCT013A024, 35, 9
+--- 85 years and over, PCT013A025, 35, 9
+- Female, PCT013A026, 35, 9
+--- Under 5 years, PCT013A027, 35, 9
+--- 5 to 9 years, PCT013A028, 35, 9
+--- 10 to 14 years, PCT013A029, 35, 9
+--- 15 to 17 years, PCT013A030, 35, 9
+--- 18 and 19 years, PCT013A031, 35, 9
+--- 20 years, PCT013A032, 35, 9
+--- 21 years, PCT013A033, 35, 9
+--- 22 to 24 years, PCT013A034, 35, 9
+--- 25 to 29 years, PCT013A035, 35, 9
+--- 30 to 34 years, PCT013A036, 35, 9
+--- 35 to 39 years, PCT013A037, 35, 9
+--- 40 to 44 years, PCT013A038, 35, 9
+--- 45 to 49 years, PCT013A039, 35, 9
+--- 50 to 54 years, PCT013A040, 35, 9
+--- 55 to 59 years, PCT013A041, 35, 9
+--- 60 and 61 years, PCT013A042, 35, 9
+--- 62 to 64 years, PCT013A043, 35, 9
+--- 65 and 66 years, PCT013A044, 35, 9
+--- 67 to 69 years, PCT013A045, 35, 9
+--- 70 to 74 years, PCT013A046, 35, 9
+--- 75 to 79 years, PCT013A047, 35, 9
+--- 80 to 84 years, PCT013A048, 35, 9
+--- 85 years and over, PCT013A049, 35, 9
+Total, PCT013B001, 35, 9
+- Male, PCT013B002, 35, 9
+--- Under 5 years, PCT013B003, 35, 9
+--- 5 to 9 years, PCT013B004, 35, 9
+--- 10 to 14 years, PCT013B005, 35, 9
+--- 15 to 17 years, PCT013B006, 35, 9
+--- 18 and 19 years, PCT013B007, 35, 9
+--- 20 years, PCT013B008, 35, 9
+--- 21 years, PCT013B009, 35, 9
+--- 22 to 24 years, PCT013B010, 35, 9
+--- 25 to 29 years, PCT013B011, 35, 9
+--- 30 to 34 years, PCT013B012, 35, 9
+--- 35 to 39 years, PCT013B013, 35, 9
+--- 40 to 44 years, PCT013B014, 35, 9
+--- 45 to 49 years, PCT013B015, 35, 9
+--- 50 to 54 years, PCT013B016, 35, 9
+--- 55 to 59 years, PCT013B017, 35, 9
+--- 60 and 61 years, PCT013B018, 35, 9
+--- 62 to 64 years, PCT013B019, 35, 9
+--- 65 and 66 years, PCT013B020, 35, 9
+--- 67 to 69 years, PCT013B021, 35, 9
+--- 70 to 74 years, PCT013B022, 35, 9
+--- 75 to 79 years, PCT013B023, 35, 9
+--- 80 to 84 years, PCT013B024, 35, 9
+--- 85 years and over, PCT013B025, 35, 9
+- Female, PCT013B026, 35, 9
+--- Under 5 years, PCT013B027, 35, 9
+--- 5 to 9 years, PCT013B028, 35, 9
+--- 10 to 14 years, PCT013B029, 35, 9
+--- 15 to 17 years, PCT013B030, 35, 9
+--- 18 and 19 years, PCT013B031, 35, 9
+--- 20 years, PCT013B032, 35, 9
+--- 21 years, PCT013B033, 35, 9
+--- 22 to 24 years, PCT013B034, 35, 9
+--- 25 to 29 years, PCT013B035, 35, 9
+--- 30 to 34 years, PCT013B036, 35, 9
+--- 35 to 39 years, PCT013B037, 35, 9
+--- 40 to 44 years, PCT013B038, 35, 9
+--- 45 to 49 years, PCT013B039, 35, 9
+--- 50 to 54 years, PCT013B040, 35, 9
+--- 55 to 59 years, PCT013B041, 35, 9
+--- 60 and 61 years, PCT013B042, 35, 9
+--- 62 to 64 years, PCT013B043, 35, 9
+--- 65 and 66 years, PCT013B044, 35, 9
+--- 67 to 69 years, PCT013B045, 35, 9
+--- 70 to 74 years, PCT013B046, 35, 9
+--- 75 to 79 years, PCT013B047, 35, 9
+--- 80 to 84 years, PCT013B048, 35, 9
+--- 85 years and over, PCT013B049, 35, 9
+Total, PCT013C001, 35, 9
+- Male, PCT013C002, 35, 9
+--- Under 5 years, PCT013C003, 35, 9
+--- 5 to 9 years, PCT013C004, 35, 9
+--- 10 to 14 years, PCT013C005, 35, 9
+--- 15 to 17 years, PCT013C006, 35, 9
+--- 18 and 19 years, PCT013C007, 35, 9
+--- 20 years, PCT013C008, 35, 9
+--- 21 years, PCT013C009, 35, 9
+--- 22 to 24 years, PCT013C010, 35, 9
+--- 25 to 29 years, PCT013C011, 35, 9
+--- 30 to 34 years, PCT013C012, 35, 9
+--- 35 to 39 years, PCT013C013, 35, 9
+--- 40 to 44 years, PCT013C014, 35, 9
+--- 45 to 49 years, PCT013C015, 35, 9
+--- 50 to 54 years, PCT013C016, 35, 9
+--- 55 to 59 years, PCT013C017, 35, 9
+--- 60 and 61 years, PCT013C018, 35, 9
+--- 62 to 64 years, PCT013C019, 35, 9
+--- 65 and 66 years, PCT013C020, 35, 9
+--- 67 to 69 years, PCT013C021, 35, 9
+--- 70 to 74 years, PCT013C022, 35, 9
+--- 75 to 79 years, PCT013C023, 35, 9
+--- 80 to 84 years, PCT013C024, 35, 9
+--- 85 years and over, PCT013C025, 35, 9
+- Female, PCT013C026, 35, 9
+--- Under 5 years, PCT013C027, 35, 9
+--- 5 to 9 years, PCT013C028, 35, 9
+--- 10 to 14 years, PCT013C029, 35, 9
+--- 15 to 17 years, PCT013C030, 35, 9
+--- 18 and 19 years, PCT013C031, 35, 9
+--- 20 years, PCT013C032, 35, 9
+--- 21 years, PCT013C033, 35, 9
+--- 22 to 24 years, PCT013C034, 35, 9
+--- 25 to 29 years, PCT013C035, 35, 9
+--- 30 to 34 years, PCT013C036, 35, 9
+--- 35 to 39 years, PCT013C037, 35, 9
+--- 40 to 44 years, PCT013C038, 35, 9
+--- 45 to 49 years, PCT013C039, 35, 9
+--- 50 to 54 years, PCT013C040, 35, 9
+--- 55 to 59 years, PCT013C041, 35, 9
+--- 60 and 61 years, PCT013C042, 35, 9
+--- 62 to 64 years, PCT013C043, 35, 9
+--- 65 and 66 years, PCT013C044, 35, 9
+--- 67 to 69 years, PCT013C045, 35, 9
+--- 70 to 74 years, PCT013C046, 35, 9
+--- 75 to 79 years, PCT013C047, 35, 9
+--- 80 to 84 years, PCT013C048, 35, 9
+--- 85 years and over, PCT013C049, 35, 9
+Total, PCT013D001, 35, 9
+- Male, PCT013D002, 35, 9
+--- Under 5 years, PCT013D003, 35, 9
+--- 5 to 9 years, PCT013D004, 35, 9
+--- 10 to 14 years, PCT013D005, 35, 9
+--- 15 to 17 years, PCT013D006, 35, 9
+--- 18 and 19 years, PCT013D007, 35, 9
+--- 20 years, PCT013D008, 35, 9
+--- 21 years, PCT013D009, 35, 9
+--- 22 to 24 years, PCT013D010, 35, 9
+--- 25 to 29 years, PCT013D011, 35, 9
+--- 30 to 34 years, PCT013D012, 35, 9
+--- 35 to 39 years, PCT013D013, 35, 9
+--- 40 to 44 years, PCT013D014, 35, 9
+--- 45 to 49 years, PCT013D015, 35, 9
+--- 50 to 54 years, PCT013D016, 35, 9
+--- 55 to 59 years, PCT013D017, 35, 9
+--- 60 and 61 years, PCT013D018, 35, 9
+--- 62 to 64 years, PCT013D019, 35, 9
+--- 65 and 66 years, PCT013D020, 35, 9
+--- 67 to 69 years, PCT013D021, 35, 9
+--- 70 to 74 years, PCT013D022, 35, 9
+--- 75 to 79 years, PCT013D023, 35, 9
+--- 80 to 84 years, PCT013D024, 35, 9
+--- 85 years and over, PCT013D025, 35, 9
+- Female, PCT013D026, 35, 9
+--- Under 5 years, PCT013D027, 35, 9
+--- 5 to 9 years, PCT013D028, 35, 9
+--- 10 to 14 years, PCT013D029, 35, 9
+--- 15 to 17 years, PCT013D030, 35, 9
+--- 18 and 19 years, PCT013D031, 35, 9
+--- 20 years, PCT013D032, 35, 9
+--- 21 years, PCT013D033, 35, 9
+--- 22 to 24 years, PCT013D034, 35, 9
+--- 25 to 29 years, PCT013D035, 35, 9
+--- 30 to 34 years, PCT013D036, 35, 9
+--- 35 to 39 years, PCT013D037, 35, 9
+--- 40 to 44 years, PCT013D038, 35, 9
+--- 45 to 49 years, PCT013D039, 35, 9
+--- 50 to 54 years, PCT013D040, 35, 9
+--- 55 to 59 years, PCT013D041, 35, 9
+--- 60 and 61 years, PCT013D042, 35, 9
+--- 62 to 64 years, PCT013D043, 35, 9
+--- 65 and 66 years, PCT013D044, 35, 9
+--- 67 to 69 years, PCT013D045, 35, 9
+--- 70 to 74 years, PCT013D046, 35, 9
+--- 75 to 79 years, PCT013D047, 35, 9
+--- 80 to 84 years, PCT013D048, 35, 9
+--- 85 years and over, PCT013D049, 35, 9
+Total, PCT013E001, 35, 9
+- Male, PCT013E002, 35, 9
+--- Under 5 years, PCT013E003, 35, 9
+--- 5 to 9 years, PCT013E004, 35, 9
+--- 10 to 14 years, PCT013E005, 35, 9
+--- 15 to 17 years, PCT013E006, 35, 9
+--- 18 and 19 years, PCT013E007, 35, 9
+--- 20 years, PCT013E008, 35, 9
+--- 21 years, PCT013E009, 35, 9
+--- 22 to 24 years, PCT013E010, 35, 9
+--- 25 to 29 years, PCT013E011, 35, 9
+--- 30 to 34 years, PCT013E012, 35, 9
+--- 35 to 39 years, PCT013E013, 35, 9
+--- 40 to 44 years, PCT013E014, 35, 9
+--- 45 to 49 years, PCT013E015, 35, 9
+--- 50 to 54 years, PCT013E016, 35, 9
+--- 55 to 59 years, PCT013E017, 35, 9
+--- 60 and 61 years, PCT013E018, 35, 9
+--- 62 to 64 years, PCT013E019, 35, 9
+--- 65 and 66 years, PCT013E020, 35, 9
+--- 67 to 69 years, PCT013E021, 35, 9
+--- 70 to 74 years, PCT013E022, 35, 9
+--- 75 to 79 years, PCT013E023, 35, 9
+--- 80 to 84 years, PCT013E024, 35, 9
+--- 85 years and over, PCT013E025, 35, 9
+- Female, PCT013E026, 35, 9
+--- Under 5 years, PCT013E027, 35, 9
+--- 5 to 9 years, PCT013E028, 35, 9
+--- 10 to 14 years, PCT013E029, 35, 9
+--- 15 to 17 years, PCT013E030, 35, 9
+--- 18 and 19 years, PCT013E031, 35, 9
+--- 20 years, PCT013E032, 35, 9
+--- 21 years, PCT013E033, 35, 9
+--- 22 to 24 years, PCT013E034, 35, 9
+--- 25 to 29 years, PCT013E035, 35, 9
+--- 30 to 34 years, PCT013E036, 35, 9
+--- 35 to 39 years, PCT013E037, 35, 9
+--- 40 to 44 years, PCT013E038, 35, 9
+--- 45 to 49 years, PCT013E039, 35, 9
+--- 50 to 54 years, PCT013E040, 35, 9
+--- 55 to 59 years, PCT013E041, 35, 9
+--- 60 and 61 years, PCT013E042, 35, 9
+--- 62 to 64 years, PCT013E043, 35, 9
+--- 65 and 66 years, PCT013E044, 35, 9
+--- 67 to 69 years, PCT013E045, 35, 9
+--- 70 to 74 years, PCT013E046, 35, 9
+--- 75 to 79 years, PCT013E047, 35, 9
+--- 80 to 84 years, PCT013E048, 35, 9
+--- 85 years and over, PCT013E049, 35, 9

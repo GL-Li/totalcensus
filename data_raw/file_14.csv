@@ -1,0 +1,25 @@
+File Identification, FILEID, 6, A/N
+State/U.S. Abbreviation (USPS), STUSAB, 2, A
+Characteristic Iteration, CHARITER, 3, A/N
+Characteristic Iteration File Sequence Number, CIFSN, 2, A/N
+Logical Record Number, LOGRECNO, 7, N
+Total, P039I001, 14, 9
+- Husband-wife family, P039I002, 14, 9
+--- With related children under 18 years, P039I003, 14, 9
+----- Under 6 years only, P039I004, 14, 9
+----- Under 6 years and 6 to 17 years, P039I005, 14, 9
+----- 6 to 17 years only, P039I006, 14, 9
+--- No related children under 18 years, P039I007, 14, 9
+- Other family, P039I008, 14, 9
+--- Male householder; no wife present, P039I009, 14, 9
+----- With related children under 18 years, P039I010, 14, 9
+------- Under 6 years only, P039I011, 14, 9
+------- Under 6 years and 6 to 17 years, P039I012, 14, 9
+------- 6 to 17 years only, P039I013, 14, 9
+----- No related children under 18 years, P039I014, 14, 9
+--- Female householder; no husband present, P039I015, 14, 9
+----- With related children under 18 years, P039I016, 14, 9
+------- Under 6 years only, P039I017, 14, 9
+------- Under 6 years and 6 to 17 years, P039I018, 14, 9
+------- 6 to 17 years only, P039I019, 14, 9
+----- No related children under 18 years, P039I020, 14, 9
