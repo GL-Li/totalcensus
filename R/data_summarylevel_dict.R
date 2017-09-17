@@ -5,7 +5,7 @@
 #'
 #' @docType data
 #'
-#' @usage data("geo_component")
+#' @usage data("state_summary_level")
 #'
 #' @format data.table
 #'

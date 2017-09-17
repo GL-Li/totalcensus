@@ -7,7 +7,7 @@ Maintainer: GL Li <liguanglai@gmail.com>
 Description: This package retrieves data from the downloaded raw US census 2010 
     summary file 1 with urban/rural update. It make all the data in the summary file
     available to users, not just selected data as other packages offer. 
-License: MIT
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:

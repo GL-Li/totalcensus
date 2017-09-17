@@ -6,7 +6,7 @@
 \title{Summary levels and codes}
 \format{data.table}
 \usage{
-data("geo_component")
+data("state_summary_level")
 }
 \description{
 This data serves as a dictionary for summary level codes and their

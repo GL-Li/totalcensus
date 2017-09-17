@@ -1,3 +1,5 @@
+#' Read geographic header record file
+#'
 #' Read geographic header record file of a state and return logical record number
 #' and selected fields
 #'
@@ -5,14 +7,26 @@
 #'     census 2010 summary file 1 with urban/rural update
 #' @param state abbreviation of a state, for example "IN" for "Indiana"
 #' @param field vector of references of selected geographci headers to be included in the return
+#' @param show_progress show progress of reading if TRUE. Turn off if FALSE, which
+#'     is useful in RMarkdown output.
 #'
 #' @return data.table whose columns are logical record number and selected fields
 #'
 #' @examples
+#' \dontrun{
+#' path <- locat_path_to_census_data
+#' selected_geoheader <- read_geoheader(
+#'     path_to_census = path,
+#'     state = "RI",
+#'     field = c("SUMLEV", "INTPTLAT", "INTPTLON")
+#' )
+#' }
+#'
+#' @importFrom stringr str_sub
 #'
 #' @export
 
-read_geographics <- function(path_to_census, state, field, show_progress = TRUE) {
+read_geoheader <- function(path_to_census, state, field, show_progress = TRUE) {
     if (show_progress) {
         print(paste("reading", state, "geographic data"))
     }
@@ -37,12 +51,12 @@ read_geographics <- function(path_to_census, state, field, show_progress = TRUE)
         if (fld %in% c("INTPTLAT", "INTPTLON")) {
             # place variable in () to add new columns
             dt[, (fld) := as.numeric(str_sub(geo[, V1],
-                                             geo_dict[reference == fld, start],
-                                             geo_dict[reference == fld, end]))]
+                                             geoheader_dict[reference == fld, start],
+                                             geoheader_dict[reference == fld, end]))]
         } else {
             dt[, (fld) := str_sub(geo[, V1],
-                                  geo_dict[reference == fld, start],
-                                  geo_dict[reference == fld, end])]
+                                  geoheader_dict[reference == fld, start],
+                                  geoheader_dict[reference == fld, end])]
         }
 
     }

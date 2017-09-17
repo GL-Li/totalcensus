@@ -1,4 +1,4 @@
-number, field, universe
+table_ref, table, universe
 P0010, P1. TOTAL POPULATION, Universe: Total population
 P0020, P2. URBAN AND RURAL (Urban/Rural Update only), Universe: Total population
 P0030, P3. RACE, Universe: Total population
