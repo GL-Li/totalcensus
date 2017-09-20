@@ -4,10 +4,12 @@
 \alias{search_geocomp}
 \title{Search geographic component}
 \usage{
-search_geocomp(keyword)
+search_geocomp(keyword, view = TRUE)
 }
 \arguments{
 \item{keyword}{keyword to search in code or description}
+
+\item{view}{display the search result with View if TRUE}
 }
 \description{
 search the code or description of geographic component
@@ -22,5 +24,5 @@ search_geocomp("43")
 search_geocomp(43)
 }
 \seealso{
-\code{\link{geocomp_dict}} lists all geocomponents and codes
+\code{\link{dict_geocomp}} lists all geocomponents and codes
 }

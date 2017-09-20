@@ -5,7 +5,7 @@
 #'
 #' @docType data
 #'
-#' @usage data("data_file")
+#' @usage data("dict_datafile")
 #'
 #' @format data.table
 #'
@@ -16,4 +16,4 @@
 #' all across chapter 6.
 #'
 #'
-"datafile_dict"
+"dict_datafile"

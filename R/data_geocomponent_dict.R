@@ -5,7 +5,7 @@
 #'
 #' @docType data
 #'
-#' @usage data("geo_component")
+#' @usage data("dict_geocomp")
 #'
 #' @format data.table
 #'
@@ -16,4 +16,4 @@
 #' page 6-15
 #'
 #'
-"geocomp_dict"
+"dict_geocomp"

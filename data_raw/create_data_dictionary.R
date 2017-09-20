@@ -17,9 +17,9 @@ make_file_datadict <- function(file_number) {
     file <- paste0("data_raw/file_", file_number, ".csv")
     dt <- fread(file, header = FALSE) %>%
         setnames(1:4, c("field", "reference", "max_size", "data_type"))%>%
-        .[, table_num := censustable_dict[substr(reference, 1, nchar(reference) -3), table_num]] %>%
-        .[, table := censustable_dict[substr(reference, 1, nchar(reference) -3), table]] %>%
-        .[, universe := censustable_dict[substr(reference, 1, nchar(reference) -3), universe]] %>%
+        .[, table_num := dict_censustable[substr(reference, 1, nchar(reference) -3), table_num]] %>%
+        .[, table := dict_censustable[substr(reference, 1, nchar(reference) -3), table]] %>%
+        .[, universe := dict_censustable[substr(reference, 1, nchar(reference) -3), universe]] %>%
         .[, file := paste0("file_", file_number)] %>%
         .[, max_size := NULL] %>%
         setcolorder(c("file", "field", "reference", "table_num", "table", "universe", "data_type"))
@@ -29,7 +29,7 @@ make_file_datadict <- function(file_number) {
 
 
 # create dictionary for all columns of data files =============================
-datafile_dict <- data.table(file = character(0),
+dict_datafile <- data.table(file = character(0),
                             field = character(0),
                             reference = character(0),
                             table_num = character(0),
@@ -38,9 +38,9 @@ datafile_dict <- data.table(file = character(0),
                             data_type = character(0))
 for (i in 1:48) {
     assign(paste0("a", i), make_file_datadict(i))
-    datafile_dict <- rbindlist(list(datafile_dict, get(paste0("a", i))))
+    dict_datafile <- rbindlist(list(dict_datafile, get(paste0("a", i))))
     print(paste0(i, "---", nrow(get(paste0("a", i))) - 5))
 }
 
 # save data to package datasets ================================================
-save(datafile_dict, file = "data/data_file.RData")
+save(dict_datafile, file = "data/dict_data.RData")

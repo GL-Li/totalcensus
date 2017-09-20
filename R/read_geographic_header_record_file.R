@@ -3,6 +3,7 @@
 #' Read geographic header record file of a state and return logical record number
 #' and selected fields
 #'
+#'
 #' @param path_to_census path to the directory holding downloaded
 #'     census 2010 summary file 1 with urban/rural update
 #' @param state abbreviation of a state, for example "IN" for "Indiana"
@@ -22,7 +23,6 @@
 #' )
 #' }
 #'
-#' @importFrom stringr str_sub
 #'
 #' @export
 
@@ -51,12 +51,12 @@ read_geoheader <- function(path_to_census, state, field, show_progress = TRUE) {
         if (fld %in% c("INTPTLAT", "INTPTLON")) {
             # place variable in () to add new columns
             dt[, (fld) := as.numeric(str_sub(geo[, V1],
-                                             geoheader_dict[reference == fld, start],
-                                             geoheader_dict[reference == fld, end]))]
+                                             dict_geoheader[reference == fld, start],
+                                             dict_geoheader[reference == fld, end]))]
         } else {
             dt[, (fld) := str_sub(geo[, V1],
-                                  geoheader_dict[reference == fld, start],
-                                  geoheader_dict[reference == fld, end])]
+                                  dict_geoheader[reference == fld, start],
+                                  dict_geoheader[reference == fld, end])]
         }
 
     }

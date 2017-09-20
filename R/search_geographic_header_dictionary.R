@@ -4,6 +4,7 @@
 #'
 #'
 #' @param keyword keyword in description or reference
+#' @param view display the search result with View if TRUE
 #'
 #' @return data.table match the search criteria
 #'
@@ -14,18 +15,19 @@
 #' # search geoheader of reference containing "INTPT"
 #' search_geoheader("INTPT")
 #'
-#' @seealso \code{\link{geoheader_dict}}, which lists all the geographic headers
+#' @seealso \code{\link{dict_geoheader}}, which lists all the geographic headers
 #'
 #' @export
 #'
-search_geoheader <- function(keyword) {
-    # for geoheader_dict dataset to work properly as a data.table, have to place
-    # data.table in Depends in DESCRPTION file!!!!
-    dt1 <- geoheader_dict[grepl(tolower(keyword), tolower(reference))]
-    dt2 <- geoheader_dict[grepl(tolower(keyword), tolower(description))]
+search_geoheader <- function(keyword, view = TRUE) {
+    dt1 <- dict_geoheader[grepl(tolower(keyword), tolower(reference))]
+    dt2 <- dict_geoheader[grepl(tolower(keyword), tolower(description))]
 
     dt <- rbindlist(list(dt1, dt2)) %>%
         .[, .(description, reference)] %>%
         unique()
+
+    if (view) View(dt)
+
     return(dt)
 }

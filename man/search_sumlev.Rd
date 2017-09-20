@@ -4,10 +4,12 @@
 \alias{search_sumlev}
 \title{Search summary level}
 \usage{
-search_sumlev(keyword)
+search_sumlev(keyword, view = TRUE)
 }
 \arguments{
 \item{keyword}{keyword to search in code or description}
+
+\item{view}{display the search result with View if TRUE}
 }
 \description{
 search the code or description of summary level
@@ -22,5 +24,5 @@ search_sumlev("40")
 search_sumlev(40)
 }
 \seealso{
-\code{\link{summarylevel_dict}} lists all geocomponents and codes
+\code{\link{dict_summarylevel}} lists all geocomponents and codes
 }

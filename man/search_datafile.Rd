@@ -4,12 +4,14 @@
 \alias{search_datafile}
 \title{Search data files}
 \usage{
-search_datafile(keyword, table_only = FALSE)
+search_datafile(keyword, table_only = FALSE, view = TRUE)
 }
 \arguments{
 \item{keyword}{keyword to be searched}
 
 \item{table_only}{only search in and strictly match table_num}
+
+\item{view}{display the search result with View if TRUE}
 }
 \description{
 Search in all data files in order to find the file containing
@@ -31,5 +33,5 @@ search_datafile("total population")
 
 }
 \seealso{
-\code{\link{datafile_dict}}
+\code{\link{dict_datafile}}
 }

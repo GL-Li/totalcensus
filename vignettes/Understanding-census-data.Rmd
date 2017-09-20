@@ -1,0 +1,12 @@
+---
+title: "Understand Census 2010 summary file 1 with urban/rural update"
+author: "Vignette Author"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Understand Census 2010 summary file 1 with urban/rural update}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+this is a test.

@@ -5,7 +5,7 @@
 #'
 #' @docType data
 #'
-#' @usage data("census_table")
+#' @usage data("dict_censustable")
 #'
 #' @format data.table
 #'
@@ -16,4 +16,4 @@
 #' all across chapter 6.
 #'
 #'
-"censustable_dict"
+"dict_censustable"

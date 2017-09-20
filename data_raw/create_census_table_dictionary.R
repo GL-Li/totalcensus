@@ -23,5 +23,5 @@ make_table_list <- function(){
 
 
 # save data to package datasets ================================================
-censustable_dict <- make_table_list()
-save(censustable_dict, file = "data/census_table.RData")
+dict_censustable <- make_table_list()
+save(dict_censustable, file = "data/dict_censustable.RData")

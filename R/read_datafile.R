@@ -8,7 +8,7 @@
 #'
 #' @export
 #'
-#' @seealso \code{\link{datafile_dict}}
+#' @seealso \code{\link{dict_datafile}}
 #'
 #' @examples
 #'
@@ -27,7 +27,7 @@ read_datafile <- function(path_to_census, state, file_num){
     dt <- fread(file_dir, header = FALSE)
 
     # assign columns names
-    col_names <- datafile_dict[file == file_lab, reference]
+    col_names <- dict_datafile[file == file_lab, reference]
     setnames(dt, col_names)
 
     return(dt)

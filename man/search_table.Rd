@@ -4,12 +4,14 @@
 \alias{search_table}
 \title{Search census table}
 \usage{
-search_table(keyword)
+search_table(keyword, view = TRUE)
 }
 \arguments{
 \item{keyword}{keyword to search in code or description. To search for a table
 contains two words "abc" and "defg", the keyword is simply a single string
 of "abc defg".}
+
+\item{view}{display the search result with View if TRUE}
 }
 \description{
 search census tables by keyword in table numbers or table descriptions
@@ -22,5 +24,5 @@ search_table("occupancy")
 search_table("H6")
 }
 \seealso{
-\code{\link{censustable_dict}} lists all geocomponents and codes
+\code{\link{dict_censustable}} lists all geocomponents and codes
 }

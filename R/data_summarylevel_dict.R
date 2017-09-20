@@ -5,7 +5,7 @@
 #'
 #' @docType data
 #'
-#' @usage data("state_summary_level")
+#' @usage data("dict_summarylevel")
 #'
 #' @format data.table
 #'
@@ -16,4 +16,4 @@
 #' page 4-16 state summary file with urban/rural update
 #'
 #'
-"summarylevel_dict"
+"dict_summarylevel"

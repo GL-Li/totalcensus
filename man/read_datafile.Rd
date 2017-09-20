@@ -21,5 +21,5 @@ Read an entire data file in a state and assign correct reference to each column
 
 }
 \seealso{
-\code{\link{datafile_dict}}
+\code{\link{dict_datafile}}
 }

@@ -3,10 +3,11 @@
 #' search the code or description of geographic component
 #'
 #' @param keyword keyword to search in code or description
+#' @param view display the search result with View if TRUE
 #'
 #' @export
 #'
-#' @seealso \code{\link{geocomp_dict}} lists all geocomponents and codes
+#' @seealso \code{\link{dict_geocomp}} lists all geocomponents and codes
 #'
 #' @examples
 #' # search geocomponent contains "urban cluster"
@@ -18,12 +19,15 @@
 #' search_geocomp(43)
 
 
-search_geocomp <- function(keyword){
-    dt1 <- geocomp_dict[grepl(tolower(keyword), tolower(code))]
-    dt2 <- geocomp_dict[grepl(tolower(keyword), tolower(description))]
+search_geocomp <- function(keyword, view = TRUE){
+    dt1 <- dict_geocomp[grepl(tolower(keyword), tolower(code))]
+    dt2 <- dict_geocomp[grepl(tolower(keyword), tolower(description))]
 
     dt <- rbindlist(list(dt1, dt2)) %>%
         .[, .(description, code)] %>%
         unique()
+
+    if (view) View(dt)
+
     return(dt)
 }

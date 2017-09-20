@@ -4,9 +4,10 @@
 #' the keyword.
 #'
 #' @param keyword keyword to be searched
+#' @param view display the search result with View if TRUE
 #' @param table_only only search in and strictly match table_num
 #'
-#' @seealso \code{\link{datafile_dict}}
+#' @seealso \code{\link{dict_datafile}}
 #'
 #' @export
 #'
@@ -25,22 +26,24 @@
 #'
 #'
 
-search_datafile <- function(keyword, table_only = FALSE) {
+search_datafile <- function(keyword, table_only = FALSE, view = TRUE) {
     if (table_only) {
         # search for exact match
-        dt <- datafile_dict[tolower(keyword) == tolower(table_num)]
+        dt <- dict_datafile[tolower(keyword) == tolower(table_num)]
     } else {
         # search in multple columns
-        dt1 <- datafile_dict[grepl(tolower(keyword), tolower(field))]
-        dt2 <- datafile_dict[grepl(tolower(keyword), tolower(table_num))]
-        dt3 <- datafile_dict[grepl(tolower(keyword), tolower(table))]
-        dt4 <- datafile_dict[grepl(tolower(keyword), tolower(reference))]
-        dt5 <- datafile_dict[grepl(tolower(keyword), tolower(file))]
+        dt1 <- dict_datafile[grepl(tolower(keyword), tolower(field))]
+        dt2 <- dict_datafile[grepl(tolower(keyword), tolower(table_num))]
+        dt3 <- dict_datafile[grepl(tolower(keyword), tolower(table))]
+        dt4 <- dict_datafile[grepl(tolower(keyword), tolower(reference))]
+        dt5 <- dict_datafile[grepl(tolower(keyword), tolower(file))]
 
         dt <- rbindlist(list(dt1, dt2, dt3, dt4, dt5)) %>%
             .[, .(file, field, reference, table_num)] %>%
             unique()
     }
+
+    if (view) View(dt)
 
     return(dt)
 }

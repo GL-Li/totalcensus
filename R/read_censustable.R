@@ -1,6 +1,6 @@
-#' Read selected table
+#' Read selected census table
 #'
-#' Read a table in a state
+#' Read a census table in a state
 #'
 #' @param path_to_census path to the directory holding downloaded census data
 #' @param state abbrivation of a state, such as "IN" for Indiana
@@ -12,16 +12,16 @@
 #'
 #'
 
-read_table <- function(path_to_census, state, table_num){
+read_censustable <- function(path_to_census, state, table_num){
     # determine file number for the table
-    file_num <- search_datafile(table_num, table_only = TRUE) %>%
+    file_num <- search_datafile(table_num, table_only = TRUE, view = FALSE) %>%
         .[, file] %>%
         unique() %>%
         str_sub(6, 7) %>%
         as.numeric()
 
     # determine table columns from the file
-    table_col <- search_datafile(table_num, table_only = TRUE) %>%
+    table_col <- search_datafile(table_num, table_only = TRUE, view = FALSE) %>%
         .[, reference]
 
     # read data file and select table columns plus logical record number

@@ -4,10 +4,12 @@
 \alias{search_geoheader}
 \title{Search geographic header}
 \usage{
-search_geoheader(keyword)
+search_geoheader(keyword, view = TRUE)
 }
 \arguments{
 \item{keyword}{keyword in description or reference}
+
+\item{view}{display the search result with View if TRUE}
 }
 \value{
 data.table match the search criteria
@@ -24,5 +26,5 @@ search_geoheader("INTPT")
 
 }
 \seealso{
-\code{\link{geoheader_dict}}, which lists all the geographic headers
+\code{\link{dict_geoheader}}, which lists all the geographic headers
 }
