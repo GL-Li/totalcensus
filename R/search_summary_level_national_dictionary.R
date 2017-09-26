@@ -1,22 +1,27 @@
-#' Search summary level
+#' Search summary levels of national files
 #'
-#' search the code or description of summary level
+#' Search the code or description of summary levels of national files
 #'
 #' @param keyword keyword to search in code or description
 #' @param view display the search result with View if TRUE
 #'
-#' @export
+#' @return A data.table of summary levels match the search
 #'
 #' @seealso \code{\link{dict_summarylevel_US}} lists all geocomponents and codes
 #'
 #' @examples
-#' # search geocomponent contains "block"
-#' search_sumlev("block")
+#' # search summary level of geocomponent contains "block"
+#' search_sumlev_US("block")
 #'
-#' # search geocomponent with code 40
-#' search_sumlev("40")
+#' # search summary level with code 40
+#' search_sumlev_US("40")
 #' # or
-#' search_sumlev(40)
+#' search_sumlev_US(40)
+#'
+#' @export
+#' @import data.table
+#' @import magrittr
+#'
 
 
 search_sumlev_US <- function(keyword, view = TRUE){

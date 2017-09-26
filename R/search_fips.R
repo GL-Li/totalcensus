@@ -1,14 +1,24 @@
-#' Search fips
+#' Search FIPS
 #'
 #'
 #' @param keyword keyword to be searched
 #' @param view display the search result with View if TRUE
 #'
+#' @return A data.table
+#'
+#' @examples
+#' # search fips of Lincoln in Rhode Island
+#' search_fips("rhode island lincoln")
+#'
+#' # list fips of all counties in Massachusetts, even cannot spell correctly
+#' search_fips("massachu county")
+#'
 #' @seealso \code{\link{dict_fips}}
 #'
 #' @export
-#'
-#' @examples
+#' @import data.table
+#' @import magrittr
+#' @importFrom stringr str_split
 #'
 #'
 

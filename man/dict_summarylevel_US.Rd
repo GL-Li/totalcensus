@@ -4,7 +4,7 @@
 \name{dict_summarylevel_US}
 \alias{dict_summarylevel_US}
 \title{Summary levels and codes for national files}
-\format{A data.table with 77 rows and 2 variables
+\format{A data.table with 77 rows and 2 variables:
 \describe{
   \item{code}{code of summary level}
   \item{description}{description of summary level}

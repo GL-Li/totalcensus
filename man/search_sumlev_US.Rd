@@ -2,7 +2,7 @@
 % Please edit documentation in R/search_summary_level_national_dictionary.R
 \name{search_sumlev_US}
 \alias{search_sumlev_US}
-\title{Search summary level}
+\title{Search summary levels of national files}
 \usage{
 search_sumlev_US(keyword, view = TRUE)
 }
@@ -11,17 +11,21 @@ search_sumlev_US(keyword, view = TRUE)
 
 \item{view}{display the search result with View if TRUE}
 }
+\value{
+A data.table of summary levels match the search
+}
 \description{
-search the code or description of summary level
+Search the code or description of summary levels of national files
 }
 \examples{
-# search geocomponent contains "block"
-search_sumlev("block")
+# search summary level of geocomponent contains "block"
+search_sumlev_US("block")
 
-# search geocomponent with code 40
-search_sumlev("40")
+# search summary level with code 40
+search_sumlev_US("40")
 # or
-search_sumlev(40)
+search_sumlev_US(40)
+
 }
 \seealso{
 \code{\link{dict_summarylevel_US}} lists all geocomponents and codes

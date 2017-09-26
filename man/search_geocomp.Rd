@@ -2,7 +2,7 @@
 % Please edit documentation in R/search_geographic_component_dictionary.R
 \name{search_geocomp}
 \alias{search_geocomp}
-\title{Search geographic component}
+\title{Search geographic components}
 \usage{
 search_geocomp(keyword, view = TRUE)
 }
@@ -11,17 +11,21 @@ search_geocomp(keyword, view = TRUE)
 
 \item{view}{display the search result with View if TRUE}
 }
+\value{
+A data.table
+}
 \description{
-search the code or description of geographic component
+Search the code or description of geographic component
 }
 \examples{
-# search geocomponent contains "urban cluster"
+# search geocomponents containing "urban cluster"
 search_geocomp("urban cluster")
 
-# search geocomponent with code 43
+# search geocomponents with code 43
 search_geocomp("43")
 # or
 search_geocomp(43)
+
 }
 \seealso{
 \code{\link{dict_geocomp}} lists all geocomponents and codes

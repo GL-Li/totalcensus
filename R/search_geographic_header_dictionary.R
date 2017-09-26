@@ -1,4 +1,4 @@
-#' Search geographic header
+#' Search geographic headers
 #'
 #' Search in field reference or description with a keyword
 #'
@@ -6,7 +6,7 @@
 #' @param keyword keyword in description or reference
 #' @param view display the search result with View if TRUE
 #'
-#' @return data.table match the search criteria
+#' @return data.table matching the search criteria
 #'
 #' @examples
 #' # search geoheader that contains keyword "india"
@@ -18,6 +18,8 @@
 #' @seealso \code{\link{dict_geoheader}}, which lists all the geographic headers
 #'
 #' @export
+#' @import data.table
+#' @import magrittr
 #'
 search_geoheader <- function(keyword, view = TRUE) {
     dt1 <- dict_geoheader[grepl(tolower(keyword), tolower(reference))]

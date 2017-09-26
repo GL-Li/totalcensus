@@ -1,4 +1,4 @@
-#' Search census table
+#' Search census tables
 #'
 #' search census tables by keyword in table numbers or table descriptions
 #'
@@ -7,16 +7,24 @@
 #'     of "abc defg".
 #' @param view display the search result with View if TRUE
 #'
-#' @export
+#' @return A data.table
 #'
-#' @seealso \code{\link{dict_censustable}} lists all geocomponents and codes
+#'
 #'
 #' @examples
 #' # search census table contains "occupancy"
 #' search_table("occupancy")
 #'
-#' # search census table with table number "H6"
-#' search_table("H6")
+#' # search census table with table number "H5"
+#' search_table("H5")
+#'
+#' @seealso \code{\link{dict_censustable}} lists all geocomponents and codes
+#'
+#' @export
+#' @import data.table
+#' @import magrittr
+#' @importFrom stringr str_split
+#'
 
 search_table <- function(keyword, view = TRUE){
     # search rows that contains ALL keywords, NOT any

@@ -1,22 +1,27 @@
-#' Search geographic component
+#' Search geographic components
 #'
-#' search the code or description of geographic component
+#' Search the code or description of geographic component
 #'
 #' @param keyword keyword to search in code or description
 #' @param view display the search result with View if TRUE
 #'
-#' @export
+#' @return A data.table
+#'
 #'
 #' @seealso \code{\link{dict_geocomp}} lists all geocomponents and codes
 #'
 #' @examples
-#' # search geocomponent contains "urban cluster"
+#' # search geocomponents containing "urban cluster"
 #' search_geocomp("urban cluster")
 #'
-#' # search geocomponent with code 43
+#' # search geocomponents with code 43
 #' search_geocomp("43")
 #' # or
 #' search_geocomp(43)
+#'
+#' @export
+#' @import data.table
+#' @import magrittr
 
 
 search_geocomp <- function(keyword, view = TRUE){

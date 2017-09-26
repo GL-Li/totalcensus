@@ -1,16 +1,24 @@
-#' Read selected census table
+#' Read selected census table of a state
 #'
-#' Read a census table in a state
+#' Read a census table in a state.
 #'
 #' @param path_to_census path to the directory holding downloaded census data
 #' @param state abbrivation of a state, such as "IN" for Indiana
 #' @param table_num table number such as "P3" and "PCT11A"
 #'
-#' @export
+#' @return A data.table with of the selected census table.
 #'
 #' @examples
+#' \dontrun{
+#' # read table P11 of Rhode Island
+#' path <- "your_local_path_to_census_data"
+#' tmp <- read_censustable(path, "RI", "P11")
+#' }
 #'
 #'
+#' @export
+#' @import data.table
+#' @import magrittr
 
 read_censustable <- function(path_to_census, state, table_num){
     # determine file number for the table

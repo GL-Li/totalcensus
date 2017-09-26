@@ -2,7 +2,7 @@
 % Please edit documentation in R/search_geographic_header_dictionary.R
 \name{search_geoheader}
 \alias{search_geoheader}
-\title{Search geographic header}
+\title{Search geographic headers}
 \usage{
 search_geoheader(keyword, view = TRUE)
 }
@@ -12,7 +12,7 @@ search_geoheader(keyword, view = TRUE)
 \item{view}{display the search result with View if TRUE}
 }
 \value{
-data.table match the search criteria
+data.table matching the search criteria
 }
 \description{
 Search in field reference or description with a keyword

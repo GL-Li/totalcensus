@@ -2,7 +2,7 @@
 % Please edit documentation in R/search_census_table_dictionary.R
 \name{search_table}
 \alias{search_table}
-\title{Search census table}
+\title{Search census tables}
 \usage{
 search_table(keyword, view = TRUE)
 }
@@ -13,6 +13,9 @@ of "abc defg".}
 
 \item{view}{display the search result with View if TRUE}
 }
+\value{
+A data.table
+}
 \description{
 search census tables by keyword in table numbers or table descriptions
 }
@@ -20,8 +23,9 @@ search census tables by keyword in table numbers or table descriptions
 # search census table contains "occupancy"
 search_table("occupancy")
 
-# search census table with table number "H6"
-search_table("H6")
+# search census table with table number "H5"
+search_table("H5")
+
 }
 \seealso{
 \code{\link{dict_censustable}} lists all geocomponents and codes

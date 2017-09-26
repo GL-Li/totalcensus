@@ -4,14 +4,20 @@
 \alias{search_datafile}
 \title{Search data files}
 \usage{
-search_datafile(keyword, table_only = FALSE, view = TRUE)
+search_datafile(keyword, table_only = FALSE, file_only = FALSE,
+  view = TRUE)
 }
 \arguments{
 \item{keyword}{keyword to be searched}
 
 \item{table_only}{only search in and strictly match table_num}
 
+\item{file_only}{only search in file numbers}
+
 \item{view}{display the search result with View if TRUE}
+}
+\value{
+A data.table
 }
 \description{
 Search in all data files in order to find the file containing
@@ -25,11 +31,10 @@ search_datafile("p3", table_only = TRUE)
 search_datafile("p0030002")
 
 # search file 03
-search_datafile("file_03")
+search_datafile("03", file_only = TRUE)
 
-# search keyword "total population". too many matches, usually do not do it
-search_datafile("total population")
-
+# search keyword "asian total population". too many matches, usually do not do it
+search_datafile("asian total population")
 
 }
 \seealso{

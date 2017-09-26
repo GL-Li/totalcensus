@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_censustable.R
 \name{read_censustable}
 \alias{read_censustable}
-\title{Read selected census table}
+\title{Read selected census table of a state}
 \usage{
 read_censustable(path_to_census, state, table_num)
 }
@@ -13,10 +13,18 @@ read_censustable(path_to_census, state, table_num)
 
 \item{table_num}{table number such as "P3" and "PCT11A"}
 }
+\value{
+A data.table with of the selected census table.
+}
 \description{
-Read a census table in a state
+Read a census table in a state.
 }
 \examples{
+\dontrun{
+# read table P11 of Rhode Island
+path <- "your_local_path_to_census_data"
+tmp <- read_censustable(path, "RI", "P11")
+}
 
 
 }

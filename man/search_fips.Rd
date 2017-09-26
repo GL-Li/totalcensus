@@ -2,7 +2,7 @@
 % Please edit documentation in R/search_fips.R
 \name{search_fips}
 \alias{search_fips}
-\title{Search fips}
+\title{Search FIPS}
 \usage{
 search_fips(keyword, table_only = FALSE, view = TRUE)
 }
@@ -11,11 +11,18 @@ search_fips(keyword, table_only = FALSE, view = TRUE)
 
 \item{view}{display the search result with View if TRUE}
 }
+\value{
+A data.table
+}
 \description{
-Search fips
+Search FIPS
 }
 \examples{
+# search fips of Lincoln in Rhode Island
+search_fips("rhode island lincoln")
 
+# list fips of all counties in Massachusetts, even cannot spell correctly
+search_fips("massachu county")
 
 }
 \seealso{
