@@ -17,6 +17,10 @@ read_datafile(path_to_census, state, file_num)
 Read an entire data file in a state and assign correct reference to each column
 }
 \examples{
+\dontrun{
+path <- your_local_path_to_census_data
+aaa <- read_datafile(path, "RI", 2)
+}
 
 
 }

@@ -31,19 +31,17 @@ search_datafile <- function(keyword, table_only = FALSE, view = TRUE) {
         # search for exact match
         dt <- dict_datafile[tolower(keyword) == tolower(table_num)]
     } else {
-        # search in multple columns
-        dt1 <- dict_datafile[grepl(tolower(keyword), tolower(field))]
-        dt2 <- dict_datafile[grepl(tolower(keyword), tolower(table_num))]
-        dt3 <- dict_datafile[grepl(tolower(keyword), tolower(table))]
-        dt4 <- dict_datafile[grepl(tolower(keyword), tolower(reference))]
-        dt5 <- dict_datafile[grepl(tolower(keyword), tolower(file))]
-
-        dt <- rbindlist(list(dt1, dt2, dt3, dt4, dt5)) %>%
-            .[, .(file, field, reference, table_num)] %>%
-            unique()
+        dt <- dict_datafile
+        keywords <- unlist(str_split(tolower(keyword), " "))
+        for (kw in keywords){
+            # combine all rows to form a new column for search
+            dt <- dt[, comb := apply(dt, 1, paste, collapse = " ")] %>%
+                .[grepl(kw, tolower(comb))] %>%
+                .[, comb := NULL]
+        }
     }
 
-    if (view) View(dt)
+    if (view) View(dt, paste(keyword, "found"))
 
     return(dt)
 }

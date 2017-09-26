@@ -27,7 +27,7 @@ search_geoheader <- function(keyword, view = TRUE) {
         .[, .(description, reference)] %>%
         unique()
 
-    if (view) View(dt)
+    if (view) View(dt, paste(keyword, "found"))
 
     return(dt)
 }

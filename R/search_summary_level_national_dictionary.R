@@ -7,7 +7,7 @@
 #'
 #' @export
 #'
-#' @seealso \code{\link{dict_summarylevel}} lists all geocomponents and codes
+#' @seealso \code{\link{dict_summarylevel_US}} lists all geocomponents and codes
 #'
 #' @examples
 #' # search geocomponent contains "block"
@@ -19,9 +19,9 @@
 #' search_sumlev(40)
 
 
-search_sumlev <- function(keyword, view = TRUE){
-    dt1 <- dict_summarylevel[grepl(tolower(keyword), tolower(code))]
-    dt2 <- dict_summarylevel[grepl(tolower(keyword), tolower(description))]
+search_sumlev_US <- function(keyword, view = TRUE){
+    dt1 <- dict_summarylevel_US[grepl(tolower(keyword), tolower(code))]
+    dt2 <- dict_summarylevel_US[grepl(tolower(keyword), tolower(description))]
 
     dt <- rbindlist(list(dt1, dt2)) %>%
         .[, .(description, code)] %>%

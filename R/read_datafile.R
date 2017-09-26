@@ -11,23 +11,25 @@
 #' @seealso \code{\link{dict_datafile}}
 #'
 #' @examples
+#' \dontrun{
+#' path <- your_local_path_to_census_data
+#' aaa <- read_datafile(path, "RI", 2)
+#' }
 #'
 #'
 
 read_datafile <- function(path_to_census, state, file_num){
     # convert to right file label and number
     if (file_num < 10) {
-        file_lab <- paste0("file_0", file_num)
         file <- paste0("0000", file_num, "2010.ur1")
     } else {
-        file_lab <- paste0("file_", file_num)
         file <- paste0("000", file_num, "2010.ur1")
     }
     file_dir <- paste0(path_to_census, "/", state, "/", tolower(state), file)
     dt <- fread(file_dir, header = FALSE)
 
     # assign columns names
-    col_names <- dict_datafile[file == file_lab, reference]
+    col_names <- dict_datafile[file == file_num, reference]
     setnames(dt, col_names)
 
     return(dt)

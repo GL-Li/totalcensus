@@ -1,0 +1,77 @@
+010 United States
+020 Region
+030 Division
+040 State
+050 State-County
+060 State-County-County Subdivision
+070 State-County-County Subdivision-Place/Remainder
+160 State-Place
+155 State-Place-County
+170 State-Consolidated City
+172 State-Consolidated City-Place Within Consolidated City
+500 State-Congressional District
+610 State-State Legislative District (Upper Chamber)
+620 State-State Legislative District (Lower Chamber)
+250 American Indian Area/Alaska Native Area/Hawaiian Home Land
+260 American Indian Area/Alaska Native Area/Hawaiian Home Land-State
+270 American Indian Area/Alaska Native Area/Hawaiian Home LandState-County
+271 American Indian Area/Alaska Native Area/Hawaiian Home Land-State-County-County Subdivision
+273 American Indian Area/Alaska Native Area/Hawaiian Home Land-State-County-County SubdivisionPlace/Remainder
+269 American Indian Area/Alaska Native Area/Hawaiian Home LandState-Place/Remainder
+252 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only
+262 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-State
+272 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-State-County
+275 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-State-County-County Subdivision
+276 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-StateCounty-County Subdivision-Place/Remainder
+254 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land
+264 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land-State
+274 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land-State-County
+277 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land-State-County-County Subdivision
+278 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land-State-CountyCounty Subdivision-Place/Remainder
+256 American Indian Area-Tribal Census Tract
+291 American Indian Area (Reservation Only)-Tribal Census Tract
+292 American Indian Area (Off-Reservation Trust Land Only)-Tribal Census Tract
+258 American Indian Area-Tribal Census Tract-Tribal Block Group
+293 American Indian Area (Reservation Only)-Tribal Census TractTribal Block Group
+294 American Indian Area (Off-Reservation Trust Land Only)-Tribal Census Tract-Tribal Block Group
+251 American Indian Area-Tribal Subdivision/Remainder
+253 American Indian Area (Reservation or Statistical Entity Only)-Tribal Subdivision/Remainder
+255 American Indian Area (Off-Reservation Trust Land Only)-Tribal Subdivision/Remainder
+257 American Indian Area-Tribal Subdivision/Remainder-Tribal Census Tract
+259 American Indian Area-Tribal Subdivision/RemainderTribal Census Tract-Tribal Block Group
+290 American Indian Area-Tribal Subdivision/Remainder-State
+230 State-Alaska Native Regional Corporation
+310 Metropolitan Statistical Area/Micropolitan Statistical Area
+311 Metropolitan Statistical Area/Micropolitan Statistical Area-State
+312 Metropolitan Statistical Area/Micropolitan Statistical Area-State-Principal City
+313 Metropolitan Statistical Area/Micropolitan Statistical AreaState-County
+314 Metropolitan Statistical Area-Metropolitan Division
+315 Metropolitan Statistical Area-Metropolitan Division-State
+316 Metropolitan Statistical Area-Metropolitan DivisionState-County
+330 Combined Statistical Area
+331 Combined Statistical Area-State
+332 Combined Statistical Area-Metropolitan Statistical Area/Micropolitan Statistical Area
+333 Combined Statistical Area-Metropolitan Statistical Area/Micropolitan Statistical Area-State
+350 New England City and Town Area
+351 New England City and Town Area-State
+352 New England City and Town Area-State-Principal City
+353 New England City and Town Area-State-County
+354 New England City and Town Area-State-County-County Subdivision
+355 New England City and Town Area (NECTA)-NECTA Division
+356 New England City and Town Area (NECTA)-NECTA Division-State
+357 New England City and Town Area (NECTA)-NECTA Division-State-County
+358 New England City and Town Area (NECTA)-NECTA Division-State-County-County Subdivision
+335 Combined New England City and Town Area
+336 Combined New England City and Town Area-State
+337 Combined New England City and Town Area-New England City and Town Area
+338 Combined New England City and Town Area-New England City and Town Area-State
+400 Urban Area
+410 Urban Area-State
+430 Urban Area-State-County
+440 Urban Area-State-County-County Subdivision
+450 Urban Area-State-County-County Subdivision-Place/Remainder
+462 Urban Area-State-Consolidated City
+464 Urban Area-State-Consolidated City-Place Within Consolidated City
+860 5-Digit ZIP Code Tabulation Area
+870 5-Digit ZIP Code Tabulation Area-State
+880 5-Digit ZIP Code Tabulation Area-State-County

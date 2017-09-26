@@ -16,17 +16,22 @@ read_censustable <- function(path_to_census, state, table_num){
     # determine file number for the table
     file_num <- search_datafile(table_num, table_only = TRUE, view = FALSE) %>%
         .[, file] %>%
-        unique() %>%
-        str_sub(6, 7) %>%
-        as.numeric()
+        unique()
 
     # determine table columns from the file
     table_col <- search_datafile(table_num, table_only = TRUE, view = FALSE) %>%
         .[, reference]
 
-    # read data file and select table columns plus logical record number
-    table <- read_datafile(path_to_census, state, file_num) %>%
-        .[, c("LOGRECNO", table_col), with = FALSE]
+    # determine location of these table columns among all columns
+    all_col <- dict_datafile[file == file_num, reference]
+    table_loc <- which(all_col %in% table_col)
 
-    return(table)
+    # read data file and select table columns plus logical record number
+    if (file_num < 10) file_num <- paste0("0", file_num)
+    file <- paste0(path_to_census, state, "/", tolower(state), "000", file_num, "2010.ur1")
+    tab <- fread(file, header = FALSE, select = c("V5", paste0("V", table_loc))) %>%
+        set_colnames(c("LOGRECNO", table_col)) %>%
+        setkey(LOGRECNO)
+
+    return(tab)
 }

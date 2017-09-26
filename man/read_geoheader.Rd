@@ -26,7 +26,7 @@ and selected fields
 }
 \examples{
 \dontrun{
-path <- locat_path_to_census_data
+path <- your_local_path_to_census_data
 selected_geoheader <- read_geoheader(
     path_to_census = path,
     state = "RI",

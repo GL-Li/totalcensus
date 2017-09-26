@@ -3,14 +3,19 @@
 \docType{data}
 \name{dict_censustable}
 \alias{dict_censustable}
-\title{All tables in data files in census 2010 summary file 1 with urban/rural update}
-\format{data.table}
+\title{All tables in census 2010 summary file 1 with urban/rural update}
+\format{data.table
+\describe{
+  \item{table_ref}{reference code such as "H0010", "PCT022G"}
+  \item{table_num}{table number such as "H1", "PCT22G"}
+  \item{table}{description of the table}
+  \item{universe}{unit of the table}
+}}
 \usage{
 data("dict_censustable")
 }
 \description{
-This data serves as a dictionary for data files, table numbers, table
-description, and table universe.
+This data serves as a dictionary to search for census tables.
 }
 \references{
 2010 Census Summary File 1

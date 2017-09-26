@@ -1,4 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\data_raw\.R$
+^\application\.R$
 readme.Rmd
