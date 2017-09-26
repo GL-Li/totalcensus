@@ -1,13 +1,16 @@
-#' Geographic components and codes
+#' List of geographic components and codes
 #'
-#' This data serves as a dictionary for geographic component codes and their
-#' discription.
+#'
 #'
 #' @docType data
 #'
 #' @usage data("dict_geocomp")
 #'
-#' @format data.table
+#' @format A data.table with 114 rows and 2 variables:
+#' \describe{
+#'   \item{code}{code for the geocomponent, such as "01" and "M3"}
+#'   \item{description}{description of the geocomponent}
+#' }
 #'
 #' @keywords datasets
 #'
@@ -15,5 +18,6 @@
 #' \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
 #' page 6-15
 #'
+#' @seealso \code{\link{search_geocomp}}
 #'
 "dict_geocomp"

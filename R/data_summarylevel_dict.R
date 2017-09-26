@@ -1,4 +1,4 @@
-#' Summary levels and codes
+#' Summary levels and codes for state files
 #'
 #' This data serves as a dictionary for summary level codes and their
 #' discription for summary file 1 with urban/rural update.
@@ -7,7 +7,11 @@
 #'
 #' @usage data("dict_summarylevel")
 #'
-#' @format data.table
+#' @format A data.table with 99 rows and 2 variables
+#' \describe{
+#'   \item{code}{code of summary level}
+#'   \item{description}{description of summary level}
+#' }
 #'
 #' @keywords datasets
 #'
@@ -16,4 +20,7 @@
 #' page 4-16 state summary file with urban/rural update
 #'
 #'
+#' @seealso \code{\link{search_sumlev}}
+#'
+
 "dict_summarylevel"

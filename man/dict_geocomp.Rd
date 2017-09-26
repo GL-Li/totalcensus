@@ -3,18 +3,24 @@
 \docType{data}
 \name{dict_geocomp}
 \alias{dict_geocomp}
-\title{Geographic components and codes}
-\format{data.table}
+\title{List of geographic components and codes}
+\format{A data.table with 114 rows and 2 variables:
+\describe{
+  \item{code}{code for the geocomponent, such as "01" and "M3"}
+  \item{description}{description of the geocomponent}
+}}
 \usage{
 data("dict_geocomp")
 }
 \description{
-This data serves as a dictionary for geographic component codes and their
-discription.
+List of geographic components and codes
 }
 \references{
 2010 Census Summary File 1
 \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
 page 6-15
+}
+\seealso{
+\code{\link{search_geocomp}}
 }
 \keyword{datasets}

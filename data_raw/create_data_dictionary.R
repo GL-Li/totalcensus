@@ -43,4 +43,4 @@ for (i in 1:48) {
 }
 
 # save data to package datasets ================================================
-save(dict_datafile, file = "data/dict_data.RData")
+save(dict_datafile, file = "data/dict_datafile.RData")

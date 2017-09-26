@@ -1,4 +1,4 @@
-#' Vector of 50 states and DC
+#' Vector of the abbreviations of 50 states and DC
 #'
 #' Abbrivation only
 #'
@@ -6,7 +6,7 @@
 #'
 #' @usage data("states_DC")
 #'
-#' @format vector
+#' @format A vector of 51 element
 #'
 #' @keywords datasets
 

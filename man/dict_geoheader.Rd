@@ -3,8 +3,14 @@
 \docType{data}
 \name{dict_geoheader}
 \alias{dict_geoheader}
-\title{Geographic Header Record — Summary File 1}
-\format{data.table}
+\title{Complete list of geographic Header Record in Summary File 1}
+\format{A data.table with 101 rows and 4 variables
+\describe{
+  \item{reference}{reference of the geoheader record}
+  \item{description}{description of the geoheader}
+  \item{start}{starting position of the geoheader in the record}
+  \item{end}{ending position of the geoheader in the record}
+}}
 \usage{
 data("dict_geoheader")
 }
@@ -16,5 +22,8 @@ discription.
 2010 Census Summary File 1
 \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
 page 2-8
+}
+\seealso{
+\code{\link{search_geoheader}}
 }
 \keyword{datasets}
