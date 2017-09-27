@@ -14,9 +14,9 @@ make_table_list <- function(){
 
     table_list <- fread("data_raw/table_list.csv") %>%
         .[, universe := str_sub(universe, 11, nchar(universe))] %>%
-        .[, table_num := str_extract(table, "^[^.]*")] %>%
-        .[, table := str_replace(table, "^[^ ]*", "")] %>%
-        setcolorder(c("table_ref", "table_num", "table", "universe")) %>%
+        .[, table_number := str_extract(table_name, "^[^.]*")] %>%
+        .[, table_name := str_replace(table_name, "^[^ ]*", "")] %>%
+        setcolorder(c("table_ref", "table_number", "table_name", "universe")) %>%
         setkey(table_ref)
     return(table_list)
 }

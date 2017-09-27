@@ -7,7 +7,7 @@
 \format{A data.table with 99 rows and 2 variables
 \describe{
   \item{code}{code of summary level}
-  \item{description}{description of summary level}
+  \item{summary_level}{description of summary level}
 }}
 \usage{
 data("dict_summarylevel")

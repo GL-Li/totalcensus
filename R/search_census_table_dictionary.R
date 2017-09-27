@@ -29,7 +29,7 @@
 search_table <- function(keyword, view = TRUE){
     # search rows that contains ALL keywords, NOT any
     dt <- dict_censustable
-    keywords <- unlist(str_split(keyword, " "))
+    keywords <- unlist(str_split(tolower(keyword), " "))
     for (kw in keywords) {
         # combine all rows to form a new column for search
         dt <- dt[, comb := apply(dt, 1, paste, collapse = " ")] %>%

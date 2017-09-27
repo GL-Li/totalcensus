@@ -1,4 +1,4 @@
-description, reference, size, start
+field, reference, size, start
 File Identification, FILEID, 6, 1
 State/U .S . Abbreviation (USPS), STUSAB, 2, 7
 Summary Level, SUMLEV, 3, 9

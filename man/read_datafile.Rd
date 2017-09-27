@@ -13,6 +13,9 @@ read_datafile(path_to_census, state, file_num)
 
 \item{file_num}{the number of the file, for example, 5 for file 05}
 }
+\value{
+A data.table of all data in the data file
+}
 \description{
 Read an entire data file in a state and assign correct reference to each column
 }
@@ -21,7 +24,6 @@ Read an entire data file in a state and assign correct reference to each column
 path <- your_local_path_to_census_data
 aaa <- read_datafile(path, "RI", 2)
 }
-
 
 }
 \seealso{

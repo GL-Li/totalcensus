@@ -4,7 +4,7 @@
 \alias{read_censustable}
 \title{Read selected census table of a state}
 \usage{
-read_censustable(path_to_census, state, table_num)
+read_censustable(path_to_census, state, table_number)
 }
 \arguments{
 \item{path_to_census}{path to the directory holding downloaded census data}

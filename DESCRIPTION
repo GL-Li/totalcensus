@@ -10,11 +10,16 @@ Description: This package retrieves data from the downloaded raw US census 2010
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Depends: R (>= 3.3.1)
 Imports:
     stringr (>= 1.2.0), 
     data.table (>= 1.10.1),
     magrittr (>= 1.5)
-RoxygenNote: 6.0.1
-Suggests: knitr,
-    rmarkdown
+Suggests: 
+    knitr,
+    rmarkdown,
+    ggmap,
+    ggplot2
 VignetteBuilder: knitr
+RoxygenNote: 6.0.1
+

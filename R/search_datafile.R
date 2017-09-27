@@ -34,9 +34,9 @@
 search_datafile <- function(keyword, table_only = FALSE, file_only = FALSE, view = TRUE) {
     if (table_only) {
         # search for exact match
-        dt <- dict_datafile[tolower(keyword) == tolower(table_num)]
+        dt <- dict_datafile[tolower(keyword) == tolower(table_number)]
     } else if (file_only){
-        dt <- dict_datafile[as.numeric(keyword) == file]
+        dt <- dict_datafile[as.numeric(keyword) == file_segment]
     } else {
         dt <- dict_datafile
         keywords <- unlist(str_split(tolower(keyword), " "))

@@ -10,7 +10,7 @@
 #' @format A data.table with 101 rows and 4 variables
 #' \describe{
 #'   \item{reference}{reference of the geoheader record}
-#'   \item{description}{description of the geoheader}
+#'   \item{field}{description of the geoheader record field}
 #'   \item{start}{starting position of the geoheader in the record}
 #'   \item{end}{ending position of the geoheader in the record}
 #' }

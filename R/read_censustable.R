@@ -20,18 +20,18 @@
 #' @import data.table
 #' @import magrittr
 
-read_censustable <- function(path_to_census, state, table_num){
+read_censustable <- function(path_to_census, state, table_number){
     # determine file number for the table
-    file_num <- search_datafile(table_num, table_only = TRUE, view = FALSE) %>%
-        .[, file] %>%
+    file_num <- search_datafile(table_number, table_only = TRUE, view = FALSE) %>%
+        .[, file_segment] %>%
         unique()
 
     # determine table columns from the file
-    table_col <- search_datafile(table_num, table_only = TRUE, view = FALSE) %>%
+    table_col <- search_datafile(table_number, table_only = TRUE, view = FALSE) %>%
         .[, reference]
 
     # determine location of these table columns among all columns
-    all_col <- dict_datafile[file == file_num, reference]
+    all_col <- dict_datafile[file_segment == file_num, reference]
     table_loc <- which(all_col %in% table_col)
 
     # read data file and select table columns plus logical record number

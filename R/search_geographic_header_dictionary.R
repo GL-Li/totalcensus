@@ -23,10 +23,10 @@
 #'
 search_geoheader <- function(keyword, view = TRUE) {
     dt1 <- dict_geoheader[grepl(tolower(keyword), tolower(reference))]
-    dt2 <- dict_geoheader[grepl(tolower(keyword), tolower(description))]
+    dt2 <- dict_geoheader[grepl(tolower(keyword), tolower(field))]
 
     dt <- rbindlist(list(dt1, dt2)) %>%
-        .[, .(description, reference)] %>%
+        .[, .(field, reference)] %>%
         unique()
 
     if (view) View(dt, paste(keyword, "found"))

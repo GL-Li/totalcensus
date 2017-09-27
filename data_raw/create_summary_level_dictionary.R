@@ -9,7 +9,7 @@ library(stringr)
 dict_summarylevel <- fread("data_raw/state_summary_level_urban_rural_update",
                            header = FALSE, sep = "\n") %>%
     .[, .(code = str_sub(V1, 1, 3),
-          description = str_sub(V1, 5, nchar(V1)))]
+          summary_level = str_sub(V1, 5, nchar(V1)))]
 
 save(dict_summarylevel, file = "data/dict_summarylevel.RData")
 

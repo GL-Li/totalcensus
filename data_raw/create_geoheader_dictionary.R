@@ -10,6 +10,6 @@ dict_geoheader <- read.csv("data_raw/geographic_header_dictionary.csv", sep = ",
     .[, end := start + size -1] %>%
     .[, size := NULL] %>%
     .[, reference := trimws(reference)] %>%
-    setcolorder(c("reference", "description", "start", "end"))
+    setcolorder(c("reference", "field", "start", "end"))
 
 save(dict_geoheader, file = "data/dict_geoheader.RData")

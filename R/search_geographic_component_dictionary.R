@@ -26,10 +26,10 @@
 
 search_geocomp <- function(keyword, view = TRUE){
     dt1 <- dict_geocomp[grepl(tolower(keyword), tolower(code))]
-    dt2 <- dict_geocomp[grepl(tolower(keyword), tolower(description))]
+    dt2 <- dict_geocomp[grepl(tolower(keyword), tolower(geo_component))]
 
     dt <- rbindlist(list(dt1, dt2)) %>%
-        .[, .(description, code)] %>%
+        .[, .(geo_component, code)] %>%
         unique()
 
     if (view) View(dt, paste(keyword, "found"))

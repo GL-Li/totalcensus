@@ -6,9 +6,7 @@
 #' @param state abbrivation of a state, for example, "IN" for Indiana
 #' @param file_num the number of the file, for example, 5 for file 05
 #'
-#' @export
-#'
-#' @seealso \code{\link{dict_datafile}}
+#' @return A data.table of all data in the data file
 #'
 #' @examples
 #' \dontrun{
@@ -16,6 +14,11 @@
 #' aaa <- read_datafile(path, "RI", 2)
 #' }
 #'
+#' @seealso \code{\link{dict_datafile}}
+#'
+#' @export
+#' @import data.table
+#' @import magrittr
 #'
 
 read_datafile <- function(path_to_census, state, file_num){
@@ -29,8 +32,10 @@ read_datafile <- function(path_to_census, state, file_num){
     dt <- fread(file_dir, header = FALSE)
 
     # assign columns names
-    col_names <- dict_datafile[file == file_num, reference]
+    col_names <- dict_datafile[file_segment == file_num, reference]
     setnames(dt, col_names)
+
+    setkey(dt, LOGRECNO)
 
     return(dt)
 }

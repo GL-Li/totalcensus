@@ -7,8 +7,8 @@
 \format{A data.table with 333 rows and 4 variables:
 \describe{
   \item{table_ref}{reference code such as "H0010", "PCT022G"}
-  \item{table_num}{table number such as "H1", "PCT22G"}
-  \item{table}{description of the table}
+  \item{table_number}{table number such as "H1", "PCT22G"}
+  \item{table_name}{description of the table}
   \item{universe}{unit of the table}
 }}
 \usage{

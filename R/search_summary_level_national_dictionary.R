@@ -26,10 +26,10 @@
 
 search_sumlev_US <- function(keyword, view = TRUE){
     dt1 <- dict_summarylevel_US[grepl(tolower(keyword), tolower(code))]
-    dt2 <- dict_summarylevel_US[grepl(tolower(keyword), tolower(description))]
+    dt2 <- dict_summarylevel_US[grepl(tolower(keyword), tolower(summary_level))]
 
     dt <- rbindlist(list(dt1, dt2)) %>%
-        .[, .(description, code)] %>%
+        .[, .(summary_level, code)] %>%
         unique()
 
     if (view) View(dt, paste(keyword, "found"))

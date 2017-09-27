@@ -4,7 +4,7 @@
 \alias{read_geoheader}
 \title{Read geographic header record file}
 \usage{
-read_geoheader(path_to_census, state, field, show_progress = TRUE)
+read_geoheader(path_to_census, state, references, show_progress = TRUE)
 }
 \arguments{
 \item{path_to_census}{path to the directory holding downloaded
@@ -12,17 +12,17 @@ census 2010 summary file 1 with urban/rural update}
 
 \item{state}{abbreviation of a state, for example "IN" for "Indiana"}
 
-\item{field}{vector of references of selected geographci headers to be included in the return}
+\item{references}{vector of references of selected geographci headers to be included in the return}
 
 \item{show_progress}{show progress of reading if TRUE. Turn off if FALSE, which
 is useful in RMarkdown output.}
 }
 \value{
-data.table whose columns are logical record number and selected fields
+data.table whose columns are logical record number and selected references
 }
 \description{
 Read geographic header record file of a state and return logical record number
-and selected fields
+and selected references
 }
 \examples{
 \dontrun{
@@ -30,7 +30,7 @@ path <- your_local_path_to_census_data
 selected_geoheader <- read_geoheader(
     path_to_census = path,
     state = "RI",
-    field = c("SUMLEV", "INTPTLAT", "INTPTLON")
+    references = c("NAME", "SUMLEV", "INTPTLAT", "INTPTLON")
 )
 }
 

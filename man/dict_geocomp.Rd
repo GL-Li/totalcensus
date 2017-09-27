@@ -7,7 +7,7 @@
 \format{A data.table with 114 rows and 2 variables:
 \describe{
   \item{code}{code for the geocomponent, such as "01" and "M3"}
-  \item{description}{description of the geocomponent}
+  \item{geo_component}{description of the geocomponent}
 }}
 \usage{
 data("dict_geocomp")
