@@ -17,7 +17,6 @@
 #' @seealso \code{\link{dict_datafile}}
 #'
 #' @export
-#' @import data.table
 #' @import magrittr
 #'
 

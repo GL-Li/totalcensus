@@ -25,7 +25,6 @@
 #'
 #'
 #' @export
-#' @import data.table
 #' @import magrittr
 #' @importFrom stringr str_sub str_trim
 #'
