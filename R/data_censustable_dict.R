@@ -11,7 +11,7 @@
 #' \describe{
 #'   \item{table_ref}{reference code such as "H0010", "PCT022G"}
 #'   \item{table_number}{table number such as "H1", "PCT22G"}
-#'   \item{table_name}{description of the table}
+#'   \item{table_title}{description of the table}
 #'   \item{universe}{unit of the table}
 #' }
 
@@ -20,7 +20,7 @@
 #'
 #' @references 2010 Census Summary File 1
 #' \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
-#' all across chapter 6.
+#' all across chapter 5.
 #'
 #' @seealso \code{\link{search_table}}
 #'

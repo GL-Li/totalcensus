@@ -20,7 +20,7 @@
 #' @import data.table
 #' @import magrittr
 
-read_censustable <- function(path_to_census, state, table_number){
+read_2010table <- function(path_to_census, state, table_number){
     # determine file number for the table
     file_num <- search_datafile(table_number, table_only = TRUE, view = FALSE) %>%
         .[, file_segment] %>%

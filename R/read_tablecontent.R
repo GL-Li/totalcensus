@@ -8,7 +8,9 @@
 #'
 #' @param path_to_census path to the directory holding downloaded census data
 #' @param state abbrivation of a state, such as "IN" for Indiana
-#' @param contents selected references of contents in census tables
+#' @param table_contents selected references of contents in census tables
+#' @param show_progress show progress of reading if TRUE. Turn off if FALSE, which
+#'     is useful in RMarkdown output.
 #'
 #' @return A data.table containing "LOGRECNO" and selected table contents
 #'
@@ -16,7 +18,7 @@
 #' \dontrun{
 #' path <- your_local_path_to_census_data
 #' contents <- c("PCT012F139", "P0030008", "P0100059", "P0150008", "H0070016", "PCT012F138")
-#' dt <- read_tablecontents(path, "RI", contents)
+#' dt <- read_2010tablecontents(path, "RI", contents)
 #'
 #' }
 #'
@@ -25,10 +27,10 @@
 #' @import magrittr
 #'
 
-read_tablecontents <- function(path_to_census, state, contents){
+read_2010tablecontents <- function(path_to_census, state, table_contents, show_progress = TRUE){
     # locate data files for the fields
-    file_nums <- sapply(contents, function(x) search_datafile(x, view = FALSE)[, file_segment])
-    file_content <- data.table(file_num = file_nums, content = contents)
+    file_nums <- sapply(table_contents, function(x) search_datafile(x, view = FALSE)[, file_segment])
+    file_content <- data.table(file_num = file_nums, content = table_contents)
 
     # read data
     lst = list()
@@ -42,7 +44,7 @@ read_tablecontents <- function(path_to_census, state, contents){
         if (num < 10) num <- paste0("0", num)
         file <- paste0(path_to_census, state, "/", tolower(state), "000", num, "2010.ur1")
         # fread assigns column names as "V1", "V2", ... when header = FALSE
-        dt <- fread(file, header = FALSE, select = c("V5", cols)) %>%
+        dt <- fread(file, header = FALSE, select = c("V5", cols), showProgress = show_progress) %>%
             set_colnames(c("LOGRECNO", cont)) %>%
             setkey(LOGRECNO)
         assign(paste0("dt_", num), dt)

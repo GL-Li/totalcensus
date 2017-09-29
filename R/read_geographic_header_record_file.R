@@ -30,7 +30,7 @@
 #' @importFrom stringr str_sub str_trim
 #'
 
-read_geoheader <- function(path_to_census, state, references, show_progress = TRUE) {
+read_2010geoheader <- function(path_to_census, state, references = NULL, show_progress = TRUE) {
     if (show_progress) {
         print(paste("reading", state, "geographic data"))
     }
@@ -54,20 +54,22 @@ read_geoheader <- function(path_to_census, state, references, show_progress = TR
     dt <- geo[, .(LOGRECNO = as.numeric(str_sub(V1, 19, 25)))]
 
     # add all selected fields to output data
-    for (ref in toupper(references)) {
-        # identify numeric hearder
-        if (ref %in% c("INTPTLAT", "INTPTLON")) {
-            # place variable in () to add new columns
-            dt[, (ref) := as.numeric(str_sub(geo[, V1],
-                                             dict_geoheader[reference == ref, start],
-                                             dict_geoheader[reference == ref, end]))]
-        } else {
-            dt[, (ref) := str_trim(str_sub(geo[, V1],
-                                         dict_geoheader[reference == ref, start],
-                                         dict_geoheader[reference == ref, end]))]
+    if (!is.null(references)){
+        for (ref in toupper(references)) {
+            # identify numeric hearder
+            if (ref %in% c("INTPTLAT", "INTPTLON")) {
+                # place variable in () to add new columns
+                dt[, (ref) := as.numeric(str_sub(geo[, V1],
+                                                 dict_geoheader[reference == ref, start],
+                                                 dict_geoheader[reference == ref, end]))]
+            } else {
+                dt[, (ref) := str_trim(str_sub(geo[, V1],
+                                               dict_geoheader[reference == ref, start],
+                                               dict_geoheader[reference == ref, end]))]
+            }
         }
-
     }
+
 
     setkey(dt, LOGRECNO)
 
