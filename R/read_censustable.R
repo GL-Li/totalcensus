@@ -17,6 +17,7 @@
 #'
 #'
 #' @export
+#' @import data.table
 #' @import magrittr
 
 read_2010table <- function(path_to_census, state, table_number){

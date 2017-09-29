@@ -23,6 +23,7 @@
 #' }
 #'
 #' @export
+#' @import data.table
 #' @import magrittr
 #'
 
