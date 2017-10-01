@@ -3,3 +3,4 @@
 ^\data_raw\.R$
 ^\application\.R$
 readme.Rmd
+^\.travis\.yml$
