@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/user/pkg.svg?branch=master)](https://travis-ci.org/GL-Li/rawcensus2010)
+[![Build Status](https://travis-ci.org/GL-Li/rawcensus2010.svg?branch=master)](https://travis-ci.org/GL-Li/rawcensus2010)
 
 # Working with raw 2010 census data
 
