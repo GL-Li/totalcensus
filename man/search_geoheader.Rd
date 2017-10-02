@@ -18,11 +18,13 @@ data.table matching the search criteria
 Search in field reference or description with a keyword
 }
 \examples{
-# search geoheader that contains keyword "india"
-search_geoheader("india")
+\dontrun{
+  # search geoheader that contains keyword "india"
+  search_geoheader("india")
 
-# search geoheader of reference containing "INTPT"
-search_geoheader("INTPT")
+  # search geoheader of reference containing "INTPT"
+  search_geoheader("INTPT")
+}
 
 }
 \seealso{

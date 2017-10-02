@@ -7,12 +7,13 @@
 #' @return A data.table
 #'
 #' @examples
-#' # search fips of Lincoln in Rhode Island
-#' search_fips("rhode island lincoln")
+#' \dontrun{
+#'   # search fips of Lincoln in Rhode Island
+#'   search_fips("rhode island lincoln")
 #'
-#' # list fips of all counties in Massachusetts, even cannot spell correctly
-#' search_fips("massachu county")
-#'
+#'   # list fips of all counties in Massachusetts, even cannot spell correctly
+#'   search_fips("massachu county")
+#' }
 #' @seealso \code{\link{dict_fips}}
 #'
 #' @export
@@ -22,7 +23,7 @@
 #'
 #'
 
-search_fips <- function(keyword, table_only = FALSE, view = TRUE) {
+search_fips <- function(keyword, view = TRUE) {
     dt <- dict_fips
     keywords <- unlist(str_split(tolower(keyword), " "))
     for (kw in keywords){

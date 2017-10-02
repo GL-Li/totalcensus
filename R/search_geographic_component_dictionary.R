@@ -11,13 +11,15 @@
 #' @seealso \code{\link{dict_geocomp}} lists all geocomponents and codes
 #'
 #' @examples
-#' # search geocomponents containing "urban cluster"
-#' search_geocomp("urban cluster")
+#' \dontrun{
+#'   # search geocomponents containing "urban cluster"
+#'   search_geocomp("urban cluster")
 #'
-#' # search geocomponents with code 43
-#' search_geocomp("43")
-#' # or
-#' search_geocomp(43)
+#'   # search geocomponents with code 43
+#'   search_geocomp("43")
+#'   # or
+#'   search_geocomp(43)
+#' }
 #'
 #' @export
 #' @import data.table

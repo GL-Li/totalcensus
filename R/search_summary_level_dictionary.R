@@ -10,13 +10,15 @@
 #' @seealso \code{\link{dict_summarylevel}} lists all geocomponents and codes
 #'
 #' @examples
-#' # search summary levels of geocomponent contains "block"
-#' search_sumlev("block")
+#' \dontrun{
+#'   # search summary levels of geocomponent contains "block"
+#'   search_sumlev("block")
 #'
-#' # search summary levels of code 40
-#' search_sumlev("40")
-#' # or
-#' search_sumlev(40)
+#'   # search summary levels of code 40
+#'   search_sumlev("40")
+#'   # or
+#'   search_sumlev(40)
+#' }
 #'
 #' @export
 #' @import data.table

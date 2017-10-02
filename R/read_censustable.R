@@ -4,7 +4,7 @@
 #'
 #' @param path_to_census path to the directory holding downloaded census data
 #' @param state abbrivation of a state, such as "IN" for Indiana
-#' @param table_num table number such as "P3" and "PCT11A"
+#' @param table_number table number such as "P3" and "PCT11A"
 #'
 #' @return A data.table with of the selected census table.
 #'

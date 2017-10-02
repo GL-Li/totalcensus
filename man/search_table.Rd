@@ -20,11 +20,13 @@ A data.table
 search census tables by keyword in table numbers or table descriptions
 }
 \examples{
-# search census table contains "occupancy"
-search_table("occupancy")
+\dontrun{
+  # search census table contains "occupancy"
+  search_table("occupancy")
 
-# search census table with table number "H5"
-search_table("H5")
+  # search census table with table number "H5"
+  search_table("H5")
+}
 
 }
 \seealso{

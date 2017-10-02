@@ -11,7 +11,7 @@ read_2010table(path_to_census, state, table_number)
 
 \item{state}{abbrivation of a state, such as "IN" for Indiana}
 
-\item{table_num}{table number such as "P3" and "PCT11A"}
+\item{table_number}{table number such as "P3" and "PCT11A"}
 }
 \value{
 A data.table with of the selected census table.

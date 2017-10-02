@@ -29,4 +29,4 @@ dict_fips <- read_excel("data_raw/all-geocodes-v2016 .xlsx", skip = 4) %>%
 
 
 
-save(dict_fips, file = "data/dict_fips.RData")
+save(dict_fips, file = "data/dict_fips.RData", compress = "xz", compression_level = 9)

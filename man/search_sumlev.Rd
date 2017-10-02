@@ -18,13 +18,15 @@ A data.table of searched results.
 Search the code or description of summary levels of state files.
 }
 \examples{
-# search summary levels of geocomponent contains "block"
-search_sumlev("block")
+\dontrun{
+  # search summary levels of geocomponent contains "block"
+  search_sumlev("block")
 
-# search summary levels of code 40
-search_sumlev("40")
-# or
-search_sumlev(40)
+  # search summary levels of code 40
+  search_sumlev("40")
+  # or
+  search_sumlev(40)
+}
 
 }
 \seealso{

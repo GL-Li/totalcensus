@@ -21,6 +21,8 @@ make_file_datadict <- function(file_number) {
         .[, table_name := dict_censustable[substr(reference, 1, nchar(reference) -3), table_name]] %>%
         .[, universe := dict_censustable[substr(reference, 1, nchar(reference) -3), universe]] %>%
         .[, file_segment := as.numeric(file_number)] %>%
+        # "–" is non ascii character, replace with "-"
+        .[, table_content := str_replace_all(table_content, "–", "-")] %>%
         .[, max_size := NULL] %>%
         .[, data_type := NULL] %>%
         setcolorder(c("file_segment", "table_content", "reference", "table_number", "table_name", "universe"))
@@ -43,4 +45,4 @@ for (i in 1:48) {
 }
 
 # save data to package datasets ================================================
-save(dict_datafile, file = "data/dict_datafile.RData")
+save(dict_datafile, file = "data/dict_datafile.RData", compress = "xz", compression_level = 9)

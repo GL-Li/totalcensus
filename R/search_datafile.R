@@ -14,17 +14,19 @@
 #'
 #'
 #' @examples
-#' # search exactly table "p3"
-#' search_datafile("p3", table_only = TRUE)
+#' \dontrun{
+#'   # search exactly table "p3"
+#'   search_datafile("p3", table_only = TRUE)
 #'
-#' # search reference "p0030002"
-#' search_datafile("p0030002")
+#'   # search reference "p0030002"
+#'   search_datafile("p0030002")
 #'
-#' # search file 03
-#' search_datafile("03", file_only = TRUE)
+#'   # search file 03
+#'   search_datafile("03", file_only = TRUE)
 #'
-#' # search keyword "asian total population". too many matches, usually do not do it
-#' search_datafile("asian total population")
+#'   # search keyword "asian total population". too many matches, usually do not do it
+#'   search_datafile("asian total population")
+#' }
 #'
 #' @export
 #' @import data.table

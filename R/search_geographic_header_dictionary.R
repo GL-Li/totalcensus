@@ -9,11 +9,13 @@
 #' @return data.table matching the search criteria
 #'
 #' @examples
-#' # search geoheader that contains keyword "india"
-#' search_geoheader("india")
+#' \dontrun{
+#'   # search geoheader that contains keyword "india"
+#'   search_geoheader("india")
 #'
-#' # search geoheader of reference containing "INTPT"
-#' search_geoheader("INTPT")
+#'   # search geoheader of reference containing "INTPT"
+#'   search_geoheader("INTPT")
+#' }
 #'
 #' @seealso \code{\link{dict_geoheader}}, which lists all the geographic headers
 #'

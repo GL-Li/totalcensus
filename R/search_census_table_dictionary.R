@@ -12,11 +12,13 @@
 #'
 #'
 #' @examples
-#' # search census table contains "occupancy"
-#' search_table("occupancy")
+#' \dontrun{
+#'   # search census table contains "occupancy"
+#'   search_table("occupancy")
 #'
-#' # search census table with table number "H5"
-#' search_table("H5")
+#'   # search census table with table number "H5"
+#'   search_table("H5")
+#' }
 #'
 #' @seealso \code{\link{dict_censustable}} lists all geocomponents and codes
 #'

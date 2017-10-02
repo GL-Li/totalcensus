@@ -4,7 +4,7 @@
 \alias{search_fips}
 \title{Search FIPS}
 \usage{
-search_fips(keyword, table_only = FALSE, view = TRUE)
+search_fips(keyword, view = TRUE)
 }
 \arguments{
 \item{keyword}{keyword to be searched}
@@ -18,12 +18,13 @@ A data.table
 Search FIPS
 }
 \examples{
-# search fips of Lincoln in Rhode Island
-search_fips("rhode island lincoln")
+\dontrun{
+  # search fips of Lincoln in Rhode Island
+  search_fips("rhode island lincoln")
 
-# list fips of all counties in Massachusetts, even cannot spell correctly
-search_fips("massachu county")
-
+  # list fips of all counties in Massachusetts, even cannot spell correctly
+  search_fips("massachu county")
+}
 }
 \seealso{
 \code{\link{dict_fips}}

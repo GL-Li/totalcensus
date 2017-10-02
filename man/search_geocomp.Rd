@@ -18,13 +18,15 @@ A data.table
 Search the code or description of geographic component
 }
 \examples{
-# search geocomponents containing "urban cluster"
-search_geocomp("urban cluster")
+\dontrun{
+  # search geocomponents containing "urban cluster"
+  search_geocomp("urban cluster")
 
-# search geocomponents with code 43
-search_geocomp("43")
-# or
-search_geocomp(43)
+  # search geocomponents with code 43
+  search_geocomp("43")
+  # or
+  search_geocomp(43)
+}
 
 }
 \seealso{
