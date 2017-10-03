@@ -9,7 +9,7 @@ Logical Record Number, LOGRECNO, 7, 19
 Region, REGION, 1, 26
 Division, DIVISION, 1, 27
 State (FIPS), STATE, 2, 28
-County, COUNTY, 3, 30
+County (FIPS), COUNTY, 3, 30
 FIPS County Class Code, COUNTYCC, 2, 33
 County Size Code, COUNTYSC, 2, 35
 County Subdivision (FIPS), COUSUB, 5, 37
