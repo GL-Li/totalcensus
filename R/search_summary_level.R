@@ -1,13 +1,16 @@
 #' Search summary levels of state files
 #'
-#' Search the code or description of summary levels of state files.
+#' @description Search code or description of summary levels used in state files.
+#' The summary levels are stored in dataset \code{\link{dict_summarylevel}}.
+#' This dataset is different from that for national files,
+#' \code{\link{dict_summarylevel_US}}. Function \code{\link{search_sumlev_US}}
+#' searches summary levels in national files.
 #'
 #' @param keyword keyword to search in code or description
 #' @param view display the search result with View if TRUE
 #'
 #' @return A data.table of searched results.
 #'
-#' @seealso \code{\link{dict_summarylevel}} lists all geocomponents and codes
 #'
 #' @examples
 #' \dontrun{
@@ -16,8 +19,6 @@
 #'
 #'   # search summary levels of code 40
 #'   search_sumlev("40")
-#'   # or
-#'   search_sumlev(40)
 #' }
 #'
 #' @export

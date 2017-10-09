@@ -7,20 +7,19 @@
 \format{A data.table with 114 rows and 2 variables:
 \describe{
   \item{code}{code for the geocomponent, such as "01" and "M3"}
-  \item{geo_component}{description of the geocomponent}
+  \item{geo_component}{description of the geographic component}
 }}
-\usage{
-data("dict_geocomp")
-}
-\description{
-List of geographic components and codes
-}
-\references{
+\source{
 2010 Census Summary File 1
 \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
 page 6-15
 }
-\seealso{
-\code{\link{search_geocomp}}
+\usage{
+data("dict_geocomp")
+}
+\description{
+This dataset contains the geographic components and codes used in
+Census 2010 summary file 1 (with urban/rural update). Search geographic components
+with function \code{\link{search_geoheader}}.
 }
 \keyword{datasets}

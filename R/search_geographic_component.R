@@ -1,6 +1,15 @@
 #' Search geographic components
 #'
-#' Search the code or description of geographic component
+#' @description Search the code or content of geographic components in dataset
+#' \code{\link{dict_geocomp}}.
+#'
+#' @details The most frequently used geographic components are:
+#'
+#' 00 : all geographic component
+#'
+#' 01 : urban
+#'
+#' 43 : rural
 #'
 #' @param keyword keyword to search in code or description
 #' @param view display the search result with View if TRUE

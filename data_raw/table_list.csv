@@ -110,7 +110,7 @@ P029C, P29C. HOUSEHOLD TYPE BY RELATIONSHIP (AMERICAN INDIAN AND ALASKA NATIVE A
 P029D, P29D. HOUSEHOLD TYPE BY RELATIONSHIP (ASIAN ALONE), Universe: People who are Asian alone
 P029E, P29E. HOUSEHOLD TYPE BY RELATIONSHIP (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE), Universe: People who are Native Hawaiian and Other Pacific Islander alone
 P029F, P29F. HOUSEHOLD TYPE BY RELATIONSHIP (SOME OTHER RACE ALONE), Universe: People who are Some Other Race alone
-P029G, HOUSEHOLD TYPE BY RELATIONSHIP (TWO OR MORE RACES), Universe: People who are Two or More Races
+P029G, P29G. HOUSEHOLD TYPE BY RELATIONSHIP (TWO OR MORE RACES), Universe: People who are Two or More Races
 P029H, P29H. HOUSEHOLD TYPE BY RELATIONSHIP (HISPANIC OR LATINO), Universe: People who are Hispanic or Latino
 P029I, P29I. HOUSEHOLD TYPE BY RELATIONSHIP (WHITE ALONE NOT HISPANIC OR LATINO), Universe: People who are White alone not Hispanic or Latino
 P031A, P31A. HOUSEHOLD TYPE BY RELATIONSHIP FOR THE POPULATION UNDER 18 YEARS (WHITE ALONE), Universe: People under 18 years who are White alone
@@ -146,7 +146,7 @@ P036C, P36C. POPULATION IN FAMILIES BY AGE (AMERICAN INDIAN AND ALASKA NATIVE AL
 P036D, P36D. POPULATION IN FAMILIES BY AGE (ASIAN ALONE HOUSEHOLDER), Universe: Population in families with a householder who is Asian alone
 P036E, P36E. POPULATION IN FAMILIES BY AGE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER), Universe: Population in families with a householder who is Native Hawaiian and Other Pacific Islander alone
 P036F, P36F. POPULATION IN FAMILIES BY AGE (SOME OTHER RACE ALONE HOUSEHOLDER), Universe: Population in families with a householder who is Some Other Race alone
-P036G, POPULATION IN FAMILIES BY AGE (TWO OR MORE RACES HOUSEHOLDER), Universe: Population in families with a householder who is Two or More Races
+P036G, P36G. POPULATION IN FAMILIES BY AGE (TWO OR MORE RACES HOUSEHOLDER), Universe: Population in families with a householder who is Two or More Races
 P036H, P36H. POPULATION IN FAMILIES BY AGE (HISPANIC OR LATINO HOUSEHOLDER), Universe: Population in families with a householder who is Hispanic or Latino
 P036I, P36I. POPULATION IN FAMILIES BY AGE (WHITE ALONE NOT HISPANIC OR LATINO HOUSEHOLDER), Universe: Population in families with a householder who is White alone not Hispanic or Latino
 P037A, P37A. AVERAGE FAMILY SIZE BY AGE (WHITE ALONE HOUSEHOLDER), Universe: Families with a householder who is White alone Average family size

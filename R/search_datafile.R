@@ -1,16 +1,15 @@
-#' Search data files
+#' Search in data files
 #'
-#' Search in all data files in order to find the file containing
-#' the keyword.
+#' @description Search in dataset \code{\link{dict_datafile}} to find the file
+#' or table containing the keywords. This function helps users to find what data are
+#' included in the summary file 1 (with urban/rural update).
 #'
 #' @param keyword keyword to be searched
-#' @param view display the search result with View if TRUE
-#' @param table_only only search in and strictly match table_num
+#' @param table_only only search in and strictly match table number
 #' @param file_only only search in file numbers
+#' @param view display the search result with View if TRUE
 #'
 #' @return A data.table
-#'
-#' @seealso \code{\link{dict_datafile}}
 #'
 #'
 #' @examples
@@ -21,11 +20,11 @@
 #'   # search reference "p0030002"
 #'   search_datafile("p0030002")
 #'
-#'   # search file 03
+#'   # search for file 03
 #'   search_datafile("03", file_only = TRUE)
 #'
-#'   # search keyword "asian total population". too many matches, usually do not do it
-#'   search_datafile("asian total population")
+#'   # search keyword "federal prision population".
+#'   search_datafile("federal prison population")
 #' }
 #'
 #' @export

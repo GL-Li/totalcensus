@@ -2,36 +2,39 @@
 % Please edit documentation in R/read_tablecontent.R
 \name{read_2010tablecontents}
 \alias{read_2010tablecontents}
-\title{Read data of selected table fields}
+\title{Read selected table contents of a state}
 \usage{
 read_2010tablecontents(path_to_census, state, table_contents,
   show_progress = TRUE)
 }
 \arguments{
-\item{path_to_census}{path to the directory holding downloaded census data}
+\item{path_to_census}{path to the directory holding downloaded census data,
+under which are sub-folders for each state.}
 
-\item{state}{abbrivation of a state, such as "IN" for Indiana}
+\item{state}{abbrivation of a state, such as "IN" for Indiana.}
 
-\item{table_contents}{selected references of contents in census tables}
+\item{table_contents}{selected references of contents in census tables.}
 
 \item{show_progress}{show progress of reading if TRUE. Turn off if FALSE, which
 is useful in RMarkdown output.}
 }
 \value{
-A data.table containing "LOGRECNO" and selected table contents
+A data.table containing LOGRECNO and selected table contents. LOGRECNO
+is its key.
 }
 \description{
-These fields can be from different tables, for example,
+These contents can be from different tables, for example,
 c("PCT012F139", "P0030008", "P0100059", "P0150008", "H0070016", "PCT012F138").
-The rows of short fields that have no corresponding LOGRECNOs are filled with
-NAs.
+The rows of short contents that have no corresponding LOGRECNOs are filled with
+NAs. To find the references of table contents of interest.Search with function
+\code{\link{search_datafile}}.
 }
 \examples{
 \dontrun{
+# read selected table contents of Rhode Island
 path <- your_local_path_to_census_data
 contents <- c("PCT012F139", "P0030008", "P0100059", "P0150008", "H0070016", "PCT012F138")
-dt <- read_2010tablecontents(path, "RI", contents)
-
+ri <- read_2010tablecontents(path, "RI", contents)
 }
 
 }

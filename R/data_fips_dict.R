@@ -1,6 +1,9 @@
-#' Complete FIPS code as of 2016 in the US
+#' List FIPS code as of 2016 in the US
 #'
-#' This data contains a complete list of fips as of 2016
+#' @description This dataset contains a complete list of FIPS of states, counties,
+#' county subdivisions, places, consolidated cities, and their names and summary
+#' levels as well as full name and abbreviation of state. Search for
+#' FIPS with function \code{\link{search_fips}}.
 #'
 #' @docType data
 #'
@@ -9,7 +12,7 @@
 #' @format A data.table with 43934 rows and 9 variables:
 #' \describe{
 #'   \item{state_full}{full name of a state such as "Alabama"}
-#'   \item{state}{abbreviation of a state such as "AL"}
+#'   \item{state_abbr}{abbreviation of a state such as "AL"}
 #'   \item{STATE}{FIPS code of the state}
 #'   \item{SUMLEV}{summary level of  the entry in the row}
 #'   \item{COUNTY}{FIPS code of county}
@@ -21,9 +24,8 @@
 #'
 #' @keywords datasets
 #'
-#' @references
-#' \href{https://www.census.gov/geographies/reference-files/2016/demo/popest/2016-fips.html}{list of all fips as of 2016}
+#' @source
+#' \href{https://www.census.gov/geographies/reference-files/2016/demo/popest/2016-fips.html}{List of FIPS as of 2016}
 #'
-#' @seealso \code{\link{search_fips}}
 #'
 "dict_fips"

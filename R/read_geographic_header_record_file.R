@@ -1,26 +1,25 @@
-#' Read geographic header record file
+#' Read geographic header record file of a state
 #'
-#' Read geographic header record file of a state and return logical record number
-#' and selected references
+#' @description  Read geographic header record file of a state and return logical record number
+#' and selected geographic headers. To find geographic headers, browse
+#' \code{\link{dict_censustable}} or search with \code{\link{search_geoheader}}.
 #'
 #'
 #' @param path_to_census path to the directory holding downloaded
-#'     census 2010 summary file 1 with urban/rural update
-#' @param state abbreviation of a state, for example "IN" for "Indiana"
-#' @param references vector of references of selected geographci headers to be included in the return
+#'     census 2010 summary file 1 with urban/rural update.
+#' @param state abbreviation of a state, for example "IN" for "Indiana".
+#' @param references vector of references of selected geographic headers to be included in the return
 #' @param show_progress show progress of reading if TRUE. Turn off if FALSE, which
 #'     is useful in RMarkdown output.
 #'
-#' @return data.table whose columns are logical record number and selected references
+#' @return data.table whose columns are logical record number and selected references. LOGRECNO
+#' is its key.
 #'
 #' @examples
 #' \dontrun{
-#' path <- your_local_path_to_census_data
-#' selected_geoheader <- read_geoheader(
-#'     path_to_census = path,
-#'     state = "RI",
-#'     references = c("NAME", "SUMLEV", "INTPTLAT", "INTPTLON")
-#' )
+#' # read selected geographic headers of Rhode Island
+#' ri  <- read_2010geoheader("your_local_path_to_census_data", "RI",
+#'                       c("NAME", "SUMLEV", "INTPTLAT", "INTPTLON"))
 #' }
 #'
 #'
@@ -30,10 +29,15 @@
 #' @importFrom stringr str_sub str_trim
 #'
 
-read_2010geoheader <- function(path_to_census, state, references = NULL, show_progress = TRUE) {
+read_2010geoheader <- function(path_to_census, state, references, show_progress = TRUE) {
     if (show_progress) {
-        print(paste("reading", state, "geographic data"))
+        cat(paste("Reading", state, "geographic header record file\n"))
     }
+
+    # allow lowercase input for state and references
+    state <- toupper(state)
+    references <- toupper(references)
+
     file <- paste0(path_to_census, "/", state, "/", tolower(state), "geo2010.ur1")
     # use "Latin-1" for encoding special spanish latters such as ñ in Cañada
     geo <- fread(file, header = FALSE, sep = "\n", encoding = "Latin-1" ,
@@ -54,22 +58,20 @@ read_2010geoheader <- function(path_to_census, state, references = NULL, show_pr
     dt <- geo[, .(LOGRECNO = as.numeric(str_sub(V1, 19, 25)))]
 
     # add all selected fields to output data
-    if (!is.null(references)){
-        for (ref in toupper(references)) {
-            # identify numeric hearder
-            if (ref %in% c("INTPTLAT", "INTPTLON")) {
-                # place variable in () to add new columns
-                dt[, (ref) := as.numeric(str_sub(geo[, V1],
-                                                 dict_geoheader[reference == ref, start],
-                                                 dict_geoheader[reference == ref, end]))]
-            } else {
-                dt[, (ref) := str_trim(str_sub(geo[, V1],
-                                               dict_geoheader[reference == ref, start],
-                                               dict_geoheader[reference == ref, end]))]
-            }
+    for (ref in references) {
+        # identify numeric hearder
+        if (ref %in% c("INTPTLAT", "INTPTLON", "AREALAND", "AREAWATR", "POP100",
+                       "HU100", "LOGRECNO")) {
+            # place variable in () to add new columns
+            dt[, (ref) := as.numeric(str_sub(geo[, V1],
+                                             dict_geoheader[reference == ref, start],
+                                             dict_geoheader[reference == ref, end]))]
+        } else {
+            dt[, (ref) := str_trim(str_sub(geo[, V1],
+                                           dict_geoheader[reference == ref, start],
+                                           dict_geoheader[reference == ref, end]))]
         }
     }
-
 
     setkey(dt, LOGRECNO)
 

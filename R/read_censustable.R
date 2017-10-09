@@ -1,18 +1,19 @@
-#' Read selected census table of a state
+#' Read a census table of a state
 #'
-#' Read a census table in a state.
+#' @description  Read a census table of a state. To find table of interest, search with function
+#' \code{\link{search_table}} or browse the dictionary \code{\link{dict_censustable}}.
 #'
-#' @param path_to_census path to the directory holding downloaded census data
+#' @param path_to_census path to the directory holding downloaded census data,
+#'     under which are sub-folders of each state.
 #' @param state abbrivation of a state, such as "IN" for Indiana
 #' @param table_number table number such as "P3" and "PCT11A"
 #'
-#' @return A data.table with of the selected census table.
+#' @return A data.table with of the selected census table. LOGRECNO is the key.
 #'
 #' @examples
 #' \dontrun{
 #' # read table P11 of Rhode Island
-#' path <- "your_local_path_to_census_data"
-#' tmp <- read_censustable(path, "RI", "P11")
+#' ri <- read_2010table("your_local_path_to_census_folder", "RI", "P11")
 #' }
 #'
 #'
@@ -21,6 +22,15 @@
 #' @import magrittr
 
 read_2010table <- function(path_to_census, state, table_number){
+
+    if (!tolower(table_number) %in% tolower(dict_censustable$table_number)){
+        stop("Please provide a correct table number.")
+    }
+
+    # also accept lowcase input
+    state <- toupper(state)
+    table_number <- toupper(table_number)
+
     # determine file number for the table
     file_num <- search_datafile(table_number, table_only = TRUE, view = FALSE) %>%
         .[, file_segment] %>%

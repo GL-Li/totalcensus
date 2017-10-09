@@ -1,18 +1,38 @@
 #' Search FIPS
 #'
+#' @description  Search FIPS of a state, county, county subdivision, place, or
+#' consolidated city in dataset \code{\link{dict_fips}}. The search also returns
+#' summary levels.
 #'
-#' @param keyword keyword to be searched
-#' @param view display the search result with View if TRUE
+#' @details Quite often, multiple rows are returned. It is necessary
+#' to hand pick the right one you are really looking for.
+#'
+#' The function \code{\link{search_fips}} has changed summary level 061 to 060, and
+#' 162 to 160 in search results.
+#' The summary levels in \code{\link{dict_fips}} are 010, 040, 050, 061, 162, and 170.
+#' The level 061 is for Minor Civil Division (MCD)/Census County Division (CCD) (10,000+). It
+#' does not appear in \code{\link{dict_summarylevel}}, which instead has 060 for County Subdivision.
+#' Level 061 is part of 060 and is replaced with 060 in order to use the census data. Similarly,
+#' both level 162 in \code{\link{dict_fips}} and l60 in \code{\link{dict_summarylevel}} are for
+#' State-Place. Always use 160 in census data.
+#'
+#' @param keyword keyword to be searched in NAMES or FIPS.
+#' @param state abbreviation of a state.
+#' @param view display the search result with View if TRUE.
 #'
 #' @return A data.table
 #'
 #' @examples
 #' \dontrun{
 #'   # search fips of Lincoln in Rhode Island
-#'   search_fips("rhode island lincoln")
+#'   search_fips("lincoln", "RI")
+#'   search_fips("lincoln", "rhode")
 #'
 #'   # list fips of all counties in Massachusetts, even cannot spell correctly
-#'   search_fips("massachu county")
+#'   search_fips("county", "massa")
+#'
+#'   # search FIPS number
+#'   search_fips("08375")
 #' }
 #' @seealso \code{\link{dict_fips}}
 #'
@@ -23,15 +43,28 @@
 #'
 #'
 
-search_fips <- function(keyword, view = TRUE) {
+search_fips <- function(keyword, state = NULL, view = TRUE) {
     dt <- dict_fips
+
+    # step 1: search in NAMEs or FIPS code
     keywords <- unlist(str_split(tolower(keyword), " "))
     for (kw in keywords){
         # combine all rows to form a new column for search
-        dt <- dt[, comb := apply(dt, 1, paste, collapse = " ")] %>%
+        dt <- dt[, comb := apply(dt[, 3:9], 1, paste, collapse = " ")] %>%
             .[grepl(kw, tolower(comb))] %>%
             .[, comb := NULL]
     }
+
+    # step 2: search in state full or abbreviation
+    if (!is.null(state)){
+        if (nchar(state) == 2) {
+            dt <- dt[state_abbr %like% toupper(state)]
+        } else {
+            dt <- dt[tolower(state_full) %like% tolower(state)]
+        }
+    }
+
+    dt[SUMLEV == "061", SUMLEV := "060"][SUMLEV == "162", SUMLEV := "160"]
 
     if (view) View(dt, paste(keyword, "found"))
 

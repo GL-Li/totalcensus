@@ -3,7 +3,7 @@
 \docType{data}
 \name{dict_geoheader}
 \alias{dict_geoheader}
-\title{Complete list of geographic Header Record in Summary File 1}
+\title{List of geographic header record}
 \format{A data.table with 101 rows and 4 variables
 \describe{
   \item{reference}{reference of the geoheader record}
@@ -11,19 +11,17 @@
   \item{start}{starting position of the geoheader in the record}
   \item{end}{ending position of the geoheader in the record}
 }}
-\usage{
-data("dict_geoheader")
-}
-\description{
-This data serves as a dictionary for geographic header references and their
-discription.
-}
-\references{
+\source{
 2010 Census Summary File 1
 \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
 page 2-8
 }
-\seealso{
-\code{\link{search_geoheader}}
+\usage{
+data("dict_geoheader")
+}
+\description{
+This dataset has the complete list of geographic header
+references and their discription used in Census 2010 summary file 1 (with
+urban/rural update). Search the dataset with function \code{\link{search_geoheader}}.
 }
 \keyword{datasets}

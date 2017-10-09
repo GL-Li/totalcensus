@@ -9,19 +9,18 @@
   \item{code}{code of summary level}
   \item{summary_level}{description of summary level}
 }}
-\usage{
-data("dict_summarylevel")
-}
-\description{
-This data serves as a dictionary for summary level codes and their
-discription for summary file 1 with urban/rural update.
-}
-\references{
+\source{
 2010 Census Summary File 1
 \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
 page 4-16 state summary file with urban/rural update
 }
-\seealso{
-\code{\link{search_sumlev}}
+\usage{
+data("dict_summarylevel")
+}
+\description{
+This data contains summary levels and codes used in state files of
+ summary file 1 (with urban/rural update). Search with function \code{\link{search_sumlev}}.
+ This dataset is different from that of national files, \code{\link{dict_summarylevel_US}},
+ which is searched with \code{\link{search_sumlev_US}}.
 }
 \keyword{datasets}

@@ -1,7 +1,9 @@
 #' Summary levels and codes for state files
 #'
-#' This data serves as a dictionary for summary level codes and their
-#' discription for summary file 1 with urban/rural update.
+#' @description  This data contains summary levels and codes used in state files of
+#'  summary file 1 (with urban/rural update). Search with function \code{\link{search_sumlev}}.
+#'  This dataset is different from that of national files, \code{\link{dict_summarylevel_US}},
+#'  which is searched with \code{\link{search_sumlev_US}}.
 #'
 #' @docType data
 #'
@@ -15,12 +17,11 @@
 #'
 #' @keywords datasets
 #'
-#' @references 2010 Census Summary File 1
+#' @source 2010 Census Summary File 1
 #' \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
 #' page 4-16 state summary file with urban/rural update
 #'
 #'
-#' @seealso \code{\link{search_sumlev}}
 #'
 
 "dict_summarylevel"

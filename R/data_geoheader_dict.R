@@ -1,7 +1,8 @@
-#' Complete list of geographic Header Record in Summary File 1
+#' List of geographic header record
 #'
-#' This data serves as a dictionary for geographic header references and their
-#' discription.
+#' @description  This dataset has the complete list of geographic header
+#' references and their discription used in Census 2010 summary file 1 (with
+#' urban/rural update). Search the dataset with function \code{\link{search_geoheader}}.
 #'
 #' @docType data
 #'
@@ -17,10 +18,9 @@
 #'
 #' @keywords datasets
 #'
-#' @references 2010 Census Summary File 1
+#' @source 2010 Census Summary File 1
 #' \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
 #' page 2-8
 #'
-#' @seealso \code{\link{search_geoheader}}
 #'
 "dict_geoheader"

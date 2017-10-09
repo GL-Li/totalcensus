@@ -2,28 +2,29 @@
 % Please edit documentation in R/read_censustable.R
 \name{read_2010table}
 \alias{read_2010table}
-\title{Read selected census table of a state}
+\title{Read a census table of a state}
 \usage{
 read_2010table(path_to_census, state, table_number)
 }
 \arguments{
-\item{path_to_census}{path to the directory holding downloaded census data}
+\item{path_to_census}{path to the directory holding downloaded census data,
+under which are sub-folders of each state.}
 
 \item{state}{abbrivation of a state, such as "IN" for Indiana}
 
 \item{table_number}{table number such as "P3" and "PCT11A"}
 }
 \value{
-A data.table with of the selected census table.
+A data.table with of the selected census table. LOGRECNO is the key.
 }
 \description{
-Read a census table in a state.
+Read a census table of a state. To find table of interest, search with function
+\code{\link{search_table}} or browse the dictionary \code{\link{dict_censustable}}.
 }
 \examples{
 \dontrun{
 # read table P11 of Rhode Island
-path <- "your_local_path_to_census_data"
-tmp <- read_censustable(path, "RI", "P11")
+ri <- read_2010table("your_local_path_to_census_folder", "RI", "P11")
 }
 
 

@@ -8,21 +8,20 @@
 \describe{
   \item{table_ref}{reference code such as "H0010", "PCT022G"}
   \item{table_number}{table number such as "H1", "PCT22G"}
-  \item{table_title}{description of the table}
+  \item{table_name}{description of the table}
   \item{universe}{unit of the table}
 }}
-\usage{
-data("dict_censustable")
-}
-\description{
-All census tables in census 2010 summary file 1 with urban/rural update
-}
-\references{
+\source{
 2010 Census Summary File 1
 \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
 all across chapter 5.
 }
-\seealso{
-\code{\link{search_table}}
+\usage{
+data("dict_censustable")
+}
+\description{
+This dataset contains all census tables in census 2010 summary
+file 1 (with urban/rural update). Function \code{\link{search_table}} searches
+this datasets for census tables.
 }
 \keyword{datasets}

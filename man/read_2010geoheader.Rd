@@ -2,37 +2,35 @@
 % Please edit documentation in R/read_geographic_header_record_file.R
 \name{read_2010geoheader}
 \alias{read_2010geoheader}
-\title{Read geographic header record file}
+\title{Read geographic header record file of a state}
 \usage{
-read_2010geoheader(path_to_census, state, references = NULL,
-  show_progress = TRUE)
+read_2010geoheader(path_to_census, state, references, show_progress = TRUE)
 }
 \arguments{
 \item{path_to_census}{path to the directory holding downloaded
-census 2010 summary file 1 with urban/rural update}
+census 2010 summary file 1 with urban/rural update.}
 
-\item{state}{abbreviation of a state, for example "IN" for "Indiana"}
+\item{state}{abbreviation of a state, for example "IN" for "Indiana".}
 
-\item{references}{vector of references of selected geographci headers to be included in the return}
+\item{references}{vector of references of selected geographic headers to be included in the return}
 
 \item{show_progress}{show progress of reading if TRUE. Turn off if FALSE, which
 is useful in RMarkdown output.}
 }
 \value{
-data.table whose columns are logical record number and selected references
+data.table whose columns are logical record number and selected references. LOGRECNO
+is its key.
 }
 \description{
 Read geographic header record file of a state and return logical record number
-and selected references
+and selected geographic headers. To find geographic headers, browse
+\code{\link{dict_censustable}} or search with \code{\link{search_geoheader}}.
 }
 \examples{
 \dontrun{
-path <- your_local_path_to_census_data
-selected_geoheader <- read_geoheader(
-    path_to_census = path,
-    state = "RI",
-    references = c("NAME", "SUMLEV", "INTPTLAT", "INTPTLON")
-)
+# read selected geographic headers of Rhode Island
+ri  <- read_2010geoheader("your_local_path_to_census_data", "RI",
+                      c("NAME", "SUMLEV", "INTPTLAT", "INTPTLON"))
 }
 
 

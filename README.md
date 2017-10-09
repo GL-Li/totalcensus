@@ -70,7 +70,9 @@ filter(tmp, PLACE == "71000" & SUMLEV == "100")
 ```
 
 ### search the codes
-The _rawcensus2010_ package provides a few functions to search for codes that are used in `read_2010census()` function or appeared in the return data.table. These functions are named as `search_xxxx()`. In above example, we used PLACE FIPS code and summary level code to select rows of census blocks of South Bend. The search functions can help to find the codes, as shown blow.
+In the above example, many special codes and references are used in census data. Strings of upper case letters are for geographic headers, strings of mixed uppder case letters and numbers for table contents, strings of integers for summary level (SUMLEV), geographic components (GEOCOMP) and FIPS numbers of place (PLACE) and county subdivision (COUSUB). There are many more other codes and references; they are nightmare for census data users.
+
+The _rawcensus2010_ package provides a few functions to search for these codes. These functions are named as `search_xxxx()`. In above example, we used PLACE FIPS code and summary level code to select rows of census blocks of South Bend. The search functions can help to find the codes, as shown blow.
 
 ```r
 # find the FIPS code of South Bend. PLACE == "71000" is for South Bend in Indiana
@@ -90,15 +92,12 @@ search_sumlev("block")
     # 5: State-County-Census Tract-Block Group-American Indian Area/Alaska Native Area/Hawaiian Home Land  154
 ```
 
-The most useful search function is `search_datafile()`, which searchs for table contents to be used in `read_2010census()`. For example, we can search table contents for asian population in prison with `search_datafile("prison asian population")`. It returns the references of table contents, `c("PCT020D005", "PCT020D006")`, for asian population in federal and state prisons respectively.
+The most useful search function is `search_datafile()`, which searchs for table contents to be used in `read_2010census()`. For example, we can search table contents for asian population in prison with `search_datafile("prison asian population")`. In the search results, the references of table contents, "PCT020D005" and "PCT020D006", are for asian population in federal and state prisons respectively. They can be fed to `read_2010census()` as argument `table_contents = c("PCT020D005", "PCT020D006")`. 
 
 ```r
 search_datafile("prison asian population")
 
-    #    file_segment               table_content  reference table_number
-    # 1:           37 ----- Federal prisons (102) PCT020D005       PCT20D
-    # 2:           37   ----- State prisons (103) PCT020D006       PCT20D
-    #                                                         table_name   universe
-    # 1:  GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE (ASIAN ALONE)    ... ...
-    # 2:  GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE (ASIAN ALONE)    ... ...
+    #    file_segment               table_content  reference table_number                                                     table_name   universe
+    # 1:           37 ----- Federal prisons (102) PCT020D005       PCT20D GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE (ASIAN ALONE)    ... ...
+    # 2:           37   ----- State prisons (103) PCT020D006       PCT20D GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE (ASIAN ALONE)    ... ...
 ```

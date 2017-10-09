@@ -11,7 +11,7 @@ state_fips <- download_table("https://www.nrcs.usda.gov/wps/portal/nrcs/detail/?
                              '//*[@id="detail"]/table',
                              "data_raw/state_fips.csv") %>%
     setDT()  %>%
-    setnames(1:3, c("state_full", "state", "STATE_tmp")) %>%
+    setnames(1:3, c("state_full", "state_abbr", "STATE_tmp")) %>%
     .[, STATE := as.character(STATE_tmp)] %>%
     .[STATE_tmp < 10, STATE := paste0("0", STATE_tmp)] %>%
     .[, STATE_tmp := NULL]
@@ -23,9 +23,9 @@ dict_fips <- read_excel("data_raw/all-geocodes-v2016 .xlsx", skip = 4) %>%
     # add state name
     state_fips[., on = .(STATE)] %>%
     # the United State is also in the dict, give it a state name as "US
-    .[NAME == "United States", ":=" (state_full = "United States", state = "US")] %>%
+    .[NAME == "United States", ":=" (state_full = "United States", state_abbr = "US")] %>%
     # DC has no state names
-    .[STATE == "11", ":=" (state_full = "District of Columbia", state = "DC")]
+    .[STATE == "11", ":=" (state_full = "District of Columbia", state_abbr = "DC")]
 
 
 

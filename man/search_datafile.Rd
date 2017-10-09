@@ -2,7 +2,7 @@
 % Please edit documentation in R/search_datafile.R
 \name{search_datafile}
 \alias{search_datafile}
-\title{Search data files}
+\title{Search in data files}
 \usage{
 search_datafile(keyword, table_only = FALSE, file_only = FALSE,
   view = TRUE)
@@ -10,7 +10,7 @@ search_datafile(keyword, table_only = FALSE, file_only = FALSE,
 \arguments{
 \item{keyword}{keyword to be searched}
 
-\item{table_only}{only search in and strictly match table_num}
+\item{table_only}{only search in and strictly match table number}
 
 \item{file_only}{only search in file numbers}
 
@@ -20,8 +20,9 @@ search_datafile(keyword, table_only = FALSE, file_only = FALSE,
 A data.table
 }
 \description{
-Search in all data files in order to find the file containing
-the keyword.
+Search in dataset \code{\link{dict_datafile}} to find the file
+or table containing the keywords. This function helps users to find what data are
+included in the summary file 1 (with urban/rural update).
 }
 \examples{
 \dontrun{
@@ -31,14 +32,11 @@ the keyword.
   # search reference "p0030002"
   search_datafile("p0030002")
 
-  # search file 03
+  # search for file 03
   search_datafile("03", file_only = TRUE)
 
-  # search keyword "asian total population". too many matches, usually do not do it
-  search_datafile("asian total population")
+  # search keyword "federal prision population".
+  search_datafile("federal prison population")
 }
 
-}
-\seealso{
-\code{\link{dict_datafile}}
 }

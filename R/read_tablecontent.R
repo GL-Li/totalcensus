@@ -1,25 +1,28 @@
-#' Read data of selected table fields
+#' Read selected table contents of a state
 #'
-#' These fields can be from different tables, for example,
+#' @description  These contents can be from different tables, for example,
 #' c("PCT012F139", "P0030008", "P0100059", "P0150008", "H0070016", "PCT012F138").
-#' The rows of short fields that have no corresponding LOGRECNOs are filled with
-#' NAs.
+#' The rows of short contents that have no corresponding LOGRECNOs are filled with
+#' NAs. To find the references of table contents of interest.Search with function
+#' \code{\link{search_datafile}}.
 #'
 #'
-#' @param path_to_census path to the directory holding downloaded census data
-#' @param state abbrivation of a state, such as "IN" for Indiana
-#' @param table_contents selected references of contents in census tables
+#' @param path_to_census path to the directory holding downloaded census data,
+#' under which are sub-folders for each state.
+#' @param state abbrivation of a state, such as "IN" for Indiana.
+#' @param table_contents selected references of contents in census tables.
 #' @param show_progress show progress of reading if TRUE. Turn off if FALSE, which
 #'     is useful in RMarkdown output.
 #'
-#' @return A data.table containing "LOGRECNO" and selected table contents
+#' @return A data.table containing LOGRECNO and selected table contents. LOGRECNO
+#' is its key.
 #'
 #' @examples
 #' \dontrun{
+#' # read selected table contents of Rhode Island
 #' path <- your_local_path_to_census_data
 #' contents <- c("PCT012F139", "P0030008", "P0100059", "P0150008", "H0070016", "PCT012F138")
-#' dt <- read_2010tablecontents(path, "RI", contents)
-#'
+#' ri <- read_2010tablecontents(path, "RI", contents)
 #' }
 #'
 #' @export
@@ -28,6 +31,18 @@
 #'
 
 read_2010tablecontents <- function(path_to_census, state, table_contents, show_progress = TRUE){
+
+    for (content in table_contents) {
+        if (!tolower(content) %in% tolower(dict_datafile$reference)){
+            stop(paste("The table content reference", content, "does not exist."))
+        }
+    }
+
+
+    # also accept lowercase input
+    state <- toupper(state)
+    table_contents <- toupper(table_contents)
+
     # locate data files for the fields
     file_nums <- sapply(table_contents, function(x) search_datafile(x, view = FALSE)[, file_segment])
     file_content <- data.table(file_num = file_nums, content = table_contents)
@@ -43,6 +58,11 @@ read_2010tablecontents <- function(path_to_census, state, table_contents, show_p
 
         if (num < 10) num <- paste0("0", num)
         file <- paste0(path_to_census, state, "/", tolower(state), "000", num, "2010.ur1")
+
+        if (show_progress) {
+            cat(paste("Reading", state, "file", num, "\n"))
+        }
+
         # fread assigns column names as "V1", "V2", ... when header = FALSE
         dt <- fread(file, header = FALSE, select = c("V5", cols), showProgress = show_progress) %>%
             set_colnames(c("LOGRECNO", cont)) %>%

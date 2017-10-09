@@ -1,6 +1,7 @@
 #' Search geographic headers
 #'
-#' Search in field reference or description with a keyword
+#' @description Search in field reference or description of geographic header
+#' with keyword in dataset \code{\link{dict_geoheader}}.
 #'
 #'
 #' @param keyword keyword in description or reference
@@ -13,11 +14,13 @@
 #'   # search geoheader that contains keyword "india"
 #'   search_geoheader("india")
 #'
+#'   # search for lattitude
+#'   search_geoheader("latitu")
+#'
 #'   # search geoheader of reference containing "INTPT"
 #'   search_geoheader("INTPT")
 #' }
 #'
-#' @seealso \code{\link{dict_geoheader}}, which lists all the geographic headers
 #'
 #' @export
 #' @import data.table
