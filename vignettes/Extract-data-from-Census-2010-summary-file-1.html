@@ -12,12 +12,50 @@
 
 <meta name="author" content="Vignette Author" />
 
-<meta name="date" content="2017-09-19" />
+<meta name="date" content="2017-10-12" />
 
-<title>Extract data from Censu 2010 summary file 1 with urban/rural update</title>
+<title>Extract data from Censu 2010 summary file 1</title>
 
 
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 
 
@@ -30,13 +68,58 @@
 
 
 
-<h1 class="title toc-ignore">Extract data from Censu 2010 summary file 1 with urban/rural update</h1>
+<h1 class="title toc-ignore">Extract data from Censu 2010 summary file 1</h1>
 <h4 class="author"><em>Vignette Author</em></h4>
-<h4 class="date"><em>2017-09-19</em></h4>
+<h4 class="date"><em>2017-10-12</em></h4>
 
 
 
-<p>this is also a test</p>
+<p>The package <code>rawcensus2010</code> extract census data from raw Census 2010 summary file 1 (with urban/rural update), which is downloaded and saved in local computer. This viginette demonstrates how to extract data of interests thgough a few examples.</p>
+<p>The article has two parts:</p>
+<ul>
+<li><strong>Extract data from national files</strong>: The national data (in subfolder <code>US/</code>) collects data from the US, regions, states, counties, places, and down to county subdivisions and even place/remiander. If we want summary data above place/remiander level, it will faster and complete to use national files.</li>
+<li><strong>Extract data from state files</strong>: For each state, the file collect from state, counties, palces, down to census tract and even block level. If we want to data at or below census tract level, we will have to use the state files.</li>
+</ul>
+<div id="extract-census-data-from-national-files" class="section level2">
+<h2>Extract census data from national files</h2>
+<div id="example-1-total-population-of-white-black-and-asian-in-each-state" class="section level3">
+<h3>Example 1: total population of white, black, and asian in each state</h3>
+<p>First we need to find the table contents for race population.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rawcensus2010)
+<span class="kw">library</span>(data.table)
+<span class="kw">library</span>(magrittr)
+<span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(dplyr)
+
+<span class="co"># search for the table for race population</span>
+<span class="kw">search_datafile</span>(<span class="st">&quot;race population&quot;</span>)</code></pre></div>
+<p>From the search results, we find the table contents for white, black, and asian population are “<code>0030002</code>, <code>P0030003</code>, and <code>P0030005</code> respectively. To read their population in each state, we want to keep geographic headers <code>STATE</code>, <code>NAME</code>, <code>SUMLEV</code>, and <code>GEOCOMP</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># This is the path to the census data in my computer, change to yours </span>
+path &lt;-<span class="st"> &quot;~/dropbox_datasets/US_2010_census/&quot;</span>  
+race_popl &lt;-<span class="st"> </span><span class="kw">read_2010census</span>(path, <span class="st">&quot;US&quot;</span>, 
+                             <span class="kw">c</span>(<span class="st">&quot;STATE&quot;</span>, <span class="st">&quot;NAME&quot;</span>, <span class="st">&quot;SUMLEV&quot;</span>, <span class="st">&quot;GEOCOMP&quot;</span>),
+                             <span class="kw">c</span>(<span class="st">&quot;P0030002&quot;</span>, <span class="st">&quot;P0030003&quot;</span>, <span class="st">&quot;P0030005&quot;</span>)) %&gt;%
+<span class="st">    </span><span class="co"># rename the table contents to &quot;white&quot;, &quot;black&quot;, and &quot;asian&quot;. From here the data</span>
+<span class="st">    </span><span class="co"># can be processed with data.table or dplyr package</span>
+<span class="st">    </span><span class="kw">setnames</span>(<span class="kw">c</span>(<span class="st">&quot;P0030002&quot;</span>, <span class="st">&quot;P0030003&quot;</span>, <span class="st">&quot;P0030005&quot;</span>), <span class="kw">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;asian&quot;</span>)) %&gt;%
+<span class="st">    </span><span class="co"># summary level for state is &quot;040&quot; and geographic component for all area is &quot;00&quot;</span>
+<span class="st">    </span>.[SUMLEV ==<span class="st"> &quot;040&quot;</span> &amp;<span class="st"> </span>GEOCOMP ==<span class="st"> &quot;00&quot;</span>] %&gt;%
+<span class="st">    </span><span class="co"># keep columns we care</span>
+<span class="st">    </span>.[, .(NAME, white, black, asian)]
+<span class="kw">head</span>(race_popl)</code></pre></div>
+<p>Equivalent <code>dplyr</code> code:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">race_popl &lt;-<span class="st"> </span><span class="kw">read_2010census</span>(path, <span class="st">&quot;US&quot;</span>, 
+                             <span class="kw">c</span>(<span class="st">&quot;STATE&quot;</span>, <span class="st">&quot;NAME&quot;</span>, <span class="st">&quot;SUMLEV&quot;</span>, <span class="st">&quot;GEOCOMP&quot;</span>),
+                             <span class="kw">c</span>(<span class="st">&quot;P0030002&quot;</span>, <span class="st">&quot;P0030003&quot;</span>, <span class="st">&quot;P0030005&quot;</span>)) %&gt;%
+<span class="st">    </span><span class="kw">rename</span>(<span class="dt">white =</span> P0030002, <span class="dt">black =</span> P0030003, <span class="dt">asian =</span> P0030005) %&gt;%
+<span class="st">    </span><span class="kw">filter</span>(SUMLEV ==<span class="st"> &quot;040&quot;</span> &amp;<span class="st"> </span>GEOCOMP ==<span class="st"> &quot;00&quot;</span>) %&gt;%
+<span class="st">    </span><span class="kw">select</span>(<span class="kw">c</span>(<span class="st">&quot;NAME&quot;</span>, <span class="st">&quot;white&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;asian&quot;</span>))</code></pre></div>
+<p>In above codes, we get urban populations by filtering with <code>GEOCOMP == &quot;01&quot;</code>, rural population with <code>GEOCOMP == &quot;43&quot;</code>, or population in any geographic components with corresponding GEOCOMP code. Similarly, we can get the populations in all counties by filtering with <code>SUMLEV == &quot;050&quot;</code>.</p>
+</div>
+<div id="location-of-and-number-of-inmates-in-federal-and-state-prisons" class="section level3">
+<h3>Location of and number of inmates in federal and state prisons</h3>
+</div>
+</div>
 
 
 

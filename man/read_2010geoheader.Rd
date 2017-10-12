@@ -18,8 +18,9 @@ census 2010 summary file 1 with urban/rural update.}
 is useful in RMarkdown output.}
 }
 \value{
-data.table whose columns are logical record number and selected references. LOGRECNO
-is its key.
+data.table whose columns are logical record number, summary level,
+geographic compoenent, and selected references. LOGRECNO serves as
+the key.
 }
 \description{
 Read geographic header record file of a state and return logical record number

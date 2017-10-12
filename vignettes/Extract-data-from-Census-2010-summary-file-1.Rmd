@@ -1,5 +1,5 @@
 ---
-title: "Extract data from Censu 2010 summary file 1 with urban/rural update"
+title: "Extract data from Censu 2010 summary file 1"
 author: "Vignette Author"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -9,4 +9,58 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-this is also a test
+The package `rawcensus2010` extract census data from raw Census 2010 summary file 1 (with urban/rural update), which is downloaded and saved in local computer. This viginette demonstrates how to extract data of interests thgough a few examples.
+
+The article has two parts: 
+
+- **Extract data from national files**: The national data (in subfolder `US/`) collects data from the US, regions, states, counties, places, and down to county subdivisions and even place/remiander. If we want summary data above place/remiander level, it will faster and complete to use national files.
+- **Extract data from state files**: For each state, the file collect from state, counties, palces, down to census tract and even block level. If we want to data at or below census tract level, we will have to use the state files.
+
+## Extract census data from national files
+### Example 1: total population of white, black, and asian in each state
+First we need to find the table contents for race population. 
+
+```{r eval=FALSE}
+library(rawcensus2010)
+library(data.table)
+library(magrittr)
+library(ggplot2)
+library(dplyr)
+
+# search for the table for race population
+search_datafile("race population")
+```
+
+From the search results, we find the table contents for white, black, and asian population are "`0030002`, `P0030003`, and `P0030005` respectively. To read their population in each state, we want to keep geographic headers `STATE`, `NAME`, `SUMLEV`, and `GEOCOMP`.
+
+```{r eval=FALSE}
+# This is the path to the census data in my computer, change to yours 
+path <- "~/dropbox_datasets/US_2010_census/"  
+race_popl <- read_2010census(path, "US", 
+                             c("STATE", "NAME", "SUMLEV", "GEOCOMP"),
+                             c("P0030002", "P0030003", "P0030005")) %>%
+    # rename the table contents to "white", "black", and "asian". From here the data
+    # can be processed with data.table or dplyr package
+    setnames(c("P0030002", "P0030003", "P0030005"), c("white", "black", "asian")) %>%
+    # summary level for state is "040" and geographic component for all area is "00"
+    .[SUMLEV == "040" & GEOCOMP == "00"] %>%
+    # keep columns we care
+    .[, .(NAME, white, black, asian)]
+head(race_popl)
+```
+
+Equivalent `dplyr` code:
+```{r eval=FALSE}
+race_popl <- read_2010census(path, "US", 
+                             c("STATE", "NAME", "SUMLEV", "GEOCOMP"),
+                             c("P0030002", "P0030003", "P0030005")) %>%
+    rename(white = P0030002, black = P0030003, asian = P0030005) %>%
+    filter(SUMLEV == "040" & GEOCOMP == "00") %>%
+    select(c("NAME", "white", "black", "asian"))
+
+```
+
+
+In above codes, we get urban populations by filtering with `GEOCOMP == "01"`, rural population with `GEOCOMP == "43"`, or population in any geographic components with corresponding GEOCOMP code. Similarly, we can get the populations in all counties by filtering with `SUMLEV == "050"`.
+
+### Location of and number of inmates in federal and state prisons

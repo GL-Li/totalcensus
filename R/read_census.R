@@ -18,7 +18,7 @@
 #' @param show_progress show progress of file reading if TRUE. Turn off if FALSE, which
 #'     is useful in RMarkdown output.
 #'
-#' @return A data.table whose columns are LOGRECNO, the selected geoheaders and
+#' @return A data.table whose columns are LOGRECNO, SUMLEV, GEOCOMP, the selected geoheaders and
 #' the table contents, with LOGRECNO as the key. The data.table contains all rows
 #' of geoheader and data files.
 #'
@@ -39,7 +39,7 @@
 #'
 #'
 
-read_2010census <- function(path_to_census, state, geoheaders,
+read_2010census <- function(path_to_census, state, geoheaders ,
                             table_contents, show_progress = TRUE){
     geo <- read_2010geoheader(path_to_census, state, geoheaders,
                               show_progress = show_progress)

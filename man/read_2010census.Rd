@@ -22,7 +22,7 @@ are sub-folders of each state.}
 is useful in RMarkdown output.}
 }
 \value{
-A data.table whose columns are LOGRECNO, the selected geoheaders and
+A data.table whose columns are LOGRECNO, SUMLEV, GEOCOMP, the selected geoheaders and
 the table contents, with LOGRECNO as the key. The data.table contains all rows
 of geoheader and data files.
 }

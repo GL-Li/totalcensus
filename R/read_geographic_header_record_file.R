@@ -12,8 +12,9 @@
 #' @param show_progress show progress of reading if TRUE. Turn off if FALSE, which
 #'     is useful in RMarkdown output.
 #'
-#' @return data.table whose columns are logical record number and selected references. LOGRECNO
-#' is its key.
+#' @return data.table whose columns are logical record number, summary level,
+#' geographic compoenent, and selected references. LOGRECNO serves as
+#' the key.
 #'
 #' @examples
 #' \dontrun{
@@ -55,17 +56,21 @@ read_2010geoheader <- function(path_to_census, state, references, show_progress 
     # }
 
     # always keep the logical record number in the output data
-    dt <- geo[, .(LOGRECNO = as.numeric(str_sub(V1, 19, 25)))]
+    dt <- geo[, .(LOGRECNO = as.numeric(str_sub(V1, 19, 25)),
+                  SUMLEV = str_sub(V1, 9, 11),
+                  GEOCOMP = str_sub(V1, 12, 13))]
 
     # add all selected fields to output data
     for (ref in references) {
         # identify numeric hearder
         if (ref %in% c("INTPTLAT", "INTPTLON", "AREALAND", "AREAWATR", "POP100",
-                       "HU100", "LOGRECNO")) {
+                       "HU100")) {
             # place variable in () to add new columns
             dt[, (ref) := as.numeric(str_sub(geo[, V1],
                                              dict_geoheader[reference == ref, start],
                                              dict_geoheader[reference == ref, end]))]
+        } else if (ref %in% c("LOGRECNO", "SUMLEV", "GEOCOMP")) {
+            cat(paste(ref, "is included in return by default.\n"))
         } else {
             dt[, (ref) := str_trim(str_sub(geo[, V1],
                                            dict_geoheader[reference == ref, start],
