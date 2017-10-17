@@ -27,8 +27,8 @@ the table contents, with LOGRECNO as the key. The data.table contains all rows
 of geoheader and data files.
 }
 \description{
-Read geographic header record file and data files of a state and return logical record number,
-selected geoheaders and table contents. These table contents can be from different tables, for example,
+Read geographic header record file and data files of states and return logical record number,
+selected geoheaders, state abbreviation, and table contents. These table contents can be from different tables, for example,
 c("PCT012F139", "P0030008", "P0100059", "P0150008", "H0070016", "PCT012F138").
 The rows of short contents that have no corresponding LOGRECNOs are filled with
 NAs. To find the references of table contents of interest, search with function
@@ -37,8 +37,8 @@ NAs. To find the references of table contents of interest, search with function
 }
 \examples{
 \dontrun{
-# read Rhode Island summary data
-ri <- read_2010census("your_local_path_to_2010_census", "RI",
+# read Rhode Island and Massachusette summary data
+ri <- read_2010census("your_local_path_to_2010_census", c("RI", "MA"),
                        c("GEOCOMP", "NAME", "SUMLEV"),
                        c("PCT012F139", "PCT012F138", "P0150008", "H0070016"))
 

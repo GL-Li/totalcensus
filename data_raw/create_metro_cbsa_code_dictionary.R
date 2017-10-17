@@ -6,7 +6,7 @@
 
 library(data.table)
 library(magrittr)
-dict_cbsa <- fread("data_raw/cbsa_to_fips.csv") %>%
+dict_cbsa <- fread("data_raw/cbsa_to_fips.csv", encoding = "Latin-1") %>%
     .[-1] %>%
     # rename and reorder columns
     .[, .(CBSA = cbsacode,
