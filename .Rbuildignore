@@ -1,5 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+why_this_package
 data_raw
 application
 readme.Rmd

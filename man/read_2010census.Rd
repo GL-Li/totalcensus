@@ -12,7 +12,7 @@ read_2010census(path_to_census, state, geoheaders, table_contents,
 census 2010 summary file 1 (with urban/rural update). Inside this directiory
 are sub-folders of each state.}
 
-\item{state}{abbreviation of a state, for example "IN" for "Indiana".}
+\item{state}{vector of abbreviation of states, for example "IN" or c("MA", "RI").}
 
 \item{geoheaders}{vector of references of selected geographci headers to be included in the return.}
 

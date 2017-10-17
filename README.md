@@ -4,7 +4,15 @@
 
 This package extracts data from the raw data of Census 2010 summary file 1 (with urban/rural update) and returns a tidy data.table. The extracted data can be further processed with `data.table` or `dplyr` packages. Users will be able to retrieve any data from the summary file 1 conveniently from their local computers.
 
-**Download raw data**: In order to use this package, the raw data need to be stored in your local computer. The 2010 census summary file 1 (with urban/rural update) can be downloaded from [United States Census Bureau official site](https://www2.census.gov/census_2010/04-Summary_File_1/Urban_Rural_Update/). The data is split into sub-folders of 50 states and DC. An additional sub-folder called "National/" holds summary data for the United States. Inside a sub-folder, for example, "Indiana/", there is a file named _in2010.ur1.zip_. Download this file and unzip it to a folder named with Indiana's abbriation, “IN”. Do this for all other states and DC. For the "National/" data, unzip the file to folder "US". You can just download the sub-folders you need. If you want download all of them, make sure you have enough disc space as the total file size is about 140 GB. 
+
+## Why another R census package
+
+
+
+
+## Download raw data
+
+In order to use this package, the raw data need to be stored in your local computer. The 2010 census summary file 1 (with urban/rural update) can be downloaded from [United States Census Bureau official site](https://www2.census.gov/census_2010/04-Summary_File_1/Urban_Rural_Update/). The data is split into sub-folders of 50 states and DC. An additional sub-folder called "National/" holds summary data for the United States. Inside a sub-folder, for example, "Indiana/", there is a file named _in2010.ur1.zip_. Download this file and unzip it to a folder named with Indiana's abbriation, “IN”. Do this for all other states and DC. For the "National/" data, unzip the file to folder "US". You can just download the sub-folders you need. If you want download all of them, make sure you have enough disc space as the total file size is about 140 GB. 
 
 
 ## Installation

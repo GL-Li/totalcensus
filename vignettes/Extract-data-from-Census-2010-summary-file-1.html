@@ -12,7 +12,7 @@
 
 <meta name="author" content="Vignette Author" />
 
-<meta name="date" content="2017-10-12" />
+<meta name="date" content="2017-10-16" />
 
 <title>Extract data from Censu 2010 summary file 1</title>
 
@@ -70,7 +70,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">Extract data from Censu 2010 summary file 1</h1>
 <h4 class="author"><em>Vignette Author</em></h4>
-<h4 class="date"><em>2017-10-12</em></h4>
+<h4 class="date"><em>2017-10-16</em></h4>
 
 
 
@@ -97,7 +97,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># This is the path to the census data in my computer, change to yours </span>
 path &lt;-<span class="st"> &quot;~/dropbox_datasets/US_2010_census/&quot;</span>  
 race_popl &lt;-<span class="st"> </span><span class="kw">read_2010census</span>(path, <span class="st">&quot;US&quot;</span>, 
-                             <span class="kw">c</span>(<span class="st">&quot;STATE&quot;</span>, <span class="st">&quot;NAME&quot;</span>, <span class="st">&quot;SUMLEV&quot;</span>, <span class="st">&quot;GEOCOMP&quot;</span>),
+                             <span class="kw">c</span>(<span class="st">&quot;STATE&quot;</span>, <span class="st">&quot;NAME&quot;</span>),
                              <span class="kw">c</span>(<span class="st">&quot;P0030002&quot;</span>, <span class="st">&quot;P0030003&quot;</span>, <span class="st">&quot;P0030005&quot;</span>)) %&gt;%
 <span class="st">    </span><span class="co"># rename the table contents to &quot;white&quot;, &quot;black&quot;, and &quot;asian&quot;. From here the data</span>
 <span class="st">    </span><span class="co"># can be processed with data.table or dplyr package</span>
@@ -114,10 +114,50 @@ race_popl &lt;-<span class="st"> </span><span class="kw">read_2010census</span>(
 <span class="st">    </span><span class="kw">rename</span>(<span class="dt">white =</span> P0030002, <span class="dt">black =</span> P0030003, <span class="dt">asian =</span> P0030005) %&gt;%
 <span class="st">    </span><span class="kw">filter</span>(SUMLEV ==<span class="st"> &quot;040&quot;</span> &amp;<span class="st"> </span>GEOCOMP ==<span class="st"> &quot;00&quot;</span>) %&gt;%
 <span class="st">    </span><span class="kw">select</span>(<span class="kw">c</span>(<span class="st">&quot;NAME&quot;</span>, <span class="st">&quot;white&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;asian&quot;</span>))</code></pre></div>
-<p>In above codes, we get urban populations by filtering with <code>GEOCOMP == &quot;01&quot;</code>, rural population with <code>GEOCOMP == &quot;43&quot;</code>, or population in any geographic components with corresponding GEOCOMP code. Similarly, we can get the populations in all counties by filtering with <code>SUMLEV == &quot;050&quot;</code>.</p>
+<p>In above codes, we can get urban populations by filtering with <code>GEOCOMP == &quot;01&quot;</code>, rural population with <code>GEOCOMP == &quot;43&quot;</code>, or population in any geographic components with corresponding GEOCOMP code. Similarly, we can get the populations in all counties by filtering with <code>SUMLEV == &quot;050&quot;</code>.</p>
 </div>
 <div id="location-of-and-number-of-inmates-in-federal-and-state-prisons" class="section level3">
 <h3>Location of and number of inmates in federal and state prisons</h3>
+<p>Again the first thing is to find the table contents for federal and state prison populaiton:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">search_datafile</span>(<span class="st">&quot;prison population&quot;</span>)</code></pre></div>
+<p>From the return we know that table contents <code>PCT0200005</code> and <code>PCT0200006</code> are what we want. In reading census data we want to keep the geographic header <code>INTPTLON</code> and <code>INTPTLAT</code> which are the longitude and latitude of the area of prison location. We keep the resolution down to county subdivision level and filter the geographic component to all area.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prison &lt;-<span class="st"> </span><span class="kw">read_2010census</span>(path, <span class="st">&quot;US&quot;</span>,
+                          <span class="kw">c</span>(<span class="st">&quot;INTPTLON&quot;</span>, <span class="st">&quot;INTPTLAT&quot;</span>),
+                          <span class="kw">c</span>(<span class="st">&quot;PCT0200005&quot;</span>, <span class="st">&quot;PCT0200006&quot;</span>)) %&gt;%
+<span class="st">    </span><span class="kw">setnames</span>(<span class="kw">c</span>(<span class="st">&quot;INTPTLON&quot;</span>, <span class="st">&quot;INTPTLAT&quot;</span>, <span class="st">&quot;PCT0200005&quot;</span>, <span class="st">&quot;PCT0200006&quot;</span>), 
+             <span class="kw">c</span>(<span class="st">&quot;lon&quot;</span>, <span class="st">&quot;lat&quot;</span>, <span class="st">&quot;federal&quot;</span>, <span class="st">&quot;state&quot;</span>)) %&gt;%
+<span class="st">    </span><span class="co"># summary level of country subdivision is &quot;060&quot;, geocomponent of all is &quot;00&quot;</span>
+<span class="st">    </span>.[SUMLEV ==<span class="st"> &quot;060&quot;</span> &amp;<span class="st"> </span>GEOCOMP ==<span class="st"> &quot;00&quot;</span>] %&gt;%
+<span class="st">    </span><span class="co"># keep columns of interests</span>
+<span class="st">    </span>.[, .(lon, lat, federal, state)] %&gt;%
+<span class="st">    </span><span class="co"># remove the places having no prison</span>
+<span class="st">    </span>.[federal !=<span class="st"> </span><span class="dv">0</span> |<span class="st"> </span>state !=<span class="st"> </span><span class="dv">0</span>] %&gt;%
+<span class="st">    </span>.[federal ==<span class="st"> </span><span class="dv">0</span>, federal :<span class="er">=</span><span class="st"> </span><span class="ot">NA</span>] %&gt;%
+<span class="st">    </span>.[state ==<span class="st"> </span><span class="dv">0</span>, state :<span class="er">=</span><span class="st"> </span><span class="ot">NA</span>]
+<span class="kw">head</span>(prison)</code></pre></div>
+<p>We can plot them on a map.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>() +
+<span class="st">    </span><span class="kw">geom_path</span>(<span class="dt">data =</span> <span class="kw">map_data</span>(<span class="st">&quot;world&quot;</span>), <span class="kw">aes</span>(long, lat, <span class="dt">group =</span> group), <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">size=</span><span class="fl">0.5</span>) +
+<span class="st">    </span><span class="kw">geom_path</span>(<span class="dt">data =</span> <span class="kw">map_data</span>(<span class="st">&quot;state&quot;</span>), <span class="kw">aes</span>(long, lat, <span class="dt">group =</span> group), <span class="dt">color =</span> <span class="st">&quot;grey&quot;</span>, <span class="dt">size=</span><span class="fl">0.3</span>) +
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">data =</span> prison,
+               <span class="kw">aes</span>(lon, lat, <span class="dt">size =</span> state, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>),
+               <span class="dt">alpha =</span> <span class="fl">0.5</span>) +
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">data =</span> prison,
+               <span class="kw">aes</span>(lon, lat, <span class="dt">size =</span> federal, <span class="dt">color =</span> <span class="st">&quot;red&quot;</span>),
+               <span class="dt">alpha =</span> <span class="fl">0.5</span>) +
+<span class="st">    </span><span class="kw">scale_size_area</span>(<span class="dt">max_size =</span> <span class="dv">4</span>, <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">1000</span>, <span class="dv">5000</span>, <span class="dv">10000</span>, <span class="dv">20000</span>)) +
+<span class="st">    </span><span class="kw">scale_color_identity</span>(<span class="dt">guide =</span> <span class="st">&quot;legend&quot;</span>,
+                         <span class="dt">breaks =</span> <span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>),
+                         <span class="dt">labels =</span> <span class="kw">c</span>(<span class="st">&quot;federal&quot;</span>, <span class="st">&quot;state&quot;</span>)) +
+<span class="st">    </span><span class="kw">guides</span>(<span class="dt">color =</span> <span class="kw">guide_legend</span>(<span class="dt">override.aes =</span> <span class="kw">list</span>(<span class="dt">alpha =</span> <span class="dv">1</span>, <span class="dt">size =</span> <span class="dv">4</span>))) +
+<span class="st">    </span><span class="kw">labs</span>(<span class="dt">color =</span> <span class="ot">NULL</span>, <span class="dt">size =</span> <span class="st">&quot;inmates&quot;</span>, <span class="dt">x =</span> <span class="ot">NULL</span>, <span class="dt">y =</span> <span class="ot">NULL</span>) +
+<span class="st">    </span><span class="kw">xlim</span>(-<span class="dv">180</span>, -<span class="dv">60</span>) +
+<span class="st">    </span><span class="kw">ylim</span>(<span class="dv">15</span>, <span class="dv">66</span>) +
+<span class="st">    </span><span class="kw">coord_map</span>() +
+<span class="st">    </span><span class="kw">theme</span>(<span class="dt">panel.grid =</span> <span class="kw">element_blank</span>(),
+          <span class="dt">axis.text =</span> <span class="kw">element_blank</span>(),
+          <span class="dt">axis.ticks =</span> <span class="kw">element_blank</span>())</code></pre></div>
+<p>There is no federal prison in Alaska and Havaii but one in Purto Rico although it is not a state. A large state prison appears to the west of Havaii, which is a census data error.</p>
 </div>
 </div>
 

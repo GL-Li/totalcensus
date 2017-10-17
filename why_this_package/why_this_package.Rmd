@@ -1,0 +1,34 @@
+---
+title: "Why this package"
+author: "GL Li"
+date: "October 14, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+For these reasons:
+
+## urban/rural update data
+The census API does provide 2010 census summary file 1 with urban/rural update data, for example,
+
+```{r}
+library(tidycensus)
+# change the api to your owns
+census_api_key("ab664ab627f56ed01df0b97a25f6f473598a7fec")
+
+# all urban/rural population are returned as zero.
+popul_ur <- get_decennial(state = "RI", geography = "county", 
+                          variables = c("P0020001", "P0020002", "P0020003", "P0020004", "P0020005"),
+                          year = 2010)
+```
+
+## easy combination of data
+For example block data of a city or metro, which is hard to do with the API packages
+```{r}
+library(rawcensus2010)
+
+```
+
