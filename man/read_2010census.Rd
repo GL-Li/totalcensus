@@ -5,7 +5,7 @@
 \title{Read selected geographic headers and table contents}
 \usage{
 read_2010census(path_to_census, state, geoheaders, table_contents,
-  show_progress = TRUE)
+  summary_level = "*", geo_comp = "*", show_progress = TRUE)
 }
 \arguments{
 \item{path_to_census}{path to the directory holding downloaded
@@ -17,6 +17,17 @@ are sub-folders of each state.}
 \item{geoheaders}{vector of references of selected geographci headers to be included in the return.}
 
 \item{table_contents}{selected references of contents in census tables.}
+
+\item{summary_level}{select which summary level to keep, "*" to keep all. It takes strings
+including "state", "county", "county_subdivision", "place", "tract", "block_group",
+and "block" for the most common levels. It also take code for level. Search all codes with
+\code{\link{search_sumlev}} for state files or \code{\link{search_sumlev_US}} for national files.}
+
+\item{geo_comp}{select which geographic component to keep, "*" to keep all.
+Summary level of a state contains all geographic component. County
+subdivision and higher level have all area ("00"), urban ("01"), and rural ("43").
+census tract and lower level have no geographic component, all are "00". Browse
+\code{\link{dict_geocomp}} for other geographic components.}
 
 \item{show_progress}{show progress of file reading if TRUE. Turn off if FALSE, which
 is useful in RMarkdown output.}
@@ -37,15 +48,17 @@ NAs. To find the references of table contents of interest, search with function
 }
 \examples{
 \dontrun{
-# read Rhode Island and Massachusette summary data
+# read Rhode Island and Massachusette summary data at block level
 ri <- read_2010census("your_local_path_to_2010_census", c("RI", "MA"),
-                       c("GEOCOMP", "NAME", "SUMLEV"),
-                       c("PCT012F139", "PCT012F138", "P0150008", "H0070016"))
+                       geoheaders = c("NAME", "INTPTLON", "INTPTLAT"),
+                       table_contents = c("PCT012F139", "P0150008"),
+                       summary_level = "block")
 
 # read the national summary data
 us <- read_2010census("your_local_path_to_2010_census", "US",
-                       c("STATE", "COUNTY", "COUSUB", "GEOCOMP", "NAME", "SUMLEV"),
-                       c("PCT012F139", "PCT012F138", "P0150008", "H0070016"))
+                       geoheaders = c("STATE", "COUNTY", "COUSUB", "NAME"),
+                       table_contents = c("PCT012F139", "P0150008"),
+                       summary_level = "county_subdivision")
 }
 
 }
