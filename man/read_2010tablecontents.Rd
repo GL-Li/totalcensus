@@ -4,7 +4,7 @@
 \alias{read_2010tablecontents}
 \title{Read selected table contents of a state}
 \usage{
-read_2010tablecontents(path_to_census, state, table_contents,
+read_2010tablecontents(path_to_census, state, table_contents = NULL,
   show_progress = TRUE)
 }
 \arguments{

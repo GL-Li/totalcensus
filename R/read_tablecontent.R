@@ -30,7 +30,9 @@
 #' @import magrittr
 #'
 
-read_2010tablecontents <- function(path_to_census, state, table_contents, show_progress = TRUE){
+read_2010tablecontents <- function(path_to_census, state,
+                                   table_contents = NULL,
+                                   show_progress = TRUE){
 
     for (content in table_contents) {
         if (!tolower(content) %in% tolower(dict_datafile$reference)){
@@ -57,7 +59,7 @@ read_2010tablecontents <- function(path_to_census, state, table_contents, show_p
         cols <- paste0("V", loc)
 
         if (num < 10) num <- paste0("0", num)
-        file <- paste0(path_to_census, state, "/", tolower(state), "000", num, "2010.ur1")
+        file <- paste0(path_to_census, "/census2010/", state, "/", tolower(state), "000", num, "2010.ur1")
 
         if (show_progress) {
             cat(paste("Reading", state, "file", num, "\n"))

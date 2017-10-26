@@ -4,7 +4,8 @@
 \alias{read_2010geoheader}
 \title{Read geographic header record file of a state}
 \usage{
-read_2010geoheader(path_to_census, state, references, show_progress = TRUE)
+read_2010geoheader(path_to_census, state, geoheaders = NULL,
+  show_progress = TRUE)
 }
 \arguments{
 \item{path_to_census}{path to the directory holding downloaded
@@ -12,10 +13,10 @@ census 2010 summary file 1 with urban/rural update.}
 
 \item{state}{abbreviation of a state, for example "IN" for "Indiana".}
 
-\item{references}{vector of references of selected geographic headers to be included in the return}
-
 \item{show_progress}{show progress of reading if TRUE. Turn off if FALSE, which
 is useful in RMarkdown output.}
+
+\item{references}{vector of references of selected geographic headers to be included in the return}
 }
 \value{
 data.table whose columns are logical record number, summary level,
@@ -25,7 +26,7 @@ the key.
 \description{
 Read geographic header record file of a state and return logical record number
 and selected geographic headers. To find geographic headers, browse
-\code{\link{dict_censustable}} or search with \code{\link{search_geoheader}}.
+\code{\link{dict_geoheader}} or search with \code{\link{search_geoheader}}.
 }
 \examples{
 \dontrun{

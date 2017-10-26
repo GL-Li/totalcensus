@@ -1,11 +1,12 @@
-Package: rawcensus2010
+Package: rawcensus
 Type: Package
-Title: Extract any data in census 2010 summary file 1 with urban/rural update
+Title: Extract information from raw data of decenial and ACS survey
 Version: 0.1.0
 Author: GL Li
 Maintainer: GL Li <liguanglai@gmail.com>
 Description: This package retrieves data from the downloaded raw US census 2010 
-    summary file 1 with urban/rural update. It make all the data in the summary file
+    summary file 1 with urban/rural update and summary files of ACS 1-year and 
+    5-year survey. It make all the data in the summary file
     available to users, not just selected data as other packages offer. 
 License: MIT + file LICENSE
 Encoding: UTF-8

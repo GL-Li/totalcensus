@@ -1,7 +1,9 @@
-#' Read selected geographic headers and table contents
+#' Read selected geographic headers and table contents of selected summary level
+#' and geographic component.
 #'
-#' @description  Read geographic header record file and data files of states and return logical record number,
-#' selected geoheaders, state abbreviation, and table contents. These table contents can be from different tables, for example,
+#' @description  Read geographic header record file and data files of states and return
+#' selected geoheaders, state abbreviation, and table contents of selected summary
+#' level and geographic component. These table contents can be from different tables, for example,
 #' c("PCT012F139", "P0030008", "P0100059", "P0150008", "H0070016", "PCT012F138").
 #' The rows of short contents that have no corresponding LOGRECNOs are filled with
 #' NAs. To find the references of table contents of interest, search with function
@@ -27,9 +29,9 @@
 #' @param show_progress show progress of file reading if TRUE. Turn off if FALSE, which
 #'     is useful in RMarkdown output.
 #'
-#' @return A data.table whose columns are LOGRECNO, SUMLEV, GEOCOMP, the selected geoheaders and
-#' the table contents, with LOGRECNO as the key. The data.table contains all rows
-#' of geoheader and data files.
+#' @return A data.table whose columns include the selected geoheaders and
+#' table contents plus LOGRECNO, SUMLEV, GEOCOMP, and state. state indicates
+#' the data from state files with state abbreviation or national files with "US".
 #'
 #' @examples
 #' \dontrun{
@@ -50,8 +52,11 @@
 #'
 #'
 
-read_2010census <- function(path_to_census, state, geoheaders, table_contents,
-                            summary_level = "*", geo_comp = "*",
+read_census2010 <- function(path_to_census, state,
+                            geoheaders = NULL,
+                            table_contents = NULL,
+                            summary_level = "*",
+                            geo_comp = "*",
                             show_progress = TRUE){
     # switch summary level to code
     if (summary_level %in% c("state", "county", "county_subdivision", "place",
@@ -67,23 +72,25 @@ read_2010census <- function(path_to_census, state, geoheaders, table_contents,
     }
 
     lst <- list()
+    iter <- 0
+    N <- length(state)
     for (st in toupper(state)){
+        iter <- iter + 1
+        cat(paste0("reading ", iter, "/", N, " states"))
+
         # add st to geoheaders as there are multiple state
-        geo <- read_2010geoheader(path_to_census, st, c(geoheaders),
+        geo <- read_2010geoheader(path_to_census, st, geoheaders,
                                   show_progress = show_progress) %>%
             .[, state := st]
-        data <- read_2010tablecontents(path_to_census, st, table_contents,
-                                       show_progress = show_progress)
-        census <- geo[data] %>%
-            .[SUMLEV %like% summary_level & GEOCOMP %like% geo_comp] %>%
-            .[, LOGRECNO := NULL]
+        if (!is.null(table_contents)) {
+            data <- read_2010tablecontents(path_to_census, st, table_contents,
+                                           show_progress = show_progress)
+            census <- geo[data]
+        } else {
+            census <- geo
+        }
 
-        # delete SUMLEV and GEOCOMP if already selected
-        if (summary_level != "*") census[, SUMLEV := NULL]
-        if (geo_comp != "*") census[, GEOCOMP := NULL]
-
-
-        lst[[st]] = census
+        lst[[st]] <- census[SUMLEV %like% summary_level & GEOCOMP %like% geo_comp]
     }
     rbindlist(lst)
 }

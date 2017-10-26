@@ -35,7 +35,7 @@ read_2010fileseg_ <- function(path_to_census, state, file_seg){
     } else {
         file <- paste0("000", file_seg, "2010.ur1")
     }
-    file_dir <- paste0(path_to_census, "/", state, "/", tolower(state), file)
+    file_dir <- paste0(path_to_census, "/census2010/", state, "/", tolower(state), file)
     dt <- fread(file_dir, header = FALSE)
 
     # assign columns names
