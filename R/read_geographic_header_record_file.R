@@ -31,7 +31,7 @@
 #'
 
 read_2010geoheader <- function(path_to_census, state,
-                               geoheaders = NULL,
+                               geo_headers = NULL,
                                show_progress = TRUE) {
     if (show_progress) {
         cat(paste("Reading", state, "geographic header record file\n"))
@@ -39,7 +39,7 @@ read_2010geoheader <- function(path_to_census, state,
 
     # allow lowercase input for state and references
     state <- toupper(state)
-    references <- toupper(geoheaders)
+    references <- toupper(geo_headers)
 
     file <- paste0(path_to_census, "/census2010/", state, "/", tolower(state), "geo2010.ur1")
     # use "Latin-1" for encoding special spanish latters such as ñ in Cañada
@@ -63,8 +63,8 @@ read_2010geoheader <- function(path_to_census, state,
                   GEOCOMP = str_sub(V1, 12, 13))]
 
     # add all selected fields to output data
-    if (!is.null(geoheaders)) {
-        for (ref in geoheaders) {
+    if (!is.null(geo_headers)) {
+        for (ref in geo_headers) {
             # identify numeric hearder
             if (ref %in% c("INTPTLAT", "INTPTLON", "AREALAND", "AREAWATR", "POP100",
                            "HU100")) {

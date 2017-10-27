@@ -4,9 +4,9 @@
 \alias{read_acs1year}
 \title{Read ACS 1-year survey}
 \usage{
-read_acs1year(path_to_census, states, year, geoheaders = c("NAME", "GEOID"),
-  table_contents, with_margin = TRUE, summary_level = "*",
-  geo_components = "*", show_progress = TRUE)
+read_acs1year(path_to_census, states, year, geo_headers = NULL,
+  table_contents = NULL, with_margin = TRUE, with_coord = TRUE,
+  summary_level = "*", geo_comp = "*", show_progress = TRUE)
 }
 \arguments{
 \item{path_to_census}{path to the directory of downloaded census data.}
@@ -15,7 +15,7 @@ read_acs1year(path_to_census, states, year, geoheaders = c("NAME", "GEOID"),
 
 \item{year}{year of the survey}
 
-\item{geoheaders}{geographic headers.}
+\item{geo_headers}{geographic headers.}
 
 \item{est_marg}{which data to read, "e" for estimate, "m" for margin}
 }
@@ -30,7 +30,7 @@ of selected states.
 \dontrun{
 # read Rhode Island data file 0004, replace the path with your local folder
 ma_ri <- read_acs1year("~/census_data", c("ma", "ri"), 2015,
-                    geoheaders = c("NAME", "GEOID"),
+                    geo_headers = c("NAME", "GEOID"),
                     table_contents = c("B01001_009", "B00001_001", "B10001_002"),
                     summary_level = "place")
 }

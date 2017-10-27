@@ -6,15 +6,14 @@
 #' \code{\link{dict_acs_geoheaders}} or search with \code{\link{search_acs_geoheader}}.
 #'
 #'
-#' @param path_to_census path to the directory holding downloaded ACS files.
 #' @param state abbreviation of a state, for example "IN" for "Indiana".
 #' @param year year of the survey
-#' @param references vector of references of selected geographic headers to be included in the return
+#' @param geoheaders vector of references of selected geographic headers to be included in the return
 #' @param show_progress show progress of reading if TRUE. Turn off if FALSE, which
 #'     is useful in RMarkdown output.
 #'
 #' @return data.table whose columns are logical record number, summary level,
-#' geographic compoenent, and selected references. LOGRECNO serves as
+#' geographic compoenent, and selected geoheaders. LOGRECNO serves as
 #' the key.
 #'
 #' @examples
@@ -30,16 +29,16 @@
 #' @importFrom stringr str_sub str_trim
 #'
 
-read_acs1year_geo_ <- function(path_to_census, state, year,
-                               references = c("NAME", "GEOID"),
+read_acs1year_geo_ <- function(state,
+                               year,
+                               geo_headers = NULL,
                                show_progress = TRUE) {
-    # if (show_progress) {
-    #     cat(paste("Reading", state, "geography file\n"))
-    # }
 
-    # allow lowercase input for state and references
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
+    # allow lowercase input for state and geo_headers
     state <- tolower(state)
-    references <- toupper(references)
+    geo_headers <- toupper(geo_headers)
 
     file <- paste0(path_to_census, "/", "acs1year/", year, "/g", year, "1",
                    tolower(state), ".csv")
@@ -48,7 +47,7 @@ read_acs1year_geo_ <- function(path_to_census, state, year,
     geo <- fread(file, header = FALSE, encoding = "Latin-1" ,
                  showProgress = show_progress, colClasses = "character") %>%
         setnames(names(.), dict_acs_geoheader$reference) %>%
-        .[, c(c("LOGRECNO", "SUMLEV", "GEOCOMP"), references), with = FALSE] %>%
+        .[, c(c("LOGRECNO", "SUMLEV", "GEOCOMP", "GEOID"), geo_headers), with = FALSE] %>%
         .[, LOGRECNO := as.numeric(LOGRECNO)]
 
     setkey(geo, LOGRECNO)
@@ -69,12 +68,12 @@ read_acs1year_geo_ <- function(path_to_census, state, year,
 #' @param path_to_census path to the directory holding downloaded ACS files.
 #' @param state abbreviation of a state, for example "IN" for "Indiana".
 #' @param year end year of the 5-year survey
-#' @param references vector of references of selected geographic headers to be included in the return
+#' @param geo_headers vector of references of selected geographic headers to be included in the return
 #' @param show_progress show progress of reading if TRUE. Turn off if FALSE, which
 #'     is useful in RMarkdown output.
 #'
 #' @return data.table whose columns are logical record number, summary level,
-#' geographic compoenent, and selected references. LOGRECNO serves as
+#' geographic compoenent, and selected geo_headers. LOGRECNO serves as
 #' the key.
 #'
 #' @examples
@@ -90,16 +89,15 @@ read_acs1year_geo_ <- function(path_to_census, state, year,
 #' @importFrom stringr str_sub str_trim
 #'
 
-read_acs5year_geo_ <- function(path_to_census, state, year,
-                               references = c("NAME", "GEOID"),
+read_acs5year_geo_ <- function(path_to_census,
+                               state,
+                               year,
+                               geo_headers = NULL,
                                show_progress = TRUE) {
-    # if (show_progress) {
-    #     cat(paste("Reading", state, "geography file\n"))
-    # }
 
-    # allow lowercase input for state and references
+    # allow lowercase input for state and geo_headers
     state <- tolower(state)
-    references <- toupper(references)
+    geo_headers <- toupper(geo_headers)
 
     file <- paste0(path_to_census, "/", "acs5year/", year, "/g", year, "5",
                    tolower(state), ".csv")
@@ -108,7 +106,7 @@ read_acs5year_geo_ <- function(path_to_census, state, year,
     geo <- fread(file, header = FALSE, encoding = "Latin-1" ,
                  showProgress = show_progress, colClasses = "character") %>%
         setnames(names(.), dict_acs_geoheader$reference) %>%
-        .[, c(c("LOGRECNO", "SUMLEV", "GEOCOMP"), references), with = FALSE] %>%
+        .[, c(c("LOGRECNO", "SUMLEV", "GEOCOMP", "GEOID"), geo_headers), with = FALSE] %>%
         .[, LOGRECNO := as.numeric(LOGRECNO)]
 
     setkey(geo, LOGRECNO)

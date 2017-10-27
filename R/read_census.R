@@ -76,7 +76,7 @@ read_census2010 <- function(path_to_census, state,
     N <- length(state)
     for (st in toupper(state)){
         iter <- iter + 1
-        cat(paste0("reading ", iter, "/", N, " states"))
+        cat(paste0("reading ", iter, "/", N, " states\n"))
 
         # add st to geoheaders as there are multiple state
         geo <- read_2010geoheader(path_to_census, st, geoheaders,

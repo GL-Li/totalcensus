@@ -4,8 +4,8 @@
 \alias{read_acs5year_geo_}
 \title{Read ACS 5-year survey geography file of a state}
 \usage{
-read_acs5year_geo_(path_to_census, state, year, references = c("NAME",
-  "GEOID"), show_progress = TRUE)
+read_acs5year_geo_(path_to_census, state, year, geo_headers = NULL,
+  show_progress = TRUE)
 }
 \arguments{
 \item{path_to_census}{path to the directory holding downloaded ACS files.}
@@ -14,14 +14,14 @@ read_acs5year_geo_(path_to_census, state, year, references = c("NAME",
 
 \item{year}{end year of the 5-year survey}
 
-\item{references}{vector of references of selected geographic headers to be included in the return}
+\item{geo_headers}{vector of references of selected geographic headers to be included in the return}
 
 \item{show_progress}{show progress of reading if TRUE. Turn off if FALSE, which
 is useful in RMarkdown output.}
 }
 \value{
 data.table whose columns are logical record number, summary level,
-geographic compoenent, and selected references. LOGRECNO serves as
+geographic compoenent, and selected geo_headers. LOGRECNO serves as
 the key.
 }
 \description{

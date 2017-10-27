@@ -4,7 +4,7 @@
 \alias{read_2010geoheader}
 \title{Read geographic header record file of a state}
 \usage{
-read_2010geoheader(path_to_census, state, geoheaders = NULL,
+read_2010geoheader(path_to_census, state, geo_headers = NULL,
   show_progress = TRUE)
 }
 \arguments{

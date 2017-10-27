@@ -7,7 +7,7 @@
 #' @param path_to_census path to the directory of downloaded census data.
 #' @param states  vector of abbrivations of states, for example, "IN" and c("MA", "RI").
 #' @param year year of the survey
-#' @param geoheaders geographic headers.
+#' @param geo_headers geographic headers.
 #' @param est_marg which data to read, "e" for estimate, "m" for margin
 #'
 #' @return A data.table of selected data.
@@ -16,7 +16,7 @@
 #' \dontrun{
 #' # read Rhode Island data file 0004, replace the path with your local folder
 #' ma_ri <- read_acs1year("~/census_data", c("ma", "ri"), 2015,
-#'                     geoheaders = c("NAME", "GEOID"),
+#'                     geo_headers = c("NAME", "GEOID"),
 #'                     table_contents = c("B01001_009", "B00001_001", "B10001_002"),
 #'                     summary_level = "place")
 #' }
@@ -30,11 +30,12 @@
 read_acs1year <- function(path_to_census,
                           states,
                           year,
-                          geoheaders = NULL,
+                          geo_headers = NULL,
                           table_contents = NULL,
                           with_margin = TRUE,
+                          with_coord = TRUE,
                           summary_level = "*",
-                          geo_components = "*",
+                          geo_comp = "*",
                           show_progress = TRUE){
 
     # switch summary level to code
@@ -61,48 +62,60 @@ read_acs1year <- function(path_to_census,
     lst_state <- list()
     for (state in states) {
         # also accept lowercase input
-        state <- tolower(state)
-        table_contents <- toupper(table_contents)
-
-        # get files for table contents, follow the notation of read_tablecontent.R
-        file_content <- lookup[reference %in% table_contents] %>%
-            .[, .(file_num = file_segment, content = reference)]
-
-        # read estimate and margin from each file
-        lst = list()
-        for (num in unique(file_content$file_num)){
-            cont <- file_content[file_num == num, content]
-            dt <- read_acs1year_estimate_margin_(path_to_census, state, year,
-                                                 num, "e") %>%
-                .[, c("LOGRECNO", cont), with = FALSE] %>%
-                setnames(cont, paste0(cont, "_e")) %>%
-                setkey(LOGRECNO)
-            if (with_margin) {
-                margin <- read_acs1year_estimate_margin_(path_to_census, state, year,
-                                                         num, "m") %>%
-                    .[, c("LOGRECNO", cont), with = FALSE] %>%
-                    setnames(cont, paste0(cont, "_m")) %>%
-                    setkey(LOGRECNO)
-
-                dt <- merge(dt, margin)
-            }
-
-            assign(paste0("dt_", num), dt)
-            # list elements names must be character, not number
-            lst[[num]] <- get(paste0("dt_", num))
-        }
-
-        # merge into a large data.table as return using key LOGRECNO, fill with NA
-        # for short files
-        est_marg <- Reduce(function(x, y) merge(x, y, all = TRUE), lst)
+        #bbstate <- tolower(state)
 
         # read geography
         geo <- read_acs1year_geo_(path_to_census, state, year,
-                                  references = geoheaders, show_progress = TRUE) %>%
+                                  geo_headers = geo_headers, show_progress = TRUE) %>%
             .[, state := toupper(state)]
 
-        combined <- merge(geo, est_marg) %>%
-            .[SUMLEV %like% summary_level & GEOCOMP %like% geo_components]
+        # add coordinates
+        if (with_coord) {
+            coord <- fread(paste0(path_to_census, "/generated_data/geoid_coord.csv"))
+            geo <- coord[geo, on = .(GEOID)]
+        }
+
+        # read estimate and margin from each file
+        if(!is.null(table_contents)){
+            table_contents <- toupper(table_contents)
+
+            # get files for table contents, follow the notation of read_tablecontent.R
+            file_content <- lookup[reference %in% table_contents] %>%
+                .[, .(file_num = file_segment, content = reference)]
+
+            lst = list()
+            for (num in unique(file_content$file_num)){
+                cont <- file_content[file_num == num, content]
+                dt <- read_acs1year_estimate_margin_(path_to_census, state, year,
+                                                     num, "e") %>%
+                    .[, c("LOGRECNO", cont), with = FALSE] %>%
+                    setnames(cont, paste0(cont, "_e")) %>%
+                    setkey(LOGRECNO)
+                if (with_margin) {
+                    margin <- read_acs1year_estimate_margin_(path_to_census, state, year,
+                                                             num, "m") %>%
+                        .[, c("LOGRECNO", cont), with = FALSE] %>%
+                        setnames(cont, paste0(cont, "_m")) %>%
+                        setkey(LOGRECNO)
+
+                    dt <- merge(dt, margin)
+                }
+
+                assign(paste0("dt_", num), dt)
+                # list elements names must be character, not number
+                lst[[num]] <- get(paste0("dt_", num))
+            }
+
+            # merge into a large data.table as return using key LOGRECNO, fill with NA
+            # for short files
+            est_marg <- Reduce(function(x, y) merge(x, y, all = TRUE), lst)
+
+            combined <- merge(geo, est_marg)
+        } else {
+            combined <- geo
+        }
+
+        combined <- combined[SUMLEV %like% summary_level & GEOCOMP %like% geo_comp]
 
         lst_state[[state]] <- combined
     }
@@ -121,7 +134,7 @@ read_acs1year <- function(path_to_census,
 #' @param path_to_census path to the directory of downloaded census data.
 #' @param states  vector of abbrivations of states, for example, "IN" and c("MA", "RI").
 #' @param year year of the survey
-#' @param geoheaders geographic headers.
+#' @param geo_headers geographic headers.
 #' @param est_marg which data to read, "e" for estimate, "m" for margin
 #'
 #' @return A data.table of selected data.
@@ -130,7 +143,7 @@ read_acs1year <- function(path_to_census,
 #' \dontrun{
 #' # read Rhode Island data file 0004, replace the path with your local folder
 #' ma_ri <- read_acs1year("~/census_data", c("ma", "ri"), 2015,
-#'                     geoheaders = c("NAME", "GEOID"),
+#'                     geo_headers = c("NAME", "GEOID"),
 #'                     table_contents = c("B01001_009", "B00001_001", "B10001_002"),
 #'                     summary_level = "place")
 #' }
@@ -142,11 +155,17 @@ read_acs1year <- function(path_to_census,
 #' @import stringr
 #'
 
-read_acs5year <- function(path_to_census, states, year,
-                          geoheaders = c("NAME", "GEOID"),
-                          table_contents, with_margin = TRUE,
-                          summary_level = "*", geo_components = "*",
+read_acs5year <- function(path_to_census,
+                          states,
+                          year,
+                          geo_headers = NULL,
+                          table_contents = NULL,
+                          with_margin = TRUE,
+                          with_coord = TRUE,
+                          summary_level = "*",
+                          geo_comp = "*",
                           show_progress = TRUE){
+
     # switch summary level to code
     if (summary_level %in% c("state", "county", "county_subdivision", "place",
                              "tract", "block_group")){
@@ -171,48 +190,60 @@ read_acs5year <- function(path_to_census, states, year,
     lst_state <- list()
     for (state in states) {
         # also accept lowercase input
-        state <- tolower(state)
-        table_contents <- toupper(table_contents)
-
-        # get files for table contents, follow the notation of read_tablecontent.R
-        file_content <- lookup[reference %in% table_contents] %>%
-            .[, .(file_num = file_segment, content = reference)]
-
-        # read estimate and margin from each file
-        lst = list()
-        for (num in unique(file_content$file_num)){
-            cont <- file_content[file_num == num, content]
-            dt <- read_acs5year_estimate_margin_(path_to_census, state, year,
-                                                 num, "e") %>%
-                .[, c("LOGRECNO", cont), with = FALSE] %>%
-                setnames(cont, paste0(cont, "_e")) %>%
-                setkey(LOGRECNO)
-            if (with_margin) {
-                margin <- read_acs5year_estimate_margin_(path_to_census, state, year,
-                                                         num, "m") %>%
-                    .[, c("LOGRECNO", cont), with = FALSE] %>%
-                    setnames(cont, paste0(cont, "_m")) %>%
-                    setkey(LOGRECNO)
-
-                dt <- merge(dt, margin)
-            }
-
-            assign(paste0("dt_", num), dt)
-            # list elements names must be character, not number
-            lst[[num]] <- get(paste0("dt_", num))
-        }
-
-        # merge into a large data.table as return using key LOGRECNO, fill with NA
-        # for short files
-        est_marg <- Reduce(function(x, y) merge(x, y, all = TRUE), lst)
+        #bbstate <- tolower(state)
 
         # read geography
         geo <- read_acs5year_geo_(path_to_census, state, year,
-                                  references = geoheaders, show_progress = TRUE) %>%
+                                  geo_headers = geo_headers, show_progress = TRUE) %>%
             .[, state := toupper(state)]
 
-        combined <- merge(geo, est_marg) %>%
-            .[SUMLEV %like% summary_level & GEOCOMP %like% geo_components]
+        # add coordinates
+        if (with_coord) {
+            coord <- fread(paste0(path_to_census, "/generated_data/geoid_coord.csv"))
+            geo <- coord[geo, on = .(GEOID)]
+        }
+
+        # read estimate and margin from each file
+        if(!is.null(table_contents)){
+            table_contents <- toupper(table_contents)
+
+            # get files for table contents, follow the notation of read_tablecontent.R
+            file_content <- lookup[reference %in% table_contents] %>%
+                .[, .(file_num = file_segment, content = reference)]
+
+            lst = list()
+            for (num in unique(file_content$file_num)){
+                cont <- file_content[file_num == num, content]
+                dt <- read_acs5year_estimate_margin_(path_to_census, state, year,
+                                                     num, "e") %>%
+                    .[, c("LOGRECNO", cont), with = FALSE] %>%
+                    setnames(cont, paste0(cont, "_e")) %>%
+                    setkey(LOGRECNO)
+                if (with_margin) {
+                    margin <- read_acs5year_estimate_margin_(path_to_census, state, year,
+                                                             num, "m") %>%
+                        .[, c("LOGRECNO", cont), with = FALSE] %>%
+                        setnames(cont, paste0(cont, "_m")) %>%
+                        setkey(LOGRECNO)
+
+                    dt <- merge(dt, margin)
+                }
+
+                assign(paste0("dt_", num), dt)
+                # list elements names must be character, not number
+                lst[[num]] <- get(paste0("dt_", num))
+            }
+
+            # merge into a large data.table as return using key LOGRECNO, fill with NA
+            # for short files
+            est_marg <- Reduce(function(x, y) merge(x, y, all = TRUE), lst)
+
+            combined <- merge(geo, est_marg)
+        } else {
+            combined <- geo
+        }
+
+        combined <- combined[SUMLEV %like% summary_level & GEOCOMP %like% geo_comp]
 
         lst_state[[state]] <- combined
     }
