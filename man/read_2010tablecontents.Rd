@@ -4,13 +4,9 @@
 \alias{read_2010tablecontents}
 \title{Read selected table contents of a state}
 \usage{
-read_2010tablecontents(path_to_census, state, table_contents = NULL,
-  show_progress = TRUE)
+read_2010tablecontents(state, table_contents = NULL, show_progress = TRUE)
 }
 \arguments{
-\item{path_to_census}{path to the directory holding downloaded census data,
-under which are sub-folders for each state.}
-
 \item{state}{abbrivation of a state, such as "IN" for Indiana.}
 
 \item{table_contents}{selected references of contents in census tables.}

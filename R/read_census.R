@@ -11,9 +11,6 @@
 #' \code{\link{dict_geoheader}} or search with function \code{\link{search_geoheader}}.
 #'
 #'
-#' @param path_to_census path to the directory holding downloaded
-#'     census 2010 summary file 1 (with urban/rural update). Inside this directiory
-#'     are sub-folders of each state.
 #' @param state vector of abbreviation of states, for example "IN" or c("MA", "RI").
 #' @param geoheaders vector of references of selected geographci headers to be included in the return.
 #' @param table_contents selected references of contents in census tables.
@@ -52,12 +49,15 @@
 #'
 #'
 
-read_census2010 <- function(path_to_census, state,
+read_census2010 <- function(state,
                             geoheaders = NULL,
                             table_contents = NULL,
                             summary_level = "*",
                             geo_comp = "*",
                             show_progress = TRUE){
+
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
     # switch summary level to code
     if (summary_level %in% c("state", "county", "county_subdivision", "place",
                              "tract", "block_group", "block")){
@@ -79,11 +79,11 @@ read_census2010 <- function(path_to_census, state,
         cat(paste0("reading ", iter, "/", N, " states\n"))
 
         # add st to geoheaders as there are multiple state
-        geo <- read_2010geoheader(path_to_census, st, geoheaders,
+        geo <- read_2010geoheader(st, geoheaders,
                                   show_progress = show_progress) %>%
             .[, state := st]
         if (!is.null(table_contents)) {
-            data <- read_2010tablecontents(path_to_census, st, table_contents,
+            data <- read_2010tablecontents(st, table_contents,
                                            show_progress = show_progress)
             census <- geo[data]
         } else {

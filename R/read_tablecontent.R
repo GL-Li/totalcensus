@@ -7,8 +7,6 @@
 #' \code{\link{search_datafile}}.
 #'
 #'
-#' @param path_to_census path to the directory holding downloaded census data,
-#' under which are sub-folders for each state.
 #' @param state abbrivation of a state, such as "IN" for Indiana.
 #' @param table_contents selected references of contents in census tables.
 #' @param show_progress show progress of reading if TRUE. Turn off if FALSE, which
@@ -30,9 +28,11 @@
 #' @import magrittr
 #'
 
-read_2010tablecontents <- function(path_to_census, state,
+read_2010tablecontents <- function(state,
                                    table_contents = NULL,
                                    show_progress = TRUE){
+
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
     for (content in table_contents) {
         if (!tolower(content) %in% tolower(dict_datafile$reference)){

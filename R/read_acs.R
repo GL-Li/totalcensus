@@ -4,7 +4,6 @@
 #' @description Read ACS 1-year survey of selected geography, estimate, and margin
 #' of selected states.
 #'
-#' @param path_to_census path to the directory of downloaded census data.
 #' @param states  vector of abbrivations of states, for example, "IN" and c("MA", "RI").
 #' @param year year of the survey
 #' @param geo_headers geographic headers.
@@ -27,8 +26,7 @@
 #' @import magrittr
 #'
 
-read_acs1year <- function(path_to_census,
-                          states,
+read_acs1year <- function(states,
                           year,
                           geo_headers = NULL,
                           table_contents = NULL,
@@ -37,6 +35,8 @@ read_acs1year <- function(path_to_census,
                           summary_level = "*",
                           geo_comp = "*",
                           show_progress = TRUE){
+
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
     # switch summary level to code
     if (summary_level %in% c("state", "county", "county_subdivision", "place",
@@ -65,7 +65,7 @@ read_acs1year <- function(path_to_census,
         #bbstate <- tolower(state)
 
         # read geography
-        geo <- read_acs1year_geo_(path_to_census, state, year,
+        geo <- read_acs1year_geo_(state, year,
                                   geo_headers = geo_headers, show_progress = TRUE) %>%
             .[, state := toupper(state)]
 
@@ -86,13 +86,13 @@ read_acs1year <- function(path_to_census,
             lst = list()
             for (num in unique(file_content$file_num)){
                 cont <- file_content[file_num == num, content]
-                dt <- read_acs1year_estimate_margin_(path_to_census, state, year,
+                dt <- read_acs1year_estimate_margin_(state, year,
                                                      num, "e") %>%
                     .[, c("LOGRECNO", cont), with = FALSE] %>%
                     setnames(cont, paste0(cont, "_e")) %>%
                     setkey(LOGRECNO)
                 if (with_margin) {
-                    margin <- read_acs1year_estimate_margin_(path_to_census, state, year,
+                    margin <- read_acs1year_estimate_margin_(state, year,
                                                              num, "m") %>%
                         .[, c("LOGRECNO", cont), with = FALSE] %>%
                         setnames(cont, paste0(cont, "_m")) %>%
@@ -155,8 +155,7 @@ read_acs1year <- function(path_to_census,
 #' @import stringr
 #'
 
-read_acs5year <- function(path_to_census,
-                          states,
+read_acs5year <- function(states,
                           year,
                           geo_headers = NULL,
                           table_contents = NULL,
@@ -165,6 +164,8 @@ read_acs5year <- function(path_to_census,
                           summary_level = "*",
                           geo_comp = "*",
                           show_progress = TRUE){
+
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
     # switch summary level to code
     if (summary_level %in% c("state", "county", "county_subdivision", "place",
@@ -189,11 +190,13 @@ read_acs5year <- function(path_to_census,
 
     lst_state <- list()
     for (state in states) {
+        cat("reading ", state, " ACS 5-year geography file\n")
+
         # also accept lowercase input
         #bbstate <- tolower(state)
 
         # read geography
-        geo <- read_acs5year_geo_(path_to_census, state, year,
+        geo <- read_acs5year_geo_(state, year,
                                   geo_headers = geo_headers, show_progress = TRUE) %>%
             .[, state := toupper(state)]
 
@@ -214,13 +217,13 @@ read_acs5year <- function(path_to_census,
             lst = list()
             for (num in unique(file_content$file_num)){
                 cont <- file_content[file_num == num, content]
-                dt <- read_acs5year_estimate_margin_(path_to_census, state, year,
+                dt <- read_acs5year_estimate_margin_(state, year,
                                                      num, "e") %>%
                     .[, c("LOGRECNO", cont), with = FALSE] %>%
                     setnames(cont, paste0(cont, "_e")) %>%
                     setkey(LOGRECNO)
                 if (with_margin) {
-                    margin <- read_acs5year_estimate_margin_(path_to_census, state, year,
+                    margin <- read_acs5year_estimate_margin_(state, year,
                                                              num, "m") %>%
                         .[, c("LOGRECNO", cont), with = FALSE] %>%
                         setnames(cont, paste0(cont, "_m")) %>%

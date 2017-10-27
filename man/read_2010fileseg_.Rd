@@ -4,12 +4,9 @@
 \alias{read_2010fileseg_}
 \title{Read a data file of a state (internal)}
 \usage{
-read_2010fileseg_(path_to_census, state, file_seg)
+read_2010fileseg_(state, file_seg)
 }
 \arguments{
-\item{path_to_census}{path to the directory of downloaded census 2010 data,
-inside which are the subfolders of each state.}
-
 \item{state}{abbrivation of a state, for example, "IN" for Indiana.}
 
 \item{file_seg}{the number of the data file, for example, 5 for file 05.}

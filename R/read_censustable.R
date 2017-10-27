@@ -21,7 +21,9 @@
 #' @import data.table
 #' @import magrittr
 
-read_2010table <- function(path_to_census, state, table_number){
+read_2010table <- function(state, table_number){
+
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
     if (!tolower(table_number) %in% tolower(dict_censustable$table_number)){
         stop("Please provide a correct table number.")

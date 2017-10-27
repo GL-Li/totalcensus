@@ -4,13 +4,10 @@
 \alias{read_acs5year_estimate_margin_}
 \title{Read a ACS 5-year survey estimate of a state (internal)}
 \usage{
-read_acs5year_estimate_margin_(path_to_census, state, year, file_seg,
-  est_marg = "e", show_progress = TRUE)
+read_acs5year_estimate_margin_(state, year, file_seg, est_marg = "e",
+  show_progress = TRUE)
 }
 \arguments{
-\item{path_to_census}{path to the directory of downloaded census 2010 data,
-inside which are the subfolders of each state.}
-
 \item{state}{abbrivation of a state, for example, "IN" for Indiana.}
 
 \item{year}{end year of the 5-year survey}

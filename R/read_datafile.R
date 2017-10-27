@@ -4,8 +4,6 @@
 #' to each column. Search with \code{\link{search_datafile}} to find table contents
 #' in a data file.
 #'
-#' @param path_to_census path to the directory of downloaded census 2010 data,
-#' inside which are the subfolders of each state.
 #' @param state abbrivation of a state, for example, "IN" for Indiana.
 #' @param file_seg the number of the data file, for example, 5 for file 05.
 #'
@@ -24,7 +22,9 @@
 #' @import magrittr
 #'
 
-read_2010fileseg_ <- function(path_to_census, state, file_seg){
+read_2010fileseg_ <- function(state, file_seg){
+
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
     # allow lower case in state abbreviation
     state <- toupper(state)

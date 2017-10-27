@@ -4,15 +4,15 @@
 \alias{read_2010table}
 \title{Read a census table of a state}
 \usage{
-read_2010table(path_to_census, state, table_number)
+read_2010table(state, table_number)
 }
 \arguments{
-\item{path_to_census}{path to the directory holding downloaded census data,
-under which are sub-folders of each state.}
-
 \item{state}{abbrivation of a state, such as "IN" for Indiana}
 
 \item{table_number}{table number such as "P3" and "PCT11A"}
+
+\item{path_to_census}{path to the directory holding downloaded census data,
+under which are sub-folders of each state.}
 }
 \value{
 A data.table with of the selected census table. LOGRECNO is the key.

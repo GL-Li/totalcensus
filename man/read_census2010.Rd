@@ -5,15 +5,10 @@
 \title{Read selected geographic headers and table contents of selected summary level
 and geographic component.}
 \usage{
-read_census2010(path_to_census, state, geoheaders = NULL,
-  table_contents = NULL, summary_level = "*", geo_comp = "*",
-  show_progress = TRUE)
+read_census2010(state, geoheaders = NULL, table_contents = NULL,
+  summary_level = "*", geo_comp = "*", show_progress = TRUE)
 }
 \arguments{
-\item{path_to_census}{path to the directory holding downloaded
-census 2010 summary file 1 (with urban/rural update). Inside this directiory
-are sub-folders of each state.}
-
 \item{state}{vector of abbreviation of states, for example "IN" or c("MA", "RI").}
 
 \item{geoheaders}{vector of references of selected geographci headers to be included in the return.}

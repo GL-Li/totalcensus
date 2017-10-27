@@ -4,11 +4,7 @@
 \alias{generate_geoidcoord}
 \title{Generate coordinate for selected GEOIDs in ACS 5-year survey}
 \usage{
-generate_geoidcoord(path_to_census)
-}
-\arguments{
-\item{path_to_census}{path to the directory holding downloaded
-census data.}
+generate_geoidcoord()
 }
 \description{
 It creates a sub directory "generared_data/" under path_to_census

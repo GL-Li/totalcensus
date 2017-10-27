@@ -1,33 +1,4 @@
-#' Read ACS 1-year survey geography file of a state
-#'
-#' @description  Read ACS 1-year survey geography file of a state and return
-#' logical record number, summary level, geographic component
-#' and selected geographic headers. To find geographic headers, browse
-#' \code{\link{dict_acs_geoheaders}} or search with \code{\link{search_acs_geoheader}}.
-#'
-#'
-#' @param state abbreviation of a state, for example "IN" for "Indiana".
-#' @param year year of the survey
-#' @param geoheaders vector of references of selected geographic headers to be included in the return
-#' @param show_progress show progress of reading if TRUE. Turn off if FALSE, which
-#'     is useful in RMarkdown output.
-#'
-#' @return data.table whose columns are logical record number, summary level,
-#' geographic compoenent, and selected geoheaders. LOGRECNO serves as
-#' the key.
-#'
-#' @examples
-#' \dontrun{
-#' # read selected geographic headers of Rhode Island
-#' ri  <- read_acs1year_geo_("your_local_path_to_census_data", "RI", 2015,
-#'                       c("NAME", "STATE"))
-#' }
-#'
-#' @export
-#' @import data.table
-#' @import magrittr
-#' @importFrom stringr str_sub str_trim
-#'
+# read acs 1-year geography data ===============================================
 
 read_acs1year_geo_ <- function(state,
                                year,
@@ -56,44 +27,14 @@ read_acs1year_geo_ <- function(state,
 }
 
 
+# read acs 5-year geography data ===============================================
 
-#' Read ACS 5-year survey geography file of a state
-#'
-#' @description  Read ACS 5-year survey geography file of a state and return
-#' logical record number, summary level, geographic component
-#' and selected geographic headers. To find geographic headers, browse
-#' \code{\link{dict_acs_geoheaders}} or search with \code{\link{search_acs_geoheader}}.
-#'
-#'
-#' @param path_to_census path to the directory holding downloaded ACS files.
-#' @param state abbreviation of a state, for example "IN" for "Indiana".
-#' @param year end year of the 5-year survey
-#' @param geo_headers vector of references of selected geographic headers to be included in the return
-#' @param show_progress show progress of reading if TRUE. Turn off if FALSE, which
-#'     is useful in RMarkdown output.
-#'
-#' @return data.table whose columns are logical record number, summary level,
-#' geographic compoenent, and selected geo_headers. LOGRECNO serves as
-#' the key.
-#'
-#' @examples
-#' \dontrun{
-#' # read selected geographic headers of Rhode Island
-#' ri  <- read_acs5year_geo_("your_local_path_to_census_data", "RI", 2015,
-#'                       c("NAME", "STATE"))
-#' }
-#'
-#' @export
-#' @import data.table
-#' @import magrittr
-#' @importFrom stringr str_sub str_trim
-#'
-
-read_acs5year_geo_ <- function(path_to_census,
-                               state,
+read_acs5year_geo_ <- function(state,
                                year,
                                geo_headers = NULL,
                                show_progress = TRUE) {
+
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
     # allow lowercase input for state and geo_headers
     state <- tolower(state)

@@ -4,12 +4,8 @@
 #' if not exsist and a file called geoid_coord.csv. The coordinates are generated
 #' from census 2010 summary file 1 (with urban/rural update)
 #'
-#' @param path_to_census path to the directory holding downloaded
-#'     census data.
-#'
 #'
 #' @export
-#'
 #'
 
 
@@ -20,9 +16,12 @@
 
 
 
-generate_geoidcoord <- function(path_to_census){
+generate_geoidcoord <- function(){
+
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
     # generate all from census 2010 data ===========================================
-    geoid_coord <- read_census2010("~/census_data/", states_DC,
+    geoid_coord <- read_census2010(states_DC,
                                    c("STATE", "PLACE", "COUNTY", "COUSUB", "TRACT", "BLKGRP",
                                      "CD", "SLDU", "SLDL", "INTPTLON", "INTPTLAT"),
                                    geo_comp = "*") %>%
@@ -34,13 +33,12 @@ generate_geoidcoord <- function(path_to_census){
         .[SUMLEV == "040", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE)] %>%
         .[SUMLEV == "050", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, COUNTY)] %>%
         .[SUMLEV == "060", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, COUNTY, COUSUB)] %>%
-        # 070 not in use any more
-        .[SUMLEV == "070", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, COUNTY, COUSUB, PLACE)] %>%
+        # 070 not in use any more, the following combination is not right
+        #.[SUMLEV == "070", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, COUNTY, COUSUB, PLACE)] %>%
         .[SUMLEV == "140", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, COUNTY, TRACT)] %>%
         .[SUMLEV == "150", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, COUNTY, TRACT, BLKGRP)] %>%
         .[SUMLEV == "155", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, PLACE, COUNTY)] %>%
         .[SUMLEV == "160", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, PLACE)] %>%
-
         .[SUMLEV == "500", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, CD)] %>%
         .[SUMLEV == "610", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, SLDU)] %>%
         .[SUMLEV == "620", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, SLDL)] %>%
@@ -56,10 +54,8 @@ generate_geoidcoord <- function(path_to_census){
     # "360" "361" "362" "363" "356" "357" "358" "364" "365" "366" "230"
 
     # GEOID from acs 5-year survey
-    geoid_acs5year <- read_acs5year("~/census_data/", states_DC, 2015,
-                                    c("NAME", "GEOID"), "B00001_001",
-                                    summary_level = "*",
-                                    geo_comp = "00") %>%
+    geoid_acs5year <- read_acs5year(states_DC, 2015,
+                                    c("NAME", "GEOID")) %>%
         # only interest in these SUMLEV
         .[SUMLEV %in% c("040", "160", "050", "060", "140", "150")] %>%
         .[, .(NAME, GEOID)]

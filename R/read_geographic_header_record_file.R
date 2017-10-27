@@ -5,8 +5,6 @@
 #' \code{\link{dict_geoheader}} or search with \code{\link{search_geoheader}}.
 #'
 #'
-#' @param path_to_census path to the directory holding downloaded
-#'     census 2010 summary file 1 with urban/rural update.
 #' @param state abbreviation of a state, for example "IN" for "Indiana".
 #' @param references vector of references of selected geographic headers to be included in the return
 #' @param show_progress show progress of reading if TRUE. Turn off if FALSE, which
@@ -30,9 +28,12 @@
 #' @importFrom stringr str_sub str_trim
 #'
 
-read_2010geoheader <- function(path_to_census, state,
+read_2010geoheader <- function(state,
                                geo_headers = NULL,
                                show_progress = TRUE) {
+
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
     if (show_progress) {
         cat(paste("Reading", state, "geographic header record file\n"))
     }

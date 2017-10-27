@@ -4,8 +4,6 @@
 #' to each column. Search with \code{\link{search_acs_datafile}} to find table contents
 #' in a data file.
 #'
-#' @param path_to_census path to the directory of downloaded census 2010 data,
-#' inside which are the subfolders of each state.
 #' @param state abbrivation of a state, for example, "IN" for Indiana.
 #' @param year year of the survey
 #' @param file_seg the number of the data file, for example, "0012.
@@ -26,8 +24,11 @@
 #' @import magrittr
 #'
 
-read_acs1year_estimate_margin_ <- function(path_to_census, state, year, file_seg,
+read_acs1year_estimate_margin_ <- function(state, year, file_seg,
                                     est_marg = "e", show_progress = TRUE){
+
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
     # get column names from file segment, then add six ommitted ones
     lookup <- get(paste0("lookup_acs1year_", year))
     col_names <- lookup[file_segment == file_seg] %>%
@@ -54,8 +55,6 @@ read_acs1year_estimate_margin_ <- function(path_to_census, state, year, file_seg
 #' to each column. Search with \code{\link{search_acs_datafile}} to find table contents
 #' in a data file.
 #'
-#' @param path_to_census path to the directory of downloaded census 2010 data,
-#' inside which are the subfolders of each state.
 #' @param state abbrivation of a state, for example, "IN" for Indiana.
 #' @param year end year of the 5-year survey
 #' @param file_seg the number of the data file, for example, "0012.
@@ -77,9 +76,12 @@ read_acs1year_estimate_margin_ <- function(path_to_census, state, year, file_seg
 #' @import magrittr
 #'
 
-read_acs5year_estimate_margin_ <- function(path_to_census, state, year,
+read_acs5year_estimate_margin_ <- function(state, year,
                                            file_seg, est_marg = "e",
                                            show_progress = TRUE){
+
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
     # get column names from file segment, then add six ommitted ones
     lookup <- get(paste0("lookup_acs5year_", year))
     col_names <- lookup[file_segment == file_seg] %>%
