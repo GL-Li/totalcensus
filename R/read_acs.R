@@ -30,13 +30,19 @@ read_acs1year <- function(states,
                           year,
                           geo_headers = NULL,
                           table_contents = NULL,
-                          with_margin = TRUE,
+                          with_margin = FALSE,
                           with_coord = TRUE,
-                          summary_level = "*",
-                          geo_comp = "*",
+                          summary_level = NULL,
+                          geo_comp = NULL,
                           show_progress = TRUE){
 
+    # turn off warning
+    options(warn = -1)
+
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
+    if (is.null(summary_level)) summary_level = "*"
+    if (is.null(geo_comp)) geo_comp = "*"
 
     # switch summary level to code
     if (summary_level %in% c("state", "county", "county_subdivision", "place",
@@ -65,15 +71,8 @@ read_acs1year <- function(states,
         #bbstate <- tolower(state)
 
         # read geography
-        geo <- read_acs1year_geo_(state, year,
-                                  geo_headers = geo_headers, show_progress = TRUE) %>%
+        geo <- read_acs1year_geo_(state, year, show_progress = TRUE) %>%
             .[, state := toupper(state)]
-
-        # add coordinates
-        if (with_coord) {
-            coord <- fread(paste0(path_to_census, "/generated_data/geoid_coord.csv"))
-            geo <- coord[geo, on = .(GEOID)]
-        }
 
         # read estimate and margin from each file
         if(!is.null(table_contents)){
@@ -120,7 +119,40 @@ read_acs1year <- function(states,
         lst_state[[state]] <- combined
     }
 
-    return(rbindlist(lst_state))
+    all <- rbindlist(lst_state)
+
+    # some table_content has non-numeric entries and the whole column is read
+    # into character, change to numeric
+
+    for (cont in table_contents){
+        est = paste0(cont, "_e")
+        if (class(all[[est]]) == "character" ) {
+            all[, (est) := as.numeric(get(est))]
+        }
+
+        if (with_margin){
+            margin = paste0(cont, "_m")
+            if (class(all[[margin]]) == "character" ) {
+                all[, (margin) := as.numeric(get(margin))]
+            }
+        }
+    }
+
+    # add coordinates
+    if (with_coord) {
+        coord <- fread(paste0(path_to_census, "/generated_data/geoid_coord.csv"),
+                       select = c("GEOID", "lon", "lat", geo_headers),
+                       colClasses = "character") %>%
+            .[, lon := as.numeric(lon)] %>%
+            .[, lat := as.numeric(lat)]
+
+        all <- coord[all, on = .(GEOID)]
+    }
+
+    # turn on warning
+    options(warn = )
+
+    return(all)
 }
 
 
@@ -159,13 +191,20 @@ read_acs5year <- function(states,
                           year,
                           geo_headers = NULL,
                           table_contents = NULL,
-                          with_margin = TRUE,
+                          with_margin = FALSE,
                           with_coord = TRUE,
-                          summary_level = "*",
-                          geo_comp = "*",
+                          summary_level = NULL,
+                          geo_comp = NULL,
                           show_progress = TRUE){
 
+    # turn off warning. some table content has character rows in numeric columns.
+    # fread() gives warnings when reading them.
+    options(warn = -1)
+
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
+    if (is.null(summary_level)) summary_level = "*"
+    if (is.null(geo_comp)) geo_comp = "*"
 
     # switch summary level to code
     if (summary_level %in% c("state", "county", "county_subdivision", "place",
@@ -180,7 +219,7 @@ read_acs5year <- function(states,
     }
 
     # lookup of the year
-    lookup <- get(paste0("lookup_acs1year_", year))
+    lookup <- get(paste0("lookup_acs5year_", year))
 
     for (content in table_contents) {
         if (!tolower(content) %in% tolower(lookup$reference)){
@@ -190,21 +229,13 @@ read_acs5year <- function(states,
 
     lst_state <- list()
     for (state in states) {
-        cat("reading ", state, " ACS 5-year geography file\n")
 
-        # also accept lowercase input
-        #bbstate <- tolower(state)
 
         # read geography
-        geo <- read_acs5year_geo_(state, year,
-                                  geo_headers = geo_headers, show_progress = TRUE) %>%
+        geo <- read_acs5year_geo_(state, year, show_progress = TRUE) %>%
             .[, state := toupper(state)]
 
-        # add coordinates
-        if (with_coord) {
-            coord <- fread(paste0(path_to_census, "/generated_data/geoid_coord.csv"))
-            geo <- coord[geo, on = .(GEOID)]
-        }
+
 
         # read estimate and margin from each file
         if(!is.null(table_contents)){
@@ -251,5 +282,39 @@ read_acs5year <- function(states,
         lst_state[[state]] <- combined
     }
 
-    return(rbindlist(lst_state))
+    all <- rbindlist(lst_state)
+
+    # some table_content has non-numeric entries and the whole column is read
+    # into character, change to numeric
+
+    for (cont in table_contents){
+        est = paste0(cont, "_e")
+        if (class(all[[est]]) == "character" ) {
+            all[, (est) := as.numeric(get(est))]
+        }
+
+        if (with_margin){
+            margin = paste0(cont, "_m")
+            if (class(all[[margin]]) == "character" ) {
+                all[, (margin) := as.numeric(get(margin))]
+            }
+        }
+    }
+
+
+    # add coordinates
+    if (with_coord) {
+        coord <- fread(paste0(path_to_census, "/generated_data/geoid_coord.csv"),
+                       select = c("GEOID", "lon", "lat", geo_headers),
+                       colClasses = "character") %>%
+            .[, lon := as.numeric(lon)] %>%
+            .[, lat := as.numeric(lat)]
+
+        all <- coord[all, on = .(GEOID)]
+    }
+
+    # turn on warning
+    options(warn = 0)
+
+    return(all)
 }

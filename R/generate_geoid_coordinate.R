@@ -1,18 +1,14 @@
-#' Generate coordinate for selected GEOIDs in ACS 5-year survey
+#' Generate coordinate for all GEOIDs in ACS from Census 2010.
 #'
 #' @description It creates a sub directory "generared_data/" under path_to_census
 #' if not exsist and a file called geoid_coord.csv. The coordinates are generated
-#' from census 2010 summary file 1 (with urban/rural update)
+#' from census 2010 summary file 1 (with urban/rural update). GEOIDs include all
+#' those in 2015 ACS 1-year and 5-year survey. The coordinate of
+#' new GEOID created after Census 2010 are not available.
 #'
 #'
 #' @export
 #'
-
-
-# geoid_coord <- read_census2010("~/census_data/", "ri",
-#                                c("STATE", "PLACE", "COUNTY", "COUSUB", "TRACT", "BLKGRP",
-#                                  "INTPTLON", "INTPTLAT"),
-#                                geo_comp = "*")
 
 
 
@@ -20,52 +16,140 @@ generate_geoidcoord <- function(){
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
+    # all summary levels used in ACS data
+    acs_summarylevels <- c("040", "050", "060", "070",
+                           "140", "150",  "155", "160", "170", "172",
+                           "230", "250", "251", "252", "254", "256", "258", "260", "269",
+                           "270", "280", "283", "286", "290", "291", "292", "293", "294",
+                           "310", "311", "312", "313", "314", "315", "316", "320", "321",
+                           "322", "323", "324", "330", "331", "332", "333", "335", "336",
+                           "337", "338", "340", "341", "345", "346", "350", "351", "352",
+                           "353", "354", "355", "356", "357", "358", "360", "361", "362",
+                           "363", "364", "365", "366",
+                           "400", "410", "430",
+                           "500", "510", "550",
+                           "610", "612", "620", "622",
+                           "795", "860", "950", "960", "970")
+
     # generate all from census 2010 data ===========================================
-    geoid_coord <- read_census2010(states_DC,
+    geoid_coord <- read_census2010(c(states_DC, "US"),
                                    c("STATE", "PLACE", "COUNTY", "COUSUB", "TRACT", "BLKGRP",
-                                     "CD", "SLDU", "SLDL", "INTPTLON", "INTPTLAT"),
+                                     "CD", "SLDU", "SLDL", "CBSA", "METDIV", "CSA", "CONCIT",
+                                     "ANRC", "AIANHH", "AIHHTLI", "AITSCE", "CNECTA", "NECTA",
+                                     "NECTADIV", "UA", "PUMA", "SDELM", "SDSEC", "SDUNI", "TTRACT",
+                                     "TBLKGRP", "ZCTA5"),
                                    geo_comp = "*") %>%
         # only interest in these commona SUMLEV, see link below for the list
         # https://www.census.gov/geo/reference/geoidentifiers.html
-        .[SUMLEV %in% c("040", "050", "060", "070", "140", "150", "155", "160",
-                        "500", "610", "620")] %>%
-        # add GEOID for selected summary level
+        .[SUMLEV %in% acs_summarylevels] %>%
+        # add GEOID for summary levels
         .[SUMLEV == "040", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE)] %>%
         .[SUMLEV == "050", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, COUNTY)] %>%
         .[SUMLEV == "060", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, COUNTY, COUSUB)] %>%
-        # 070 not in use any more, the following combination is not right
-        #.[SUMLEV == "070", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, COUNTY, COUSUB, PLACE)] %>%
+        # 070 not in use any more
+        .[SUMLEV == "070", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, COUNTY, COUSUB, PLACE)] %>%
         .[SUMLEV == "140", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, COUNTY, TRACT)] %>%
         .[SUMLEV == "150", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, COUNTY, TRACT, BLKGRP)] %>%
         .[SUMLEV == "155", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, PLACE, COUNTY)] %>%
         .[SUMLEV == "160", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, PLACE)] %>%
+        .[SUMLEV == "170", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, CONCIT)] %>%
+        .[SUMLEV == "172", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, CONCIT, PLACE)] %>%
+        .[SUMLEV == "230", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, ANRC)] %>%
+        .[SUMLEV == "250", GEOID := paste0(SUMLEV, GEOCOMP, "US", AIANHH)] %>%
+        .[SUMLEV == "251", GEOID := paste0(SUMLEV, GEOCOMP, "US", AIANHH, AITSCE)] %>%
+        # AIHHTLI takes "R" for level 252 and "T" for 254
+        .[SUMLEV == "252", GEOID := paste0(SUMLEV, GEOCOMP, "US", AIANHH, AIHHTLI)] %>%
+        .[SUMLEV == "254", GEOID := paste0(SUMLEV, GEOCOMP, "US", AIANHH, AIHHTLI)] %>%
+        .[SUMLEV == "256", GEOID := paste0(SUMLEV, GEOCOMP, "US", AIANHH, TTRACT)] %>%
+        .[SUMLEV == "258", GEOID := paste0(SUMLEV, GEOCOMP, "US", AIANHH, TTRACT, TBLKGRP)] %>%
+        .[SUMLEV == "260", GEOID := paste0(SUMLEV, GEOCOMP, "US", AIANHH, STATE)] %>%
+        .[SUMLEV == "269", GEOID := paste0(SUMLEV, GEOCOMP, "US", AIANHH, STATE, PLACE)] %>%
+        .[SUMLEV == "270", GEOID := paste0(SUMLEV, GEOCOMP, "US", AIANHH, STATE, COUNTY)] %>%
+        .[SUMLEV == "280", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, AIANHH)] %>%
+        # AIHHTLI takes "R" for level 283 and "T" for 286
+        .[SUMLEV == "283", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, AIANHH, AIHHTLI)] %>%
+        .[SUMLEV == "286", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, AIANHH, AIHHTLI)] %>%
+        .[SUMLEV == "290", GEOID := paste0(SUMLEV, GEOCOMP, "US", AIANHH, AITSCE, STATE)] %>%
+        .[SUMLEV == "291", GEOID := paste0(SUMLEV, GEOCOMP, "US", AIANHH, AIHHTLI, TTRACT)] %>%
+        .[SUMLEV == "292", GEOID := paste0(SUMLEV, GEOCOMP, "US", AIANHH, AIHHTLI, TTRACT)] %>%
+        .[SUMLEV == "293", GEOID := paste0(SUMLEV, GEOCOMP, "US", AIANHH, AIHHTLI, TTRACT, TBLKGRP)] %>%
+        .[SUMLEV == "294", GEOID := paste0(SUMLEV, GEOCOMP, "US", AIANHH, AIHHTLI, TTRACT, TBLKGRP)] %>%
+        .[SUMLEV == "310", GEOID := paste0(SUMLEV, GEOCOMP, "US", CBSA)] %>%
+        .[SUMLEV == "311", GEOID := paste0(SUMLEV, GEOCOMP, "US", CBSA, STATE)] %>%
+        .[SUMLEV == "312", GEOID := paste0(SUMLEV, GEOCOMP, "US", CBSA, STATE, PLACE)] %>%
+        .[SUMLEV == "313", GEOID := paste0(SUMLEV, GEOCOMP, "US", CBSA, STATE, COUNTY)] %>%
+        .[SUMLEV == "314", GEOID := paste0(SUMLEV, GEOCOMP, "US", CBSA, METDIV)] %>%
+        .[SUMLEV == "315", GEOID := paste0(SUMLEV, GEOCOMP, "US", CBSA, METDIV, STATE)] %>%
+        .[SUMLEV == "316", GEOID := paste0(SUMLEV, GEOCOMP, "US", CBSA, METDIV, STATE, COUNTY)] %>%
+        .[SUMLEV == "320", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, CBSA)] %>%
+        .[SUMLEV == "321", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, CBSA, PLACE)] %>%
+        .[SUMLEV == "322", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, CBSA, COUNTY)] %>%
+        .[SUMLEV == "323", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, CBSA, METDIV)] %>%
+        .[SUMLEV == "324", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, CBSA, METDIV, COUNTY)] %>%
+        .[SUMLEV == "330", GEOID := paste0(SUMLEV, GEOCOMP, "US", CSA)] %>%
+        .[SUMLEV == "331", GEOID := paste0(SUMLEV, GEOCOMP, "US", CSA, STATE)] %>%
+        .[SUMLEV == "332", GEOID := paste0(SUMLEV, GEOCOMP, "US", CSA, CBSA)] %>%
+        .[SUMLEV == "333", GEOID := paste0(SUMLEV, GEOCOMP, "US", CSA, CBSA, STATE)] %>%
+        .[SUMLEV == "335", GEOID := paste0(SUMLEV, GEOCOMP, "US", CNECTA)] %>%
+        .[SUMLEV == "336", GEOID := paste0(SUMLEV, GEOCOMP, "US", CNECTA, STATE)] %>%
+        .[SUMLEV == "337", GEOID := paste0(SUMLEV, GEOCOMP, "US", CNECTA, NECTA)] %>%
+        .[SUMLEV == "338", GEOID := paste0(SUMLEV, GEOCOMP, "US", CNECTA, NECTA, STATE)] %>%
+        .[SUMLEV == "340", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, CSA)] %>%
+        .[SUMLEV == "341", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, CSA, CBSA)] %>%
+        .[SUMLEV == "345", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, CNECTA)] %>%
+        .[SUMLEV == "346", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, CNECTA, NECTA)] %>%
+        .[SUMLEV == "350", GEOID := paste0(SUMLEV, GEOCOMP, "US", NECTA)] %>%
+        .[SUMLEV == "351", GEOID := paste0(SUMLEV, GEOCOMP, "US", NECTA, STATE)] %>%
+        .[SUMLEV == "352", GEOID := paste0(SUMLEV, GEOCOMP, "US", NECTA, STATE, PLACE)] %>%
+        .[SUMLEV == "353", GEOID := paste0(SUMLEV, GEOCOMP, "US", NECTA, STATE, COUNTY)] %>%
+        .[SUMLEV == "354", GEOID := paste0(SUMLEV, GEOCOMP, "US", NECTA, STATE, COUNTY, COUSUB)] %>%
+        .[SUMLEV == "355", GEOID := paste0(SUMLEV, GEOCOMP, "US", NECTA, NECTADIV)] %>%
+        .[SUMLEV == "356", GEOID := paste0(SUMLEV, GEOCOMP, "US", NECTA, NECTADIV, STATE)] %>%
+        .[SUMLEV == "357", GEOID := paste0(SUMLEV, GEOCOMP, "US", NECTA, NECTADIV, STATE, COUNTY)] %>%
+        .[SUMLEV == "358", GEOID := paste0(SUMLEV, GEOCOMP, "US", NECTA, NECTADIV, STATE, COUNTY, COUSUB)] %>%
+        .[SUMLEV == "360", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, NECTA)] %>%
+        .[SUMLEV == "361", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, NECTA, PLACE)] %>%
+        .[SUMLEV == "362", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, NECTA, COUNTY)] %>%
+        .[SUMLEV == "363", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, NECTA, COUNTY, COUSUB)] %>%
+        .[SUMLEV == "364", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, NECTA, NECTADIV)] %>%
+        .[SUMLEV == "365", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, NECTA, NECTADIV, COUNTY)] %>%
+        .[SUMLEV == "366", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, NECTA, NECTADIV, COUNTY, COUSUB)] %>%
+        .[SUMLEV == "400", GEOID := paste0(SUMLEV, GEOCOMP, "US", UA)] %>%
+        .[SUMLEV == "410", GEOID := paste0(SUMLEV, GEOCOMP, "US", UA, STATE)] %>%
+        .[SUMLEV == "430", GEOID := paste0(SUMLEV, GEOCOMP, "US", UA, STATE, COUNTY)] %>%
         .[SUMLEV == "500", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, CD)] %>%
+        .[SUMLEV == "510", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, CD, COUNTY)] %>%
+        .[SUMLEV == "550", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, CD, AIANHH)] %>%
         .[SUMLEV == "610", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, SLDU)] %>%
+        .[SUMLEV == "612", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, SLDU, COUNTY)] %>%
         .[SUMLEV == "620", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, SLDL)] %>%
+        .[SUMLEV == "622", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, SLDL, COUNTY)] %>%
+        # summary level "795" is not in census 2010
+        .[SUMLEV == "795", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, PUMA)] %>%
+        .[SUMLEV == "860", GEOID := paste0(SUMLEV, GEOCOMP, "US", ZCTA5)] %>%
+        .[SUMLEV == "950", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, SDELM)] %>%
+        .[SUMLEV == "960", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, SDSEC)] %>%
+        .[SUMLEV == "970", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, SDUNI)] %>%
+        .[, LOGRECNO := NULL] %>%
+        unique()
 
-        .[, .(GEOID, lon = INTPTLON, lat = INTPTLAT)]
 
-
-    ## The following summary levels have GEOIDs
-    # "040" "050" "060" "070" "140" "150" "155" "160" "311" "312" "313" "315" "316"
-    # "320" "321" "322" "323" "324" "331" "333" "340" "341" "410" "430" "500" "510"
-    # "610" "612" "795" "970" "260" "269" "270" "280" "283" "286" "550" "620" "622"
-    # "170" "172" "950" "960" "290" "336" "338" "345" "346" "351" "352" "353" "354"
-    # "360" "361" "362" "363" "356" "357" "358" "364" "365" "366" "230"
-
-    # GEOID from acs 5-year survey
-    geoid_acs5year <- read_acs5year(states_DC, 2015,
-                                    c("NAME", "GEOID")) %>%
+    # GEOID from acs 5-year survey, which includes all GEOID in 1-year survey
+    geoid_acs5year <- read_acs5year(c(states_DC, "US"), 2015, "NAME", with_coord = FALSE) %>%
         # only interest in these SUMLEV
-        .[SUMLEV %in% c("040", "160", "050", "060", "140", "150")] %>%
+        .[SUMLEV %in% acs_summarylevels] %>%
         .[, .(NAME, GEOID)]
 
-    # combine
-    GEOID_coordinate <- geoid_coord[geoid_acs5year, on = .(GEOID)]
+    # combine and reorder columns
+    first4 <- c("GEOID", "lon", "lat", "NAME")
+    GEOID_coordinate <- geoid_coord[geoid_acs5year, on = .(GEOID)] %>%
+        setcolorder(c(first4, setdiff(names(.), first4)))
 
     # save to csv
     if(!dir.exists(paste0(path_to_census, "/generated_data"))){
         dir.create(paste0(path_to_census, "/generated_data"))
+        message('A subdirectory "generated_data/" is created under "',
+                path_to_census, '" to store the generated data.')
     }
     file_name <- paste0(path_to_census, "/generated_data/geoid_coord.csv")
     fwrite(GEOID_coordinate, file = file_name)

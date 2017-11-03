@@ -5,14 +5,11 @@
 \title{Read selected geographic headers and table contents of selected summary level
 and geographic component.}
 \usage{
-read_census2010(state, geoheaders = NULL, table_contents = NULL,
-  summary_level = "*", geo_comp = "*", show_progress = TRUE)
+read_census2010(states, geo_headers = NULL, table_contents = NULL,
+  with_coord = TRUE, summary_level = "*", geo_comp = "*",
+  show_progress = TRUE)
 }
 \arguments{
-\item{state}{vector of abbreviation of states, for example "IN" or c("MA", "RI").}
-
-\item{geoheaders}{vector of references of selected geographci headers to be included in the return.}
-
 \item{table_contents}{selected references of contents in census tables.}
 
 \item{summary_level}{select which summary level to keep, "*" to keep all. It takes strings
@@ -28,6 +25,10 @@ census tract and lower level have no geographic component, all are "00". Browse
 
 \item{show_progress}{show progress of file reading if TRUE. Turn off if FALSE, which
 is useful in RMarkdown output.}
+
+\item{state}{vector of abbreviation of states, for example "IN" or c("MA", "RI").}
+
+\item{geoheaders}{vector of references of selected geographci headers to be included in the return.}
 }
 \value{
 A data.table whose columns include the selected geoheaders and

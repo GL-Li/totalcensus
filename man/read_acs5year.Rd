@@ -5,8 +5,8 @@
 \title{Read ACS 5-year survey}
 \usage{
 read_acs5year(states, year, geo_headers = NULL, table_contents = NULL,
-  with_margin = TRUE, with_coord = TRUE, summary_level = "*",
-  geo_comp = "*", show_progress = TRUE)
+  with_margin = FALSE, with_coord = TRUE, summary_level = NULL,
+  geo_comp = NULL, show_progress = TRUE)
 }
 \arguments{
 \item{states}{vector of abbrivations of states, for example, "IN" and c("MA", "RI").}

@@ -16,12 +16,13 @@ make_table_list <- function(){
         .[, universe := str_sub(universe, 11, nchar(universe))] %>%
         .[, table_number := str_extract(table_name, "^[^.]*")] %>%
         .[, table_name := str_replace(table_name, "^[^ ]*", "")] %>%
-        setcolorder(c("table_ref", "table_number", "table_name", "universe")) %>%
+        .[, year := 2010] %>%
+        setcolorder(c("year", "table_ref", "table_number", "table_name", "universe")) %>%
         setkey(table_ref)
     return(table_list)
 }
 
 
 # save data to package datasets ================================================
-dict_censustable <- make_table_list()
-save(dict_censustable, file = "data/dict_censustable.RData")
+dict_census_table <- make_table_list()
+save(dict_census_table, file = "data/dict_census_table.RData")

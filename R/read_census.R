@@ -49,9 +49,10 @@
 #'
 #'
 
-read_census2010 <- function(state,
-                            geoheaders = NULL,
+read_census2010 <- function(states,
+                            geo_headers = NULL,
                             table_contents = NULL,
+                            with_coord = TRUE,
                             summary_level = "*",
                             geo_comp = "*",
                             show_progress = TRUE){
@@ -71,19 +72,23 @@ read_census2010 <- function(state,
                                 "block" = "100")
     }
 
+    if (with_coord){
+        geo_headers = c(c("INTPTLON", "INTPTLAT"), geo_headers)
+    }
+
     lst <- list()
     iter <- 0
-    N <- length(state)
-    for (st in toupper(state)){
+    N <- length(states)
+    for (st in toupper(states)){
         iter <- iter + 1
         cat(paste0("reading ", iter, "/", N, " states\n"))
 
         # add st to geoheaders as there are multiple state
-        geo <- read_2010geoheader(st, geoheaders,
+        geo <- read_2010geoheader_(st, geo_headers,
                                   show_progress = show_progress) %>%
             .[, state := st]
         if (!is.null(table_contents)) {
-            data <- read_2010tablecontents(st, table_contents,
+            data <- read_2010tablecontents_(st, table_contents,
                                            show_progress = show_progress)
             census <- geo[data]
         } else {
@@ -92,5 +97,12 @@ read_census2010 <- function(state,
 
         lst[[st]] <- census[SUMLEV %like% summary_level & GEOCOMP %like% geo_comp]
     }
-    rbindlist(lst)
+    combined <- rbindlist(lst)
+
+    if (with_coord) {
+        setnames(combined, c("INTPTLON", "INTPTLAT"), c("lon", "lat"))
+        setcolorder(combined, c(c("lon", "lat"), setdiff(names(combined), c("lon", "lat"))))
+    }
+
+    return(combined)
 }

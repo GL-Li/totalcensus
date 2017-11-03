@@ -2,12 +2,14 @@
 % Please edit documentation in R/generate_geoid_coordinate.R
 \name{generate_geoidcoord}
 \alias{generate_geoidcoord}
-\title{Generate coordinate for selected GEOIDs in ACS 5-year survey}
+\title{Generate coordinate for all GEOIDs in ACS from Census 2010.}
 \usage{
 generate_geoidcoord()
 }
 \description{
 It creates a sub directory "generared_data/" under path_to_census
 if not exsist and a file called geoid_coord.csv. The coordinates are generated
-from census 2010 summary file 1 (with urban/rural update)
+from census 2010 summary file 1 (with urban/rural update). GEOIDs include all
+those in 2015 ACS 1-year and 5-year survey. The coordinate of
+new GEOID created after Census 2010 are not available.
 }

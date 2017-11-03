@@ -25,7 +25,7 @@
 283 State-American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)
 285 State-American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-County
 265 State-American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-County-County Subdivision
-266 State-American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-CountyCounty Subdivision-Place/Remainder
+266 State-American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-County-County Subdivision-Place/Remainder
 286 State-American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land
 288 State-American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land-County
 267 State-American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land-County-County Subdivision
@@ -35,7 +35,7 @@
 287 State-American Indian Area (Off-Reservation Trust Land Only)-Tribal Subdivision/Remainder
 230 State-Alaska Native Regional Corporation
 320 State-Metropolitan Statistical Area/Micropolitan Statistical Area
-321 State-Metropolitan Statistical Area/Micropolitan Statistical AreaPrincipal City
+321 State-Metropolitan Statistical Area/Micropolitan Statistical Area-Principal City
 322 State-Metropolitan Statistical Area/Micropolitan Statistical Area-County
 323 State-Metropolitan Statistical Area-Metropolitan Division
 324 State-Metropolitan Statistical Area-Metropolitan Division-County
@@ -65,10 +65,10 @@
 542 State-Congressional District-Consolidated City-Place Within Consolidated City
 550 State-Congressional District-American Indian Area/Alaska Native Area/Hawaiian Home Land
 551 State-Congressional District-American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)
-552 State-Congressional District-American Indian Area (OffReservation Trust Land Only)/Hawaiian Home Land
+552 State-Congressional District-American Indian Area (Off Reservation Trust Land Only)/Hawaiian Home Land
 553 State-Congressional District-American Indian Area-Tribal Subdivision/Remainder
 554 State-Congressional District-American Indian Area (Reservation or Statistical Entity Only)-Tribal Subdivision/Remainder
-555 State-Congressional District-American Indian Area (OffReservation Trust Land Only)-Tribal Subdivision/Remainder
+555 State-Congressional District-American Indian Area (Off Reservation Trust Land Only)-Tribal Subdivision/Remainder
 560 State-Congressional District-Alaska Native Regional Corporation
 610 State-State Legislative District (Upper Chamber)
 612 State-State Legislative District (Upper Chamber)-County

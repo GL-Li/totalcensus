@@ -14,40 +14,40 @@
 620 State-State Legislative District (Lower Chamber)
 250 American Indian Area/Alaska Native Area/Hawaiian Home Land
 260 American Indian Area/Alaska Native Area/Hawaiian Home Land-State
-270 American Indian Area/Alaska Native Area/Hawaiian Home LandState-County
+270 American Indian Area/Alaska Native Area/Hawaiian Home Land-State-County
 271 American Indian Area/Alaska Native Area/Hawaiian Home Land-State-County-County Subdivision
-273 American Indian Area/Alaska Native Area/Hawaiian Home Land-State-County-County SubdivisionPlace/Remainder
-269 American Indian Area/Alaska Native Area/Hawaiian Home LandState-Place/Remainder
+273 American Indian Area/Alaska Native Area/Hawaiian Home Land-State-County-County Subdivision-Place/Remainder
+269 American Indian Area/Alaska Native Area/Hawaiian Home Land-State-Place/Remainder
 252 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only
 262 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-State
 272 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-State-County
 275 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-State-County-County Subdivision
-276 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-StateCounty-County Subdivision-Place/Remainder
+276 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-State-County-County Subdivision-Place/Remainder
 254 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land
 264 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land-State
 274 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land-State-County
 277 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land-State-County-County Subdivision
-278 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land-State-CountyCounty Subdivision-Place/Remainder
+278 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land-State-County-County Subdivision-Place/Remainder
 256 American Indian Area-Tribal Census Tract
 291 American Indian Area (Reservation Only)-Tribal Census Tract
 292 American Indian Area (Off-Reservation Trust Land Only)-Tribal Census Tract
 258 American Indian Area-Tribal Census Tract-Tribal Block Group
-293 American Indian Area (Reservation Only)-Tribal Census TractTribal Block Group
+293 American Indian Area (Reservation Only)-Tribal Census Tract-Tribal Block Group
 294 American Indian Area (Off-Reservation Trust Land Only)-Tribal Census Tract-Tribal Block Group
 251 American Indian Area-Tribal Subdivision/Remainder
 253 American Indian Area (Reservation or Statistical Entity Only)-Tribal Subdivision/Remainder
 255 American Indian Area (Off-Reservation Trust Land Only)-Tribal Subdivision/Remainder
 257 American Indian Area-Tribal Subdivision/Remainder-Tribal Census Tract
-259 American Indian Area-Tribal Subdivision/RemainderTribal Census Tract-Tribal Block Group
+259 American Indian Area-Tribal Subdivision/Remainder-Tribal Census Tract-Tribal Block Group
 290 American Indian Area-Tribal Subdivision/Remainder-State
 230 State-Alaska Native Regional Corporation
 310 Metropolitan Statistical Area/Micropolitan Statistical Area
 311 Metropolitan Statistical Area/Micropolitan Statistical Area-State
 312 Metropolitan Statistical Area/Micropolitan Statistical Area-State-Principal City
-313 Metropolitan Statistical Area/Micropolitan Statistical AreaState-County
+313 Metropolitan Statistical Area/Micropolitan Statistical Area-State-County
 314 Metropolitan Statistical Area-Metropolitan Division
 315 Metropolitan Statistical Area-Metropolitan Division-State
-316 Metropolitan Statistical Area-Metropolitan DivisionState-County
+316 Metropolitan Statistical Area-Metropolitan Division-State-County
 330 Combined Statistical Area
 331 Combined Statistical Area-State
 332 Combined Statistical Area-Metropolitan Statistical Area/Micropolitan Statistical Area
