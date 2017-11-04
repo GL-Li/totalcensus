@@ -1,18 +1,22 @@
 [![Build Status](https://travis-ci.org/GL-Li/rawcensus2010.svg?branch=master)](https://travis-ci.org/GL-Li/rawcensus2010)
 
-# Working with Census 2010 raw data
+# Extract information from raw census and ACS data
 
-This package extracts data from the raw data of Census 2010 summary file 1 (with urban/rural update) and returns a tidy data.table. The extracted data can be further processed with `data.table` or `dplyr` packages. Users will be able to retrieve any data from the summary file 1 conveniently from their local computers.
+This package provides total solutions to extracts any data from the raw summary files of decennial census and American Community Survey (ACS) and returns a tidy data.table. The extracted data can be easily processed with `data.table` or `dplyr` packages. 
 
 
 ## Why another R census package
 
+The [census API](https://www.census.gov/data/developers/guidance/api-user-guide.Available_Data.html) offers most data in decennial census and America Community Surveys for download and the API-based packages such as `tidycensus`, `censusapi` and `acs` make the downloading very easy in R. So why we need another package?
 
+The selling points of package `totalcensus` include:
 
+- It extracts all data in the summary file 1 with urban/rural update of Census 2010, while the census API only provide data in summary file 1 before urban/rural update.
+- It can easily extract the data of all census tracts or blocks of a city or metro, which is a headache for census API based packages.
+- It provides longitude and latitude of the internal point of a geographic entity for easy and quick mapping. 
 
-## Download raw data
+[Examples of extracting data with package totalcensus](????????????????????)
 
-In order to use this package, the raw data need to be stored in your local computer. The 2010 census summary file 1 (with urban/rural update) can be downloaded from [United States Census Bureau official site](https://www2.census.gov/census_2010/04-Summary_File_1/Urban_Rural_Update/). The data is split into sub-folders of 50 states and DC. An additional sub-folder called "National/" holds summary data for the United States. Inside a sub-folder, for example, "Indiana/", there is a file named _in2010.ur1.zip_. Download this file and unzip it to a folder named with Indiana's abbriation, “IN”. Do this for all other states and DC. For the "National/" data, unzip the file to folder "US". You can just download the sub-folders you need. If you want download all of them, make sure you have enough disc space as the total file size is about 140 GB. 
 
 
 ## Installation
@@ -21,35 +25,50 @@ Install `devtools` package if you do not have it:
 install.packages("devtools")
 ```   
 
-Install `rawcensus2010` package:   
+Install `totalcensus` package:   
 ```r
-devtools::install_github("GL-Li/rawcensus2010")
+devtools::install_github("GL-Li/totalcensus")
 ```
 
 ## Use the package
-### Read census data
-The working horse of the package is function `read_2010census()`. It read selected geographical headers and table contents and returns a data.table. An example is shown below. The return includes a column of LOGRECNO, which is also set as the key of the data.table. The selected headers and table contents are shown as other columns of the data.table. The data.table contains all 331,556 rows in the raw data. Each row corresponds to a geographic entity. 
+
+### Download raw data (add file structure????????????????????????????)
+
+In order to use this package, the raw data need to be stored in your local computer. The downloaded data must organized in certain directory structures. You can name to top directory whatever you like, for example, census_data, but all its subdirectories must be exactly as specified below.
+
+![downloaded folders](downloaded_folders.jpg)
+
+The 2010 census summary file 1 (with urban/rural update) can be downloaded from [United States Census Bureau official site](https://www2.census.gov/census_2010/04-Summary_File_1/Urban_Rural_Update/). The data is split into sub-folders of 50 states and DC. An additional sub-folder called "National/" holds summary data for the United States. Inside a sub-folder, for example, "Indiana/", there is a file named _in2010.ur1.zip_. Download this file and unzip it to a folder named with Indiana's abbriation, “IN”. Do this for all other states and DC. For the "National/" data, unzip the file to folder "US". You can just download the sub-folders you need. If you want download all of them, make sure you have enough disc space as the total file size is about 140 GB. 
+
+After downloading the data you needed, run function below to set path for all future use of the package.
 
 ```r
-library(rawcensus)
-tmp <- read_2010census(path_to_census = "your_local_path_census_data",  # under it are state sub-folders
-                       state = "IN", 
-                       geoheaders = c("PLACE", "COUSUB", "NAME", "SUMLEV", "GEOCOMP"),
+set_path_to_census("your_path_to_census_data", install = TRUE)
+```
+
+
+### Read census and ACS data
+Currently the package provides three functions to read data from summary files of Census 2010, ACS 1-year surveys, ACS 5-year surveys. These function comes with intuitive names: `read_census2010()`, `read_acs1year()`, and `read_acs5year()`. Examples below shows the basic application.
+
+```r
+library(totalcensus)
+tmp <- read_census2010(state = "IN", 
+                       geo_headers = c("PLACE"),
                        table_contents = c("PCT012F139", "H0070016"))
 print(tmp)
 
-    #         LOGRECNO PLACE COUSUB                                NAME SUMLEV GEOCOMP PCT012F139 H0070016
-    #      1:        1                                          Indiana    040      00       1539    42507
-    #      2:        2                                          Indiana    040      01       1446    39815
-    #      3:        3                                          Indiana    040      04       1257    34693
-    #      4:        4                                          Indiana    040      28        189     5122
-    #      5:        5                                          Indiana    040      43         93     2692
-    #     ---                                                                                             
-    # 331552:   331552                      Westview School Corporation    970      00          1       19
-    # 331553:   331553                              Whiting School City    970      00          6      205
-    # 331554:   331554              Whitko Community School Corporation    970      00          0       12
-    # 331555:   331555                      School District Not Defined    970      00          0        0
-    # 331556:   331556              School District Not Defined (Water)    970      00          0        0
+    #               lon      lat LOGRECNO SUMLEV GEOCOMP PLACE state PCT012F139 H0070016
+    #      1: -86.28395 39.90303        1    040      00          IN       1539    42507
+    #      2: -86.23489 40.13668        2    040      01          IN       1446    39815
+    #      3: -86.21876 40.43883        3    040      04          IN       1257    34693
+    #      4: -86.21021 40.12984        4    040      28          IN        189     5122
+    #      5: -86.27358 39.92054        5    040      43          IN         93     2692
+    #     ---                                                                           
+    # 331552: -85.55221 41.63835   331552    970      00          IN          1       19
+    # 331553: -87.49205 41.67686   331553    970      00          IN          6      205
+    # 331554: -85.66872 41.15086   331554    970      00          IN          0       12
+    # 331555: -86.03878 39.35130   331555    970      00          IN          0        0
+    # 331556: -87.20929 41.63419   331556    970      00          IN          0        0
 
 ```
 The data of geographic entities you are interesting in can be further selected from this data.table. As an example, I will show how to select the data of census blocks of South Bend city. South Bend is a PLACE with FIPS code "71000" and the summary level (SUMLEV) code of census block is "100". We can do the selection in `data.table` package or using `dplyr` package.
@@ -59,18 +78,18 @@ The data of geographic entities you are interesting in can be further selected f
 library(data.table)
 tmp[PLACE == "71000" & SUMLEV == "100"]
 
-    #       LOGRECNO PLACE COUSUB       NAME SUMLEV GEOCOMP PCT012F139 H0070016
-    #    1:   241626 71000  11890 Block 2018    100      00         NA        0
-    #    2:   241627 71000  11890 Block 2019    100      00         NA        0
-    #    3:   241628 71000  11890 Block 2022    100      00         NA        0
-    #    4:   241629 71000  11890 Block 2023    100      00         NA        2
-    #    5:   241630 71000  11890 Block 2024    100      00         NA        0
-    #   ---                                                                    
-    # 5002:   252566 71000  61128 Block 2058    100      00         NA        0
-    # 5003:   252567 71000  61128 Block 2064    100      00         NA        0
-    # 5004:   253091 71000  80180 Block 4039    100      00         NA        0
-    # 5005:   253092 71000  80180 Block 4040    100      00         NA        0
-    # 5006:   253093 71000  80180 Block 4094    100      00         NA        0
+    #             lon      lat LOGRECNO SUMLEV GEOCOMP PLACE state PCT012F139 H0070016
+    #    1: -86.21864 41.63613   241626    100      00 71000    IN         NA        0
+    #    2: -86.21659 41.63670   241627    100      00 71000    IN         NA        0
+    #    3: -86.22172 41.63573   241628    100      00 71000    IN         NA        0
+    #    4: -86.22022 41.63182   241629    100      00 71000    IN         NA        2
+    #    5: -86.22093 41.63367   241630    100      00 71000    IN         NA        0
+    #   ---                                                                           
+    # 5002: -86.25132 41.69486   252566    100      00 71000    IN         NA        0
+    # 5003: -86.25815 41.69649   252567    100      00 71000    IN         NA        0
+    # 5004: -86.35508 41.73058   253091    100      00 71000    IN         NA        0
+    # 5005: -86.35565 41.73035   253092    100      00 71000    IN         NA        0
+    # 5006: -86.35573 41.72831   253093    100      00 71000    IN         NA        0
 
 # or using dplyr to get the same result
 library(dplyr)

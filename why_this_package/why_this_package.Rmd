@@ -9,22 +9,22 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 ```
 
-The census API offers most data in the Census 2010 summary file 1 for download and the API-based packages such as `tidycensus` and `acs` makes the downloading very easy in R. So why we need another package.
+The census API offers most data in the Census 2010 and America community surveys for download and the API-based packages such as `tidycensus`, `censusapi` and `acs` makes the downloading very easy in R. So why we need another package?
 
-The selling points for the package `rawcensus2010` include:
+The selling points for the package `totalcensus` include:
 
 - Package `rawcensus2010` extracts all data in the summary file 1 with urban/rural update, while the census API only provide data in summary file 1 before urban/rural update.
-- It is straightforward to get data of all census tracts or blocks of a city or metro with package `rawcensus2010`, while it is a headache if possible with census API based packages.
-- Package `rawcensus` provides longitude and latitude of the internal point of a geographic entity for easy and quick mapping. 
+- It is straightforward to get data of all census tracts or blocks of a city or metro with package `totalcensus`, while it is a headache if possible with census API based packages.
+- Package `totalcensus` provides longitude and latitude of the internal point of a geographic entity for easy and quick mapping. 
 
 Here we will demonstrate these advantages with examples.
 
 ### urban/rural update data
-The census API does not provide updated data in 2010 census summary file 1 with urban/rural update, for example, if we want to extract urban and rural population of each county in Rhode Island, the census API gives 0, which is the default value inf summary file 1 before urban/rural update. Below is the code using census API based package `tidycensus`.
+The census API does not provide updated data in 2010 census summary file 1 with urban/rural update, for example, if we want to extract urban and rural population of each county in Rhode Island, the census API gives 0, which is the default value in summary file 1 before urban/rural update. Below is the code using census API based package `tidycensus`.
 
 ```{r}
 library(tidycensus)
-# change the api to your owns
+# change the api to your own's
 census_api_key("ab664ab627f56ed01df0b97a25f6f473598a7fec")
 
 # all urban/rural population are returned as zero.
@@ -49,61 +49,62 @@ print(RI_ur)
     # 10 44009 Washington County P0020005     0
 ```
 
-These data can be extract easily with `rawcensus2010`.
+These data can be extract easily with `totalcensus`.
 ```{r}
 library(data.table)
 library(magrittr)
-library(rawcensus2010)
+library(totalcensus)
 # change path to your own local folder
-path_to_census <- "~/dropbox_datasets/US_2010_census/"
-RI_ur <- read_2010census(path_to_census, "RI", 
-                         geoheaders = "NAME", 
-                         table_contents = c("P0020002", "P0020005")) %>%
-    # filter data with summary level and geographic component
-    .[SUMLEV == "050" & GEOCOMP == "00"]
+RI_ur <- read_census2010(states = "RI", 
+                         geo_headers = "NAME", 
+                         table_contents = c("P0020002", "P0020005"),
+                         summary_level = "county",
+                         geo_comp = "00") %>%
+    setnames(c("P0020002", "P0020005"), c("urban", "rural"))
 
 print(RI_ur)
-    #    LOGRECNO SUMLEV GEOCOMP              NAME state P0020002 P0020005
-    # 1:       49    050      00    Bristol County    RI    49305      570
-    # 2:     1327    050      00       Kent County    RI   152888    13270
-    # 3:     6060    050      00    Newport County    RI    72865    10023
-    # 4:     8943    050      00 Providence County    RI   592145    34522
-    # 5:    24262    050      00 Washington County    RI    87840    39139
+    #          lon      lat LOGRECNO SUMLEV GEOCOMP              NAME state  urban rural
+    # 1: -71.28505 41.70527       49    050      00    Bristol County    RI  49305   570
+    # 2: -71.57631 41.67775     1327    050      00       Kent County    RI 152888 13270
+    # 3: -71.28406 41.50273     6060    050      00    Newport County    RI  72865 10023
+    # 4: -71.57824 41.87049     8943    050      00 Providence County    RI 592145 34522
+    # 5: -71.61761 41.40116    24262    050      00 Washington County    RI  87840 39139
 ```
 
 
 ## all census tracts or blocks in a city or metro
 With `tidycensus` one can download selected variables of all census tracts or blocks of a county, or selected variables of all census tracts of a state. The census API does not have a path from city/metro to census tract/block. It is possible to combine packages `tidycensus` with `tigris` to [extract data of all census tracts of a metro](http://walkerke.github.io/2017/05/tigris-metros/), but it is somehow complicated. 
 
-In `rawcensus2010` we can get the data simply by filtering what we want. For example, we want to get urban and rural population of every block in Providence metro area, which covers Rhode Island and part of Massachusettes.
+In `totalrawcensus` we can get the data simply by filtering what we want. For example, we want to get urban and rural population of every block in Providence metro area, which covers Rhode Island and part of Massachusettes.
 
 ```{r}
-library(rawcensus2010)
-prov <- read_2010census(path_to_census, c("MA", "RI"), 
-                        geoheaders =  c("CBSA", "INTPTLON", "INTPTLAT"), 
-                        table_contents = c("P0020002", "P0020005")) %>%
+library(totalcensus)
+prov <- read_census2010(states =  c("MA", "RI"), 
+                        geo_headers =  "CBSA", 
+                        table_contents = c("P0020002", "P0020005"),
+                        summary_level = "100",
+                        geo_comp = "00") %>%
     # change column names to readable form
-    setnames(c("INTPTLON", "INTPTLAT", "P0020002", "P0020005"), 
-             c("lon", "lat", "urban", "rural")) %>%
+    setnames(c("P0020002", "P0020005"), c("urban", "rural")) %>%
     # filtering with CBSA code, summary level, and geographic component
-    .[CBSA == "39300" & SUMLEV == "100" & GEOCOMP == "00"] %>%
-    # remove blocks no people lives in
+    .[CBSA == "39300"] %>%
+    # remove blocks where no people lives in
     .[urban != 0 | rural != 0]
 
 # most blocks belongs to urban area as they are in a metro
 print(prov) 
-    #        LOGRECNO SUMLEV GEOCOMP  CBSA       lon      lat state urban rural
-    #     1:    22106    100      00 39300 -70.90012 41.68041    MA   199     0
-    #     2:    22107    100      00 39300 -70.89773 41.68194    MA    22     0
-    #     3:    22108    100      00 39300 -70.89743 41.68116    MA    22     0
-    #     4:    22109    100      00 39300 -70.90386 41.67836    MA    15     0
-    #     5:    22110    100      00 39300 -70.90364 41.68245    MA    81     0
+    #              lon      lat LOGRECNO SUMLEV GEOCOMP  CBSA state urban rural
+    #     1: -70.90012 41.68041    22106    100      00 39300    MA   199     0
+    #     2: -70.89773 41.68194    22107    100      00 39300    MA    22     0
+    #     3: -70.89743 41.68116    22108    100      00 39300    MA    22     0
+    #     4: -70.90386 41.67836    22109    100      00 39300    MA    15     0
+    #     5: -70.90364 41.68245    22110    100      00 39300    MA    81     0
     #    ---                                                                   
-    # 25568:    29028    100      00 39300 -71.78918 41.33623    RI     8     0
-    # 25569:    29029    100      00 39300 -71.79403 41.33582    RI    25     0
-    # 25570:    29030    100      00 39300 -71.79122 41.33609    RI    27     0
-    # 25571:    29032    100      00 39300 -71.78897 41.33288    RI     4     0
-    # 25572:    29037    100      00 39300 -71.79308 41.33639    RI    18     0
+    # 25568: -71.78918 41.33623    29028    100      00 39300    RI     8     0
+    # 25569: -71.79403 41.33582    29029    100      00 39300    RI    25     0
+    # 25570: -71.79122 41.33609    29030    100      00 39300    RI    27     0
+    # 25571: -71.78897 41.33288    29032    100      00 39300    RI     4     0
+    # 25572: -71.79308 41.33639    29037    100      00 39300    RI    18     0
 ```
 
 ### quick plot with longitude and latitude data
@@ -112,14 +113,68 @@ The above data already include the longitude and latitude of an internal point o
 ```{r}
 library(ggmap)
 library(ggplot2)
-prov_map <- get_map("warwick, RI", zoom = 10)
-ggmap(prov_map) + 
+prov_map <- get_map("warwick, RI", zoom = 10, color = "bw")
+
+ggmap(prov_map9) + 
+    ylim(41.15, 42) +
+    xlim(-71.8, -70.85) +
     geom_point(data = prov[urban != 0], aes(lon, lat, size = urban, color = "red"), alpha = 0.15) +
-    geom_point(data = prov[rural != 0], aes(lon, lat, size = rural, color = "blue"), alpha = 0.3) +
-    scale_color_identity(guide = "legend", breaks = c("red", "blue"), label = c("urban", "rural")) +
-    scale_size_area(max_size = 2, breaks = c(10, 100, 500, 1000, 2000)) +
-    labs(title = "Urban and rural population in each census blocks in Providence metro area", 
-         size = "population", color = NULL)
+    geom_point(data = prov[rural != 0], aes(lon, lat, size = rural, color = "green"), alpha = 0.3) +
+    scale_color_identity(guide = "legend", breaks = c("red", "green"), label = c("urban", "rural")) +
+    scale_size_area(max_size = 1, breaks = c(10, 100, 500, 1000, 2000)) +
+    labs(title = "Urban and rural population", 
+         subtitle = "in each census block of Providence metro area",
+         caption = "Source: Census 2010",
+         size = "population", color = NULL) +
+    theme(axis.title = element_blank(),
+          axis.text = element_blank(),
+          axis.ticks = element_blank())
+
+ggsave(filename = "why_this_package/prov_urban_rural_population.png")
 ```
 
-![providence metro block](providence_metro.jpg)
+![providence metro block](prov_urban_rural_population.png)
+
+## median home values in each block group in Providence metro
+The data is in 2011-2015 ACS 5-year survey.
+
+```{r}
+prov_home <- read_acs5year(states = c("MA", "RI"),
+                               year = 2015,
+                              geo_headers = "CBSA",
+                               table_contents = c("B01003_001", "B25077_001"),
+                               summary_level = "block_group",
+                               with_margin = FALSE) %>%
+    .[CBSA == "39300"] %>%
+    setnames(c("B01003_001_e", "B25077_001_e"), c("population", "value")) %>%
+    # some missing value in home value shown as "." and so the whole column was
+    # read into character. change column back to numeric and remove NAs
+    .[, value := as.numeric(value)] %>%
+    .[!is.na(value)] %>%
+    .[order(value)]
+
+prov_map9 <- get_map("warwick, RI", zoom = 9, color = "bw")
+
+ggmap(prov_map9) +
+    geom_point(data = prov_home,
+               aes(lon, lat, size = population, color = value),
+               alpha = 1) +
+    ylim(41.15, 42) +
+    xlim(-71.8, -70.85) +
+    scale_size_area(max_size = 1) +
+    scale_color_continuous(low = "green", high = "red",
+                           breaks = c(50000, 200000, 600000, 1000000),
+                           labels = scales::unit_format("K", 1e-3)) +
+    guides(size = FALSE) +
+    labs(color = "value ($)",
+         caption = "Source: ACS 5-year survey 2011-2015",
+         title = "Median Home Values",
+         subtitle = "in each block group of Providence metro area") +
+    theme(axis.title = element_blank(),
+          axis.text = element_blank(),
+          axis.ticks = element_blank())
+
+ggsave(file = "why_this_package/prov_home_values.png")
+```
+
+![home value](prov_home_values.png)
