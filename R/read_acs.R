@@ -26,23 +26,40 @@
 #' @import magrittr
 #'
 
-read_acs1year <- function(states,
-                          year,
-                          geo_headers = NULL,
+read_acs1year <- function(year,
+                          states,
                           table_contents = NULL,
+                          geo_headers = NULL,
+                          summary_level = "*",
+                          geo_comp = "*",
                           with_margin = FALSE,
                           with_coord = TRUE,
-                          summary_level = NULL,
-                          geo_comp = NULL,
+                          with_population = TRUE,
                           show_progress = TRUE){
 
     # turn off warning
     options(warn = -1)
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+    geo_headers_0 <- geo_headers  # keep a copy for latter use
 
-    if (is.null(summary_level)) summary_level = "*"
-    if (is.null(geo_comp)) geo_comp = "*"
+    # data to covert STATE (fips) to state (abbreviation)
+    state_fips <- dict_fips[SUMLEV == "040",
+                            .(state = state_abbr, STATE)]
+
+    # extract information from argument geo_headers
+    geo <- str_replace_all(geo_headers, " ", "") %>%
+        toupper()
+    dt_geo <- data.table(
+        geoheader = str_extract(geo, "^[^=]*"),
+        code = str_split(str_extract(geo, "[^=]*$"), ",")
+    ) %>%
+        .[, state := str_extract(code, "^[A-Z]*")] %>%
+        .[, code := str_extract(code, "[0-9]*$")]
+
+
+    # this is used to extract geoheaders
+    geo_headers <- unique(dt_geo[, geoheader])
 
     # switch summary level to code
     if (summary_level %in% c("state", "county", "county_subdivision", "place",
@@ -71,8 +88,17 @@ read_acs1year <- function(states,
         #bbstate <- tolower(state)
 
         # read geography
-        geo <- read_acs1year_geo_(state, year, show_progress = TRUE) %>%
-            .[, state := toupper(state)]
+        geo <- read_acs1year_geo_(year, state, show_progress = TRUE) %>%
+            # convert STATE fips to state abbreviation
+            state_fips[., on = .(STATE)] %>%
+            .[, STATE := NULL] %>%
+            setkey(LOGRECNO)
+
+        if (with_population){
+            popul <- read_acs1year_estimate_margin_(year, state, "0001", "e", show_progress) %>%
+                .[, .(LOGRECNO, population = B00001_001)]
+            geo <- geo[popul]
+        }
 
         # read estimate and margin from each file
         if(!is.null(table_contents)){
@@ -85,7 +111,7 @@ read_acs1year <- function(states,
             lst = list()
             for (num in unique(file_content$file_num)){
                 cont <- file_content[file_num == num, content]
-                dt <- read_acs1year_estimate_margin_(state, year,
+                dt <- read_acs1year_estimate_margin_(year, state,
                                                      num, "e") %>%
                     .[, c("LOGRECNO", cont), with = FALSE] %>%
                     setnames(cont, paste0(cont, "_e")) %>%
@@ -150,7 +176,7 @@ read_acs1year <- function(states,
     }
 
     # turn on warning
-    options(warn = )
+    options(warn = 0)
 
     return(all)
 }

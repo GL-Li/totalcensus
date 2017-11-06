@@ -3,7 +3,7 @@
 export(generate_geoidcoord)
 export(read_acs1year)
 export(read_acs5year)
-export(read_census2010)
+export(read_decennial)
 export(search_cbsa)
 export(search_fips)
 export(search_geocomponents)

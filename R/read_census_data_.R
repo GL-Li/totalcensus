@@ -1,7 +1,7 @@
 # Read census 2010 datafile ====================================================
 
 
-# read whole datafile of a state
+# read one whole datafile of a state
 read_2010fileseg_ <- function(state, file_seg){
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
@@ -22,7 +22,7 @@ read_2010fileseg_ <- function(state, file_seg){
     return(dt)
 }
 
-# read a whole table with all table contents
+# read one whole table with all table contents
 read_2010table_ <- function(state, table_number){
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
@@ -64,7 +64,8 @@ read_2010table_ <- function(state, table_number){
 # c("PCT012F139", "P0030008", "P0100059", "P0150008", "H0070016", "PCT012F138").
 # The rows of short contents that have no corresponding LOGRECNOs are filled with
 # NAs.
-read_2010tablecontents_ <- function(state,
+read_decennial_tablecontents_ <- function(year,
+                                          state,
                                    table_contents = NULL,
                                    show_progress = TRUE){
 
@@ -81,20 +82,25 @@ read_2010tablecontents_ <- function(state,
     table_contents <- toupper(table_contents)
 
     # locate data files for the content
-    file_content <- lookup_census_2010[reference %in% table_contents,
-                                      .(file_seg = file_segment,
-                                        content = reference)]
+    if (year == 2010) {
+        lookup_census <- lookup_census_2010
+        file_content <- lookup_census[reference %in% table_contents,
+                                           .(file_seg = file_segment,
+                                             content = reference)]
+    }
+
 
     # read data
     lst = list()
     for (num in unique(file_content$file_seg)){
         cont <- file_content[file_seg == num, content]
         # determine location of the flds in file_seg
-        all_contents <- lookup_census_2010[file_segment == num, reference]
+        all_contents <- lookup_census[file_segment == num, reference]
         loc <- which(all_contents %in% cont)
         cols <- paste0("V", loc)
 
-        file <- paste0(path_to_census, "/census2010/", state, "/", tolower(state), "000", num, "2010.ur1")
+        file <- paste0(path_to_census, "/census", year, "/", state, "/", tolower(state),
+                       "000", num, year, ".ur1")
 
         if (show_progress) {
             cat(paste("Reading", state, "file", num, "\n"))
@@ -102,8 +108,7 @@ read_2010tablecontents_ <- function(state,
 
         # fread assigns column names as "V1", "V2", ... when header = FALSE
         dt <- fread(file, header = FALSE, select = c("V5", cols), showProgress = show_progress) %>%
-            set_colnames(c("LOGRECNO", cont)) %>%
-            setkey(LOGRECNO)
+            set_colnames(c("LOGRECNO", cont))
         assign(paste0("dt_", num), dt)
         # list elements names must be character, not number
         lst[[as.character(num)]] <- get(paste0("dt_", num))
@@ -111,5 +116,6 @@ read_2010tablecontents_ <- function(state,
 
     # merge into a large data.table as return using key LOGRECNO, fill with NA
     # for short files
-    Reduce(function(x, y) merge(x, y, all = TRUE), lst)
+    Reduce(function(x, y) merge(x, y, all = TRUE), lst) %>%
+        setkey(LOGRECNO)
 }

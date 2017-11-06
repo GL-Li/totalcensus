@@ -32,13 +32,17 @@ generate_geoidcoord <- function(){
                            "795", "860", "950", "960", "970")
 
     # generate all from census 2010 data ===========================================
-    geoid_coord <- read_census2010(c(states_DC, "US"),
-                                   c("STATE", "PLACE", "COUNTY", "COUSUB", "TRACT", "BLKGRP",
-                                     "CD", "SLDU", "SLDL", "CBSA", "METDIV", "CSA", "CONCIT",
-                                     "ANRC", "AIANHH", "AIHHTLI", "AITSCE", "CNECTA", "NECTA",
-                                     "NECTADIV", "UA", "PUMA", "SDELM", "SDSEC", "SDUNI", "TTRACT",
-                                     "TBLKGRP", "ZCTA5"),
-                                   geo_comp = "*") %>%
+    geoheaders <- c("STATE", "PLACE", "COUNTY", "COUSUB", "TRACT", "BLKGRP",
+                    "CD", "SLDU", "SLDL", "CBSA", "METDIV", "CSA", "CONCIT",
+                    "ANRC", "AIANHH", "AIHHTLI", "AITSCE", "CNECTA", "NECTA",
+                    "NECTADIV", "UA", "PUMA", "SDELM", "SDSEC", "SDUNI", "TTRACT",
+                    "TBLKGRP", "ZCTA5")
+    geoid_coord <- map(c(states_DC, "US"),
+                       function (x) read_decennial_geoheader_(
+                           year = 2010,
+                           state = x,
+                           geo_headers = geoheaders
+                       )) %>%
         # only interest in these commona SUMLEV, see link below for the list
         # https://www.census.gov/geo/reference/geoidentifiers.html
         .[SUMLEV %in% acs_summarylevels] %>%
@@ -135,7 +139,9 @@ generate_geoidcoord <- function(){
 
 
     # GEOID from acs 5-year survey, which includes all GEOID in 1-year survey
-    geoid_acs5year <- read_acs5year(c(states_DC, "US"), 2015, "NAME", with_coord = FALSE) %>%
+    geoid_acs5year <- read_acs5year(year = 2015,
+                                    states = c(states_DC, "US"),
+                                    with_coord = FALSE) %>%
         # only interest in these SUMLEV
         .[SUMLEV %in% acs_summarylevels] %>%
         .[, .(NAME, GEOID)]

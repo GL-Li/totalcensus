@@ -10,7 +10,7 @@
 #' \code{\link{search_datafile}}. To find geographic headers, browse
 #' \code{\link{dict_geoheader}} or search with function \code{\link{search_geoheader}}.
 #'
-#'
+#' @param year year of the census
 #' @param state vector of abbreviation of states, for example "IN" or c("MA", "RI").
 #' @param geoheaders vector of references of selected geographci headers to be included in the return.
 #' @param table_contents selected references of contents in census tables.
@@ -33,31 +33,31 @@
 #' @examples
 #' \dontrun{
 #' # read Rhode Island and Massachusette summary data at block level
-#' ri <- read_2010census("your_local_path_to_2010_census", c("RI", "MA"),
-#'                        geoheaders = c("NAME", "INTPTLON", "INTPTLAT"),
-#'                        table_contents = c("PCT012F139", "P0150008"),
-#'                        summary_level = "block")
-#'
-#' # read the national summary data
-#' us <- read_2010census("your_local_path_to_2010_census", "US",
-#'                        geoheaders = c("STATE", "COUNTY", "COUSUB", "NAME"),
-#'                        table_contents = c("PCT012F139", "P0150008"),
-#'                        summary_level = "county_subdivision")
+#' aaa = read_decennial(year = 2010,
+#'                      states = c("ut", "ri"),
+#'                      table_contents = c("P0030002", "P0150008"),
+#'                      geo_headers = c("place = ut62360",  # place in UT
+#'                                      "place = 14140",    # place in UT or RI
+#'                                      "cousub = ri41500"),
+#'                      summary_level = "block")
 #' }
 #'
 #' @export
 #'
 #'
 
-read_census2010 <- function(states,
-                            geo_headers = NULL,
-                            table_contents = NULL,
-                            with_coord = TRUE,
-                            summary_level = "*",
-                            geo_comp = "*",
-                            show_progress = TRUE){
+read_decennial <- function(year,
+                           states,
+                           table_contents = NULL,
+                           geo_headers = NULL,
+                           summary_level = "*",
+                           geo_comp = "*",
+                           with_coord = TRUE,
+                           with_population = TRUE,
+                           show_progress = TRUE){
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+    geo_headers_0 <- geo_headers  # keep a copy for latter use
 
     # switch summary level to code
     if (summary_level %in% c("state", "county", "county_subdivision", "place",
@@ -65,12 +65,30 @@ read_census2010 <- function(states,
         summary_level <- switch(summary_level,
                                 "state" = "040",
                                 "county" = "050",
-                                "county_subdivision" = "060",
+                                "county subdivision" = "060",
                                 "place" = "160",
                                 "tract" = "140",
-                                "block_group" = "150",
+                                "block group" = "150",
                                 "block" = "100")
     }
+
+    # data to covert STATE (fips) to state (abbreviation)
+    state_fips <- dict_fips[SUMLEV == "040",
+                            .(state = state_abbr, STATE)]
+
+    # extract information from argument geo_headers
+    geo <- str_replace_all(geo_headers, " ", "") %>%
+        toupper()
+    dt_geo <- data.table(
+        geoheader = str_extract(geo, "^[^=]*"),
+        code = str_split(str_extract(geo, "[^=]*$"), ",")
+    ) %>%
+        .[, state := str_extract(code, "^[A-Z]*")] %>%
+        .[, code := str_extract(code, "[0-9]*$")]
+
+
+    # this is used to extract geoheaders
+    geo_headers <- unique(dt_geo[, geoheader])
 
     if (with_coord){
         geo_headers = c(c("INTPTLON", "INTPTLAT"), geo_headers)
@@ -84,25 +102,48 @@ read_census2010 <- function(states,
         cat(paste0("reading ", iter, "/", N, " states\n"))
 
         # add st to geoheaders as there are multiple state
-        geo <- read_2010geoheader_(st, geo_headers,
+        geo <- read_decennial_geoheader_(year, st, geo_headers,
                                   show_progress = show_progress) %>%
-            .[, state := st]
-        if (!is.null(table_contents)) {
-            data <- read_2010tablecontents_(st, table_contents,
-                                           show_progress = show_progress)
-            census <- geo[data]
+            # convert STATE fips to state abbreviation
+            state_fips[., on = .(STATE)] %>%
+            .[, STATE := NULL] %>%
+            setkey(LOGRECNO)
+
+        if (with_population){
+            table_contents <- c("P0010001", table_contents)
+            data <- read_decennial_tablecontents_(year, st, table_contents,
+                                                  show_progress = show_progress)
+            census <- geo[data] %>%
+                setnames("P0010001", "population")
         } else {
-            census <- geo
+            if (!is.null(table_contents)) {
+                data <- read_decennial_tablecontents_(year, st, table_contents,
+                                                      show_progress = show_progress)
+                census <- geo[data, on = .(LOGRECNO)]
+            } else {
+                census <- geo
+            }
         }
 
         lst[[st]] <- census[SUMLEV %like% summary_level & GEOCOMP %like% geo_comp]
     }
-    combined <- rbindlist(lst)
+    combined <- rbindlist(lst) %>%
+        .[, LOGRECNO := NULL]
 
     if (with_coord) {
         setnames(combined, c("INTPTLON", "INTPTLAT"), c("lon", "lat"))
         setcolorder(combined, c(c("lon", "lat"), setdiff(names(combined), c("lon", "lat"))))
     }
 
-    return(combined)
+    # select data for argument geo_headers
+    if (is.null(geo_headers_0)) {
+        selected <- combined
+    } else {
+        selected <- map(1:nrow(dt_geo),
+                        function(x) combined[get(dt_geo[x, geoheader]) %like% dt_geo[x, code] &
+                                                 state %like% dt_geo[x, state]]) %>%
+            rbindlist()
+    }
+
+    return(selected)
 }

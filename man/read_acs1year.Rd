@@ -4,14 +4,14 @@
 \alias{read_acs1year}
 \title{Read ACS 1-year survey}
 \usage{
-read_acs1year(states, year, geo_headers = NULL, table_contents = NULL,
-  with_margin = FALSE, with_coord = TRUE, summary_level = NULL,
-  geo_comp = NULL, show_progress = TRUE)
+read_acs1year(year, states, table_contents = NULL, geo_headers = NULL,
+  summary_level = "*", geo_comp = "*", with_margin = FALSE,
+  with_coord = TRUE, with_population = TRUE, show_progress = TRUE)
 }
 \arguments{
-\item{states}{vector of abbrivations of states, for example, "IN" and c("MA", "RI").}
-
 \item{year}{year of the survey}
+
+\item{states}{vector of abbrivations of states, for example, "IN" and c("MA", "RI").}
 
 \item{geo_headers}{geographic headers.}
 

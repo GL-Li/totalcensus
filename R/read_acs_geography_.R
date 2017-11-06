@@ -1,7 +1,7 @@
 # read acs 1-year geography data ===============================================
 
-read_acs1year_geo_ <- function(state,
-                               year,
+read_acs1year_geo_ <- function(year,
+                               state,
                                geo_headers = NULL,
                                show_progress = TRUE) {
 
@@ -22,7 +22,7 @@ read_acs1year_geo_ <- function(state,
     geo <- fread(file, header = FALSE, encoding = "Latin-1" ,
                  showProgress = show_progress, colClasses = "character") %>%
         setnames(names(.), dict_acs_geoheader$reference) %>%
-        .[, c(c("GEOID", "NAME", "LOGRECNO", "SUMLEV", "GEOCOMP"), geo_headers), with = FALSE] %>%
+        .[, c(c("GEOID", "NAME", "LOGRECNO", "SUMLEV", "GEOCOMP", "STATE"), geo_headers), with = FALSE] %>%
         .[, LOGRECNO := as.numeric(LOGRECNO)]
 
     setkey(geo, LOGRECNO)

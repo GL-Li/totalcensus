@@ -44,26 +44,19 @@
 #'
 
 search_fips <- function(keyword, state = NULL, view = TRUE) {
-    dt <- dict_fips
 
-    # step 1: search in NAMEs or FIPS code
+    if (is.null(state)) state <- "*"
+    dt <- dict_fips[state_abbr %like% toupper(state)]
+
     keywords <- unlist(str_split(tolower(keyword), " "))
     for (kw in keywords){
         # combine all rows to form a new column for search
-        dt <- dt[, comb := apply(dt[, 3:9], 1, paste, collapse = " ")] %>%
+        dt <- dt[, comb := apply(dt[, c(1, 3:9)], 1, paste, collapse = " ")] %>%
             .[grepl(kw, tolower(comb))] %>%
             .[, comb := NULL]
     }
 
-    # step 2: search in state full or abbreviation
-    if (!is.null(state)){
-        if (nchar(state) == 2) {
-            dt <- dt[state_abbr %like% toupper(state)]
-        } else {
-            dt <- dt[tolower(state_full) %like% tolower(state)]
-        }
-    }
-
+    # change to match those in census summary files
     dt[SUMLEV == "061", SUMLEV := "060"][SUMLEV == "162", SUMLEV := "160"]
 
     if (view) View(dt, paste(keyword, "found"))

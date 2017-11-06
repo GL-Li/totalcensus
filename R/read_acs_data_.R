@@ -1,6 +1,6 @@
 # Read a ACS 1-year survey estimate of a state =================================
 
-read_acs1year_estimate_margin_ <- function(state, year, file_seg,
+read_acs1year_estimate_margin_ <- function(year, state, file_seg,
                                     est_marg = "e", show_progress = TRUE){
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")

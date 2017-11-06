@@ -1,6 +1,7 @@
 # Read geographic header record file of ONE state
 
-read_2010geoheader_ <- function(state,
+read_decennial_geoheader_ <- function(year,
+                                      state,
                                geo_headers = NULL,
                                show_progress = TRUE) {
 
@@ -14,8 +15,8 @@ read_2010geoheader_ <- function(state,
     state <- toupper(state)
     geo_headers <- toupper(geo_headers)
 
-    file <- paste0(path_to_census, "/census2010/", state, "/", tolower(state),
-                   "geo2010.ur1")
+    file <- paste0(path_to_census, "/census", year, "/", state, "/", tolower(state),
+                   "geo", year, ".ur1")
     # use "Latin-1" for encoding special spanish latters such as ñ in Cañada
     geo <- fread(file, header = FALSE, sep = "\n", encoding = "Latin-1" ,
                  showProgress = show_progress)
@@ -23,7 +24,8 @@ read_2010geoheader_ <- function(state,
     # always keep the following geoheaders in the output data
     dt <- geo[, .(LOGRECNO = as.numeric(str_sub(V1, 19, 25)),
                   SUMLEV = str_sub(V1, 9, 11),
-                  GEOCOMP = str_sub(V1, 12, 13))]
+                  GEOCOMP = str_sub(V1, 12, 13),
+                  STATE = str_sub(V1, 28, 29))]
 
     # add all selected fields to output data
     if (!is.null(geo_headers)) {
