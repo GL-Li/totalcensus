@@ -4,7 +4,7 @@
 \alias{generate_geoidcoord}
 \title{Generate coordinate for all GEOIDs in ACS from Census 2010.}
 \usage{
-generate_geoidcoord()
+generate_geoidcoord(states = c(states_DC, "PR", "US"))
 }
 \description{
 It creates a sub directory "generared_data/" under path_to_census

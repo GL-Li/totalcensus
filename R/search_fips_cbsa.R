@@ -37,9 +37,6 @@
 #' @seealso \code{\link{dict_fips}}
 #'
 #' @export
-#' @import data.table
-#' @import magrittr
-#' @importFrom stringr str_split
 #'
 #'
 

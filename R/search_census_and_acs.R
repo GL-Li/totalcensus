@@ -24,8 +24,6 @@
 #' }
 #'
 #' @export
-#' @import data.table
-#' @import magrittr
 #'
 search_geoheaders <- function(survey, keyword = "*", view = TRUE) {
 

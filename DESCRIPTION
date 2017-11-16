@@ -16,7 +16,8 @@ Depends:
 Imports:
     stringr (>= 1.2.0), 
     data.table (>= 1.10.1),
-    magrittr (>= 1.5)
+    magrittr (>= 1.5), 
+    purrr (>= 0.2.4)
 Suggests: 
     knitr,
     rmarkdown,
