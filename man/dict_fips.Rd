@@ -3,7 +3,7 @@
 \docType{data}
 \name{dict_fips}
 \alias{dict_fips}
-\title{List FIPS code as of 2016 in the US}
+\title{List of FIPS code as of 2016 in the US}
 \format{A data.table with 43934 rows and 9 variables:
 \describe{
   \item{state_full}{full name of a state such as "Alabama"}
@@ -23,9 +23,10 @@
 data("dict_fips")
 }
 \description{
-This dataset contains a complete list of FIPS of states, counties,
+This dataset contains a list of FIPS of states, counties,
 county subdivisions, places, consolidated cities, and their names and summary
-levels as well as full name and abbreviation of state. Search for
-FIPS with function \code{\link{search_fips}}.
+levels as well as full name and abbreviation of state. It does NOT contain
+FIPS of many small areas. Search for FIPS with function
+\code{\link{search_fips}}.
 }
 \keyword{datasets}

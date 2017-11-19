@@ -4,10 +4,9 @@
 \alias{read_acs5year}
 \title{Read ACS 5-year survey}
 \usage{
-read_acs5year(year, states, table_contents = NULL, locations = NULL,
+read_acs5year(year, states, table_contents = NULL, areas = NULL,
   geo_headers = NULL, summary_level = "*", geo_comp = "*",
-  with_margin = FALSE, with_coord = TRUE, with_population = TRUE,
-  with_acsgeoheaders = FALSE, show_progress = TRUE)
+  with_margin = FALSE, with_acsgeoheaders = FALSE, show_progress = TRUE)
 }
 \arguments{
 \item{year}{end year of the 5-year survey}
@@ -16,11 +15,13 @@ read_acs5year(year, states, table_contents = NULL, locations = NULL,
 
 \item{table_contents}{vector of reference of available table contents}
 
-\item{locations}{for county, city, or town, in the format like "kent county, RI",
-"Boston city, MA", "Lincoln town, RI". For metro area, in the format
-like "New York metro".}
+\item{areas}{For metro area, in the format like "New York metro".
+ For county, city, or town, must use the exact name as those in
+ \code{\link{dict_fips}} in the format like "kent county, RI",
+"Boston city, MA", and "Lincoln town, RI". And special examples like
+"Salt Lake City city, UT" must keep the "city" after "City".}
 
-\item{geo_headers}{vector of geographic headers like c("NAME", "PLACE")}
+\item{geo_headers}{vector of geographic headers like c("COUNTY", "PLACE")}
 
 \item{summary_level}{summary level like "050"}
 
@@ -28,13 +29,13 @@ like "New York metro".}
 
 \item{with_margin}{read also margin of error in addition to estimate}
 
-\item{with_coord}{whether to include longitude and latitude in return}
-
-\item{with_population}{whether to include total population in return}
-
 \item{with_acsgeoheaders}{whether to include geographic headers from ACS data}
 
 \item{show_progress}{whether to show progress in fread()n}
+
+\item{with_coord}{whether to include longitude and latitude in return}
+
+\item{with_population}{whether to include total population in return}
 }
 \value{
 A data.table of selected data.
@@ -45,15 +46,23 @@ of selected states.
 }
 \examples{
 \dontrun{
+# read data using areas
 aaa <- read_acs5year(2015, c("ut", "ri"),
-                      table_contents = c("B01001_009", "B00001_001", "B10001_002"),
-                      geo_headers = c("place = ut62360",  # place in UT
-                                      "county = ut001",
-                                      "place = ri14140",    # place in UT or RI
-                                      "cousub = ri41500", # county sub in RI
-                                      "cbsa = 39300"),
+                      table_contents = c("B01001_009", "B00001_001"),
+                      areas = c("Lincoln town, RI",
+                                "Salt Lake City city, UT",
+                                 "Salt Lake City metro",
+                                 "Kent county, RI",
+                                 "COUNTY = UT001",
+                                 "PLACE = UT62360"),
+                      summary_level = "block group")
+
+
+# read data using geoheaders
+bbb <- read_acs5year(2015, c("ut", "ri"),
+                      table_contents = c("B01001_009", "B00001_001"),
+                      geo_headers = c("PLACE", "COUNTY", "CBSA", "COUSUB"),
                       summary_level = "block group")
 }
-
 
 }

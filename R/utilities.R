@@ -1,36 +1,66 @@
-convert_fips_to_names <- function(FIPs, geography = "state") {
+convert_fips_to_names <- function(FIPs, states = NULL, geo_header = "STATE") {
     # convert fips codes to names of a geographies
 
     # Args_____
     # FIPs : string vector of fips code such as c("021", "002")
-    # geography : string, taking values of "state", "city", "county" or "metro"
+    # geo_header : string, taking values of "STATE", "COUNTY", "PLACE", "COUSUB"
+    # or "CBSA"
 
     # Return_____
     # vector of state abbreviations such as c("RI", "MA")
 
-    # Examples
-    # convert_fips_to_names(c("11", "44"))
+    # Examples_____
+    # totalcensus:::convert_fips_to_names(c("11", "44"))
     # [1] "DC" "RI"
+    #
+    # totalcensus:::convert_fips_to_names(FIPs <- c("14140", "76030"),
+    #                                     states = c("RI", "MA"),
+    #                                     geo_header = "PLACE")
+    # [1] "Central Falls city" "Westfield city"
+    #
+    # totalcensus:::convert_fips_to_names(FIPs = c("39300", "46740"),
+    #                                     geo_header = "CBSA")
+    # [1] "metro: Providence-Warwick, RI-MA" "metro: Valley, AL"
+    #
 
+    states <- toupper(states)
     # make data.table for later join
-    FIPs <- data.table(fips = FIPs)
+    if (geo_header %in% c("STATE", "CBSA")){
+        FIPs <- data.table(fips = FIPs)
+    } else {
+        FIPs <- data.table(fips = FIPs, state = states)
+    }
 
-    if (geography == "state"){
+
+    if (geo_header == "STATE"){
         fips_geo <- dict_fips[SUMLEV == "040", .(state = state_abbr, fips = STATE)]
         names <- fips_geo[FIPs, on = .(fips)] %>%
             .[, state]
-    }
-
-    if (geography == "county"){
-        NULL
-    }
-
-    if (geography == "city"){
-        NULL
-    }
-
-    if (geography == "metro"){
-        NULL
+    } else if (geo_header == "COUNTY"){
+        fips_geo <- dict_fips[SUMLEV == "050",
+                              .(state = state_abbr, county = NAME, fips = COUNTY)]
+        names <- fips_geo[FIPs, on = .(fips, state)] %>%
+            .[, county]
+    } else if (geo_header == "PLACE"){
+        message("Names of CDPs are set to NA.")
+        fips_geo <- dict_fips[SUMLEV == "162",
+                              .(state = state_abbr, place = NAME, fips = PLACE)]
+        names <- fips_geo[FIPs, on = .(fips, state)] %>%
+            .[, place]
+    } else if (geo_header == "COUSUB"){
+        fips_geo <- dict_fips[SUMLEV == "061",
+                              .(state = state_abbr, cousub = NAME, fips = COUSUB)]
+        names <- fips_geo[FIPs, on = .(fips, state)] %>%
+            .[, cousub]
+    } else if (geo_header == "CBSA"){
+        names <- dict_cbsa[FIPs, on = .(CBSA = fips)] %>%
+            .[, unique(CBSA_title)] %>%
+            paste0("metro: ", .)
+    } else {
+        message(paste('This version only provides names of major areas available in datasets',
+                      'dict_fips and dict_cbsa for geographic headers',
+                      'STATE, COUNTY, PLACE, and CBSA'))
+        names <- "To be added"
     }
 
     return(names)
@@ -151,28 +181,28 @@ get_fips <- function(area){
 
     if (str_detect(area, "=")){
         geoheader <- area
-    # } else if (str_detect(area, "\\*")){
-    #     if (str_detect(area, ",")){
-    #         state <- str_extract(area, "[^ ]*$")
-    #         geography <- str_extract(area, "[^ ]*,") %>%
-    #             str_replace(",", "")
-    #     }
-    #
-    #     if (str_detect(area, "metro")){
-    #         stop('Do not allow "* metro", please provide a specific metro.')
-    #     }
-    #
-    #     if (geography == "county"){
-    #         geoheader <- dict_fips[tolower(state_abbr) == state &
-    #                               SUMLEV == "050"] %>%
-    #             .[, .(COUNTY, state_abbr)] %>%
-    #             .[, geoheader := paste0("COUNTY = ", state_abbr, COUNTY)] %>%
-    #             .[, geoheader]
-    #     }
-    #
-    #     if (geography == "city"){
-    #         geoheader <- dict_fips
-    #     }
+        # } else if (str_detect(area, "\\*")){
+        #     if (str_detect(area, ",")){
+        #         state <- str_extract(area, "[^ ]*$")
+        #         geography <- str_extract(area, "[^ ]*,") %>%
+        #             str_replace(",", "")
+        #     }
+        #
+        #     if (str_detect(area, "metro")){
+        #         stop('Do not allow "* metro", please provide a specific metro.')
+        #     }
+        #
+        #     if (geography == "county"){
+        #         geoheader <- dict_fips[tolower(state_abbr) == state &
+        #                               SUMLEV == "050"] %>%
+        #             .[, .(COUNTY, state_abbr)] %>%
+        #             .[, geoheader := paste0("COUNTY = ", state_abbr, COUNTY)] %>%
+        #             .[, geoheader]
+        #     }
+        #
+        #     if (geography == "city"){
+        #         geoheader <- dict_fips
+        #     }
 
     } else {
         if (str_detect(area, ",")){
@@ -239,12 +269,12 @@ get_cbsa <- function(name){
 
     if (nrow(cbsa) == 0){
         stop(paste0("No match found for ", name,
-                   ". Please search with search_cbsa() for the right name."))
+                    ". Please search with search_cbsa() for the right name."))
     } else {
         cbsa <- cbsa[, unique(CBSA)]
         if (length(cbsa) > 1){
             stop(paste0("Two many matches found for ", name,
-                 ". Please search with search_cbsa() and provide a unique name."))
+                        ". Please search with search_cbsa() and provide a unique name."))
         } else {
             return(paste0("CBSA = ", cbsa))
         }
@@ -307,15 +337,15 @@ convert_areas <- function(areas) {
     #            "Kent county, RI")
     # convert_areas(areas)
     #    geoheader  code state
-        #    geoheader  code state                    name
-        # 1:     PLACE 62360    UT     Providence city, UT
-        # 2:    COUNTY   005    RI      Newport County, RI
-        # 3:    COUSUB 41500    RI        Lincoln town, RI
-        # 4:      CBSA 39300              Providence metro
-        # 5:     PLACE 67000    UT Salt Lake City city, UT
-        # 6:    COUSUB 09280    RI        Bristol town, RI
-        # 7:      CBSA 41620          Salt Lake City metro
-        # 8:    COUNTY   003    RI         Kent County, RI
+    #    geoheader  code state                    name
+    # 1:     PLACE 62360    UT     Providence city, UT
+    # 2:    COUNTY   005    RI      Newport County, RI
+    # 3:    COUSUB 41500    RI        Lincoln town, RI
+    # 4:      CBSA 39300              Providence metro
+    # 5:     PLACE 67000    UT Salt Lake City city, UT
+    # 6:    COUSUB 09280    RI        Bristol town, RI
+    # 7:      CBSA 41620          Salt Lake City metro
+    # 8:    COUNTY   003    RI         Kent County, RI
 
 
     # first convert all element in areas to format "geoheader = code"
@@ -323,4 +353,176 @@ convert_areas <- function(areas) {
         organize_geoheaders()
 
     return(result)
+}
+
+
+
+
+add_geoheader <- function(dt, state, geo_headers, summary_level, survey = "acs"){
+    # When dt is a tract or block group level data.table obtained by reading
+    # decennial census or ACS 5-year survey and the geoheader "PLACE" or "COUSUB"
+    # is included in argument geo_headers, the codes
+    # for "PLACE" or "OCUSUB" are usually not provided, as a tract or block group
+    # may belong to multiple "PLACE" or "COUSUB". This function is to add them
+    # using data from Census 2010. If a tract or block group belongs to multiple
+    # PLACE or COUSUB, add additional rows to include the relationship.
+    #
+    # Args_____
+    # dt : the data.table read from decennial census or ACS 5-year survey.
+    # state : state of the data
+    # geo_headers : argument of geo_headers in function read_acs5year() or
+    #     read_decenial() that generated dt.
+    # summary_level : "140" for tract or "150" for block group.
+    # survey : survey of dt, choose from "acs" and "decennial"
+
+
+    # replace PLACE and COUSUB with those obtained from census 2010 with
+    # generate_geoid_coordinate.R
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
+    if (survey == "acs"){
+        if (summary_level == "150"){
+            if ("PLACE" %in% geo_headers){
+                file <- paste0(path_to_census,
+                               "generated_data/blkgrp_geoid_place/blkgrp_geoid_place_",
+                               state, ".csv")
+                blkgrp <- fread(file, colClasses = "character") %>%
+                    .[, .(GEOID, PLACE)]
+                dt <- dt[, PLACE := NULL] %>%
+                    blkgrp[., on = .(GEOID), allow.cartesian=TRUE]
+            }
+
+            if ("COUSUB" %in% geo_headers){
+                file <- paste0(path_to_census,
+                               "generated_data/blkgrp_geoid_cousub/blkgrp_geoid_cousub_",
+                               state, ".csv")
+                blkgrp <- fread(file, colClasses = "character") %>%
+                    .[, .(GEOID, COUSUB)]
+                dt <- dt[, COUSUB := NULL] %>%
+                    blkgrp[., on = "GEOID", allow.cartesian=TRUE]
+            }
+        }
+        if (summary_level == "140"){
+            if ("PLACE" %in% geo_headers){
+                file <- paste0(path_to_census,
+                               "generated_data/tract_geoid_place/tract_geoid_place_",
+                               state, ".csv")
+                tract <- fread(file, colClasses = "character") %>%
+                    .[, .(GEOID, PLACE)]
+                dt <- dt[, PLACE := NULL] %>%
+                    tract[., on = .(GEOID), allow.cartesian=TRUE]
+            }
+
+            if ("COUSUB" %in% geo_headers){
+                file <- paste0(path_to_census,
+                               "generated_data/tract_geoid_cousub/tract_geoid_cousub_",
+                               state, ".csv")
+                tract <- fread(file, colClasses = "character") %>%
+                    .[, .(GEOID, COUSUB)]
+                dt <- dt[, COUSUB := NULL] %>%
+                    tract[., on = .(GEOID), allow.cartesian=TRUE]
+            }
+        }
+    }
+
+
+    if (survey == "decennial"){
+        if (summary_level == "150"){
+            if ("PLACE" %in% geo_headers){
+                file <- paste0(path_to_census,
+                               "generated_data/blkgrp_geoid_place/blkgrp_geoid_place_",
+                               state, ".csv")
+                blkgrp <- fread(file, colClasses = "character") %>%
+                    .[, .(LOGRECNO, PLACE)] %>%
+                    .[, LOGRECNO := as.numeric(LOGRECNO)]
+                dt <- dt[, PLACE := NULL] %>%
+                    blkgrp[., on = .(LOGRECNO), allow.cartesian=TRUE]
+            }
+
+            if ("COUSUB" %in% geo_headers){
+                file <- paste0(path_to_census,
+                               "generated_data/blkgrp_geoid_cousub/blkgrp_geoid_cousub_",
+                               state, ".csv")
+                blkgrp <- fread(file, colClasses = "character") %>%
+                    .[, .(LOGRECNO, COUSUB)] %>%
+                    .[, LOGRECNO := as.numeric(LOGRECNO)]
+                dt <- dt[, COUSUB := NULL] %>%
+                    blkgrp[., on = .(LOGRECNO), allow.cartesian=TRUE]
+            }
+        }
+
+        if (summary_level == "140"){
+            if ("PLACE" %in% geo_headers){
+                file <- paste0(path_to_census,
+                               "generated_data/tract_geoid_place/tract_geoid_place_",
+                               state, ".csv")
+                tract <- fread(file, colClasses = "character") %>%
+                    .[, .(LOGRECNO, PLACE)] %>%
+                    .[, LOGRECNO := as.numeric(LOGRECNO)]
+                dt <- dt[, PLACE := NULL] %>%
+                    tract[., on = .(LOGRECNO), allow.cartesian=TRUE]
+            }
+
+            if ("COUSUB" %in% geo_headers){
+                file <- paste0(path_to_census,
+                               "generated_data/tract_geoid_cousub/tract_geoid_cousub_",
+                               state, ".csv")
+                tract <- fread(file, colClasses = "character") %>%
+                    .[, .(LOGRECNO, COUSUB)] %>%
+                    .[, LOGRECNO := as.numeric(LOGRECNO)]
+                dt <- dt[, COUSUB := NULL] %>%
+                    tract[., on = .(LOGRECNO), allow.cartesian=TRUE]
+            }
+        }
+    }
+
+return(dt)
+}
+
+
+
+add_coord <- function(dt, state, geo_headers){
+    # When dt is read from ACS 1-year or 5-year survey, the coordinates are missing.
+    # In addition, the code of geo_headers are not complete. This function add
+    # coordinates and code to dt from Census 2010 data.
+    #
+    # Args_____
+    # dt : the data.table read from decennial census or ACS 5-year survey.
+    # state : state of the data
+    # geo_headers : argument of geo_headers in function read_acs5year() or
+    #     read_decenial() that generated dt.
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
+    file <- paste0(path_to_census, "/generated_data/geoid_coord/geoid_coord_",
+                   state, ".csv")
+    coord <- fread(file,
+                   select = c("LOGRECNO", "GEOID", "lon", "lat", geo_headers),
+                   colClasses = "character") %>%
+        .[, lon := as.numeric(lon)] %>%
+        .[, lat := as.numeric(lat)]
+
+    dt <- coord[dt, on = .(GEOID)]
+
+    return(dt)
+}
+
+
+
+switch_summarylevel <- function(summary_level){
+    # This function switch summary level from plain text to code
+    common_level <- c("state", "county", "county subdivision", "place",
+                      "tract", "block group", "block")
+
+    if (summary_level %in% common_level){
+        summary_level <- switch(summary_level,
+                                "state" = "040",
+                                "county" = "050",
+                                "county subdivision" = "060",
+                                "place" = "160",
+                                "tract" = "140",
+                                "block group" = "150",
+                                "block" = "100")
+    }
+
+    return(summary_level)
 }

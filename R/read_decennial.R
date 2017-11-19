@@ -39,7 +39,7 @@
 #' aaa = read_decennial(year = 2010,
 #'                      states = "ut",
 #'                      table_contents = c("P0150008"),
-#'                      geo_headers = c("place = 62360"),
+#'                      geo_headers = c("COUSUB", "CBSA"),
 #'                      summary_level = "block")
 #'
 #'
@@ -48,10 +48,10 @@
 #'                      states = c("ut", "ri"),
 #'                      table_contents = c("P0150008", "P0030001", "P0030003",
 #'                                         "P0080036", "PCT012G002", "PCT012G181"),
-#'                      geo_headers = c("place = ut62360",  # place in UT
-#'                                      "place = 14140",    # place in UT or RI
-#'                                      "cousub = ri41500", # county sub in RI
-#'                                      "cbsa = 39300"),    # metro in UT or RI
+#'                      areas = c("place = ut62360",
+#'                                      "Providence city, RI",
+#'                                      "cousub = ri41500",
+#'                                      "cbsa = 39300"),
 #'                      summary_level = "block")
 #'
 #'
@@ -67,135 +67,318 @@
 #'
 
 read_decennial <- function(year,
-                           states,
-                           table_contents = NULL,
-                           geo_headers = NULL,
-                           summary_level = "*",
-                           geo_comp = "*",
-                           with_coord = TRUE,
-                           with_population = TRUE,
-                           show_progress = TRUE){
+                          states,
+                          table_contents = NULL,
+                          areas = NULL,
+                          geo_headers = NULL,
+                          summary_level = "*",
+                          geo_comp = "*",
+                          show_progress = TRUE){
+
+    if (is.null(areas) + is.null(geo_headers) == 0){
+        stop("Must keep at least one of arguments areas and geo_headers NULL")
+    }
+
+    # turn off warning, fread() gives warnings when read non-scii characters.
+    options(warn = -1)
+
+    if (!is.null(areas)){
+        dt <- read_decennial_areas_(
+            year, states, table_contents, areas, summary_level, geo_comp,
+            show_progress
+        )
+    } else {
+        dt <- read_decennial_geoheaders_(
+            year, states, table_contents, geo_headers, summary_level, geo_comp,
+            show_progress
+        )
+    }
+
+    options(warn = 0)
+    return(dt)
+}
+
+
+
+
+# internal functions ============================================================
+
+read_decennial_areas_ <- function(year,
+                                  states,
+                                  table_contents = NULL,
+                                  areas,
+                                  summary_level = "*",
+                                  geo_comp = "*",
+                                  show_progress = TRUE){
+    # read decennial census data of selected areas
+    #
+    # Args_____
+    # year :  end year of the 5-year survey
+    # states : vector of abbreviations of states such as c("MA", "RI")
+    # table_contents :  vector of reference of available table contents
+    # areas : For metro area, in the format like "New York metro".
+    #      For county, city, or town, must use the exact name as those in
+    #      \code{\link{dict_fips}} in the format like "kent county, RI",
+    #     "Boston city, MA", and "Lincoln town, RI". And special examples like
+    #     "Salt Lake City city, UT" must keep the "city" after "City".
+    # summary_level : summary level like "050"
+    # geo_comp : geographic component such as "00", "01", and "43"
+    # show_progress : whether to show progress in fread()n
+    #
+    # Return_____
+    # A data.table
+    #
+    # Examples_____
+    # aaa = totalcensus:::read_decennial_areas_(
+    #     year = 2010,
+    #     states = c("ri", "MA"),
+    #     table_contents = c("P0030003", "P0080036", "PCT012G002", "PCT012G181"),
+    #     areas = c("Lincoln town, ri", "PLACE = RI59000", "providence metro"),
+    #     summary_level = "block"
+    # )
+    #
+    # bbb <- totalcensus:::read_decennial_areas_(
+    #     year = 2010,
+    #     states = c("ut", "ri"),
+    #     table_contents = c("P0030003", "P0080036", "PCT012G002", "PCT012G181"),
+    #     areas = c("Lincoln Town, RI",
+    #               "Kent county, RI",
+    #               "Salt Lake City city, UT",
+    #               "Salt Lake metro",
+    #               "Providence city, RI"),
+    #     summary_level = "block group"
+    # )
 
     #=== prepare arguments ===
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
-    geo_headers_0 <- geo_headers  # keep a copy for latter use
+
+    # convert areas to the form of data.table
+    #    geoheader  code state                    name
+    # 1:     PLACE 62360    UT     Providence city, UT
+    # 2:    COUNTY   005    RI      Newport County, RI
+    dt_areas <- convert_areas(areas)
+
 
     states <- toupper(states)
+    # toupper(NULL) ---> character(0) will cause trouble
     if (!is.null(table_contents)) table_contents <- toupper(table_contents)
-    if (!is.null(geo_headers)) geo_headers <- toupper(geo_headers)
+
+    # this is used to extract geographic headers
+    if (!is.null(areas)) geo_headers <- unique(dt_areas[, geoheader])
+
+    # switch summary level to code
+    summary_level <- switch_summarylevel(summary_level)
 
 
+    # lookup of the year
     lookup <- get(paste0("lookup_census_", year))
+
     for (content in table_contents) {
         if (!tolower(content) %in% tolower(lookup$reference)){
             stop(paste("The table content reference", content, "does not exist."))
         }
     }
 
-    # switch summary level to code
-    if (summary_level %in% c("state", "county", "county subdivision", "place",
-                             "tract", "block group", "block")){
-        summary_level <- switch(summary_level,
-                                "state" = "040",
-                                "county" = "050",
-                                "county subdivision" = "060",
-                                "place" = "160",
-                                "tract" = "140",
-                                "block group" = "150",
-                                "block" = "100")
-    }
+    # === read files ===
 
-    # # data to covert STATE (fips) to state (abbreviation)
-    # state_fips <- dict_fips[SUMLEV == "040",
-    #                         .(state = state_abbr, STATE)]
-
-    # extract information from argument geo_headers
-    dt_geo <- organize_geoheaders(geo_headers)
-    # geo <- str_replace_all(geo_headers, " ", "") %>%
-    #     toupper()
-    # dt_geo <- data.table(
-    #     geoheader = str_extract(geo, "^[^=]*"),
-    #     code = str_split(str_extract(geo, "[^=]*$"), ",")
-    # ) %>%
-    #     .[, state := str_extract(code, "^[A-Z]*")] %>%
-    #     .[, code := str_extract(code, "[0-9]*$")]
-
-    # this is used to extract geoheaders
-    if (!is.null(geo_headers)) geo_headers <- unique(dt_geo[, geoheader])
-
-    if (with_coord){
-        geo_headers = c(c("INTPTLON", "INTPTLAT"), geo_headers)
-    }
-
-    #=== read files ===
-    lst <- list()
-    iter <- 0
-    N <- length(states)
-
-    for (st in toupper(states)){
-        iter <- iter + 1
-        cat(paste0("reading ", iter, "/", N, " states\n"))
-
-        # add st to geoheaders as there are multiple state
-        geo <- read_decennial_geoheader_(year, st, c(geo_headers, "STATE"),
-                                         show_progress = show_progress) %>%
+    lst_state <- list()
+    for (state in states) {
+        # read geography. do NOT read geo_headers from decennial data, instead read
+        # from GEOID_coord_XX later on, which is generated from Census 2010 and
+        # has much more geo_header data
+        geo <- read_decennial_geo_(year, state,
+                                   c(geo_headers, "STATE", "INTPTLON", "INTPTLAT"),
+                                   show_progress = TRUE) %>%
+            setnames(c("INTPTLON", "INTPTLAT"), c("lon", "lat")) %>%
             # convert STATE fips to state abbreviation
             .[, state := convert_fips_to_names(STATE)] %>%
             setkey(LOGRECNO)
 
-        if (with_population){
-            table_contents <- c("P0010001", table_contents)
-            data <- read_decennial_tablecontents_(year, st, table_contents,
-                                                  show_progress = show_progress)
-            census <- geo[data] %>%
-                setnames("P0010001", "population")
+
+        # add population data of each geographic area
+        popul <- read_decennial_tablecontents_(year, state,
+                                               "P0010001", show_progress) %>%
+            .[, .(LOGRECNO, population = P0010001)]
+        geo <- geo[popul]
+
+        # read data from each file
+        if(!is.null(table_contents)){
+            # get files for table contents, follow the notation of read_tablecontent.R
+            dt <- read_decennial_tablecontents_(year, state, table_contents,
+                                                show_progress)
+            decennial <- merge(geo, dt)
         } else {
-            if (!is.null(table_contents)) {
-                data <- read_decennial_tablecontents_(year, st, table_contents,
-                                                      show_progress = show_progress)
-                census <- geo[data, on = .(LOGRECNO)]
-            } else {
-                census <- geo
-            }
+            decennial <- geo
         }
 
-        lst[[st]] <- census[SUMLEV %like% summary_level & GEOCOMP %like% geo_comp]
-    }
-    combined <- rbindlist(lst) %>%
-        .[, LOGRECNO := NULL]
+        # To determine what PLACE or COUSUB a tract or block group (partially)
+        # blongs, replace PLACE and COUSUB with those obtained from census 2010
+        # in generate_geoid_coordinate.R
+        decennial <- add_geoheader(decennial, state, geo_headers, summary_level,
+                                   survey = "decennial")
 
-    if (with_coord) {
-        setnames(combined, c("INTPTLON", "INTPTLAT"), c("lon", "lat"))
-        setcolorder(combined, c(c("lon", "lat"), setdiff(names(combined), c("lon", "lat"))))
-    }
+        lst_state[[state]] <- decennial[SUMLEV %like% summary_level & GEOCOMP %like% geo_comp]
 
-    # select data for argument geo_headers
-    if (is.null(geo_headers_0)) {
-        selected <- combined
-    } else {
-        selected <- map(1:nrow(dt_geo),
-                        function(x) combined[get(dt_geo[x, geoheader]) %like% dt_geo[x, code] &
-                                                 state %like% dt_geo[x, state]]) %>%
-            rbindlist()
     }
 
-    selected[, STATE := NULL]
+    combined <- rbindlist(lst_state) %>%
+        .[, ":=" (LOGRECNO = NULL, STATE = NULL)]
+
+
+    # select data for argument areas
+    selected <- map(
+        1:nrow(dt_areas),
+        function(x) combined[get(dt_areas[x, geoheader]) %like% dt_areas[x, code] &
+                                 state %like% dt_areas[x, state]] %>%
+            .[, area := dt_areas[x, name]]
+    ) %>%
+        rbindlist() %>%
+        # no use of the geoheaders
+        .[, unique(dt_areas[, geoheader]) := NULL]
+
+    # reorder columns
+    begin <- c("area", "lon", "lat")
+    end <- c("GEOCOMP", "SUMLEV")
+    setcolorder(selected, c(begin, setdiff(names(selected), c(begin, end)), end))
 
     return(selected)
 }
 
 
-# internal functions ============================================================
 
-# reviewed on 11/6/2017
+read_decennial_geoheaders_ <- function(year,
+                                  states,
+                                  table_contents = NULL,
+                                  geo_headers = NULL,
+                                  summary_level = "*",
+                                  geo_comp = "*",
+                                  show_progress = TRUE){
+    # read decennial census data of selected areas
+    #
+    # Args_____
+    # year :  end year of the 5-year survey
+    # states : vector of abbreviations of states such as c("MA", "RI")
+    # table_contents :  vector of reference of available table contents
+    # geo_headers : vetor of geographic header such as c("PLACE", "CBSA")
+    # summary_level : summary level like "050"
+    # geo_comp : geographic component such as "00", "01", and "43"
+    # show_progress : whether to show progress in fread()n
+    #
+    # Return_____
+    # A data.table
+    #
+    # Examples_____
+    # aaa = totalcensus:::read_decennial_geoheaders_(
+    #     year = 2010,
+    #     states = c("ri", "MA"),
+    #     table_contents = c("P0030003", "P0080036", "PCT012G002", "PCT012G181"),
+    #     geo_headers = c("COUSUB", "PLACE", "CBSA"),
+    #     summary_level = "block"
+    # )
+    #
+    # bbb <- totalcensus:::read_decennial_geoheaders_(
+    #     year = 2010,
+    #     states = c("ut", "ri"),
+    #     table_contents = c("P0030003", "P0080036", "PCT012G002", "PCT012G181"),
+    #     geo_headers = c("COUSUB", "PLACE", "CBSA"),
+    #     summary_level = "block group"
+    # )
+
+    #=== prepare arguments ===
+
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
+    states <- toupper(states)
+    # toupper(NULL) ---> character(0) will cause trouble
+    if (!is.null(table_contents)) table_contents <- toupper(table_contents)
+    if (!is.null(geo_headers)) geo_headers <- toupper(geo_headers)
+
+    # switch summary level to code
+    summary_level <- switch_summarylevel(summary_level)
+
+
+    # lookup of the year
+    lookup <- get(paste0("lookup_census_", year))
+
+    for (content in table_contents) {
+        if (!tolower(content) %in% tolower(lookup$reference)){
+            stop(paste("The table content reference", content, "does not exist."))
+        }
+    }
+
+    # === read files ===
+
+    lst_state <- list()
+    for (state in states) {
+        # read geography. do NOT read geo_headers from decennial data, instead read
+        # from GEOID_coord_XX later on, which is generated from Census 2010 and
+        # has much more geo_header data
+        geo <- read_decennial_geo_(year, state,
+                                   c(geo_headers, "STATE", "INTPTLON", "INTPTLAT"),
+                                   show_progress = TRUE) %>%
+            setnames(c("INTPTLON", "INTPTLAT"), c("lon", "lat")) %>%
+            # convert STATE fips to state abbreviation
+            .[, state := convert_fips_to_names(STATE)] %>%
+            setkey(LOGRECNO)
+
+
+        # add population data of each geographic area
+        popul <- read_decennial_tablecontents_(year, state,
+                                               "P0010001", show_progress) %>%
+            .[, .(LOGRECNO, population = P0010001)]
+        geo <- geo[popul]
+
+        # read data from each file
+        if(!is.null(table_contents)){
+            # get files for table contents, follow the notation of read_tablecontent.R
+            dt <- read_decennial_tablecontents_(year, state, table_contents,
+                                                show_progress)
+            decennial <- merge(geo, dt)
+        } else {
+            decennial <- geo
+        }
+
+        # To determine what PLACE or COUSUB a tract or block group (partially)
+        # blongs, replace PLACE and COUSUB with those obtained from census 2010
+        # in generate_geoid_coordinate.R
+        decennial <- add_geoheader(decennial, state, geo_headers, summary_level,
+                                   survey = "decennial")
+
+        lst_state[[state]] <- decennial[SUMLEV %like% summary_level & GEOCOMP %like% geo_comp]
+
+    }
+
+    combined <- rbindlist(lst_state) %>%
+        .[, ":=" (LOGRECNO = NULL, STATE = NULL)]
+
+
+    if (length(geo_headers) == 1){
+        combined[, area := convert_fips_to_names(get(geo_headers), state, geo_headers)]
+    }
+
+
+    # reorder columns
+    if (length(geo_headers) == 1){
+        begin <- c("area", "lon", "lat")
+    } else {
+        begin <- c("lon", "lat")
+    }
+    end <- c("GEOCOMP", "SUMLEV")
+    setcolorder(combined, c(begin, setdiff(names(combined), c(begin, end)), end))
+
+    return(combined)
+}
+
+
+
 
 # Read geographic header record file of ONE state
 
-read_decennial_geoheader_ <- function(year,
-                                      state,
-                                      geo_headers = NULL,
-                                      show_progress = TRUE) {
+read_decennial_geo_ <- function(year,
+                                state,
+                                geo_headers = NULL,
+                                show_progress = TRUE) {
     # This function reads the geographic record file of one state and returns a
     # data.table with columns of LOGRECNO, SUNLEV, GEOCOMP plus geoheaders
     # given in argument geo_headers of the

@@ -2,7 +2,6 @@
 
 export(generate_geoidcoord)
 export(read_acs1year)
-export(read_acs5location)
 export(read_acs5year)
 export(read_decennial)
 export(search_cbsa)

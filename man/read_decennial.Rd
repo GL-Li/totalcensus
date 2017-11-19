@@ -4,9 +4,9 @@
 \alias{read_decennial}
 \title{Read decennial census data}
 \usage{
-read_decennial(year, states, table_contents = NULL, geo_headers = NULL,
-  summary_level = "*", geo_comp = "*", with_coord = TRUE,
-  with_population = TRUE, show_progress = TRUE)
+read_decennial(year, states, table_contents = NULL, areas = NULL,
+  geo_headers = NULL, summary_level = "*", geo_comp = "*",
+  show_progress = TRUE)
 }
 \arguments{
 \item{year}{year of the decennial census}
@@ -51,7 +51,7 @@ NAs. To find the references of table contents of interest, search with function
 aaa = read_decennial(year = 2010,
                      states = "ut",
                      table_contents = c("P0150008"),
-                     geo_headers = c("place = 62360"),
+                     geo_headers = c("COUSUB", "CBSA"),
                      summary_level = "block")
 
 
@@ -60,10 +60,10 @@ bbb = read_decennial(year = 2010,
                      states = c("ut", "ri"),
                      table_contents = c("P0150008", "P0030001", "P0030003",
                                         "P0080036", "PCT012G002", "PCT012G181"),
-                     geo_headers = c("place = ut62360",  # place in UT
-                                     "place = 14140",    # place in UT or RI
-                                     "cousub = ri41500", # county sub in RI
-                                     "cbsa = 39300"),    # metro in UT or RI
+                     areas = c("place = ut62360",
+                                     "Providence city, RI",
+                                     "cousub = ri41500",
+                                     "cbsa = 39300"),
                      summary_level = "block")
 
 

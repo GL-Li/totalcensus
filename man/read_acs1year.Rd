@@ -4,19 +4,24 @@
 \alias{read_acs1year}
 \title{Read ACS 1-year survey}
 \usage{
-read_acs1year(year, states, table_contents = NULL, geo_headers = NULL,
-  summary_level = "*", geo_comp = "*", with_margin = FALSE,
-  with_coord = TRUE, with_population = TRUE, with_acsgeoheaders = FALSE,
-  show_progress = TRUE)
+read_acs1year(year, states, table_contents = NULL, areas = NULL,
+  geo_headers = NULL, summary_level = "*", geo_comp = "*",
+  with_margin = FALSE, with_acsgeoheaders = FALSE, show_progress = TRUE)
 }
 \arguments{
-\item{year}{year of the 1-year survey}
+\item{year}{end year of the 5-year survey}
 
 \item{states}{vector of abbreviations of states such as c("MA", "RI")}
 
 \item{table_contents}{vector of reference of available table contents}
 
-\item{geo_headers}{vector of geographic headers like c("NAME", "PLACE")}
+\item{areas}{For metro area, in the format like "New York metro".
+ For county, city, or town, must use the exact name as those in
+ \code{\link{dict_fips}} in the format like "kent county, RI",
+"Boston city, MA", and "Lincoln town, RI". And special examples like
+"Salt Lake City city, UT" must keep the "city" after "City".}
+
+\item{geo_headers}{vector of geographic headers like c("COUNTY", "PLACE")}
 
 \item{summary_level}{summary level like "050"}
 
@@ -24,13 +29,13 @@ read_acs1year(year, states, table_contents = NULL, geo_headers = NULL,
 
 \item{with_margin}{read also margin of error in addition to estimate}
 
-\item{with_coord}{whether to include longitude and latitude in return}
-
-\item{with_population}{whether to include total population in return}
-
 \item{with_acsgeoheaders}{whether to include geographic headers from ACS data}
 
 \item{show_progress}{whether to show progress in fread()n}
+
+\item{with_coord}{whether to include longitude and latitude in return}
+
+\item{with_population}{whether to include total population in return}
 }
 \value{
 A data.table of selected data.
@@ -41,13 +46,21 @@ of selected states.
 }
 \examples{
 \dontrun{
-# The lowest summary level in ACS 1-year is county subdivision. There is no
-# need to run fine search in geo_headers but just use NULL geo_headers.
-# The example get data of all counties in UT and RI.
+# read summary data using areas of selected cities
 aaa <- read_acs1year(2015, c("ut", "ri"),
-                      table_contents = c("B01001_009", "B00001_001", "B10001_002"),
-                      summary_level = "county")
-}
+                      table_contents = c("B01001_009", "B00001_001"),
+                      areas = c("Salt Lake City city, UT",
+                                "Providence city, RI",
+                                "PLACE = RI19180"),
+                      summary_level = "place")
 
+
+# read data using geoheaders - all major counties
+bbb <- read_acs1year(2015, c("UT", "RI"),
+                      table_contents = c("B01001_009", "B00001_001"),
+                      geo_headers = c("COUNTY"),
+                      summary_level = "county")
+
+}
 
 }

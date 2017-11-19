@@ -47,7 +47,7 @@ generate_geoidcoord <- function(states =  c(states_DC, "PR", "US")){
                     "BLOCK", "CD", "SLDU", "SLDL", "CBSA", "METDIV", "CSA", "CONCIT",
                     "ANRC", "AIANHH", "AIHHTLI", "AITSCE", "CNECTA", "NECTA",
                     "NECTADIV", "UA", "PUMA", "SDELM", "SDSEC", "SDUNI", "TTRACT",
-                    "TBLKGRP", "ZCTA5")
+                    "TBLKGRP", "ZCTA5", "NAME")
 
     i <- 0
     N <- length(states)
@@ -55,7 +55,7 @@ generate_geoidcoord <- function(states =  c(states_DC, "PR", "US")){
         i <- i + 1
         cat(paste("Reading", i, "of", N, "states geography.\n"))
 
-        geo <- read_decennial_geoheader_(
+        geo <- read_decennial_geo_(
                                year = 2010,
                                state = st,
                                geo_headers = geoheaders
@@ -156,7 +156,7 @@ generate_geoidcoord <- function(states =  c(states_DC, "PR", "US")){
             .[SUMLEV == "960", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, SDSEC)] %>%
             .[SUMLEV == "970", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, SDUNI)] %>%
             setnames(c("INTPTLON", "INTPTLAT"), c("lon", "lat")) %>%
-            .[, LOGRECNO := NULL] %>%
+            # .[, LOGRECNO := NULL] %>%
             unique()
 
 
@@ -188,7 +188,9 @@ generate_geoidcoord <- function(states =  c(states_DC, "PR", "US")){
             .[, GEOID := paste0("150", GEOCOMP, "US", STATE, COUNTY, TRACT, BLKGRP)] %>%
             .[, .(GEOID, PLACE)] %>%
             .[PLACE != "99999"] %>%
-            .[, .(n_blocks = .N), by = .(GEOID, PLACE)]
+            .[, .(n_blocks = .N), by = .(GEOID, PLACE)] %>%
+            # add back LOGRECNO
+            geoid_coord[, .(LOGRECNO, GEOID)][., on = .(GEOID)]
 
         if(!dir.exists(paste0(path_to_census, "/generated_data/blkgrp_geoid_place"))){
             dir.create(paste0(path_to_census, "/generated_data/blkgrp_geoid_place"))
@@ -205,7 +207,9 @@ generate_geoidcoord <- function(states =  c(states_DC, "PR", "US")){
             .[, GEOID := paste0("150", GEOCOMP, "US", STATE, COUNTY, TRACT, BLKGRP)] %>%
             .[, .(GEOID, COUSUB)] %>%
             .[COUSUB != ""] %>%
-            .[, .(n_blocks = .N), by = .(GEOID, COUSUB)]
+            .[, .(n_blocks = .N), by = .(GEOID, COUSUB)] %>%
+            # add back LOGRECNO
+            geoid_coord[, .(LOGRECNO, GEOID)][., on = .(GEOID)]
 
         if(!dir.exists(paste0(path_to_census, "/generated_data/blkgrp_geoid_cousub"))){
             dir.create(paste0(path_to_census, "/generated_data/blkgrp_geoid_cousub"))
@@ -221,7 +225,9 @@ generate_geoidcoord <- function(states =  c(states_DC, "PR", "US")){
             .[, GEOID := paste0("140", GEOCOMP, "US", STATE, COUNTY, TRACT)] %>%
             .[, .(GEOID, PLACE)] %>%
             .[PLACE != "99999"] %>%
-            .[, .(n_blocks = .N), by = .(GEOID, PLACE)]
+            .[, .(n_blocks = .N), by = .(GEOID, PLACE)] %>%
+            # add back LOGRECNO
+            geoid_coord[, .(LOGRECNO, GEOID)][., on = .(GEOID)]
 
         if(!dir.exists(paste0(path_to_census, "/generated_data/tract_geoid_place"))){
             dir.create(paste0(path_to_census, "/generated_data/tract_geoid_place"))
@@ -239,7 +245,9 @@ generate_geoidcoord <- function(states =  c(states_DC, "PR", "US")){
             .[, GEOID := paste0("140", GEOCOMP, "US", STATE, COUNTY, TRACT)] %>%
             .[, .(GEOID, COUSUB)] %>%
             .[COUSUB != ""] %>%
-            .[, .(n_blocks = .N), by = .(GEOID, COUSUB)]
+            .[, .(n_blocks = .N), by = .(GEOID, COUSUB)] %>%
+            # add back LOGRECNO
+            geoid_coord[, .(LOGRECNO, GEOID)][., on = .(GEOID)]
 
         if(!dir.exists(paste0(path_to_census, "/generated_data/tract_geoid_cousub"))){
             dir.create(paste0(path_to_census, "/generated_data/tract_geoid_cousub"))
@@ -247,5 +255,11 @@ generate_geoidcoord <- function(states =  c(states_DC, "PR", "US")){
         file_name <- paste0(path_to_census,
                             "/generated_data/tract_geoid_cousub/tract_geoid_cousub_", st, ".csv")
         fwrite(tract_geoid_cousub, file = file_name)
+
+
+        # generate fips for place and county subdivision =======================
+        # to be finished
+        # place_fips <- geo[SUMLEV == "160" & GEOCOMP == "00", .(PLACE, NAME)]
+        # cousub_fips <- geo[SUMLEV == "060" & GEOCOMP == "00", .(COUSUB, NAME)]
     }
 }

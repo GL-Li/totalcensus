@@ -1,7 +1,7 @@
 Package: totalcensus
 Type: Package
 Title: Extract information from raw data of decenial census and American commuity surveys
-Version: 0.1.0
+Version: 0.2.0
 Author: GL Li
 Maintainer: GL Li <liguanglai@gmail.com>
 Description: This package retrieves data from US census 2010 
