@@ -381,15 +381,16 @@ add_geoheader <- function(dt, state, geo_headers, summary_level, survey = "acs")
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
     if (survey == "acs"){
-        if (summary_level == "150"){
+        if (summary_level %in% c("150", "*")){
             if ("PLACE" %in% geo_headers){
                 file <- paste0(path_to_census,
                                "generated_data/blkgrp_geoid_place/blkgrp_geoid_place_",
                                state, ".csv")
                 blkgrp <- fread(file, colClasses = "character") %>%
-                    .[, .(GEOID, PLACE)]
-                dt <- dt[, PLACE := NULL] %>%
-                    blkgrp[., on = .(GEOID), allow.cartesian=TRUE]
+                    .[, .(GEOID, PLACE_tmp = PLACE)]
+                dt <- blkgrp[dt, on = .(GEOID), allow.cartesian=TRUE] %>%
+                    .[SUMLEV == "150", PLACE := PLACE_tmp] %>%
+                    .[, PLACE_tmp := NULL]
             }
 
             if ("COUSUB" %in% geo_headers){
@@ -397,20 +398,22 @@ add_geoheader <- function(dt, state, geo_headers, summary_level, survey = "acs")
                                "generated_data/blkgrp_geoid_cousub/blkgrp_geoid_cousub_",
                                state, ".csv")
                 blkgrp <- fread(file, colClasses = "character") %>%
-                    .[, .(GEOID, COUSUB)]
-                dt <- dt[, COUSUB := NULL] %>%
-                    blkgrp[., on = "GEOID", allow.cartesian=TRUE]
+                    .[, .(GEOID, COUSUB_tmp = COUSUB)]
+                dt <- blkgrp[dt, on = "GEOID", allow.cartesian=TRUE] %>%
+                    .[SUMLEV == "150", COUSUB := COUSUB_tmp] %>%
+                    .[, COUSUB_tmp := NULL]
             }
         }
-        if (summary_level == "140"){
+        if (summary_level %in% c("140", "*")){
             if ("PLACE" %in% geo_headers){
                 file <- paste0(path_to_census,
                                "generated_data/tract_geoid_place/tract_geoid_place_",
                                state, ".csv")
                 tract <- fread(file, colClasses = "character") %>%
-                    .[, .(GEOID, PLACE)]
-                dt <- dt[, PLACE := NULL] %>%
-                    tract[., on = .(GEOID), allow.cartesian=TRUE]
+                    .[, .(GEOID, PLACE_tmp = PLACE)]
+                dt <- tract[dt, on = .(GEOID), allow.cartesian=TRUE] %>%
+                    .[SUMLEV == "140", PLACE := PLACE_tmp] %>%
+                    .[, PLACE_tmp := NULL]
             }
 
             if ("COUSUB" %in% geo_headers){
@@ -418,25 +421,27 @@ add_geoheader <- function(dt, state, geo_headers, summary_level, survey = "acs")
                                "generated_data/tract_geoid_cousub/tract_geoid_cousub_",
                                state, ".csv")
                 tract <- fread(file, colClasses = "character") %>%
-                    .[, .(GEOID, COUSUB)]
-                dt <- dt[, COUSUB := NULL] %>%
-                    tract[., on = .(GEOID), allow.cartesian=TRUE]
+                    .[, .(GEOID, COUSUB_tmp = COUSUB)]
+                dt <- tract[dt, on = .(GEOID), allow.cartesian=TRUE] %>%
+                    .[SUMLEV == "140", COUSUB := COUSUB_tmp] %>%
+                    .[, COUSUB_tmp := NULL]
             }
         }
     }
 
 
     if (survey == "decennial"){
-        if (summary_level == "150"){
+        if (summary_level %in% c("150", "*")){
             if ("PLACE" %in% geo_headers){
                 file <- paste0(path_to_census,
                                "generated_data/blkgrp_geoid_place/blkgrp_geoid_place_",
                                state, ".csv")
                 blkgrp <- fread(file, colClasses = "character") %>%
-                    .[, .(LOGRECNO, PLACE)] %>%
+                    .[, .(LOGRECNO, PLACE_tmp = PLACE)] %>%
                     .[, LOGRECNO := as.numeric(LOGRECNO)]
-                dt <- dt[, PLACE := NULL] %>%
-                    blkgrp[., on = .(LOGRECNO), allow.cartesian=TRUE]
+                dt <- blkgrp[dt, on = .(LOGRECNO), allow.cartesian=TRUE] %>%
+                    .[SUMLEV == "150", PLACE := PLACE_tmp] %>%
+                    .[, PLACE_tmp := NULL]
             }
 
             if ("COUSUB" %in% geo_headers){
@@ -444,23 +449,25 @@ add_geoheader <- function(dt, state, geo_headers, summary_level, survey = "acs")
                                "generated_data/blkgrp_geoid_cousub/blkgrp_geoid_cousub_",
                                state, ".csv")
                 blkgrp <- fread(file, colClasses = "character") %>%
-                    .[, .(LOGRECNO, COUSUB)] %>%
+                    .[, .(LOGRECNO, COUSUB_tmp = COUSUB)] %>%
                     .[, LOGRECNO := as.numeric(LOGRECNO)]
-                dt <- dt[, COUSUB := NULL] %>%
-                    blkgrp[., on = .(LOGRECNO), allow.cartesian=TRUE]
+                dt <- blkgrp[dt, on = .(LOGRECNO), allow.cartesian=TRUE] %>%
+                    .[SUMLEV == "150", COUSUB := COUSUB_tmp] %>%
+                    .[, COUSUB_tmp := NULL]
             }
         }
 
-        if (summary_level == "140"){
+        if (summary_level %in% c("140", "*")){
             if ("PLACE" %in% geo_headers){
                 file <- paste0(path_to_census,
                                "generated_data/tract_geoid_place/tract_geoid_place_",
                                state, ".csv")
                 tract <- fread(file, colClasses = "character") %>%
-                    .[, .(LOGRECNO, PLACE)] %>%
+                    .[, .(LOGRECNO, PLACE_tmp = PLACE)] %>%
                     .[, LOGRECNO := as.numeric(LOGRECNO)]
-                dt <- dt[, PLACE := NULL] %>%
-                    tract[., on = .(LOGRECNO), allow.cartesian=TRUE]
+                dt <- tract[dt, on = .(LOGRECNO), allow.cartesian=TRUE] %>%
+                    .[SUMLEV == "140", PLACE := PLACE_tmp] %>%
+                    .[, PLACE_tmp := NULL]
             }
 
             if ("COUSUB" %in% geo_headers){
@@ -468,10 +475,11 @@ add_geoheader <- function(dt, state, geo_headers, summary_level, survey = "acs")
                                "generated_data/tract_geoid_cousub/tract_geoid_cousub_",
                                state, ".csv")
                 tract <- fread(file, colClasses = "character") %>%
-                    .[, .(LOGRECNO, COUSUB)] %>%
+                    .[, .(LOGRECNO, COUSUB_tmp = COUSUB)] %>%
                     .[, LOGRECNO := as.numeric(LOGRECNO)]
-                dt <- dt[, COUSUB := NULL] %>%
-                    tract[., on = .(LOGRECNO), allow.cartesian=TRUE]
+                dt <- tract[dt, on = .(LOGRECNO), allow.cartesian=TRUE] %>%
+                    .[SUMLEV == "140", COUSUB := COUSUB_tmp] %>%
+                    .[, COUSUB_tmp := NULL]
             }
         }
     }
