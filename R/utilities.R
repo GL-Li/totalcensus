@@ -496,7 +496,7 @@ add_coord <- function(dt, state, geo_headers){
     file <- paste0(path_to_census, "/generated_data/geoid_coord/geoid_coord_",
                    state, ".csv")
     coord <- fread(file,
-                   select = c("LOGRECNO", "GEOID", "lon", "lat", geo_headers),
+                   select = c("GEOID", "lon", "lat", geo_headers),
                    colClasses = "character") %>%
         .[, lon := as.numeric(lon)] %>%
         .[, lat := as.numeric(lat)]
