@@ -463,6 +463,15 @@ read_acs1year_1_file_tablecontents_ <- function(year, state, file_seg, table_con
         setnames(table_contents, paste0(table_contents, "_", est_marg)) %>%
         setkey(LOGRECNO)
 
+    # convert non-numeric columns to numeric
+    # some missing data are denoted as ".", which lead to the whole column read
+    # as character
+    for (col in names(dt)){
+        if (is.character(dt[, get(col)])){
+            dt[, (col) := as.numeric(get(col))]
+        }
+    }
+
     return(dt)
 }
 

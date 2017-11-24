@@ -56,10 +56,15 @@ convert_fips_to_names <- function(FIPs, states = NULL, geo_header = "STATE") {
         names <- dict_cbsa[FIPs, on = .(CBSA = fips)] %>%
             .[, unique(CBSA_title)] %>%
             paste0("metro: ", .)
+    } else if (geo_header == "COUNTY"){
+        fips_geo <- dict_fips[SUMLEV == "050",
+                              .(state = state_abbr, county = NAME, fips = COUNTY)]
+        names <- fips_geo[FIPs, on = .(fips, state)] %>%
+            .[, county]
     } else {
         message(paste('This version only provides names of major areas available in datasets',
                       'dict_fips and dict_cbsa for geographic headers',
-                      'STATE, COUNTY, PLACE, and CBSA'))
+                      'STATE, COUNTY, PLACE, COUNTY, and CBSA'))
         names <- "To be added"
     }
 
@@ -82,13 +87,19 @@ compress_datatable <- function(dt){
     #    x                  y
     # 1: A,  c("f", "g", "i")
     # 2: B                "h"
+    #
+    # dt2 <- data.table(x = c("A", "A", "A", "A"), y = letters[6:9])
+    # compress_datatable(dt2)
 
     col_1 <- names(dt)[1]
     col_2 <- names(dt)[2]
     res <- dt %>%
         .[, paste(get(col_2), collapse = ","), by = .(get(col_1))] %>%
         .[, (col_1) := get] %>%
-        .[, (col_2) := str_split(V1, ",")] %>%
+        # force to be a list after split, otherwise if there is only one list
+        # element after split, it will be treated as vector and only the force
+        # element of the vector will be taken.
+        .[, (col_2) := list(str_split(V1, ","))] %>%
         .[, ":=" (get = NULL, V1 = NULL)]
 
     return(res)

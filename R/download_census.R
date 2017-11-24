@@ -14,7 +14,7 @@
 
 download_census <- function(survey = NULL, year = NULL, states = c(states_DC, "US", "PR")){
     if (is.null(survey)){
-        message("Need 200 GB free space. Run download_census() again to continue downloading in case connection breaks.")
+        message("Need 200 GB free space. Run download_census() again to resume downloading in case downloading breaks.")
         download_decennial_(2010, states)
         download_acs5year_(2015, states)
         download_acs1year_(2016)

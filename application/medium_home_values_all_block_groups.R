@@ -6,24 +6,21 @@ library(ggmap)
 
 
 # national home value ==========================================================
-home_national <- read_acs5year(states = states_DC,
-                                   year = 2015,
-                                   table_contents = c("B01003_001", "B25077_001"),
-                                   summary_level = "block_group",
-                                   with_margin = FALSE) %>%
-    setnames(c("B01003_001_e", "B25077_001_e"), c("population", "value")) %>%
-    # some missing value in home value shown as "." and so the whole column was
-    # read into character. change column back to numeric and remove NAs
-    .[, value := as.numeric(value)] %>%
-    .[!is.na(value)] %>%
-    .[order(value)]
+home_national <- read_acs5year(
+    year = 2015,
+    states = states_DC,  # all 50 states plus DC
+    table_contents = "B25077_001",
+    summary_level = "block group"
+) %>%
+    setnames("B25077_001_e", "home_value") %>%
+    .[!is.na(home_value)]
 
 
 us_map <- get_map("united states", zoom = 4, color = "bw")
 
 ggmap(us_map) +
     geom_point(data = home_national,
-               aes(lon, lat, size = population, color = value),
+               aes(lon, lat, size = population, color = home_value),
                alpha = 1) +
     ylim(25, 50) +
     scale_size_area(max_size = 0.1) +
@@ -45,11 +42,11 @@ ggsave(filename = "application/national_home_value.png", width = 9, height = 6)
 
 # New York metro home value ==========================================================
 home_nymetro <- read_acs5year(states = c("NY", "NJ", "PA"),
-                               year = 2015,
+                              year = 2015,
                               geo_headers = "CBSA",
-                               table_contents = c("B01003_001", "B25077_001"),
-                               #summary_level = "block_group",
-                               with_margin = FALSE) %>%
+                              table_contents = c("B01003_001", "B25077_001"),
+                              #summary_level = "block_group",
+                              with_margin = FALSE) %>%
     .[CBSA == "35620"] %>%
     setnames(c("B01003_001_e", "B25077_001_e"), c("population", "value")) %>%
     # some missing value in home value shown as "." and so the whole column was

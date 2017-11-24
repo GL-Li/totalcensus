@@ -64,7 +64,7 @@ read_acs5year <- function(year,
     }
 
     # turn off warning, fread() gives warnings when read non-scii characters.
-    #options(warn = -1)
+    options(warn = -1)
 
     if (!is.null(areas)){
         dt <- read_acs5year_areas_(
@@ -78,7 +78,7 @@ read_acs5year <- function(year,
         )
     }
 
-    #options(warn = 0)
+    options(warn = 0)
     return(dt)
     }
 
@@ -508,6 +508,15 @@ read_acs5year_1_file_tablecontents_ <- function(year, state, file_seg,
         # add "_e" or "_m" to show the data is estimate or margin
         setnames(table_contents, paste0(table_contents, "_", est_marg)) %>%
         setkey(LOGRECNO)
+
+    # convert non-numeric columns to numeric
+    # some missing data are denoted as ".", which lead to the whole column read
+    # as character
+    for (col in names(combined)){
+        if (is.character(combined[, get(col)])){
+            combined[, (col) := as.numeric(get(col))]
+        }
+    }
 
     return(combined)
 }

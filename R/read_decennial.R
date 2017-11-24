@@ -353,14 +353,16 @@ read_decennial_geoheaders_ <- function(year,
         .[, ":=" (LOGRECNO = NULL, STATE = NULL)]
 
 
-    if (length(geo_headers) == 1){
-        combined[, area := convert_fips_to_names(get(geo_headers), state, geo_headers)]
+    if (length(geo_headers) == 1 &&
+        geo_headers %in% c("STATE", "COUNTY", "PLACE", "COUNTY", "CBSA")){
+            combined[, area := convert_fips_to_names(get(geo_headers), state, geo_headers)]
     }
 
 
     # reorder columns
-    if (length(geo_headers) == 1){
-        begin <- c("area", "lon", "lat")
+    if (length(geo_headers) == 1 &&
+        geo_headers %in% c("STATE", "COUNTY", "PLACE", "COUNTY", "CBSA")){
+            begin <- c("area", "lon", "lat")
     } else {
         begin <- c("lon", "lat")
     }
