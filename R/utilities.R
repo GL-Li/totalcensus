@@ -495,7 +495,7 @@ add_geoheader <- function(dt, state, geo_headers, summary_level, survey = "acs")
         }
     }
 
-return(dt)
+    return(dt)
 }
 
 
@@ -545,3 +545,34 @@ switch_summarylevel <- function(summary_level){
 
     return(summary_level)
 }
+
+
+switch_geocomp <- function(geo_comp){
+    # Switch only common geocomponent, leave others alone
+    common_geo <- c("total", "urban", "urbanized area", "urban cluster", "rural")
+    if (geo_comp %in% common_geo){
+        geo_comp <- switch(
+            geo_comp,
+            "total" = "00",
+            "urban" = "01",
+            "urbanized area" = "04",
+            "urban cluster" = "28",
+            "rural" = "43"
+        )
+    }
+
+    return(geo_comp)
+}
+
+convert_geocomp_name <- function(dt){
+    # convert common geocomp from code to name
+    # convert only the following common geocomp
+    dt[GEOCOMP == "00", GEOCOMP := "total"] %>%
+        .[GEOCOMP == "01", GEOCOMP := "urban"] %>%
+        .[GEOCOMP == "04", GEOCOMP := "urbanized area"] %>%
+        .[GEOCOMP == "28", GEOCOMP := "urban cluster"] %>%
+        .[GEOCOMP == "43", GEOCOMP := "rural"]
+
+    return(dt)
+}
+

@@ -167,8 +167,9 @@ read_decennial_areas_ <- function(year,
     # this is used to extract geographic headers
     if (!is.null(areas)) geo_headers <- unique(dt_areas[, geoheader])
 
-    # switch summary level to code
+    # switch summary level and geocomponent
     summary_level <- switch_summarylevel(summary_level)
+    geo_comp <- switch_geocomp(geo_comp)
 
 
     # lookup of the year
@@ -223,7 +224,8 @@ read_decennial_areas_ <- function(year,
     }
 
     combined <- rbindlist(lst_state) %>%
-        .[, ":=" (LOGRECNO = NULL, STATE = NULL)]
+        .[, ":=" (LOGRECNO = NULL, STATE = NULL)] %>%
+        convert_geocomp_name()
 
 
     # select data for argument areas
@@ -235,7 +237,8 @@ read_decennial_areas_ <- function(year,
     ) %>%
         rbindlist() %>%
         # no use of the geoheaders
-        .[, unique(dt_areas[, geoheader]) := NULL]
+        .[, unique(dt_areas[, geoheader]) := NULL] %>%
+        convert_geocomp_name()
 
     # reorder columns
     begin <- c("area", "lon", "lat")
@@ -296,6 +299,7 @@ read_decennial_geoheaders_ <- function(year,
 
     # switch summary level to code
     summary_level <- switch_summarylevel(summary_level)
+    geo_comp <- switch_geocomp(geo_comp)
 
 
     # lookup of the year
@@ -350,7 +354,8 @@ read_decennial_geoheaders_ <- function(year,
     }
 
     combined <- rbindlist(lst_state) %>%
-        .[, ":=" (LOGRECNO = NULL, STATE = NULL)]
+        .[, ":=" (LOGRECNO = NULL, STATE = NULL)] %>%
+        convert_geocomp_name()
 
 
     if (length(geo_headers) == 1 &&
