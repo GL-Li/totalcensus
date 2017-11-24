@@ -2,7 +2,7 @@
 % Please edit documentation in R/search_census_and_acs.R
 \name{search_table}
 \alias{search_table}
-\title{Search census tables}
+\title{Search decennial tables}
 \usage{
 search_table(survey, keyword, view = TRUE)
 }
@@ -17,18 +17,18 @@ of "abc defg".}
 A data.table
 }
 \description{
-search census tables by keyword in table numbers or table descriptions
+search decennial tables by keyword in table numbers or table descriptions
 }
 \examples{
 \dontrun{
-  # search census table contains "occupancy"
+  # search decennial table contains "occupancy"
   search_table("occupancy")
 
-  # search census table with table number "H5"
+  # search decennial table with table number "H5"
   search_table("H5")
 }
 
 }
 \seealso{
-\code{\link{dict_censustable}} lists all geocomponents and codes
+\code{\link{dict_decennialtable}} lists all geocomponents and codes
 }

@@ -7,7 +7,7 @@
 search_tablecontents(survey, keyword, year = NULL, view = TRUE)
 }
 \arguments{
-\item{survey}{either "census" for decenial or "acs" or American Community Survey.}
+\item{survey}{either "decennial" for decenial or "acs" or American Community Survey.}
 
 \item{keyword}{keyword to be searched}
 
@@ -18,7 +18,7 @@ A data.table
 }
 \description{
 Search in lookup datasets of each survey to find references of
-for table_contents argument in function \code{\link{read_census2010}},
+for table_contents argument in function \code{\link{read_decennial2010}},
 \code{\link{read_acs1year}}, and \code{\link{read_acs5year}}.
 }
 \examples{

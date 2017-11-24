@@ -1,10 +1,10 @@
 #' Search geographic headers
 #'
 #' @description Search in field reference or description of geographic header
-#' with keyword in dataset \code{\link{dict_census_geoheader}} or
+#' with keyword in dataset \code{\link{dict_decennial_geoheader}} or
 #' \code{\link{dict_acs_geoheader}}.
 #'
-#' @param survey type of survey, either "census" or "acs".
+#' @param survey type of survey, either "decennial" or "acs".
 #' @param keyword keyword in description or reference. The default "*" includes
 #' all geoheaders.
 #' @param view display the search result with View if TRUE
@@ -13,11 +13,11 @@
 #'
 #' @examples
 #' \dontrun{
-#'   # search geoheader that contains keyword "india" in Census 2010
-#'   search_geoheaders("census", "india")
+#'   # search geoheader that contains keyword "india" in decennial 2010
+#'   search_geoheaders("decennial", "india")
 #'
 #'   # search for lattitude
-#'   search_geoheaders("census", "latitu")
+#'   search_geoheaders("decennial", "latitu")
 #'
 #'   # browse all geoheaders in ACS
 #'   search_geoheaders("acs")
@@ -47,10 +47,10 @@ search_geoheaders <- function(survey, keyword = "*", view = TRUE) {
 #' Search table contents in data files
 #'
 #' @description Search in lookup datasets of each survey to find references of
-#' for table_contents argument in function \code{\link{read_census2010}},
+#' for table_contents argument in function \code{\link{read_decennial2010}},
 #' \code{\link{read_acs1year}}, and \code{\link{read_acs5year}}.
 #'
-#' @param survey either "census" for decenial or "acs" or American Community Survey.
+#' @param survey either "decennial" for decenial or "acs" or American Community Survey.
 #' @param keyword keyword to be searched
 #' @param year ending year of the survey
 #'
@@ -80,7 +80,7 @@ search_geoheaders <- function(survey, keyword = "*", view = TRUE) {
 
 search_tablecontents <- function(survey, keyword, year = NULL, view = TRUE) {
 
-    if (survey == "census") dt <- generate_census_tablecontents()
+    if (survey == "decennial") dt <- generate_decennial_tablecontents()
     if (survey == "acs") dt <- generate_acs_tablecontents()
 
     keywords <- unlist(str_split(tolower(keyword), " "))
@@ -205,9 +205,9 @@ search_geocomponents <- function(survey, keyword = "*", view = TRUE){
 
 
 
-#' Search census tables
+#' Search decennial tables
 #'
-#' search census tables by keyword in table numbers or table descriptions
+#' search decennial tables by keyword in table numbers or table descriptions
 #'
 #' @param keyword keyword to search in code or description. To search for a table
 #'     contains two words "abc" and "defg", the keyword is simply a single string
@@ -220,14 +220,14 @@ search_geocomponents <- function(survey, keyword = "*", view = TRUE){
 #'
 #' @examples
 #' \dontrun{
-#'   # search census table contains "occupancy"
+#'   # search decennial table contains "occupancy"
 #'   search_table("occupancy")
 #'
-#'   # search census table with table number "H5"
+#'   # search decennial table with table number "H5"
 #'   search_table("H5")
 #' }
 #'
-#' @seealso \code{\link{dict_censustable}} lists all geocomponents and codes
+#' @seealso \code{\link{dict_decennialtable}} lists all geocomponents and codes
 #'
 #' @export
 #' @import data.table

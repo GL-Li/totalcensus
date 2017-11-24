@@ -119,7 +119,7 @@ lookup_tablecontents <- function(table_contents, lookup){
     # Example_____
     # table_contents = c("P0150008", "P0030001", "P0030003",
     #                   "P0080036", "PCT012G002", "PCT012G181")
-    # lookup <- lookup_census_2010
+    # lookup <- lookup_decennial_2010
     # lookup_tablecontents(table_contents, lookup)
     #    file_seg                          table_contents
     # 1:       03   c("P0030001", "P0030003", "P0080036")

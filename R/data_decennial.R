@@ -1,4 +1,4 @@
-# lookup_census_2010 ===========================================================
+# lookup_decennial_2010 ===========================================================
 #' Lookup data files and table contents of Census 2010
 #'
 #' @description This dataset includes all data fields of data files in census 2010
@@ -12,11 +12,11 @@
 #' @format A data.table with 9199 rows and 6 variables:
 #' \describe{
 #'   \item{file_segment}{sequence number of segment data files, from 1 to 48}
-#'   \item{table_content}{description of columns in a census table}
+#'   \item{table_content}{description of columns in a decennial table}
 #'   \item{reference}{reference of table content, such as "PCT0240019"}
 #'   \item{table_number}{table number such as "H1", "PCT22G"}
 #'   \item{table_name}{description of table, which has many table_content}
-#'   \item{universe}{the universe of the census data}
+#'   \item{universe}{the universe of the decennial data}
 #' }
 #'
 #' @keywords datasets
@@ -27,10 +27,10 @@
 #'
 #'
 
-"lookup_census_2010"
+"lookup_decennial_2010"
 
 
-# dict_census_table ============================================================
+# dict_decennial_table ============================================================
 #' Complete list of census tables
 #'
 #' @description This dataset contains all census tables in census 2010 summary
@@ -57,10 +57,10 @@
 #' all across chapter 5.
 #'
 #'
-"dict_census_table"
+"dict_decennial_table"
 
 
-# dict_census_geocomponent =====================================================
+# dict_decennial_geocomponent =====================================================
 #' List of geographic components and codes
 #'
 #' @description This dataset contains the geographic components and codes used in
@@ -85,10 +85,10 @@
 #' page 6-15
 #'
 #'
-"dict_census_geocomponent"
+"dict_decennial_geocomponent"
 
 
-# dict_census_geoheader ========================================================
+# dict_decennial_geoheader ========================================================
 #' List of geographic headers
 #'
 #' @description  This dataset has the complete list of geographic header
@@ -113,10 +113,10 @@
 #' page 2-8
 #'
 #'
-"dict_census_geoheader"
+"dict_decennial_geoheader"
 
 
-# dict_census_summarylevel =====================================================
+# dict_decennial_summarylevel =====================================================
 #' Summary levels available in Census 2010
 #'
 #' @description  This data contains summary levels and codes used in census 2010
@@ -142,5 +142,5 @@
 #'
 #'
 
-"dict_census_summarylevel"
+"dict_decennial_summarylevel"
 

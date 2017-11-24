@@ -52,9 +52,9 @@ generate_acs_tablecontents <- function(){
 }
 
 
-generate_census_tablecontents <- function(){
-    # will add census 2020 when available
-    census_2010 <- lookup_census_2010[, .(reference, table_content, table_name)] %>%
-        .[, census_2010 := "yes"] %>%
+generate_decennial_tablecontents <- function(){
+    # will add decennial 2020 when available
+    decennial_2010 <- lookup_decennial_2010[, .(reference, table_content, table_name)] %>%
+        .[, decennial_2010 := "yes"] %>%
         .[!is.na(table_name)]
 }

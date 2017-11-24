@@ -7,7 +7,7 @@
 search_geoheaders(survey, keyword = "*", view = TRUE)
 }
 \arguments{
-\item{survey}{type of survey, either "census" or "acs".}
+\item{survey}{type of survey, either "decennial" or "acs".}
 
 \item{keyword}{keyword in description or reference. The default "*" includes
 all geoheaders.}
@@ -19,16 +19,16 @@ data.table matching the search criteria
 }
 \description{
 Search in field reference or description of geographic header
-with keyword in dataset \code{\link{dict_census_geoheader}} or
+with keyword in dataset \code{\link{dict_decennial_geoheader}} or
 \code{\link{dict_acs_geoheader}}.
 }
 \examples{
 \dontrun{
-  # search geoheader that contains keyword "india" in Census 2010
-  search_geoheaders("census", "india")
+  # search geoheader that contains keyword "india" in decennial 2010
+  search_geoheaders("decennial", "india")
 
   # search for lattitude
-  search_geoheaders("census", "latitu")
+  search_geoheaders("decennial", "latitu")
 
   # browse all geoheaders in ACS
   search_geoheaders("acs")

@@ -173,7 +173,7 @@ read_decennial_areas_ <- function(year,
 
 
     # lookup of the year
-    lookup <- get(paste0("lookup_census_", year))
+    lookup <- get(paste0("lookup_decennial_", year))
 
     for (content in table_contents) {
         if (!tolower(content) %in% tolower(lookup$reference)){
@@ -303,7 +303,7 @@ read_decennial_geoheaders_ <- function(year,
 
 
     # lookup of the year
-    lookup <- get(paste0("lookup_census_", year))
+    lookup <- get(paste0("lookup_decennial_", year))
 
     for (content in table_contents) {
         if (!tolower(content) %in% tolower(lookup$reference)){
@@ -316,7 +316,7 @@ read_decennial_geoheaders_ <- function(year,
     lst_state <- list()
     for (state in states) {
         # read geography. do NOT read geo_headers from decennial data, instead read
-        # from GEOID_coord_XX later on, which is generated from Census 2010 and
+        # from GEOID_coord_XX later on, which is generated from decennial 2010 and
         # has much more geo_header data
         geo <- read_decennial_geo_(year, state,
                                    c(geo_headers, "STATE", "INTPTLON", "INTPTLAT"),
@@ -344,7 +344,7 @@ read_decennial_geoheaders_ <- function(year,
         }
 
         # To determine what PLACE or COUSUB a tract or block group (partially)
-        # blongs, replace PLACE and COUSUB with those obtained from census 2010
+        # blongs, replace PLACE and COUSUB with those obtained from decennial 2010
         # in generate_geoid_coordinate.R
         decennial <- add_geoheader(decennial, state, geo_headers, summary_level,
                                    survey = "decennial")
@@ -431,16 +431,16 @@ read_decennial_geo_ <- function(year,
                 # place variable in () to add new columns
                 dt[, (ref) := as.numeric(str_sub(
                     geo[, V1],
-                    dict_census_geoheader[reference == ref, start],
-                    dict_census_geoheader[reference == ref, end]
+                    dict_decennial_geoheader[reference == ref, start],
+                    dict_decennial_geoheader[reference == ref, end]
                 ))]
             } else if (ref %in% c("LOGRECNO", "SUMLEV", "GEOCOMP")) {
                 message(paste(ref, "is already included in return by default.\n"))
             } else {
                 dt[, (ref) := str_trim(str_sub(
                     geo[, V1],
-                    dict_census_geoheader[reference == ref, start],
-                    dict_census_geoheader[reference == ref, end]
+                    dict_decennial_geoheader[reference == ref, start],
+                    dict_decennial_geoheader[reference == ref, end]
                 ))]
             }
         }
@@ -485,11 +485,11 @@ read_decennial_1_file_tablecontents_ <- function(year,
     #=== read data ===
 
     if (year == 2010){
-        lookup_census <- lookup_census_2010
+        lookup_decennial <- lookup_decennial_2010
     }
 
     # determine location of the flds in file_seg
-    all_contents <- lookup_census[file_segment == file_seg, reference]
+    all_contents <- lookup_decennial[file_segment == file_seg, reference]
     loc <- which(all_contents %in% table_contents)
     cols <- paste0("V", loc)
 
@@ -547,7 +547,7 @@ read_decennial_tablecontents_ <- function(year,
     # 31762:    31762    35809      242        0       12        225          0
 
     # locate data files for the content
-    lookup <- get(paste0("lookup_census_", year))
+    lookup <- get(paste0("lookup_decennial_", year))
     file_content <- lookup_tablecontents(table_contents, lookup)
 
     # file_content <- lookup[reference %in% table_contents,

@@ -2,7 +2,7 @@ library(data.table)
 library(magrittr)
 library(ggplot2)
 library(ggmap)
-library(rawcensus)
+library(totalcensus)
 
 # example 1: population in the US ================================
 
@@ -134,7 +134,7 @@ race <- read_decennial(
 )  %>%
     setnames(c("P0030001", "P0030002", "P0030003"), c("total", "white", "black")) %>%
     # state race in all, urban and rural areas and black percentage
-    .[GEOCOMP %in% c("00", "01", "43")] %>%
+    .[GEOCOMP %in% c("total", "urban", "rural")] %>%
     .[, .(state, total, white, black, GEOCOMP)] %>%
     .[, perc_black := round(100 * black / total, 2)]
 

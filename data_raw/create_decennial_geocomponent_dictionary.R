@@ -14,23 +14,23 @@ dict_all_geocomponent <- fread("data_raw/geographic_component", sep = "\n", head
 save(dict_all_geocomponent, file = "data/dict_all_geocomponent.RData")
 
 
-# geocomponent used in census 2010
-make_census_component <- function(){
-    state <- read_census2010(states_DC) %>%
+# geocomponent used in decennial 2010
+make_decennial_component <- function(){
+    state <- read_decennial(2010, states_DC) %>%
         .[, .(code = unique(GEOCOMP))] %>%
-        .[, in_state_file := "yes"] %>%
+        .[, state_file := "yes"] %>%
         setkey(code)
-    us <- read_census2010("US") %>%
+    us <- read_decennial(2010, "US") %>%
         .[, .(code = unique(GEOCOMP))] %>%
-        .[, in_US_file := "yes"] %>%
+        .[, US_file := "yes"] %>%
         setkey(code)
     state_us <- merge(state, us, all = TRUE) %>%
-        .[is.na(in_state_file), in_state_file := "-"] %>%
-        .[is.na(in_US_file), in_US_file := "-"]
+        .[is.na(state_file), state_file := "-"] %>%
+        .[is.na(US_file), US_file := "-"]
 }
 
-dict_census_geocomponent <- make_census_component() %>%
+dict_decennial_geocomponent <- make_decennial_component() %>%
     dict_all_geocomponent[.]
 
-save(dict_census_geocomponent, file = "data/dict_census_geocomponent.RData")
+save(dict_decennial_geocomponent, file = "data/dict_decennial_geocomponent.RData")
 

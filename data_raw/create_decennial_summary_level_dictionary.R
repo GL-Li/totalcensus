@@ -25,9 +25,9 @@ national <- fread("data_raw/national_summary_level_urban_rural_update",
     .[, in_US_file := "yes"] %>%
     setkey(code, summary_level)
 
-dict_census_summarylevel <- merge(state, national, all = TRUE) %>%
+dict_decennial_summarylevel <- merge(state, national, all = TRUE) %>%
     .[is.na(in_state_file), in_state_file := "-"] %>%
     .[is.na(in_US_file), in_US_file := "-"]
 
 
-save(dict_census_summarylevel, file = "data/dict_census_summarylevel.RData")
+save(dict_decennial_summarylevel, file = "data/dict_decennial_summarylevel.RData")
