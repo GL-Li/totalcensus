@@ -1,0 +1,94 @@
+---
+title: "How to use package totalcensus"
+author: "GL Li"
+date: "November 25, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+```
+
+
+## get most current summary statistics of large areas
+ACS 1-year survey provides the most current data of area areas with population over 65000. The data is less accurate than those in ACS 5-years survey. For states, metropolitan areas, large counties, and large cities, however, the accuracy is less a concern as the population is very big.
+
+The state files include common summary levels of state, county, county subdivision, and place, as well as others such as congressional district and school distric. Run `search_summarylevels("acs")` to view complete summury levels. 
+
+The US files include commone summary levels of metropolitan statistic areas and combined statistic areas. 
+
+
+### get summary statistics of state, metro, and large counties and cities
+
+
+**Example 1 - race population**: The easiest way to get the data is to specify argument `areas` in function `read_acs1year()`. Run `search_tablecontents("acs", "detailed race")` to select the references of table contents of table C02003, NOT B02003, of which no data is provided.
+```{r}
+library(totalcensus)
+
+# White, black, and asian population in selected states
+state_race <- read_acs1year(
+    year = 2015,
+    states = c("MA", "RI", "NY", "AL", "LA", "GA", "CA"),
+    table_contents = c("C02003_003", "C02003_004", "C02003_006"),
+    summary_level = "state",
+    geo_comp = "00"
+)
+
+# do cleaning after reading to save time in case of multiple tries
+setnames(
+    state_race,
+    old = c("C02003_003", "C02003_004", "C02003_006"),
+    new = c("white", "black", "asian")
+) 
+
+
+# in selected counties
+county_race <- read_acs1year(
+    year = 2015,
+    states = c("MA", "RI"),
+    table_contents = c("C02003_003", "C02003_004", "C02003_006"),
+    areas = c("Providence county, RI", "Bristol county, MA", "Kent county, RI"),
+    summary_level = "county",
+    geo_comp = "total"
+)
+
+setnames(
+    county_race,
+    old = c("C02003_003", "C02003_004", "C02003_006"),
+    new = c("white", "black", "asian")
+) 
+
+
+# in selected cities
+mix_race <- read_acs1year(
+    year = 2015,
+    states = c("MA", "RI"),
+    table_contents = c("C02003_003", "C02003_004", "C02003_006"),
+    areas = c("Boston city, MA", "Providence city, RI"),
+    summary_level = "place",
+    geo_comp = "total"
+)
+
+setnames(
+    mix_race,
+    old = c("C02003_003", "C02003_004", "C02003_006"),
+    new = c("white", "black", "asian")
+)
+
+
+# in selected metro
+metro_race <- read_acs1year(
+    year = 2015,
+    states = "US",
+    table_contents = c("C02003_003", "C02003_004", "C02003_006"),
+    areas = c("Boston metro", "Providence metro"),
+    summary_level = "310"
+)
+setnames(
+    metro_race,
+    old = c("C02003_003", "C02003_004", "C02003_006"),
+    new = c("white", "black", "asian")
+)
+
+```
+

@@ -229,7 +229,13 @@ read_acs5year_areas_ <- function(year,
 
     combined <- rbindlist(lst_state) %>%
         .[, ":=" (LOGRECNO = NULL, STATE = NULL)] %>%
-        convert_geocomp_name()
+        convert_geocomp_name() %>%
+        # convert NA in state to nothing for selection below
+        .[is.na(state), state := ""]
+
+    if (!is.null(table_contents)){
+        setnames(combined, paste0(table_contents, "_e"), table_contents)
+    }
 
 
     # select data for argument geo_headers
@@ -384,6 +390,10 @@ read_acs5year_geoheaders_ <- function(year,
     combined <- rbindlist(lst_state) %>%
         .[, ":=" (LOGRECNO = NULL, STATE = NULL)] %>%
         convert_geocomp_name()
+
+    if (!is.null(table_contents)){
+        setnames(combined, paste0(table_contents, "_e"), table_contents)
+    }
 
     if (length(geo_headers) == 1){
         combined[, area := convert_fips_to_names(get(geo_headers), state, geo_headers)]

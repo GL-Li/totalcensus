@@ -225,7 +225,9 @@ read_decennial_areas_ <- function(year,
 
     combined <- rbindlist(lst_state) %>%
         .[, ":=" (LOGRECNO = NULL, STATE = NULL)] %>%
-        convert_geocomp_name()
+        convert_geocomp_name() %>%
+        # convert NA in state to nothing for selection below
+        .[is.na(state), state := ""]
 
 
     # select data for argument areas

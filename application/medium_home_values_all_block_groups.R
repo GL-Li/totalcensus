@@ -1,4 +1,4 @@
-library(rawcensus)
+library(totalcensus)
 library(data.table)
 library(magrittr)
 library(ggplot2)
@@ -12,14 +12,14 @@ home_national <- read_acs5year(
     table_contents = "B25077_001",
     summary_level = "block group"
 ) %>%
-    setnames("B25077_001_e", "home_value") %>%
+    setnames("B25077_001", "home_value") %>%
     .[!is.na(home_value)]
 
 
 us_map <- get_map("united states", zoom = 4, color = "bw")
 
 ggmap(us_map) +
-    geom_point(data = home_national,
+    geom_point(data = home_national[order(home_value)], # displace higher values
                aes(lon, lat, size = population, color = home_value),
                alpha = 1) +
     ylim(25, 50) +
@@ -43,24 +43,20 @@ ggsave(filename = "application/national_home_value.png", width = 9, height = 6)
 # New York metro home value ==========================================================
 home_nymetro <- read_acs5year(states = c("NY", "NJ", "PA"),
                               year = 2015,
-                              geo_headers = "CBSA",
-                              table_contents = c("B01003_001", "B25077_001"),
+                              areas = "New York metro",
+                              table_contents = "B25077_001",
                               #summary_level = "block_group",
                               with_margin = FALSE) %>%
-    .[CBSA == "35620"] %>%
-    setnames(c("B01003_001_e", "B25077_001_e"), c("population", "value")) %>%
-    # some missing value in home value shown as "." and so the whole column was
-    # read into character. change column back to numeric and remove NAs
-    .[, value := as.numeric(value)] %>%
-    .[!is.na(value)] %>%
-    .[order(value)]
+    setnames("B25077_001", "home_value") %>%
+    .[!is.na(home_value)] %>%
+    .[order(home_value)]
 
 
 ny_map <- get_map("new york city", zoom = 9, color = "bw")
 
 ggmap(ny_map) +
     geom_point(data = home_nymetro,
-               aes(lon, lat, size = population, color = value),
+               aes(lon, lat, size = population, color = home_value),
                alpha = 1) +
     # ylim(40.5, 41) +
     # xlim(-74.6, -73.3) +
