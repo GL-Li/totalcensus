@@ -88,10 +88,10 @@ bos <- read_acs5year(
     summary_level = "block group"
 )  %>%
     # change column names to readable form
-    setnames("B25077_001_e", "home_value")
+    setnames("B25077_001", "home_value")
 
 # most blocks belongs to urban area as they are in a metro
-print(prov) 
+print(bos) 
 
 ```
 

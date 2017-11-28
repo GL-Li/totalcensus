@@ -61,7 +61,7 @@ read_acs1year <- function(year,
     }
 
     # turn off warning, fread() gives warnings when read non-scii characters.
-    #options(warn = -1)
+    options(warn = -1)
 
     if (!is.null(areas)){
         dt <- read_acs1year_areas_(
@@ -75,7 +75,7 @@ read_acs1year <- function(year,
         )
     }
 
-    #options(warn = 0)
+    options(warn = 0)
     return(dt)
 }
 
@@ -200,7 +200,7 @@ read_acs1year_areas_ <- function(year,
             dt <- read_acs1year_tablecontents_(year, state, table_contents,
                                                "e", show_progress)
             if (with_margin) {
-                margin <- read_acs1year_tablecontents_(state, year, table_contents,
+                margin <- read_acs1year_tablecontents_(year, state, table_contents,
                                                        "m", show_progress)
 
                 dt <- merge(dt, margin)
@@ -339,6 +339,7 @@ read_acs1year_geoheaders_ <- function(year,
                                       show_progress = TRUE) %>%
                 # convert STATE fips to state abbreviation
                 .[, state := convert_fips_to_names(STATE)] %>%
+                .[, STATE := NULL] %>%
                 setkey(LOGRECNO)
         }
 
@@ -355,7 +356,7 @@ read_acs1year_geoheaders_ <- function(year,
             dt <- read_acs1year_tablecontents_(year, state, table_contents,
                                                "e", show_progress)
             if (with_margin) {
-                margin <- read_acs1year_tablecontents_(state, year, table_contents,
+                margin <- read_acs1year_tablecontents_(year, state, table_contents,
                                                        "m", show_progress)
 
                 dt <- merge(dt, margin)
@@ -375,8 +376,9 @@ read_acs1year_geoheaders_ <- function(year,
     }
 
     combined <- rbindlist(lst_state) %>%
-        .[, ":=" (LOGRECNO = NULL, STATE = NULL)] %>%
+        .[, LOGRECNO := NULL] %>%
         convert_geocomp_name()
+
 
     if (!is.null(table_contents)){
         setnames(combined, paste0(table_contents, "_e"), table_contents)
@@ -427,7 +429,8 @@ read_acs1year_geo_ <- function(year,
 
     # allow lowercase input for state and geo_headers
     state <- tolower(state)
-    geo_headers <- toupper(geo_headers)
+    geo_headers <- toupper(geo_headers) %>%
+        unique()
 
     if (show_progress) {
         cat("Reading", toupper(state), year, "ACS 1-year survey geography file\n")
@@ -525,12 +528,6 @@ read_acs1year_tablecontents_ <- function(year, state, table_contents,
     # locate data files for the content
     lookup <- get(paste0("lookup_acs1year_", year))
     file_content <- lookup_tablecontents(table_contents, lookup)
-    # file_content <- lookup[reference %in% table_contents,
-    #                        .(file_seg = file_segment,
-    #                          content = reference)] %>%
-    #     .[, paste(content, collapse = ","), by = file_seg] %>%
-    #     .[, table_contents := str_split(V1, ",")] %>%
-    #     .[, V1 := NULL]
 
     dt <- purrr::map2(file_content[, file_seg],
                       file_content[, table_contents],

@@ -27,7 +27,7 @@ convert_fips_to_names <- function(FIPs, states = NULL, geo_header = "STATE") {
     # make data.table for later join
     if (geo_header %in% c("STATE", "CBSA")){
         FIPs <- data.table(fips = FIPs)
-    } else {
+    } else if (geo_header %in% c("COUNTY", "PLACE", "COUSUB")) {
         FIPs <- data.table(fips = FIPs, state = states)
     }
 
@@ -64,7 +64,7 @@ convert_fips_to_names <- function(FIPs, states = NULL, geo_header = "STATE") {
     } else {
         message(paste('This version only provides names of major areas available in datasets',
                       'dict_fips and dict_cbsa for geographic headers',
-                      'STATE, COUNTY, PLACE, COUNTY, and CBSA'))
+                      'STATE, COUNTY, PLACE, COUSUB, and CBSA'))
         names <- "To be added"
     }
 

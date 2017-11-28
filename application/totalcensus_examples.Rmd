@@ -6,11 +6,11 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, message = FALSE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, eval = FALSE)
 ```
 
 
-## get most current summary statistics of large areas
+## ACS 1-year survey for most current summary statistics of large areas
 ACS 1-year survey provides the most current data of area areas with population over 65000. The data is less accurate than those in ACS 5-years survey. For states, metropolitan areas, large counties, and large cities, however, the accuracy is less a concern as the population is very big.
 
 The state files include common summary levels of state, county, county subdivision, and place, as well as others such as congressional district and school distric. Run `search_summarylevels("acs")` to view complete summury levels. 
@@ -21,35 +21,18 @@ The US files include commone summary levels of metropolitan statistic areas and 
 ### get summary statistics of state, metro, and large counties and cities
 
 
-**Example 1 - race population**: The easiest way to get the data is to specify argument `areas` in function `read_acs1year()`. Run `search_tablecontents("acs", "detailed race")` to select the references of table contents of table C02003, NOT B02003, of which no data is provided.
+**Example 1 - use argument** `areas`: The easiest way to get the data of cities, counties, metros, and towns is to specify argument `areas` in function `read_acs1year()`. Run `search_tablecontents("acs", "detailed race")` to select the references of table contents of table C02003, NOT B02003, of which no data is provided.
 ```{r}
 library(totalcensus)
-
-# White, black, and asian population in selected states
-state_race <- read_acs1year(
-    year = 2015,
-    states = c("MA", "RI", "NY", "AL", "LA", "GA", "CA"),
-    table_contents = c("C02003_003", "C02003_004", "C02003_006"),
-    summary_level = "state",
-    geo_comp = "00"
-)
-
-# do cleaning after reading to save time in case of multiple tries
-setnames(
-    state_race,
-    old = c("C02003_003", "C02003_004", "C02003_006"),
-    new = c("white", "black", "asian")
-) 
-
-
 # in selected counties
 county_race <- read_acs1year(
-    year = 2015,
+    year = 2016,
     states = c("MA", "RI"),
     table_contents = c("C02003_003", "C02003_004", "C02003_006"),
     areas = c("Providence county, RI", "Bristol county, MA", "Kent county, RI"),
     summary_level = "county",
-    geo_comp = "total"
+    geo_comp = "total",
+    with_margin = TRUE
 )
 
 setnames(
@@ -60,8 +43,8 @@ setnames(
 
 
 # in selected cities
-mix_race <- read_acs1year(
-    year = 2015,
+city_race <- read_acs1year(
+    year = 2016,
     states = c("MA", "RI"),
     table_contents = c("C02003_003", "C02003_004", "C02003_006"),
     areas = c("Boston city, MA", "Providence city, RI"),
@@ -70,7 +53,7 @@ mix_race <- read_acs1year(
 )
 
 setnames(
-    mix_race,
+    city_race,
     old = c("C02003_003", "C02003_004", "C02003_006"),
     new = c("white", "black", "asian")
 )
@@ -78,17 +61,186 @@ setnames(
 
 # in selected metro
 metro_race <- read_acs1year(
-    year = 2015,
+    year = 2016,
     states = "US",
     table_contents = c("C02003_003", "C02003_004", "C02003_006"),
     areas = c("Boston metro", "Providence metro"),
     summary_level = "310"
 )
+
 setnames(
     metro_race,
     old = c("C02003_003", "C02003_004", "C02003_006"),
     new = c("white", "black", "asian")
 )
 
+```
+
+**Example 2 - use argement** `geo_headers`: while `areas` only available for metros, counties, cities, and towns, `geo_headers` is appilicable for all geographic headers. The workflow for using `geo_headers` is to read data file into data.table and then select from it what we want.
+
+```{r}
+# White, black, and asian population in selected states. At summary level of state, there is no need to select state
+state_race <- read_acs1year(
+    year = 2016,
+    states = c("MA", "RI", "NY", "AL", "LA", "GA", "CA"),
+    table_contents = c("C02003_003", "C02003_004", "C02003_006"),
+    geo_headers = "STATE",
+    summary_level = "state",
+    geo_comp = "total"
+)
+
+
+
+# in cities
+city_race <- read_acs1year(
+    year = 2016,
+    states = c("MA", "RI"), # states where the cities are in
+    table_contents = c("C02003_003", "C02003_004", "C02003_006"),
+    geo_headers = "PLACE",  # geographic header of cities
+    summary_level = "place",
+    geo_comp = "total"
+)
+
+# above code read data of all cities in MA and RI. You need to select those of the cities you want, you can select by name
+bos_prov <- city_race[area %like% "Boston|Providence"]
+# or by FIPS codes
+bos_prov <- city_race[PLACE %in% c("07000", "59000")]
+```
+
+American Indian Area/Alaska Native Area/Hawaiian Home Land. We are not familiar with AIANHH and we do not know how to select data. The strategy is to first read all rows of data, include "AIANHH" as the column then examine what we have for the "AIANHH". Not supprising, most rows of "AIANHH" are empty, which should be removed and we will only keep those with a valid AIANHH code.
+```{r}
+# read all rows of data, including "AIANHH" as a column, 
+allrows <- read_acs1year(
+    year = 2015,
+    # population of American Indain or Alaska native, 
+    # and of Native Hawaiian and Other Pacific Islander
+    table_contents = c("C02003_005", "C02003_007"),
+    states = "US",
+    geo_headers = "AIANHH"
+)
+
+# select rows ofcolumn "AIANHH" that are not empty, a normal "AIANHH" code is 
+# 4 character
+aianhh <- allrows[nchar(AIANHH) == 4][order(-population)]
+```
+
+
+## 100 largest cities
+```{r}
+largest_100 <- c(
+    "New York city, NY",
+    "Los Angeles city, CA",
+    "Chicago city, IL",
+    "Houston city, TX",
+    "Philadelphia city, PA",
+    "Phoenix city, AZ",
+    "San Antonio city, TX",
+    "San Diego city, CA",
+    "Dallas city, TX",
+    "San Jose city, CA",
+    "Austin city, TX",
+    "Jacksonville city, FL",
+    "San Francisco city, CA",
+    "PLACE = IN36003",
+    "Columbus city, OH",
+    "Fort Worth city, TX",
+    "Charlotte city, NC",
+    "Seattle city, WA",
+    "Denver city, CO",
+    "El Paso city, TX",
+    "Detroit city, MI",
+    "Washington city, DC",
+    "Boston city, MA",
+    "Memphis city, TN",
+    "PLACE = TN52006",
+    "Portland city, OR",
+    "Oklahoma City city, OK",
+    "Las Vegas city, NV",
+    "Baltimore city, MD",
+    "PLACE = KY48006",
+    "Milwaukee city, WI",
+    "Albuquerque city, NM",
+    "Tucson city, AZ",
+    "Fresno city, CA",
+    "Sacramento city, CA",
+    "Kansas City city, MO",
+    "Long Beach city, CA",
+    "Mesa city, AZ",
+    "Atlanta city, GA",
+    "Colorado Springs city, CO",
+    "Virginia Beach city, VA",
+    "Raleigh city, NC",
+    "Omaha city, NE",
+    "Miami city, FL",
+    "Oakland city, CA",
+    "Minneapolis city, MN",
+    "Tulsa city, OK",
+    "Wichita city, KS",
+    "New Orleans city, LA",
+    "Arlington city, TX",
+    "Cleveland city, OH",
+    "Bakersfield city, CA",
+    "Tampa city, FL",
+    "Aurora city, CO",
+    "Urban Honolulu CDP, HI",
+    "Anaheim city, CA",
+    "Santa Ana city, CA",
+    "Corpus Christi city, TX",
+    "Riverside city, CA",
+    "St. Louis city, MO",
+    "PLACE = KY46027",
+    "Stockton city, CA",
+    "Pittsburgh city, PA",
+    "St. Paul city, MN",
+    "PLACE = AK03000",
+    "Cincinnati city, OH",
+    "Henderson city, NV",
+    "Greensboro city, NC",
+    "Plano city, TX",
+    "Newark city, NJ",
+    "Toledo city, OH",
+    "Lincoln city, NE",
+    "Orlando city, FL",
+    "Chula Vista city, CA",
+    "Jersey City city, NJ",
+    "Chandler city, AZ",
+    "Fort Wayne city, IN",
+    "Buffalo city, NY",
+    "Durham city, NC",
+    "St. Petersburg city, FL",
+    "Irvine city, CA",
+    "Laredo city, TX",
+    "Lubbock city, TX",
+    "Madison city, WI",
+    "PLACE = AZ27400",
+    "Norfolk city, VA",
+    "Reno city, NV",
+    "Winston-Salem city, NC",
+    "Glendale city, AZ",
+    "Hialeah city, FL",
+    "Garland city, TX",
+    "Scottsdale city, AZ",
+    "Irving city, TX",
+    "Chesapeake city, VA",
+    "North Las Vegas city, NV",
+    "Fremont city, CA",
+    "Baton Rouge city, LA",
+    "Spokane city, WA",
+    "Rochester city, NY",
+    "San Bernardino city, CA"
+    )
+
+
+race_100 <- read_acs1year(
+    year = 2016,
+    states = states_DC,
+    table_contents = c("C02003_003", "C02003_004", "C02003_006"),
+    areas = largest_100,
+    summary_level = "place"
+) %>%
+    setnames(
+        old = c("C02003_003", "C02003_004", "C02003_006"),
+        new = c("white", "black", "asian")
+    ) 
 ```
 

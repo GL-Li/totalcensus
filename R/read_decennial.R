@@ -356,8 +356,11 @@ read_decennial_geoheaders_ <- function(year,
     }
 
     combined <- rbindlist(lst_state) %>%
-        .[, ":=" (LOGRECNO = NULL, STATE = NULL)] %>%
+        .[, LOGRECNO := NULL] %>%
         convert_geocomp_name()
+    if (!"STATE" %in% geo_headers){
+        combined[, STATE := NULL]
+    }
 
 
     if (length(geo_headers) == 1 &&
@@ -405,6 +408,9 @@ read_decennial_geo_ <- function(year,
     #=== prepare arguments ===
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+    state <- toupper(state)
+    geo_headers <- toupper(geo_headers) %>%
+        unique()
 
     if (show_progress) {
         cat(paste("Reading", state, "geographic header record file\n"))
@@ -551,13 +557,6 @@ read_decennial_tablecontents_ <- function(year,
     # locate data files for the content
     lookup <- get(paste0("lookup_decennial_", year))
     file_content <- lookup_tablecontents(table_contents, lookup)
-
-    # file_content <- lookup[reference %in% table_contents,
-    #                               .(file_seg = file_segment,
-    #                                 content = reference)] %>%
-    #     .[, paste(content, collapse = ","), by = file_seg] %>%
-    #     .[, table_contents := str_split(V1, ",")] %>%
-    #     .[, V1 := NULL]
 
     dt <- purrr::map2(file_content[, file_seg],
                       file_content[, table_contents],

@@ -203,7 +203,7 @@ read_acs5year_areas_ <- function(year,
             dt <- read_acs5year_tablecontents_(year, state, table_contents,
                                                "e", show_progress)
             if (with_margin) {
-                margin <- read_acs5year_tablecontents_(state, year, table_contents,
+                margin <- read_acs5year_tablecontents_(year, state, table_contents,
                                                        "m", show_progress)
 
                 dt <- merge(dt, margin)
@@ -348,6 +348,7 @@ read_acs5year_geoheaders_ <- function(year,
                                       show_progress = TRUE) %>%
                 # convert STATE fips to state abbreviation
                 .[, state := convert_fips_to_names(STATE)] %>%
+                .[, STATE := NULL] %>%
                 setkey(LOGRECNO)
         }
 
@@ -364,7 +365,7 @@ read_acs5year_geoheaders_ <- function(year,
             dt <- read_acs5year_tablecontents_(year, state, table_contents,
                                                "e", show_progress)
             if (with_margin) {
-                margin <- read_acs5year_tablecontents_(state, year, table_contents,
+                margin <- read_acs5year_tablecontents_(year, state, table_contents,
                                                        "m", show_progress)
 
                 dt <- merge(dt, margin)
@@ -388,7 +389,7 @@ read_acs5year_geoheaders_ <- function(year,
     }
 
     combined <- rbindlist(lst_state) %>%
-        .[, ":=" (LOGRECNO = NULL, STATE = NULL)] %>%
+        .[, LOGRECNO := NULL] %>%
         convert_geocomp_name()
 
     if (!is.null(table_contents)){
@@ -445,7 +446,8 @@ read_acs5year_geo_ <- function(year,
 
     # allow lowercase input for state and geo_headers
     state <- tolower(state)
-    geo_headers <- toupper(geo_headers)
+    geo_headers <- toupper(geo_headers) %>%
+        unique()
 
     if (show_progress) {
         cat("Reading", toupper(state), year, "ACS 5-year survey geography file\n")
@@ -505,15 +507,22 @@ read_acs5year_1_file_tablecontents_ <- function(year, state, file_seg,
     col_names <- c(ommitted, col_names)
 
     # row bind data in group1 and group2
-    file1 <- paste0(path_to_census, "/", "acs5year/", year, "/", "group1/", est_marg, year, "5",
-                    tolower(state), file_seg, "000.txt")
-    file2 <- paste0(path_to_census, "/", "acs5year/", year, "/", "group2/", est_marg, year, "5",
-                    tolower(state), file_seg, "000.txt")
+    file1 <- paste0(path_to_census, "/", "acs5year/", year, "/", "group1/",
+                    est_marg, year, "5", tolower(state), file_seg, "000.txt")
+    file2 <- paste0(path_to_census, "/", "acs5year/", year, "/", "group2/",
+                    est_marg, year, "5", tolower(state), file_seg, "000.txt")
 
     dt1 <- fread(file1, header = FALSE, showProgress = show_progress) %>%
         setnames(names(.), col_names)
-    dt2 <- fread(file2, header = FALSE, showProgress = show_progress) %>%
-        setnames(names(.), col_names)
+
+    if(toupper(state) == "US"){
+        # US has empty files in group2 as it has no data at tract and block
+        # group level, which causes fread error
+        dt2 = NULL
+    } else {
+        dt2 <- fread(file2, header = FALSE, showProgress = show_progress) %>%
+            setnames(names(.), col_names)
+    }
 
     combined <- rbindlist(list(dt1, dt2)) %>%
         .[, c("LOGRECNO", table_contents), with = FALSE] %>%
@@ -558,12 +567,7 @@ read_acs5year_tablecontents_ <- function(year, state, table_contents,
 
     # locate data files for the content
     lookup <- get(paste0("lookup_acs5year_", year))
-    file_content <- lookup[reference %in% table_contents,
-                           .(file_seg = file_segment,
-                             content = reference)] %>%
-        .[, paste(content, collapse = ","), by = file_seg] %>%
-        .[, table_contents := str_split(V1, ",")] %>%
-        .[, V1 := NULL]
+    file_content <- lookup_tablecontents(table_contents, lookup)
 
     dt <- purrr::map2(file_content[, file_seg],
                       file_content[, table_contents],
