@@ -1,0 +1,214 @@
+---
+title: "Extract data from decennial census and ACS summary files"
+author: "GL Li"
+date: "October 14, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+[![Build Status](https://travis-ci.org/GL-Li/rawcensus2010.svg?branch=master)](https://travis-ci.org/GL-Li/rawcensus2010)
+
+
+This package provides total solutions to extracts any data from the raw summary files of decennial census and American Community Survey (ACS) and returns a tidy data.table. The extracted data can be easily processed with `data.table` or `dplyr` packages. 
+
+
+## Why another R census package
+
+The [census API](https://www.census.gov/data/developers/guidance/api-user-guide.Available_Data.html) offers most data in decennial census and ACS data for download and API-based packages such as `tidycensus`, `censusapi` and `acs` make the downloading very easy in R. So why we need another package?
+
+In one sentence, package `totalcensus` makes census data extraction easier and gives you full access and control of all census data downloaded to you own computer.
+
+As an extreme example, here is how we extract the median home values in **all** block groups in the United States from 2011-2015 ACS 5-year survey with this package. You simply need to call the function `read_acs5year()` and provide parameters. It takes 15 seconds for my 4-years old laptop to return the data of all 217,739 block groups. In addition to the table contents we request, we also get the population and coordinate of each block group.
+
+```{r}
+library(totalcensus)
+library(data.table)
+library(magrittr)
+home_national <- read_acs5year(
+    year = 2015,
+    states = states_DC,   # all 50 states plus DC
+    table_contents = "B25077_001",
+    summary_level = "block group"
+)
+```
+
+With the coordinates, we can visualize the data on US map with `ggplot2` and `ggmap`. Each data point in the figure below corresponds to a a block group, colored by median home value and sized by population. This plot not only displays the median home values, but also tells population densities on the map.
+
+```{r, echo=FALSE}
+library(ggplot2)
+library(ggmap)
+us_map <- get_map("united states", zoom = 4, color = "bw")
+
+# make name readable and remove missing values. After remove missing value
+# 201660 rows left
+home_national <- home_national %>%
+    setnames("B25077_001", "home_value") %>%
+    .[!is.na(home_value)]
+
+ggmap(us_map) +
+    geom_point(
+        data = home_national[order(home_value)],
+        # displace higher values
+        aes(lon, lat, size = population, color = home_value),
+        alpha = 1
+    ) +
+    ylim(25, 50) +
+    scale_size_area(max_size = 0.1) +
+    scale_color_continuous(
+        low = "green",
+        high = "red",
+        breaks = c(100000, 500000, 1000000, 1500000, 2000000),
+        labels = scales::unit_format("K", 1e-3)
+    ) +
+    guides(size = FALSE) +
+    labs(color = "value ($)",
+         caption = "Data source: ACS 5-year survey 2011-2015",
+         title = "Median Home Values in Each Block Group") +
+    theme(
+        panel.background = element_blank(),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        legend.position = c(0.92, 0.2),
+        title = element_text(size = 14)
+    )
+```
+![home value](figures/home_value_national_blockgroup.png)
+
+There are additional benefits of using this package:
+
+- You can get detailed urban/rural data from Census 2010. This package use summary file 1 with urban/rural update, while the census API only provide data in summary file 1 before urban/rural update. 
+- You can get all block groups that belong or partially belong to a city. Original census data do not specify city information for a block group as a block group may not uniquely belong to a city. However, large cities have most block groups within their boundaries and only a small number of block groups run across the borders. The block group level data provide valuable spatial information of a city. This is particularly helpful for ACS 5-year surveys which cover data down to the level of block groups. 
+- It provides longitude and latitude of the internal point of a geographic area for easy and quick mapping. You do not always need shape files to make nice maps, as the map shown above. 
+
+[More examples of extracting data with package totalcensus](????????????????????)
+
+
+
+## Installation
+
+```{r}
+install.packages("devtools")
+
+devtools::install_github("GL-Li/totalcensus")
+```
+
+## Preparation before using the package
+
+This package requires downloading census data to your local computer. You need about 200 GB free disc space to download summary files of most recent decennial Census, most recent ACS 5-year survey, and most recent ACS 1-year surveys. Then we need to generate helper data from Census 2010 to be used to improve ACS data. Do not worry we have functions to facilitate all the tasks. Just follow the steps below.
+
+**Step 1**: create a folder to store downloaded data. Let's named it as `my_census_data`. The full path to this folder is `xxxxx/my_census_data`, replacing `xxxxx` with the actual path. Then run the function below to set the path for the package.
+
+```{r}
+set_path_to_census("xxxxx/my_census_data", install = TRUE)
+```
+
+**Step 2**: download and extract census data. By default, the function `download_census()` downloads Census 2010, 2011-2015 ACS 5-year survey, and 2014, 2015, and 2016 ACS 1-year surveys. The downloaded data will alse be extracted automatically to the folder `my_census_data`. It takes a long time to download and extract. You can stop downloading any time and then resume downloading by running the function again. 
+
+The data can be found on Census Beurua's website but you do not need to download them mannually. 
+
+- [Census 2010 summary file 1 with urban/rural update](https://www2.census.gov/census_2010/04-Summary_File_1/Urban_Rural_Update/)
+- [ACS summary files since 2005](https://www2.census.gov/programs-surveys/acs/summary_file/)
+
+```{r}
+download_census()
+```
+
+
+## Basic application
+The package has three functions to read decennial census, ACS 5-year survey, and ACS 1-year survey: `read_decennial()`, `read_acs5year()`, and `read_acs1year()`. They are similar but as the survey data are so different, we prefer to keep three seperate functions, one for each. The examples below demonstrate basic applications.
+
+### Black communities in South Bend city, IN at block level
+
+#### Method 1: using argument `areas`
+
+Knowing names of a city, county, metro area, or town, we can feed them directly to argument `areas`. The returned data.table contains the table contents we want to read as well as population and coordinates. The reading takes a few seconds.
+
+```{r}
+# read data of black population in each block
+black_popul <- read_decennial(
+    year = 2010,
+    states = "IN",
+    table_contents = "P0030003",  # black population
+    areas = "South Bend city, IN",
+    summary_level = "block"
+)
+
+   #                   area       lon      lat state population P0030003 GEOCOMP SUMLEV
+   # 1: South Bend city, IN -86.21864 41.63613    IN         28       10   total    100
+   # 2: South Bend city, IN -86.21659 41.63670    IN          0        0   total    100
+   # 3: South Bend city, IN -86.22172 41.63573    IN         52       16   total    100
+   # 4: South Bend city, IN -86.22022 41.63182    IN        279       21   total    100
+   # 5: South Bend city, IN -86.22093 41.63367    IN         42        1   total    100
+```
+
+It is better to separate data exploration from reading to save reading time when trying error. This can be done with `data.table` or `dplyr`.
+
+```{r}
+# changes column names and remove blocks where no people lives in, and add column
+# of black percentage. 
+black <- black_popul %>%
+    setnames("P0030003", "black_popul") %>%
+    .[population != 0] %>%
+    # percentage of black population in each block
+    .[, black_pct := round(100 * black_popul / population, 2)]
+```
+
+
+### Method 2: use argument `geo_headers`
+Argument `geo_headers` works for any geographic areas represented in census geography files, such as American Indian Area/Alaska Native Area/ Hawaiian Home Land and congressional district, which are not covered by argument `areas`. 
+
+Here is how we read black population in each block in South Bend city, IN, using `geo_headers`. A city is a census place with geographic header "PLACE". We first read all data from all "PLACE":
+```{r}
+black_popul_place <- read_decennial(
+    year = 2010,
+    states = "IN",
+    table_contents = "P0030003",  # black population
+    geo_headers = "PLACE",
+    summary_level = "block"
+)
+```
+
+We can select rows of South Bend by the area name or by PLACE code. 
+```{r}
+# select by name
+black_popul <- black_popul_place[area %like% "South Bend"]
+
+# select by code
+black_popul <- black_popul_place[PLACE == "71000"]
+```
+
+
+### visualize the data
+```{r}
+library(ggplot2)
+library(ggmap)
+
+south_bend <- get_map("south bend, IN", zoom = 13, color = "bw")
+ggmap(south_bend) +
+    geom_point(
+        data = black,
+        aes(lon, lat, size = population, color = black_pct)
+    ) +
+    scale_size_area(breaks = c(10, 100, 200, 500)) +
+    scale_color_continuous(low = "green", high = "red") +
+    labs(
+        color = "% black",
+        size = "total\npopulation",
+        title = "Black communities in South Bend city at block level",
+        caption = "Source: Census 2010"
+    ) +
+    theme(
+        panel.background = element_blank(),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        title = element_text(size = 14)
+    )
+```
+
+![south bend](figures/south_bend_block_black.png)
+
