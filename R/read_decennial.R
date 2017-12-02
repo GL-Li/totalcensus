@@ -1,33 +1,50 @@
 # 11/06/2017 : need work on docs
 
+# last reviewed 12/1/2017
+
 # package functions ============================================================
 
 #' Read decennial census data
 #'
-#' @description  Read geographic header record file and data files of states and return
+#' @description This function retrieves data from summary file 1 (with urban/rural update)
+#' of decennial censuses. In addition to selected geographic headers and table contents,
+#' it also returns total population and coordinates of selected geographic
+#' areas, as well as summary levels and geographic components.
+#'
+#' Read table contents of selected states and return
 #' selected geoheaders, state abbreviation, and table contents of selected summary
-#' level and geographic component. These table contents can be from different tables, for example,
-#' c("PCT012F139", "P0030008", "P0100059", "P0150008", "H0070016", "PCT012F138").
-#' The rows of short contents that have no corresponding LOGRECNOs are filled with
-#' NAs. To find the references of table contents of interest, search with function
-#' \code{\link{search_datafile}}. To find geographic headers, browse
-#' \code{\link{dict_geoheader}} or search with function \code{\link{search_geoheader}}.
+#' level and geographic component.
+#' To find geographic headers, browse
+#' \code{\link{dict_decennial_geoheader}} or search with function \code{\link{search_geoheaders}}.
 #'
 #' @param year year of the decennial census
 #' @param states vector of state abbreviations, for example "IN" or c("MA", "RI").
-#' @param table_contents selected references of contents in census tables.
-#' @param geo_headers vector of references of selected geographci headers to be included in the return.
+#' @param table_contents selected references of contents in census tables. Users
+#'        can choose a name for each reference, such as in
+#'        c("abc = PCT012F139", "fff = P0030008", "rural_p = P0020005").
+#'        Try to make names meaningful. To find the references of table contents
+#'        of interest, search with function \code{\link{search_tablecontents}}.
+#' @param areas For metro area, in the format like "New York metro".
+#'       For county, city, or town, must use the exact name as those in
+#'       \code{\link{dict_fips}} in the format like "kent county, RI",
+#'       "Boston city, MA", and "Lincoln town, RI". And special examples like
+#'       "Salt Lake City city, UT" must keep the "city" after "City".
+#' @param geo_headers vector of references of selected geographci headers to be
+#'        included in the return. Browse geoheaders in \code{\link{dict_decennial_geoheader}}
+#'        or search with \code{\link{search_geoheaders}}
 #' @param summary_level select which summary level to keep, "*" to keep all. It takes strings
-#'        including "state", "county", "county_subdivision", "place", "tract", "block_group",
+#'        including "state", "county", "county subdivision", "place", "tract", "block group",
 #'        and "block" for the most common levels. It also take code for level. Search all codes with
-#'        \code{\link{search_sumlev}} for state files or \code{\link{search_sumlev_US}} for national files.
-#' @param geo_comp select which geographic component to keep, "*" to keep all.
-#'        Summary level of a state contains all geographic component. County
-#'        subdivision and higher level have all area ("00"), urban ("01"), and rural ("43").
-#'        census tract and lower level have no geographic component, all are "00". Browse
-#'        \code{\link{dict_geocomp}} for other geographic components.
+#'        \code{\link{search_summarylevels}} or browse \code{\link{dict_decennial_summarylevel}} .
+#' @param geo_comp select which geographic component to keep, "*" to keep all,
+#'        "total" for "00", "urban" for "01", "urbanized area" for "04",
+#'        "urban cluster" for "28", "rural" for "43". Others should input code
+#'        which can be found with \code{\link{search_geocomponents}}. Availability
+#'        of geocomponent depends on summary level. State level contains all
+#'        geographic component. County subdivision and higher level have "00",
+#'        "01", and "43". Census tract and lower level have only "00".
 #' @param show_progress show progress of file reading if TRUE. Turn off if FALSE, which
-#'     is useful in RMarkdown output.
+#'        is useful in RMarkdown output.
 #'
 #' @return A data.table whose columns include the selected geoheaders and
 #' table contents plus SUMLEV, GEOCOMP, and state.
@@ -36,31 +53,39 @@
 #' @examples
 #' \dontrun{
 #' # read one table and one area from one state
-#' aaa = read_decennial(year = 2010,
-#'                      states = "ut",
-#'                      table_contents = c("P0150008"),
-#'                      geo_headers = c("COUSUB", "CBSA"),
-#'                      summary_level = "block")
+#' aaa = read_decennial(
+#'     year = 2010,
+#'     states = "ut",
+#'     table_contents = c("urban = P0020002", "rural = P0020005"),
+#'     geo_headers = "CBSA",
+#'     summary_level = "tract"
+#' )
 #'
 #'
 #' # read multiple table contents and areas from multiple states
-#' bbb = read_decennial(year = 2010,
-#'                      states = c("ut", "ri"),
-#'                      table_contents = c("P0150008", "P0030001", "P0030003",
-#'                                         "P0080036", "PCT012G002", "PCT012G181"),
-#'                      areas = c("place = ut62360",
-#'                                      "Providence city, RI",
-#'                                      "cousub = ri41500",
-#'                                      "cbsa = 39300"),
-#'                      summary_level = "block")
+#' bbb = read_decennial(
+#'     year = 2010,
+#'     states = c("ut", "ri"),
+#'     table_contents = c("urban = P0020002", "rural = P0020005"),
+#'     areas = c(
+#'         "place = ut62360",
+#'         "Providence city, RI",
+#'         "cousub = ri41500",
+#'         "cbsa = 39300"
+#'     ),
+#'     summary_level = "block"
+#' )
 #'
 #'
 #' # read table contents of all county subdivisions in Providence metro
-#' ccc <- read_decennial(2010, "US",
-#'                       table_contents = c("P0080036", "PCT012G002"),
-#'                       geo_headers = c("name", "cbsa = 39300"),
-#'                       summary_level = "county subdivision",
-#'                       geo_comp = "00")
+#' ccc <- read_decennial(
+#'     year = 2010,
+#'     states = "US",
+#'     table_contents = c("urban = P0020002", "rural = P0020005"),
+#'     areas = "cbsa = 39300",
+#'     summary_level = "county subdivision",
+#'     geo_comp = "total"
+#' )
 #' }
 #'
 #' @export
@@ -74,13 +99,18 @@ read_decennial <- function(year,
                           summary_level = "*",
                           geo_comp = "*",
                           show_progress = TRUE){
+    # turn off warning, fread() gives warnings when read non-scii characters.
+    options(warn = -1)
+
 
     if (is.null(areas) + is.null(geo_headers) == 0){
         stop("Must keep at least one of arguments areas and geo_headers NULL")
     }
 
-    # turn off warning, fread() gives warnings when read non-scii characters.
-    options(warn = -1)
+    content_names <- organize_tablecontents(table_contents) %>%
+        .[, name]
+    table_contents <- organize_tablecontents(table_contents) %>%
+        .[, reference]
 
     if (!is.null(areas)){
         dt <- read_decennial_areas_(
@@ -93,6 +123,8 @@ read_decennial <- function(year,
             show_progress
         )
     }
+
+    setnames(dt, table_contents, content_names)
 
     options(warn = 0)
     return(dt)

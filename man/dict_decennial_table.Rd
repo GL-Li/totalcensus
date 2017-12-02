@@ -21,7 +21,6 @@ dict_decennial_table
 }
 \description{
 This dataset contains all census tables in census 2010 summary
-file 1 (with urban/rural update). Function \code{\link{search_table}} searches
-this datasets for census tables.
+file 1 (with urban/rural update).
 }
 \keyword{datasets}

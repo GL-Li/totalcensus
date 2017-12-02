@@ -22,7 +22,5 @@ dict_acs_table
 \description{
 This dataset contains all tables in 1-year and 5-year survey.
 Note that 5-year survey in 2014 and 2015 has the identical tables.
-Function \code{\link{search_table}} searches
-this datasets for tables.
 }
 \keyword{datasets}

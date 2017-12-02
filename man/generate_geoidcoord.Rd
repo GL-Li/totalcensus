@@ -6,6 +6,9 @@
 \usage{
 generate_geoidcoord(states = c(states_DC, "PR", "US"))
 }
+\arguments{
+\item{states}{vector of abbreviations of states, such as c("MA", "RI")}
+}
 \description{
 It creates a sub directory "generared_data/" under path_to_census
 if not exsist and a file called geoid_coord.csv. The coordinates are generated

@@ -7,8 +7,12 @@
 set_path_to_census(path, overwrite = FALSE, install = FALSE)
 }
 \arguments{
-\item{path}{path to directory holding all downloaded census data}
+\item{path}{path to directory holding all downloaded census data.}
+
+\item{overwrite}{whether to overwrite old .Renviron.}
+
+\item{install}{whether to set the path for all future use.}
 }
 \description{
-
+Set file path to directory holding census data
 }

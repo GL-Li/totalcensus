@@ -23,31 +23,6 @@
 "lookup_acs5year_2015"
 
 
-# lookup_acs5year_2014 =========================================================
-#' ACS 5-year 2014 file segment and table lookup data.
-#'
-#' lookup_acs5year_2014 and lookup_acs5year_2015 are identical.
-#'
-#' @docType data
-#'
-#' @format A data.table with 22910 rows and 6 variables
-#' \describe{
-#'   \item{file_segment}{sequence number of segment data files, from "0001" to "0122"}
-#'   \item{table_content}{description of columns in a table}
-#'   \item{reference}{reference of the table content, such as "B01001_002". The reference
-#'         is used to extract data of table content.}
-#'   \item{table_number}{table number such as "B01001"}
-#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
-#'   \item{universe}{the universe of the data}
-#' }
-#'
-#' @keywords datasets
-#'
-#' @source Check for each year of ACS 1-year and 5-year
-#' \href{https://www.census.gov/programs-surveys/acs/technical-documentation/summary-file-documentation.2015.html}{Sequence Number/Table Number Lookup File}.
-#'
-
-"lookup_acs5year_2014"
 
 
 # lookup_acs1year_2016 =========================================================
@@ -137,8 +112,6 @@
 #'
 #' @description This dataset contains all tables in 1-year and 5-year survey.
 #' Note that 5-year survey in 2014 and 2015 has the identical tables.
-#' Function \code{\link{search_table}} searches
-#' this datasets for tables.
 #'
 #'
 #' @docType data

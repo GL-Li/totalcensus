@@ -4,7 +4,7 @@
 \alias{search_cbsa}
 \title{Search CBSA code and title}
 \usage{
-search_cbsa(keyword, view = TRUE)
+search_cbsa(keyword = "*", view = TRUE)
 }
 \arguments{
 \item{keyword}{keyword to be searched in CBSA or CBSA title.}
@@ -26,7 +26,7 @@ to hand pick the right one you are really looking for.
 }
 \examples{
 \dontrun{
-
+search_cbsa("providence")
 }
 
 }

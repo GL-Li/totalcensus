@@ -4,7 +4,7 @@
 \alias{search_fips}
 \title{Search FIPS}
 \usage{
-search_fips(keyword, state = NULL, view = TRUE)
+search_fips(keyword = "*", state = NULL, view = TRUE)
 }
 \arguments{
 \item{keyword}{keyword to be searched in NAMES or FIPS.}
@@ -29,9 +29,9 @@ The function \code{\link{search_fips}} has changed summary level 061 to 060, and
 162 to 160 in search results.
 The summary levels in \code{\link{dict_fips}} are 010, 040, 050, 061, 162, and 170.
 The level 061 is for Minor Civil Division (MCD)/Census County Division (CCD) (10,000+). It
-does not appear in \code{\link{dict_summarylevel}}, which instead has 060 for County Subdivision.
+does not appear in \code{\link{dict_decennial_summarylevel}}, which instead has 060 for County Subdivision.
 Level 061 is part of 060 and is replaced with 060 in order to use the census data. Similarly,
-both level 162 in \code{\link{dict_fips}} and l60 in \code{\link{dict_summarylevel}} are for
+both level 162 in \code{\link{dict_fips}} and l60 in \code{\link{dict_decennial_summarylevel}} are for
 State-Place. Always use 160 in census data.
 }
 \examples{

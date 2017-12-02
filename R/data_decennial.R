@@ -34,8 +34,7 @@
 #' Complete list of census tables
 #'
 #' @description This dataset contains all census tables in census 2010 summary
-#' file 1 (with urban/rural update). Function \code{\link{search_table}} searches
-#' this datasets for census tables.
+#' file 1 (with urban/rural update).
 #'
 #'
 #' @docType data
@@ -144,3 +143,26 @@
 
 "dict_decennial_summarylevel"
 
+
+# dict_all_geocomponent =====================================================
+#' List of geographic components and codes
+#'
+#' @description This dataset contains all available geographic components and codes.
+#'
+#' @docType data
+#'
+#'
+#' @format A data.table with 96 rows and 4 variables:
+#' \describe{
+#'   \item{code}{code for the geocomponent, such as "01" and "M3"}
+#'   \item{geo_component}{description of the geographic component}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source  2010 Census Summary File 1
+#' \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
+#' page 6-15
+#'
+#'
+"dict_all_geocomponent"

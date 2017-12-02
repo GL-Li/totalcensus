@@ -7,7 +7,9 @@
 search_geocomponents(survey, keyword = "*", view = TRUE)
 }
 \arguments{
-\item{keyword}{keyword to search in code or description}
+\item{survey}{"decennial" or "acs"}
+
+\item{keyword}{keyword to search in code or description, "*" for any words.}
 
 \item{view}{display the search result with View if TRUE}
 }
@@ -15,8 +17,7 @@ search_geocomponents(survey, keyword = "*", view = TRUE)
 A data.table
 }
 \description{
-Search the code or content of geographic components in dataset
-\code{\link{dict_geocomp}}.
+Search the code or content of geographic components
 }
 \details{
 The most frequently used geographic components are:
@@ -38,7 +39,4 @@ The most frequently used geographic components are:
   search_geocomp(43)
 }
 
-}
-\seealso{
-\code{\link{dict_geocomp}} lists all geocomponents and codes
 }

@@ -11,58 +11,84 @@ read_acs5year(year, states, table_contents = NULL, areas = NULL,
 \arguments{
 \item{year}{end year of the 5-year survey}
 
-\item{states}{vector of abbreviations of states such as c("MA", "RI")}
+\item{states}{vector of state abbreviations, for example "IN" or c("MA", "RI").}
 
-\item{table_contents}{vector of reference of available table contents}
+\item{table_contents}{selected references of contents in census tables. Users
+can choose a name for each reference, such as in
+c("abc = B01001_009", "fff = B00001_001").
+Try to make names meaningful. To find the references of table contents
+of interest, search with function \code{\link{search_tablecontents}}.}
 
 \item{areas}{For metro area, in the format like "New York metro".
- For county, city, or town, must use the exact name as those in
- \code{\link{dict_fips}} in the format like "kent county, RI",
+For county, city, or town, must use the exact name as those in
+\code{\link{dict_fips}} in the format like "kent county, RI",
 "Boston city, MA", and "Lincoln town, RI". And special examples like
 "Salt Lake City city, UT" must keep the "city" after "City".}
 
-\item{geo_headers}{vector of geographic headers like c("COUNTY", "PLACE")}
+\item{geo_headers}{vector of references of selected geographci headers to be
+included in the return. Browse geoheaders in \code{\link{dict_acs_geoheader}}
+or search with \code{\link{search_geoheaders}}}
 
-\item{summary_level}{summary level like "050"}
+\item{summary_level}{select which summary level to keep, "*" to keep all. It takes strings
+including "state", "county", "county subdivision", "place", "tract", "block group",
+and "block" for the most common levels. It also take code for level. Search all codes with
+\code{\link{search_summarylevels}} or browse \code{\link{dict_acs_summarylevel}} .}
 
-\item{geo_comp}{geographic component such as "00", "01", and "43"}
+\item{geo_comp}{select which geographic component to keep, "*" to keep all,
+"total" for "00", "urban" for "01", "urbanized area" for "04",
+"urban cluster" for "28", "rural" for "43". Others should input code
+which can be found with \code{\link{search_geocomponents}}. Availability
+of geocomponent depends on summary level. State level contains all
+geographic component. County subdivision and higher level have "00",
+"01", and "43". Census tract and lower level have only "00".}
 
 \item{with_margin}{read also margin of error in addition to estimate}
 
-\item{with_acsgeoheaders}{whether to include geographic headers from ACS data}
+\item{with_acsgeoheaders}{whether to keep geographic headers from ACS data}
 
-\item{show_progress}{whether to show progress in fread()n}
-
-\item{with_coord}{whether to include longitude and latitude in return}
-
-\item{with_population}{whether to include total population in return}
+\item{show_progress}{whether to show progress in fread()}
 }
 \value{
 A data.table of selected data.
 }
 \description{
-Read ACS 5-year survey of selected geography, estimate, and margin
-of selected states.
+This function retrieves data from summary file of ACS 5-year
+surveys. In addition to selected geographic headers and table contents,
+it also returns total population and coordinates of selected geographic
+areas, as well as summary levels and geographic components.
 }
 \examples{
 \dontrun{
 # read data using areas
-aaa <- read_acs5year(2015, c("ut", "ri"),
-                      table_contents = c("B01001_009", "B00001_001"),
-                      areas = c("Lincoln town, RI",
-                                "Salt Lake City city, UT",
-                                 "Salt Lake City metro",
-                                 "Kent county, RI",
-                                 "COUNTY = UT001",
-                                 "PLACE = UT62360"),
-                      summary_level = "block group")
+aaa <- read_acs5year(
+    year = 2015,
+    states = c("ut", "ri"),
+    table_contents = c(
+        "white = B02001_002",
+        "black = B02001_003",
+        "asian = B02001_005"
+    ),
+    areas = c(
+        "Lincoln town, RI",
+        "Salt Lake City city, UT",
+        "Salt Lake City metro",
+        "Kent county, RI",
+        "COUNTY = UT001",
+        "PLACE = UT62360"
+    ),
+    summary_level = "block group",
+    with_margin = TRUE
+)
 
 
 # read data using geoheaders
-bbb <- read_acs5year(2015, c("ut", "ri"),
-                      table_contents = c("B01001_009", "B00001_001"),
-                      geo_headers = c("PLACE", "COUNTY", "CBSA", "COUSUB"),
-                      summary_level = "block group")
+bbb <- read_acs5year(
+    year = 2015,
+    states = c("ut", "ri"),
+    table_contents = c("male = B01001_002", "female = B01001_026"),
+    geo_headers = "PLACE",
+    summary_level = "block group"
+)
 }
 
 }

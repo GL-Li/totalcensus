@@ -4,7 +4,7 @@
 \alias{search_tablecontents}
 \title{Search table contents in data files}
 \usage{
-search_tablecontents(survey, keyword, year = NULL, view = TRUE)
+search_tablecontents(survey, keyword = "*", year = NULL, view = TRUE)
 }
 \arguments{
 \item{survey}{either "decennial" for decenial or "acs" or American Community Survey.}
@@ -12,13 +12,15 @@ search_tablecontents(survey, keyword, year = NULL, view = TRUE)
 \item{keyword}{keyword to be searched}
 
 \item{year}{ending year of the survey}
+
+\item{view}{display the search result with View if TRUE}
 }
 \value{
 A data.table
 }
 \description{
 Search in lookup datasets of each survey to find references of
-for table_contents argument in function \code{\link{read_decennial2010}},
+for table_contents argument in function \code{\link{read_decennial}},
 \code{\link{read_acs1year}}, and \code{\link{read_acs5year}}.
 }
 \examples{

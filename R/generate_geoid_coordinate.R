@@ -7,6 +7,7 @@
 #' those in 2015 ACS 1-year and 5-year survey. The coordinate of
 #' new GEOID created after Census 2010 are not available.
 #'
+#' @param states vector of abbreviations of states, such as c("MA", "RI")
 #'
 #' @export
 #'

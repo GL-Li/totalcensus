@@ -1,8 +1,9 @@
 #' Set file path to directory holding census data
 #'
-#' @description
 #'
-#' @param path path to directory holding all downloaded census data
+#' @param path path to directory holding all downloaded census data.
+#' @param overwrite whether to overwrite old .Renviron.
+#' @param install whether to set the path for all future use.
 #'
 #' @export
 

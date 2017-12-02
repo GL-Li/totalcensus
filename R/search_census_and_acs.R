@@ -47,12 +47,13 @@ search_geoheaders <- function(survey, keyword = "*", view = TRUE) {
 #' Search table contents in data files
 #'
 #' @description Search in lookup datasets of each survey to find references of
-#' for table_contents argument in function \code{\link{read_decennial2010}},
+#' for table_contents argument in function \code{\link{read_decennial}},
 #' \code{\link{read_acs1year}}, and \code{\link{read_acs5year}}.
 #'
 #' @param survey either "decennial" for decenial or "acs" or American Community Survey.
 #' @param keyword keyword to be searched
 #' @param year ending year of the survey
+#' @param view display the search result with View if TRUE
 #'
 #' @return A data.table
 #'
@@ -78,7 +79,7 @@ search_geoheaders <- function(survey, keyword = "*", view = TRUE) {
 #' @importFrom purrr map reduce
 #' @importFrom stringr str_split
 
-search_tablecontents <- function(survey, keyword, year = NULL, view = TRUE) {
+search_tablecontents <- function(survey, keyword = "*", year = NULL, view = TRUE) {
 
     if (survey == "decennial") dt <- generate_decennial_tablecontents()
     if (survey == "acs") dt <- generate_acs_tablecontents()
@@ -104,14 +105,11 @@ search_tablecontents <- function(survey, keyword, year = NULL, view = TRUE) {
 
 
 
-#' Search summary levels of state files
+#' Search summary levels
 #'
-#' @description Search code or description of summary levels used in state files.
-#' The summary levels are stored in dataset \code{\link{dict_summarylevel}}.
-#' This dataset is different from that for national files,
-#' \code{\link{dict_summarylevel_US}}. Function \code{\link{search_sumlev_US}}
-#' searches summary levels in national files.
+#' @description Search code or description of summary levels
 #'
+#' @param survey "decennial" or "acs"
 #' @param keyword keyword to search in code or description
 #' @param view display the search result with View if TRUE
 #'
@@ -152,8 +150,7 @@ search_summarylevels <- function(survey, keyword = "*", view = TRUE){
 
 #' Search geographic components
 #'
-#' @description Search the code or content of geographic components in dataset
-#' \code{\link{dict_geocomp}}.
+#' @description Search the code or content of geographic components
 #'
 #' @details The most frequently used geographic components are:
 #'
@@ -163,13 +160,13 @@ search_summarylevels <- function(survey, keyword = "*", view = TRUE){
 #'
 #' 43 : rural
 #'
-#' @param keyword keyword to search in code or description
+#' @param survey "decennial" or "acs"
+#' @param keyword keyword to search in code or description, "*" for any words.
 #' @param view display the search result with View if TRUE
 #'
 #' @return A data.table
 #'
 #'
-#' @seealso \code{\link{dict_geocomp}} lists all geocomponents and codes
 #'
 #' @examples
 #' \dontrun{
@@ -183,8 +180,7 @@ search_summarylevels <- function(survey, keyword = "*", view = TRUE){
 #' }
 #'
 #' @export
-#' @import data.table
-#' @import magrittr
+#'
 
 
 search_geocomponents <- function(survey, keyword = "*", view = TRUE){
@@ -209,6 +205,7 @@ search_geocomponents <- function(survey, keyword = "*", view = TRUE){
 #'
 #' search decennial tables by keyword in table numbers or table descriptions
 #'
+#' @param survey "decennial" or "acs"
 #' @param keyword keyword to search in code or description. To search for a table
 #'     contains two words "abc" and "defg", the keyword is simply a single string
 #'     of "abc defg".
@@ -227,15 +224,12 @@ search_geocomponents <- function(survey, keyword = "*", view = TRUE){
 #'   search_table("H5")
 #' }
 #'
-#' @seealso \code{\link{dict_decennialtable}} lists all geocomponents and codes
+#' @seealso \code{\link{dict_decennial_table}} lists all geocomponents and codes
 #'
 #' @export
-#' @import data.table
-#' @import magrittr
-#' @importFrom stringr str_split
 #'
 
-search_table <- function(survey, keyword, view = TRUE){
+search_table <- function(survey, keyword = '*', view = TRUE){
     # search rows that contains ALL keywords, NOT any
     dt <- get(paste0("dict_", survey, "_table"))
     keywords <- unlist(str_split(tolower(keyword), " "))

@@ -4,9 +4,11 @@
 \alias{search_table}
 \title{Search decennial tables}
 \usage{
-search_table(survey, keyword, view = TRUE)
+search_table(survey, keyword = "*", view = TRUE)
 }
 \arguments{
+\item{survey}{"decennial" or "acs"}
+
 \item{keyword}{keyword to search in code or description. To search for a table
 contains two words "abc" and "defg", the keyword is simply a single string
 of "abc defg".}
@@ -30,5 +32,5 @@ search decennial tables by keyword in table numbers or table descriptions
 
 }
 \seealso{
-\code{\link{dict_decennialtable}} lists all geocomponents and codes
+\code{\link{dict_decennial_table}} lists all geocomponents and codes
 }

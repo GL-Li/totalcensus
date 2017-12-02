@@ -2,11 +2,13 @@
 % Please edit documentation in R/search_census_and_acs.R
 \name{search_summarylevels}
 \alias{search_summarylevels}
-\title{Search summary levels of state files}
+\title{Search summary levels}
 \usage{
 search_summarylevels(survey, keyword = "*", view = TRUE)
 }
 \arguments{
+\item{survey}{"decennial" or "acs"}
+
 \item{keyword}{keyword to search in code or description}
 
 \item{view}{display the search result with View if TRUE}
@@ -15,11 +17,7 @@ search_summarylevels(survey, keyword = "*", view = TRUE)
 A data.table of searched results.
 }
 \description{
-Search code or description of summary levels used in state files.
-The summary levels are stored in dataset \code{\link{dict_summarylevel}}.
-This dataset is different from that for national files,
-\code{\link{dict_summarylevel_US}}. Function \code{\link{search_sumlev_US}}
-searches summary levels in national files.
+Search code or description of summary levels
 }
 \examples{
 \dontrun{

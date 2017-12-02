@@ -3,14 +3,30 @@ library(magrittr)
 library(readxl)
 library(stringr)
 
-make_acs_lookup <- function(file){
-    file = paste0("data_raw/", file)
-    dt <- fread(file, colClasses = "character", encoding = "Latin-1") %>%
+make_acs_lookup <- function(period, year){
+    # period : 1 or 5 year
+    # year : year of the survey
+    file_lookup <- paste0(
+        "data_raw/",
+        "ACS_", period, "yr_Seq_Table_Number_Lookup_", year, ".txt"
+    )
+    file_restriction <- paste0(
+        "data_raw/",
+        "ACS_", year, "_SF_", period, "YR_Appendices.xls"
+    )
+    dt <- fread(file_lookup, colClasses = "character", encoding = "Latin-1") %>%
         .[, c(2, 3, 4, 8), with = FALSE] %>%
         setnames(1:4, c("table_number", "file_segment", "reference", "table_name"))
 
+    restrict <- read_excel(file_restriction) %>%
+        .[, c(1, 3)] %>%
+        setDT() %>%
+        setnames(c("table_number", "restriction")) %>%
+        unique()
+
     tabl <- dt[, .SD[1], by = .(table_number)] %>%
         .[, .(table_number, table_name)] %>%
+        restrict[., on = .(table_number)] %>%
         setkey(table_number)
 
     univ <- dt[, .SD[2], by = .(table_number)] %>%
@@ -32,25 +48,23 @@ make_acs_lookup <- function(file){
 
     dict <- tabl[content] %>%
         univ[.] %>%
-        setcolorder(c("file_segment", "table_content", "reference",
+        setcolorder(c("file_segment", "table_content", "reference", "restriction",
                       "table_number", "table_name", "universe")) %>%
         .[order(file_segment)]
 }
 
 
+
 # ACS 5-year
-lookup_acs5year_2015 <- make_acs_lookup("ACS_5yr_Seq_Table_Number_Lookup_2015.txt")
-lookup_acs5year_2014 <- make_acs_lookup("ACS_5yr_Seq_Table_Number_Lookup_2015.txt")
+lookup_acs5year_2015 <- make_acs_lookup(5, 2015)
 
 # ACS 1-year
-lookup_acs1year_2016 <- make_acs_lookup("ACS_1yr_Seq_Table_Number_Lookup_2016.txt")
-lookup_acs1year_2015 <- make_acs_lookup("ACS_1yr_Seq_Table_Number_Lookup_2015.txt")
-lookup_acs1year_2014 <- make_acs_lookup("ACS_1yr_Seq_Table_Number_Lookup_2014.txt")
+lookup_acs1year_2016 <- make_acs_lookup(1, 2016)
+lookup_acs1year_2015 <- make_acs_lookup(1, 2015)
+lookup_acs1year_2014 <- make_acs_lookup(1, 2014)
 
 # save to data/
 save(lookup_acs5year_2015, file = "data/lookup_acs5year_2015.RData",
-     compress = "xz", compression_level = 9)
-save(lookup_acs5year_2014, file = "data/lookup_acs5year_2014.RData",
      compress = "xz", compression_level = 9)
 save(lookup_acs1year_2016, file = "data/lookup_acs1year_2016.RData",
      compress = "xz", compression_level = 9)

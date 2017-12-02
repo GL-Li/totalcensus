@@ -53,8 +53,10 @@ convert_fips_to_names <- function(FIPs, states = NULL, geo_header = "STATE") {
         names <- fips_geo[FIPs, on = .(fips, state)] %>%
             .[, cousub]
     } else if (geo_header == "CBSA"){
-        names <- dict_cbsa[FIPs, on = .(CBSA = fips)] %>%
-            .[, unique(CBSA_title)] %>%
+        dict <- dict_cbsa[, .(CBSA, CBSA_title)] %>%
+            unique()
+        names <- dict[FIPs, on = .(CBSA = fips)] %>%
+            .[, CBSA_title] %>%
             paste0("metro: ", .)
     } else if (geo_header == "COUNTY"){
         fips_geo <- dict_fips[SUMLEV == "050",
@@ -164,6 +166,31 @@ organize_geoheaders <- function(geo_headers) {
     return(res)
 }
 
+
+organize_tablecontents <- function(table_contents) {
+    # convert the argument table_contents in read_xxx() into a data.table, which
+    # has columns of code and name. The names are given by users
+
+    # Examples_____
+    # table_contents <- c("aaa = A1234",
+    #                  "bbb = B14140",
+    #                  "C6432",  # no given name
+    #                  "ddd = D222")
+    # organize_tablecontents(table_contents)
+    #     name   code
+    # 1:   aaa  A1234
+    # 2:   bbb B14140
+    # 3: C6432  C6432
+    # 4:   ddd   D222
+
+    tc <- str_replace_all(table_contents, " ", "")
+    res <- data.table(
+        name = str_extract(tc, "^[^=]*"),
+        reference = toupper(str_extract(tc, "[^=]*$"))
+    )
+
+    return(res)
+}
 
 get_fips <- function(area){
     # return fips code of a given area. Only provide One area
@@ -549,11 +576,11 @@ switch_summarylevel <- function(summary_level){
 
 switch_geocomp <- function(geo_comp){
     # Switch only common geocomponent, leave others alone
-    common_geo <- c("total", "urban", "urbanized area", "urban cluster", "rural")
+    common_geo <- c("all", "urban", "urbanized area", "urban cluster", "rural")
     if (geo_comp %in% common_geo){
         geo_comp <- switch(
             geo_comp,
-            "total" = "00",
+            "all" = "00",
             "urban" = "01",
             "urbanized area" = "04",
             "urban cluster" = "28",
@@ -567,7 +594,7 @@ switch_geocomp <- function(geo_comp){
 convert_geocomp_name <- function(dt){
     # convert common geocomp from code to name
     # convert only the following common geocomp
-    dt[GEOCOMP == "00", GEOCOMP := "total"] %>%
+    dt[GEOCOMP == "00", GEOCOMP := "all"] %>%
         .[GEOCOMP == "01", GEOCOMP := "urban"] %>%
         .[GEOCOMP == "04", GEOCOMP := "urbanized area"] %>%
         .[GEOCOMP == "28", GEOCOMP := "urban cluster"] %>%

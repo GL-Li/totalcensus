@@ -1,16 +1,6 @@
----
-title: "Extract data from decennial census and ACS summary files"
-author: "GL Li"
-date: "October 14, 2017"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
-```
-
 [![Build Status](https://travis-ci.org/GL-Li/rawcensus2010.svg?branch=master)](https://travis-ci.org/GL-Li/rawcensus2010)
 
+# Extract data from decennial census and ACS summary files
 
 This package provides total solutions to extracts any data from the raw summary files of decennial census and American Community Survey (ACS) and returns a tidy data.table. The extracted data can be easily processed with `data.table` or `dplyr` packages. 
 
@@ -23,29 +13,27 @@ In one sentence, package `totalcensus` makes census data extraction easier and g
 
 As an extreme example, here is how we extract the median home values in **all** block groups in the United States from 2011-2015 ACS 5-year survey with this package. You simply need to call the function `read_acs5year()` and provide parameters. It takes 15 seconds for my 4-years old laptop to return the data of all 217,739 block groups. In addition to the table contents we request, we also get the population and coordinate of each block group.
 
-```{r}
+```{r eval = FALSE}
 library(totalcensus)
 library(data.table)
 library(magrittr)
 home_national <- read_acs5year(
     year = 2015,
     states = states_DC,   # all 50 states plus DC
-    table_contents = "B25077_001",
+    table_contents = "home_value = B25077_001",
     summary_level = "block group"
 )
 ```
 
 With the coordinates, we can visualize the data on US map with `ggplot2` and `ggmap`. Each data point in the figure below corresponds to a a block group, colored by median home value and sized by population. This plot not only displays the median home values, but also tells population densities on the map.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval = FALSE}
 library(ggplot2)
 library(ggmap)
 us_map <- get_map("united states", zoom = 4, color = "bw")
 
-# make name readable and remove missing values. After remove missing value
-# 201660 rows left
+# After remove missing value, 201660 rows left
 home_national <- home_national %>%
-    setnames("B25077_001", "home_value") %>%
     .[!is.na(home_value)]
 
 ggmap(us_map) +
@@ -90,7 +78,7 @@ There are additional benefits of using this package:
 
 ## Installation
 
-```{r}
+```{r eval = FALSE}
 install.packages("devtools")
 
 devtools::install_github("GL-Li/totalcensus")
@@ -102,7 +90,7 @@ This package requires downloading census data to your local computer. You need a
 
 **Step 1**: create a folder to store downloaded data. Let's named it as `my_census_data`. The full path to this folder is `xxxxx/my_census_data`, replacing `xxxxx` with the actual path. Then run the function below to set the path for the package.
 
-```{r}
+```{r eval = FALSE}
 set_path_to_census("xxxxx/my_census_data", install = TRUE)
 ```
 
@@ -113,13 +101,66 @@ The data can be found on Census Beurua's website but you do not need to download
 - [Census 2010 summary file 1 with urban/rural update](https://www2.census.gov/census_2010/04-Summary_File_1/Urban_Rural_Update/)
 - [ACS summary files since 2005](https://www2.census.gov/programs-surveys/acs/summary_file/)
 
-```{r}
+```{r eval = FALSE}
 download_census()
+```
+
+
+**Step 3**: generate data from Census 2010
+The generated data will provide more details to ACS 1-year and 5-year survey data.
+
+```{r eval = FALSE}
+generate_geoidcoord()
 ```
 
 
 ## Basic application
 The package has three functions to read decennial census, ACS 5-year survey, and ACS 1-year survey: `read_decennial()`, `read_acs5year()`, and `read_acs1year()`. They are similar but as the survey data are so different, we prefer to keep three seperate functions, one for each. The examples below demonstrate basic applications.
+
+
+### Mdeian gross rent in cities with population over 65000
+Let's first read data of all census places before select cities as reading takes a few seconds.
+```{r eval = FALSE}
+rent <- read_acs1year(
+    year = 2016,
+    states = states_DC,
+    table_contents = "rent = B25064_001",
+    summary_level = "place",
+    geo_comp = "all"
+) 
+```
+
+Then select the one hundred largest cities by population and rank them by monthly rent.
+```{r eval = FALSE}
+library(ggplot2)
+library(ggmap)
+us_map <- get_map("united states", zoom = 4, color = "bw")
+
+ggmap(us_map) + 
+    geom_point(
+        data = rent[order(-population)],
+        aes(lon, lat, size = population/1e3, color = rent)
+    ) +
+    ylim(25, 50) +
+    scale_size_area(breaks = c(100, 200, 500, 1000, 2000, 5000)) +
+    scale_color_continuous(low = "green", high = "red") +
+    labs(
+        color = "monthly\nrent ($)",
+        size = "total\npopulation\n(thousand)",
+        title = "Monthly rent in cities over 65000 population",
+        caption = "Source: 2016 ACS 1-year survey"
+    ) +
+    theme(
+        panel.background = element_blank(),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        title = element_text(size = 14)
+    )
+```
+![city rent](figures/rent_cities_population_over_65000.png)
+
+
 
 ### Black communities in South Bend city, IN at block level
 
@@ -127,31 +168,30 @@ The package has three functions to read decennial census, ACS 5-year survey, and
 
 Knowing names of a city, county, metro area, or town, we can feed them directly to argument `areas`. The returned data.table contains the table contents we want to read as well as population and coordinates. The reading takes a few seconds.
 
-```{r}
+```{r eval = FALSE}
 # read data of black population in each block
 black_popul <- read_decennial(
     year = 2010,
     states = "IN",
-    table_contents = "P0030003",  # black population
+    table_contents = "black_popul = P0030003",
     areas = "South Bend city, IN",
     summary_level = "block"
 )
 
-   #                   area       lon      lat state population P0030003 GEOCOMP SUMLEV
-   # 1: South Bend city, IN -86.21864 41.63613    IN         28       10   total    100
-   # 2: South Bend city, IN -86.21659 41.63670    IN          0        0   total    100
-   # 3: South Bend city, IN -86.22172 41.63573    IN         52       16   total    100
-   # 4: South Bend city, IN -86.22022 41.63182    IN        279       21   total    100
-   # 5: South Bend city, IN -86.22093 41.63367    IN         42        1   total    100
+# first 5 rows of black_popul:
+   #                   area       lon      lat state population black_popul GEOCOMP SUMLEV
+   # 1: South Bend city, IN -86.21864 41.63613    IN         28          10     all    100
+   # 2: South Bend city, IN -86.21659 41.63670    IN          0           0     all    100
+   # 3: South Bend city, IN -86.22172 41.63573    IN         52          16     all    100
+   # 4: South Bend city, IN -86.22022 41.63182    IN        279          21     all    100
+   # 5: South Bend city, IN -86.22093 41.63367    IN         42           1     all    100
 ```
 
 It is better to separate data exploration from reading to save reading time when trying error. This can be done with `data.table` or `dplyr`.
 
-```{r}
-# changes column names and remove blocks where no people lives in, and add column
-# of black percentage. 
+```{r eval = FALSE}
+# remove blocks where no people lives in, and add column of black percentage. 
 black <- black_popul %>%
-    setnames("P0030003", "black_popul") %>%
     .[population != 0] %>%
     # percentage of black population in each block
     .[, black_pct := round(100 * black_popul / population, 2)]
@@ -162,18 +202,18 @@ black <- black_popul %>%
 Argument `geo_headers` works for any geographic areas represented in census geography files, such as American Indian Area/Alaska Native Area/ Hawaiian Home Land and congressional district, which are not covered by argument `areas`. 
 
 Here is how we read black population in each block in South Bend city, IN, using `geo_headers`. A city is a census place with geographic header "PLACE". We first read all data from all "PLACE":
-```{r}
+```{r eval = FALSE}
 black_popul_place <- read_decennial(
     year = 2010,
     states = "IN",
-    table_contents = "P0030003",  # black population
+    table_contents = "black_popul = P0030003",  
     geo_headers = "PLACE",
     summary_level = "block"
 )
 ```
 
-We can select rows of South Bend by the area name or by PLACE code. 
-```{r}
+We can then select rows of South Bend by the area name or by PLACE code. 
+```{r eval = FALSE}
 # select by name
 black_popul <- black_popul_place[area %like% "South Bend"]
 
@@ -183,7 +223,7 @@ black_popul <- black_popul_place[PLACE == "71000"]
 
 
 ### visualize the data
-```{r}
+```{r eval = FALSE}
 library(ggplot2)
 library(ggmap)
 

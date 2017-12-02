@@ -26,11 +26,17 @@ make_decennial_component <- function(){
         setkey(code)
     state_us <- merge(state, us, all = TRUE) %>%
         .[is.na(state_file), state_file := "-"] %>%
-        .[is.na(US_file), US_file := "-"]
+        .[is.na(US_file), US_file := "-"] %>%
+        .[code == "total", code := "00"] %>%
+        .[code == "urban", code := "01"] %>%
+        .[code == "urbanized area", code := "04"] %>%
+        .[code == "urban cluster", code := "28"] %>%
+        .[code == "rural", code := "43"]
 }
 
 dict_decennial_geocomponent <- make_decennial_component() %>%
-    dict_all_geocomponent[.]
+    dict_all_geocomponent[.] %>%
+    .[order(code)]
 
 save(dict_decennial_geocomponent, file = "data/dict_decennial_geocomponent.RData")
 
