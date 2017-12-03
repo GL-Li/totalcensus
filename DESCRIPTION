@@ -12,7 +12,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends: 
-    R (>= 3.3.1)
+    R (>= 3.2.1)
 Imports:
     stringr (>= 1.2.0), 
     data.table (>= 1.10.1),
