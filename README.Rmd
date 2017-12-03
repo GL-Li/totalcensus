@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/GL-Li/rawcensus2010.svg?branch=master)](https://travis-ci.org/GL-Li/rawcensus2010)
+[![Build Status](https://travis-ci.org/GL-Li/totalcensus.svg?branch=master)](https://travis-ci.org/GL-Li/totalcensus)
 
 # Extract data from decennial census and ACS summary files
 
@@ -64,7 +64,7 @@ ggmap(us_map) +
         title = element_text(size = 14)
     )
 ```
-![home value](figures/home_value_national_blockgroup.png)
+![](figures/home_value_national_blockgroup.png)
 
 There are additional benefits of using this package:
 
@@ -115,11 +115,34 @@ generate_geoidcoord()
 
 
 ## Basic application
-The package has three functions to read decennial census, ACS 5-year survey, and ACS 1-year survey: `read_decennial()`, `read_acs5year()`, and `read_acs1year()`. They are similar but as the survey data are so different, we prefer to keep three seperate functions, one for each. The examples below demonstrate basic applications.
+The package has three functions to read decennial census, ACS 5-year survey, and ACS 1-year survey: `read_decennial()`, `read_acs5year()`, and `read_acs1year()`. They are similar but as these  datasets are so different, we prefer to keep three seperate functions, one for each. 
 
+The function arguments serve as filters to select the data you want:
+
+- year: the year or ending year of the data you must provide.
+- states: the states of which you want read the geograhpy and data files. There are 50 states, "DC" and "PR" (Peuter Rico), plus a special one "US" for natioanal files. You must specify this parameter.
+- table_contents: this parameter specifies which table contents you want to read. Population is always returned even if table_contents is NULL. Users can name the table contents in the format such as c("male = B01001_002", "female = B01001_026"). 
+- areas: if you know which metropolitan areas, counties, cities and towns you want to get data from, you can specify them here by name or FIPS code, for example, c("New Yok metro", "PLACE = UT62360", "Salt Lake City city, UT").
+- geo_headers: In case you do not know which areas to extract data, you can read all the geographic headers specified here and select areas after reading. 
+- summary_level: it determines which level of data to extract. Common ones like "state", "county", "place", "county subdivision", "tract", "block group", and "block" can be input as plain text. Others have to be given by code.
+- geo_comp: specifies data of which geographic component you want. Most common ones are "all", "urban", and "rural".
+
+There are also a family of `search_xxx()` functions to help find table contents, geoheaders, summary levels, geocomponents, FIPS codes and CBSA codes.
+
+The following examples demonstrate how to use these read and search functions.
 
 ### Mdeian gross rent in cities with population over 65000
-Let's first read data of all census places before select cities as reading takes a few seconds.
+A renting company wants to know the most recent rents in major cities in the US. How to get the data?
+
+We first need to determing which survey to read. For most recent survey data, we want to read 2016 ACS 1-year surveys, which provide data for geographic areas of population over 65000.
+
+We also need to determine which data files to read by running `search_summarylevels("acs")`. Cities are at the summary level of "160", which is only in state files of 2016 ACS 1-year survey. So we have to read each of the states. We have dataset `states_DC` which is a vector of 50 states and DC.
+
+Then we need to check if 2016 ACS 1-year survey has the rent data. We run `search_tablecontents("acs")` to open the dataset with `View()` in RStudio. You can provide keywords for search in the function but it is better to do the search in RStudio with filters. There are so many tables that contains string "rent". It takes some time to find the right one if you are not familiar with ACS tables. After some struggle, we think  B25064_001 is what we want.
+
+We do not need to specify `areas` and `geo_headers` as we are extracting all geographic areas matches the conditions.
+
+Here is the code that gives what we want.
 ```{r eval = FALSE}
 rent <- read_acs1year(
     year = 2016,
@@ -128,9 +151,17 @@ rent <- read_acs1year(
     summary_level = "place",
     geo_comp = "all"
 ) 
+
+# Fisrt 5 rows
+  #             GEOID        lon      lat state population rent GEOCOMP SUMLEV                                  NAME
+  # 1: 16000US1150000  -77.01709 38.90415    DC     681170 1376     all    160 Washington city, District of Columbia
+  # 2: 16000US2829700  -89.07184 30.41606    MS      72077  774     all    160            Gulfport city, Mississippi
+  # 3: 16000US2836000  -90.21282 32.31583    MS     169141  813     all    160             Jackson city, Mississippi
+  # 4: 16000US2205000  -91.12590 30.44845    LA     227707  818     all    160           Baton Rouge city, Louisiana
+  # 5: 16000US2208920  -93.65559 32.52366    LA      68485  959     all    160          Bossier City city, Louisiana
 ```
 
-Then select the one hundred largest cities by population and rank them by monthly rent.
+It is always nice to visualize them on a map.
 ```{r eval = FALSE}
 library(ggplot2)
 library(ggmap)
@@ -158,11 +189,12 @@ ggmap(us_map) +
         title = element_text(size = 14)
     )
 ```
-![city rent](figures/rent_cities_population_over_65000.png)
+![](figures/rent_cities_population_over_65000.png)
 
 
 
 ### Black communities in South Bend city, IN at block level
+Only the decennial census has data down to block level. The most recent one is Census 2010. We will use two method to extract the data.
 
 #### Method 1: using argument `areas`
 
@@ -187,10 +219,10 @@ black_popul <- read_decennial(
    # 5: South Bend city, IN -86.22093 41.63367    IN         42           1     all    100
 ```
 
-It is better to separate data exploration from reading to save reading time when trying error. This can be done with `data.table` or `dplyr`.
+It is better to separate data manipulation from reading to save reading time as you usually need to try multiple manipulation. Data manipulation can be done with `data.table` or `dplyr`.
 
 ```{r eval = FALSE}
-# remove blocks where no people lives in, and add column of black percentage. 
+# remove blocks where no people lives in and add a column of black percentage. 
 black <- black_popul %>%
     .[population != 0] %>%
     # percentage of black population in each block
@@ -199,9 +231,9 @@ black <- black_popul %>%
 
 
 ### Method 2: use argument `geo_headers`
-Argument `geo_headers` works for any geographic areas represented in census geography files, such as American Indian Area/Alaska Native Area/ Hawaiian Home Land and congressional district, which are not covered by argument `areas`. 
+Argument `geo_headers` works for any geographic areas presented in census geography files, such as American Indian Area/Alaska Native Area/ Hawaiian Home Land and congressional district, which are not covered by argument `areas`. 
 
-Here is how we read black population in each block in South Bend city, IN, using `geo_headers`. A city is a census place with geographic header "PLACE". We first read all data from all "PLACE":
+Here is how we read black population in each block in South Bend city, using `geo_headers`. A city is a census place with geographic header "PLACE". We first read all data for all "PLACE":
 ```{r eval = FALSE}
 black_popul_place <- read_decennial(
     year = 2010,
@@ -212,7 +244,7 @@ black_popul_place <- read_decennial(
 )
 ```
 
-We can then select rows of South Bend by the area name or by PLACE code. 
+We can then select rows of South Bend by the area name or by PLACE code, which can be search with `search_fips()`.
 ```{r eval = FALSE}
 # select by name
 black_popul <- black_popul_place[area %like% "South Bend"]
@@ -222,11 +254,9 @@ black_popul <- black_popul_place[PLACE == "71000"]
 ```
 
 
-### visualize the data
+### Visualize the data
+Again we visualize on map with `ggplot2` and `ggmap`.
 ```{r eval = FALSE}
-library(ggplot2)
-library(ggmap)
-
 south_bend <- get_map("south bend, IN", zoom = 13, color = "bw")
 ggmap(south_bend) +
     geom_point(
@@ -250,5 +280,5 @@ ggmap(south_bend) +
     )
 ```
 
-![south bend](figures/south_bend_block_black.png)
+![](figures/south_bend_block_black.png)
 
