@@ -91,7 +91,8 @@ read_acs5year <- function(year,
     }
 
     # add population to table contents so that it will never empty
-    table_contents <- c("population = B01003_001", table_contents)
+    table_contents <- c("population = B01003_001", table_contents) %>%
+        unique()
 
     content_names <- organize_tablecontents(table_contents) %>%
         .[, name]

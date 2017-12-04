@@ -4,7 +4,8 @@
 #'
 #' @description Download census data from United States Census bureau. By default
 #' it downloads summary files and extract summary files of Census 2010, ACS 5-year
-#' survey of 2015, and ACS 1-year survey of 2016, 2015, and 2014.
+#' survey of 2015, and ACS 1-year survey of 2016, 2015, and 2014. It also download
+#' generated data from Census 2010 if not exist.
 #'
 #' @param survey Which survey to download from, "decennial", "acs5year", or "acs1year"
 #' @param year year or ending year of the survey
@@ -13,6 +14,13 @@
 #' @export
 
 download_census <- function(survey = NULL, year = NULL, states = c(states_DC, "US", "PR")){
+
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
+    if (!file.exists(paste0(path_to_census, "/generated_data/"))){
+        download_generated_data()
+    }
+
     if (is.null(survey)){
         message("Need 200 GB free space. Run download_census() again to resume downloading in case downloading breaks.")
         download_decennial_(2010, states)

@@ -38,7 +38,9 @@ There are additional benefits of using this package:
 
 
 
-## Installation
+## Install package and download census data
+
+### Installation
 
 ```{r eval = FALSE}
 install.packages("devtools")
@@ -46,9 +48,9 @@ install.packages("devtools")
 devtools::install_github("GL-Li/totalcensus")
 ```
 
-## Preparation before using the package
+### Downloading data
 
-This package requires downloading census data to your local computer. You need about 200 GB free disc space to download summary files of most recent decennial Census, most recent ACS 5-year survey, and most recent ACS 1-year surveys. Then we need to generate helper data from Census 2010 to be used to improve ACS data. Do not worry we have functions to facilitate all the tasks. Just follow the steps below.
+This package requires downloading census data to your local computer. You can choose to download only the data you want. For example, if you care only the 2015 ACS 5-year survey data in the states of Massachusette and New Hampshire, you can just download data of these two states, which takes a couple of GB disc space. Or you can download data of all most recent decennial Census, most recent ACS 5-year survey, and most recent ACS 1-year surveys. You need about 200 GB free disc space to download them. Do not worry we have functions to facilitate the downloading. Just follow the steps below.
 
 **Step 1**: create a folder to store downloaded data. Let's named it as `my_census_data`. The full path to this folder is `xxxxx/my_census_data`, replacing `xxxxx` with the actual path. Then run the function below to set the path for the package.
 
@@ -56,35 +58,31 @@ This package requires downloading census data to your local computer. You need a
 set_path_to_census("xxxxx/my_census_data", install = TRUE)
 ```
 
-**Step 2**: download and extract census data. By default, the function `download_census()` downloads Census 2010, 2011-2015 ACS 5-year survey, and 2014, 2015, and 2016 ACS 1-year surveys. You need 200 GB disc space for the default downloading. The Census 2010 alone takes about 140 GB.  You can choose which dataset to download if you do not need the default ones. Re-run the function to repair possible mistakes during downloading and extraction.
+**Step 2**: download and extract census data. It also downloads data generated from Census 2010, which is used to fill missing geographic header records in ACS data. As shown in the examples below, you can choose to download only what you need. If you have more than 200GB free hard drive space, I recommend downloading all recent decennial and ACS data when you are sleeping. A lot of fun to play with these data. Re-run the function to repair possible mistakes during download and extraction.
 
 ```{r eval = FALSE}
-# download the default datasets
-download_census()
+# download 2015 ACS 5-year survey data of MA and NH, a couple of GB
+download_census(survey = "acs5year", year = 2015, states = c("MA", "NH"))
 
-# download selected dataset, for example, 2015 ACS 5-year survey
-download_census(survey = "acs5year", year = 2015)
+# download 2015 ACS 5-year survey of all states, ~52 GB
+download_census("acs5year", 2015)
+
+# download 2016 ACS 1-year survey. It is only 1.5 GB, so download for all states
+download_census("acs1year", 2016)
+
+# download decennial census 2010, of state California, the largest state, 8.4 GB
+download_census("decennial", 2010, "CA")
+
+# download the default datasets, ~200G in total
+download_census()
 ```
 
-The downloaded data will also be extracted automatically to the folder `my_census_data`. It takes a long time to download and extract. You can stop downloading any time and then resume downloading by running the function again. 
+The downloaded data will be extracted automatically to the folder `my_census_data`. It takes a long time to download and extract. You can stop downloading any time and then resume downloading by running the function again. 
 
 The data can be found on Census Bureau's website but you do not need to download them manually. 
 
 - [Census 2010 summary file 1 with urban/rural update](https://www2.census.gov/census_2010/04-Summary_File_1/Urban_Rural_Update/)
 - [ACS summary files since 2005](https://www2.census.gov/programs-surveys/acs/summary_file/)
-
-
-**Step 3**: generate data from Census 2010
-The generated data will provide more details to ACS 1-year and 5-year survey data. If you already downloaded Census 2010 data, you can generate data by running:
-
-```{r eval = FALSE}
-generate_census_data()
-```
-
-If you do not have Census 2010 data, you can download the generated data by running:
-```{r, eval = FALSE}
-download_generated_data()
-```
 
 
 
