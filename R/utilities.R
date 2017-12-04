@@ -128,9 +128,17 @@ lookup_tablecontents <- function(table_contents, lookup){
     # 2:       05                              "P0150008"
     # 3:       26           c("PCT012G002", "PCT012G181")
 
+    # try to keep the order of input table_contents
+    order_contents <- data.table(
+        id = 1:length(table_contents),
+        content = table_contents
+    )
+
     file_content <- lookup[reference %in% table_contents,
                            .(file_seg = file_segment,
                              table_contents = reference)] %>%
+        .[order_contents, on = .(table_contents = content)] %>%
+        .[order(id)] %>%
         compress_datatable()
 
     return(file_content)

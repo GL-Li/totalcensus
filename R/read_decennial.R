@@ -110,6 +110,9 @@ read_decennial <- function(year,
         stop("Must keep at least one of arguments areas and geo_headers NULL")
     }
 
+    # add population to table contents so that it will never empty
+    table_contents <- c("population = P0010001", table_contents)
+
     content_names <- organize_tablecontents(table_contents) %>%
         .[, name]
     table_contents <- organize_tablecontents(table_contents) %>%
@@ -228,13 +231,6 @@ read_decennial_areas_ <- function(year,
             # convert STATE fips to state abbreviation
             .[, state := convert_fips_to_names(STATE)] %>%
             setkey(LOGRECNO)
-
-
-        # add population data of each geographic area
-        popul <- read_decennial_tablecontents_(year, state,
-                                               "P0010001", show_progress) %>%
-            .[, .(LOGRECNO, population = P0010001)]
-        geo <- geo[popul]
 
         # read data from each file
         if(!is.null(table_contents)){
@@ -358,13 +354,6 @@ read_decennial_geoheaders_ <- function(year,
             # convert STATE fips to state abbreviation
             .[, state := convert_fips_to_names(STATE)] %>%
             setkey(LOGRECNO)
-
-
-        # add population data of each geographic area
-        popul <- read_decennial_tablecontents_(year, state,
-                                               "P0010001", show_progress) %>%
-            .[, .(LOGRECNO, population = P0010001)]
-        geo <- geo[popul]
 
         # read data from each file
         if(!is.null(table_contents)){
@@ -587,6 +576,7 @@ read_decennial_tablecontents_ <- function(year,
 
     # locate data files for the content
     lookup <- get(paste0("lookup_decennial_", year))
+
     file_content <- lookup_tablecontents(table_contents, lookup)
 
     dt <- purrr::map2(file_content[, file_seg],

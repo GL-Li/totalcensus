@@ -90,6 +90,9 @@ read_acs5year <- function(year,
         stop("Must keep at least one of arguments areas and geo_headers NULL")
     }
 
+    # add population to table contents so that it will never empty
+    table_contents <- c("population = B01003_001", table_contents)
+
     content_names <- organize_tablecontents(table_contents) %>%
         .[, name]
     table_contents <- organize_tablecontents(table_contents) %>%
@@ -226,12 +229,6 @@ read_acs5year_areas_ <- function(year,
                 setkey(LOGRECNO)
         }
 
-
-        # add population data of each geographic area
-        popul <- read_acs5year_tablecontents_(year, state,
-                                              "B01003_001", "e", show_progress) %>%
-            .[, .(LOGRECNO, population = B01003_001_e)]
-        geo <- geo[popul]
 
         # read estimate and margin from each file
         if(!is.null(table_contents)){
@@ -386,12 +383,6 @@ read_acs5year_geoheaders_ <- function(year,
                 setkey(LOGRECNO)
         }
 
-
-        # add population data of each geographic area
-        popul <- read_acs5year_tablecontents_(year, state,
-                                              "B01003_001", "e", show_progress) %>%
-            .[, .(LOGRECNO, population = B01003_001_e)]
-        geo <- geo[popul]
 
         # read estimate and margin from each file
         if(!is.null(table_contents)){
