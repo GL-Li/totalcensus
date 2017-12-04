@@ -35,7 +35,6 @@ There are additional benefits of using this package:
 - You can get all block groups that belong or partially belong to a city. Original census data do not specify city information for a block group as a block group may not uniquely belong to a city. However, large cities have most block groups within their boundaries and only a small number of block groups run across the borders. The block group level data provide valuable spatial information of a city. This is particularly helpful for ACS 5-year surveys which cover data down to the level of block groups. 
 - It provides longitude and latitude of the internal point of a geographic area for easy and quick mapping. You do not always need shape files to make nice maps, as the map shown above. 
 
-[More examples of extracting data with package totalcensus](????????????????????)
 
 
 
@@ -67,9 +66,9 @@ download_census()
 download_census(survey = "acs5year", year = 2015)
 ```
 
-The downloaded data will alse be extracted automatically to the folder `my_census_data`. It takes a long time to download and extract. You can stop downloading any time and then resume downloading by running the function again. 
+The downloaded data will also be extracted automatically to the folder `my_census_data`. It takes a long time to download and extract. You can stop downloading any time and then resume downloading by running the function again. 
 
-The data can be found on Census Beurua's website but you do not need to download them mannually. 
+The data can be found on Census Bureau's website but you do not need to download them manually. 
 
 - [Census 2010 summary file 1 with urban/rural update](https://www2.census.gov/census_2010/04-Summary_File_1/Urban_Rural_Update/)
 - [ACS summary files since 2005](https://www2.census.gov/programs-surveys/acs/summary_file/)
@@ -90,14 +89,14 @@ download_generated_data()
 
 
 ## Basic application
-The package has three functions to read decennial census, ACS 5-year survey, and ACS 1-year survey: `read_decennial()`, `read_acs5year()`, and `read_acs1year()`. They are similar but as these  datasets are so different, we prefer to keep three seperate functions, one for each. 
+The package has three functions to read decennial census, ACS 5-year survey, and ACS 1-year survey: `read_decennial()`, `read_acs5year()`, and `read_acs1year()`. They are similar but as these  datasets are so different, we prefer to keep three separate functions, one for each. 
 
 The function arguments serve as filters to select the data you want:
 
 - year: the year or ending year of the data you must provide.
-- states: the states of which you want read the geograhpy and data files. There are 50 states, "DC" and "PR" (Peuter Rico), plus a special one "US" for natioanal files. You must specify this parameter.
+- states: the states of which you want read the geography and data files. There are 50 states, "DC" and "PR" (Peuter Rico), plus a special one "US" for national files. You must specify this parameter.
 - table_contents: this parameter specifies which table contents you want to read. Population is always returned even if table_contents is NULL. Users can name the table contents in the format such as c("male = B01001_002", "female = B01001_026"). 
-- areas: if you know which metropolitan areas, counties, cities and towns you want to get data from, you can specify them here by name or FIPS code, for example, c("New Yok metro", "PLACE = UT62360", "Salt Lake City city, UT").
+- areas: if you know which metropolitan areas, counties, cities and towns you want to get data from, you can specify them here by name or FIPS code, for example, c("New York metro", "PLACE = UT62360", "Salt Lake City city, UT").
 - geo_headers: In case you do not know which areas to extract data, you can read all the geographic headers specified here and select areas after reading. 
 - summary_level: it determines which level of data to extract. Common ones like "state", "county", "place", "county subdivision", "tract", "block group", and "block" can be input as plain text. Others have to be given by code.
 - geo_comp: specifies data of which geographic component you want. Most common ones are "all", "urban", and "rural".
@@ -109,7 +108,7 @@ The following examples demonstrate how to use these read and search functions.
 ### Mdeian gross rent in cities with population over 65000
 A renting company wants to know the most recent rents in major cities in the US. How to get the data?
 
-We first need to determing which survey to read. For most recent survey data, we want to read 2016 ACS 1-year surveys, which provide data for geographic areas of population over 65000.
+We first need to determine which survey to read. For most recent survey data, we want to read 2016 ACS 1-year surveys, which provide data for geographic areas of population over 65000.
 
 We also need to determine which data files to read by running `search_summarylevels("acs")`. Cities are at the summary level of "160", which is only in state files of 2016 ACS 1-year survey. So we have to read each of the states. We have dataset `states_DC` which is a vector of 50 states and DC.
 
