@@ -89,14 +89,17 @@ bbb = read_decennial(
 
 
 # read table contents of all county subdivisions in Providence metro
+library(data.table)
+library(magrittr)
 ccc <- read_decennial(
     year = 2010,
     states = "US",
     table_contents = c("urban = P0020002", "rural = P0020005"),
-    areas = "cbsa = 39300",
+    geo_headers = c("NAME", "CBSA"),
     summary_level = "county subdivision",
-    geo_comp = "total"
-)
+    geo_comp = "all"
+) \%>\%
+.[CBSA = "39300"]
 }
 
 }
