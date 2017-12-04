@@ -79,7 +79,7 @@ download_census()
 
 The downloaded data will be extracted automatically to the folder `my_census_data`. It takes a long time to download and extract. You can stop downloading any time and then resume downloading by running the function again. 
 
-The data can be found on Census Bureau's website but you do not need to download them manually. 
+The data can be found on Census Bureau's website but you do not need to download them manually. Use the function above.
 
 - [Census 2010 summary file 1 with urban/rural update](https://www2.census.gov/census_2010/04-Summary_File_1/Urban_Rural_Update/)
 - [ACS summary files since 2005](https://www2.census.gov/programs-surveys/acs/summary_file/)
