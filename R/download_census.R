@@ -1,4 +1,4 @@
-# package function ============================================================
+# package user function ============================================================
 
 #' download census data
 #'
@@ -28,7 +28,7 @@ download_census <- function(survey = NULL, year = NULL, states = c(states_DC, "U
         } else if (survey == "acs1year"){
             download_acs1year_(year)
         } else {
-            message("Please select survey from decennial, acs5year, or acs1year.")
+            message('Please select a survey from "decennial", "acs5year", or "acs1year".')
         }
     }
 }
@@ -37,6 +37,13 @@ download_census <- function(survey = NULL, year = NULL, states = c(states_DC, "U
 # internal functions ===========================================================
 
 download_decennial_ <- function(year, states){
+
+    # total number of files of each states expected right
+    # after extraction
+    total_files <- switch(
+        as.character(year),
+        "2010" = 50
+    )
 
     states <- toupper(states)
     # temp folder to hold all downloaded data
@@ -60,7 +67,20 @@ download_decennial_ <- function(year, states){
             finished_states <- record[, state]
 
             if (st %in% finished_states){
-                message(paste0(st, " data has already been downloaded and extracted.\n"))
+                n_files <- length(list.files(
+                    paste0(path_to_decennial, "/", toupper(st))
+                ))
+
+                # for unknown reason RI has 54 files after extraction
+                # force it to 50
+                if (st == "RI" && n_files == 54) n_files <- 50
+
+                if (n_files == total_files){
+                    message(paste0(st, " data has already been downloaded and extracted.\n"))
+                } else {
+                    download_decennial_1_state_(year, st)
+                }
+
             } else {
                 download_decennial_1_state_(year, st)
                 record <- rbindlist(list(record, data.table(state = st)))
@@ -113,13 +133,21 @@ download_decennial_1_state_ <- function(year, state){
     cat("File unzipped successfully\n")
 
     # delete downloaded file to save space
-    cat("Delete downloaded zip file\n\n")
     file.remove(save_as)
+    cat("Deleted downloaded zip file\n\n")
 }
 
 
 
 download_acs5year_ <- function(year, states){
+
+    # total number of files in group 1 or group 2 of each states expected right
+    # after extraction
+    total_files <- switch(
+        as.character(year),
+        "2015" = 490
+    )
+
     states <- toupper(states)
     # temp folder to hold all downloaded data
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
@@ -144,7 +172,18 @@ download_acs5year_ <- function(year, states){
             finished_states <- record[, state]
 
             if (st %in% finished_states){
-                message(paste0(st, " data has already been downloaded and extracted.\n"))
+                # texas in big trouble as "txt" will be counted as "tx". Add "5"
+                # to avoid confusion with other file names too
+                st_5 <- paste0("5", tolower(st))
+                n_files <- length(list.files(path_to_acs5year, st_5)) +
+                    length(list.files(paste0(path_to_acs5year, "/group1"), st_5)) +
+                    length(list.files(paste0(path_to_acs5year, "/group2"), st_5))
+                if (n_files == total_files){
+                    message(paste0(st, " data has already been downloaded and extracted.\n"))
+                } else {
+                    # download and extract again if anything is wrong
+                    download_acs5year_1_state_(year, st)
+                }
             } else {
                 download_acs5year_1_state_(year, st)
                 record <- rbindlist(list(record, data.table(state = st)))
@@ -211,8 +250,8 @@ download_acs5year_1_state_ <- function(year, state){
         cat("File unzipped successfully\n")
 
         # delete downloaded file to save space
-        cat("Delete downloaded zip file\n\n")
         file.remove(save_as)
+        cat("Deleted downloaded zip file\n\n")
 
         # move geography files out of group 1 and 2
         for (ext in c(".csv", ".txt")){
@@ -227,15 +266,25 @@ download_acs5year_1_state_ <- function(year, state){
 
 
 download_acs1year_ <- function(year){
+    # total number of files expected in each year's acs 1-year survey
+    # if not, there is a downloading or extraction problem.
+    total_files <- switch(
+        as.character(year),
+        "2016" = 17702,
+        "2015" = 17596,
+        "2014" = 17596
+    )
+
     # download all states' data which is not that big
-    path_to_census <- "~/Downloads/tmp/" #Sys.getenv("PATH_TO_CENSUS")
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
     path_to_acs1year <- paste0(
         path_to_census, "acs1year/", year
     )
 
     cat(paste0("Downloading ", year, " acs 1-year file \n"))
 
-    if (dir.exists(path_to_acs1year)){
+    if (dir.exists(path_to_acs1year) &&
+        length(list.files(path_to_acs1year) == total_files)){
         message("You already have acs 1-year data of ", year, ".\n")
     } else {
         url <- paste0(
@@ -250,10 +299,20 @@ download_acs1year_ <- function(year){
         # unzip downloaded file
         cat(paste0("Unzipping downloaded zip file of acs 1-year of", year, "\n"))
         unzip(save_as, exdir = path_to_acs1year)
-        cat("File unzipped successfully\n")
+
+        # check extraction
+        n_files <- length(list.files(path_to_acs1year))
+        if (n_files == total_files){
+            cat("File unzipped successfully\n")
+            status <- "success"
+        } else {
+            status <- "failure"
+        }
 
         # delete downloaded file to save space
-        cat("Delete downloaded zip file\n")
         file.remove(save_as)
+        cat("Deleted downloaded zip file\n")
+
+        return(invisible(status))
     }
 }

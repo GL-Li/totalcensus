@@ -183,8 +183,6 @@ read_decennial_areas_ <- function(year,
 
     #=== prepare arguments ===
 
-    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
-
     # convert areas to the form of data.table
     #    geoheader  code state                    name
     # 1:     PLACE 62360    UT     Providence city, UT
@@ -324,8 +322,6 @@ read_decennial_geoheaders_ <- function(year,
 
     #=== prepare arguments ===
 
-    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
-
     states <- toupper(states)
     # toupper(NULL) ---> character(0) will cause trouble
     if (!is.null(table_contents)) table_contents <- toupper(table_contents)
@@ -451,7 +447,7 @@ read_decennial_geo_ <- function(year,
 
     #=== read files and select columns ===
 
-    file <- paste0(path_to_census, "/census", year, "/", state, "/", tolower(state),
+    file <- paste0(path_to_census, "census", year, "/", state, "/", tolower(state),
                    "geo", year, ".ur1")
     # use "Latin-1" for encoding special spanish latters such as ñ in Cañada
     geo <- fread(file, header = FALSE, sep = "\n", encoding = "Latin-1" ,
@@ -533,7 +529,7 @@ read_decennial_1_file_tablecontents_ <- function(year,
     loc <- which(all_contents %in% table_contents)
     cols <- paste0("V", loc)
 
-    file <- paste0(path_to_census, "/census", year, "/", state, "/", tolower(state),
+    file <- paste0(path_to_census, "census", year, "/", state, "/", tolower(state),
                    "000", file_seg, year, ".ur1")
 
     if (show_progress) {

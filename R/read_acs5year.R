@@ -177,8 +177,6 @@ read_acs5year_areas_ <- function(year,
 
     #=== prepare arguments ===
 
-    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
-
     # convert areas to the form of data.table
     #    geoheader  code state                    name
     # 1:     PLACE 62360    UT     Providence city, UT
@@ -349,8 +347,6 @@ read_acs5year_geoheaders_ <- function(year,
 
     #=== prepare arguments ===
 
-    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
-
     states <- toupper(states)
     # toupper(NULL) ---> character(0) will cause trouble
     if (!is.null(table_contents)) table_contents <- toupper(table_contents)
@@ -493,7 +489,7 @@ read_acs5year_geo_ <- function(year,
 
     #=== read file ===
 
-    file <- paste0(path_to_census, "/", "acs5year/", year, "/g", year, "5",
+    file <- paste0(path_to_census, "acs5year/", year, "/g", year, "5",
                    tolower(state), ".csv")
 
     # use "Latin-1" for encoding special spanish latters such as ñ in Cañada
@@ -545,9 +541,9 @@ read_acs5year_1_file_tablecontents_ <- function(year, state, file_seg,
     col_names <- c(ommitted, col_names)
 
     # row bind data in group1 and group2
-    file1 <- paste0(path_to_census, "/", "acs5year/", year, "/", "group1/",
+    file1 <- paste0(path_to_census, "acs5year/", year, "/", "group1/",
                     est_marg, year, "5", tolower(state), file_seg, "000.txt")
-    file2 <- paste0(path_to_census, "/", "acs5year/", year, "/", "group2/",
+    file2 <- paste0(path_to_census, "acs5year/", year, "/", "group2/",
                     est_marg, year, "5", tolower(state), file_seg, "000.txt")
 
     dt1 <- fread(file1, header = FALSE, showProgress = show_progress) %>%

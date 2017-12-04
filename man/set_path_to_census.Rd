@@ -4,10 +4,11 @@
 \alias{set_path_to_census}
 \title{Set file path to directory holding census data}
 \usage{
-set_path_to_census(path, overwrite = FALSE, install = FALSE)
+set_path_to_census(path, overwrite = TRUE, install = TRUE)
 }
 \arguments{
-\item{path}{path to directory holding all downloaded census data.}
+\item{path}{path to directory holding all downloaded census data, such as
+"E:/my_census_data/" and "~/my_census_data/".}
 
 \item{overwrite}{whether to overwrite old .Renviron.}
 

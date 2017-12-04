@@ -169,8 +169,6 @@ read_acs1year_areas_ <- function(year,
 
     #=== prepare arguments ===
 
-    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
-
     # convert areas to the form of data.table
     #    geoheader  code state                    name
     # 1:     PLACE 62360    UT     Providence city, UT
@@ -335,8 +333,6 @@ read_acs1year_geoheaders_ <- function(year,
 
     #=== prepare arguments ===
 
-    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
-
     states <- toupper(states)
     # toupper(NULL) ---> character(0) will cause trouble
     if (!is.null(table_contents)) table_contents <- toupper(table_contents)
@@ -472,7 +468,7 @@ read_acs1year_geo_ <- function(year,
 
     #=== read file ===
 
-    file <- paste0(path_to_census, "/", "acs1year/", year, "/g", year, "1",
+    file <- paste0(path_to_census, "acs1year/", year, "/g", year, "1",
                    tolower(state), ".csv")
 
     # use "Latin-1" for encoding special spanish latters such as ñ in Cañada
@@ -504,7 +500,7 @@ read_acs1year_1_file_tablecontents_ <- function(year, state, file_seg, table_con
     ommitted <- c("FILEID", "FILETYPE", "STUSAB", "CHARITER", "SEQUENCE", "LOGRECNO")
     col_names <- c(ommitted, col_names)
 
-    file <- paste0(path_to_census, "/", "acs1year/", year, "/", est_marg, year, "1",
+    file <- paste0(path_to_census, "acs1year/", year, "/", est_marg, year, "1",
                    tolower(state), file_seg, "000.txt")
 
     dt <- fread(file, header = FALSE, showProgress = show_progress) %>%

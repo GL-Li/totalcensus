@@ -1,14 +1,22 @@
 #' Set file path to directory holding census data
 #'
 #'
-#' @param path path to directory holding all downloaded census data.
+#' @param path path to directory holding all downloaded census data, such as
+#' "E:/my_census_data/" and "~/my_census_data/".
 #' @param overwrite whether to overwrite old .Renviron.
 #' @param install whether to set the path for all future use.
 #'
 #' @export
 
 # This function is modified from census_api_key() in package tidycensus
-set_path_to_census <- function (path, overwrite = FALSE, install = FALSE){
+set_path_to_census <- function (path, overwrite = TRUE, install = TRUE){
+
+    path_end <- str_trim(path) %>%
+        str_extract(".$")
+    if (path_end != "/") {
+        path <- paste0(str_trim(path), "/")
+    }
+
     if (install == TRUE) {
         setwd(Sys.getenv("HOME"))  # set working directory to home directory
 

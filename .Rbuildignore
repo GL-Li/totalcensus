@@ -2,6 +2,7 @@
 ^\.Rproj\.user$
 why_this_package
 data_raw
+figures
 application
-readme.Rmd
+README.*
 ^\.travis\.yml$
