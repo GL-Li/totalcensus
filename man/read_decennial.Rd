@@ -99,7 +99,7 @@ ccc <- read_decennial(
     summary_level = "county subdivision",
     geo_comp = "all"
 ) \%>\%
-.[CBSA = "39300"]
+    .[CBSA == "39300"]
 }
 
 }

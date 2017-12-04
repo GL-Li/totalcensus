@@ -163,15 +163,22 @@ devtools::install_github(&quot;GL-Li/totalcensus&quot;)</code></pre>
 <p>This package requires downloading census data to your local computer. You need about 200 GB free disc space to download summary files of most recent decennial Census, most recent ACS 5-year survey, and most recent ACS 1-year surveys. Then we need to generate helper data from Census 2010 to be used to improve ACS data. Do not worry we have functions to facilitate all the tasks. Just follow the steps below.</p>
 <p><strong>Step 1</strong>: create a folder to store downloaded data. Let’s named it as <code>my_census_data</code>. The full path to this folder is <code>xxxxx/my_census_data</code>, replacing <code>xxxxx</code> with the actual path. Then run the function below to set the path for the package.</p>
 <pre class="r"><code>set_path_to_census(&quot;xxxxx/my_census_data&quot;, install = TRUE)</code></pre>
-<p><strong>Step 2</strong>: download and extract census data. By default, the function <code>download_census()</code> downloads Census 2010, 2011-2015 ACS 5-year survey, and 2014, 2015, and 2016 ACS 1-year surveys. The downloaded data will alse be extracted automatically to the folder <code>my_census_data</code>. It takes a long time to download and extract. You can stop downloading any time and then resume downloading by running the function again.</p>
+<p><strong>Step 2</strong>: download and extract census data. By default, the function <code>download_census()</code> downloads Census 2010, 2011-2015 ACS 5-year survey, and 2014, 2015, and 2016 ACS 1-year surveys. You need 200 GB disc space for the default downloading. The Census 2010 alone takes about 140 GB. You can choose which dataset to download if you do not need the default ones. Re-run the function to repair possible mistakes during downloading and extraction.</p>
+<pre class="r"><code># download the default datasets
+download_census()
+
+# download selected dataset, for example, 2015 ACS 5-year survey
+download_census(survey = &quot;acs5year&quot;, year = 2015)</code></pre>
+<p>The downloaded data will alse be extracted automatically to the folder <code>my_census_data</code>. It takes a long time to download and extract. You can stop downloading any time and then resume downloading by running the function again.</p>
 <p>The data can be found on Census Beurua’s website but you do not need to download them mannually.</p>
 <ul>
 <li><a href="https://www2.census.gov/census_2010/04-Summary_File_1/Urban_Rural_Update/">Census 2010 summary file 1 with urban/rural update</a></li>
 <li><a href="https://www2.census.gov/programs-surveys/acs/summary_file/">ACS summary files since 2005</a></li>
 </ul>
-<pre class="r"><code>download_census()</code></pre>
-<p><strong>Step 3</strong>: generate data from Census 2010 The generated data will provide more details to ACS 1-year and 5-year survey data.</p>
-<pre class="r"><code>generate_geoidcoord()</code></pre>
+<p><strong>Step 3</strong>: generate data from Census 2010 The generated data will provide more details to ACS 1-year and 5-year survey data. If you already downloaded Census 2010 data, you can generate data by running:</p>
+<pre class="r"><code>generate_census_data()</code></pre>
+<p>If you do not have Census 2010 data, you can download the generated data by running:</p>
+<pre class="r"><code>download_generated_data()</code></pre>
 </div>
 <div id="basic-application" class="section level2">
 <h2>Basic application</h2>

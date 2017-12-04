@@ -1,11 +1,10 @@
 
-#' Generate coordinate for all GEOIDs in ACS from Census 2010.
+#' Generate additional geographic data from Census 2010.
 #'
-#' @description It creates a sub directory "generared_data/" under path_to_census
-#' if not exsist and a file called geoid_coord.csv. The coordinates are generated
-#' from census 2010 summary file 1 (with urban/rural update). GEOIDs include all
-#' those in 2015 ACS 1-year and 5-year survey. The coordinate of
-#' new GEOID created after Census 2010 are not available.
+#' @description Decennial census has the most complete geographic header records,
+#' which can fill in many missing values in ACS data. This function is to generate
+#' such datasets. It creates a sub directory "generared_data/" under path_to_census
+#' if not exsist and store generated data.
 #'
 #' @param states vector of abbreviations of states, such as c("MA", "RI")
 #'
@@ -14,7 +13,7 @@
 
 
 
-generate_geoidcoord <- function(states =  c(states_DC, "PR", "US")){
+generate_census_data <- function(states =  c(states_DC, "PR", "US")){
 
     # By default generate GEOID coordinate for each states, DC, PR and US
 
