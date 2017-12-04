@@ -53,10 +53,17 @@ download_generated_data <- function(){
     # total number of files expected in "generated_data/"
     total_files <- 265
 
+
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
     url <- "https://s3.amazonaws.com/gl-shared-data/generated_census_data.zip"
     download.file(url, paste0(path_to_census, "tmp.zip"))
-    unzip(paste0(path_to_census, "tmp.zip"), exdir = path_to_census)
+    unzip(
+        paste0(path_to_census, "tmp.zip"),
+        exdir = str_replace(path_to_census, "/$", "")
+    )
+
+    file.remove(paste0(path_to_census, "tmp.zip"))
 
     n_files <- length(list.files(
         paste0(path_to_census, "generated_data/"),
@@ -69,7 +76,6 @@ download_generated_data <- function(){
         cat("Last downloading or extraction has problem. Download and extract again.")
         download_generated_data()
     }
-
 }
 
 
