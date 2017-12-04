@@ -105,7 +105,7 @@ There are also a family of `search_xxx()` functions to help find table contents,
 
 The following examples demonstrate how to use these read and search functions.
 
-### Mdeian gross rent in cities with population over 65000
+### Median gross rent in cities with population over 65000
 A renting company wants to know the most recent rents in major cities in the US. How to get the data?
 
 We first need to determine which survey to read. For most recent survey data, we want to read 2016 ACS 1-year surveys, which provide data for geographic areas of population over 65000.
