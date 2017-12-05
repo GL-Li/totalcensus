@@ -368,7 +368,7 @@ read_decennial_geoheaders_ <- function(year,
 
         # To determine what PLACE or COUSUB a tract or block group (partially)
         # blongs, replace PLACE and COUSUB with those obtained from decennial 2010
-        # in generate_geoid_coordinate.R
+        # in generate_census_data.R
         decennial <- add_geoheader(decennial, state, geo_headers, summary_level,
                                    survey = "decennial")
 

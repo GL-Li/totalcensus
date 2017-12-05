@@ -244,3 +244,30 @@ race_100 <- read_acs1year(
     ) 
 ```
 
+## By zip code
+```{r}
+# using 2015 ACS 5-year survey
+zip_acs5 <- read_acs5year(
+    year = 2015,
+    states = "US",
+    table_contents = c(
+        "boy_under_5 = B01001_003",
+        "girl_under_5 = B01001_027"
+    ),
+    geo_headers = "ZCTA5",
+    summary_level = "860"
+)
+
+# using decennial census 2010 
+zip_2010 <- read_decennial(
+    year = 2010,
+    states = "US",
+    table_contents = c(
+        "boy_under_5 = P0120003",
+        "girl_under_5 = P0120027"
+    ),
+    geo_headers = "ZCTA5",
+    summary_level = "860"
+)
+```
+

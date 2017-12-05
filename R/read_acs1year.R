@@ -407,13 +407,15 @@ read_acs1year_geoheaders_ <- function(year,
         setnames(combined, paste0(table_contents, "_e"), table_contents)
     }
 
-    if (length(geo_headers) == 1){
+    if (length(geo_headers) == 1 &&
+        geo_headers %in% c("STATE", "COUNTY", "PLACE", "COUNTY", "CBSA")){
         combined[, area := convert_fips_to_names(get(geo_headers), state, geo_headers)]
     }
 
 
     # reorder columns
-    if (length(geo_headers) == 1){
+    if (length(geo_headers) == 1 &&
+        geo_headers %in% c("STATE", "COUNTY", "PLACE", "COUNTY", "CBSA")){
         begin <- c("area", "GEOID", "lon", "lat")
     } else {
         begin <- c("GEOID", "lon", "lat")
