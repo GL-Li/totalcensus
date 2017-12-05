@@ -100,15 +100,9 @@ download_decennial_ <- function(year, states){
     path_to_decennial <- paste0(path_to_census, "/census", year)
 
 
-    # turn off warning, fread() gives warnings when read non-scii characters.
-    # window gives a warning
-    options(warn = -1)
-
     if (!dir.exists(path_to_decennial)){
         dir.create(path_to_decennial)
     }
-
-    options(warn = 0)
 
     i <- 0
     N <- length(states)
@@ -207,16 +201,15 @@ download_acs5year_ <- function(year, states){
     # temp folder to hold all downloaded data
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
-    # turn off warning, fread() gives warnings when read non-scii characters.
-    # window gives a warning
-    options(warn = -1)
-
-    path_to_acs5year <- paste0(
-        path_to_census, "/acs5year/", year
+    path_to_acs5 <- paste0(
+        path_to_census, "/acs5year"
     )
+    path_to_acs5year <- paste0(path_to_acs5, "/", year)
 
-    options(warn = 0)
-
+    # one time only create 1 layer of folders so have to do it twice
+    if (!dir.exists(path_to_acs5)){
+        dir.create(path_to_acs5)
+    }
     if (!dir.exists(path_to_acs5year)){
         dir.create(path_to_acs5year)
     }
