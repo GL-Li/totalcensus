@@ -430,7 +430,7 @@ add_geoheader <- function(dt, state, geo_headers, summary_level, survey = "acs")
         if (summary_level %in% c("150", "*")){
             if ("PLACE" %in% geo_headers){
                 file <- paste0(path_to_census,
-                               "generated_data/blkgrp_geoid_place/blkgrp_geoid_place_",
+                               "/generated_data/blkgrp_geoid_place/blkgrp_geoid_place_",
                                state, ".csv")
                 blkgrp <- fread(file, colClasses = "character") %>%
                     .[, .(GEOID, PLACE_tmp = PLACE)]
@@ -441,7 +441,7 @@ add_geoheader <- function(dt, state, geo_headers, summary_level, survey = "acs")
 
             if ("COUSUB" %in% geo_headers){
                 file <- paste0(path_to_census,
-                               "generated_data/blkgrp_geoid_cousub/blkgrp_geoid_cousub_",
+                               "/generated_data/blkgrp_geoid_cousub/blkgrp_geoid_cousub_",
                                state, ".csv")
                 blkgrp <- fread(file, colClasses = "character") %>%
                     .[, .(GEOID, COUSUB_tmp = COUSUB)]
@@ -453,7 +453,7 @@ add_geoheader <- function(dt, state, geo_headers, summary_level, survey = "acs")
         if (summary_level %in% c("140", "*")){
             if ("PLACE" %in% geo_headers){
                 file <- paste0(path_to_census,
-                               "generated_data/tract_geoid_place/tract_geoid_place_",
+                               "/generated_data/tract_geoid_place/tract_geoid_place_",
                                state, ".csv")
                 tract <- fread(file, colClasses = "character") %>%
                     .[, .(GEOID, PLACE_tmp = PLACE)]
@@ -464,7 +464,7 @@ add_geoheader <- function(dt, state, geo_headers, summary_level, survey = "acs")
 
             if ("COUSUB" %in% geo_headers){
                 file <- paste0(path_to_census,
-                               "generated_data/tract_geoid_cousub/tract_geoid_cousub_",
+                               "/generated_data/tract_geoid_cousub/tract_geoid_cousub_",
                                state, ".csv")
                 tract <- fread(file, colClasses = "character") %>%
                     .[, .(GEOID, COUSUB_tmp = COUSUB)]
@@ -480,7 +480,7 @@ add_geoheader <- function(dt, state, geo_headers, summary_level, survey = "acs")
         if (summary_level %in% c("150", "*")){
             if ("PLACE" %in% geo_headers){
                 file <- paste0(path_to_census,
-                               "generated_data/blkgrp_geoid_place/blkgrp_geoid_place_",
+                               "/generated_data/blkgrp_geoid_place/blkgrp_geoid_place_",
                                state, ".csv")
                 blkgrp <- fread(file, colClasses = "character") %>%
                     .[, .(LOGRECNO, PLACE_tmp = PLACE)] %>%
@@ -492,7 +492,7 @@ add_geoheader <- function(dt, state, geo_headers, summary_level, survey = "acs")
 
             if ("COUSUB" %in% geo_headers){
                 file <- paste0(path_to_census,
-                               "generated_data/blkgrp_geoid_cousub/blkgrp_geoid_cousub_",
+                               "/generated_data/blkgrp_geoid_cousub/blkgrp_geoid_cousub_",
                                state, ".csv")
                 blkgrp <- fread(file, colClasses = "character") %>%
                     .[, .(LOGRECNO, COUSUB_tmp = COUSUB)] %>%
@@ -506,7 +506,7 @@ add_geoheader <- function(dt, state, geo_headers, summary_level, survey = "acs")
         if (summary_level %in% c("140", "*")){
             if ("PLACE" %in% geo_headers){
                 file <- paste0(path_to_census,
-                               "generated_data/tract_geoid_place/tract_geoid_place_",
+                               "/generated_data/tract_geoid_place/tract_geoid_place_",
                                state, ".csv")
                 tract <- fread(file, colClasses = "character") %>%
                     .[, .(LOGRECNO, PLACE_tmp = PLACE)] %>%
@@ -518,7 +518,7 @@ add_geoheader <- function(dt, state, geo_headers, summary_level, survey = "acs")
 
             if ("COUSUB" %in% geo_headers){
                 file <- paste0(path_to_census,
-                               "generated_data/tract_geoid_cousub/tract_geoid_cousub_",
+                               "/generated_data/tract_geoid_cousub/tract_geoid_cousub_",
                                state, ".csv")
                 tract <- fread(file, colClasses = "character") %>%
                     .[, .(LOGRECNO, COUSUB_tmp = COUSUB)] %>%

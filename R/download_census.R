@@ -57,21 +57,21 @@ download_generated_data <- function(){
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
     url <- "https://s3.amazonaws.com/gl-shared-data/generated_census_data.zip"
-    download.file(url, paste0(path_to_census, "tmp.zip"))
+    download.file(url, paste0(path_to_census, "/tmp.zip"))
     unzip(
-        paste0(path_to_census, "tmp.zip"),
-        exdir = str_replace(path_to_census, "/$", "")
+        paste0(path_to_census, "/tmp.zip"),
+        exdir = path_to_census
     )
 
-    file.remove(paste0(path_to_census, "tmp.zip"))
+    file.remove(paste0(path_to_census, "/tmp.zip"))
 
     n_files <- length(list.files(
-        paste0(path_to_census, "generated_data/"),
+        paste0(path_to_census, "/generated_data/"),
         recursive = TRUE
     ))
 
     if (n_files == total_files){
-        cat("Extraction is successful")
+        cat("Extraction is successful\n\n")
     } else {
         cat("Last downloading or extraction has problem. Download and extract again.")
         download_generated_data()
@@ -96,7 +96,7 @@ download_decennial_ <- function(year, states){
     # temp folder to hold all downloaded data
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
-    path_to_decennial <- paste0(path_to_census, "census", year)
+    path_to_decennial <- paste0(path_to_census, "/census", year)
 
     if (!dir.exists(path_to_decennial)){
         dir.create(path_to_decennial)
@@ -171,12 +171,12 @@ download_decennial_1_state_ <- function(year, state){
         full, "/", tolower(state), "2010.ur1.zip"
     )
 
-    save_as <- paste0(path_to_census, tolower(state), ".zip")
+    save_as <- paste0(path_to_census, "/", tolower(state), ".zip")
     download.file(url, save_as, method = "auto")
 
     # unzip downloaded file
     cat(paste0("Unzipping downloaded zip file of ", state, "\n"))
-    unzip(save_as, exdir = paste0(path_to_census, "census", year, "/", state))
+    unzip(save_as, exdir = paste0(path_to_census, "/census", year, "/", state))
     cat("File unzipped successfully\n")
 
     # delete downloaded file to save space
@@ -200,7 +200,7 @@ download_acs5year_ <- function(year, states){
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
     path_to_acs5year <- paste0(
-        path_to_census, "acs5year/", year
+        path_to_census, "/acs5year/", year
     )
 
     if (!dir.exists(path_to_acs5year)){
@@ -258,7 +258,7 @@ download_acs5year_1_state_ <- function(year, state){
     # temp folder to hold all downloaded data
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
     path_to_acs5year <- paste0(
-        path_to_census, "acs5year/", year
+        path_to_census, "/acs5year/", year
     )
 
 
@@ -286,7 +286,7 @@ download_acs5year_1_state_ <- function(year, state){
 
     for (i in c(1, 2)){
         url <- get(paste0("url_", i))
-        save_as <- paste0(path_to_census, tolower(state), ".zip")
+        save_as <- paste0(path_to_census, "/", tolower(state), ".zip")
 
         cat(paste0("Downloading group ", i, " file of ", state, "\n"))
         download.file(url, save_as, method = "auto")
@@ -325,7 +325,7 @@ download_acs1year_ <- function(year){
     # download all states' data which is not that big
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
     path_to_acs1year <- paste0(
-        path_to_census, "acs1year/", year
+        path_to_census, "/acs1year/", year
     )
 
     cat(paste0("Downloading ", year, " acs 1-year file \n"))

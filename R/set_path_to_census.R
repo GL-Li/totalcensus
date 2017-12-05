@@ -11,10 +11,12 @@
 # This function is modified from census_api_key() in package tidycensus
 set_path_to_census <- function (path, overwrite = TRUE, install = TRUE){
 
+    # windows does not recognize directory ending with "/", so delete it if path
+    # is end with "/"
     path_end <- str_trim(path) %>%
         str_extract(".$")
-    if (path_end != "/") {
-        path <- paste0(str_trim(path), "/")
+    if (path_end == "/") {
+        path <- str_replace(path, "/$", "")
     }
 
     if (install == TRUE) {
