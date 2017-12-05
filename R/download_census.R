@@ -17,7 +17,8 @@ download_census <- function(survey = NULL, year = NULL, states = c(states_DC, "U
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
-    if (!file.exists(paste0(path_to_census, "/generated_data/"))){
+    # to work in Windows, do not end the path of a directory with "/"
+    if (!file.exists(paste0(path_to_census, "/generated_data"))){
         download_generated_data()
     }
 
@@ -206,9 +207,15 @@ download_acs5year_ <- function(year, states){
     # temp folder to hold all downloaded data
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
+    # turn off warning, fread() gives warnings when read non-scii characters.
+    # window gives a warning
+    options(warn = -1)
+
     path_to_acs5year <- paste0(
         path_to_census, "/acs5year/", year
     )
+
+    options(warn = 0)
 
     if (!dir.exists(path_to_acs5year)){
         dir.create(path_to_acs5year)
