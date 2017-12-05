@@ -98,9 +98,16 @@ download_decennial_ <- function(year, states){
 
     path_to_decennial <- paste0(path_to_census, "/census", year)
 
+
+    # turn off warning, fread() gives warnings when read non-scii characters.
+    # window gives a warning
+    options(warn = -1)
+
     if (!dir.exists(path_to_decennial)){
         dir.create(path_to_decennial)
     }
+
+    options(warn = 0)
 
     i <- 0
     N <- length(states)
