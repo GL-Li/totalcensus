@@ -250,11 +250,12 @@ race_100 <- read_acs1year(
 zip_acs5 <- read_acs5year(
     year = 2015,
     states = "US",
-    table_contents = c(
-        "boy_under_5 = B01001_003",
-        "girl_under_5 = B01001_027"
-    ),
     geo_headers = "ZCTA5",
+    table_contents = c(
+        "white = B02001_002",
+        "black = B02001_003",
+        "asian = B02001_005"
+    ),
     summary_level = "860"
 )
 
@@ -263,11 +264,84 @@ zip_2010 <- read_decennial(
     year = 2010,
     states = "US",
     table_contents = c(
-        "boy_under_5 = P0120003",
-        "girl_under_5 = P0120027"
+      "white = P0030002", 
+      "black = P0030003",
+      "asian = P0030005"
     ),
     geo_headers = "ZCTA5",
     summary_level = "860"
 )
+```
+
+## School District (Unified)
+Enrollment of college students in each school district.
+
+```{r}
+school_district <- read_acs5year(
+    year = 2015,
+    states = "MA",
+    table_contents = c(
+        "male_population_15up = B14004_002",
+        "male_public = B14004_003",
+        "male_private = B14004_008"
+    ),
+    summary_level = "970"
+)
+```
+
+## congressional district
+CDCURR
+
+```{r}
+congress <- read_acs5year(
+    year = 2015,
+    states = "MA",
+    table_contents = c(
+        "male_population_15up = B14004_002",
+        "male_public = B14004_003",
+        "male_private = B14004_008"
+    ),
+    summary_level = "500"
+)
+```
+
+
+## by zip code in Chicago
+
+```{r}
+library(totalcensus)
+library(dplyr)
+# http://www.city-data.com/zipmaps/Chicago-Illinois.html to find a list of zip
+# code for Chicago
+zips <- c(60007, 60018, 60068, 60106, 60131, 60176, 60601, 60602, 60603, 60604, 
+          60605, 60606, 60607, 60608, 60609, 60610, 60611, 60612, 60613, 60614, 
+          60615, 60616, 60617, 60618, 60619, 60620, 60621, 60622, 60623, 60624, 
+          60625, 60626, 60628, 60629, 60630, 60631, 60632, 60633, 60634, 60636, 
+          60637, 60638, 60639, 60640, 60641, 60642, 60643, 60644, 60645, 60646, 
+          60647, 60649, 60651, 60652, 60653, 60654, 60655, 60656, 60657, 60659, 
+          60660, 60661, 60706, 60707, 60714, 60804, 60827)
+          
+
+download_census("decennial", 2010, "IL")
+
+all_zip_2010 <- read_decennial(
+    year = 2010,
+    states = "IL",
+    geo_headers = "ZCTA5",
+    table_contents =  c("male = P0120002", "female = P0120026"), # random example
+    summary_level = "871"
+) 
+
+chicago_zip_2010 <- filter(all_zip_2010, ZCTA5 %in% zips)
+
+all_zip_acs5 <- read_acs5year(
+    year = 2015,
+    states = "US",
+    table_contents = "below_poverty = B06012_006", # random example
+    geo_headers = "ZCTA5",
+    summary_level = "860"
+)
+chicago_zip_acs5 <- filter(all_zip_acs5, ZCTA5 %in% zips)
+
 ```
 
