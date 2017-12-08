@@ -79,6 +79,36 @@ read_acs1year <- function(year,
                           with_acsgeoheaders = FALSE,
                           show_progress = TRUE){
 
+    # check whether to download data
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+    not_downloaded <- c()
+    for (st in states){
+        # only check for this one file
+        if (!file.exists(paste0(
+            path_to_census, "/acs1year/", year, "/g", year, "1", tolower(st), ".csv"
+        ))){
+            not_downloaded <- c(not_downloaded, st)
+        }
+    }
+    if (length(not_downloaded) > 0){
+        cat(paste0(
+            "Do you want to download ",
+            year,
+            " ACS 1-year survey summary files and save it to your computer? ",
+            "It is necessary for extracting the data."
+        ))
+        continue <- switch(
+            menu(c("yes", "no")),
+            TRUE,
+            FALSE
+        )
+        if (continue){
+            download_census("acs1year", year)
+        } else {
+            stop("You choose not to download data.")
+        }
+    }
+
     if (is.null(areas) + is.null(geo_headers) == 0){
         stop("Must keep at least one of arguments areas and geo_headers NULL")
     }

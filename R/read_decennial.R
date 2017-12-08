@@ -102,6 +102,37 @@ read_decennial <- function(year,
                           summary_level = "*",
                           geo_comp = "*",
                           show_progress = TRUE){
+
+    # check whether to download data
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+    not_downloaded <- c()
+    for (st in states){
+        if (!file.exists(paste0(path_to_census, "/census", year, "/", st))){
+            not_downloaded <- c(not_downloaded, st)
+        }
+    }
+    if (length(not_downloaded) > 0){
+        cat(paste0(
+            "Do you want to download decennial census ",
+            year,
+            " summary files of states ",
+            paste0(not_downloaded, collapse = ", "),
+            " and save it to your computer?. It is necessary for extracting the data."
+        ))
+        continue <- switch(
+            menu(c("yes", "no")),
+            TRUE,
+            FALSE
+        )
+        if (continue){
+            download_census("decennial", year, not_downloaded)
+        } else {
+            stop("You choose not to download data.")
+        }
+    }
+
+
+
     # turn off warning, fread() gives warnings when read non-scii characters.
     options(warn = -1)
 

@@ -35,7 +35,15 @@ There are additional benefits of using this package:
 - You can get all block groups that belong or partially belong to a city. Original census data do not specify city information for a block group as a block group may not uniquely belong to a city. However, large cities have most block groups within their boundaries and only a small number of block groups run across the borders. The block group level data provide valuable spatial information of a city. This is particularly helpful for ACS 5-year surveys which cover data down to the level of block groups. 
 - It provides longitude and latitude of the internal point of a geographic area for easy and quick mapping. You do not always need shape files to make nice maps, as the map shown above. 
 
+The current version extract data from:
 
+- 2010 decennial census
+- 2015 ACS 5-year survey
+- 2016 ACS 1-year survey
+- 2015 ACS 1-year survey
+- 2014 ACS 1-year survey
+
+More will be added in later version.
 
 
 ## Install package and download census data
@@ -76,6 +84,8 @@ download_census("decennial", 2010, "CA")
 # download the default datasets, ~200G in total
 download_census()
 ```
+
+You can also download needed data when you run `read_xxx` functions. You will be asked if you want to download data.
 
 The downloaded data will be extracted automatically to the folder `my_census_data`. It takes a long time to download and extract. You can stop downloading any time and then resume downloading by running the function again. 
 
