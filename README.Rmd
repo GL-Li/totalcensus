@@ -235,7 +235,7 @@ ggmap(south_bend) +
 
 
 
-## Downloading data {#download}
+## Downloading data (#download)
 This package requires downloading census data to your local computer. You can choose to download only the data you want. For example, if you care only the 2015 ACS 5-year survey data in the states of Massachusetts and New Hampshire, you can just download data of these two states, which takes a couple of GB disc space. Or you can download data of all most recent decennial Census, most recent ACS 5-year survey, and most recent ACS 1-year survey. You need about 200 GB free disc space to download them. The downloaded data will be extracted automatically to the folder `my_census_data`. 
 
 It takes a long time to download and extract. You can stop downloading any time and then resume downloading by running the function again. I recommend downloading all recent decennial and ACS data when you are sleeping. A lot of fun to play with these data. Re-run the function to repair possible mistakes during download and extraction.
