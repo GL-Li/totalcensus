@@ -56,6 +56,7 @@ make_acs_lookup <- function(period, year){
 
 
 # ACS 5-year
+lookup_acs5year_2016 <- make_acs_lookup(5, 2016)
 lookup_acs5year_2015 <- make_acs_lookup(5, 2015)
 
 # ACS 1-year
@@ -64,6 +65,8 @@ lookup_acs1year_2015 <- make_acs_lookup(1, 2015)
 lookup_acs1year_2014 <- make_acs_lookup(1, 2014)
 
 # save to data/
+save(lookup_acs5year_2016, file = "data/lookup_acs5year_2016.RData",
+     compress = "xz", compression_level = 9)
 save(lookup_acs5year_2015, file = "data/lookup_acs5year_2015.RData",
      compress = "xz", compression_level = 9)
 save(lookup_acs1year_2016, file = "data/lookup_acs1year_2016.RData",

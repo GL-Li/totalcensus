@@ -27,14 +27,21 @@ acs5_2015 <- lookup_acs5year_2015[, .(table_number, name_acs5_2015 = table_name)
     .[, acs5_2015 := "yes"] %>%
     setkey(table_number)
 
+acs5_2016 <- lookup_acs5year_2016[, .(table_number, name_acs5_2016 = table_name)] %>%
+    unique() %>%
+    .[, acs5_2016 := "yes"] %>%
+    setkey(table_number)
 
-dict_acs_table <- reduce(list(acs1_2014, acs1_2015, acs1_2016, acs5_2015), merge, all = TRUE) %>%
+
+dict_acs_table <- reduce(list(acs1_2014, acs1_2015, acs1_2016, acs5_2015, acs5_2016), merge, all = TRUE) %>%
     # consolidate table_names
     .[acs1_2014 == "yes", table_name := name_acs1_2014] %>%
     .[acs1_2015 == "yes", table_name := name_acs1_2015] %>%
     .[acs1_2016 == "yes", table_name := name_acs1_2016] %>%
     .[acs5_2015 == "yes", table_name := name_acs5_2015] %>%
-    .[, .(table_number, table_name, acs5_2015, acs1_2016, acs1_2015, acs1_2014)] %>%
+    .[acs5_2016 == "yes", table_name := name_acs5_2016] %>%
+    .[, .(table_number, table_name, acs5_2016, acs5_2015, acs1_2016, acs1_2015, acs1_2014)] %>%
+    .[is.na(acs5_2016), acs5_2016 := "-"] %>%
     .[is.na(acs5_2015), acs5_2015 := "-"] %>%
     .[is.na(acs1_2016), acs1_2016 := "-"] %>%
     .[is.na(acs1_2015), acs1_2015 := "-"] %>%

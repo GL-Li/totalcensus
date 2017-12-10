@@ -122,17 +122,15 @@ $(document).ready(function () {
 
 
 <p><a href="https://travis-ci.org/GL-Li/totalcensus"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MCIgaGVpZ2h0PSIyMCI+PGxpbmVhckdyYWRpZW50IGlkPSJhIiB4Mj0iMCIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2JiYiIgc3RvcC1vcGFjaXR5PSIuMSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1vcGFjaXR5PSIuMSIvPjwvbGluZWFyR3JhZGllbnQ+PHJlY3Qgcng9IjMiIHdpZHRoPSI5MCIgaGVpZ2h0PSIyMCIgZmlsbD0iIzU1NSIvPjxyZWN0IHJ4PSIzIiB4PSIzNyIgd2lkdGg9IjUzIiBoZWlnaHQ9IjIwIiBmaWxsPSIjNGMxIi8+PHBhdGggZmlsbD0iIzRjMSIgZD0iTTM3IDBoNHYyMGgtNHoiLz48cmVjdCByeD0iMyIgd2lkdGg9IjkwIiBoZWlnaHQ9IjIwIiBmaWxsPSJ1cmwoI2EpIi8+PGcgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkRlamFWdSBTYW5zLFZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiPjx0ZXh0IHg9IjE5LjUiIHk9IjE1IiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIj5idWlsZDwvdGV4dD48dGV4dCB4PSIxOS41IiB5PSIxNCI+YnVpbGQ8L3RleHQ+PHRleHQgeD0iNjIuNSIgeT0iMTUiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiPnBhc3Npbmc8L3RleHQ+PHRleHQgeD0iNjIuNSIgeT0iMTQiPnBhc3Npbmc8L3RleHQ+PC9nPjwvc3ZnPg==" alt="Build Status" /></a></p>
-<div id="extract-data-from-decennial-census-and-acs-summary-files" class="section level1">
-<h1>Extract data from decennial census and ACS summary files</h1>
-<p>This package provides total solutions to extracts any data from the raw summary files of decennial census and American Community Survey (ACS) and returns a tidy data.table. The extracted data can be easily processed with <code>data.table</code> or <code>dplyr</code> packages.</p>
+<div id="extract-data-from-summary-files-of-of-decennial-census-and-american-community-survey" class="section level1">
+<h1>Extract data from summary files of of Decennial Census and American Community Survey</h1>
+<p>This package extracts data in the raw summary files of decennial census and American Community Survey (ACS) and returns a tidy data.table. The extracted data can be easily processed with <code>data.table</code> or <code>dplyr</code> packages.</p>
 <div id="why-another-r-census-package" class="section level2">
 <h2>Why another R census package</h2>
 <p>The <a href="https://www.census.gov/data/developers/guidance/api-user-guide.Available_Data.html">census API</a> offers most data in decennial census and ACS data for download and API-based packages such as <code>tidycensus</code>, <code>censusapi</code> and <code>acs</code> make the downloading very easy in R. So why we need another package?</p>
-<p>In one sentence, package <code>totalcensus</code> makes census data extraction easier and gives you full access and control of all census data downloaded to you own computer.</p>
+<p>Package <code>totalcensus</code> makes census data extraction easier and gives you full access and control of all census data downloaded to you own computer. It is particularly convenient to extract higher spatial resolution data at census tract, block group, or block level.</p>
 <p>As an extreme example, here is how we extract the median home values in <strong>all</strong> block groups in the United States from 2011-2015 ACS 5-year survey with this package. You simply need to call the function <code>read_acs5year()</code> and provide parameters. It takes 15 seconds for my 4-years old laptop to return the data of all 217,739 block groups. In addition to the table contents we request, we also get the population and coordinate of each block group.</p>
 <pre class="r"><code>library(totalcensus)
-library(data.table)
-library(magrittr)
 home_national &lt;- read_acs5year(
     year = 2015,
     states = states_DC,   # all 50 states plus DC
@@ -147,62 +145,57 @@ home_national &lt;- read_acs5year(
 <p>There are additional benefits of using this package:</p>
 <ul>
 <li>You can get detailed urban/rural data from Census 2010. This package use summary file 1 with urban/rural update, while the census API only provide data in summary file 1 before urban/rural update.</li>
-<li>You can get all block groups that belong or partially belong to a city. Original census data do not specify city information for a block group as a block group may not uniquely belong to a city. However, large cities have most block groups within their boundaries and only a small number of block groups run across the borders. The block group level data provide valuable spatial information of a city. This is particularly helpful for ACS 5-year surveys which cover data down to the level of block groups.</li>
-<li>It provides longitude and latitude of the internal point of a geographic area for easy and quick mapping. You do not always need shape files to make nice maps, as the map shown above.</li>
+<li>You can get all block groups that belong or partially belong to a city. Original census data do not provide city information for a block group as a block group may not uniquely belong to a city. However, large cities have most block groups within their boundaries and only a small number of block groups run across the borders. The block group level data provide valuable spatial information of a city. This is particularly helpful for ACS 5-year surveys which cover data down to the level of block groups.</li>
+<li>It provides longitude and latitude of the internal point of a geographic area for easy and quick mapping. You do not always need shape files to make nice maps, as in the map shown above.</li>
 </ul>
-<p><a href="????????????????????">More examples of extracting data with package totalcensus</a></p>
+<p>The current version extract data from:</p>
+<ul>
+<li>2010 decennial census</li>
+<li>2012-2016 ACS 5-year survey</li>
+<li>2011-2015 ACS 5-year survey</li>
+<li>2016 ACS 1-year survey</li>
+<li>2015 ACS 1-year survey</li>
+<li>2014 ACS 1-year survey</li>
+</ul>
+<p>More will be added in later version.</p>
 </div>
-<div id="installation" class="section level2">
-<h2>Installation</h2>
+<div id="installation-and-setup" class="section level2">
+<h2>Installation and setup</h2>
+<div id="installation" class="section level3">
+<h3>Installation</h3>
 <pre class="r"><code>install.packages(&quot;devtools&quot;)
 
 devtools::install_github(&quot;GL-Li/totalcensus&quot;)</code></pre>
 </div>
-<div id="preparation-before-using-the-package" class="section level2">
-<h2>Preparation before using the package</h2>
-<p>This package requires downloading census data to your local computer. You need about 200 GB free disc space to download summary files of most recent decennial Census, most recent ACS 5-year survey, and most recent ACS 1-year surveys. Then we need to generate helper data from Census 2010 to be used to improve ACS data. Do not worry we have functions to facilitate all the tasks. Just follow the steps below.</p>
-<p><strong>Step 1</strong>: create a folder to store downloaded data. Let’s named it as <code>my_census_data</code>. The full path to this folder is <code>xxxxx/my_census_data</code>, replacing <code>xxxxx</code> with the actual path. Then run the function below to set the path for the package.</p>
+<div id="setup" class="section level3">
+<h3>setup</h3>
+<p>This package requires downloading census data and you need to create a folder to store the downloaded data. Let’s call the folder <code>my_census_data</code> and assume the full path to this folder is <code>xxxxx/my_census_data</code>. Run the function below to set the path for the package.</p>
 <pre class="r"><code>set_path_to_census(&quot;xxxxx/my_census_data&quot;, install = TRUE)</code></pre>
-<p><strong>Step 2</strong>: download and extract census data. By default, the function <code>download_census()</code> downloads Census 2010, 2011-2015 ACS 5-year survey, and 2014, 2015, and 2016 ACS 1-year surveys. You need 200 GB disc space for the default downloading. The Census 2010 alone takes about 140 GB. You can choose which dataset to download if you do not need the default ones. Re-run the function to repair possible mistakes during downloading and extraction.</p>
-<pre class="r"><code># download the default datasets
-download_census()
-
-# download selected dataset, for example, 2015 ACS 5-year survey
-download_census(survey = &quot;acs5year&quot;, year = 2015)</code></pre>
-<p>The downloaded data will alse be extracted automatically to the folder <code>my_census_data</code>. It takes a long time to download and extract. You can stop downloading any time and then resume downloading by running the function again.</p>
-<p>The data can be found on Census Beurua’s website but you do not need to download them mannually.</p>
-<ul>
-<li><a href="https://www2.census.gov/census_2010/04-Summary_File_1/Urban_Rural_Update/">Census 2010 summary file 1 with urban/rural update</a></li>
-<li><a href="https://www2.census.gov/programs-surveys/acs/summary_file/">ACS summary files since 2005</a></li>
-</ul>
-<p><strong>Step 3</strong>: generate data from Census 2010 The generated data will provide more details to ACS 1-year and 5-year survey data. If you already downloaded Census 2010 data, you can generate data by running:</p>
-<pre class="r"><code>generate_census_data()</code></pre>
-<p>If you do not have Census 2010 data, you can download the generated data by running:</p>
-<pre class="r"><code>download_generated_data()</code></pre>
+</div>
 </div>
 <div id="basic-application" class="section level2">
 <h2>Basic application</h2>
-<p>The package has three functions to read decennial census, ACS 5-year survey, and ACS 1-year survey: <code>read_decennial()</code>, <code>read_acs5year()</code>, and <code>read_acs1year()</code>. They are similar but as these datasets are so different, we prefer to keep three seperate functions, one for each.</p>
+<p>The package has three functions to read decennial census, ACS 5-year survey, and ACS 1-year survey: <code>read_decennial()</code>, <code>read_acs5year()</code>, and <code>read_acs1year()</code>. They are similar but as these datasets are so different, we prefer to keep three separate functions, one for each.</p>
 <p>The function arguments serve as filters to select the data you want:</p>
 <ul>
-<li>year: the year or ending year of the data you must provide.</li>
-<li>states: the states of which you want read the geograhpy and data files. There are 50 states, “DC” and “PR” (Peuter Rico), plus a special one “US” for natioanal files. You must specify this parameter.</li>
-<li>table_contents: this parameter specifies which table contents you want to read. Population is always returned even if table_contents is NULL. Users can name the table contents in the format such as c(“male = B01001_002”, “female = B01001_026”).</li>
-<li>areas: if you know which metropolitan areas, counties, cities and towns you want to get data from, you can specify them here by name or FIPS code, for example, c(“New Yok metro”, “PLACE = UT62360”, “Salt Lake City city, UT”).</li>
+<li>year: the year or ending year of the data.</li>
+<li>states: the states of which you want read geography and data files. In addition to 50 states and “DC”, you can choose from “PR” (Peuter Rico), plus a special one “US” for national files.</li>
+<li>table_contents: this parameter specifies which table contents you want to read. Population is always returned even if table_contents is NULL. Users can name the table contents in the format such as <code>c(&quot;male = B01001_002&quot;, &quot;female = B01001_026&quot;)</code>.</li>
+<li>areas: if you know which metropolitan areas, counties, cities and towns you want to get data from, you can specify them here by name or FIPS code, for example, <code>c(&quot;New York metro&quot;, &quot;PLACE = UT62360&quot;, &quot;Salt Lake City city, UT&quot;)</code>.</li>
 <li>geo_headers: In case you do not know which areas to extract data, you can read all the geographic headers specified here and select areas after reading.</li>
-<li>summary_level: it determines which level of data to extract. Common ones like “state”, “county”, “place”, “county subdivision”, “tract”, “block group”, and “block” can be input as plain text. Others have to be given by code.</li>
-<li>geo_comp: specifies data of which geographic component you want. Most common ones are “all”, “urban”, and “rural”.</li>
+<li>summary_level: it determines which summary level data to extract. Common ones like “state”, “county”, “place”, “county subdivision”, “tract”, “block group”, and “block” can be input as plain text. Others have to be given by code.</li>
+<li>geo_comp: specifies data of which geographic component you want. Most common ones are “all”, “urban”, “urbanized area”, “urban cluster”, and “rural”. Others are provided by code.</li>
 </ul>
-<p>There are also a family of <code>search_xxx()</code> functions to help find table contents, geoheaders, summary levels, geocomponents, FIPS codes and CBSA codes.</p>
-<p>The following examples demonstrate how to use these read and search functions.</p>
-<div id="mdeian-gross-rent-in-cities-with-population-over-65000" class="section level3">
-<h3>Mdeian gross rent in cities with population over 65000</h3>
-<p>A renting company wants to know the most recent rents in major cities in the US. How to get the data?</p>
-<p>We first need to determing which survey to read. For most recent survey data, we want to read 2016 ACS 1-year surveys, which provide data for geographic areas of population over 65000.</p>
-<p>We also need to determine which data files to read by running <code>search_summarylevels(&quot;acs&quot;)</code>. Cities are at the summary level of “160”, which is only in state files of 2016 ACS 1-year survey. So we have to read each of the states. We have dataset <code>states_DC</code> which is a vector of 50 states and DC.</p>
-<p>Then we need to check if 2016 ACS 1-year survey has the rent data. We run <code>search_tablecontents(&quot;acs&quot;)</code> to open the dataset with <code>View()</code> in RStudio. You can provide keywords for search in the function but it is better to do the search in RStudio with filters. There are so many tables that contains string “rent”. It takes some time to find the right one if you are not familiar with ACS tables. After some struggle, we think B25064_001 is what we want.</p>
+<p>There are a family of <code>search_xxx()</code> functions to help find table contents, geoheaders, summary levels, geocomponents, FIPS codes and CBSA codes.</p>
+<p>The following examples demonstrate how to use these <code>read_xxx()</code> and <code>search_xxx()</code> functions.</p>
+<div id="median-gross-rent-in-cities-with-population-over-65000" class="section level3">
+<h3>Median gross rent in cities with population over 65000</h3>
+<p>A property management company wants to know the most recent rents in major cities in the US. How to get the data?</p>
+<p>We first need to determine which survey to read. For most recent survey data, we want to read 2016 ACS 1-year surveys, which provide data for geographic areas with population over 65000.</p>
+<p>We also need to determine which data files to read. We know summary level of cities is “160” or “place. Browsing with <code>search_summarylevels(&quot;acs&quot;)</code>, we see that this summary level is only in state files of ACS 1-year survey. So we have to read all of the state files.</p>
+<p>Then we need to check if 2016 ACS 1-year survey has the rent data. We run <code>search_tablecontents(&quot;acs&quot;)</code> to open the dataset with <code>View()</code> in RStudio. You can provide keywords to search in the function but it is better to do the search in RStudio with filters. There are so many tables that contains string “rent”. It takes some time to find the right one if you are not familiar with ACS tables. After some struggle, we think B25064_001 is what we want.</p>
 <p>We do not need to specify <code>areas</code> and <code>geo_headers</code> as we are extracting all geographic areas matches the conditions.</p>
-<p>Here is the code that gives what we want.</p>
+<p>Here is the code that gives what we want. The first time you use <code>read_xxx</code> functions to read data files, you will be asked to download summary files required for this function call, in this case, 2016 ACS 1-year summary files. Choose 1 to continue. While you can download data during calling the <code>read_xxx</code> function, I recommand downloading all data you want with <code>download_census</code> function beforehand. The downloading takes time, which can be done when you are sleeping. The detalis is discussed in section of <a href="#download">Downloading data</a>.</p>
 <pre class="r"><code>rent &lt;- read_acs1year(
     year = 2016,
     states = states_DC,
@@ -249,8 +242,8 @@ ggmap(us_map) +
 
 </div>
 </div>
-<div id="black-communities-in-south-bend-city-in-at-block-level" class="section level3">
-<h3>Black communities in South Bend city, IN at block level</h3>
+<div id="black-communities-in-south-bend-city-in-at-census-block-level" class="section level3">
+<h3>Black communities in South Bend city, IN at census block level</h3>
 <p>Only the decennial census has data down to block level. The most recent one is Census 2010. We will use two method to extract the data.</p>
 <div id="method-1-using-argument-areas" class="section level4">
 <h4>Method 1: using argument <code>areas</code></h4>
@@ -278,9 +271,8 @@ black &lt;- black_popul %&gt;%
     # percentage of black population in each block
     .[, black_pct := round(100 * black_popul / population, 2)]</code></pre>
 </div>
-</div>
-<div id="method-2-use-argument-geo_headers" class="section level3">
-<h3>Method 2: use argument <code>geo_headers</code></h3>
+<div id="method-2-use-argument-geo_headers" class="section level4">
+<h4>Method 2: use argument <code>geo_headers</code></h4>
 <p>Argument <code>geo_headers</code> works for any geographic areas presented in census geography files, such as American Indian Area/Alaska Native Area/ Hawaiian Home Land and congressional district, which are not covered by argument <code>areas</code>.</p>
 <p>Here is how we read black population in each block in South Bend city, using <code>geo_headers</code>. A city is a census place with geographic header “PLACE”. We first read all data for all “PLACE”:</p>
 <pre class="r"><code>black_popul_place &lt;- read_decennial(
@@ -290,16 +282,16 @@ black &lt;- black_popul %&gt;%
     geo_headers = &quot;PLACE&quot;,
     summary_level = &quot;block&quot;
 )</code></pre>
-<p>We can then select rows of South Bend by the area name or by PLACE code, which can be search with <code>search_fips()</code>.</p>
+<p>We can then select rows of South Bend by the area name or by PLACE code. The PLACE code of South Bend can be searched with <code>search_fips()</code>, which is “71000”.</p>
 <pre class="r"><code># select by name
 black_popul &lt;- black_popul_place[area %like% &quot;South Bend&quot;]
 
 # select by code
 black_popul &lt;- black_popul_place[PLACE == &quot;71000&quot;]</code></pre>
 </div>
-<div id="visualize-the-data" class="section level3">
-<h3>Visualize the data</h3>
-<p>Again we visualize on map with <code>ggplot2</code> and <code>ggmap</code>.</p>
+<div id="visualize-the-data" class="section level4">
+<h4>Visualize the data</h4>
+<p>Again we visualize percentage of black population on map with <code>ggplot2</code> and <code>ggmap</code>.</p>
 <pre class="r"><code>south_bend &lt;- get_map(&quot;south bend, IN&quot;, zoom = 13, color = &quot;bw&quot;)
 ggmap(south_bend) +
     geom_point(
@@ -326,6 +318,34 @@ ggmap(south_bend) +
 
 </div>
 </div>
+</div>
+</div>
+<div id="download" class="section level2">
+<h2>Downloading data</h2>
+<p>This package requires downloading census data to your local computer. You can choose to download only the data you want. For example, if you care only the 2015 ACS 5-year survey data in the states of Massachusette and New Hampshire, you can just download data of these two states, which takes a couple of GB disc space. Or you can download data of all most recent decennial Census, most recent ACS 5-year survey, and most recent ACS 1-year survey. You need about 200 GB free disc space to download them. The downloaded data will be extracted automatically to the folder <code>my_census_data</code>.</p>
+<p>It takes a long time to download and extract. You can stop downloading any time and then resume downloading by running the function again. I recommend downloading all recent decennial and ACS data when you are sleeping. A lot of fun to play with these data. Re-run the function to repair possible mistakes during download and extraction.</p>
+<p>A set of data generated from Census 2010 will also be downloaded, which is used to fill missing geographic header records in ACS data.</p>
+<p>Below are a few examples of data downloading.</p>
+<pre class="r"><code># download 2016 ACS 5-year survey data of MA and NH, a couple of GB
+download_census(survey = &quot;acs5year&quot;, year = 2016, states = c(&quot;MA&quot;, &quot;NH&quot;))
+
+# download 2016 ACS 5-year survey of all states, ~52 GB
+download_census(&quot;acs5year&quot;, 2016)
+
+# download 2016 ACS 1-year survey. It is only 1.5 GB, so download for all states
+download_census(&quot;acs1year&quot;, 2016)
+
+# download decennial census 2010, of state California, the largest state, 8.4 GB
+download_census(&quot;decennial&quot;, 2010, &quot;CA&quot;)
+
+# download most recent datasets, ~200G in total, including 2010 decennial census
+# 2016 ACS 5-year survey, 2016 ACS 1-year survey.
+download_census()</code></pre>
+<p>The census data can be found on Census Bureau’s website but you do not need to download them manually. Use the function above.</p>
+<ul>
+<li><a href="https://www2.census.gov/census_2010/04-Summary_File_1/Urban_Rural_Update/">Census 2010 summary file 1 with urban/rural update</a></li>
+<li><a href="https://www2.census.gov/programs-surveys/acs/summary_file/">ACS summary files since 2005</a></li>
+</ul>
 </div>
 </div>
 

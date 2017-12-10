@@ -510,7 +510,7 @@ read_acs5year_geo_ <- function(year,
         unique()
 
     if (show_progress) {
-        cat("Reading", toupper(state), year, "ACS 5-year survey geography file\n")
+        cat("\nReading", toupper(state), year, "ACS 5-year survey geography file\n")
     }
 
     #=== read file ===

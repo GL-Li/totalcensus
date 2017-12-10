@@ -25,10 +25,8 @@ download_census <- function(survey = NULL, year = NULL, states = c(states_DC, "U
     if (is.null(survey)){
         message("Need 200 GB free space. Run download_census() again to resume downloading in case downloading breaks.")
         download_decennial_(2010, states)
-        download_acs5year_(2015, states)
+        download_acs5year_(2016, states)
         download_acs1year_(2016)
-        download_acs1year_(2015)
-        download_acs1year_(2014)
     } else {
         if (survey == "decennial"){
             download_decennial_(year, states)
@@ -194,7 +192,8 @@ download_acs5year_ <- function(year, states){
     # after extraction
     total_files <- switch(
         as.character(year),
-        "2015" = 490
+        "2015" = 490,
+        "2016" = 490
     )
 
     states <- toupper(states)

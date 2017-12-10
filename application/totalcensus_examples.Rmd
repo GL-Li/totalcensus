@@ -24,6 +24,10 @@ The US files include commone summary levels of metropolitan statistic areas and 
 **Example 1 - use argument** `areas`: The easiest way to get the data of cities, counties, metros, and towns is to specify argument `areas` in function `read_acs1year()`. Run `search_tablecontents("acs", "detailed race")` to select the references of table contents of table C02003, NOT B02003, of which no data is provided.
 ```{r}
 library(totalcensus)
+library(data.table)
+library(dplyr)
+library(ggplot2)
+library(ggmap)
 # in selected counties
 county_race <- read_acs1year(
     year = 2016,
@@ -343,5 +347,41 @@ all_zip_acs5 <- read_acs5year(
 )
 chicago_zip_acs5 <- filter(all_zip_acs5, ZCTA5 %in% zips)
 
+```
+
+
+## Computers in household
+So far the data is only in ACS 1-year survey. Let's find the household computer ownershipt in major cities in 2016.
+
+```{r}
+computer <- read_acs1year(
+    year = 2016,
+    states = states_DC,
+    table_contents = c(
+        "total_household = B28001_001",
+        "has_computer = B28001_002",
+        "desktop_laptop = B28001_003",
+        "desktop_laptop_only = B28001_004",
+        "smart_phone = B28001_005",
+        "smart_phone_only = B28001_006",
+        "no_computer = B28001_011"
+    ),
+    summary_level = "state"
+)
+    
+ratio <- mutate(
+    computer, ratio_no_computer = 100 * (no_computer / total_household)
+) %>%
+    filter(GEOCOMP %in% c("urban", "rural"))
+    
+us_map <- get_map("united states", zoom = 4, color = "bw")
+ggmap(us_map) +
+    geom_point(
+        data = ratio, 
+        aes(lon,lat, size = population, color = ratio_no_computer)
+    ) +
+    ylim(20, 50) +
+    scale_color_continuous(low = "green", high = "red")
+    
 ```
 
