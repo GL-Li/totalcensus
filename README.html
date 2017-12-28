@@ -122,8 +122,8 @@ $(document).ready(function () {
 
 
 <p><a href="https://travis-ci.org/GL-Li/totalcensus"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI5MCIgaGVpZ2h0PSIyMCI+PGxpbmVhckdyYWRpZW50IGlkPSJhIiB4Mj0iMCIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2JiYiIgc3RvcC1vcGFjaXR5PSIuMSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1vcGFjaXR5PSIuMSIvPjwvbGluZWFyR3JhZGllbnQ+PHJlY3Qgcng9IjMiIHdpZHRoPSI5MCIgaGVpZ2h0PSIyMCIgZmlsbD0iIzU1NSIvPjxyZWN0IHJ4PSIzIiB4PSIzNyIgd2lkdGg9IjUzIiBoZWlnaHQ9IjIwIiBmaWxsPSIjNGMxIi8+PHBhdGggZmlsbD0iIzRjMSIgZD0iTTM3IDBoNHYyMGgtNHoiLz48cmVjdCByeD0iMyIgd2lkdGg9IjkwIiBoZWlnaHQ9IjIwIiBmaWxsPSJ1cmwoI2EpIi8+PGcgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkRlamFWdSBTYW5zLFZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiPjx0ZXh0IHg9IjE5LjUiIHk9IjE1IiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIj5idWlsZDwvdGV4dD48dGV4dCB4PSIxOS41IiB5PSIxNCI+YnVpbGQ8L3RleHQ+PHRleHQgeD0iNjIuNSIgeT0iMTUiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiPnBhc3Npbmc8L3RleHQ+PHRleHQgeD0iNjIuNSIgeT0iMTQiPnBhc3Npbmc8L3RleHQ+PC9nPjwvc3ZnPg==" alt="Build Status" /></a></p>
-<div id="extract-data-from-summary-files-of-of-decennial-census-and-american-community-survey" class="section level1">
-<h1>Extract data from summary files of of Decennial Census and American Community Survey</h1>
+<div id="extract-data-from-summary-files-of-decennial-census-and-american-community-survey" class="section level1">
+<h1>Extract data from summary files of Decennial Census and American Community Survey</h1>
 <p>This package extracts data in the raw summary files of decennial census and American Community Survey (ACS) and returns a tidy data.table. The extracted data can be easily processed with <code>data.table</code> or <code>dplyr</code> packages.</p>
 <div id="why-another-r-census-package" class="section level2">
 <h2>Why another R census package</h2>
@@ -158,6 +158,13 @@ home_national &lt;- read_acs5year(
 <li>2014 ACS 1-year survey</li>
 </ul>
 <p>More will be added in later version.</p>
+<div id="more-reading-materials" class="section level3">
+<h3>More reading materials</h3>
+<ul>
+<li><a href="https://gl-li.netlify.com/2017/12/23/census_data_zip_code/">Proccess 5-digit ZIP Code Tabulation Area (ZCTA5) data with totalcensus package</a>: an application example.</li>
+<li><a href="https://gl-li.netlify.com/2017/08/29/process-2010-census-data-with-data-table/">Extract US Census 2010 data with data.table and dplyr</a>: this post explains how the summary files of decennial census 2010 are processed.</li>
+</ul>
+</div>
 </div>
 <div id="installation-and-setup" class="section level2">
 <h2>Installation and setup</h2>
@@ -195,7 +202,7 @@ devtools::install_github(&quot;GL-Li/totalcensus&quot;)</code></pre>
 <p>We also need to determine which data files to read. We know summary level of cities is “160” or “place. Browsing with <code>search_summarylevels(&quot;acs&quot;)</code>, we see that this summary level is only in state files of ACS 1-year survey. So we have to read all of the state files.</p>
 <p>Then we need to check if 2016 ACS 1-year survey has the rent data. We run <code>search_tablecontents(&quot;acs&quot;)</code> to open the dataset with <code>View()</code> in RStudio. You can provide keywords to search in the function but it is better to do the search in RStudio with filters. There are so many tables that contains string “rent”. It takes some time to find the right one if you are not familiar with ACS tables. After some struggle, we think B25064_001 is what we want.</p>
 <p>We do not need to specify <code>areas</code> and <code>geo_headers</code> as we are extracting all geographic areas matches the conditions.</p>
-<p>Here is the code that gives what we want. The first time you use <code>read_xxx</code> functions to read data files, you will be asked to download summary files required for this function call, in this case, 2016 ACS 1-year summary files. Choose 1 to continue. While you can download data during calling the <code>read_xxx</code> function, I recommend downloading all data you want with <code>download_census</code> function beforehand. The downloading takes time, which can be done when you are sleeping. The details is discussed in section of <a href="#download">Downloading data</a>.</p>
+<p>Here is the code that gives what we want. The first time you use <code>read_xxx</code> functions to read data files, you will be asked to download summary files required for this function call, in this case, 2016 ACS 1-year summary files. Choose 1 to continue. While you can download data during calling the <code>read_xxx</code> function, I recommend downloading all data you want with <code>download_census</code> function beforehand. The downloading takes time, which can be done when you are sleeping. The details is discussed in section of <a href="#downloading-data">Downloading data</a>.</p>
 <pre class="r"><code>rent &lt;- read_acs1year(
     year = 2016,
     states = states_DC,
@@ -320,8 +327,8 @@ ggmap(south_bend) +
 </div>
 </div>
 </div>
-<div id="downloading-data-download" class="section level2">
-<h2>Downloading data (#download)</h2>
+<div id="downloading-data" class="section level2">
+<h2>Downloading data</h2>
 <p>This package requires downloading census data to your local computer. You can choose to download only the data you want. For example, if you care only the 2015 ACS 5-year survey data in the states of Massachusetts and New Hampshire, you can just download data of these two states, which takes a couple of GB disc space. Or you can download data of all most recent decennial Census, most recent ACS 5-year survey, and most recent ACS 1-year survey. You need about 200 GB free disc space to download them. The downloaded data will be extracted automatically to the folder <code>my_census_data</code>.</p>
 <p>It takes a long time to download and extract. You can stop downloading any time and then resume downloading by running the function again. I recommend downloading all recent decennial and ACS data when you are sleeping. A lot of fun to play with these data. Re-run the function to repair possible mistakes during download and extraction.</p>
 <p>A set of data generated from Census 2010 will also be downloaded, which is used to fill missing geographic header records in ACS data.</p>

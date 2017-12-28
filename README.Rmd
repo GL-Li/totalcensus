@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/GL-Li/totalcensus.svg?branch=master)](https://travis-ci.org/GL-Li/totalcensus)
 
-# Extract data from summary files of of Decennial Census and American Community Survey
+# Extract data from summary files of Decennial Census and American Community Survey
 
 This package extracts data in the raw summary files of decennial census and American Community Survey (ACS) and returns a tidy data.table. The extracted data can be easily processed with `data.table` or `dplyr` packages. 
 
@@ -43,6 +43,13 @@ The current version extract data from:
 - 2014 ACS 1-year survey
 
 More will be added in later version.
+
+### More reading materials
+
+- [Proccess 5-digit ZIP Code Tabulation Area (ZCTA5) data with totalcensus package](https://gl-li.netlify.com/2017/12/23/census_data_zip_code/): an application example.
+- [Extract US Census 2010 data with data.table and dplyr](https://gl-li.netlify.com/2017/08/29/process-2010-census-data-with-data-table/): this post explains how the summary files of decennial census 2010 are processed.
+
+
 
 
 ## Installation and setup

@@ -126,81 +126,373 @@ $(document).ready(function () {
 </div>
 
 
-<div id="get-most-current-summary-statistics-of-large-areas-from-acs-1-year-surveys" class="section level2">
-<h2>get most current summary statistics of large areas from ACS 1-year surveys</h2>
+<div id="use-acs-1-year-survey-to-get-most-current-summary-statistics-of-large-areas" class="section level2">
+<h2>Use ACS 1-year survey to get most current summary statistics of large areas</h2>
 <p>ACS 1-year survey provides the most current data of area areas with population over 65000. The data is less accurate than those in ACS 5-years survey. For states, metropolitan areas, large counties, and large cities, however, the accuracy is less a concern as the population is very big.</p>
 <p>The state files include common summary levels of state, county, county subdivision, and place, as well as others such as congressional district and school distric. Run <code>search_summarylevels(&quot;acs&quot;)</code> to view complete summury levels.</p>
 <p>The US files include commone summary levels of metropolitan statistic areas and combined statistic areas.</p>
 <div id="get-summary-statistics-of-state-metro-and-large-counties-and-cities" class="section level3">
 <h3>get summary statistics of state, metro, and large counties and cities</h3>
-<p><strong>Example 1 - use argument</strong> <code>areas</code>: The easiest way to get the data of cities counties, and metros is to specify argument <code>areas</code> in function <code>read_acs1year()</code>. Run <code>search_tablecontents(&quot;acs&quot;, &quot;detailed race&quot;)</code> to select the references of table contents of table C02003, NOT B02003, of which no data is provided.</p>
+<p><strong>Example 1 - use argument</strong> <code>areas</code>: The easiest way to get the data of cities, counties, metros, and towns is to specify argument <code>areas</code> in function <code>read_acs1year()</code>. Run <code>search_tablecontents(&quot;acs&quot;, &quot;detailed race&quot;)</code> to select the references of table contents of table C02003, NOT B02003, of which no data is provided.</p>
 <pre class="r"><code>library(totalcensus)
+library(data.table)
+library(dplyr)
+library(ggplot2)
+library(ggmap)
 # in selected counties
 county_race &lt;- read_acs1year(
-    year = 2015,
+    year = 2016,
     states = c(&quot;MA&quot;, &quot;RI&quot;),
-    table_contents = c(&quot;C02003_003&quot;, &quot;C02003_004&quot;, &quot;C02003_006&quot;),
-    areas = c(&quot;Providence county, RI&quot;, &quot;Bristol county, MA&quot;, &quot;Kent county, RI&quot;),
-    summary_level = &quot;county&quot;,
-    geo_comp = &quot;total&quot;
+    table_contents = c(
+        &quot;white = C02003_003&quot;, 
+        &quot;black = C02003_004&quot;, 
+        &quot;asian = C02003_006&quot;
+    ),
+    areas = c(
+        &quot;Providence county, RI&quot;, 
+        &quot;Bristol county, MA&quot;, 
+        &quot;Kent county, RI&quot;
+    ),
+    summary_level = &quot;county&quot;
 )
 
-setnames(
-    county_race,
-    old = c(&quot;C02003_003&quot;, &quot;C02003_004&quot;, &quot;C02003_006&quot;),
-    new = c(&quot;white&quot;, &quot;black&quot;, &quot;asian&quot;)
-) 
-
+    #                     area        GEOID       lon      lat state population  white black asian GEOCOMP SUMLEV                            NAME
+    # 1: Providence County, RI 05000US44007 -71.57824 41.87049    RI     633673 460377 58806 26713     all    050 Providence County, Rhode Island
+    # 2:    Bristol County, MA 05000US25005 -71.08706 41.74858    MA     558324 469087 23337 13414     all    050   Bristol County, Massachusetts
+    # 3:       Kent County, RI 05000US44003 -71.57631 41.67775    RI     164614 151589  2738  3675     all    050       Kent County, Rhode Island
 
 # in selected cities
-mix_race &lt;- read_acs1year(
-    year = 2015,
+city_race &lt;- read_acs1year(
+    year = 2016,
     states = c(&quot;MA&quot;, &quot;RI&quot;),
-    table_contents = c(&quot;C02003_003&quot;, &quot;C02003_004&quot;, &quot;C02003_006&quot;),
+    table_contents = c(
+        &quot;white = C02003_003&quot;, 
+        &quot;black = C02003_004&quot;, 
+        &quot;asian = C02003_006&quot;
+    ),
     areas = c(&quot;Boston city, MA&quot;, &quot;Providence city, RI&quot;),
-    summary_level = &quot;place&quot;,
-    geo_comp = &quot;total&quot;
+    summary_level = &quot;place&quot;
 )
 
-setnames(
-    mix_race,
-    old = c(&quot;C02003_003&quot;, &quot;C02003_004&quot;, &quot;C02003_006&quot;),
-    new = c(&quot;white&quot;, &quot;black&quot;, &quot;asian&quot;)
-)
+    #                   area          GEOID       lon      lat state population  white  black asian GEOCOMP SUMLEV                          NAME
+    # 1:     Boston city, MA 16000US2507000 -71.02017 42.33196    MA     672840 358210 173312 65982     all    160    Boston city, Massachusetts
+    # 2: Providence city, RI 16000US4459000 -71.41878 41.82306    RI     179214  94085  23938 10651     all    160 Providence city, Rhode Island
 
-
-# in selected metro
+# in selected metro. ACS 1-year survey metro data is in national files
 metro_race &lt;- read_acs1year(
-    year = 2015,
+    year = 2016,
     states = &quot;US&quot;,
-    table_contents = c(&quot;C02003_003&quot;, &quot;C02003_004&quot;, &quot;C02003_006&quot;),
-    areas = c(&quot;Boston metro&quot;, &quot;Providence metro&quot;),
+    table_contents = c(
+        &quot;white = C02003_003&quot;, 
+        &quot;black = C02003_004&quot;, 
+        &quot;asian = C02003_006&quot;
+    ),
+    areas = c(&quot;Boston metro&quot;, &quot;Providence metro&quot;, &quot;new york metro&quot;),
     summary_level = &quot;310&quot;
 )
 
-setnames(
-    metro_race,
-    old = c(&quot;C02003_003&quot;, &quot;C02003_004&quot;, &quot;C02003_006&quot;),
-    new = c(&quot;white&quot;, &quot;black&quot;, &quot;asian&quot;)
-)</code></pre>
-<p><strong>Example 2 - use argement</strong> <code>geoheaders</code>:</p>
-<pre class="r"><code># White, black, and asian population in selected states
+    #                area        GEOID       lon      lat state population    white   black   asian GEOCOMP SUMLEV                                             NAME
+    # 1:     Boston metro 31000US14460 -71.02310 42.51750          4794447  3671796  391465  373970     all    310        Boston-Cambridge-Newton, MA-NH Metro Area
+    # 2: Providence metro 31000US39300 -71.28505 41.70527          1614750  1319192   90863   50289     all    310             Providence-Warwick, RI-MA Metro Area
+    # 3:   New York metro 31000US35620 -73.87450 40.77432         20153634 11704438 3430610 2215765     all    310 New York-Newark-Jersey City, NY-NJ-PA Metro Area</code></pre>
+<p><strong>Example 2 - use argement</strong> <code>geo_headers</code>: while <code>areas</code> only available for metros, counties, cities, and towns, <code>geo_headers</code> is appilicable for all geographic headers. The workflow for using <code>geo_headers</code> is to read data file into data.table and then select from it what we want.</p>
+<pre class="r"><code># White, black, and asian population in selected states. At summary level of state, there is no need to select state
 state_race &lt;- read_acs1year(
-    year = 2015,
+    year = 2016,
     states = c(&quot;MA&quot;, &quot;RI&quot;, &quot;NY&quot;, &quot;AL&quot;, &quot;LA&quot;, &quot;GA&quot;, &quot;CA&quot;),
     table_contents = c(&quot;C02003_003&quot;, &quot;C02003_004&quot;, &quot;C02003_006&quot;),
     geo_headers = &quot;STATE&quot;,
     summary_level = &quot;state&quot;,
-    geo_comp = &quot;00&quot;
+    geo_comp = &quot;total&quot;
 )
 
-# do cleaning after reading to save time in case of multiple tries
-setnames(
-    state_race,
-    old = c(&quot;C02003_003&quot;, &quot;C02003_004&quot;, &quot;C02003_006&quot;),
-    new = c(&quot;white&quot;, &quot;black&quot;, &quot;asian&quot;)
-) </code></pre>
+
+
+# in cities
+city_race &lt;- read_acs1year(
+    year = 2016,
+    states = c(&quot;MA&quot;, &quot;RI&quot;), # states where the cities are in
+    table_contents = c(&quot;C02003_003&quot;, &quot;C02003_004&quot;, &quot;C02003_006&quot;),
+    geo_headers = &quot;PLACE&quot;,  # geographic header of cities
+    summary_level = &quot;place&quot;,
+    geo_comp = &quot;total&quot;
+)
+
+# above code read data of all cities in MA and RI. You need to select those of the cities you want, you can select by name
+bos_prov &lt;- city_race[area %like% &quot;Boston|Providence&quot;]
+# or by FIPS codes
+bos_prov &lt;- city_race[PLACE %in% c(&quot;07000&quot;, &quot;59000&quot;)]</code></pre>
+<p>American Indian Area/Alaska Native Area/Hawaiian Home Land. We are not familiar with AIANHH and we do not know how to select data. The strategy is to first read all rows of data, include “AIANHH” as the column then examine what we have for the “AIANHH”. Not supprising, most rows of “AIANHH” are empty, which should be removed and we will only keep those with a valid AIANHH code.</p>
+<pre class="r"><code># read all rows of data, including &quot;AIANHH&quot; as a column, 
+allrows &lt;- read_acs1year(
+    year = 2015,
+    # population of American Indain or Alaska native, 
+    # and of Native Hawaiian and Other Pacific Islander
+    table_contents = c(&quot;C02003_005&quot;, &quot;C02003_007&quot;),
+    states = &quot;US&quot;,
+    geo_headers = &quot;AIANHH&quot;
+)
+
+# select rows ofcolumn &quot;AIANHH&quot; that are not empty, a normal &quot;AIANHH&quot; code is 
+# 4 character
+aianhh &lt;- allrows[nchar(AIANHH) == 4][order(-population)]</code></pre>
 </div>
+</div>
+<div id="largest-cities" class="section level2">
+<h2>100 largest cities</h2>
+<pre class="r"><code>largest_100 &lt;- c(
+    &quot;New York city, NY&quot;,
+    &quot;Los Angeles city, CA&quot;,
+    &quot;Chicago city, IL&quot;,
+    &quot;Houston city, TX&quot;,
+    &quot;Philadelphia city, PA&quot;,
+    &quot;Phoenix city, AZ&quot;,
+    &quot;San Antonio city, TX&quot;,
+    &quot;San Diego city, CA&quot;,
+    &quot;Dallas city, TX&quot;,
+    &quot;San Jose city, CA&quot;,
+    &quot;Austin city, TX&quot;,
+    &quot;Jacksonville city, FL&quot;,
+    &quot;San Francisco city, CA&quot;,
+    &quot;PLACE = IN36003&quot;,
+    &quot;Columbus city, OH&quot;,
+    &quot;Fort Worth city, TX&quot;,
+    &quot;Charlotte city, NC&quot;,
+    &quot;Seattle city, WA&quot;,
+    &quot;Denver city, CO&quot;,
+    &quot;El Paso city, TX&quot;,
+    &quot;Detroit city, MI&quot;,
+    &quot;Washington city, DC&quot;,
+    &quot;Boston city, MA&quot;,
+    &quot;Memphis city, TN&quot;,
+    &quot;PLACE = TN52006&quot;,
+    &quot;Portland city, OR&quot;,
+    &quot;Oklahoma City city, OK&quot;,
+    &quot;Las Vegas city, NV&quot;,
+    &quot;Baltimore city, MD&quot;,
+    &quot;PLACE = KY48006&quot;,
+    &quot;Milwaukee city, WI&quot;,
+    &quot;Albuquerque city, NM&quot;,
+    &quot;Tucson city, AZ&quot;,
+    &quot;Fresno city, CA&quot;,
+    &quot;Sacramento city, CA&quot;,
+    &quot;Kansas City city, MO&quot;,
+    &quot;Long Beach city, CA&quot;,
+    &quot;Mesa city, AZ&quot;,
+    &quot;Atlanta city, GA&quot;,
+    &quot;Colorado Springs city, CO&quot;,
+    &quot;Virginia Beach city, VA&quot;,
+    &quot;Raleigh city, NC&quot;,
+    &quot;Omaha city, NE&quot;,
+    &quot;Miami city, FL&quot;,
+    &quot;Oakland city, CA&quot;,
+    &quot;Minneapolis city, MN&quot;,
+    &quot;Tulsa city, OK&quot;,
+    &quot;Wichita city, KS&quot;,
+    &quot;New Orleans city, LA&quot;,
+    &quot;Arlington city, TX&quot;,
+    &quot;Cleveland city, OH&quot;,
+    &quot;Bakersfield city, CA&quot;,
+    &quot;Tampa city, FL&quot;,
+    &quot;Aurora city, CO&quot;,
+    &quot;Urban Honolulu CDP, HI&quot;,
+    &quot;Anaheim city, CA&quot;,
+    &quot;Santa Ana city, CA&quot;,
+    &quot;Corpus Christi city, TX&quot;,
+    &quot;Riverside city, CA&quot;,
+    &quot;St. Louis city, MO&quot;,
+    &quot;PLACE = KY46027&quot;,
+    &quot;Stockton city, CA&quot;,
+    &quot;Pittsburgh city, PA&quot;,
+    &quot;St. Paul city, MN&quot;,
+    &quot;PLACE = AK03000&quot;,
+    &quot;Cincinnati city, OH&quot;,
+    &quot;Henderson city, NV&quot;,
+    &quot;Greensboro city, NC&quot;,
+    &quot;Plano city, TX&quot;,
+    &quot;Newark city, NJ&quot;,
+    &quot;Toledo city, OH&quot;,
+    &quot;Lincoln city, NE&quot;,
+    &quot;Orlando city, FL&quot;,
+    &quot;Chula Vista city, CA&quot;,
+    &quot;Jersey City city, NJ&quot;,
+    &quot;Chandler city, AZ&quot;,
+    &quot;Fort Wayne city, IN&quot;,
+    &quot;Buffalo city, NY&quot;,
+    &quot;Durham city, NC&quot;,
+    &quot;St. Petersburg city, FL&quot;,
+    &quot;Irvine city, CA&quot;,
+    &quot;Laredo city, TX&quot;,
+    &quot;Lubbock city, TX&quot;,
+    &quot;Madison city, WI&quot;,
+    &quot;PLACE = AZ27400&quot;,
+    &quot;Norfolk city, VA&quot;,
+    &quot;Reno city, NV&quot;,
+    &quot;Winston-Salem city, NC&quot;,
+    &quot;Glendale city, AZ&quot;,
+    &quot;Hialeah city, FL&quot;,
+    &quot;Garland city, TX&quot;,
+    &quot;Scottsdale city, AZ&quot;,
+    &quot;Irving city, TX&quot;,
+    &quot;Chesapeake city, VA&quot;,
+    &quot;North Las Vegas city, NV&quot;,
+    &quot;Fremont city, CA&quot;,
+    &quot;Baton Rouge city, LA&quot;,
+    &quot;Spokane city, WA&quot;,
+    &quot;Rochester city, NY&quot;,
+    &quot;San Bernardino city, CA&quot;
+    )
+
+
+race_100 &lt;- read_acs1year(
+    year = 2016,
+    states = states_DC,
+    table_contents = c(&quot;C02003_003&quot;, &quot;C02003_004&quot;, &quot;C02003_006&quot;),
+    areas = largest_100,
+    summary_level = &quot;place&quot;
+) %&gt;%
+    setnames(
+        old = c(&quot;C02003_003&quot;, &quot;C02003_004&quot;, &quot;C02003_006&quot;),
+        new = c(&quot;white&quot;, &quot;black&quot;, &quot;asian&quot;)
+    ) </code></pre>
+</div>
+<div id="by-zip-code" class="section level2">
+<h2>By zip code</h2>
+<pre class="r"><code># using 2015 ACS 5-year survey
+zip_acs5 &lt;- read_acs5year(
+    year = 2015,
+    states = &quot;US&quot;,
+    geo_headers = &quot;ZCTA5&quot;,
+    table_contents = c(
+        &quot;white = B02001_002&quot;,
+        &quot;black = B02001_003&quot;,
+        &quot;asian = B02001_005&quot;
+    ),
+    summary_level = &quot;860&quot;
+)
+
+# using decennial census 2010 
+zip_2010 &lt;- read_decennial(
+    year = 2010,
+    states = &quot;US&quot;,
+    table_contents = c(
+      &quot;white = P0030002&quot;, 
+      &quot;black = P0030003&quot;,
+      &quot;asian = P0030005&quot;
+    ),
+    geo_headers = &quot;ZCTA5&quot;,
+    summary_level = &quot;860&quot;
+)</code></pre>
+</div>
+<div id="school-district-unified" class="section level2">
+<h2>School District (Unified)</h2>
+<p>Enrollment of college students in each school district.</p>
+<pre class="r"><code>school_district &lt;- read_acs5year(
+    year = 2015,
+    states = &quot;MA&quot;,
+    table_contents = c(
+        &quot;male_population_15up = B14004_002&quot;,
+        &quot;male_public = B14004_003&quot;,
+        &quot;male_private = B14004_008&quot;
+    ),
+    summary_level = &quot;970&quot;
+)</code></pre>
+</div>
+<div id="congressional-district" class="section level2">
+<h2>congressional district</h2>
+<p>CDCURR</p>
+<pre class="r"><code>congress &lt;- read_acs5year(
+    year = 2015,
+    states = &quot;MA&quot;,
+    table_contents = c(
+        &quot;male_population_15up = B14004_002&quot;,
+        &quot;male_public = B14004_003&quot;,
+        &quot;male_private = B14004_008&quot;
+    ),
+    summary_level = &quot;500&quot;
+)</code></pre>
+</div>
+<div id="by-zip-code-in-chicago" class="section level2">
+<h2>by zip code in Chicago</h2>
+<pre class="r"><code>library(totalcensus)
+library(dplyr)
+# http://www.city-data.com/zipmaps/Chicago-Illinois.html to find a list of zip
+# code for Chicago
+zips &lt;- c(60007, 60018, 60068, 60106, 60131, 60176, 60601, 60602, 60603, 60604, 
+          60605, 60606, 60607, 60608, 60609, 60610, 60611, 60612, 60613, 60614, 
+          60615, 60616, 60617, 60618, 60619, 60620, 60621, 60622, 60623, 60624, 
+          60625, 60626, 60628, 60629, 60630, 60631, 60632, 60633, 60634, 60636, 
+          60637, 60638, 60639, 60640, 60641, 60642, 60643, 60644, 60645, 60646, 
+          60647, 60649, 60651, 60652, 60653, 60654, 60655, 60656, 60657, 60659, 
+          60660, 60661, 60706, 60707, 60714, 60804, 60827)
+
+# read from 2016 ACS 5-year survey
+all_zip_acs5 &lt;- read_acs5year(
+    year = 2016,
+    states = &quot;US&quot;,
+    table_contents = &quot;below_poverty = B06012_006&quot;, # random example
+    geo_headers = &quot;ZCTA5&quot;,
+    summary_level = &quot;860&quot;
+)
+chicago_zip_acs5 &lt;- filter(all_zip_acs5, ZCTA5 %in% zips)
+
+    #           GEOID       lon      lat ZCTA5 state population below_poverty GEOCOMP SUMLEV        NAME
+    # 1  86000US60007 -87.99736 42.00865 60007  &lt;NA&gt;      33733          1064     all    860 ZCTA5 60007
+    # 2  86000US60018 -87.91176 41.97939 60018  &lt;NA&gt;      30519          2123     all    860 ZCTA5 60018
+    # 3  86000US60068 -87.84343 42.01176 60068  &lt;NA&gt;      37567          1107     all    860 ZCTA5 60068
+    # 4  86000US60106 -87.94183 41.95970 60106  &lt;NA&gt;      20215          1147     all    860 ZCTA5 60106
+    # 5  86000US60131 -87.88426 41.93876 60131  &lt;NA&gt;      18072           943     all    860 ZCTA5 60131
+
+          
+# read from decennial census 2010
+all_zip_2010 &lt;- read_decennial(
+    year = 2010,
+    states = &quot;IL&quot;,
+    geo_headers = &quot;ZCTA5&quot;,
+    table_contents =  c(&quot;male = P0120002&quot;, &quot;female = P0120026&quot;), # random example
+    summary_level = &quot;871&quot;
+) 
+
+chicago_zip_2010 &lt;- filter(all_zip_2010, ZCTA5 %in% zips)
+
+    #          lon      lat ZCTA5 state population  male female GEOCOMP SUMLEV
+    # 1  -87.99695 42.00576 60007    IL      33820 16322  17498     all    871
+    # 2  -87.89337 42.00787 60018    IL      30099 15031  15068     all    871
+    # 3  -87.84100 42.01182 60068    IL      37475 17935  19540     all    871
+    # 4  -87.94604 41.95420 60106    IL      20309 10473   9836     all    871
+    # 5  -87.87489 41.93570 60131    IL      18097  9099   8998     all    871</code></pre>
+</div>
+<div id="computers-in-household" class="section level2">
+<h2>Computers in household</h2>
+<p>So far the data is only in ACS 1-year survey. Let’s find the household computer ownershipt in major cities in 2016.</p>
+<pre class="r"><code>computer &lt;- read_acs1year(
+    year = 2016,
+    states = states_DC,
+    table_contents = c(
+        &quot;total_household = B28001_001&quot;,
+        &quot;has_computer = B28001_002&quot;,
+        &quot;desktop_laptop = B28001_003&quot;,
+        &quot;desktop_laptop_only = B28001_004&quot;,
+        &quot;smart_phone = B28001_005&quot;,
+        &quot;smart_phone_only = B28001_006&quot;,
+        &quot;no_computer = B28001_011&quot;
+    ),
+    summary_level = &quot;state&quot;
+)
+    
+ratio &lt;- mutate(
+    computer, ratio_no_computer = 100 * (no_computer / total_household)
+) %&gt;%
+    filter(GEOCOMP %in% c(&quot;urban&quot;, &quot;rural&quot;))
+    
+us_map &lt;- get_map(&quot;united states&quot;, zoom = 4, color = &quot;bw&quot;)
+ggmap(us_map) +
+    geom_point(
+        data = ratio, 
+        aes(lon,lat, size = population, color = ratio_no_computer)
+    ) +
+    ylim(20, 50) +
+    scale_color_continuous(low = &quot;green&quot;, high = &quot;red&quot;)</code></pre>
 </div>
 
 

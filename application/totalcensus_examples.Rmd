@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, eval = FALSE)
 ```
 
 
-## ACS 1-year survey for most current summary statistics of large areas
+## Use ACS 1-year survey to get most current summary statistics of large areas
 ACS 1-year survey provides the most current data of area areas with population over 65000. The data is less accurate than those in ACS 5-years survey. For states, metropolitan areas, large counties, and large cities, however, the accuracy is less a concern as the population is very big.
 
 The state files include common summary levels of state, county, county subdivision, and place, as well as others such as congressional district and school distric. Run `search_summarylevels("acs")` to view complete summury levels. 
@@ -32,100 +32,139 @@ library(ggmap)
 county_race <- read_acs1year(
     year = 2016,
     states = c("MA", "RI"),
-    table_contents = c("C02003_003", "C02003_004", "C02003_006"),
-    areas = c("Providence county, RI", "Bristol county, MA", "Kent county, RI"),
-    summary_level = "county",
-    geo_comp = "total",
-    with_margin = TRUE
+    table_contents = c(
+        "white = C02003_003", 
+        "black = C02003_004", 
+        "asian = C02003_006"
+    ),
+    areas = c(
+        "Providence county, RI", 
+        "Bristol county, MA", 
+        "Kent county, RI"
+    ),
+    summary_level = "county"
 )
 
-setnames(
-    county_race,
-    old = c("C02003_003", "C02003_004", "C02003_006"),
-    new = c("white", "black", "asian")
-) 
-
+    #                     area        GEOID       lon      lat state population  white black asian GEOCOMP SUMLEV                            NAME
+    # 1: Providence County, RI 05000US44007 -71.57824 41.87049    RI     633673 460377 58806 26713     all    050 Providence County, Rhode Island
+    # 2:    Bristol County, MA 05000US25005 -71.08706 41.74858    MA     558324 469087 23337 13414     all    050   Bristol County, Massachusetts
+    # 3:       Kent County, RI 05000US44003 -71.57631 41.67775    RI     164614 151589  2738  3675     all    050       Kent County, Rhode Island
 
 # in selected cities
 city_race <- read_acs1year(
     year = 2016,
     states = c("MA", "RI"),
-    table_contents = c("C02003_003", "C02003_004", "C02003_006"),
+    table_contents = c(
+        "white = C02003_003", 
+        "black = C02003_004", 
+        "asian = C02003_006"
+    ),
     areas = c("Boston city, MA", "Providence city, RI"),
-    summary_level = "place",
-    geo_comp = "total"
+    summary_level = "place"
 )
 
-setnames(
-    city_race,
-    old = c("C02003_003", "C02003_004", "C02003_006"),
-    new = c("white", "black", "asian")
-)
+    #                   area          GEOID       lon      lat state population  white  black asian GEOCOMP SUMLEV                          NAME
+    # 1:     Boston city, MA 16000US2507000 -71.02017 42.33196    MA     672840 358210 173312 65982     all    160    Boston city, Massachusetts
+    # 2: Providence city, RI 16000US4459000 -71.41878 41.82306    RI     179214  94085  23938 10651     all    160 Providence city, Rhode Island
 
-
-# in selected metro
+# in selected metro. ACS 1-year survey metro data is in national files
 metro_race <- read_acs1year(
     year = 2016,
     states = "US",
-    table_contents = c("C02003_003", "C02003_004", "C02003_006"),
-    areas = c("Boston metro", "Providence metro"),
+    table_contents = c(
+        "white = C02003_003", 
+        "black = C02003_004", 
+        "asian = C02003_006"
+    ),
+    areas = c("Boston metro", "Providence metro", "new york metro"),
     summary_level = "310"
 )
 
-setnames(
-    metro_race,
-    old = c("C02003_003", "C02003_004", "C02003_006"),
-    new = c("white", "black", "asian")
-)
-
+    #                area        GEOID       lon      lat state population    white   black   asian GEOCOMP SUMLEV                                             NAME
+    # 1:     Boston metro 31000US14460 -71.02310 42.51750          4794447  3671796  391465  373970     all    310        Boston-Cambridge-Newton, MA-NH Metro Area
+    # 2: Providence metro 31000US39300 -71.28505 41.70527          1614750  1319192   90863   50289     all    310             Providence-Warwick, RI-MA Metro Area
+    # 3:   New York metro 31000US35620 -73.87450 40.77432         20153634 11704438 3430610 2215765     all    310 New York-Newark-Jersey City, NY-NJ-PA Metro Area
 ```
 
-**Example 2 - use argement** `geo_headers`: while `areas` only available for metros, counties, cities, and towns, `geo_headers` is appilicable for all geographic headers. The workflow for using `geo_headers` is to read data file into data.table and then select from it what we want.
+
+**Example 2 - use argement** `geo_headers`: while `areas` only available for metros, counties, cities, and towns, `geo_headers` is appilicable for all geographic headers. The workflow for using `geo_headers` is to read data file into data.table and then select what we want.
 
 ```{r}
 # White, black, and asian population in selected states. At summary level of state, there is no need to select state
 state_race <- read_acs1year(
     year = 2016,
     states = c("MA", "RI", "NY", "AL", "LA", "GA", "CA"),
-    table_contents = c("C02003_003", "C02003_004", "C02003_006"),
+    table_contents = c(
+        "white = C02003_003", 
+        "black = C02003_004", 
+        "asian = C02003_006"
+    ),
     geo_headers = "STATE",
     summary_level = "state",
-    geo_comp = "total"
+    geo_comp = "all" # state level has geocomponent of all, uran, rural and more
 )
 
+    #    area     GEOID        lon      lat STATE state population    white   black   asian GEOCOMP SUMLEV          NAME
+    # 1:   MA 04000US25  -71.48959 42.15652    25    MA    6811779  5350175  506677  440845     all    040 Massachusetts
+    # 2:   RI 04000US44  -71.52529 41.59784    44    RI    1056426   850105   67526   36875     all    040  Rhode Island
+    # 3:   NY 04000US36  -75.59627 42.91340    36    NY   19745289 12530463 3080534 1668036     all    040      New York
+    # 4:   AL 04000US01  -86.84346 32.73963    01    AL    4863300  3316384 1301102   65611     all    040       Alabama
+    # 5:   LA 04000US22  -91.80327 30.85777    22    LA    4681666  2901495 1514755   77921     all    040     Louisiana
+    # 6:   GA 04000US13  -83.42321 32.62938    13    GA   10310371  6054861 3254495  398897     all    040       Georgia
+    # 7:   CA 04000US06 -119.54065 37.14857    06    CA   39250017 23420234 2265280 5602074     all    040    California
 
 
-# in cities
+# all large cities in CT
 city_race <- read_acs1year(
     year = 2016,
-    states = c("MA", "RI"), # states where the cities are in
-    table_contents = c("C02003_003", "C02003_004", "C02003_006"),
+    states = "CT", 
+    table_contents = c(
+        "white = C02003_003", 
+        "black = C02003_004", 
+        "asian = C02003_006"
+    ),
     geo_headers = "PLACE",  # geographic header of cities
-    summary_level = "place",
-    geo_comp = "total"
+    summary_level = "place"
 )
 
-# above code read data of all cities in MA and RI. You need to select those of the cities you want, you can select by name
-bos_prov <- city_race[area %like% "Boston|Providence"]
-# or by FIPS codes
-bos_prov <- city_race[PLACE %in% c("07000", "59000")]
+    #                area          GEOID       lon      lat PLACE state population white black asian GEOCOMP SUMLEV                          NAME
+    # 1:  Bridgeport city 16000US0908000 -73.19573 41.18739 08000    CT     145934 63324 51009  3536     all    160  Bridgeport city, Connecticut
+    # 2:     Danbury city 16000US0918430 -73.47228 41.40184 18430    CT      85008 54757  8452  6202     all    160     Danbury city, Connecticut
+    # 3:    Hartford city 16000US0937000 -72.68334 41.76605 37000    CT     123287 42525 42736  2764     all    160    Hartford city, Connecticut
+    # 4: New Britain city 16000US0950370 -72.78616 41.67655 50370    CT      72570    NA    NA    NA     all    160 New Britain city, Connecticut
+    # 5:   New Haven city 16000US0952000 -72.92495 41.31081 52000    CT     129939 60133 40573  6652     all    160   New Haven city, Connecticut
+    # 6:     Norwalk city 16000US0955990 -73.41980 41.09274 55990    CT      88440    NA    NA    NA     all    160     Norwalk city, Connecticut
+    # 7:    Stamford city 16000US0973000 -73.54603 41.07986 73000    CT     129105 80424 22345 10017     all    160    Stamford city, Connecticut
+    # 8:   Waterbury city 16000US0980000 -73.03668 41.55850 80000    CT     108269 68233 21850  3188     all    160   Waterbury city, Connecticut
 ```
 
+** Example 3** Get demographics in AIANHH of population over 65000
 American Indian Area/Alaska Native Area/Hawaiian Home Land. We are not familiar with AIANHH and we do not know how to select data. The strategy is to first read all rows of data, include "AIANHH" as the column then examine what we have for the "AIANHH". Not supprising, most rows of "AIANHH" are empty, which should be removed and we will only keep those with a valid AIANHH code.
 ```{r}
 # read all rows of data, including "AIANHH" as a column, 
-allrows <- read_acs1year(
-    year = 2015,
+aianhh <- read_acs1year(
+    year = 2016,
+    state = "US",
     # population of American Indain or Alaska native, 
     # and of Native Hawaiian and Other Pacific Islander
-    table_contents = c("C02003_005", "C02003_007"),
-    states = "US",
-    geo_headers = "AIANHH"
+    table_contents = "Indian_Alaska_Native = C02003_005",
+    geo_headers = "AIANHH",
+    summary_level = "250"
 )
 
-# select rows ofcolumn "AIANHH" that are not empty, a normal "AIANHH" code is 
-# 4 character
-aianhh <- allrows[nchar(AIANHH) == 4][order(-population)]
+    #           GEOID        lon      lat AIANHH state population Indian_Alaska_Native GEOCOMP SUMLEV                                                                 NAME
+    #  1: 25000US2430 -109.76256 36.18428   2430    NA     175108               165794     all    250 Navajo Nation Reservation and Off-Reservation Trust Land, AZ--NM--UT
+    #  2: 25000US5550  -95.18478 36.22364   5550    NA     515743                86570     all    250                                                    Cherokee OTSA, OK
+    #  3: 25000US5560  -98.95383 35.68827   5560    NA     186316                 6469     all    250                                            Cheyenne-Arapaho OTSA, OK
+    #  4: 25000US5580  -97.23257 34.46833   5580    NA     313580                21231     all    250                                                   Chickasaw OTSA, OK
+    #  5: 25000US5590  -95.44542 34.50746   5590    NA     230449                25223     all    250                                                     Choctaw OTSA, OK
+    #  6: 25000US5600  -97.08529 35.19939   5600    NA     124662                 8020     all    250                  Citizen Potawatomi Nation-Absentee Shawnee OTSA, OK
+    #  7: 25000US5620  -96.01192 35.66597   5620    NA     794369                61742     all    250                                                       Creek OTSA, OK
+    #  8: 25000US5720  -98.89653 34.65708   5720    NA     192411                10419     all    250                      Kiowa-Comanche-Apache-Fort Sill Apache OTSA, OK
+    #  9: 25000US6785 -150.33555 62.05490   6785    NA      76958                 4036     all    250                                                       Knik ANVSA, AK
+    # 10: 25000US9550  -85.28327 31.16645   9550    NA      87387                  443     all    250                                               Cher-O-Creek SDTSA, AL
+    # 11: 25000US9815  -79.16228 34.79173   9815    NA     505724                65611     all    250                                                     Lumbee SDTSA, NC
+    # 12: 25000US9960  -90.72665 29.59996   9960    NA     206588                 7179     all    250                                        United Houma Nation SDTSA, LA
 ```
 
 
@@ -238,21 +277,28 @@ largest_100 <- c(
 race_100 <- read_acs1year(
     year = 2016,
     states = states_DC,
-    table_contents = c("C02003_003", "C02003_004", "C02003_006"),
+    table_contents = c(
+        "white = C02003_003", 
+        "black = C02003_004", 
+        "asian = C02003_006"
+    ),
     areas = largest_100,
     summary_level = "place"
-) %>%
-    setnames(
-        old = c("C02003_003", "C02003_004", "C02003_006"),
-        new = c("white", "black", "asian")
-    ) 
+)
+
+    #                     area          GEOID        lon      lat state population   white   black   asian GEOCOMP SUMLEV                            NAME
+    # 1:     New York city, NY 16000US3651000  -73.93850 40.66427    NY    8537673 3627375 2073102 1205911     all    160         New York city, New York
+    # 2:  Los Angeles city, CA 16000US0644000 -118.41082 34.01939    CA    3976324 2079698  350543  452848     all    160    Los Angeles city, California
+    # 3:      Chicago city, IL 16000US1714000  -87.68184 41.83755    IL    2704965 1309585  802457  172298     all    160          Chicago city, Illinois
+    # 4:      Houston city, TX 16000US4835000  -95.38634 29.78047    TX    2304388 1318837  520127  171312     all    160             Houston city, Texas
+    # 5: Philadelphia city, PA 16000US4260000  -75.13335 40.00938    PA    1567872  634111  661032  110733     all    160 Philadelphia city, Pennsylvania
 ```
 
 ## By zip code
 ```{r}
-# using 2015 ACS 5-year survey
+# using 2016 ACS 5-year survey
 zip_acs5 <- read_acs5year(
-    year = 2015,
+    year = 2016,
     states = "US",
     geo_headers = "ZCTA5",
     table_contents = c(
@@ -324,22 +370,10 @@ zips <- c(60007, 60018, 60068, 60106, 60131, 60176, 60601, 60602, 60603, 60604,
           60637, 60638, 60639, 60640, 60641, 60642, 60643, 60644, 60645, 60646, 
           60647, 60649, 60651, 60652, 60653, 60654, 60655, 60656, 60657, 60659, 
           60660, 60661, 60706, 60707, 60714, 60804, 60827)
-          
 
-download_census("decennial", 2010, "IL")
-
-all_zip_2010 <- read_decennial(
-    year = 2010,
-    states = "IL",
-    geo_headers = "ZCTA5",
-    table_contents =  c("male = P0120002", "female = P0120026"), # random example
-    summary_level = "871"
-) 
-
-chicago_zip_2010 <- filter(all_zip_2010, ZCTA5 %in% zips)
-
+# read from 2016 ACS 5-year survey
 all_zip_acs5 <- read_acs5year(
-    year = 2015,
+    year = 2016,
     states = "US",
     table_contents = "below_poverty = B06012_006", # random example
     geo_headers = "ZCTA5",
@@ -347,7 +381,80 @@ all_zip_acs5 <- read_acs5year(
 )
 chicago_zip_acs5 <- filter(all_zip_acs5, ZCTA5 %in% zips)
 
+    #           GEOID       lon      lat ZCTA5 state population below_poverty GEOCOMP SUMLEV        NAME
+    # 1  86000US60007 -87.99736 42.00865 60007  <NA>      33733          1064     all    860 ZCTA5 60007
+    # 2  86000US60018 -87.91176 41.97939 60018  <NA>      30519          2123     all    860 ZCTA5 60018
+    # 3  86000US60068 -87.84343 42.01176 60068  <NA>      37567          1107     all    860 ZCTA5 60068
+    # 4  86000US60106 -87.94183 41.95970 60106  <NA>      20215          1147     all    860 ZCTA5 60106
+    # 5  86000US60131 -87.88426 41.93876 60131  <NA>      18072           943     all    860 ZCTA5 60131
+
+          
+# read from decennial census 2010
+all_zip_2010 <- read_decennial(
+    year = 2010,
+    states = "IL",
+    geo_headers = "ZCTA5",
+    table_contents =  c("male = P0120002", "female = P0120026"), # random example
+    summary_level = "block"
+) 
+
+chicago_zip_2010 <- all_zip_2010[ZCTA5 %in% zips]
+
+zip_coord <- chicago_zip_2010[, .(lon_zip = mean(lon), lat_zip = mean(lat)), by = .(ZCTA5)]
+
+
+    #          lon      lat ZCTA5 state population  male female GEOCOMP SUMLEV
+    # 1  -87.99695 42.00576 60007    IL      33820 16322  17498     all    871
+    # 2  -87.89337 42.00787 60018    IL      30099 15031  15068     all    871
+    # 3  -87.84100 42.01182 60068    IL      37475 17935  19540     all    871
+    # 4  -87.94604 41.95420 60106    IL      20309 10473   9836     all    871
+    # 5  -87.87489 41.93570 60131    IL      18097  9099   8998     all    871
+
+
+chicago_map <- get_map("chicago", zoom = 10, color = "bw")
+ggmap(chicago_map) +
+    geom_point(data = chicago_zip_2010[population != 0], 
+               aes(lon, lat, size = population, color = ZCTA5)) +
+    geom_text(data = zip_coord, aes(lon_zip, lat_zip, label = ZCTA5), size = 3) +
+    scale_size_area(max_size = 1) +
+    ylim(41.6, 42.05) +
+    guides(color = "none", size = "none")
+
 ```
+
+
+```{r}
+# boston zip code
+boston_zip_2010 <- read_decennial(
+    year = 2010,
+    states = "MA",
+    geo_headers = c("ZCTA5", "PLACE"),
+    table_contents =  c("male = P0120002", "female = P0120026"), # random example
+    summary_level = "block"
+) 
+
+boston_zip <- boston_zip_2010[PLACE == "07000"]
+zip_coord <- boston_zip[, .(lon = mean(lon), lat = mean(lat)), by = .(ZCTA5)]
+
+boston_map <- get_map("roxbury, MA", zoom = 12, color = "bw")
+
+
+set1 <- c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3", "#FF7F00", "#FFFF33", 
+          "#A65628", "#F781BF", "#999999")
+color_palette <- rep(set1, 10)
+
+ggmap(boston_map) +
+    geom_point(data = boston_zip[population != 0], 
+               aes(lon, lat, size = population, color = ZCTA5)) +
+    geom_text(data = zip_coord[ZCTA5 != "99999"], aes(lon, lat, label = ZCTA5), size = 3) +
+    scale_size_area(max_size = 3, breaks = c(10, 100, 500, 1000, 2000)) +
+    scale_color_manual(values = color_palette) +
+    # ylim(41.6, 42.05) +
+    guides(color = "none") + 
+    theme(legend.position = c(1, 0), 
+          legend.justification = c(1, 0))
+```
+
 
 
 ## Computers in household
@@ -380,6 +487,7 @@ ggmap(us_map) +
         data = ratio, 
         aes(lon,lat, size = population, color = ratio_no_computer)
     ) +
+    facet_wrap(~GEOCOMP) +
     ylim(20, 50) +
     scale_color_continuous(low = "green", high = "red")
     
