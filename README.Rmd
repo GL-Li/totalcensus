@@ -46,8 +46,9 @@ More will be added in later version.
 
 ### More reading materials
 
+- [Extract US Census 2010 data with data.table and dplyr](https://gl-li.netlify.com/2017/08/29/process-2010-census-data-with-data-table/): this post explains how the summary files of decennial census 2010 are processed under the hood in `totalcensus` package.
 - [Proccess 5-digit ZIP Code Tabulation Area (ZCTA5) data with totalcensus package](https://gl-li.netlify.com/2017/12/23/census_data_zip_code/): an application example.
-- [Extract US Census 2010 data with data.table and dplyr](https://gl-li.netlify.com/2017/08/29/process-2010-census-data-with-data-table/): this post explains how the summary files of decennial census 2010 are processed.
+- [Using totalcensus package to determine relationship between census geographic entities](https://gl-li.netlify.com/2017/12/28/use-totalcensus-package-to-determine-relationship-between-geographic-entities/); an application example.
 
 
 
