@@ -2,16 +2,16 @@
 
 # Extract data from summary files of Decennial Census and American Community Survey
 
-This package extracts data in the raw summary files of decennial census and American Community Survey (ACS) and returns a tidy data.table. The extracted data can be easily processed with `data.table` or `dplyr` packages. 
+The `totalcensus` package extracts any data available in the raw summary files of decennial census and American Community Survey (ACS) and returns a tidy data.table that can be easily processed with `data.table` or `dplyr` packages. 
 
 
 ## Why another R census package
 
-The [census API](https://www.census.gov/data/developers/guidance/api-user-guide.Available_Data.html) offers most data in decennial census and ACS data for download and API-based packages such as `tidycensus`, `censusapi` and `acs` make the downloading very easy in R. So why we need another package?
+The [census API](https://www.census.gov/data/developers/guidance/api-user-guide.Available_Data.html) offers most data in decennial census and ACS data for download and API-based packages such as `tidycensus`, `censusapi` and `acs` make the downloading very convenient in R. So why we need another package?
 
 Package `totalcensus` makes census data extraction easier and gives you full access and control of all census data downloaded to you own computer. It is particularly convenient to extract higher spatial resolution data at census tract, block group, and block level.
 
-As an extreme example, here is how we extract the median home values in **all** block groups in the United States from 2011-2015 ACS 5-year survey with this package. You simply need to call the function `read_acs5year()` and provide parameters. It takes 15 seconds for my 4-years old laptop to return the data of all 217,739 block groups. In addition to the table contents we request, we also get the population and coordinate of each block group.
+As an extreme example, here is how we extract the median home values in **all** block groups in the United States from 2011-2015 ACS 5-year survey with this package. You simply need to call the function `read_acs5year()`. It takes 15 seconds for my 4-years old laptop to return the data of all 217,739 block groups. In addition to the table contents we request, we also get the population and coordinate of each block group.
 
 ```{r eval = FALSE}
 library(totalcensus)
@@ -33,7 +33,7 @@ There are additional benefits of using this package:
 - You can get all block groups that belong or partially belong to a city. Original census data do not provide city information for a block group as a block group may not uniquely belong to a city. However, large cities have most block groups within their boundaries and only a small number of block groups run across the borders. The block group level data provide valuable spatial information of a city. This is particularly helpful for ACS 5-year surveys which cover data down to the level of block groups. 
 - It provides longitude and latitude of the internal point of a geographic area for easy and quick mapping. You do not always need shape files to make nice maps, as in the map shown above. 
 
-The current version extract data from:
+The current version extract data from summary files of:
 
 - 2010 decennial census
 - 2012-2016 ACS 5-year survey
@@ -72,11 +72,11 @@ set_path_to_census("xxxxx/my_census_data", install = TRUE)
 
 
 ## Basic application
-The package has three functions to read decennial census, ACS 5-year survey, and ACS 1-year survey: `read_decennial()`, `read_acs5year()`, and `read_acs1year()`. They are similar but as these  datasets are so different, we prefer to keep three separate functions, one for each. 
+The package has three functions to read decennial census, ACS 5-year survey, and ACS 1-year survey: `read_decennial()`, `read_acs5year()`, and `read_acs1year()`. They are similar but as these datasets are so different, we prefer to keep three separate functions, one for each. 
 
 The function arguments serve as filters to select the data you want:
 
-- year: the year or ending year of the data.
+- year: the year or ending year of the decennial census or ACS survey.
 - states: the states of which you want read geography and data files. In addition to 50 states and "DC", you can choose from "PR" (Puerto Rico), plus a special one "US" for national files. 
 - table_contents: this parameter specifies which table contents you want to read. Population is always returned even if table_contents is NULL. Users can name the table contents in the format such as `c("male = B01001_002", "female = B01001_026")`. 
 - areas: if you know which metropolitan areas, counties, cities and towns you want to get data from, you can specify them here by name or FIPS code, for example, `c("New York metro", "PLACE = UT62360", "Salt Lake City city, UT")`.
@@ -94,13 +94,13 @@ A property management company wants to know the most recent rents in major citie
 
 We first need to determine which survey to read. For most recent survey data, we want to read 2016 ACS 1-year surveys, which provide data for geographic areas with population over 65000.
 
-We also need to determine which data files to read. We know summary level of cities is "160" or "place. Browsing with `search_summarylevels("acs")`, we see that this summary level is only in state files of ACS 1-year survey. So we have to read all of the state files. 
+We also need to determine which data files to read. We know summary level of cities is "160" or "place". Browsing with `search_summarylevels("acs")`, we see that this summary level is only in state files of ACS 1-year survey. So we have to read all of the state files. 
 
 Then we need to check if 2016 ACS 1-year survey has the rent data. We run `search_tablecontents("acs")` to open the dataset with `View()` in RStudio. You can provide keywords to search in the function but it is better to do the search in RStudio with filters. There are so many tables that contains string "rent". It takes some time to find the right one if you are not familiar with ACS tables. After some struggle, we think  B25064_001 is what we want.
 
 We do not need to specify `areas` and `geo_headers` as we are extracting all geographic areas matches the conditions.
 
-Here is the code that gives what we want. The first time you use `read_xxx` functions to read data files, you will be asked to download summary files required for this function call, in this case, 2016 ACS 1-year summary files. Choose 1 to continue. While you can download data during calling the `read_xxx` function, I recommend downloading all data you want with `download_census` function beforehand. The downloading takes time, which can be done when you are sleeping. The details is discussed in section of [Downloading data](#downloading-data).
+Below is the code that gives what we want. The first time you use `read_xxx` functions to read data files, you will be asked to download summary files required for this function call, in this case, 2016 ACS 1-year summary files. Choose 1 to continue. While you can download data during calling the `read_xxx` function, I recommend downloading all data you want with `download_census` function beforehand. The downloading takes time, which can be done when you are sleeping. The details is discussed in section of [Downloading data](#downloading-data).
 
 ```{r eval = FALSE}
 rent <- read_acs1year(
@@ -192,7 +192,7 @@ black <- black_popul %>%
 #### Method 2: use argument `geo_headers`
 Argument `geo_headers` works for any geographic areas presented in census geography files, such as American Indian Area/Alaska Native Area/ Hawaiian Home Land and congressional district, which are not covered by argument `areas`. 
 
-Here is how we read black population in each block in South Bend city, using `geo_headers`. A city is a census place with geographic header "PLACE". We first read all data for all "PLACE":
+Here is how we read black population in each block in South Bend city, using `geo_headers`. A city is a census place with geographic header "PLACE". We first read all block level data for all "PLACE":
 ```{r eval = FALSE}
 black_popul_place <- read_decennial(
     year = 2010,
@@ -203,7 +203,7 @@ black_popul_place <- read_decennial(
 )
 ```
 
-We can then select rows of South Bend by the area name or by PLACE code. The PLACE code of South Bend can be searched with `search_fips()`, which is "71000".
+We can then select rows of South Bend by the area name or by PLACE code. The PLACE code of South Bend can be searched with `search_fips("south bend")`, which is "71000".
 ```{r eval = FALSE}
 # select by name
 black_popul <- black_popul_place[area %like% "South Bend"]
