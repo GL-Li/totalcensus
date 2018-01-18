@@ -62,7 +62,7 @@ areas, as well as summary levels and geographic components.
 # read data using areas
 aaa <- read_acs5year(
     year = 2015,
-    states = c("ut", "ri"),
+    states = c("UT", "RI"),
     table_contents = c(
         "white = B02001_002",
         "black = B02001_003",
@@ -84,7 +84,7 @@ aaa <- read_acs5year(
 # read data using geoheaders
 bbb <- read_acs5year(
     year = 2015,
-    states = c("ut", "ri"),
+    states = c("UT", "RI"),
     table_contents = c("male = B01001_002", "female = B01001_026"),
     geo_headers = "PLACE",
     summary_level = "block group"

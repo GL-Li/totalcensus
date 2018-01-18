@@ -44,7 +44,7 @@
 #' # read summary data using areas of selected cities
 #' aaa <- read_acs1year(
 #'     year = 2016,
-#'     states = c("ut", "ri"),
+#'     states = c("UT", "RI"),
 #'     table_contents = c("male = B01001_002", "female = B01001_026"),
 #'     areas = c("Salt Lake City city, UT",
 #'               "Providence city, RI",

@@ -66,7 +66,7 @@ To find geographic headers, browse
 # read one table and one area from one state
 aaa = read_decennial(
     year = 2010,
-    states = "ut",
+    states = "UT",
     table_contents = c("urban = P0020002", "rural = P0020005"),
     geo_headers = "CBSA",
     summary_level = "tract"
@@ -76,7 +76,7 @@ aaa = read_decennial(
 # read multiple table contents and areas from multiple states
 bbb = read_decennial(
     year = 2010,
-    states = c("ut", "ri"),
+    states = c("UT", "RI"),
     table_contents = c("urban = P0020002", "rural = P0020005"),
     areas = c(
         "place = ut62360",
