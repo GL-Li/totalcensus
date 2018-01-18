@@ -59,13 +59,13 @@ download_generated_data <- function(){
     download.file(url, paste0(path_to_census, "/tmp.zip"))
     unzip(
         paste0(path_to_census, "/tmp.zip"),
-        exdir = path_to_census
+        exdir = paste0(path_to_census, "/generated_data")
     )
 
     file.remove(paste0(path_to_census, "/tmp.zip"))
 
     n_files <- length(list.files(
-        paste0(path_to_census, "/generated_data/"),
+        paste0(path_to_census, "/generated_data"),
         recursive = TRUE
     ))
 
