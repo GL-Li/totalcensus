@@ -4,6 +4,13 @@
 
 The `totalcensus` package extracts any data available in the raw summary files of decennial census and American Community Survey (ACS) and returns a tidy data.table that can be easily processed with `data.table` or `dplyr` packages. 
 
+## Update
+**1/17/2018**: Please reinstall the updated version. You do not need to re-download census data, but need to update generated data by running
+```{r eval=FALSE}
+download_generated_data()
+```
+
+
 
 ## Why another R census package
 
