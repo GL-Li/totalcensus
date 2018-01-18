@@ -81,7 +81,7 @@ read_acs1year <- function(year,
 
     # allow lowerscase input
     states <- toupper(states)
-    geo_headers <- toupper(geo_headers)
+
 
     # check whether to download data
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
