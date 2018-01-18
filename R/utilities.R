@@ -13,7 +13,7 @@ convert_fips_to_names <- function(FIPs, states = NULL, geo_header = "STATE") {
     # totalcensus:::convert_fips_to_names(c("11", "44"))
     # [1] "DC" "RI"
     #
-    # totalcensus:::convert_fips_to_names(FIPs <- c("14140", "76030"),
+    # totalcensus:::convert_fips_to_names(FIPs = c("14140", "76030"),
     #                                     states = c("RI", "MA"),
     #                                     geo_header = "PLACE")
     # [1] "Central Falls city" "Westfield city"
@@ -24,7 +24,7 @@ convert_fips_to_names <- function(FIPs, states = NULL, geo_header = "STATE") {
     #
 
     states <- toupper(states)
-    # make data.table for later join
+    # make data.table for later to join
     if (geo_header %in% c("STATE", "CBSA")){
         FIPs <- data.table(fips = FIPs)
     } else if (geo_header %in% c("COUNTY", "PLACE", "COUSUB")) {
@@ -42,22 +42,35 @@ convert_fips_to_names <- function(FIPs, states = NULL, geo_header = "STATE") {
         names <- fips_geo[FIPs, on = .(fips, state)] %>%
             .[, county]
     } else if (geo_header == "PLACE"){
-        message("Names of CDPs are set to NA.")
-        fips_geo <- dict_fips[SUMLEV == "162",
-                              .(state = state_abbr, place = NAME, fips = PLACE)]
-        names <- fips_geo[FIPs, on = .(fips, state)] %>%
-            .[, place]
+        # use place fips generated from Census 2010
+        path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
+        lst <- list()
+        for (st in states){
+            file <- paste0(path_to_census, "/generated_data/fips_place/place_fips_",
+                           st, ".csv")
+            lst[[st]] <- fread(file, colClasses = "character") %>%
+                .[, state := st]
+        }
+        fips_place <- rbindlist(lst) %>%
+            .[, .(fips = PLACE, state, NAME)]
+
+        names <- fips_place[FIPs, on = .(fips, state)] %>%
+            .[, NAME]
+
     } else if (geo_header == "COUSUB"){
         fips_geo <- dict_fips[SUMLEV == "061",
                               .(state = state_abbr, cousub = NAME, fips = COUSUB)]
         names <- fips_geo[FIPs, on = .(fips, state)] %>%
             .[, cousub]
+
     } else if (geo_header == "CBSA"){
         dict <- dict_cbsa[, .(CBSA, CBSA_title)] %>%
             unique()
         names <- dict[FIPs, on = .(CBSA = fips)] %>%
             .[, CBSA_title] %>%
             paste0("metro: ", .)
+
     } else if (geo_header == "COUNTY"){
         fips_geo <- dict_fips[SUMLEV == "050",
                               .(state = state_abbr, county = NAME, fips = COUNTY)]

@@ -1,25 +1,26 @@
-
-#' Generate additional geographic data from Census 2010.
-#'
-#' @description Decennial census has the most complete geographic header records,
-#' which can fill in many missing values in ACS data. This function is to generate
-#' such datasets. It creates a sub directory "generared_data/" under path_to_census
-#' if not exsist and store generated data.
-#'
-#' @param states vector of abbreviations of states, such as c("MA", "RI")
-#'
-#' @export
-#'
+# 1/15/2018: change it to internal function from user function
 
 
+# Generate additional geographic data from Census 2010.
+#
+# @description Decennial census has the most complete geographic header records,
+# which can fill in many missing values in ACS data. This function is to generate
+# such datasets. It creates a sub directory "generared_data/" under path_to_census
+# if not exsist and store generated data.
+#
+# @param states vector of abbreviations of states, such as c("MA", "RI")
+#
+#
 
-generate_census_data <- function(states =  c(states_DC, "PR", "US")){
+
+
+generate_census_data_ <- function(states =  c(states_DC, "PR", "US")){
 
     # By default generate GEOID coordinate for each states, DC, PR and US
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
-    # create a subdirectory to hold all generared data
+    # create a subdirectory to hold all generated data
     if(!dir.exists(paste0(path_to_census, "/generated_data"))){
         dir.create(paste0(path_to_census, "/generated_data"))
         message('A subdirectory "generated_data/" is created under "',
@@ -61,13 +62,13 @@ generate_census_data <- function(states =  c(states_DC, "PR", "US")){
                                geo_headers = geoheaders
                            )
 
-        # generate GEOIDs and coordinates =====================================
+        # generate GEOIDs, coordinates and selected geoheaders for ACS =========
 
         geoid_coord <- geo %>%
             # only interest in these commona SUMLEV, see link below for the list
             # https://www.census.gov/geo/reference/geoidentifiers.html
             .[SUMLEV %in% acs_summarylevels] %>%
-            # add GEOID for summary levels
+            # add GEOID for each summary levels
             .[SUMLEV == "040", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE)] %>%
             .[SUMLEV == "050", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, COUNTY)] %>%
             .[SUMLEV == "060", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, COUNTY, COUSUB)] %>%
@@ -160,7 +161,7 @@ generate_census_data <- function(states =  c(states_DC, "PR", "US")){
             unique()
 
 
-        # GEOID from acs 5-year survey, which includes all GEOID in 1-year survey
+        # GEOID from acs 5-year estimate, which includes all GEOID in 1-year estimate
         geoid_acs5year <- read_acs5year_geo_(year = 2015, state = st) %>%
             # only interest in these SUMLEV
             .[SUMLEV %in% acs_summarylevels] %>%
@@ -182,14 +183,17 @@ generate_census_data <- function(states =  c(states_DC, "PR", "US")){
 
 
         # determine the PLACE code that a block group (partly) belongs to ======
+        # no NA for any geoheaders at summary level "100", filled with "9" - "99999"
+        # if not applicable
         blkgrp_geoid_place <- geo[SUMLEV == "100"] %>%
             # generate GEOID of the block group that contains the block,
             # summary level of block group is "150"
             .[, GEOID := paste0("150", GEOCOMP, "US", STATE, COUNTY, TRACT, BLKGRP)] %>%
             .[, .(GEOID, PLACE)] %>%
-            .[PLACE != "99999"] %>%
+            # keep all blocks that does not belong to any PLACE
+            #.[PLACE != "99999"] %>%
             .[, .(n_blocks = .N), by = .(GEOID, PLACE)] %>%
-            # add back LOGRECNO
+            # add back LOGRECNO in census 2010
             geoid_coord[, .(LOGRECNO, GEOID)][., on = .(GEOID)]
 
         if(!dir.exists(paste0(path_to_census, "/generated_data/blkgrp_geoid_place"))){
@@ -206,7 +210,6 @@ generate_census_data <- function(states =  c(states_DC, "PR", "US")){
             # sumamry level of block group is "150"
             .[, GEOID := paste0("150", GEOCOMP, "US", STATE, COUNTY, TRACT, BLKGRP)] %>%
             .[, .(GEOID, COUSUB)] %>%
-            .[COUSUB != ""] %>%
             .[, .(n_blocks = .N), by = .(GEOID, COUSUB)] %>%
             # add back LOGRECNO
             geoid_coord[, .(LOGRECNO, GEOID)][., on = .(GEOID)]
@@ -224,7 +227,7 @@ generate_census_data <- function(states =  c(states_DC, "PR", "US")){
             # summary level of block group is "140"
             .[, GEOID := paste0("140", GEOCOMP, "US", STATE, COUNTY, TRACT)] %>%
             .[, .(GEOID, PLACE)] %>%
-            .[PLACE != "99999"] %>%
+            #.[PLACE != "99999"] %>%
             .[, .(n_blocks = .N), by = .(GEOID, PLACE)] %>%
             # add back LOGRECNO
             geoid_coord[, .(LOGRECNO, GEOID)][., on = .(GEOID)]
@@ -244,7 +247,6 @@ generate_census_data <- function(states =  c(states_DC, "PR", "US")){
             # sumamry level of block group is "140"
             .[, GEOID := paste0("140", GEOCOMP, "US", STATE, COUNTY, TRACT)] %>%
             .[, .(GEOID, COUSUB)] %>%
-            .[COUSUB != ""] %>%
             .[, .(n_blocks = .N), by = .(GEOID, COUSUB)] %>%
             # add back LOGRECNO
             geoid_coord[, .(LOGRECNO, GEOID)][., on = .(GEOID)]
@@ -257,9 +259,24 @@ generate_census_data <- function(states =  c(states_DC, "PR", "US")){
         fwrite(tract_geoid_cousub, file = file_name)
 
 
-        # generate fips for place and county subdivision =======================
-        # to be finished
-        # place_fips <- geo[SUMLEV == "160" & GEOCOMP == "00", .(PLACE, NAME)]
-        # cousub_fips <- geo[SUMLEV == "060" & GEOCOMP == "00", .(COUSUB, NAME)]
+        # generate fips for place   ============================================
+        place_fips <- geo[SUMLEV == "160" & GEOCOMP == "00", .(PLACE, NAME)]
+
+        if(!dir.exists(paste0(path_to_census, "/generated_data/fips_place"))){
+            dir.create(paste0(path_to_census, "/generated_data/fips_place"))
+        }
+        file_name <- paste0(path_to_census,
+                            "/generated_data/fips_place/place_fips_", st, ".csv")
+        fwrite(place_fips, file = file_name)
+
+        # generate fips for cousub   ============================================
+        cousub_fips <- geo[SUMLEV == "060" & GEOCOMP == "00", .(COUSUB, NAME)]
+
+        if(!dir.exists(paste0(path_to_census, "/generated_data/fips_cousub"))){
+            dir.create(paste0(path_to_census, "/generated_data/fips_cousub"))
+        }
+        file_name <- paste0(path_to_census,
+                            "/generated_data/fips_cousub/cousub_fips_", st, ".csv")
+        fwrite(cousub_fips, file = file_name)
     }
 }

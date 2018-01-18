@@ -461,26 +461,72 @@ ggmap(boston_map) +
 So far the data is only in ACS 1-year survey. Let's find the household computer ownershipt in major cities in 2016.
 
 ```{r}
-computer <- read_acs1year(
+internet <- read_acs1year(
     year = 2016,
     states = states_DC,
     table_contents = c(
+        "no_school = B15003_002",
+        "nursery = B15003_003",
+        "kindergarten = B15003_004",
+        "g1 = B15003_005",
+        "g2 = B15003_006",
+        "g3 = B15003_007",
+        "g4 = B15003_008",
+        "g5 = B15003_009",
+        "g6 = B15003_010",
+        "g7 = B15003_011",
+        "g8 = B15003_012",
+        
+        "g9 = B15003_013",
+        "g10 = B15003_014",
+        "g11 = B15003_015",
+        "g12 = B15003_016",
+        
+        "high_school = B15003_017",
+        "ged_high_school = B15003_018",
+        "college_1_year = B15003_019",
+        "college_more_year = B15003_020",
+        "associate = B15003_021",
+        "bachelor = B15003_022",
+        "master = B15003_023",
+        "professional = B15003_024", 
+        "doctor = B15003_025",
+        
+        "median_age = B01002_001",
+        "white = C02003_003",
+        "black = C02003_004",
+        "native = C02003_005",
+        "asian = C02003_006",
+        "hawaiian = C02003_007",
+        "others = C02003_008",
+        "below_powerty_50 = B17002_002",
+        "below_powerty_50_75 = B17002_003",
+        "below_powerty_75_100 = B17002_004",
+        "gini_index = B19083_001",
         "total_household = B28001_001",
-        "has_computer = B28001_002",
-        "desktop_laptop = B28001_003",
-        "desktop_laptop_only = B28001_004",
-        "smart_phone = B28001_005",
-        "smart_phone_only = B28001_006",
-        "no_computer = B28001_011"
+        "median_household_income = B19019_001",
+        "median_house_hold_income_1_person = B19019_002", 
+        "median_house_hold_income_2_person = B19019_003", 
+        "median_house_hold_income_3_person = B19019_004", 
+        "median_house_hold_income_4_person = B19019_005", 
+        "median_house_hold_income_5_person = B19019_006", 
+        "median_house_hold_income_6_person = B19019_007", 
+        "median_house_hold_income_7_or_more_person = B19019_008", 
+        "median_rent_per_income = B25071_001",
+        "no_internet = B28011_008"
     ),
-    summary_level = "state"
+    geo_headers = "COUNTY",
+    summary_level = "county"
 )
     
-ratio <- mutate(
-    computer, ratio_no_computer = 100 * (no_computer / total_household)
-) %>%
-    filter(GEOCOMP %in% c("urban", "rural"))
-    
+kaggle_internet <- copy(internet) %>% 
+    .[, ratio_no_internet := 100 * (no_internet / total_household)] %>%
+    .[, below_middle_school := no_school + nursery + kindergarten +
+          g1 + g2 + g3 + g4 + g5 + g6, + g7 + g8]
+    .[, (county = area, state, GEOID, lon, lat, 
+         population, median_age, )]
+
+
 us_map <- get_map("united states", zoom = 4, color = "bw")
 ggmap(us_map) +
     geom_point(

@@ -103,6 +103,10 @@ read_decennial <- function(year,
                           geo_comp = "*",
                           show_progress = TRUE){
 
+    # allow lowerscase input
+    states <- toupper(states)
+    geo_headers <- toupper(geo_headers)
+
     # check whether to download data
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
     not_downloaded <- c()
@@ -416,14 +420,14 @@ read_decennial_geoheaders_ <- function(year,
 
 
     if (length(geo_headers) == 1 &&
-        geo_headers %in% c("STATE", "COUNTY", "PLACE", "COUNTY", "CBSA")){
+        geo_headers %in% c("STATE", "COUNTY", "PLACE", "COUNTY", "CBSA", "COUSUB")){
             combined[, area := convert_fips_to_names(get(geo_headers), state, geo_headers)]
     }
 
 
     # reorder columns
     if (length(geo_headers) == 1 &&
-        geo_headers %in% c("STATE", "COUNTY", "PLACE", "COUNTY", "CBSA")){
+        geo_headers %in% c("STATE", "COUNTY", "PLACE", "COUNTY", "CBSA", "COUSUB")){
             begin <- c("area", "lon", "lat")
     } else {
         begin <- c("lon", "lat")

@@ -1,0 +1,135 @@
+---
+title: "Kaggle internet use dataset from 2016 ACS 1-year estimates"
+author: "GL Li"
+date: "January 10, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Household without internet
+
+Every Kaggler uses internet. Internet is a necessity in our daily life and many people consider it as a utility like water, electricity and gas. But do you know how many households in the US do not have internet, who are these people, and why they do not have internet?
+
+The U.S. Census Bureau began asking internet use in American Community Survey (ACS) in 2013, as part of the 2008 Broadband Data Improvement Act,  and has published 1-year estimate each year since 2013. The recent 2016 data shows that in many counties, over a quarter of household still do not have internet access. 
+
+This dataset contains data for counties with population over 65000, compiled from the 2016 ACS 1-year estimate. ACS 1-year estimates only summarize data for large geographic areas over 65000 population. The 2013-2017 ACS 5-year estimate is expected to be published at the end of 2018, which has data of all geographic areas down to block group level. Before that we will use the latest 2016 1-year estimate. It provides sufficient data for us to gain insight into internet use. 
+
+Here are the list of columns in this dataset:
+
+- county: name of the county
+- state: abbreviation of the state where the county is in
+- CEOID: geographic identifier for the county
+- lon: longitude of a point inside the county
+- lat: latitude of the point
+- P_total: total population
+- P_white: population of white, single race
+- P_black: population of black, single race
+- P_asian: population of asian, single race
+- P_native: population of native Indians and Alaska natives, single race
+- P_Hawaiian: population of Hawaiian and Pacific Islanders, single race
+- P_other: population of other people, single race
+- P_below_middle_school: population with education at or below 8th grade
+- P_some_high_school: population having some years in high school but without a diploma
+- P_high_school_equivalent: population with high school diploma or equivalent
+- P_some_college: Population having associate degree or some years in college without bachelor degree
+- P_bachelor_and_above: population with bachelor, master, professional, or doctor degrees
+- P_below_poverty: population living below poverty line
+- median_age: median age of population
+- gini_index: gini index
+- median_household_income: median household income
+- median_rent_per_income: median percent of income spent on rent
+- percent_no_internet: percent of household without internet connection
+
+
+## Appendix: code to generate the dataset
+```{r, eval=FALSE}
+# download and setup for totalcensus package at https://github.com/GL-Li/totalcensus 
+library(totalcensus)
+library(dplyr)
+internet <- read_acs1year(
+    year = 2016,
+    states = states_DC,
+    table_contents = c(
+        "no_school = B15003_002",
+        "nursery = B15003_003",
+        "kindergarten = B15003_004",
+        "g1 = B15003_005",
+        "g2 = B15003_006",
+        "g3 = B15003_007",
+        "g4 = B15003_008",
+        "g5 = B15003_009",
+        "g6 = B15003_010",
+        "g7 = B15003_011",
+        "g8 = B15003_012",
+        
+        "g9 = B15003_013",
+        "g10 = B15003_014",
+        "g11 = B15003_015",
+        "g12 = B15003_016",
+        
+        "high_school = B15003_017",
+        "ged_high_school = B15003_018",
+        "college_1_year = B15003_019",
+        "college_more_year = B15003_020",
+        "associate = B15003_021",
+        "bachelor = B15003_022",
+        "master = B15003_023",
+        "professional = B15003_024", 
+        "doctor = B15003_025",
+        
+        "median_age = B01002_001",
+        "white = C02003_003",
+        "black = C02003_004",
+        "native = C02003_005",
+        "asian = C02003_006",
+        "hawaiian = C02003_007",
+        "others = C02003_008",
+        "below_poverty_50 = B17002_002",
+        "below_poverty_50_75 = B17002_003",
+        "below_poverty_75_100 = B17002_004",
+        "gini_index = B19083_001",
+        "total_household = B28001_001",
+        "median_household_income = B19019_001",
+        "median_house_hold_income_1_person = B19019_002", 
+        "median_house_hold_income_2_person = B19019_003", 
+        "median_house_hold_income_3_person = B19019_004", 
+        "median_house_hold_income_4_person = B19019_005", 
+        "median_house_hold_income_5_person = B19019_006", 
+        "median_house_hold_income_6_person = B19019_007", 
+        "median_house_hold_income_7_or_more_person = B19019_008", 
+        "median_rent_per_income = B25071_001",
+        "no_internet = B28011_008"
+    ),
+    geo_headers = "COUNTY",
+    summary_level = "county"
+)
+
+internet_county <- internet %>%
+    mutate(
+        percent_no_internet = 100 * (no_internet / total_household),
+        P_below_middle_school = no_school + nursery + kindergarten +
+            g1 + g2 + g3 + g4 + g5 + g6, + g7 + g8,
+        P_some_high_school = g9 + g10 + g11 + g12,
+        P_high_school_equivalent = high_school + ged_high_school,
+        P_some_college = college_1_year + college_more_year + associate,
+        P_bachelor_and_above = bachelor + master + professional + doctor,
+        P_below_poverty = below_poverty_50 + below_poverty_50_75 + below_poverty_75_100
+    ) %>%
+    select(
+        county = area, state, GEOID, lon, lat, 
+        P_total = population, P_white = white, P_black = black, P_asian = asian, P_native = native,
+        P_hawaiian = hawaiian, P_others = others, P_below_middle_school, P_some_high_school, 
+        P_high_school_equivalent, P_some_college, P_bachelor_and_above, P_below_poverty, median_age,
+        gini_index, median_household_income, median_rent_per_income, percent_no_internet
+    )
+
+write.csv(internet_county, file = "kaggle_internet.csv", row.names = FALSE)
+
+ggplot(internet_county, aes(percent_no_internet)) +
+    stat_bin(binwidth = 2, fill = NA, color = "black") +
+    labs(title = "Internet connection in counties with population over 65000",
+         x = "percent of household without intenet")
+```

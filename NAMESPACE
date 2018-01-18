@@ -2,7 +2,6 @@
 
 export(download_census)
 export(download_generated_data)
-export(generate_census_data)
 export(read_acs1year)
 export(read_acs5year)
 export(read_decennial)
