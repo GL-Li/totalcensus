@@ -15,8 +15,8 @@ convert_fips_to_names(FIPs, states = NULL, geo_header = "STATE",
 \item{geo_header}{string, taking values of "STATE", "COUNTY", "PLACE", "COUSUB"
 or "CBSA".}
 
-\item{in_states}{which states are these FIPs generated from. State abbrevation or "US" for
-national. Vector of unique states.}
+\item{in_states}{which states are these FIPs generated from. Use state abbrevations
+or "US" for national. Vector of unique states.}
 }
 \value{
 vector of names corresponding to FIPs and states
@@ -25,6 +25,7 @@ vector of names corresponding to FIPs and states
 convert fips codes to names of a geographies
 }
 \examples{
+\dontrun{
 convert_fips_to_names(c("11", "44"))
 # [1] "DC" "RI"
 
@@ -44,4 +45,5 @@ convert_fips_to_names(
 )
 # [1] "Providence-New Bedford-Fall River, RI-MA Metro Area" "Valley, AL Micro Area"
 
+}
 }

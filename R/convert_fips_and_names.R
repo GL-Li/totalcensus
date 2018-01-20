@@ -10,6 +10,8 @@
 #' @return vector of names corresponding to FIPs and states
 #'
 #' @examples
+#' \dontrun{
+
 #' convert_fips_to_names(c("11", "44"))
 #' # [1] "DC" "RI"
 #'
@@ -29,6 +31,7 @@
 #' )
 #' # [1] "Providence-New Bedford-Fall River, RI-MA Metro Area" "Valley, AL Micro Area"
 #'
+#' }
 #' @export
 #'
 

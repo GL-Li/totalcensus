@@ -5,7 +5,11 @@
 # under the generated data folder, run from terminal to compress all folders
 # and file into generated_data.zip
 #
-# $ zip generated_data.zip ./
+# $ zip -r generated_census_data.zip ./
+#
+# upload the zip file to AWS S3 and remember to make it public and make sure the
+# the url for the file is
+# "https://s3.amazonaws.com/gl-shared-data/generated_census_data.zip"
 #
 
 

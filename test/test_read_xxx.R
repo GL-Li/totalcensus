@@ -1,5 +1,5 @@
 # This tests need downloaded data to run so are not included in building package
-
+library(totalcensus)
 test_read_xxx <- function(){
     # read_decennial test ==============================================================
     # read one table and one area from one state
