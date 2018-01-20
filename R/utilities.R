@@ -1,3 +1,4 @@
+
 get_name_from_census2010 <- function(FIPs, geo_header, in_states){
     # this function is to be called in convert_fips_to_names()
     geoheader <- tolower(geo_header)
@@ -26,65 +27,6 @@ get_name_from_census2010 <- function(FIPs, geo_header, in_states){
 }
 
 
-convert_fips_to_names <- function(FIPs, states = NULL,
-                                  geo_header = "STATE",
-                                  in_states = NULL) {
-    # convert fips codes to names of a geographies
-
-    # Args_____
-    # FIPs : string vector of fips code such as c("021", "002")
-    # states: string vector of state abbreviations having same length as FIPs
-    # geo_header : string, taking values of "STATE", "COUNTY", "PLACE", "COUSUB"
-    #      or "CBSA"
-    # in_states: which states are these FIPs in. State abbrevation or "US" for
-    #     national. Vector of unique states
-
-    # Return_____
-    # vector of state abbreviations such as c("RI", "MA")
-
-    # Examples_____
-    # totalcensus:::convert_fips_to_names(c("11", "44"))
-    # [1] "DC" "RI"
-    #
-    # totalcensus:::convert_fips_to_names(FIPs = c("14140", "76030"),
-    #                                     states = c("RI", "MA"),
-    #                                     geo_header = "PLACE")
-    # [1] "Central Falls city" "Westfield city"
-    #
-    # totalcensus:::convert_fips_to_names(FIPs = c("39300", "46740"),
-    #                                     geo_header = "CBSA")
-    # [1] "metro: Providence-Warwick, RI-MA" "metro: Valley, AL"
-    #
-
-    states <- toupper(states)
-    # make data.table for later to join
-    if (geo_header %in% c("STATE")){
-        FIPs <- data.table(fips = FIPs)
-    } else if (geo_header %in% c("COUNTY", "PLACE", "COUSUB", "CBSA")) {
-        FIPs <- data.table(fips = FIPs, state = states)
-    }
-
-
-    if (geo_header == "STATE"){
-        fips_geo <- dict_fips[SUMLEV == "040", .(state = state_abbr, fips = STATE)]
-        names <- fips_geo[FIPs, on = .(fips)] %>%
-            .[, state]
-    } else if (geo_header == "COUNTY"){
-        fips_geo <- dict_fips[SUMLEV == "050",
-                              .(state = state_abbr, county = NAME, fips = COUNTY)]
-        names <- fips_geo[FIPs, on = .(fips, state)] %>%
-            .[, county]
-    } else if (geo_header %in% c("PLACE", "COUSUB", "CBSA")){
-        names <- get_name_from_census2010(FIPs, geo_header, in_states)
-
-    } else {
-        message(paste('This version only provides names for geographic headers',
-                      'STATE, COUNTY, PLACE, COUSUB, and CBSA'))
-        names <- "To be added"
-    }
-
-    return(names)
-}
 
 
 compress_datatable <- function(dt){
@@ -377,13 +319,13 @@ get_name <- function(geoheader, fips, state = NULL){
     return(name)
 }
 
-# convert area =================================================================
-# The area is given by name or fips code and is coverted into a data.table
-# that has four columnes: geoheader, code, state, and name
+
 
 convert_areas <- function(areas) {
     # convert the argument areas in read_xxx() into a data.table, which
-    # has columns of geoheader, code, and state
+    # has columns of geoheader, code, and state.
+    # The area is given by name or fips code and is coverted into a data.table
+    # that has four columnes: geoheader, code, state, and name
 
     # Examples_____
     # areas <- c("PLACE = UT62360",

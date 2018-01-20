@@ -1,6 +1,14 @@
 # 1/15/2018: change it to internal function from user function
 
 
+# The generated data will be compressed and uploaded to AWS S3 for download
+# under the generated data folder, run from terminal to compress all folders
+# and file into generated_data.zip
+#
+# $ zip generated_data.zip ./
+#
+
+
 # Generate additional geographic data from Census 2010.
 #
 # @description Decennial census has the most complete geographic header records,
@@ -159,8 +167,9 @@ generate_census_data_ <- function(states =  c(states_DC, "PR", "US")){
             setnames(c("INTPTLON", "INTPTLAT"), c("lon", "lat")) %>%
             # .[, LOGRECNO := NULL] %>%
             unique() %>%
-            # Los Angeles metro changed from 32000US0631100 to 32000US0631080 in 2013
-            .[GEOID == "32000US0631100", GEOID := "32000US0631080"]
+            # CBSA of Los Angeles metro changed from 31100 to 31080 in 2013
+            .[GEOID == "32000US0631100", GEOID := "32000US0631080"]%>%  # state
+            .[GEOID == "31000US31100", GEOID := "31000US31080"]         # national
 
 
         # GEOID from acs 5-year estimate, which includes all GEOID in 1-year estimate

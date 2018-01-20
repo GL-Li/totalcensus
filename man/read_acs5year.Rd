@@ -2,14 +2,14 @@
 % Please edit documentation in R/read_acs5year.R
 \name{read_acs5year}
 \alias{read_acs5year}
-\title{Read ACS 5-year survey}
+\title{Read ACS 5-year estimates}
 \usage{
 read_acs5year(year, states, table_contents = NULL, areas = NULL,
   geo_headers = NULL, summary_level = "*", geo_comp = "total",
   with_margin = FALSE, with_acsgeoheaders = FALSE, show_progress = TRUE)
 }
 \arguments{
-\item{year}{end year of the 5-year survey}
+\item{year}{end year of the 5-year estimate}
 
 \item{states}{vector of state abbreviations, for example "IN" or c("MA", "RI").}
 
@@ -26,23 +26,24 @@ For county, city, or town, must use the exact name as those in
 "Salt Lake City city, UT" must keep the "city" after "City".}
 
 \item{geo_headers}{vector of references of selected geographci headers to be
-included in the return. Browse geoheaders in \code{\link{dict_acs_geoheader}}
+included in the return, like "COUNTY" or c("PLACE", "CBSA"). Browse
+geoheaders in \code{\link{dict_acs_geoheader}}
 or search with \code{\link{search_geoheaders}}}
 
-\item{summary_level}{select which summary level to keep, "*" to keep all. It takes strings
+\item{summary_level}{select which summary level to keep, "*" to keep all. It takes string
 including "state", "county", "county subdivision", "place", "tract", "block group",
-and "block" for the most common levels. It also take code for level. Search all codes with
+and "block" for the most common levels. It also take code. Search all codes with
 \code{\link{search_summarylevels}} or browse \code{\link{dict_acs_summarylevel}} .}
 
 \item{geo_comp}{select which geographic component to keep, "*" to keep every component,
 "total" for "00", "urban" for "01", "urbanized area" for "04",
-"urban cluster" for "28", "rural" for "43". Others should input code
+"urban cluster" for "28", "rural" for "43". Others should be input as code
 which can be found with \code{\link{search_geocomponents}}. Availability
 of geocomponent depends on summary level. State level contains all
 geographic component. County subdivision and higher level have "00",
 "01", and "43". Census tract and lower level have only "00".}
 
-\item{with_margin}{read also margin of error in addition to estimate}
+\item{with_margin}{read also margin of error in addition to estimate if TRUE}
 
 \item{with_acsgeoheaders}{whether to keep geographic headers from ACS data}
 
@@ -53,7 +54,7 @@ A data.table of selected data.
 }
 \description{
 This function retrieves data from summary file of ACS 5-year
-surveys. In addition to selected geographic headers and table contents,
+estimates. In addition to selected geographic headers and table contents,
 it also returns total population and coordinates of selected geographic
 areas, as well as summary levels and geographic components.
 }

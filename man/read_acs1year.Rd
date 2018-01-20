@@ -2,14 +2,14 @@
 % Please edit documentation in R/read_acs1year.R
 \name{read_acs1year}
 \alias{read_acs1year}
-\title{Read ACS 1-year survey}
+\title{Read ACS 1-year estimates}
 \usage{
 read_acs1year(year, states, table_contents = NULL, areas = NULL,
   geo_headers = NULL, summary_level = "*", geo_comp = "total",
   with_margin = FALSE, with_acsgeoheaders = FALSE, show_progress = TRUE)
 }
 \arguments{
-\item{year}{year of the survey}
+\item{year}{year of the estimate}
 
 \item{states}{vector of state abbreviations, for example "IN" or c("MA", "RI").}
 
@@ -31,7 +31,7 @@ or search with \code{\link{search_geoheaders}}}
 
 \item{summary_level}{select which summary level to keep, "*" to keep all. It takes strings
 including "state", "county", "county subdivision", "place", "tract", "block group",
-and "block" for the most common levels. It also take code for level. Search all codes with
+and "block" for the most common levels. It also take code. Search all codes with
 \code{\link{search_summarylevels}} or browse \code{\link{dict_acs_summarylevel}} .}
 
 \item{geo_comp}{select which geographic component to keep, "*" to keep every geo-component,
@@ -53,7 +53,7 @@ A data.table of selected data.
 }
 \description{
 This function retrieves data from summary file of ACS 1-year
-surveys. In addition to selected geographic headers and table contents,
+estimates. In addition to selected geographic headers and table contents,
 it also returns total population and coordinates of selected geographic
 areas, as well as summary levels and geographic components.
 }
