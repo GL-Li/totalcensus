@@ -1,10 +1,43 @@
-convert_fips_to_names <- function(FIPs, states = NULL, geo_header = "STATE") {
+get_name_from_census2010 <- function(FIPs, geo_header, in_states){
+    # this function is to be called in convert_fips_to_names()
+    geoheader <- tolower(geo_header)
+
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
+    lst <- list()
+    for (st in in_states){
+        file <- paste0(path_to_census, "/generated_data/fips_", geoheader, "/",
+                       geoheader, "_fips_", st, ".csv")
+        lst[[st]] <- fread(file, colClasses = "character")
+    }
+    fips_geoheader <- rbindlist(lst) %>%
+        .[, .(fips = get(geo_header), state, NAME)]
+
+    if (geo_header == "CBSA" && in_states == "US"){
+        names <- fips_geoheader[FIPs, on = .(fips)] %>%
+            .[, NAME]
+    } else {
+        names <- fips_geoheader[FIPs, on = .(fips, state)] %>%
+            .[, NAME]
+    }
+
+
+    return(names)
+}
+
+
+convert_fips_to_names <- function(FIPs, states = NULL,
+                                  geo_header = "STATE",
+                                  in_states = NULL) {
     # convert fips codes to names of a geographies
 
     # Args_____
     # FIPs : string vector of fips code such as c("021", "002")
+    # states: string vector of state abbreviations having same length as FIPs
     # geo_header : string, taking values of "STATE", "COUNTY", "PLACE", "COUSUB"
-    # or "CBSA"
+    #      or "CBSA"
+    # in_states: which states are these FIPs in. State abbrevation or "US" for
+    #     national. Vector of unique states
 
     # Return_____
     # vector of state abbreviations such as c("RI", "MA")
@@ -25,9 +58,9 @@ convert_fips_to_names <- function(FIPs, states = NULL, geo_header = "STATE") {
 
     states <- toupper(states)
     # make data.table for later to join
-    if (geo_header %in% c("STATE", "CBSA")){
+    if (geo_header %in% c("STATE")){
         FIPs <- data.table(fips = FIPs)
-    } else if (geo_header %in% c("COUNTY", "PLACE", "COUSUB")) {
+    } else if (geo_header %in% c("COUNTY", "PLACE", "COUSUB", "CBSA")) {
         FIPs <- data.table(fips = FIPs, state = states)
     }
 
@@ -41,44 +74,11 @@ convert_fips_to_names <- function(FIPs, states = NULL, geo_header = "STATE") {
                               .(state = state_abbr, county = NAME, fips = COUNTY)]
         names <- fips_geo[FIPs, on = .(fips, state)] %>%
             .[, county]
-    } else if (geo_header == "PLACE"){
-        # use place fips generated from Census 2010
-        path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+    } else if (geo_header %in% c("PLACE", "COUSUB", "CBSA")){
+        names <- get_name_from_census2010(FIPs, geo_header, in_states)
 
-        lst <- list()
-        for (st in states){
-            file <- paste0(path_to_census, "/generated_data/fips_place/place_fips_",
-                           st, ".csv")
-            lst[[st]] <- fread(file, colClasses = "character") %>%
-                .[, state := st]
-        }
-        fips_place <- rbindlist(lst) %>%
-            .[, .(fips = PLACE, state, NAME)]
-
-        names <- fips_place[FIPs, on = .(fips, state)] %>%
-            .[, NAME]
-
-    } else if (geo_header == "COUSUB"){
-        fips_geo <- dict_fips[SUMLEV == "061",
-                              .(state = state_abbr, cousub = NAME, fips = COUSUB)]
-        names <- fips_geo[FIPs, on = .(fips, state)] %>%
-            .[, cousub]
-
-    } else if (geo_header == "CBSA"){
-        dict <- dict_cbsa[, .(CBSA, CBSA_title)] %>%
-            unique()
-        names <- dict[FIPs, on = .(CBSA = fips)] %>%
-            .[, CBSA_title] %>%
-            paste0("metro: ", .)
-
-    } else if (geo_header == "COUNTY"){
-        fips_geo <- dict_fips[SUMLEV == "050",
-                              .(state = state_abbr, county = NAME, fips = COUNTY)]
-        names <- fips_geo[FIPs, on = .(fips, state)] %>%
-            .[, county]
     } else {
-        message(paste('This version only provides names of major areas available in datasets',
-                      'dict_fips and dict_cbsa for geographic headers',
+        message(paste('This version only provides names for geographic headers',
                       'STATE, COUNTY, PLACE, COUSUB, and CBSA'))
         names <- "To be added"
     }
@@ -193,9 +193,9 @@ organize_tablecontents <- function(table_contents) {
     # has columns of code and name. The names are given by users
 
     # Examples_____
-    # table_contents <- c("aaa = A1234",
+    # table_contents <- c("aaa = C1234",
     #                  "bbb = B14140",
-    #                  "C6432",  # no given name
+    #                  "A6432",  # no given name
     #                  "ddd = D222")
     # organize_tablecontents(table_contents)
     #     name   code
@@ -597,11 +597,11 @@ switch_summarylevel <- function(summary_level){
 
 switch_geocomp <- function(geo_comp){
     # Switch only common geocomponent, leave others alone
-    common_geo <- c("all", "urban", "urbanized area", "urban cluster", "rural")
+    common_geo <- c("total", "urban", "urbanized area", "urban cluster", "rural")
     if (geo_comp %in% common_geo){
         geo_comp <- switch(
             geo_comp,
-            "all" = "00",
+            "total" = "00",
             "urban" = "01",
             "urbanized area" = "04",
             "urban cluster" = "28",
@@ -615,7 +615,7 @@ switch_geocomp <- function(geo_comp){
 convert_geocomp_name <- function(dt){
     # convert common geocomp from code to name
     # convert only the following common geocomp
-    dt[GEOCOMP == "00", GEOCOMP := "all"] %>%
+    dt[GEOCOMP == "00", GEOCOMP := "total"] %>%
         .[GEOCOMP == "01", GEOCOMP := "urban"] %>%
         .[GEOCOMP == "04", GEOCOMP := "urbanized area"] %>%
         .[GEOCOMP == "28", GEOCOMP := "urban cluster"] %>%

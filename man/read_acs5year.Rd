@@ -5,7 +5,7 @@
 \title{Read ACS 5-year survey}
 \usage{
 read_acs5year(year, states, table_contents = NULL, areas = NULL,
-  geo_headers = NULL, summary_level = "*", geo_comp = "*",
+  geo_headers = NULL, summary_level = "*", geo_comp = "total",
   with_margin = FALSE, with_acsgeoheaders = FALSE, show_progress = TRUE)
 }
 \arguments{
@@ -34,7 +34,7 @@ including "state", "county", "county subdivision", "place", "tract", "block grou
 and "block" for the most common levels. It also take code for level. Search all codes with
 \code{\link{search_summarylevels}} or browse \code{\link{dict_acs_summarylevel}} .}
 
-\item{geo_comp}{select which geographic component to keep, "*" to keep all,
+\item{geo_comp}{select which geographic component to keep, "*" to keep every component,
 "total" for "00", "urban" for "01", "urbanized area" for "04",
 "urban cluster" for "28", "rural" for "43". Others should input code
 which can be found with \code{\link{search_geocomponents}}. Availability

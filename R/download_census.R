@@ -50,7 +50,7 @@ download_census <- function(survey = NULL, year = NULL, states = c(states_DC, "U
 
 download_generated_data <- function(){
     # total number of files expected in "generated_data/"
-    total_files <- 371
+    total_files <- 424
 
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")

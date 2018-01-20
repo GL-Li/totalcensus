@@ -1,6 +1,5 @@
-# 11/06/2017 : need work on docs
+# 1/18/2018 : clean up
 
-# last reviewed 12/1/2017
 
 # package functions ============================================================
 
@@ -11,11 +10,6 @@
 #' it also returns total population and coordinates of selected geographic
 #' areas, as well as summary levels and geographic components.
 #'
-#' Read table contents of selected states and return
-#' selected geoheaders, state abbreviation, and table contents of selected summary
-#' level and geographic component.
-#' To find geographic headers, browse
-#' \code{\link{dict_decennial_geoheader}} or search with function \code{\link{search_geoheaders}}.
 #'
 #' @param year year of the decennial census
 #' @param states vector of state abbreviations, for example "IN" or c("MA", "RI").
@@ -36,7 +30,7 @@
 #'        including "state", "county", "county subdivision", "place", "tract", "block group",
 #'        and "block" for the most common levels. It also take code for level. Search all codes with
 #'        \code{\link{search_summarylevels}} or browse \code{\link{dict_decennial_summarylevel}} .
-#' @param geo_comp select which geographic component to keep, "*" to keep all,
+#' @param geo_comp select which geographic component to keep, "*" to keep every geo-component,
 #'        "total" for "00", "urban" for "01", "urbanized area" for "04",
 #'        "urban cluster" for "28", "rural" for "43". Others should input code
 #'        which can be found with \code{\link{search_geocomponents}}. Availability
@@ -86,7 +80,7 @@
 #'     table_contents = c("urban = P0020002", "rural = P0020005"),
 #'     geo_headers = c("NAME", "CBSA"),
 #'     summary_level = "county subdivision",
-#'     geo_comp = "all"
+#'     geo_comp = "*"
 #' ) %>%
 #'     .[CBSA == "39300"]
 #' }
@@ -100,7 +94,7 @@ read_decennial <- function(year,
                           areas = NULL,
                           geo_headers = NULL,
                           summary_level = "*",
-                          geo_comp = "*",
+                          geo_comp = "total",
                           show_progress = TRUE){
 
     # allow lowerscase input
@@ -181,12 +175,12 @@ read_decennial_areas_ <- function(year,
                                   table_contents = NULL,
                                   areas,
                                   summary_level = "*",
-                                  geo_comp = "*",
+                                  geo_comp = "total",
                                   show_progress = TRUE){
     # read decennial census data of selected areas
     #
     # Args_____
-    # year :  end year of the 5-year survey
+    # year :  year of the decennial
     # states : vector of abbreviations of states such as c("MA", "RI")
     # table_contents :  vector of reference of available table contents
     # areas : For metro area, in the format like "New York metro".
@@ -196,7 +190,7 @@ read_decennial_areas_ <- function(year,
     #     "Salt Lake City city, UT" must keep the "city" after "City".
     # summary_level : summary level like "050"
     # geo_comp : geographic component such as "00", "01", and "43"
-    # show_progress : whether to show progress in fread()n
+    # show_progress : whether to show progress in fread()
     #
     # Return_____
     # A data.table
@@ -255,11 +249,11 @@ read_decennial_areas_ <- function(year,
     # === read files ===
 
     lst_state <- list()
-    for (state in states) {
+    for (st in states) {
         # read geography. do NOT read geo_headers from decennial data, instead read
         # from GEOID_coord_XX later on, which is generated from Census 2010 and
         # has much more geo_header data
-        geo <- read_decennial_geo_(year, state,
+        geo <- read_decennial_geo_(year, st,
                                    c(geo_headers, "STATE", "INTPTLON", "INTPTLAT"),
                                    show_progress = TRUE) %>%
             setnames(c("INTPTLON", "INTPTLAT"), c("lon", "lat")) %>%
@@ -269,8 +263,8 @@ read_decennial_areas_ <- function(year,
 
         # read data from each file
         if(!is.null(table_contents)){
-            # get files for table contents, follow the notation of read_tablecontent.R
-            dt <- read_decennial_tablecontents_(year, state, table_contents,
+            # get files for table contents
+            dt <- read_decennial_tablecontents_(year, st, table_contents,
                                                 show_progress)
             decennial <- merge(geo, dt)
         } else {
@@ -280,10 +274,10 @@ read_decennial_areas_ <- function(year,
         # To determine what PLACE or COUSUB a tract or block group (partially)
         # blongs, replace PLACE and COUSUB with those obtained from census 2010
         # in generate_geoid_coordinate.R
-        decennial <- add_geoheader(decennial, state, geo_headers, summary_level,
+        decennial <- add_geoheader(decennial, st, geo_headers, summary_level,
                                    survey = "decennial")
 
-        lst_state[[state]] <- decennial[SUMLEV %like% summary_level & GEOCOMP %like% geo_comp]
+        lst_state[[st]] <- decennial[SUMLEV %like% summary_level & GEOCOMP %like% geo_comp]
 
     }
 
@@ -307,9 +301,10 @@ read_decennial_areas_ <- function(year,
         convert_geocomp_name()
 
     # reorder columns
-    begin <- c("area", "lon", "lat")
-    end <- c("GEOCOMP", "SUMLEV")
-    setcolorder(selected, c(begin, setdiff(names(selected), c(begin, end)), end))
+    # begin <- c("area", "lon", "lat")
+    # end <- c("GEOCOMP", "SUMLEV")
+    # setcolorder(selected, c(begin, setdiff(names(selected), c(begin, end)), end))
+    setcolorder(selected, c("area", "lon", "lat", "state", table_contents, "GEOCOMP", "SUMLEV"))
 
     return(selected)
 }
@@ -378,11 +373,11 @@ read_decennial_geoheaders_ <- function(year,
     # === read files ===
 
     lst_state <- list()
-    for (state in states) {
+    for (st in states) {
         # read geography. do NOT read geo_headers from decennial data, instead read
         # from GEOID_coord_XX later on, which is generated from decennial 2010 and
         # has much more geo_header data
-        geo <- read_decennial_geo_(year, state,
+        geo <- totalcensus:::read_decennial_geo_(year, st,
                                    c(geo_headers, "STATE", "INTPTLON", "INTPTLAT"),
                                    show_progress = TRUE) %>%
             setnames(c("INTPTLON", "INTPTLAT"), c("lon", "lat")) %>%
@@ -393,7 +388,7 @@ read_decennial_geoheaders_ <- function(year,
         # read data from each file
         if(!is.null(table_contents)){
             # get files for table contents, follow the notation of read_tablecontent.R
-            dt <- read_decennial_tablecontents_(year, state, table_contents,
+            dt <- totalcensus:::read_decennial_tablecontents_(year, st, table_contents,
                                                 show_progress)
             decennial <- merge(geo, dt)
         } else {
@@ -403,10 +398,10 @@ read_decennial_geoheaders_ <- function(year,
         # To determine what PLACE or COUSUB a tract or block group (partially)
         # blongs, replace PLACE and COUSUB with those obtained from decennial 2010
         # in generate_census_data.R
-        decennial <- add_geoheader(decennial, state, geo_headers, summary_level,
+        decennial <- add_geoheader(decennial, st, geo_headers, summary_level,
                                    survey = "decennial")
 
-        lst_state[[state]] <- decennial[SUMLEV %like% summary_level & GEOCOMP %like% geo_comp]
+        lst_state[[st]] <- decennial[SUMLEV %like% summary_level & GEOCOMP %like% geo_comp]
 
     }
 
@@ -420,19 +415,19 @@ read_decennial_geoheaders_ <- function(year,
 
     if (length(geo_headers) == 1 &&
         geo_headers %in% c("STATE", "COUNTY", "PLACE", "COUNTY", "CBSA", "COUSUB")){
-            combined[, area := convert_fips_to_names(get(geo_headers), state, geo_headers)]
+            combined[, area := convert_fips_to_names(get(geo_headers), state, geo_headers, states)]
     }
 
 
     # reorder columns
     if (length(geo_headers) == 1 &&
         geo_headers %in% c("STATE", "COUNTY", "PLACE", "COUNTY", "CBSA", "COUSUB")){
-            begin <- c("area", "lon", "lat")
+            begin <- c("area", "lon", "lat", "state")
     } else {
-        begin <- c("lon", "lat")
+        begin <- c("lon", "lat", "state")
     }
     end <- c("GEOCOMP", "SUMLEV")
-    setcolorder(combined, c(begin, setdiff(names(combined), c(begin, end)), end))
+    setcolorder(combined, c(begin, geo_headers, table_contents, end))
 
     return(combined)
 }

@@ -5,7 +5,7 @@
 \title{Read decennial census data}
 \usage{
 read_decennial(year, states, table_contents = NULL, areas = NULL,
-  geo_headers = NULL, summary_level = "*", geo_comp = "*",
+  geo_headers = NULL, summary_level = "*", geo_comp = "total",
   show_progress = TRUE)
 }
 \arguments{
@@ -34,7 +34,7 @@ including "state", "county", "county subdivision", "place", "tract", "block grou
 and "block" for the most common levels. It also take code for level. Search all codes with
 \code{\link{search_summarylevels}} or browse \code{\link{dict_decennial_summarylevel}} .}
 
-\item{geo_comp}{select which geographic component to keep, "*" to keep all,
+\item{geo_comp}{select which geographic component to keep, "*" to keep every geo-component,
 "total" for "00", "urban" for "01", "urbanized area" for "04",
 "urban cluster" for "28", "rural" for "43". Others should input code
 which can be found with \code{\link{search_geocomponents}}. Availability
@@ -54,12 +54,6 @@ This function retrieves data from summary file 1 (with urban/rural update)
 of decennial censuses. In addition to selected geographic headers and table contents,
 it also returns total population and coordinates of selected geographic
 areas, as well as summary levels and geographic components.
-
-Read table contents of selected states and return
-selected geoheaders, state abbreviation, and table contents of selected summary
-level and geographic component.
-To find geographic headers, browse
-\code{\link{dict_decennial_geoheader}} or search with function \code{\link{search_geoheaders}}.
 }
 \examples{
 \dontrun{
@@ -97,7 +91,7 @@ ccc <- read_decennial(
     table_contents = c("urban = P0020002", "rural = P0020005"),
     geo_headers = c("NAME", "CBSA"),
     summary_level = "county subdivision",
-    geo_comp = "all"
+    geo_comp = "*"
 ) \%>\%
     .[CBSA == "39300"]
 }

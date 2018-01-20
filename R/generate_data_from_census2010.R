@@ -56,7 +56,7 @@ generate_census_data_ <- function(states =  c(states_DC, "PR", "US")){
         i <- i + 1
         cat(paste("Reading", i, "of", N, "states geography.\n"))
 
-        geo <- read_decennial_geo_(
+        geo <- totalcensus:::read_decennial_geo_(
                                year = 2010,
                                state = st,
                                geo_headers = geoheaders
@@ -158,7 +158,9 @@ generate_census_data_ <- function(states =  c(states_DC, "PR", "US")){
             .[SUMLEV == "970", GEOID := paste0(SUMLEV, GEOCOMP, "US", STATE, SDUNI)] %>%
             setnames(c("INTPTLON", "INTPTLAT"), c("lon", "lat")) %>%
             # .[, LOGRECNO := NULL] %>%
-            unique()
+            unique() %>%
+            # Los Angeles metro changed from 32000US0631100 to 32000US0631080 in 2013
+            .[GEOID == "32000US0631100", GEOID := "32000US0631080"]
 
 
         # GEOID from acs 5-year estimate, which includes all GEOID in 1-year estimate
@@ -259,24 +261,35 @@ generate_census_data_ <- function(states =  c(states_DC, "PR", "US")){
         fwrite(tract_geoid_cousub, file = file_name)
 
 
-        # generate fips for place   ============================================
-        place_fips <- geo[SUMLEV == "160" & GEOCOMP == "00", .(PLACE, NAME)]
-
-        if(!dir.exists(paste0(path_to_census, "/generated_data/fips_place"))){
-            dir.create(paste0(path_to_census, "/generated_data/fips_place"))
+        # generate fips for selected geoheaders   ============================================
+        for (geoheader in c("CBSA", "PLACE", "COUSUB")){
+            generate_fips_(geo_header = geoheader, st = st, geo = geo)
         }
-        file_name <- paste0(path_to_census,
-                            "/generated_data/fips_place/place_fips_", st, ".csv")
-        fwrite(place_fips, file = file_name)
 
-        # generate fips for cousub   ============================================
-        cousub_fips <- geo[SUMLEV == "060" & GEOCOMP == "00", .(COUSUB, NAME)]
-
-        if(!dir.exists(paste0(path_to_census, "/generated_data/fips_cousub"))){
-            dir.create(paste0(path_to_census, "/generated_data/fips_cousub"))
-        }
-        file_name <- paste0(path_to_census,
-                            "/generated_data/fips_cousub/cousub_fips_", st, ".csv")
-        fwrite(cousub_fips, file = file_name)
     }
+}
+
+generate_fips_ <- function(geo_header, st, geo){
+    # this function is to be called by generate_census_data()
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
+    # get summary levels for each geoheader
+    sumlev <- switch (geo_header,
+        PLACE = "160",
+        COUSUB = "060",
+        CBSA = ifelse(st == "US", "310", "320")
+    )
+
+    fips <- geo[SUMLEV == sumlev & GEOCOMP == "00", .(STATE, get(geo_header), NAME)] %>%
+        setnames("V2", geo_header) %>%
+        .[, state := convert_fips_to_names(STATE)] %>%
+        .[, STATE := NULL]
+
+    geoheader <- tolower(geo_header)
+    if(!dir.exists(paste0(path_to_census, "/generated_data/fips_", geoheader))){
+        dir.create(paste0(path_to_census, "/generated_data/fips_", geoheader))
+    }
+    file_name <- paste0(path_to_census,
+                        "/generated_data/fips_", geoheader, "/", geoheader, "_fips_", st, ".csv")
+    fwrite(fips, file = file_name)
 }
