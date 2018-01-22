@@ -92,6 +92,14 @@ read_acs5year <- function(year,
 
     # check whether to download data
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
+
+    # check if need to download generated data from census2010
+    if (!file.exists(paste0(path_to_census, "/generated_data"))){
+        download_generated_data()
+    }
+
+    # check whether to download census data
     not_downloaded <- c()
     for (st in states){
         # only check for this one file
@@ -195,7 +203,7 @@ read_acs5year_areas_ <- function(year,
     # A data.table
     #
     # Examples_____
-    # aaa = totalcensus:::read_acs5year_areas_(
+    # aaa = read_acs5year_areas_(
     #     year = 2015,
     #     states = "ri",
     #     table_contents = "B01001_009",
@@ -203,7 +211,7 @@ read_acs5year_areas_ <- function(year,
     #     summary_level = "block group"
     # )
     #
-    # bbb <- totalcensus:::read_acs5year_areas_(
+    # bbb <- read_acs5year_areas_(
     #     year = 2015,
     #     states = c("ut", "ri"),
     #     table_contents = c("B01001_009", "B00001_001"),
@@ -364,7 +372,7 @@ read_acs5year_geoheaders_ <- function(year,
     #
     # Examples_____
     # Area names are given when available if there is only one geoheader.
-    # aaa = totalcensus:::read_acs5year_geoheaders_(
+    # aaa = read_acs5year_geoheaders_(
     #     year = 2015,
     #     states = "ri",
     #     table_contents = "B01001_009",
@@ -373,7 +381,7 @@ read_acs5year_geoheaders_ <- function(year,
     # )
     #
     # No area names are given if there are multiple geoheaders.
-    # bbb <- totalcensus:::read_acs5year_geoheaders_(
+    # bbb <- read_acs5year_geoheaders_(
     #     year = 2015,
     #     states = c("ut", "ri"),
     #     table_contents = c("B01001_009", "B00001_001"),
@@ -504,7 +512,7 @@ read_acs5year_geo_ <- function(year,
     # a data.table with key of LOGRECNO
     #
     # Examples_____
-    # aaa = totalcensus:::read_acs5year_geo_(2015, "ri", c(NAME, STATE))
+    # aaa = read_acs5year_geo_(2015, "ri", c(NAME, STATE))
 
 
 
@@ -559,7 +567,7 @@ read_acs5year_1_file_tablecontents_ <- function(year, state, file_seg,
     # a data.table with key LOGRECNO
     #
     # Examples_____
-    # aaa <- totalcensus:::read_acs5year_1_file_tablecontents_(
+    # aaa <- read_acs5year_1_file_tablecontents_(
     #     2015, "RI", "0122", c("B992708_002", "B992709_001", "B992709_003")
     # )
 
@@ -626,7 +634,7 @@ read_acs5year_tablecontents_ <- function(year, state, table_contents,
     # show_progress : whether to progress of f
 
     # Examples_____
-    # aaa <- totalcensus:::read_acs5year_tablecontents_(
+    # aaa <- read_acs5year_tablecontents_(
     #     year = 2015,
     #     state = "ri",
     #     table_contents = c("B01001_009", "B00001_001", "B10001_002"),

@@ -68,7 +68,7 @@ generate_census_data_ <- function(states =  c(states_DC, "PR", "US")){
         i <- i + 1
         cat(paste("Reading", i, "of", N, "states geography.\n"))
 
-        geo <- totalcensus:::read_decennial_geo_(
+        geo <- read_decennial_geo_(
                                year = 2010,
                                state = st,
                                geo_headers = geoheaders

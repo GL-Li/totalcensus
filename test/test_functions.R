@@ -10,8 +10,8 @@ test_read_xxx <- function(){
         geo_headers = "CBSA",
         summary_level = "county subdivision"
     )
-
     stopifnot(dim(dec_1) == c(36642, 10))
+    stopifnot(sum(is.na(dec_1$area)) == 13737)
 
 
     dec_2 = read_decennial(
@@ -21,8 +21,9 @@ test_read_xxx <- function(){
         geo_headers = "PLACE",
         summary_level = "*"
     )
-
     stopifnot(dim(dec_2) == c(381434, 10))
+    stopifnot(sum(is.na(dec_2$area)) == 254891)
+
 
     # read multiple table contents and areas from multiple states
     dec_3 = read_decennial(
@@ -37,8 +38,9 @@ test_read_xxx <- function(){
         ),
         summary_level = "block"
     )
-
     stopifnot(dim(dec_3) == c(28981, 9))
+    stopifnot(sum(dec_3$population) == 1258789)
+
 
     # read table contents of all county subdivisions in Providence metro
     library(data.table)
@@ -52,8 +54,8 @@ test_read_xxx <- function(){
         geo_comp = "*"
     ) %>%
         .[CBSA == "39300"]
-
     stopifnot(dim(dec_4) == c(183, 10))
+    stopifnot(sum(dec_4$population) == 3201704)
 
 
     # read_acs5year test ==========================================================
@@ -77,8 +79,9 @@ test_read_xxx <- function(){
         summary_level = "block group",
         with_margin = TRUE
     )
-
     stopifnot(dim(acs5_1) == c(1239, 16))
+    stopifnot(sum(acs5_1$population_margin) == 426092)
+
 
     # read data using geoheaders
     acs5_2 <- read_acs5year(
@@ -88,8 +91,8 @@ test_read_xxx <- function(){
         geo_headers = "PLACE",
         summary_level = "block group"
     )
-
     stopifnot(dim(acs5_2) == c(3777, 12))
+    stopifnot(sum(is.na(acs5_2$area)) == 904)
 
 
     # read_acs1year test ==========================================================
@@ -104,8 +107,9 @@ test_read_xxx <- function(){
         summary_level = "place",
         with_margin = TRUE
     )
-
     stopifnot(dim(acs1_1) == c(3, 14))
+    stopifnot(sum(acs1_1$population_margin) == 196)
+
 
     # read data using geoheaders - all major counties
     acs1_2 <- read_acs1year(
@@ -116,8 +120,9 @@ test_read_xxx <- function(){
         summary_level = "county",
         with_margin = TRUE
     )
-
     stopifnot(dim(acs1_2) == c(10, 15))
+    stopifnot(sum(acs1_2$male) == 1760676)
+
 
     # national data
     acs1_3 <- read_acs1year(
@@ -129,6 +134,7 @@ test_read_xxx <- function(){
         with_margin = TRUE
     )
     stopifnot(dim(acs1_3) == c(511, 15))
+    stopifnot(sum(is.na(acs1_3$area)) == 14)
 
     message("=== passed all test for read_xxx functions ===")
 }

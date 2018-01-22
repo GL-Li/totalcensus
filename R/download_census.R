@@ -23,7 +23,20 @@ download_census <- function(survey = NULL, year = NULL, states = c(states_DC, "U
     }
 
     if (is.null(survey)){
-        message("Need 200 GB free space. Run download_census() again to resume downloading in case downloading breaks.")
+        cat(paste(
+            "Do you want to download summary files of decennial census 2010,",
+            "2016 ACS 5-year estimate, and 2016 ACS 1-year estimate?",
+            "You need 200 GB free disc space. Run download_census() again to resume",
+            "downloading in case downloading breaks."
+        ))
+        continue <- switch(
+            menu(c("yes", "no")),
+            TRUE,
+            FALSE
+        )
+        if (!continue){
+            stop("You choose not to download data.")
+        }
         download_decennial_(2010, states)
         download_acs5year_(2016, states)
         download_acs1year_(2016)
@@ -49,6 +62,21 @@ download_census <- function(survey = NULL, year = NULL, states = c(states_DC, "U
 #' @export
 
 download_generated_data <- function(){
+    # get user permission
+    cat(paste(
+        "Do you want to download data generated from decennial census 2010?",
+        "This dataset is necessary for processing all summary files."
+    ))
+    continue <- switch(
+        menu(c("yes", "no")),
+        TRUE,
+        FALSE
+    )
+    if (!continue){
+        stop("You choose not to download data.")
+    }
+
+
     # total number of files expected in "generated_data/"
     total_files <- 424
 

@@ -102,6 +102,13 @@ read_decennial <- function(year,
 
     # check whether to download data
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
+    # check if need to download generated data from census2010
+    if (!file.exists(paste0(path_to_census, "/generated_data"))){
+        download_generated_data()
+    }
+
+    # check whether to download census data
     not_downloaded <- c()
     for (st in states){
         if (!file.exists(paste0(path_to_census, "/census", year, "/", st))){
@@ -196,7 +203,7 @@ read_decennial_areas_ <- function(year,
     # A data.table
     #
     # Examples_____
-    # aaa = totalcensus:::read_decennial_areas_(
+    # aaa = read_decennial_areas_(
     #     year = 2010,
     #     states = c("ri", "MA"),
     #     table_contents = c("P0030003", "P0080036", "PCT012G002", "PCT012G181"),
@@ -204,7 +211,7 @@ read_decennial_areas_ <- function(year,
     #     summary_level = "block"
     # )
     #
-    # bbb <- totalcensus:::read_decennial_areas_(
+    # bbb <- read_decennial_areas_(
     #     year = 2010,
     #     states = c("ut", "ri"),
     #     table_contents = c("P0030003", "P0080036", "PCT012G002", "PCT012G181"),
@@ -333,7 +340,7 @@ read_decennial_geoheaders_ <- function(year,
     # A data.table
     #
     # Examples_____
-    # aaa = totalcensus:::read_decennial_geoheaders_(
+    # aaa = read_decennial_geoheaders_(
     #     year = 2010,
     #     states = c("ri", "MA"),
     #     table_contents = c("P0030003", "P0080036", "PCT012G002", "PCT012G181"),
@@ -341,7 +348,7 @@ read_decennial_geoheaders_ <- function(year,
     #     summary_level = "block"
     # )
     #
-    # bbb <- totalcensus:::read_decennial_geoheaders_(
+    # bbb <- read_decennial_geoheaders_(
     #     year = 2010,
     #     states = c("ut", "ri"),
     #     table_contents = c("P0030003", "P0080036", "PCT012G002", "PCT012G181"),
@@ -377,7 +384,7 @@ read_decennial_geoheaders_ <- function(year,
         # read geography. do NOT read geo_headers from decennial data, instead read
         # from GEOID_coord_XX later on, which is generated from decennial 2010 and
         # has much more geo_header data
-        geo <- totalcensus:::read_decennial_geo_(year, st,
+        geo <- read_decennial_geo_(year, st,
                                    c(geo_headers, "STATE", "INTPTLON", "INTPTLAT"),
                                    show_progress = TRUE) %>%
             setnames(c("INTPTLON", "INTPTLAT"), c("lon", "lat")) %>%
@@ -388,7 +395,7 @@ read_decennial_geoheaders_ <- function(year,
         # read data from each file
         if(!is.null(table_contents)){
             # get files for table contents, follow the notation of read_tablecontent.R
-            dt <- totalcensus:::read_decennial_tablecontents_(year, st, table_contents,
+            dt <- read_decennial_tablecontents_(year, st, table_contents,
                                                 show_progress)
             decennial <- merge(geo, dt)
         } else {
