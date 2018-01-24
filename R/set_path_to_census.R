@@ -46,7 +46,7 @@ set_path_to_census <- function (path){
             file.copy(".Renviron", ".Renviron_backup")
             message("Your original .Renviron has been backed up and stored in your R HOME directory.")
             oldenv = read.table(".Renviron", stringsAsFactors = FALSE)[, "V1"]
-            newenv <- oldenv[-grep("PATH_TO_CENSUS", oldenv)]
+            newenv <- oldenv[!grepl("PATH_TO_CENSUS", oldenv)]
             write.table(newenv, ".Renviron", quote = FALSE,
                         sep = "\n", col.names = FALSE, row.names = FALSE)
         }
