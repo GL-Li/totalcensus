@@ -2,14 +2,12 @@
 #'
 #'
 #' @param path path to directory holding all downloaded census data, such as
-#' "E:/my_census_data/" and "~/my_census_data/".
-#' @param overwrite whether to overwrite old .Renviron.
-#' @param install whether to set the path for all future use.
+#' "E:/my_census_data" and "~/my_census_data/".
 #'
 #' @export
 
 # This function is modified from census_api_key() in package tidycensus, MIT liscence
-set_path_to_census <- function (path, overwrite = TRUE, install = TRUE){
+set_path_to_census <- function (path){
 
     # windows does not recognize directory ending with "/", so delete it if path
     # is end with "/"
@@ -19,33 +17,50 @@ set_path_to_census <- function (path, overwrite = TRUE, install = TRUE){
         path <- str_replace(path, "/$", "")
     }
 
-    if (install == TRUE) {
+    # get user permission
+    message(paste(
+        "Set path to the directory storing downloaded census data.",
+        "You can choose to set a temporary path to the census data and",
+        "use it for current R session only.",
+        "Or you can choose to set a permanent path for all future R sessions",
+        "by adding a vairable 'PATH_TO_CENSUS' to your .Renviron file.\n"
+    ))
+
+    cat("Your choice:")
+
+    choice <- switch(
+        menu(c("temporary path for this R session", "permanent path for this and all future R sessions")),
+        "temporary",
+        "permanent"
+    )
+
+    if (choice == "permanent") {
+        # save initial working directory for later recover
+        initial_wd <- getwd()
+
         setwd(Sys.getenv("HOME"))  # set working directory to home directory
 
         if (!file.exists(".Renviron")) {
             file.create(".Renviron")
         } else {
             file.copy(".Renviron", ".Renviron_backup")
-            if (isTRUE(overwrite)) {
-                message("Your original .Renviron will be backed up and stored in your R HOME directory if needed.")
-                oldenv = read.table(".Renviron", stringsAsFactors = FALSE)
-                newenv <- oldenv[-grep("PATH_TO_CENSUS", oldenv),]
-                write.table(newenv, ".Renviron", quote = FALSE,
-                            sep = "\n", col.names = FALSE, row.names = FALSE)
-            } else {
-                tv <- readLines(".Renviron")
-                if (isTRUE(any(grepl("PATH_TO_CENSUS", tv)))) {
-                    stop("A PATH_TO_CENSUS already exists. You can overwrite it with the argument overwrite=TRUE",
-                         call. = FALSE)
-                }
-            }
+            message("Your original .Renviron has been backed up and stored in your R HOME directory.")
+            oldenv = read.table(".Renviron", stringsAsFactors = FALSE)
+            newenv <- oldenv[-grep("PATH_TO_CENSUS", oldenv),]
+            write.table(newenv, ".Renviron", quote = FALSE,
+                        sep = "\n", col.names = FALSE, row.names = FALSE)
         }
-        keyconcat <- paste("PATH_TO_CENSUS=", "'", path, "'", sep = "")
-        write(keyconcat, ".Renviron", sep = "\n", append = TRUE)
-        message("Your census data path has been stored in your .Renviron and can be accessed by Sys.getenv(\"PATH_TO_CENSUS\"). \nTo use now, restart R or run `readRenviron(\"~/.Renviron\")`")
-        return(key)
-    } else {
-        message("To install your census data path for use in future sessions, run this function with `install = TRUE`.")
+        pathconcat <- paste("PATH_TO_CENSUS=", "'", path, "'", sep = "")
+        write(pathconcat, ".Renviron", sep = "\n", append = TRUE)
+        readRenviron("~/.Renviron")
+        message(paste(
+            "Your path to census data has been stored in your .Renviron and can be",
+            "accessed by Sys.getenv(\"PATH_TO_CENSUS\")"
+        ))
+
+        # recover to initial working directory
+        setwd(initial_wd)
+    } else if (choice == "temporary"){
         Sys.setenv(PATH_TO_CENSUS = path)
     }
 }

@@ -87,6 +87,15 @@ read_acs5year <- function(year,
                           with_acsgeoheaders = FALSE,
                           show_progress = TRUE){
 
+    # check if the path to census is set
+    if (Sys.getenv("PATH_TO_CENSUS") == ""){
+        message(paste(
+            "Please set up the path to downloaded census data, following the instruction at",
+            "https://github.com/GL-Li/totalcensus."
+        ))
+        return(NULL)
+    }
+
     # allow lowerscase input
     states <- toupper(states)
 

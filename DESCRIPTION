@@ -5,10 +5,10 @@ Version: 0.3.0
 Author: Guanglai Li
 Maintainer: Guanglai Li <liguanglai@gmail.com>
 Date: 2018-01-20
-Description: Download and extract data, in particular high resolution data at 
-    block, block group, and tract level, from decennial census summary file 1 
-    (with urban/rural update) and summary files of American Community Survey 
-    1-year and 5-year estimates. 
+Description: Download summary files from Census Bureau <https://www2.census.gov/> 
+    and extract data, in particular high resolution data at 
+    block, block group, and tract level, from decennial census and 
+    American Community Survey 1-year and 5-year estimates.
 URL: https://github.com/GL-Li/totalcensus
 BugReports: https://github.com/GL-Li/totalcensus/issues
 License: MIT + file LICENSE
