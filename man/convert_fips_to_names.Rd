@@ -31,7 +31,17 @@ aaa <- convert_fips_to_names(c("11", "44"))
 bbb <- convert_fips_to_names(c("001", "013"), states = c("RI", "MA"), geo_header = "COUNTY")
 # [1] "Bristol County" "Hampden County"
 
-\dontrun{
+# The only purpose of downloading data to temporary directory is to test the
+# following examples. Do not do it when you have data in your local computer.
+tmp <- tempdir()
+url <- "https://s3.amazonaws.com/gl-shared-data/generated_census_data.zip"
+download.file(url, paste0(tmp, "/tmp.zip"))
+unzip(
+    paste0(tmp, "/tmp.zip"),
+    exdir = paste0(tmp, "/generated_data")
+)
+Sys.setenv(PATH_TO_CENSUS = tmp)
+
 convert_fips_to_names(
     FIPs = c("14140", "76030"),
     states = c("RI", "MA"),
@@ -48,5 +58,4 @@ convert_fips_to_names(
 )
 # [1] "Providence-New Bedford-Fall River, RI-MA Metro Area" "Valley, AL Micro Area"
 
-}
 }
