@@ -29,14 +29,14 @@ The most frequently used geographic components are:
 43 : rural
 }
 \examples{
-\dontrun{
-  # search geocomponents containing "urban cluster"
-  search_geocomp("urban cluster")
+# Change view = TRUE (default) to View the returned data.
+aaa <- search_geocomponents("decennial", "urban", view = FALSE)
+bbb <- search_geocomponents("acs", "43", view = FALSE)
 
-  # search geocomponents with code 43
-  search_geocomp("43")
-  # or
-  search_geocomp(43)
+\dontrun{
+  # view all geocomponents
+  search_geocomponents("decennial")
+  search_geocomponents("acs")
 }
 
 }

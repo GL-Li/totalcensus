@@ -8,19 +8,21 @@
 #' @param survey type of survey, either "decennial" or "acs".
 #' @param keyword keyword in description or reference. The default "*" includes
 #' all geoheaders.
-#' @param view display the search result with View if TRUE
+#' @param view display the search result with View() if TRUE
 #'
 #' @return data.table matching the search criteria
 #'
 #' @examples
+#' # Change view = TRUE (default) to View the returned data.
+#' # search geoheader that contains keyword "india" in decennial 2010
+#' aaa <- search_geoheaders("decennial", "india", view = FALSE)
+#'
+#' # search for lattitude
+#' bbb <- search_geoheaders("decennial", "latitu", view = FALSE)
+#'
+#'
 #' \dontrun{
-#'   # search geoheader that contains keyword "india" in decennial 2010
-#'   search_geoheaders("decennial", "india")
-#'
-#'   # search for lattitude
-#'   search_geoheaders("decennial", "latitu")
-#'
-#'   # browse all geoheaders in ACS
+#'   # browse all geoheaders in ACS in View()
 #'   search_geoheaders("acs")
 #' }
 #'
@@ -60,25 +62,23 @@ search_geoheaders <- function(survey, keyword = "*", view = TRUE) {
 #'
 #'
 #' @examples
+#' # Change view = TRUE (default) to View the returned data.
+#' # search by what you want
+#' aaa <- search_tablecontents("decennial", "federal prison", view = FALSE)
+#'
+#' # search by table reference
+#' bbb <- search_tablecontents("acs", "B02003", view = FALSE)
+#'
 #' \dontrun{
-#'   # search exactly table "p3"
-#'   search_datafile("p3", table_only = TRUE)
+#'   # view all decennial census table contents
+#'   search_tablecontents("decennial")
 #'
-#'   # search reference "p0030002"
-#'   search_datafile("p0030002")
-#'
-#'   # search for file 03
-#'   search_datafile("03", file_only = TRUE)
-#'
-#'   # search keyword "federal prision population".
-#'   search_datafile("federal prison population")
+#'   # view all ACS table contents
+#'   search_tablecontents("acs")
 #' }
 #'
 #' @export
-#' @import data.table
-#' @import magrittr
-#' @importFrom purrr map reduce
-#' @importFrom stringr str_split
+#'
 
 search_tablecontents <- function(survey, keyword = "*", year = NULL, view = TRUE) {
 
@@ -118,17 +118,18 @@ search_tablecontents <- function(survey, keyword = "*", year = NULL, view = TRUE
 #'
 #'
 #' @examples
-#' \dontrun{
-#'   # search summary levels of geocomponent contains "block"
-#'   search_sumlev("block")
+#' # Change view = TRUE (default) to View the returned data.
+#' aaa = search_summarylevels("decennial", "block", view = FALSE)
+#' bbb <- search_summarylevels("acs", "40", view = FALSE)
 #'
-#'   # search summary levels of code 40
-#'   search_sumlev("40")
+#' \dontrun{
+#'   # view all summary levels
+#'   search_summarylevels("decennial")
+#'   search_summarylevels("acs")
 #' }
 #'
 #' @export
-#' @import data.table
-#' @import magrittr
+#'
 
 
 search_summarylevels <- function(survey, keyword = "*", view = TRUE){
@@ -170,14 +171,14 @@ search_summarylevels <- function(survey, keyword = "*", view = TRUE){
 #'
 #'
 #' @examples
-#' \dontrun{
-#'   # search geocomponents containing "urban cluster"
-#'   search_geocomp("urban cluster")
+#' # Change view = TRUE (default) to View the returned data.
+#' aaa <- search_geocomponents("decennial", "urban", view = FALSE)
+#' bbb <- search_geocomponents("acs", "43", view = FALSE)
 #'
-#'   # search geocomponents with code 43
-#'   search_geocomp("43")
-#'   # or
-#'   search_geocomp(43)
+#' \dontrun{
+#'   # view all geocomponents
+#'   search_geocomponents("decennial")
+#'   search_geocomponents("acs")
 #' }
 #'
 #' @export
@@ -202,14 +203,11 @@ search_geocomponents <- function(survey, keyword = "*", view = TRUE){
 
 
 
-#' Search decennial tables
 #'
-#' search decennial tables by keyword in table numbers or table descriptions
+#' search decennial and acs tables by keyword in table numbers or table descriptions
 #'
 #' @param survey "decennial" or "acs"
-#' @param keyword keyword to search in code or description. To search for a table
-#'     contains two words "abc" and "defg", the keyword is simply a single string
-#'     of "abc defg".
+#' @param keyword keyword to search in code or description.
 #' @param view display the search result with View if TRUE
 #'
 #' @return A data.table
@@ -217,15 +215,16 @@ search_geocomponents <- function(survey, keyword = "*", view = TRUE){
 #'
 #'
 #' @examples
-#' \dontrun{
-#'   # search decennial table contains "occupancy"
-#'   search_table("occupancy")
+#' # Change view = TRUE (default) to View the returned data.
+#' aaa <- search_tables("decennial", "occupancy", view = FALSE)
+#' bbb <- search_tables("acs", "detailed race", view = FALSE)
 #'
-#'   # search decennial table with table number "H5"
-#'   search_table("H5")
+#' \dontrun{
+#'   # view all tables
+#'   search_tables("decennial")
+#'   search_tables("acs")
 #' }
 #'
-#' @seealso \code{\link{dict_decennial_table}} lists all geocomponents and codes
 #'
 #' @export
 #'

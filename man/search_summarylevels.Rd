@@ -20,12 +20,14 @@ A data.table of searched results.
 Search code or description of summary levels
 }
 \examples{
-\dontrun{
-  # search summary levels of geocomponent contains "block"
-  search_sumlev("block")
+# Change view = TRUE (default) to View the returned data.
+aaa = search_summarylevels("decennial", "block", view = FALSE)
+bbb <- search_summarylevels("acs", "40", view = FALSE)
 
-  # search summary levels of code 40
-  search_sumlev("40")
+\dontrun{
+  # view all summary levels
+  search_summarylevels("decennial")
+  search_summarylevels("acs")
 }
 
 }

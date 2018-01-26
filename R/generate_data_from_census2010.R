@@ -1,6 +1,6 @@
 # 1/15/2018: change it to internal function from user function
 
-
+# How to process the generated data ============================================
 # The generated data will be compressed and uploaded to AWS S3 for download
 # under the generated data folder, run from terminal to compress all folders
 # and file into generated_data.zip
@@ -13,7 +13,8 @@
 #
 
 
-# Generate additional geographic data from Census 2010.
+
+# Generate additional geographic data from Census 2010 =========================
 #
 # @description Decennial census has the most complete geographic header records,
 # which can fill in many missing values in ACS data. This function is to generate

@@ -24,18 +24,19 @@ for table_contents argument in function \code{\link{read_decennial}},
 \code{\link{read_acs1year}}, and \code{\link{read_acs5year}}.
 }
 \examples{
+# Change view = TRUE (default) to View the returned data.
+# search by what you want
+aaa <- search_tablecontents("decennial", "federal prison", view = FALSE)
+
+# search by table reference
+bbb <- search_tablecontents("acs", "B02003", view = FALSE)
+
 \dontrun{
-  # search exactly table "p3"
-  search_datafile("p3", table_only = TRUE)
+  # view all decennial census table contents
+  search_tablecontents("decennial")
 
-  # search reference "p0030002"
-  search_datafile("p0030002")
-
-  # search for file 03
-  search_datafile("03", file_only = TRUE)
-
-  # search keyword "federal prision population".
-  search_datafile("federal prison population")
+  # view all ACS table contents
+  search_tablecontents("acs")
 }
 
 }

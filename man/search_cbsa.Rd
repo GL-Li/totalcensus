@@ -25,8 +25,15 @@ Quite often, multiple rows are returned. It is necessary
 to hand pick the right one you are really looking for.
 }
 \examples{
+# Change view = TRUE (default) to View the returned data.
+aaa <- search_cbsa("providence", view = FALSE)
+
+bbb <- search_cbsa("new york", view = FALSE)
+
 \dontrun{
-search_cbsa("providence")
+  # view all CBSA code
+  search_cbsa()
 }
+
 
 }

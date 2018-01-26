@@ -25,10 +25,13 @@ vector of names corresponding to FIPs and states
 convert fips codes to names of a geographies
 }
 \examples{
-\dontrun{
-convert_fips_to_names(c("11", "44"))
+aaa <- convert_fips_to_names(c("11", "44"))
 # [1] "DC" "RI"
 
+bbb <- convert_fips_to_names(c("001", "013"), states = c("RI", "MA"), geo_header = "COUNTY")
+# [1] "Bristol County" "Hampden County"
+
+\dontrun{
 convert_fips_to_names(
     FIPs = c("14140", "76030"),
     states = c("RI", "MA"),

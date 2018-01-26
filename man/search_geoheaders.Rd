@@ -12,7 +12,7 @@ search_geoheaders(survey, keyword = "*", view = TRUE)
 \item{keyword}{keyword in description or reference. The default "*" includes
 all geoheaders.}
 
-\item{view}{display the search result with View if TRUE}
+\item{view}{display the search result with View() if TRUE}
 }
 \value{
 data.table matching the search criteria
@@ -23,14 +23,16 @@ with keyword in dataset \code{\link{dict_decennial_geoheader}} or
 \code{\link{dict_acs_geoheader}}.
 }
 \examples{
+# Change view = TRUE (default) to View the returned data.
+# search geoheader that contains keyword "india" in decennial 2010
+aaa <- search_geoheaders("decennial", "india", view = FALSE)
+
+# search for lattitude
+bbb <- search_geoheaders("decennial", "latitu", view = FALSE)
+
+
 \dontrun{
-  # search geoheader that contains keyword "india" in decennial 2010
-  search_geoheaders("decennial", "india")
-
-  # search for lattitude
-  search_geoheaders("decennial", "latitu")
-
-  # browse all geoheaders in ACS
+  # browse all geoheaders in ACS in View()
   search_geoheaders("acs")
 }
 

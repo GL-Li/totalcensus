@@ -12,6 +12,7 @@
 #' @param states vector of abbreviations of states such as c("MA", "RI")
 #'
 #' @export
+#'
 
 download_census <- function(survey = NULL, year = NULL, states = c(states_DC, "US", "PR")){
 
@@ -60,6 +61,7 @@ download_census <- function(survey = NULL, year = NULL, states = c(states_DC, "U
 #' from Census 2010.
 #'
 #' @export
+#'
 
 download_generated_data <- function(){
     # get user permission

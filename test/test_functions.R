@@ -1,5 +1,61 @@
 # This tests need downloaded data to run so are not included in building package
 library(totalcensus)
+
+test_search_xxx <- function(){
+    # search_geoheaders test ====
+    geoheader_1 <- search_geoheaders("decennial", "india", view = FALSE)
+    stopifnot(dim(geoheader_1) == c(10, 2))
+
+    geo_header_2 <- search_geoheaders("decennial", "latitu", view = FALSE)
+    stopifnot(dim(geo_header_2) == c(1, 2))
+
+
+    # search_tablecontents test ====
+    tablecontent_1 <- search_tablecontents("decennial", "federal prison", view = FALSE)
+    stopifnot(dim(tablecontent_1) == c(16, 5))
+
+    tablecontent_2 <- search_tablecontents("acs", "B02003", view = FALSE)
+    stopifnot(dim(tablecontent_2) == c(71, 9))
+
+    # search_summurylevels test ====
+    sumlev_1 = search_summarylevels("decennial", "block", view = FALSE)
+    stopifnot(dim(sumlev_1) == c(9, 4))
+
+    sumlev_2 <- search_summarylevels("acs", "40", view = FALSE)
+    stopifnot(dim(sumlev_2) == c(4, 6))
+
+    # search_geocomponents test ====
+    geocomp_1 <- search_geocomponents("decennial", "urban", view = FALSE)
+    stopifnot(dim(geocomp_1) == c(30, 4))
+
+    geocomp_2 <- search_geocomponents("acs", "43", view = FALSE)
+    stopifnot(dim(geocomp_2) == c(1, 6))
+
+    # search_tables test ====
+    table_1 <- search_tables("decennial", "occupancy", view = FALSE)
+    stopifnot(dim(table_1) == c(1, 5))
+
+    table_2 <- search_tables("acs", "detailed race", view = FALSE)
+    stopifnot(dim(table_2) == c(6, 7))
+
+    # search_fips test ====
+    fips_1 <- search_fips("lincoln", "RI", view = FALSE)
+    stopifnot(dim(fips_1) == c(1, 9))
+
+    fips_2 <- search_fips("08375", view = FALSE)
+    stopifnot(dim(fips_2) == c(2, 9))
+
+    # search_cbsa test ====
+    cbsa_1 <- search_cbsa("providence", view = FALSE)
+    stopifnot(dim(cbsa_1) == c(6, 12))
+
+    cbsa_2 <- search_cbsa("new york", view = FALSE)
+    stopifnot(dim(cbsa_2) == c(25, 12))
+
+    message("=== passed all test for search_xxxx functions ===")
+}
+
+
 test_read_xxx <- function(){
     # read_decennial test ==============================================================
     # read one table and one area from one state
@@ -146,7 +202,6 @@ test_convert_functions <- function(){
     ftn_1 <- convert_fips_to_names(c("11", "44"))
     stopifnot(ftn_1 == c( "DC", "RI"))
 
-
     ftn_2 <- convert_fips_to_names(
         FIPs = c("14140", "76030"),
         states = c("RI", "MA"),
@@ -165,6 +220,9 @@ test_convert_functions <- function(){
     stopifnot(ftn_3 == c("Providence-New Bedford-Fall River, RI-MA Metro Area",
                          "Valley, AL Micro Area"))
 
+    ftn_4 <- convert_fips_to_names(c("001", "013"), states = c("RI", "MA"), geo_header = "COUNTY")
+    stopifnot(ftn_4 == c( "Bristol County", "Hampden County"))
+
     message("=== passed all test for convert_xxx functions ===")
 
 }
@@ -172,5 +230,6 @@ test_convert_functions <- function(){
 
 # . ===========================================================================
 # run tests ====================================================================
+test_search_xxx()
 test_read_xxx()
 test_convert_functions()

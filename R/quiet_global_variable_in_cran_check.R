@@ -4,6 +4,9 @@
 NULL
 
 ## quiets concerns of R CMD check re: the .'s that appear in pipelines
+# Also include function View from package utils. If imported to package, it
+# prevents openning data frame in RStudio but instead in a popup window.
+
 utils::globalVariables(unique(c(
     ".", "lon", "lat", "GEOID", "PLACE", "SUMLEV", "PLACE_tmp", "COUSUB",
     "COUSUB_tmp", "LOGRECNO", "V1", "dict_fips", "state_abbr", "STATE", "fips",
@@ -23,5 +26,5 @@ utils::globalVariables(unique(c(
     "TBLKGRP", "ZCTA5", "NAME", "lookup_decennial_2010", "Census2010", "dict_cbsa",
     "CBSA_title", "file_segment", "content", "id", "code", "name", "geoheader",
     "area", "dict_acs_geoheader", "file_seg", "dict_decennial_geoheader", "start",
-    "end", "comb", "geo_component", "summary_level", "field"
+    "end", "comb", "geo_component", "summary_level", "field", "View"
 )))

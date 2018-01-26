@@ -2,7 +2,7 @@
 % Please edit documentation in R/search_fips_cbsa.R
 \name{search_fips}
 \alias{search_fips}
-\title{Search FIPS}
+\title{Search FIPS codes}
 \usage{
 search_fips(keyword = "*", state = NULL, view = TRUE)
 }
@@ -17,8 +17,8 @@ search_fips(keyword = "*", state = NULL, view = TRUE)
 A data.table
 }
 \description{
-Search FIPS of a state, county, county subdivision, place, or
-consolidated city in dataset \code{\link{dict_fips}}. The search also returns
+Search FIPS code of a states, counties, county subdivisions, places, or
+consolidated cities in dataset \code{\link{dict_fips}}. The search also returns
 summary levels.
 }
 \details{
@@ -29,24 +29,25 @@ The function \code{\link{search_fips}} has changed summary level 061 to 060, and
 162 to 160 in search results.
 The summary levels in \code{\link{dict_fips}} are 010, 040, 050, 061, 162, and 170.
 The level 061 is for Minor Civil Division (MCD)/Census County Division (CCD) (10,000+). It
-does not appear in \code{\link{dict_decennial_summarylevel}}, which instead has 060 for County Subdivision.
+does not appear in \code{\link{dict_decennial_summarylevel}} and
+\code{\link{dict_acs_summarylevel}}, which instead have 060 for County Subdivision.
 Level 061 is part of 060 and is replaced with 060 in order to use the census data. Similarly,
-both level 162 in \code{\link{dict_fips}} and l60 in \code{\link{dict_decennial_summarylevel}} are for
+both level 162 in \code{\link{dict_fips}} and l60 in \code{\link{dict_decennial_summarylevel}}
+and \code{\link{dict_decennial_summarylevel}} are for
 State-Place. Always use 160 in census data.
 }
 \examples{
+# Change view = TRUE (default) to View the returned data.table.
+
+# Search fips of Lincoln in Rhode Island.
+aaa <- search_fips("lincoln", "RI", view = FALSE)
+
+# search FIPS number in all states
+bbb <- search_fips("08375", view = FALSE)
+
 \dontrun{
-  # search fips of Lincoln in Rhode Island
-  search_fips("lincoln", "RI")
-  search_fips("lincoln", "rhode")
-
-  # list fips of all counties in Massachusetts, even cannot spell correctly
-  search_fips("county", "massa")
-
-  # search FIPS number
-  search_fips("08375")
+  # view all fips code
+  search_fips()
 }
-}
-\seealso{
-\code{\link{dict_fips}}
+
 }

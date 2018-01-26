@@ -2,7 +2,7 @@
 % Please edit documentation in R/set_path_to_census.R
 \name{set_path_to_census}
 \alias{set_path_to_census}
-\title{Set file path to directory holding census data}
+\title{Set file path to directory storing downloaded census data}
 \usage{
 set_path_to_census(path)
 }
@@ -11,5 +11,5 @@ set_path_to_census(path)
 "E:/my_census_data" and "~/my_census_data/".}
 }
 \description{
-Set file path to directory holding census data
+Set file path to directory storing downloaded census data
 }

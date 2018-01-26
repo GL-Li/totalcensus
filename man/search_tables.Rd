@@ -2,16 +2,14 @@
 % Please edit documentation in R/search_census_and_acs.R
 \name{search_tables}
 \alias{search_tables}
-\title{Search decennial tables}
+\title{search decennial and acs tables by keyword in table numbers or table descriptions}
 \usage{
 search_tables(survey, keyword = "*", view = TRUE)
 }
 \arguments{
 \item{survey}{"decennial" or "acs"}
 
-\item{keyword}{keyword to search in code or description. To search for a table
-contains two words "abc" and "defg", the keyword is simply a single string
-of "abc defg".}
+\item{keyword}{keyword to search in code or description.}
 
 \item{view}{display the search result with View if TRUE}
 }
@@ -19,18 +17,18 @@ of "abc defg".}
 A data.table
 }
 \description{
-search decennial tables by keyword in table numbers or table descriptions
+search decennial and acs tables by keyword in table numbers or table descriptions
 }
 \examples{
+# Change view = TRUE (default) to View the returned data.
+aaa <- search_tables("decennial", "occupancy", view = FALSE)
+bbb <- search_tables("acs", "detailed race", view = FALSE)
+
 \dontrun{
-  # search decennial table contains "occupancy"
-  search_table("occupancy")
-
-  # search decennial table with table number "H5"
-  search_table("H5")
+  # view all tables
+  search_tables("decennial")
+  search_tables("acs")
 }
 
-}
-\seealso{
-\code{\link{dict_decennial_table}} lists all geocomponents and codes
+
 }

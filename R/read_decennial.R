@@ -576,7 +576,7 @@ read_decennial_1_file_tablecontents_ <- function(year,
 
     # fread assigns column names as "V1", "V2", ... when header = FALSE
     dt <- fread(file, header = FALSE, select = c("V5", cols), showProgress = show_progress) %>%
-        set_colnames(c("LOGRECNO", table_contents)) %>%
+        setnames(names(.), c("LOGRECNO", table_contents)) %>%
         setkey(LOGRECNO)
 
     return(dt)

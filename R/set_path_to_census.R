@@ -1,8 +1,8 @@
-#' Set file path to directory holding census data
+#' Set file path to directory storing downloaded census data
 #'
 #'
 #' @param path path to directory holding all downloaded census data, such as
-#' "E:/my_census_data" and "~/my_census_data/".
+#'     "E:/my_census_data" and "~/my_census_data/".
 #'
 #' @export
 
@@ -29,37 +29,43 @@ set_path_to_census <- function (path){
     cat("Your choice:")
 
     choice <- switch(
-        menu(c("temporary path for this R session", "permanent path for this and all future R sessions")),
+        menu(c("temporary path for this R session",
+               "permanent path for this and all future R sessions")),
         "temporary",
         "permanent"
     )
 
     if (choice == "permanent") {
-        # save initial working directory for later recover
+        # save initial working directory for later recovery
         initial_wd <- getwd()
 
-        setwd(Sys.getenv("HOME"))  # set working directory to home directory
+        # set working directory to home directory
+        setwd(Sys.getenv("HOME"))
 
         if (!file.exists(".Renviron")) {
             file.create(".Renviron")
         } else {
             file.copy(".Renviron", ".Renviron_backup")
-            message("Your original .Renviron has been backed up and stored in your R HOME directory.")
-            oldenv = read.table(".Renviron", stringsAsFactors = FALSE)[, "V1"]
+            message(paste(
+                "Your original .Renviron has been backed up and stored as",
+                ".Renviron_backup in your R HOME directory."
+            ))
+            oldenv = read.table(".Renviron", stringsAsFactors = FALSE)[[1]]
             newenv <- oldenv[!grepl("PATH_TO_CENSUS", oldenv)]
             write.table(newenv, ".Renviron", quote = FALSE,
                         sep = "\n", col.names = FALSE, row.names = FALSE)
         }
-        pathconcat <- paste("PATH_TO_CENSUS=", "'", path, "'", sep = "")
-        write(pathconcat, ".Renviron", sep = "\n", append = TRUE)
+        path_variable <- paste0("PATH_TO_CENSUS=", "'", path, "'")
+        write(path_variable, ".Renviron", sep = "\n", append = TRUE)
         readRenviron("~/.Renviron")
         message(paste(
-            "Your path to census data has been stored in your .Renviron and can be",
-            "accessed by Sys.getenv(\"PATH_TO_CENSUS\")"
+            "Your path to census data has been stored in your .Renviron and can",
+            "be accessed by Sys.getenv(\"PATH_TO_CENSUS\")"
         ))
 
         # recover to initial working directory
         setwd(initial_wd)
+
     } else if (choice == "temporary"){
         Sys.setenv(PATH_TO_CENSUS = path)
     }
