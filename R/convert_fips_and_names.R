@@ -16,6 +16,7 @@
 #' bbb <- convert_fips_to_names(c("001", "013"), states = c("RI", "MA"), geo_header = "COUNTY")
 #' # [1] "Bristol County" "Hampden County"
 #'
+#' \dontrun{
 #' # The only purpose of downloading data to temporary directory is to test the
 #' # following examples. Do not do it when you have data in your local computer.
 #' tmp <- tempdir()
@@ -42,6 +43,7 @@
 #'     in_states = "US"
 #' )
 #' # [1] "Providence-New Bedford-Fall River, RI-MA Metro Area" "Valley, AL Micro Area"
+#' }
 #'
 #' @export
 #'
