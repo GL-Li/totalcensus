@@ -271,7 +271,7 @@ read_decennial_areas_ <- function(year,
         # has much more geo_header data
         geo <- read_decennial_geo_(year, st,
                                    c(geo_headers, "STATE", "INTPTLON", "INTPTLAT"),
-                                   show_progress = TRUE) %>%
+                                   show_progress = show_progress) %>%
             setnames(c("INTPTLON", "INTPTLAT"), c("lon", "lat")) %>%
             # convert STATE fips to state abbreviation
             .[, state := convert_fips_to_names(STATE)] %>%
@@ -395,7 +395,7 @@ read_decennial_geoheaders_ <- function(year,
         # has much more geo_header data
         geo <- read_decennial_geo_(year, st,
                                    c(geo_headers, "STATE", "INTPTLON", "INTPTLAT"),
-                                   show_progress = TRUE) %>%
+                                   show_progress = show_progress) %>%
             setnames(c("INTPTLON", "INTPTLAT"), c("lon", "lat")) %>%
             # convert STATE fips to state abbreviation
             .[, state := convert_fips_to_names(STATE)] %>%

@@ -261,14 +261,14 @@ read_acs1year_areas_ <- function(year,
         # has much more geo_header data
         if (with_acsgeoheaders){
             geo <- read_acs1year_geo_(year, st, c(geo_headers, "STATE"),
-                                      show_progress = TRUE) %>%
+                                      show_progress = show_progress) %>%
                 # convert STATE fips to state abbreviation
                 .[, state := convert_fips_to_names(STATE)] %>%
                 setnames(geo_headers, paste0("acs_", geo_headers)) %>%
                 setkey(LOGRECNO)
         }else {
             geo <- read_acs1year_geo_(year, st, "STATE",
-                                      show_progress = TRUE) %>%
+                                      show_progress = show_progress) %>%
                 # convert STATE fips to state abbreviation
                 .[, state := convert_fips_to_names(STATE)] %>%
                 setkey(LOGRECNO)
@@ -416,14 +416,14 @@ read_acs1year_geoheaders_ <- function(year,
         # has much more geo_header data
         if (with_acsgeoheaders){
             geo <- read_acs1year_geo_(year, st, c(geo_headers, "STATE"),
-                                      show_progress = TRUE) %>%
+                                      show_progress = show_progress) %>%
                 # convert STATE fips to state abbreviation
                 .[, state := convert_fips_to_names(STATE)] %>%
                 setnames(geo_headers, paste0("acs_", geo_headers)) %>%
                 setkey(LOGRECNO)
         }else {
             geo <- read_acs1year_geo_(year, st, "STATE",
-                                      show_progress = TRUE) %>%
+                                      show_progress = show_progress) %>%
                 # convert STATE fips to state abbreviation
                 .[, state := convert_fips_to_names(STATE)] %>%
                 .[, STATE := NULL] %>%
