@@ -125,6 +125,8 @@ pris[, sum(federal, na.rm = TRUE)]
 
 
 
+
+
 # race in each state - a quick extraction =====================================
 race <- read_decennial(
     year = 2010,

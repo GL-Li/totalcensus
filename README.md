@@ -9,6 +9,8 @@ Download summary files from [Census Bureau](https://www2.census.gov/) and extrac
 Update
 ------
 
+**2/5/2018**: Package `totalcensus` is on CRAN now.
+
 **1/17/2018**: Please reinstall the updated version. You do not need to re-download census data, but need to update generated data by running
 
 ``` r
@@ -21,8 +23,10 @@ Installation and setup
 ### Installation
 
 ``` r
-install.packages("devtools")
+# from CRAN
+install.packages("totalcensus")
 
+# development version
 devtools::install_github("GL-Li/totalcensus")
 ```
 
