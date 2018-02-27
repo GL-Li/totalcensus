@@ -598,7 +598,18 @@ read_acs5year_1_file_tablecontents_ <- function(year, state, file_seg,
                     est_marg, year, "5", tolower(state), file_seg, "000.txt")
 
     dt1 <- fread(file1, header = FALSE, showProgress = show_progress) %>%
-        setnames(names(.), col_names)
+        setnames(names(.), col_names) %>%
+        .[, c("LOGRECNO", table_contents), with = FALSE]
+
+    # convert non-numeric columns to numeric
+    # some missing data are denoted as ".", which lead to the whole column read
+    # as character
+    for (col in names(dt1)){
+        if (is.character(dt1[, get(col)])){
+            dt1[, (col) := as.numeric(get(col))]
+        }
+    }
+
 
     if(toupper(state) == "US"){
         # US has empty files in group2 as it has no data at tract and block
@@ -606,23 +617,30 @@ read_acs5year_1_file_tablecontents_ <- function(year, state, file_seg,
         dt2 = NULL
     } else {
         dt2 <- fread(file2, header = FALSE, showProgress = show_progress) %>%
-            setnames(names(.), col_names)
+            setnames(names(.), col_names) %>%
+            .[, c("LOGRECNO", table_contents), with = FALSE]
+    }
+
+    for (col in names(dt2)){
+        if (is.character(dt1[, get(col)])){
+            dt1[, (col) := as.numeric(get(col))]
+        }
     }
 
     combined <- rbindlist(list(dt1, dt2)) %>%
-        .[, c("LOGRECNO", table_contents), with = FALSE] %>%
+        #.[, c("LOGRECNO", table_contents), with = FALSE] %>%
         # add "_e" or "_m" to show the data is estimate or margin
         setnames(table_contents, paste0(table_contents, "_", est_marg)) %>%
         setkey(LOGRECNO)
 
-    # convert non-numeric columns to numeric
-    # some missing data are denoted as ".", which lead to the whole column read
-    # as character
-    for (col in names(combined)){
-        if (is.character(combined[, get(col)])){
-            combined[, (col) := as.numeric(get(col))]
-        }
-    }
+    # # convert non-numeric columns to numeric
+    # # some missing data are denoted as ".", which lead to the whole column read
+    # # as character
+    # for (col in names(combined)){
+    #     if (is.character(combined[, get(col)])){
+    #         combined[, (col) := as.numeric(get(col))]
+    #     }
+    # }
 
     return(combined)
 }

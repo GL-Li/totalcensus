@@ -151,6 +151,15 @@ test_read_xxx <- function(){
     stopifnot(sum(is.na(acs5_2$area)) == 904)
 
 
+    test_vars <- c( "B01001_001", "B19049_001", "B19301_001", "B19001_001", "B19101_001")
+
+    dc_test <- read_acs5year(
+        year = 2016,
+        states = c("VT", "DC"),
+        table_contents = test_vars, #"B19301_001",
+        summary_level = "tract"
+    )
+
     # read_acs1year test ==========================================================
     # read summary data using areas of selected cities
     acs1_1 <- read_acs1year(
