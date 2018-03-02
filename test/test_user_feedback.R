@@ -1,0 +1,22 @@
+library(totalcensus)
+
+home_value <- read_acs5year(
+    year = 2016,
+    states = "RI",
+    table_contents = "home_value = B25077_001",
+    areas = c("Providence county, RI",
+              "washington county, RI"),
+    summary_level = "tract"
+)
+stopifnot(is.numeric(home_value$home_value))
+
+
+# issue 1
+test_vars <- c( "B01001_001", "B19049_001", "B19301_001", "B19001_001", "B19101_001")
+
+dc_test <- read_acs5year(
+    year = 2016,
+    states = c("VT", "DC"),
+    table_contents = test_vars,
+    summary_level = "tract"
+)

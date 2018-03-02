@@ -622,8 +622,8 @@ read_acs5year_1_file_tablecontents_ <- function(year, state, file_seg,
     }
 
     for (col in names(dt2)){
-        if (is.character(dt1[, get(col)])){
-            dt1[, (col) := as.numeric(get(col))]
+        if (is.character(dt2[, get(col)])){
+            dt2[, (col) := as.numeric(get(col))]
         }
     }
 
