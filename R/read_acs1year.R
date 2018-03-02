@@ -134,7 +134,13 @@ read_acs1year <- function(year,
         stop("Must keep at least one of arguments areas and geo_headers NULL")
     }
 
-    # add population to table contents so that it will never empty
+    # add population to table contents so that it will never empty, remove it
+    # from table_contents if "B01003_001" is included.
+    if (any(grepl("B01003_001", table_contents))){
+        message("B01003_001 is the population column.")
+    }
+
+    table_contents <- table_contents[!grepl("B01003_001", table_contents)]
     table_contents <- c("population = B01003_001", table_contents) %>%
         unique()
 

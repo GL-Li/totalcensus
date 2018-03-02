@@ -1,4 +1,6 @@
 library(totalcensus)
+library(data.table)
+library(magrittr)
 
 home_value <- read_acs5year(
     year = 2016,
@@ -19,4 +21,36 @@ dc_test <- read_acs5year(
     states = c("VT", "DC"),
     table_contents = test_vars,
     summary_level = "tract"
+) %>%
+    .[, test_vars, with = FALSE]
+dt <-
+stopifnot(all(sapply(dc_test, is.numeric)))
+
+# issue 2, run without error
+aaa <- read_acs5year(
+    year = 2016,
+    states = "MA",
+    table_contents = "B01003_001",
+    summary_level = "tract"
+)
+
+bbb <- read_acs1year(
+    year = 2016,
+    states = "MA",
+    table_contents = "B01003_001",
+    summary_level = "county"
+)
+
+ccc <-  read_acs5year(
+    year = 2016,
+    state = "MA",
+    table_contents = c("B01003_001", "B00001_001", "B01002_002"),
+    summary_level = "tract"
+)
+
+ddd <- read_decennial(
+    year = 2010,
+    states = "RI",
+    table_contents = c("P0010001", "P0020001"),
+    summary_level = "county"
 )

@@ -155,6 +155,11 @@ read_decennial <- function(year,
     }
 
     # add population to table contents so that it will never empty
+    if (any(grepl("P0010001", table_contents))){
+        message("P0010001 is the population column.")
+    }
+
+    table_contents <- table_contents[!grepl("P0010001", table_contents)]
     table_contents <- c("population = P0010001", table_contents) %>%
         unique()
 
