@@ -67,6 +67,6 @@ set_path_to_census <- function (path){
         setwd(initial_wd)
 
     } else if (choice == "temporary"){
-        Sys.setenv(PATH_TO_CENSUS = path)
+        Sys.setenv(PATH_TO_CENSUS = tempdir())
     }
 }

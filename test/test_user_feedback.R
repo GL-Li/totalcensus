@@ -13,7 +13,7 @@ home_value <- read_acs5year(
 stopifnot(is.numeric(home_value$home_value))
 
 
-# issue 1
+# issue #1 ======
 test_vars <- c( "B01001_001", "B19049_001", "B19301_001", "B19001_001", "B19101_001")
 
 dc_test <- read_acs5year(
@@ -26,7 +26,7 @@ dc_test <- read_acs5year(
 dt <-
 stopifnot(all(sapply(dc_test, is.numeric)))
 
-# issue 2, run without error
+# issue #2, run without error ====
 aaa <- read_acs5year(
     year = 2016,
     states = "MA",
@@ -53,4 +53,17 @@ ddd <- read_decennial(
     states = "RI",
     table_contents = c("P0010001", "P0020001"),
     summary_level = "county"
+)
+
+
+# issue #3 ====
+
+
+# issue #4 =====
+tables <- "PCT12I"
+
+NY_PCT12I <- read_decennial(
+    year = 2010,
+    states = "NY",
+    table_contents = c("PCT012I001", "PCT012I009")
 )
