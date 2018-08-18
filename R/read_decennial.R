@@ -32,7 +32,8 @@
 #'        \code{\link{search_summarylevels}} or browse \code{\link{dict_decennial_summarylevel}} .
 #' @param geo_comp select which geographic component to keep, "*" to keep every geo-component,
 #'        "total" for "00", "urban" for "01", "urbanized area" for "04",
-#'        "urban cluster" for "28", "rural" for "43". Others should input code
+#'        "urban cluster" for "28", "rural" for "43". For all other geographic component,
+#'         use code,
 #'        which can be found with \code{\link{search_geocomponents}}. Availability
 #'        of geocomponent depends on summary level. State level contains all
 #'        geographic component. County subdivision and higher level have "00",

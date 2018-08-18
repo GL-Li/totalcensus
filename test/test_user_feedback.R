@@ -57,10 +57,14 @@ ddd <- read_decennial(
 
 
 # issue #3 ====
+DC <- read_acs5year(year = 2016,
+              states = "DC",
+              table_contents = "B19013_001",
+              summary_level = "tract")
 
 
 # issue #4 =====
-tables <- "PCT12I"
+# fixed: file_28.csv was wrong.
 
 NY_PCT12I <- read_decennial(
     year = 2010,
