@@ -4,7 +4,7 @@
 #'
 #' @description Download census data from United States Census bureau. By default
 #' it downloads summary files and extract summary files of Census 2010, ACS 5-year
-#' survey of 2015, and ACS 1-year survey of 2016, 2015, and 2014. It also download
+#' survey of 2015 and 2016, and ACS 1-year survey of 2016, 2015, and 2014. It also download
 #' generated data from Census 2010 if not exist.
 #'
 #' @param survey Which survey to download from, "decennial", "acs5year", or "acs1year"
@@ -353,9 +353,11 @@ download_acs1year_ <- function(year){
     # if not, there is a downloading or extraction problem.
     total_files <- switch(
         as.character(year),
+        '2017' = 18762,
         "2016" = 17702,
         "2015" = 17596,
-        "2014" = 17596
+        "2014" = 17596,
+        "2010" = 19080
     )
 
     # download all states' data which is not that big
@@ -380,7 +382,7 @@ download_acs1year_ <- function(year){
         download.file(url, save_as, method = "auto")
 
         # unzip downloaded file
-        cat(paste0("Unzipping downloaded zip file of acs 1-year of", year, "\n"))
+        cat(paste0("Unzipping downloaded zip file of acs 1-year of ", year, "\n"))
         unzip(save_as, exdir = path_to_acs1year)
 
         # check extraction

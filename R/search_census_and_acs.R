@@ -258,6 +258,14 @@ search_tables <- function(survey, keyword = '*', view = TRUE){
 # data merge and keep only one table content and table name.
 
 generate_acs_tablecontents <- function(){
+    # ignore 2010 data where restriction is unknown
+    acs1_2010 <- lookup_acs1year_2010[, .(reference,
+                                          content_acs1_2010 = table_content,
+                                          name_acs1_2010 = table_name,
+                                          universe_acs1_2010 = universe,
+                                          acs1_2010 = restriction)] %>%
+        setkey(reference)
+
     acs1_2014 <- lookup_acs1year_2014[, .(reference,
                                           content_acs1_2014 = table_content,
                                           name_acs1_2014 = table_name,
@@ -282,6 +290,21 @@ generate_acs_tablecontents <- function(){
         .[is.na(acs1_2016), acs1_2016 := "yes"] %>%
         setkey(reference)
 
+    acs1_2017 <- lookup_acs1year_2017[, .(reference,
+                                          content_acs1_2017 = table_content,
+                                          name_acs1_2017 = table_name,
+                                          universe_acs1_2017 = universe,
+                                          acs1_2017 = restriction)] %>%
+        .[is.na(acs1_2017), acs1_2017 := "yes"] %>%
+        setkey(reference)
+
+
+    acs5_2010 <- lookup_acs5year_2010[, .(reference,
+                                          content_acs5_2010 = table_content,
+                                          name_acs5_2010 = table_name,
+                                          universe_acs5_2010 = universe,
+                                          acs5_2010 = restriction)] %>%
+        setkey(reference)
 
     acs5_2015 <- lookup_acs5year_2015[, .(reference,
                                           content_acs5_2015 = table_content,
@@ -300,8 +323,15 @@ generate_acs_tablecontents <- function(){
         setkey(reference)
 
 
-    dict_acs_tablecontent <- reduce(list(acs1_2014, acs1_2015, acs1_2016, acs5_2015, acs5_2016), merge, all = TRUE) %>%
-        # consolidate table_names
+    dict_acs_tablecontent <- reduce(list(acs1_2010,
+                                         acs1_2014,
+                                         acs1_2015,
+                                         acs1_2016,
+                                         acs1_2017,
+                                         acs5_2010,
+                                         acs5_2015,
+                                         acs5_2016), merge, all = TRUE) %>%
+        # consolidate table_names. ignore 2010 data where restriction is unknown
         .[!is.na(acs1_2014), ":=" (table_content = content_acs1_2014,
                                    table_name = name_acs1_2014,
                                    universe = universe_acs1_2014)] %>%
@@ -311,15 +341,22 @@ generate_acs_tablecontents <- function(){
         .[!is.na(acs1_2016), ":=" (table_content = content_acs1_2016,
                                    table_name = name_acs1_2016,
                                    universe = universe_acs1_2016)] %>%
+        .[!is.na(acs1_2017), ":=" (table_content = content_acs1_2017,
+                                   table_name = name_acs1_2017,
+                                   universe = universe_acs1_2017)] %>%
         .[!is.na(acs5_2015), ":=" (table_content = content_acs5_2015,
                                    table_name = name_acs5_2015,
                                    universe = universe_acs5_2015)] %>%
         .[!is.na(acs5_2016), ":=" (table_content = content_acs5_2016,
                                    table_name = name_acs5_2016,
                                    universe = universe_acs5_2016)] %>%
-        .[, .(reference, table_content, table_name, acs5_2016, acs5_2015, acs1_2016, acs1_2015, acs1_2014, universe)] %>%
+        .[, .(reference, table_content, table_name,
+              acs5_2016, acs5_2015, acs5_2010,
+              acs1_2017, acs1_2016, acs1_2015, acs1_2014, acs1_2010,
+              universe)] %>%
         .[is.na(acs5_2016), acs5_2016 := "-"] %>%
         .[is.na(acs5_2015), acs5_2015 := "-"] %>%
+        .[is.na(acs1_2017), acs1_2017 := "-"] %>%
         .[is.na(acs1_2016), acs1_2016 := "-"] %>%
         .[is.na(acs1_2015), acs1_2015 := "-"] %>%
         .[is.na(acs1_2014), acs1_2014 := "-"]
