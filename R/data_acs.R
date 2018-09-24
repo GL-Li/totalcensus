@@ -295,7 +295,35 @@
 #'
 "dict_acs_geoheader"
 
-# dict_acs_geoheaders 2006 - 2010 ===========================================
+
+# dict_acs_geoheaders_2005 ===========================================
+#' List of geographic headers used in American Community Survey since 2011
+#'
+#' @description  This dataset has the complete list of geographic header
+#' references and their discription used in ACS 1-year and 5-year summary file.
+#' Search the dataset with function \code{\link{search_geoheaders}}.
+#'
+#' @docType data
+#'
+#'
+#' @format A data.table with 53 rows and 4 variables
+#' \describe{
+#'   \item{reference}{reference of the geoheader}
+#'   \item{field}{description of the geoheader}
+#'   \item{start}{starting position of the geoheader in geography file}
+#'   \item{end}{ending position of the geoheader in geography file}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source 2016 ACS Summary File
+#' \href{https://www2.census.gov/programs-surveys/acs/summary_file/2016/documentation/tech_docs/2016_SummaryFile_Tech_Doc.pdf}{technical documentation},
+#' page 10 - 11.
+#'
+#'
+"dict_acs_geoheader_2005_1year"
+
+# dict_acs_geoheaders 2006 - 2008 ===========================================
 #' List of geographic headers used in American Community Survey in 2006 - 2010
 #'
 #' @description  This dataset has the complete list of geographic header
@@ -320,7 +348,90 @@
 #' page 10 - 11.
 #'
 #'
-"dict_acs_geoheader_2006_2010"
+"dict_acs_geoheader_2006_2008_1year"
+
+
+# dict_acs_geoheaders 2009 1 year ===========================================
+#' List of geographic headers used in American Community Survey since 2011
+#'
+#' @description  This dataset has the complete list of geographic header
+#' references and their discription used in ACS 1-year and 5-year summary file.
+#' Search the dataset with function \code{\link{search_geoheaders}}.
+#'
+#' @docType data
+#'
+#'
+#' @format A data.table with 53 rows and 4 variables
+#' \describe{
+#'   \item{reference}{reference of the geoheader}
+#'   \item{field}{description of the geoheader}
+#'   \item{start}{starting position of the geoheader in geography file}
+#'   \item{end}{ending position of the geoheader in geography file}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source 2016 ACS Summary File
+#' \href{https://www2.census.gov/programs-surveys/acs/summary_file/2016/documentation/tech_docs/2016_SummaryFile_Tech_Doc.pdf}{technical documentation},
+#' page 10 - 11.
+#'
+#'
+"dict_acs_geoheader_2009_1year"
+
+
+# dict_acs_geoheaders 2009 5 year===========================================
+#' List of geographic headers used in American Community Survey since 2011
+#'
+#' @description  This dataset has the complete list of geographic header
+#' references and their discription used in ACS 1-year and 5-year summary file.
+#' Search the dataset with function \code{\link{search_geoheaders}}.
+#'
+#' @docType data
+#'
+#'
+#' @format A data.table with 53 rows and 4 variables
+#' \describe{
+#'   \item{reference}{reference of the geoheader}
+#'   \item{field}{description of the geoheader}
+#'   \item{start}{starting position of the geoheader in geography file}
+#'   \item{end}{ending position of the geoheader in geography file}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source 2016 ACS Summary File
+#' \href{https://www2.census.gov/programs-surveys/acs/summary_file/2016/documentation/tech_docs/2016_SummaryFile_Tech_Doc.pdf}{technical documentation},
+#' page 10 - 11.
+#'
+#'
+"dict_acs_geoheader_2009_5year"
+
+# dict_acs_geoheaders 2010 ===========================================
+#' List of geographic headers used in American Community Survey since 2011
+#'
+#' @description  This dataset has the complete list of geographic header
+#' references and their discription used in ACS 1-year and 5-year summary file.
+#' Search the dataset with function \code{\link{search_geoheaders}}.
+#'
+#' @docType data
+#'
+#'
+#' @format A data.table with 53 rows and 4 variables
+#' \describe{
+#'   \item{reference}{reference of the geoheader}
+#'   \item{field}{description of the geoheader}
+#'   \item{start}{starting position of the geoheader in geography file}
+#'   \item{end}{ending position of the geoheader in geography file}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source 2016 ACS Summary File
+#' \href{https://www2.census.gov/programs-surveys/acs/summary_file/2016/documentation/tech_docs/2016_SummaryFile_Tech_Doc.pdf}{technical documentation},
+#' page 10 - 11.
+#'
+#'
+"dict_acs_geoheader_2010"
 
 
 # dict_acs_summarylevel =====================================================
