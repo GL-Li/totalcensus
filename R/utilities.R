@@ -92,6 +92,9 @@ lookup_tablecontents <- function(table_contents, lookup){
     file_content <- lookup[reference %in% table_contents,
                            .(file_seg = file_segment,
                              table_contents = reference)] %>%
+        # if a table_content appears in multiple file_segs, keep only
+        # the first one
+        unique(by = "table_contents") %>%
         .[order_contents, on = .(table_contents = content)] %>%
         .[order(id)] %>%
         compress_datatable()

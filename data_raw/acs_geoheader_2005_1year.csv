@@ -1,0 +1,36 @@
+reference, field, size, start, type
+FILEID, Always equal to ACS Summary File identification, 6, 1, geographic
+STUSAB, State postal abbreviation, 2, 7, geographic
+SUMLEV, Summary level, 3, 9, geographic
+GEOCOMP, Geographic Component, 2, 12, geographic
+LOGRECNO, Logical Record Number, 7, 14, geographic
+US, US = 1 or missing, 1, 21, geographic
+REGION, Census Region, 1, 22, geographic
+DIVISION, Census Division, 1, 23, geographic
+STATE, State (FIPS Code), 2, 24, geographic
+COUNTY, County of current residence, 3, 26, geographic
+COUSUB, Minor Civil Division of current residence, 3, 29, geographic
+PLACE, Place of current residence, 4, 32, geographic
+AINDN, American Indian and Alaska Native Area, 4, 36, geographic
+CBSA, Metropolitan and Micropolitan Statistical Area, 5, 40, geographic
+METDIV, Metro politan Division, 5, 45, geographic
+CSA, Combined Statistical Area, 3, 50, geographic
+CNECTA, New England City and Town Combined Statistical Area, 3, 53, geographic
+NECTA, New England City and Town Area, 5, 56, geographic
+NECTADIV, New England City and Town Area Division, 5, 61, geographic
+UA, Urban Area, 5, 66, geographic
+CD2000, 106 Congressional District, 2, 71, geographic
+BST, Federal Information Processing Standards state code, 2, 73, geographic
+PUMA5, New England City and Town Area Division, 5, 75, geographic
+SDELM, School District (Elementary), 5, 80, geographic
+SDSEC, School District (Secondary), 5, 85, geographic
+SDUNI, School District (Unified), 5, 90, geographic
+UR, Urban/Rural, 1, 95, geographic
+MEMI, Metro politan/Micropolitan Indicator Flag, 1, 96, geographic
+MEMIR, Metropolitan/Micropolitan Indicator Recode, 1, 97, geographic
+PCI, Principal City Indicator, 1, 98, geographic
+CD1990, 1990 Congressional District, 2, 99, geographic
+FIPSMCD, Federal Information Processing Standards state and Minor Civil Division code, 5, 101, geographic
+FIPSPL, Place code (Federal Information Processing Standards), 5, 106, geographic
+GEOID, Geographic identification, 40, 111, geographic
+NAME, Name of an area, 200, 151, geographic

@@ -5,6 +5,10 @@
 # some named differently
 # https://www2.census.gov/programs-surveys/acs/summary_file/2009/documentation/1_year/user_tools/merge_5_6.txt
 
+# Appendices are available from 2013. Download them from
+# https://www.census.gov/programs-surveys/acs/technical-documentation/summary-file-documentation.2017.html
+# ignore if not available
+
 library(data.table)
 library(magrittr)
 library(readxl)
@@ -17,22 +21,41 @@ make_acs_lookup <- function(period, year){
         "data_raw/",
         "ACS_", period, "yr_Seq_Table_Number_Lookup_", year, ".txt"
     )
-    dt <- fread(file_lookup, colClasses = "character", encoding = "Latin-1") %>%
-        .[, c(2, 3, 4, 8), with = FALSE] %>%
-        setnames(1:4, c("table_number", "file_segment", "reference", "table_name"))
+
+    file_lookup_xls <- paste0(
+        "data_raw/",
+        "ACS_", period, "yr_Seq_Table_Number_Lookup_", year, ".xls"
+    )
+
+    if (file.exists(file_lookup)){
+        dt <- fread(file_lookup, colClasses = "character", encoding = "Latin-1") %>%
+            .[, c(2, 3, 4, 8), with = FALSE] %>%
+            setnames(1:4, c("table_number", "file_segment", "reference", "table_name"))
+    } else if (file.exists(file_lookup_xls)) {
+        dt <- read_excel(file_lookup_xls, col_types = "text") %>%
+            setDT() %>%
+            .[, c(2, 3, 4, 8), with = FALSE] %>%
+            setnames(1:4, c("table_number", "file_segment", "reference", "table_name"))
+    } else {
+        message("Please download the file sequence/table number lookup file in .txt or .xls format")
+        return(NULL)
+    }
+
 
     univ <- dt[, .SD[2], by = .(table_number)] %>%
         .[, .(table_number, universe = table_name)] %>%
         setkey(table_number)
 
-    content <- dt[reference != ""] %>%
+    # some lookup file contain reference like "0.5", "2.7" that are not in the
+    # raw data, remove them otherwise will cause column problem
+    content <- dt[reference != "" & !grepl("\\.", reference)] %>%
         setnames("table_name", "table_content") %>%
         # change the reference from 1, 12, ...  to 001, 012, ...
         .[str_length(reference) == 1, reference := paste0("00", reference)] %>%
         .[str_length(reference) == 2, reference := paste0("0", reference)] %>%
         .[, reference := paste0(table_number, "_", reference)] %>%
         # the 1-year 2014 lookup file has 1, 2, 3, ... as file_segment
-        # change to 001, 002, ...
+        # change to 0001, 0002, ...
         .[str_length(file_segment) == 1, file_segment := paste0("000", file_segment)] %>%
         .[str_length(file_segment) == 2, file_segment := paste0("00", file_segment)] %>%
         .[str_length(file_segment) == 3, file_segment := paste0("0", file_segment)] %>%
@@ -69,6 +92,12 @@ make_acs_lookup <- function(period, year){
         .[order(file_segment)]
 
 
+    # save to R/data/
+    dict_name <- paste0("lookup_acs", period, "year_", year)
+    assign(dict_name, dict)
+    save_as <- paste0("data/lookup_acs", period, "year_", year, ".RData" )
+    save(list = dict_name, file = save_as,
+         compress = "xz", compression_level = 9)
 
     return(dict)
 }
@@ -88,22 +117,24 @@ lookup_acs1year_2015 <- make_acs_lookup(1, 2015)
 lookup_acs1year_2014 <- make_acs_lookup(1, 2014)
 
 lookup_acs1year_2010 <- make_acs_lookup(1, 2010)
+lookup_acs1year_2008 <- make_acs_lookup(1, 2008)
 
-# save to data/
-save(lookup_acs5year_2016, file = "data/lookup_acs5year_2016.RData",
-     compress = "xz", compression_level = 9)
-save(lookup_acs5year_2015, file = "data/lookup_acs5year_2015.RData",
-     compress = "xz", compression_level = 9)
-save(lookup_acs5year_2010, file = "data/lookup_acs5year_2010.RData",
-     compress = "xz", compression_level = 9)
 
-save(lookup_acs1year_2017, file = "data/lookup_acs1year_2017.RData",
-     compress = "xz", compression_level = 9)
-save(lookup_acs1year_2016, file = "data/lookup_acs1year_2016.RData",
-     compress = "xz", compression_level = 9)
-save(lookup_acs1year_2015, file = "data/lookup_acs1year_2015.RData",
-     compress = "xz", compression_level = 9)
-save(lookup_acs1year_2014, file = "data/lookup_acs1year_2014.RData",
-     compress = "xz", compression_level = 9)
-save(lookup_acs1year_2010, file = "data/lookup_acs1year_2010.RData",
-     compress = "xz", compression_level = 9)
+# # save to data/
+# save(lookup_acs5year_2016, file = "data/lookup_acs5year_2016.RData",
+#      compress = "xz", compression_level = 9)
+# save(lookup_acs5year_2015, file = "data/lookup_acs5year_2015.RData",
+#      compress = "xz", compression_level = 9)
+# save(lookup_acs5year_2010, file = "data/lookup_acs5year_2010.RData",
+#      compress = "xz", compression_level = 9)
+#
+# save(lookup_acs1year_2017, file = "data/lookup_acs1year_2017.RData",
+#      compress = "xz", compression_level = 9)
+# save(lookup_acs1year_2016, file = "data/lookup_acs1year_2016.RData",
+#      compress = "xz", compression_level = 9)
+# save(lookup_acs1year_2015, file = "data/lookup_acs1year_2015.RData",
+#      compress = "xz", compression_level = 9)
+# save(lookup_acs1year_2014, file = "data/lookup_acs1year_2014.RData",
+#      compress = "xz", compression_level = 9)
+# save(lookup_acs1year_2010, file = "data/lookup_acs1year_2010.RData",
+#      compress = "xz", compression_level = 9)

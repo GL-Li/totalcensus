@@ -545,6 +545,14 @@ read_acs5year_geo_ <- function(year,
     }
 
     #=== read file ===
+    if (year >= 2011){
+        dict_geoheader <- dict_acs_geoheader
+    } else if (year == 2010){
+        dict_geoheader <- dict_acs_geoheader_2010
+    }else if (year == 2009){
+        dict_geoheader <- dict_acs_geoheader_2009_5year
+    }
+
 
     file <- paste0(path_to_census, "/acs5year/", year, "/g", year, "5",
                    tolower(state), ".csv")
@@ -554,7 +562,7 @@ read_acs5year_geo_ <- function(year,
     # decennial census.
     geo <- fread(file, header = FALSE, encoding = "Latin-1" ,
                  showProgress = show_progress, colClasses = "character") %>%
-        setnames(dict_acs_geoheader$reference) %>%
+        setnames(dict_geoheader$reference) %>%
         .[, c(c("GEOID", "NAME", "LOGRECNO", "SUMLEV", "GEOCOMP"), geo_headers), with = FALSE] %>%
         .[, LOGRECNO := as.numeric(LOGRECNO)] %>%
         setkey(LOGRECNO)

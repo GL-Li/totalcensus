@@ -82,8 +82,8 @@ search_geoheaders <- function(survey, keyword = "*", view = TRUE) {
 
 search_tablecontents <- function(survey, keyword = "*", year = NULL, view = TRUE) {
 
-    if (survey == "decennial") dt <- generate_decennial_tablecontents()
-    if (survey == "acs") dt <- generate_acs_tablecontents()
+    if (survey == "decennial") dt <- generate_decennial_tablecontents_()
+    if (survey == "acs") dt <- generate_acs_tablecontents_()
 
     keywords <- unlist(str_split(tolower(keyword), " "))
     for (kw in keywords){
@@ -248,7 +248,7 @@ search_tables <- function(survey, keyword = '*', view = TRUE){
 
 
 # internal functions ===========================================================
-# This funciton generates datasets used in the package but we do not want to save
+# This function generates datasets used in the package but we do not want to save
 # the datasets for users. When used just call the functions.
 
 
@@ -257,81 +257,50 @@ search_tables <- function(survey, keyword = '*', view = TRUE){
 # difference which gives trouble in merge data. We will only use reference for
 # data merge and keep only one table content and table name.
 
-generate_acs_tablecontents <- function(){
-    # ignore 2010 data where restriction is unknown
-    acs1_2010 <- lookup_acs1year_2010[, .(reference,
-                                          content_acs1_2010 = table_content,
-                                          name_acs1_2010 = table_name,
-                                          universe_acs1_2010 = universe,
-                                          acs1_2010 = restriction)] %>%
+modify_lookup_table_ <- function(period, year){
+    p_y <- paste0("acs", period, "_", year)
+
+    dt <- get(paste0("lookup_acs", period, "year_", year)) %>%
+        .[, .(reference, table_content, table_name, universe, restriction)] %>%
+        setnames(c("reference",
+                   paste0("content_", p_y),
+                   paste0("name_", p_y),
+                   paste0("universe_", p_y),
+                   p_y)) %>%
         setkey(reference)
 
-    acs1_2014 <- lookup_acs1year_2014[, .(reference,
-                                          content_acs1_2014 = table_content,
-                                          name_acs1_2014 = table_name,
-                                          universe_acs1_2014 = universe,
-                                          acs1_2014 = restriction)] %>%
-        .[is.na(acs1_2014), acs1_2014 := "yes"] %>%
-        setkey(reference)
+    if (year >= 2013){
+        dt[is.na(get(p_y)), (p_y) := "no restriction"]
+    }
 
-    acs1_2015 <- lookup_acs1year_2015[, .(reference,
-                                          content_acs1_2015 = table_content,
-                                          name_acs1_2015 = table_name,
-                                          universe_acs1_2015 = universe,
-                                          acs1_2015 = restriction)] %>%
-        .[is.na(acs1_2015), acs1_2015 := "yes"] %>%
-        setkey(reference)
-
-    acs1_2016 <- lookup_acs1year_2016[, .(reference,
-                                          content_acs1_2016 = table_content,
-                                          name_acs1_2016 = table_name,
-                                          universe_acs1_2016 = universe,
-                                          acs1_2016 = restriction)] %>%
-        .[is.na(acs1_2016), acs1_2016 := "yes"] %>%
-        setkey(reference)
-
-    acs1_2017 <- lookup_acs1year_2017[, .(reference,
-                                          content_acs1_2017 = table_content,
-                                          name_acs1_2017 = table_name,
-                                          universe_acs1_2017 = universe,
-                                          acs1_2017 = restriction)] %>%
-        .[is.na(acs1_2017), acs1_2017 := "yes"] %>%
-        setkey(reference)
+    return(dt)
+}
 
 
-    acs5_2010 <- lookup_acs5year_2010[, .(reference,
-                                          content_acs5_2010 = table_content,
-                                          name_acs5_2010 = table_name,
-                                          universe_acs5_2010 = universe,
-                                          acs5_2010 = restriction)] %>%
-        setkey(reference)
+generate_acs_tablecontents_ <- function(){
+    acs1_2008 <- modify_lookup_table_(1, 2008)
+    acs1_2010 <- modify_lookup_table_(1, 2010)
+    acs1_2014 <- modify_lookup_table_(1, 2014)
+    acs1_2015 <- modify_lookup_table_(1, 2015)
+    acs1_2016 <- modify_lookup_table_(1, 2016)
+    acs1_2017 <- modify_lookup_table_(1, 2017)
 
-    acs5_2015 <- lookup_acs5year_2015[, .(reference,
-                                          content_acs5_2015 = table_content,
-                                          name_acs5_2015 = table_name,
-                                          universe_acs5_2015 = universe,
-                                          acs5_2015 = restriction)] %>%
-        .[is.na(acs5_2015), acs5_2015 := "yes"] %>%
-        setkey(reference)
+    acs5_2010 <- modify_lookup_table_(5, 2010)
+    acs5_2015 <- modify_lookup_table_(5, 2015)
+    acs5_2016 <- modify_lookup_table_(5, 2016)
 
-    acs5_2016 <- lookup_acs5year_2016[, .(reference,
-                                          content_acs5_2016 = table_content,
-                                          name_acs5_2016 = table_name,
-                                          universe_acs5_2016 = universe,
-                                          acs5_2016 = restriction)] %>%
-        .[is.na(acs5_2016), acs5_2016 := "yes"] %>%
-        setkey(reference)
-
-
-    dict_acs_tablecontent <- reduce(list(acs1_2010,
+    dict_acs_tablecontent <- reduce(list(acs1_2008,
+                                         acs1_2010,
                                          acs1_2014,
                                          acs1_2015,
                                          acs1_2016,
                                          acs1_2017,
                                          acs5_2010,
                                          acs5_2015,
-                                         acs5_2016), merge, all = TRUE) %>%
-        # consolidate table_names. ignore 2010 data where restriction is unknown
+                                         acs5_2016),
+                                    merge, all = TRUE) %>%
+
+        # add the following lines for year since 2013
         .[!is.na(acs1_2014), ":=" (table_content = content_acs1_2014,
                                    table_name = name_acs1_2014,
                                    universe = universe_acs1_2014)] %>%
@@ -350,20 +319,27 @@ generate_acs_tablecontents <- function(){
         .[!is.na(acs5_2016), ":=" (table_content = content_acs5_2016,
                                    table_name = name_acs5_2016,
                                    universe = universe_acs5_2016)] %>%
+
+        # include all years and surveys
         .[, .(reference, table_content, table_name,
               acs5_2016, acs5_2015, acs5_2010,
-              acs1_2017, acs1_2016, acs1_2015, acs1_2014, acs1_2010,
+              acs1_2017, acs1_2016, acs1_2015, acs1_2014, acs1_2010, acs1_2008,
               universe)] %>%
+
+        # for all years and surveys
         .[is.na(acs5_2016), acs5_2016 := "-"] %>%
         .[is.na(acs5_2015), acs5_2015 := "-"] %>%
+        .[is.na(acs5_2010), acs5_2010 := "-"] %>%
         .[is.na(acs1_2017), acs1_2017 := "-"] %>%
         .[is.na(acs1_2016), acs1_2016 := "-"] %>%
         .[is.na(acs1_2015), acs1_2015 := "-"] %>%
-        .[is.na(acs1_2014), acs1_2014 := "-"]
+        .[is.na(acs1_2014), acs1_2014 := "-"] %>%
+        .[is.na(acs1_2010), acs1_2010 := "-"] %>%
+        .[is.na(acs1_2008), acs1_2008 := "-"]
 }
 
 
-generate_decennial_tablecontents <- function(){
+generate_decennial_tablecontents_ <- function(){
     # will add decennial 2020 when available
     decennial_2010 <- lookup_decennial_2010[, .(reference, table_content, table_name, universe)] %>%
         .[, Census2010 := "yes"] %>%

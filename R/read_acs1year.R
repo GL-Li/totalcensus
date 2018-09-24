@@ -538,12 +538,24 @@ read_acs1year_geo_ <- function(year,
     file <- paste0(path_to_census, "/acs1year/", year, "/g", year, "1",
                    tolower(state), ".csv")
 
+    if (year >= 2011){
+        dict_geoheader <- dict_acs_geoheader
+    } else if (year == 2010){
+        dict_geoheader <- dict_acs_geoheader_2010
+    }else if (year == 2009){
+        dict_geoheader <- dict_acs_geoheader_2009_1year
+    } else if (year >= 2006 & year <= 2008){
+        dict_geoheader <- dict_acs_geoheader_2006_2008_1year
+    } else if (year == 2005){
+        dict_geoheader <- dict_acs_geoheader_2005_1year
+    }
+
     # use "Latin-1" for encoding special spanish latters such as ñ in Cañada
     # read all columns and then select as the file is not as big as those in
     # decennial census.
     geo <- fread(file, header = FALSE, encoding = "Latin-1" ,
                  showProgress = show_progress, colClasses = "character") %>%
-        setnames(dict_acs_geoheader$reference) %>%
+        setnames(dict_geoheader$reference) %>%
         .[, c(c("GEOID", "NAME", "LOGRECNO", "SUMLEV", "GEOCOMP"), geo_headers), with = FALSE] %>%
         .[, LOGRECNO := as.numeric(LOGRECNO)] %>%
         setkey(LOGRECNO)

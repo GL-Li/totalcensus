@@ -218,13 +218,13 @@ download_decennial_1_state_ <- function(year, state){
 
 download_acs5year_ <- function(year, states){
 
-    # total number of files in group 1 or group 2 of each states expected right
-    # after extraction
-    total_files <- switch(
-        as.character(year),
-        "2015" = 490,
-        "2016" = 490
-    )
+    # # total number of files in group 1 or group 2 of each states expected right
+    # # after extraction
+    # total_files <- switch(
+    #     as.character(year),
+    #     "2015" = 490,
+    #     "2016" = 490
+    # )
 
     states <- toupper(states)
     # temp folder to hold all downloaded data
@@ -342,62 +342,229 @@ download_acs5year_1_state_ <- function(year, state){
                            tolower(state), ext)
             to <- paste0(path_to_acs5year, "/g", year, "5",
                          tolower(state), ext)
-            file.rename(from, to)
+            if(file.exists(from)){
+                file.rename(from, to)
+            }
+        }
+
+        # convert geoheader record file from .txt to .csv if .csv file does
+        # not exist
+        csv_file <- paste0(path_to_acs5year, "/g", year, "5",
+                           tolower(state), ".csv")
+        if (!file.exists(csv_file)){
+            txt_file <- paste0(path_to_acs5year, "/g", year, "5",
+                               tolower(state), ".txt")
+            dt_csv <- convert_geo_txt2csv_acs5year_(txt_file, year)
+            fwrite(dt_csv, file = csv_file, col.names = FALSE)
         }
     }
+    return(NULL)
+}
+
+
+
+convert_geo_txt2csv_acs5year_ <- function(txt_file, year){
+    # In some years the acs5year data do not have geoheader record file in .csv
+    # format but only .txt format. The txt format have all geo headers in one
+    # line and can be split by positions. This function is to convert the txt
+    # file into csv file.
+
+    # year: year of the survey. Use different dict_acs_geoheader dataset for
+    #    different years
+
+    geo <- fread(txt_file, header = FALSE, sep = "\n", encoding = "Latin-1")
+
+    if (year >= 2011){
+        dict <- dict_acs_geoheader
+    } else if (year == 2010){
+        dict <- dict_acs_geoheader_2010
+    }else if (year == 2009){
+        dict <- dict_acs_geoheader_2009_5year
+    }
+
+    for (i in 1:nrow(dict)){
+        ref <- dict[i, reference]
+        # avoid duplicated BLANK columns
+        if (ref == "BLANK"){
+            ref <- paste0(ref, "_", i)
+        }
+        geo[, (ref) := str_sub(V1, dict[i, start], dict[i, end])]
+    }
+
+    # only this is numerical
+    geo[, V1 := NULL]
+    geo[, LOGRECNO := as.numeric(LOGRECNO)]
+
+    return(geo)
 }
 
 
 download_acs1year_ <- function(year){
-    # total number of files expected in each year's acs 1-year survey
-    # if not, there is a downloading or extraction problem.
-    total_files <- switch(
-        as.character(year),
-        '2017' = 18762,
-        "2016" = 17702,
-        "2015" = 17596,
-        "2014" = 17596,
-        "2010" = 19080
-    )
+    # # total number of files expected in each year's acs 1-year survey
+    # # if not, there is a downloading or extraction problem.
+    # total_files <- switch(
+    #     as.character(year),
+    #     '2017' = 18762,
+    #     "2016" = 17702,
+    #     "2015" = 17596,
+    #     "2014" = 17596,
+    #     "2010" = 19080
+    # )
 
-    # download all states' data which is not that big
-    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
-    path_to_acs1year <- paste0(
-        path_to_census, "/acs1year/", year
-    )
-
-    cat(paste0("Downloading ", year, " acs 1-year file \n"))
-
-    if (dir.exists(path_to_acs1year) &&
-        length(list.files(path_to_acs1year) == total_files)){
-        message("You already have acs 1-year data of ", year, ".\n")
-    } else {
-        url <- paste0(
-            "https://www2.census.gov/programs-surveys/acs/summary_file/", year,
-            "/data/1_year_entire_sf/All_Geographies.zip"
+    # download all states' data which is not that big.
+    # However, no single file before 2008
+    if (year >= 2009){
+        path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+        path_to_acs1year <- paste0(
+            path_to_census, "/acs1year/", year
         )
 
-        save_as <- paste0(path_to_census, "/acs1year", ".zip")
+        cat(paste0("Downloading ", year, " acs 1-year file \n"))
 
-        download.file(url, save_as, method = "auto")
-
-        # unzip downloaded file
-        cat(paste0("Unzipping downloaded zip file of acs 1-year of ", year, "\n"))
-        unzip(save_as, exdir = path_to_acs1year)
-
-        # check extraction
-        n_files <- length(list.files(path_to_acs1year))
-        if (n_files == total_files){
-            cat("File unzipped successfully\n")
-            status <- "success"
+        if (dir.exists(path_to_acs1year)){
+            message("You already have acs 1-year data of ", year, ".\n")
         } else {
-            status <- "failure"
+            url <- paste0(
+                "https://www2.census.gov/programs-surveys/acs/summary_file/", year,
+                "/data/1_year_entire_sf/All_Geographies.zip"
+            )
+
+            save_as <- paste0(path_to_census, "/acs1year", ".zip")
+
+            download.file(url, save_as, method = "auto")
+
+            # unzip downloaded file
+            cat(paste0("Unzipping downloaded zip file of acs 1-year of ", year, "\n"))
+            unzip(save_as, exdir = path_to_acs1year)
+            cat("File unzipped successfully\n")
+
+            # # check extraction
+            # n_files <- length(list.files(path_to_acs1year))
+            # if (n_files == total_files){
+            #     cat("File unzipped successfully\n")
+            #     status <- "success"
+            # } else {
+            #     status <- "failure"
+            # }
+
+            # delete downloaded file to save space
+            file.remove(save_as)
+            cat("Deleted downloaded zip file\n")
+
+            #return(invisible(status))
         }
-
-        # delete downloaded file to save space
-        file.remove(save_as)
-        cat("Deleted downloaded zip file\n")
-
-        return(invisible(status))
+    } else {
+        for (st in unique(dict_fips$state_abbr)){
+            download_acs1year_1_state_(year, st)
+        }
     }
+
 }
+
+
+download_acs1year_1_state_ <- function(year, state){
+    # before 2008 there is no single file that contains all data. We have to
+    # download data by state. The downloaded data will be saved in the same
+    # manner as other years.
+
+    # Args_____
+    # year : year of the survey
+    # state : abbreviation of the state
+
+    state <- toupper(state)
+
+    # temp folder to hold all downloaded data
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+    path_to_year <- paste0(path_to_census, "/acs1year/", year)
+
+    geo_state <- paste0(path_to_year, "/g20081", tolower(state), ".csv")
+    if (file.exists(geo_state)){
+        cat(paste0("Data of ", state, " already downloaded."))
+        return(NULL)
+    }
+
+
+    # construct right names for url
+    state_names <- dict_fips[, .(full = state_full, abbr = state_abbr)] %>%
+        unique() %>%
+        .[, full := str_replace_all(full, " ", "")]
+
+    full <- state_names[abbr == state, full]
+
+    # download data files
+    url <- paste0(
+        "https://www2.census.gov/programs-surveys/acs/summary_file/",
+        year, "/data/1_year/",
+        full, "/", "all_", tolower(state), ".zip"
+    )
+
+    save_as <- paste0(path_to_census, "/", tolower(state), ".zip")
+    download.file(url, save_as, method = "auto")
+
+    # unzip downloaded file
+    cat(paste0("Unzipping downloaded zip file of ", state, "\n"))
+
+    unzip(save_as, exdir = path_to_year)
+    for (f in list.files(path_to_year, pattern = "*.zip")){
+        unzip(paste0(path_to_year, "/", f), exdir = path_to_year)
+        file.remove(paste0(path_to_year, "/", f))
+    }
+
+    # convert geoheader record file from .txt to .csv if .csv file does
+    # not exist.
+    csv_file <- paste0(path_to_year, "/g", year, "1",
+                       tolower(state), ".csv")
+    if (!file.exists(csv_file)){
+        txt_file <- paste0(path_to_year, "/g", year, "1",
+                           tolower(state), ".txt")
+        dt_csv <- convert_geo_txt2csv_acs1year_(txt_file, year)
+        fwrite(dt_csv, file = csv_file, col.names = FALSE)
+    }
+
+    cat("File unzipped and converted successfully\n")
+
+    # delete downloaded file to save space
+    file.remove(save_as)
+    cat("Deleted downloaded zip file\n\n")
+
+}
+
+convert_geo_txt2csv_acs1year_ <- function(txt_file, year){
+    # In some years the acs5year data do not have geoheader record file in .csv
+    # format but only .txt format. The txt format have all geo headers in one
+    # line and can be split by positions. This function is to convert the txt
+    # file into csv file.
+
+    # year: year of the survey. Use different dict_acs_geoheader dataset for
+    #    different years
+
+    geo <- fread(txt_file, header = FALSE, sep = "\n", encoding = "Latin-1")
+
+    if (year >= 2011){
+        dict <- dict_acs_geoheader
+    } else if (year == 2010){
+        dict <- dict_acs_geoheader_2010
+    }else if (year == 2009){
+        dict <- dict_acs_geoheader_2009_1year
+    } else if (year >= 2006 & year <= 2008){
+        dict <- dict_acs_geoheader_2006_2008_1year
+    } else if (year == 2005){
+        dict <- dict_acs_geoheader_2005_1year
+    }
+
+    for (i in 1:nrow(dict)){
+        ref <- dict[i, reference]
+        # avoid duplicated BLANK columns
+        if (ref == "BLANK"){
+            ref <- paste0(ref, "_", i)
+        }
+        geo[, (ref) := str_sub(V1, dict[i, start], dict[i, end])]
+    }
+
+    # only this is numerical
+    geo[, V1 := NULL]
+    geo[, LOGRECNO := as.numeric(LOGRECNO)]
+
+    return(geo)
+}
+

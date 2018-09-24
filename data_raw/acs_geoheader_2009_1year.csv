@@ -1,0 +1,51 @@
+reference, field, size, start, type
+FILEID, Always equal to ACS Summary File identification, 6, 1, Record
+STUSAB, State Postal Abbreviation, 2, 7, Record
+SUMLEV, Summary Level, 3, 9, Record
+GEOCOMP, Geographic Component, 2, 12, Record
+LOGRECNO, Logical Record Number, 7, 14, Record
+US, US, 1, 21, Geographic
+REGION, Census Region, 1, 22, Geographic
+DIVISION, Census Division, 1, 23, Geographic
+STATECE, State (Census Code), 2, 24, Geographic
+STATE, State (FIPS Code), 2, 26, Geographic
+COUNTY, County of current residence, 3, 28, Geographic
+COUSUB, County Subdivision (FIPS), 5, 31, Geographic
+PLACE, Place (FIPS Code), 5, 36, Geographic
+TRACT, Census Tract, 6, 41, Geographic
+BLKGRP, Block Group, 1, 47, Geographic
+CONCIT, Consolidated City, 5, 48, Geographic
+AIANHH, American Indian Area/Alaska Native Area/ Hawaiian Home Land (Census), 4, 53, Geographic
+AIANHHFP, American Indian Area/Alaska Native Area/ Hawaiian Home Land (FIPS), 5, 57, Geographic
+AIHHTLI, American Indian Trust Land/Hawaiian Home Land Indicator, 1, 62, Geographic
+AITSCE, American Indian Tribal Subdivision (Census), 3, 63, Geographic
+AITS, American Indian Tribal Subdivision (FIPS), 5, 66, Geographic
+ANRC, Alaska Native Regional Corporation (FIPS), 5, 71, Geographic
+CBSA, Metropolitan and Micropolitan Statistical Area, 5, 76, Geographic
+CSA, Combined Statistical Area, 3, 81, Geographic
+METDIV, Metropolitan Statistical AreaMetropolitan Division, 5, 84, Geographic
+MACC, Metropolitan Area Central City, 1, 89, Geographic
+MEMI, Metropolitan/Micropolitan Indicator Flag, 1, 90, Geographic
+NECTA, New England City and Town Area, 5, 91, Geographic
+CNECTA, New England City and Town Combined Statistical Area, 3, 96, Geographic
+NECTADIV, New England City and Town Area Division, 5, 99, Geographic
+UA, Urban Area, 5, 104, Geographic
+BLANK, , 5, 109, Geographic
+CDCURR, Current Congressional District, 2, 114, Geographic
+SLDU, State Legislative District Upper, 3, 116, Geographic
+SLDL, State Legislative District Lower, 3, 119, Geographic
+BLANK, , 6, 122, Geographic
+BLANK, , 3, 128, Geographic
+ZCTA5, 5-digit ZIP Code Tabulation Area, 5, 131, Geographic
+SUBMCD, Subminor Civil Division (FIPS), 5, 136, Geographic
+SDELM, State-School District (Elementary), 5, 141, Geographic
+SDSEC, State-School District (Secondary), 5, 146, Geographic
+SDUNI, State-School District (Unified), 5, 151, Geographic
+UR, Urban/Rural, 1, 156, Geographic
+PCI, Principal City Indicator, 1, 157, Geographic
+BLANK, , 6, 158, Geographic
+BLANK, , 5, 164, Geographic
+PUMA5, Public Use Microdata Area - 5% File, 5, 169, Geographic
+BLANK, , 5, 174, Geographic
+GEOID, Geographic Identifier, 40, 179, Geographic
+NAME, Area Name, 200, 219, Geographic
