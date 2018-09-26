@@ -4,7 +4,7 @@
 \name{lookup_acs1year_2016}
 \alias{lookup_acs1year_2016}
 \title{ACS 1-year 2016 file segment and table lookup data}
-\format{A data.table with 31835 rows and 6 variables
+\format{A data.table with 31835 rows and 7 variables
 \describe{
   \item{file_segment}{sequence number of segment data files, from "0001" to "0166"}
   \item{table_content}{description of columns in a table}

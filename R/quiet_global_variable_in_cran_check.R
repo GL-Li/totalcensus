@@ -26,5 +26,10 @@ utils::globalVariables(unique(c(
     "TBLKGRP", "ZCTA5", "NAME", "lookup_decennial_2010", "Census2010", "dict_cbsa",
     "CBSA_title", "file_segment", "content", "id", "code", "name", "geoheader",
     "area", "dict_acs_geoheader", "file_seg", "dict_decennial_geoheader", "start",
-    "end", "comb", "geo_component", "summary_level", "field", "View"
+    "end", "comb", "geo_component", "summary_level", "field", "View",
+    "dict_acs_geoheader_2005_1year", "dict_acs_geoheader_2006_2008_1year",
+    "dict_acs_geoheader_2009_1year", "dict_acs_geoheader_2009_5year",
+    "dict_acs_geoheader_2010", "lookup_acs1year_2008",
+    "lookup_acs1year_2010", "lookup_acs1year_2017", "lookup_acs5year_2010",
+    "total_files", "content_acs1_2017", "name_acs1_2017", "universe_acs1_2017"
 )))
