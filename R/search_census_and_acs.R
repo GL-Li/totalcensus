@@ -285,7 +285,12 @@ generate_acs_tablecontents_ <- function(){
     acs1_2016 <- modify_lookup_table_(1, 2016)
     acs1_2017 <- modify_lookup_table_(1, 2017)
 
+    acs5_2009 <- modify_lookup_table_(5, 2009)
     acs5_2010 <- modify_lookup_table_(5, 2010)
+    acs5_2011 <- modify_lookup_table_(5, 2011)
+    acs5_2012 <- modify_lookup_table_(5, 2012)
+    acs5_2013 <- modify_lookup_table_(5, 2013)
+    acs5_2014 <- modify_lookup_table_(5, 2014)
     acs5_2015 <- modify_lookup_table_(5, 2015)
     acs5_2016 <- modify_lookup_table_(5, 2016)
 
@@ -295,7 +300,12 @@ generate_acs_tablecontents_ <- function(){
                                          acs1_2015,
                                          acs1_2016,
                                          acs1_2017,
+                                         acs5_2009,
                                          acs5_2010,
+                                         acs5_2011,
+                                         acs5_2012,
+                                         acs5_2013,
+                                         acs5_2014,
                                          acs5_2015,
                                          acs5_2016),
                                     merge, all = TRUE) %>%
@@ -313,6 +323,12 @@ generate_acs_tablecontents_ <- function(){
         .[!is.na(acs1_2017), ":=" (table_content = content_acs1_2017,
                                    table_name = name_acs1_2017,
                                    universe = universe_acs1_2017)] %>%
+        .[!is.na(acs5_2013), ":=" (table_content = content_acs5_2013,
+                                   table_name = name_acs5_2013,
+                                   universe = universe_acs5_2013)] %>%
+        .[!is.na(acs5_2014), ":=" (table_content = content_acs5_2014,
+                                   table_name = name_acs5_2014,
+                                   universe = universe_acs5_2014)] %>%
         .[!is.na(acs5_2015), ":=" (table_content = content_acs5_2015,
                                    table_name = name_acs5_2015,
                                    universe = universe_acs5_2015)] %>%
@@ -322,14 +338,20 @@ generate_acs_tablecontents_ <- function(){
 
         # include all years and surveys
         .[, .(reference, table_content, table_name,
-              acs5_2016, acs5_2015, acs5_2010,
+              acs5_2016, acs5_2015, acs5_2014, acs5_2013, acs5_2012, acs5_2011, acs5_2010, acs5_2009,
               acs1_2017, acs1_2016, acs1_2015, acs1_2014, acs1_2010, acs1_2008,
               universe)] %>%
 
         # for all years and surveys
         .[is.na(acs5_2016), acs5_2016 := "-"] %>%
         .[is.na(acs5_2015), acs5_2015 := "-"] %>%
+        .[is.na(acs5_2014), acs5_2014 := "-"] %>%
+        .[is.na(acs5_2013), acs5_2013 := "-"] %>%
+        .[is.na(acs5_2012), acs5_2012 := "-"] %>%
+        .[is.na(acs5_2011), acs5_2011 := "-"] %>%
         .[is.na(acs5_2010), acs5_2010 := "-"] %>%
+        .[is.na(acs5_2009), acs5_2009 := "-"] %>%
+
         .[is.na(acs1_2017), acs1_2017 := "-"] %>%
         .[is.na(acs1_2016), acs1_2016 := "-"] %>%
         .[is.na(acs1_2015), acs1_2015 := "-"] %>%

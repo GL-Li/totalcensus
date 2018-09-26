@@ -1,5 +1,5 @@
 ### compare selected table content of each year by eyeballing the numbers.
-### There must be something wrong if the numbers are differ too much.
+### There must be something wrong if the numbers differ too much.
 ### Use data from the large city Chicago to make sure noise does not affect
 ### data.
 
@@ -57,10 +57,15 @@ read5 <- function(year, table_content){
 }
 
 compare_acs5year <- function(table_content){
-    dt <- rbind(read5(2010, table_content),
+    dt <- rbind(read5(2009, table_content),
+                read5(2010, table_content),
+                read5(2011, table_content),
+                read5(2012, table_content),
+                read5(2013, table_content),
+                read5(2014, table_content),
                 read5(2015, table_content),
                 read5(2016, table_content)) %>%
-        .[, year := c(2010, 2015, 2016)]
+        .[, year := c(2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016)]
     ggplot <- ggplot(dt, aes_string("year", table_content)) +
         geom_point() +
         geom_line() +
