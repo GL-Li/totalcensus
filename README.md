@@ -9,7 +9,10 @@ Download summary files from [Census Bureau](https://www2.census.gov/) and extrac
 Update
 ------
 
-**9/29/2018**: Now include all American Community Survey data in summary file 1 in the development version: - ACS 1 year: 2005 - 2017 - ACS 5 year: 2009 - 2016
+**9/29/2018**: Now include all American Community Survey data in summary file 1 in the development version:
+
+-   ACS 1 year: 2005 - 2017
+-   ACS 5 year: 2009 - 2016
 
 **2/5/2018**: Package `totalcensus` is on CRAN now.
 
