@@ -1,7 +1,7 @@
 Package: totalcensus
 Type: Package
 Title: Extract High Resolution Census Data
-Version: 0.3.0
+Version: 0.4.0
 Author: Guanglai Li
 Maintainer: Guanglai Li <liguanglai@gmail.com>
 Date: 2018-01-20

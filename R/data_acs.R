@@ -315,6 +315,87 @@
 "lookup_acs1year_2014"
 
 
+
+# lookup_acs1year_2013 =========================================================
+#' ACS 1-year 2014 file segment and table lookup data
+#'
+#' There is slightly difference in the lookup tables of each year.
+#'
+#' @docType data
+#'
+#' @format A data.table with 31711 rows and 6 variables
+#' \describe{
+#'   \item{file_segment}{sequence number of segment data files, from "0001" to "0165"}
+#'   \item{table_content}{description of columns in a table}
+#'   \item{reference}{reference of the table content, such as "B01001_002". The reference
+#'         is used to extract data of table content.}
+#'   \item{table_number}{table number such as "B01001"}
+#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
+#'   \item{universe}{the universe of the data}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source Check for each year of ACS 1-year and 5-year
+#' \href{https://www.census.gov/programs-surveys/acs/technical-documentation/summary-file-documentation.2015.html}{Sequence Number/Table Number Lookup File}.
+#'
+
+"lookup_acs1year_2013"
+
+# lookup_acs1year_2012 =========================================================
+#' ACS 1-year 2014 file segment and table lookup data
+#'
+#' There is slightly difference in the lookup tables of each year.
+#'
+#' @docType data
+#'
+#' @format A data.table with 31711 rows and 6 variables
+#' \describe{
+#'   \item{file_segment}{sequence number of segment data files, from "0001" to "0165"}
+#'   \item{table_content}{description of columns in a table}
+#'   \item{reference}{reference of the table content, such as "B01001_002". The reference
+#'         is used to extract data of table content.}
+#'   \item{table_number}{table number such as "B01001"}
+#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
+#'   \item{universe}{the universe of the data}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source Check for each year of ACS 1-year and 5-year
+#' \href{https://www.census.gov/programs-surveys/acs/technical-documentation/summary-file-documentation.2015.html}{Sequence Number/Table Number Lookup File}.
+#'
+
+"lookup_acs1year_2012"
+
+
+# lookup_acs1year_2011 =========================================================
+#' ACS 1-year 2014 file segment and table lookup data
+#'
+#' There is slightly difference in the lookup tables of each year.
+#'
+#' @docType data
+#'
+#' @format A data.table with 31711 rows and 6 variables
+#' \describe{
+#'   \item{file_segment}{sequence number of segment data files, from "0001" to "0165"}
+#'   \item{table_content}{description of columns in a table}
+#'   \item{reference}{reference of the table content, such as "B01001_002". The reference
+#'         is used to extract data of table content.}
+#'   \item{table_number}{table number such as "B01001"}
+#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
+#'   \item{universe}{the universe of the data}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source Check for each year of ACS 1-year and 5-year
+#' \href{https://www.census.gov/programs-surveys/acs/technical-documentation/summary-file-documentation.2015.html}{Sequence Number/Table Number Lookup File}.
+#'
+
+"lookup_acs1year_2011"
+
+
 # lookup_acs1year_2010 =========================================================
 #' ACS 1-year 2017 file segment and table lookup data
 #'
@@ -342,6 +423,34 @@
 "lookup_acs1year_2010"
 
 
+# lookup_acs1year_2009 =========================================================
+#' ACS 1-year 2017 file segment and table lookup data
+#'
+#' There is slightly difference in the lookup tables of each year.
+#'
+#' @docType data
+#'
+#' @format A data.table with 35240 rows and 7 variables
+#' \describe{
+#'   \item{file_segment}{sequence number of segment data files, from "0001" to "0166"}
+#'   \item{table_content}{description of columns in a table}
+#'   \item{reference}{reference of the table content, such as "B01001_002". The reference
+#'         is used to extract data of table content.}
+#'   \item{table_number}{table number such as "B01001"}
+#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
+#'   \item{universe}{the universe of the data}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source Check for each year of ACS 1-year and 5-year
+#' \href{https://www.census.gov/programs-surveys/acs/technical-documentation/summary-file-documentation.2015.html}{Sequence Number/Table Number Lookup File}.
+#'
+
+"lookup_acs1year_2009"
+
+
+
 # lookup_acs1year_2008 =========================================================
 #' ACS 1-year 2008 file segment and table lookup data
 #'
@@ -367,6 +476,87 @@
 #'
 
 "lookup_acs1year_2008"
+
+
+# lookup_acs1year_2007 =========================================================
+#' ACS 1-year 2008 file segment and table lookup data
+#'
+#' There is slightly difference in the lookup tables of each year.
+#'
+#' @docType data
+#'
+#' @format A data.table with 30558 rows and 7 variables
+#' \describe{
+#'   \item{file_segment}{sequence number of segment data files, from "0001" to "0166"}
+#'   \item{table_content}{description of columns in a table}
+#'   \item{reference}{reference of the table content, such as "B01001_002". The reference
+#'         is used to extract data of table content.}
+#'   \item{table_number}{table number such as "B01001"}
+#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
+#'   \item{universe}{the universe of the data}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source Check for each year of ACS 1-year and 5-year
+#' \href{https://www.census.gov/programs-surveys/acs/technical-documentation/summary-file-documentation.2015.html}{Sequence Number/Table Number Lookup File}.
+#'
+
+"lookup_acs1year_2007"
+
+# lookup_acs1year_2006 =========================================================
+#' ACS 1-year 2008 file segment and table lookup data
+#'
+#' There is slightly difference in the lookup tables of each year.
+#'
+#' @docType data
+#'
+#' @format A data.table with 30558 rows and 7 variables
+#' \describe{
+#'   \item{file_segment}{sequence number of segment data files, from "0001" to "0166"}
+#'   \item{table_content}{description of columns in a table}
+#'   \item{reference}{reference of the table content, such as "B01001_002". The reference
+#'         is used to extract data of table content.}
+#'   \item{table_number}{table number such as "B01001"}
+#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
+#'   \item{universe}{the universe of the data}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source Check for each year of ACS 1-year and 5-year
+#' \href{https://www.census.gov/programs-surveys/acs/technical-documentation/summary-file-documentation.2015.html}{Sequence Number/Table Number Lookup File}.
+#'
+
+"lookup_acs1year_2006"
+
+
+
+# lookup_acs1year_2005 =========================================================
+#' ACS 1-year 2008 file segment and table lookup data
+#'
+#' There is slightly difference in the lookup tables of each year.
+#'
+#' @docType data
+#'
+#' @format A data.table with 30558 rows and 7 variables
+#' \describe{
+#'   \item{file_segment}{sequence number of segment data files, from "0001" to "0166"}
+#'   \item{table_content}{description of columns in a table}
+#'   \item{reference}{reference of the table content, such as "B01001_002". The reference
+#'         is used to extract data of table content.}
+#'   \item{table_number}{table number such as "B01001"}
+#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
+#'   \item{universe}{the universe of the data}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source Check for each year of ACS 1-year and 5-year
+#' \href{https://www.census.gov/programs-surveys/acs/technical-documentation/summary-file-documentation.2015.html}{Sequence Number/Table Number Lookup File}.
+#'
+
+"lookup_acs1year_2005"
 
 
 

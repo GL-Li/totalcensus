@@ -33,5 +33,6 @@ utils::globalVariables(unique(c(
     "lookup_acs1year_2010", "lookup_acs1year_2017", "lookup_acs5year_2010",
     "total_files", "content_acs1_2017", "name_acs1_2017", "universe_acs1_2017",
     "content_acs5_2013", "content_acs5_2014", "name_acs5_2013", "name_acs5_2014",
-    "universe_acs5_2013", "universe_acs5_2014"
+    "universe_acs5_2013", "universe_acs5_2014", "content_acs1_2013",
+    "name_acs1_2013", "universe_acs1_2013"
 )))

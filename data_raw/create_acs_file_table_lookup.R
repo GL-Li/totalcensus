@@ -13,6 +13,7 @@ library(data.table)
 library(magrittr)
 library(readxl)
 library(stringr)
+library(totalcensus)
 
 make_acs_lookup <- function(period, year){
     # period : 1 or 5 year
@@ -28,17 +29,27 @@ make_acs_lookup <- function(period, year){
     )
 
     if (file.exists(file_lookup)){
-        dt <- fread(file_lookup, colClasses = "character", encoding = "Latin-1") %>%
-            .[, c(2, 3, 4, 8), with = FALSE] %>%
-            setnames(1:4, c("table_number", "file_segment", "reference", "table_name"))
+        dt <- fread(file_lookup, colClasses = "character", encoding = "Latin-1")
     } else if (file.exists(file_lookup_xls)) {
-        dt <- read_excel(file_lookup_xls, col_types = "text") %>%
-            setDT() %>%
-            .[, c(2, 3, 4, 8), with = FALSE] %>%
-            setnames(1:4, c("table_number", "file_segment", "reference", "table_name"))
+        dt <- read_excel(file_lookup_xls, col_types = "text")
     } else {
         message("Please download the file sequence/table number lookup file in .txt or .xls format")
         return(NULL)
+    }
+
+    if (year == 2005){
+        dt <- setDT(dt) %>%
+            .[, c(2, 3, 4, 7), with = FALSE] %>%
+            setnames(1:4, c("table_number", "file_segment", "reference", "table_name")) %>%
+            .[!is.na(table_number)] %>%
+            .[, file_segment := as.character(as.integer(file_segment))] %>%
+            .[, reference := as.integer(str_extract(reference, "[0-9]*"))] %>%
+            .[, .(reference = 1:reference), by = .(table_number, file_segment, table_name)] %>%
+            .[, .(table_number, file_segment, reference = as.character(reference), table_name)]
+    } else {
+        dt <- setDT(dt) %>%
+            .[, c(2, 3, 4, 8), with = FALSE] %>%
+            setnames(1:4, c("table_number", "file_segment", "reference", "table_name"))
     }
 
 
@@ -47,9 +58,12 @@ make_acs_lookup <- function(period, year){
         setkey(table_number)
 
     # some lookup file contain reference like "0.5", "2.7" that are not in the
-    # raw data, remove them otherwise will cause column problem
-    content <- dt[reference != "" & !grepl("\\.", reference)] %>%
+    # raw data, remove them otherwise will cause column problem.
+    # in 2007 acs1year, reference of table_content == Universe: xxxx is not
+    # empty but "0"
+    content <- dt[reference != "" & reference != "0" & !grepl("\\.", reference)] %>%
         setnames("table_name", "table_content") %>%
+
         # change the reference from 1, 12, ...  to 001, 012, ...
         .[str_length(reference) == 1, reference := paste0("00", reference)] %>%
         .[str_length(reference) == 2, reference := paste0("0", reference)] %>%
@@ -91,6 +105,11 @@ make_acs_lookup <- function(period, year){
                       "table_number", "table_name", "universe")) %>%
         .[order(file_segment)]
 
+    # if (year == 2005){
+    #     # use 2006 table name to replace 2005 table name
+    #     L2006 <- lookup_acs1year_2006[, .(reference, table_name)]
+    # }
+
 
     # save to R/data/
     dict_name <- paste0("lookup_acs", period, "year_", year)
@@ -119,9 +138,15 @@ lookup_acs1year_2017 <- make_acs_lookup(1, 2017)
 lookup_acs1year_2016 <- make_acs_lookup(1, 2016)
 lookup_acs1year_2015 <- make_acs_lookup(1, 2015)
 lookup_acs1year_2014 <- make_acs_lookup(1, 2014)
-
+lookup_acs1year_2013 <- make_acs_lookup(1, 2013)
+lookup_acs1year_2012 <- make_acs_lookup(1, 2012)
+lookup_acs1year_2011 <- make_acs_lookup(1, 2011)
 lookup_acs1year_2010 <- make_acs_lookup(1, 2010)
+lookup_acs1year_2009 <- make_acs_lookup(1, 2009)
 lookup_acs1year_2008 <- make_acs_lookup(1, 2008)
+lookup_acs1year_2007 <- make_acs_lookup(1, 2007)
+lookup_acs1year_2006 <- make_acs_lookup(1, 2006)
+lookup_acs1year_2005 <- make_acs_lookup(1, 2005)
 
 
 # # save to data/

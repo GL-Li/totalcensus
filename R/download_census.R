@@ -413,7 +413,7 @@ download_acs1year_ <- function(year){
 
     # download all states' data which is not that big.
     # However, no single file before 2008
-    if (year >= 2009){
+    if (year >= 2010){
         path_to_census <- Sys.getenv("PATH_TO_CENSUS")
         path_to_acs1year <- paste0(
             path_to_census, "/acs1year/", year
@@ -437,6 +437,64 @@ download_acs1year_ <- function(year){
             cat(paste0("Unzipping downloaded zip file of acs 1-year of ", year, "\n"))
             unzip(save_as, exdir = path_to_acs1year)
             cat("File unzipped successfully\n")
+
+            # # check extraction
+            # n_files <- length(list.files(path_to_acs1year))
+            # if (n_files == total_files){
+            #     cat("File unzipped successfully\n")
+            #     status <- "success"
+            # } else {
+            #     status <- "failure"
+            # }
+
+            # delete downloaded file to save space
+            file.remove(save_as)
+            cat("Deleted downloaded zip file\n")
+
+            #return(invisible(status))
+        }
+    } else if (year == 2009){
+        # 2009 has a single zip file to download but with different name
+        # and geoheader file only in .txt format
+        path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+        path_to_acs1year <- paste0(
+            path_to_census, "/acs1year/", year
+        )
+
+        cat(paste0("Downloading ", year, " acs 1-year file \n"))
+
+        if (dir.exists(path_to_acs1year)){
+            message("You already have acs 1-year data of ", year, ".\n")
+        } else {
+            url <- paste0(
+                "https://www2.census.gov/programs-surveys/acs/summary_file/", year,
+                "/data/1_year_entire_sf/20091YRSF.zip"
+            )
+
+            save_as <- paste0(path_to_census, "/acs1year", ".zip")
+
+            download.file(url, save_as, method = "auto")
+
+            # unzip downloaded file
+            cat(paste0("Unzipping downloaded zip file of acs 1-year of ", year, "\n"))
+            unzip(save_as, exdir = path_to_acs1year)
+            cat("File unzipped successfully\n")
+
+
+            for (state in unique(dict_fips$state_abbr)){
+                state = tolower(state)
+                # convert geoheader record file from .txt to .csv if .csv file does
+                # not exist.
+                csv_file <- paste0(path_to_acs1year, "/g", year, "1",
+                                   tolower(state), ".csv")
+                if (!file.exists(csv_file)){
+                    txt_file <- paste0(path_to_acs1year, "/g", year, "1",
+                                       tolower(state), ".txt")
+                    dt_csv <- convert_geo_txt2csv_acs1year_(txt_file, year)
+                    fwrite(dt_csv, file = csv_file, col.names = FALSE)
+                }
+
+            }
 
             # # check extraction
             # n_files <- length(list.files(path_to_acs1year))
@@ -477,9 +535,9 @@ download_acs1year_1_state_ <- function(year, state){
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
     path_to_year <- paste0(path_to_census, "/acs1year/", year)
 
-    geo_state <- paste0(path_to_year, "/g20081", tolower(state), ".csv")
+    geo_state <- paste0(path_to_year, "/g", year, "1", tolower(state), ".csv")
     if (file.exists(geo_state)){
-        cat(paste0("Data of ", state, " already downloaded."))
+        cat(paste0("Data of ", state, " already downloaded.\n"))
         return(NULL)
     }
 
@@ -498,6 +556,14 @@ download_acs1year_1_state_ <- function(year, state){
         full, "/", "all_", tolower(state), ".zip"
     )
 
+    if (year == 2006){
+        url <- paste0(
+            "https://www2.census.gov/programs-surveys/acs/summary_file/",
+            year, "/data/",
+            full, "/", tolower(state), "_all_", year, ".zip"
+        )
+    }
+
     save_as <- paste0(path_to_census, "/", tolower(state), ".zip")
     download.file(url, save_as, method = "auto")
 
@@ -505,10 +571,52 @@ download_acs1year_1_state_ <- function(year, state){
     cat(paste0("Unzipping downloaded zip file of ", state, "\n"))
 
     unzip(save_as, exdir = path_to_year)
-    for (f in list.files(path_to_year, pattern = "*.zip")){
-        unzip(paste0(path_to_year, "/", f), exdir = path_to_year)
-        file.remove(paste0(path_to_year, "/", f))
+
+    if (year == 2008){
+        for (f in list.files(path_to_year, pattern = "*.zip")){
+            unzip(paste0(path_to_year, "/", f), exdir = path_to_year)
+            file.remove(paste0(path_to_year, "/", f))
+        }
+
+    } else if (year == 2007){
+        # directory and format change every year !!!!
+        directory <- paste0(path_to_year, "/prt03/sumfile/", full)
+        for (f in list.files(directory, pattern = "*.zip")){
+            unzip(paste0(directory, "/", f), exdir = path_to_year)
+        }
+
+        # move out of the unzipped directory
+        zip_dir <- paste0(path_to_year, "/tab4/sumfile/prod/2007/data")
+        for (f in list.files(zip_dir, pattern = "*.txt")){
+            file.rename(paste0(zip_dir, "/", f), paste0(path_to_year, "/", f))
+        }
+
+        # delete the directory
+        unlink(paste0(path_to_year, "/prt03"), recursive = TRUE)
+        unlink(paste0(path_to_year, "/tab4"), recursive = TRUE)
+
+        # have to download geography file seperately
+        geo_url <- paste0(
+            "https://www2.census.gov/programs-surveys/acs/summary_file/",
+            year, "/data/1_year/",
+            full, "/g", year, "1", tolower(state), ".txt"
+        )
+        geo_save_as <- paste0(path_to_year, "/g", year, "1", tolower(state), ".txt")
+        download.file(geo_url, geo_save_as, method = "auto")
+
+    } else if (year == 2006) {
+        # have to download geography file seperately
+        geo_url <- paste0(
+            "https://www2.census.gov/programs-surveys/acs/summary_file/",
+            year, "/data/",
+            full, "/g", year, "1", tolower(state), ".txt"
+        )
+        geo_save_as <- paste0(path_to_year, "/g", year, "1", tolower(state), ".txt")
+        download.file(geo_url, geo_save_as, method = "auto")
+    } else if (year == 2005){
+
     }
+
 
     # convert geoheader record file from .txt to .csv if .csv file does
     # not exist.

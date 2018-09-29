@@ -273,13 +273,21 @@ modify_lookup_table_ <- function(period, year){
         dt[is.na(get(p_y)), (p_y) := "no restriction"]
     }
 
-    return(dt)
+    # remove duplicated row as some table may appear in multiple file segments
+    return(unique(dt))
 }
 
 
 generate_acs_tablecontents_ <- function(){
+    acs1_2005 <- modify_lookup_table_(1, 2005)
+    acs1_2006 <- modify_lookup_table_(1, 2006)
+    acs1_2007 <- modify_lookup_table_(1, 2007)
     acs1_2008 <- modify_lookup_table_(1, 2008)
+    acs1_2009 <- modify_lookup_table_(1, 2009)
     acs1_2010 <- modify_lookup_table_(1, 2010)
+    acs1_2011 <- modify_lookup_table_(1, 2011)
+    acs1_2012 <- modify_lookup_table_(1, 2012)
+    acs1_2013 <- modify_lookup_table_(1, 2013)
     acs1_2014 <- modify_lookup_table_(1, 2014)
     acs1_2015 <- modify_lookup_table_(1, 2015)
     acs1_2016 <- modify_lookup_table_(1, 2016)
@@ -294,8 +302,15 @@ generate_acs_tablecontents_ <- function(){
     acs5_2015 <- modify_lookup_table_(5, 2015)
     acs5_2016 <- modify_lookup_table_(5, 2016)
 
-    dict_acs_tablecontent <- reduce(list(acs1_2008,
+    dict_acs_tablecontent <- reduce(list(acs1_2005,
+                                         acs1_2006,
+                                         acs1_2007,
+                                         acs1_2008,
+                                         acs1_2009,
                                          acs1_2010,
+                                         acs1_2011,
+                                         acs1_2012,
+                                         acs1_2013,
                                          acs1_2014,
                                          acs1_2015,
                                          acs1_2016,
@@ -308,9 +323,12 @@ generate_acs_tablecontents_ <- function(){
                                          acs5_2014,
                                          acs5_2015,
                                          acs5_2016),
-                                    merge, all = TRUE) %>%
+                                    merge, by = "reference", all = TRUE) %>%
 
         # add the following lines for year since 2013
+        .[!is.na(acs1_2013), ":=" (table_content = content_acs1_2013,
+                                   table_name = name_acs1_2013,
+                                   universe = universe_acs1_2013)] %>%
         .[!is.na(acs1_2014), ":=" (table_content = content_acs1_2014,
                                    table_name = name_acs1_2014,
                                    universe = universe_acs1_2014)] %>%
@@ -338,8 +356,11 @@ generate_acs_tablecontents_ <- function(){
 
         # include all years and surveys
         .[, .(reference, table_content, table_name,
-              acs5_2016, acs5_2015, acs5_2014, acs5_2013, acs5_2012, acs5_2011, acs5_2010, acs5_2009,
-              acs1_2017, acs1_2016, acs1_2015, acs1_2014, acs1_2010, acs1_2008,
+              acs5_2016, acs5_2015, acs5_2014, acs5_2013, acs5_2012, acs5_2011,
+              acs5_2010, acs5_2009,
+              acs1_2017, acs1_2016, acs1_2015, acs1_2014, acs1_2013, acs1_2012,
+              acs1_2011, acs1_2010, acs1_2009, acs1_2008, acs1_2007, acs1_2006,
+              acs1_2005,
               universe)] %>%
 
         # for all years and surveys
@@ -356,8 +377,15 @@ generate_acs_tablecontents_ <- function(){
         .[is.na(acs1_2016), acs1_2016 := "-"] %>%
         .[is.na(acs1_2015), acs1_2015 := "-"] %>%
         .[is.na(acs1_2014), acs1_2014 := "-"] %>%
+        .[is.na(acs1_2013), acs1_2013 := "-"] %>%
+        .[is.na(acs1_2012), acs1_2012 := "-"] %>%
+        .[is.na(acs1_2011), acs1_2011 := "-"] %>%
         .[is.na(acs1_2010), acs1_2010 := "-"] %>%
-        .[is.na(acs1_2008), acs1_2008 := "-"]
+        .[is.na(acs1_2009), acs1_2009 := "-"] %>%
+        .[is.na(acs1_2008), acs1_2008 := "-"] %>%
+        .[is.na(acs1_2007), acs1_2007 := "-"] %>%
+        .[is.na(acs1_2006), acs1_2006 := "-"] %>%
+        .[is.na(acs1_2005), acs1_2005 := "-"]
 }
 
 

@@ -21,13 +21,20 @@ read1 <- function(year, table_content){
 }
 
 compare_acs1year <- function(table_content){
-    dt <- rbind(read1(2008, table_content),
+    dt <- rbind(read1(2006, table_content),
+                read1(2007, table_content),
+                read1(2008, table_content),
+                read1(2009, table_content),
                 read1(2010, table_content),
+                read1(2011, table_content),
+                read1(2012, table_content),
+                read1(2013, table_content),
                 read1(2014, table_content),
                 read1(2015, table_content),
                 read1(2016, table_content),
                 read1(2017, table_content)) %>%
-        .[, year := c(2008, 2010, 2014, 2015, 2016, 2017)]
+        .[, year := c(2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014,
+                      2015, 2016, 2017)]
     ggplot <- ggplot(dt, aes_string("year", table_content)) +
         geom_point() +
         geom_line() +
