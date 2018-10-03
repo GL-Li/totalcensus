@@ -82,7 +82,7 @@ search_geoheaders <- function(survey, keyword = "*", view = TRUE) {
 
 search_tablecontents <- function(survey, keyword = "*", year = NULL, view = TRUE) {
 
-    if (survey == "decennial") dt <- generate_decennial_tablecontents_()
+    if (survey %in% c("decennial", "dec")) dt <- generate_decennial_tablecontents_()
     if (survey == "acs") dt <- generate_acs_tablecontents_()
 
     keywords <- unlist(str_split(tolower(keyword), " "))
@@ -390,10 +390,16 @@ generate_acs_tablecontents_ <- function(){
 
 
 generate_decennial_tablecontents_ <- function(){
-    # will add decennial 2020 when available
-    decennial_2010 <- lookup_decennial_2010[, .(reference, table_content, table_name, universe)] %>%
-        .[, Census2010 := "yes"] %>%
-        .[, .(reference, table_content, table_name, Census2010, universe)] %>%
-        .[!is.na(table_name)]
+    L2010 = copy(lookup_decennial_2010)
+    L2000 = copy(lookup_decennial_2000)
+    lookup_decennial <- rbindlist(list(L2010[, year := 2010],
+                                       L2000[, year := 2000])) %>%
+        .[, .(year, reference, table_content, table_name, universe)] %>%
+        .[!reference %in% c("FILEID", "STUSAB", "CHARITER", "CIFSN", "LOGRECNO")]
+    # # will add decennial 2020 when available
+    # decennial_2010 <- lookup_decennial_2010[, .(reference, table_content, table_name, universe)] %>%
+    #     .[, Census2010 := "yes"] %>%
+    #     .[, .(reference, table_content, table_name, Census2010, universe)] %>%
+    #     .[!is.na(table_name)]
 }
 

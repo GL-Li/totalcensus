@@ -1,0 +1,696 @@
+P1. TOTAL POPULATION
+Universe: Total population ................................................................. 1
+P2. URBAN AND RURAL (FINAL NATIONAL FILE ONLY)
+Universe: Total population ................................................................. 6
+P3. RACE
+Universe: Total population ................................................................. 71
+P4. HISPANIC OR LATINO, AND NOT HISPANIC OR LATINO BY RACE
+Universe: Total population ................................................................. 73
+P5. RACE FOR THE POPULATION 18 YEARS AND OVER
+Universe: Total population 18 years and over ................................................ 71
+P6. HISPANIC OR LATINO, AND NOT HISPANIC OR LATINO BY RACE FOR THE POPULATION
+18 YEARS AND OVER
+Universe: Total population 18 years and over ................................................ 73
+P7. RACE
+Universe: Total population ................................................................. 8
+P8. HISPANIC OR LATINO BY RACE
+Universe: Total population ................................................................. 17
+P9. RACE (TOTAL RACES TALLIED)
+Universe: Total races tallied................................................................ 7
+P10. HISPANIC OR LATINO BY RACE (TOTAL RACES TALLIED)
+Universe: Total races tallied................................................................ 15
+P11. HISPANIC OF LATINO
+Universe: People who are Hispanic or Latino ................................................ 1
+P12. SEX BY AGE
+Universe: Total population ................................................................. 49
+P13. MEDIAN AGE BY SEX
+Universe: Total population ................................................................. 3
+P14. SEX BY AGE FOR THE POPULATION UNDER 20 YEARS
+Universe: Population under 20 years........................................................ 43
+P15. HOUSEHOLDS
+Universe: Households ..................................................................... 1
+P16. POPULATION IN HOUSEHOLDS
+Universe: Population in households ......................................................... 1
+P17. AVERAGE HOUSEHOLD SIZE
+Universe: Households ..................................................................... 1
+P18. HOUSEHOLD SIZE, HOUSEHOLD TYPE, AND PRESENCE OF OWN CHILDREN
+Universe: Households ..................................................................... 19
+P19. HOUSEHOLDS BY PRESENCE OF PEOPLE UNDER 18 YEARS BY HOUSEHOLD TYPE
+Universe: Households ..................................................................... 19
+P20. HOUSEHOLDS BY AGE OF HOUSEHOLDER BY HOUSEHOLD TYPE (INCLUDING LIVING
+ALONE) BY PRESENCE OF OWN CHILDREN
+Universe: Households ..................................................................... 31
+P21. HOUSEHOLD TYPE BY AGE OF HOUSEHOLDER
+Universe: Households ..................................................................... 19
+P22. HOUSEHOLDS BY PRESENCE OF PEOPLE 60 YEARS AND OVER, HOUSEHOLD SIZE, AND
+HOUSEHOLD TYPE
+Universe: Households ..................................................................... 11
+P23. HOUSEHOLDS BY PRESENCE OF PEOPLE 65 YEARS AND OVER, HOUSEHOLD SIZE, AND
+HOUSEHOLD TYPE
+Universe: Households ..................................................................... 11
+P24. HOUSEHOLDS BY PRESENCE OF PEOPLE 75 YEARS AND OVER, HOUSEHOLD SIZE, AND
+HOUSEHOLD TYPE
+Universe: Households ..................................................................... 11
+P25. HOUSEHOLDS BY PRESENCE OF NONRELATIVES
+Universe: Households ..................................................................... 3
+P26. HOUSEHOLD TYPE BY HOUSEHOLD SIZE
+Universe: Households ..................................................................... 16
+P27. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE)
+Universe: Total population ................................................................. 27
+P28. RELATIONSHIP BY HOUSEHOLD TYPE FOR THE POPULATION UNDER 18 YEARS
+Universe: Population under 18 years........................................................ 17
+P29. RELATIONSHIP BY AGE FOR THE POPULATION UNDER 18 YEARS
+Universe: Population under 18 years........................................................ 46
+P30. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) FOR THE POPULATION
+65 YEARS AND OVER
+Universe: Population 65 years and over ..................................................... 22
+P31. FAMILIES
+Universe: Families ........................................................................ 1
+P32. POPULATION IN FAMILIES
+Universe: Population in families ............................................................ 1
+P33. AVERAGE FAMILY SIZE
+Universe: Families ........................................................................ 1
+P34. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN
+Universe: Families ........................................................................ 20
+P35. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN
+Universe: Families ........................................................................ 20
+P36. OWN CHILDREN UNDER 18 YEARS BY FAMILY TYPE AND AGE
+Universe: Own children under 18 years ..................................................... 20
+P37. GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE
+Universe: Population in group quarters ...................................................... 9
+P38. GROUP QUARTERS POPULATION BY SEX BY AGE BY GROUP QUARTERS TYPE
+Universe: Population in group quarters ...................................................... 57
+P39. POPULATION SUBSTITUTED
+Universe: Total population ................................................................. 5
+P40. IMPUTATION OF POPULATION ITEMS
+Universe: Population not substituted ........................................................ 3
+P41. IMPUTATION OF RACE
+Universe: Population not substituted ........................................................ 3
+P42. IMPUTATION OF HISPANIC OR LATINO
+Universe: Population not substituted ........................................................ 3
+P43. IMPUTATION OF SEX
+Universe: Population not substituted ........................................................ 3
+P44. IMPUTATION OF AGE
+Universe: Population not substituted ........................................................ 3
+P45. IMPUTATION OF RELATIONSHIP
+Universe: Population not substituted ........................................................ 3
+P12A. SEX BY AGE (WHITE ALONE)
+Universe: People who are white alone ...................................................... 49
+P12B. SEX BY AGE (BLACK OR AFRICAN AMERICAN ALONE)
+Universe: People who are Black or African American alone .................................... 49
+P12C. SEX BY AGE (AMERICAN INDIAN AND ALASKA NATIVE ALONE)
+Universe: People who are American Indian and Alaska Native alone............................ 49
+P12D. SEX BY AGE (ASIAN ALONE)
+Universe: People who are Asian alone ...................................................... 49
+P12E. SEX BY AGE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE)
+Universe: People who are Native Hawaiian and Other Pacific Islander alone .................... 49
+P12F. SEX BY AGE (SOME OTHER RACE ALONE)
+Universe: People who are Some other race alone ............................................ 49
+P12G. SEX BY AGE (TWO OR MORE RACES)
+Universe: People who are Two or more races................................................ 49
+P12H. SEX BY AGE (HISPANIC OR LATINO)
+Universe: People who are Hispanic or Latino ................................................ 49
+P12I. SEX BY AGE (WHITE ALONE, NOT HISPANIC OR LATINO)
+Universe: People who are White alone, not Hispanic or Latino ................................. 49
+P13A. MEDIAN AGE BY SEX (WHITE ALONE)
+Universe: People who are White alone ...................................................... 3
+P13B. MEDIAN AGE BY SEX (BLACK OR AFRICAN AMERICAN ALONE)
+Universe: People who are Black or African American alone .................................... 3
+P13C. MEDIAN AGE BY SEX (AMERICAN INDIAN AND ALASKA NATIVE ALONE)
+Universe: People who are American Indian and Alaska Native alone............................ 3
+P13D. MEDIAN AGE BY SEX (ASIAN ALONE)
+Universe: People who are Asian alone ...................................................... 3
+P13E. MEDIAN AGE BY SEX (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE)
+Universe: People who are Native Hawaiian and Other Pacific Islander alone .................... 3
+P13F. MEDIAN AGE BY SEX (SOME OTHER RACE ALONE)
+Universe: People who are Some other race alone ............................................ 3
+P13G. MEDIAN AGE BY SEX (TWO OR MORE RACES)
+Universe: People who are Two or more races................................................ 3
+P13H. MEDIAN AGE BY SEX (HISPANIC OR LATINO)
+Universe: People who are Hispanic or Latino ................................................ 3
+P13I. MEDIAN AGE BY SEX (WHITE ALONE, NOT HISPANIC OR LATINO)
+Universe: People who are White alone, Not Hispanic or Latino................................. 3
+P15A. HOUSEHOLDS (WHITE ALONE HOUSEHOLDER)
+Universe: Households with a householder who is White alone ................................. 1
+P15B. HOUSEHOLDS (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER)
+Universe: Households with a householder who is Black or African American alone ............... 1
+P15C. HOUSEHOLDS (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER)
+Universe: Households with a householder who is American Indian and Alaska Native alone ....... 1
+P15D. HOUSEHOLDS (ASIAN ALONE HOUSEHOLDER)
+Universe: Households with a householder who is Asian alone.................................. 1
+P15E. HOUSEHOLDS (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER)
+Universe: Households with a householder who is Native Hawaiian and Other Pacific Islander alone. 1
+P15F. HOUSEHOLDS (SOME OTHER RACE ALONE HOUSEHOLDER)
+Universe: Households with a householder who is Some other race alone ....................... 1
+P15G. HOUSEHOLDS (TWO OR MORE RACES HOUSEHOLDER)
+Universe: Households with a householder who is Two or more races ........................... 1
+P15H. HOUSEHOLDS (HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Households with a householder who is Hispanic or Latino ............................ 1
+P15I. HOUSEHOLDS (WHITE ALONE, NOT HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Households with a householder who is White alone, not Hispanic or Latino ............ 1
+P16A. POPULATION IN HOUSEHOLDS (WHITE ALONE HOUSEHOLDER)
+Universe: Population in households with a householder who is White alone ..................... 1
+P16B. POPULATION IN HOUSEHOLDS (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER)
+Universe: Population in households with a householder who is Black or African American alone . . . 1
+P16C. POPULATION IN HOUSEHOLDS (AMERICAN INDIAN AND ALASKA NATIVE ALONE
+HOUSEHOLDER)
+Universe: Population in households with a householder who is American Indian and Alaska Native
+alone . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+P16D. POPULATION IN HOUSEHOLDS (ASIAN ALONE HOUSEHOLDER)
+Universe: Population in households with a householder who is Asian alone...................... 1
+P16E. POPULATION IN HOUSEHOLDS (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE
+HOUSEHOLDER)
+Universe: Population in households with a householder who is Native Hawaiian and Other Pacific
+Islander alone........................................................................... 1
+P16F. POPULATION IN HOUSEHOLDS (SOME OTHER RACE ALONE HOUSEHOLDER)
+Universe: Population in households with a householder who is Some other race alone ........... 1
+P16G. POPULATION IN HOUSEHOLDS (TWO OR MORE RACES HOUSEHOLDER)
+Universe: Population in households with a householder who is Two or more races ............... 1
+P16H. POPULATION IN HOUSEHOLDS (HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Population in households with a householder who is Hispanic or Latino ............... 1
+P16I. POPULATION IN HOUSEHOLDS (WHITE ALONE, NOT HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Population in households with a householder who is White alone, not Hispanic or Latino. 1
+P17A. AVERAGE HOUSEHOLD SIZE (WHITE ALONE HOUSEHOLDER)
+Universe: Households with a householder who is White alone ................................. 1
+P17B. AVERAGE HOUSEHOLD SIZE (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER)
+Universe: Households with a householder who is Black or African American alone ............... 1
+P17C. AVERAGE HOUSEHOLD SIZE (AMERICAN INDIAN AND ALASKA NATIVE ALONE
+HOUSEHOLDER)
+Universe: Households with a householder who is American Indian and Alaska Native alone ....... 1
+P17D. AVERAGE HOUSEHOLD SIZE (ASIAN ALONE HOUSEHOLDER)
+Universe: Households with a householder who is Asian alone.................................. 1
+P17E. AVERAGE HOUSEHOLD SIZE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE
+HOUSEHOLDER)
+Universe: Households with a householder who is Native Hawaiian and Other Pacific Islander alone 1
+P17F. AVERAGE HOUSEHOLD SIZE (SOME OTHER RACE ALONE HOUSEHOLDER)
+Universe: Households with a householder who is Some other race alone ....................... 1
+P17G. AVERAGE HOUSEHOLD SIZE (TWO OR MORE RACES HOUSEHOLDER)
+Universe: Households with a householder who is Two or more races ........................... 1
+P17H. AVERAGE HOUSEHOLD SIZE (HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Households with a householder who is Hispanic or Latino ............................ 1
+P17I. AVERAGE HOUSEHOLD SIZE (WHITE ALONE, NOT HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Households with a householder who is White alone, not Hispanic or Latino ............ 1
+P26A. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (WHITE ALONE HOUSEHOLDER)
+Universe: Households with a householder who is White alone ................................. 16
+P26B. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (BLACK OR AFRICAN AMERICAN ALONE
+HOUSEHOLDER)
+Universe: Households with a householder who is Black or African American alone ............... 16
+P26C. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (AMERICAN INDIAN AND ALASKA NATIVE ALONE
+HOUSEHOLDER)
+Universe: Households with a householder who is American Indian and Alaska Native alone ....... 16
+P26D. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (ASIAN ALONE HOUSEHOLDER)
+Universe: Households with a householder who is Asian alone.................................. 16
+P26E. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER
+ALONE HOUSEHOLDER)
+Universe: Households with a householder who is Native Hawaiian and Other Pacific Islander alone 16
+P26F. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (SOME OTHER RACE ALONE HOUSEHOLDER)
+Universe: Households with a householder who is Some other race alone ....................... 16
+P26G. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (TWO OR MORE RACES HOUSEHOLDER)
+Universe: Households with a householder who is Two or more races ........................... 16
+P26H. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Households with a householder who is Hispanic or Latino ............................ 16
+P26I. HOUSEHOLD TYPE BY HOUSEHOLD SIZE (WHITE ALONE, NOT HISPANIC OR LATINO
+HOUSEHOLDER)
+Universe: Households with a householder who is White Alone, not Hispanic or Latino ............ 16
+P27A. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) (WHITE ALONE)
+Universe: People who are White alone ...................................................... 27
+P27B. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) (BLACK OR AFRICAN
+AMERICAN ALONE)
+Universe: People who are Black or African American alone .................................... 27
+P27C. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) (AMERICAN INDIAN AND
+ALASKA NATIVE ALONE)
+Universe: People who are American Indian and Alaska Native alone............................ 27
+P27D. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) (ASIAN ALONE)
+Universe: People who are Asian alone ...................................................... 27
+P27E. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) (NATIVE HAWAIIAN AND
+OTHER PACIFIC ISLANDER ALONE)
+Universe: People who are Native Hawaiian and Other Pacific Islander alone .................... 27
+P27F. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) (SOME OTHER RACE
+ALONE)
+Universe: People who are Some other race alone ............................................ 27
+P27G. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) (TWO OR MORE RACES)
+Universe: People who are Two or more races................................................ 27
+P28H. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) (HISPANIC OR LATINO)
+Universe: People who are Hispanic or Latino ................................................ 27
+P27I. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) (WHITE ALONE, NOT
+HISPANIC OR LATINO)
+Universe: People who are White alone, not Hispanic or Latino ................................. 27
+P28A. RELATIONSHIP BY HOUSEHOLD TYPE FOR THE POPULATION UNDER 18 YEARS (WHITE
+ALONE)
+Universe: White alone population under 18 years............................................. 17
+P28B. RELATIONSHIP BY HOUSEHOLD TYPE FOR THE POPULATION UNDER 18 YEARS (BLACK OR
+AFRICAN AMERICAN ALONE)
+Universe: Black or African American alone population under 18 years .......................... 17
+P28C. RELATIONSHIP BY HOUSEHOLD TYPE FOR THE POPULATION UNDER 18 YEARS (AMERICAN
+INDIAN AND ALASKA NATIVE ALONE)
+Universe: American Indian and Alaska Native alone population under 18 years .................. 17
+P28D. RELATIONSHIP BY HOUSEHOLD TYPE FOR THE POPULATION UNDER 18 YEARS (ASIAN
+ALONE)
+Universe: Asian alone population under 18 years ............................................ 17
+P28E. RELATIONSHIP BY HOUSEHOLD TYPE FOR THE POPULATION UNDER 18 YEARS (NATIVE
+HAWAIIAN OTHER PACIFIC ISLANDER ALONE)
+Universe: Native Hawaiian Other Pacific Islander alone population under 18 years ............... 17
+P28F. RELATIONSHIP BY HOUSEHOLD TYPE FOR THE POPULATION UNDER 18 YEARS (SOME
+OTHER RACE ALONE)
+Universe: Some other race alone population under 18 years................................... 17
+P28G. RELATIONSHIP BY HOUSEHOLD TYPE FOR THE POPULATION UNDER 18 YEARS (TWO OR
+MORE RACES)
+Universe: Two or more races population under 18 years ...................................... 17
+P28H. RELATIONSHIP BY HOUSEHOLD TYPE FOR THE POPULATION UNDER 18 YEARS (HISPANIC
+OR LATINO)
+Universe: Hispanic or Latino population under 18 years ....................................... 17
+P28I. RELATIONSHIP BY HOUSEHOLD TYPE FOR THE POPULATION UNDER 18 YEARS (WHITE
+ALONE, NOT HISPANIC OR LATINO)
+Universe: White alone, not Hispanic or Latino population under 18 years........................ 17
+P30A. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) FOR THE POPULATION
+65 YEARS AND OVER (WHITE ALONE)
+Universe: White alone population 65 years and over.......................................... 22
+P30B. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) FOR THE POPULATION
+65 YEARS AND OVER (BLACK OR AFRICAN AMERICAN ALONE)
+Universe: Black or African American alone population 65 years and over........................ 22
+P30C. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) FOR THE POPULATION
+65 YEARS AND OVER (AMERICAN INDIAN AND ALASKA NATIVE ALONE)
+Universe: American Indian and Alaska Native alone population 65 years and over ............... 22
+P30D. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) FOR THE POPULATION
+65 YEARS AND OVER (ASIAN ALONE)
+Universe: Asian alone population 65 years and over .......................................... 22
+P30E. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) FOR THE POPULATION
+65 YEARS AND OVER (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE)
+Universe: Native Hawaiian and Other Pacific Islander alone population 65 years and over ........ 22
+P30F. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) FOR THE POPULATION
+65 YEARS AND OVER (SOME OTHER RACE ALONE)
+Universe: Some other race alone population 65 years and over ................................ 22
+P30G. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) FOR THE POPULATION
+65 YEARS AND OVER (TWO OR MORE RACES)
+Universe: Two or more races population 65 years and over.................................... 22
+P30H. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) FOR THE POPULATION
+65 YEARS AND OVER (HISPANIC OR LATINO)
+Universe: Hispanic or Latino population 65 years and over .................................... 22
+P30I. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) FOR THE POPULATION
+65 YEARS AND OVER (WHITE ALONE, NOT HISPANIC OR LATINO)
+Universe: White alone, not Hispanic or Latino population 65 years and over ..................... 22
+P31A. FAMILIES (WHITE ALONE HOUSEHOLDER)
+Universe: Families with a householder who is White alone .................................... 1
+P31B. FAMILIES (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER)
+Universe: Families with a householder who is Black or African American alone .................. 1
+P31C. FAMILIES (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER)
+Universe: Families with a householder who is American Indian and Alaska Native alone .......... 1
+P31D. FAMILIES (ASIAN ALONE HOUSEHOLDER)
+Universe: Families with a householder who is Asian alone..................................... 1
+P31E. FAMILIES ( NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER)
+Universe: Families with a householder who is Native Hawaiian and Other Pacific Islander alone . . . 1
+P31F. FAMILIES (SOME OTHER RACE ALONE HOUSEHOLDER)
+Universe: Families with a householder who is Some other race alone........................... 1
+P31G. FAMILIES (TWO OR MORE RACES HOUSEHOLDER)
+Universe: Families with a householder who is Two or more races .............................. 1
+P31H. FAMILIES (HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Families with a householder who is Hispanic or Latino ............................... 1
+P31I. FAMILIES (WHITE ALONE, NOT HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Families with a householder who is White alone, not Hispanic or Latino................ 1
+P32A. POPULATION IN FAMILIES (WHITE ALONE HOUSEHOLDER)
+Universe: Population in families with a householder who is white alone ......................... 1
+P32B. POPULATION IN FAMILIES (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER)
+Universe: Population in families with a householder who is Black or African American alone....... 1
+P32C. POPULATION IN FAMILIES (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLD)
+Universe: Population in families with a householder who is American Indian and Alaska Native alone. 1
+P32D. POPULATION IN FAMILIES (ASIAN ALONE HOUSEHOLDER)
+Universe: Population in families with a householder who is Asian alone ......................... 1
+P32E. POPULATION IN FAMILIES (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE
+HOUSEHOLDER)
+Universe: Population in families with a householder who is Native Hawaiian and Other Pacific
+Islander alone........................................................................... 1
+P32F. POPULATION IN FAMILIES (SOME OTHER RACE ALONE HOUSEHOLDER)
+Universe: Population in families with a householder who is Some other race alone .............. 1
+P32G. POPULATION IN FAMILIES (TWO OR MORE RACES HOUSEHOLDER)
+Universe: Population in families with a householder who is Two or more races................... 1
+P32H. POPULATION IN FAMILIES (HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Population in families with a householder who is Hispanic or Latino ................... 1
+P32I. POPULATION IN FAMILIES (WHITE ALONE, NOT HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Population in families with a householder who is White alone, not Hispanic or Latino .... 1
+P33A. AVERAGE FAMILY SIZE (WHITE ALONE HOUSEHOLDER)
+Universe: Families with a householder who is White alone .................................... 1
+P33B. AVERAGE FAMILY SIZE (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER)
+Universe: Families with a householder who is Black or African American alone .................. 1
+P33C. AVERAGE FAMILY SIZE (AMERICAN INDIAN AND ALASKA NATIVE ALONE HOUSEHOLDER)
+Universe: Families with a householder who is American Indian and Alaska Native alone .......... 1
+P33D. AVERAGE FAMILY SIZE (ASIAN ALONE HOUSEHOLDER)
+Universe: Families with a householder who is Asian alone..................................... 1
+P33E. AVERAGE FAMILY SIZE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE
+HOUSEHOLDER)
+Universe: Families with a householder who is Native Hawaiian and Other Pacific Islander alone . . . 1
+P33F. AVERAGE FAMILY SIZE (SOME OTHER RACE ALONE HOUSEHOLDER)
+Universe: Families with a householder who is Some other race alone........................... 1
+P33G. AVERAGE FAMILY SIZE (TWO OR MORE RACES HOUSEHOLDER)
+Universe: Families with a householder who is Two or more races .............................. 1
+P33H. AVERAGE FAMILY SIZE (HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Families with a householder who is Hispanic or Latino ............................... 1
+P33I. AVERAGE FAMILY SIZE (WHITE ALONE, NOT HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Families with a householder who is White alone, not Hispanic or Latino................ 1
+P34A. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (WHITE ALONE HOUSEHOLDER)
+Universe: Families with a householder who is White alone .................................... 20
+P34B. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (BLACK OR AFRICAN AMERICAN
+ALONE HOUSEHOLDER)
+Universe: Families with a householder who is Black or African American alone .................. 20
+P34C. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (AMERICAN INDIAN AND ALASKA
+NATIVE ALONE HOUSEHOLDER)
+Universe: Families with a householder who is American Indian and Alaska Native alone .......... 20
+P34D. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (ASIAN ALONE HOUSEHOLDER)
+Universe: Families with a householder who is Asian alone..................................... 20
+P34E. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (NATIVE HAWAIIAN AND OTHER
+PACIFIC ISLANDER ALONE HOUSEHOLDER)
+Universe: Families with a householder who is Native Hawaiian and Other Pacific Islander alone . . . 20
+P34F. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (SOME OTHER RACE ALONE
+HOUSEHOLDER)
+Universe: Families with a householder who is Some other race alone........................... 20
+P34G. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (TWO OR MORE RACES
+HOUSEHOLDER)
+Universe: Families with a householder who is Two or more races .............................. 20
+P34H. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (HISPANIC OR LATINO
+HOUSEHOLDER)
+Universe: Families with a householder who is Hispanic or Latino ............................... 20
+P34I. FAMILY TYPE BY PRESENCE AND AGE OF OWN CHILDREN (WHITE ALONE, NOT HISPANIC OR
+LATINO HOUSEHOLDER)
+Universe: Families with a householder who is White alone, not Hispanic or Latino................ 20
+P35A. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (WHITE ALONE
+HOUSEHOLDER)
+Universe: Families with a householder who is White alone .................................... 20
+P35B. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (BLACK OR AFRICAN
+AMERICAN ALONE HOUSEHOLDER)
+Universe: Families with a householder who is Black or African American alone .................. 20
+P35C. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (AMERICAN INDIAN AND
+ALASKA NATIVE ALONE HOUSEHOLDER)
+Universe: Families with a householder who is American Indian and Alaska Native alone .......... 20
+P35D. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (ASIAN ALONE
+HOUSEHOLDER) [20]
+Universe: Families with a householder who is Asian alone..................................... 20
+P35E. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (NATIVE HAWAIIAN AND
+OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER)
+Universe: Families with a householder who is Native Hawaiian and Other Pacific Islander alone . . . 20
+P35F. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (SOME OTHER RACE ALONE
+HOUSEHOLDER)
+Universe: Families with a householder who is Some other race alone........................... 20
+P35G. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (TWO OR MORE RACES
+HOUSEHOLDER)
+Universe: Families with a householder who is Two or more races .............................. 20
+P35H. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (HISPANIC OR LATINO
+HOUSEHOLDER)
+Universe: Families with a householder who is Hispanic or Latino ............................... 20
+P35I. FAMILY TYPE BY PRESENCE AND AGE OF RELATED CHILDREN (WHITE ALONE, NOT
+HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Families with a householder who is White alone, not Hispanic or Latino................ 20
+PCT1. AMERICAN INDIAN AND ALASKA NATIVE ALONE WITH ONE TRIBE REPORTED FOR SELECTED
+TRIBES
+Universe: People who are American Indian and Alaska Native alone - total tribes tallied for people with
+one tribe only, and people with no tribe reported ............................................ 47
+PCT2. AMERICAN INDIAN AND ALASKA NATIVE ALONE WITH ONE OR MORE TRIBES REPORTED
+FOR SELECTED TRIBES
+Universe: People who are American Indian and Alaska Native alone - total tribes tallied for people with
+one or more tribes, and people with no tribe reported ........................................ 47
+PCT3. AMERICAN INDIAN AND ALASKA NATIVE ALONE OR IN COMBINATION WITH ONE OR MORE
+OTHER RACES AND WITH ONE OR MORE TRIBES REPORTED FOR SELECTED TRIBES
+Universe: People who are American Indian and Alaska Native alone or in combination with one or
+more other races - total tribes tallied for people with one or more tribes, and people with no tribe
+reported . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 47
+PCT4. AMERICAN INDIAN AND ALASKA NATIVE ALONE OR IN COMBINATION WITH ONE OR MORE
+OTHER RACES
+Universe: People who are American Indian or Alaska Native alone or in combination with one or more
+other races ............................................................................. 9
+PCT5. ASIAN ALONE WITH ONE ASIAN CATEGORY FOR SELECTED GROUPS
+Universe: Total Asian categories tallied for people with one Asian category only and people with no
+specific Asian category reported........................................................... 19
+PCT6. ASIAN ALONE WITH ONE OR MORE ASIAN CATEGORIES FOR SELECTED GROUPS
+Universe: Total Asian categories tallied for people with one or more Asian categories only and people
+with no specific Asian category reported.................................................... 19
+PCT7. ASIAN ALONE OR IN COMBINATION WITH ONE OR MORE OTHER RACES, AND WITH ONE OR
+MORE ASIAN CATEGORIES FOR SELECTED GROUPS
+Universe: Total Asian categories tallied and people with no specific Asian category reported....... 19
+PCT8. NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE WITH ONE NATIVE HAWAIIAN AND
+OTHER PACIFIC ISLANDER CATEGORY FOR SELECTED GROUPS
+Universe: Total Native Hawaiian and Other Pacific Islander categories tallied for people with one
+Native Hawaiian and Other Pacific Islander category only and people with no specific Native
+Hawaiian and Other Pacific Islander category reported....................................... 14
+PCT9. NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE WITH ONE OR MORE NATIVE
+HAWAIIAN AND OTHER PACIFIC ISLANDER CATEGORIES FOR SELECTED GROUPS
+Universe: Total Native Hawaiian and Other Pacific Islander categories tallied for people with one or
+more Native Hawaiian or Other Pacific Islander categories only and people with no specific Native
+Hawaiian and Other Pacific Islander category reported ...................................... 14
+PCT10. NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE OR IN COMBINATION WITH ONE
+OR MORE OTHER RACES, AND WITH ONE OR MORE NATIVE HAWAIIAN AND OTHER PACIFIC
+ISLANDER CATEGORIES FOR SELECTED GROUPS
+Universe: Total Native Hawaiian and Other Pacific Islander categories tallied and people with no
+specific Native Hawaiian and Other Pacific Islander category reported ......................... 14
+PCT11. HISPANIC OR LATINO BY SPECIFIC ORIGIN
+Universe: Total population ................................................................. 31
+PCT12. SEX BY AGE
+Universe: Total population ................................................................. 209
+PCT13. SEX BY AGE
+Universe: Population in households ......................................................... 49
+PCT14. UNMARRIED-PARTNER HOUSEHOLDS BY SEX OF PARTNERS
+Universe: Households ..................................................................... 7
+PCT15. NONRELATIVES BY HOUSEHOLD TYPE
+Universe: Nonrelatives .................................................................... 13
+PCT16. GROUP QUARTERS POPULATION BY GROUP QUARTERS TYPE
+Universe: Population in group quarters ...................................................... 52
+PCT17. GROUP QUARTERS POPULATION BY SEX BY AGE BY GROUP QUARTERS TYPE
+Universe: Population in group quarters ...................................................... 75
+PCT12A. SEX BY AGE (WHITE ALONE)
+Universe: People who are White alone ...................................................... 209
+PCT12B. SEX BY AGE (BLACK OR AFRICAN AMERICAN ALONE)
+Universe: People who are Black or African American alone .................................... 209
+PCT12C. SEX BY AGE (AMERICAN INDIAN AND ALASKA NATIVE ALONE)
+Universe: People who are American Indian and Alaska Native alone............................ 209
+PCT12D. SEX BY AGE (ASIAN ALONE)
+Universe: People who are Asian alone ...................................................... 209
+PCT12E. SEX BY AGE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE)
+Universe: People who are Native Hawaiian and Other Pacific Islander alone .................... 209
+PCT12F. SEX BY AGE (SOME OTHER RACE ALONE)
+Universe: People who are Some other race alone ............................................ 209
+PCT12G. SEX BY AGE (TWO OR MORE RACES)
+Universe: People who are Two or more races................................................ 209
+PCT12H. SEX BY AGE (HISPANIC OR LATINO)
+Universe: People who are Hispanic or Latino ................................................ 209
+PCT12I. SEX BY AGE (WHITE ALONE, NOT HISPANIC OR LATINO)
+Universe: People who are White alone, not Hispanic or Latino ................................. 209
+PCT12J. SEX BY AGE (BLACK OR AFRICAN AMERICAN ALONE, NOT HISPANIC OR LATINO)
+Universe: People who are Black or African American alone, not Hispanic or Latino .............. 209
+PCT12K. SEX BY AGE (AMERICAN INDIAN AND ALASKA NATIVE ALONE, NOT HISPANIC OR LATINO)
+Universe: People who are American Indian and Alaska Native alone, not Hispanic or Latino....... 209
+PCT12L. SEX BY AGE (ASIAN ALONE, NOT HISPANIC OR LATINO)
+Universe: People who are Asian alone, not Hispanic or Latino ................................. 209
+PCT12M. SEX BY AGE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE, NOT HISPANIC OR
+LATINO)
+Universe: People who are Native Hawaiian and Other Pacific Islander alone, not Hispanic or Latino. 209
+PCT12N. SEX BY AGE (SOME OTHER RACE ALONE, NOT HISPANIC OR LATINO)
+Universe: People who are Some other race alone, not Hispanic or Latino ...................... 209
+PCT12O. SEX BY AGE (TWO OR MORE RACES, NOT HISPANIC OR LATINO)
+Universe: People who are Two or more races, not Hispanic or Latino ........................... 209
+PCT13A. SEX BY AGE (WHITE ALONE)
+Universe: People in households who are White alone ......................................... 49
+PCT13B. SEX BY AGE (BLACK OR AFRICAN AMERICAN ALONE)
+Universe: People in households who are Black or African American alone....................... 49
+PCT13C. SEX BY AGE (AMERICAN INDIAN AND ALASKA NATIVE ALONE)
+Universe: People in households who are American Indian and Alaska Native alone .............. 49
+PCT13D. SEX BY AGE (ASIAN ALONE)
+Universe: People in households who are Asian alone ......................................... 49
+PCT13E. SEX BY AGE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE)
+Universe: People in households who are Native Hawaiian and Other Pacific Islander alone ....... 49
+PCT13F. SEX BY AGE (SOME OTHER RACE ALONE)
+Universe: People in households who are Some other race alone ............................... 49
+PCT13G. SEX BY AGE (TWO OR MORE RACES)
+Universe: People in households who are Two or more races................................... 49
+PCT13H. SEX BY AGE (HISPANIC OR LATINO)
+Universe: People in households who are Hispanic or Latino ................................... 49
+PCT13I. SEX BY AGE (WHITE ALONE, NOT HISPANIC OR LATINO)
+Universe: People in households who are White alone, not Hispanic or Latino .................... 49
+PCT15A. NONRELATIVES BY HOUSEHOLD TYPE (WHITE ALONE)
+Universe: Nonrelatives who are White alone ................................................. 13
+PCT15B. NONRELATIVES BY HOUSEHOLD TYPE (BLACK OR AFRICAN AMERICAN ALONE)
+Universe: Nonrelatives who are Black or African American alone ............................... 13
+PCT15C. NONRELATIVES BY HOUSEHOLD TYPE (AMERICAN INDIAN AND ALASKA NATIVE ALONE)
+Universe: Nonrelatives who are American Indian and Alaska Native alone....................... 13
+PCT15D. NONRELATIVES BY HOUSEHOLD TYPE (ASIAN ALONE)
+Universe: Nonrelatives who are Asian alone ................................................. 13
+PCT15E. NONRELATIVES BY HOUSEHOLD TYPE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER
+ALONE)
+Universe: Nonrelatives who are Native Hawaiian and Other Pacific Islander alone ............... 13
+PCT15F. NONRELATIVES BY HOUSEHOLD TYPE (SOME OTHER RACE ALONE)
+Universe: Nonrelatives who are Some other race alone ....................................... 13
+PCT15G. NONRELATIVES BY HOUSEHOLD TYPE (TWO OR MORE RACES)
+Universe: Nonrelatives who are Two or more races ........................................... 13
+PCT15H. NONRELATIVES BY HOUSEHOLD TYPE (HISPANIC OR LATINO)
+Universe: Nonrelatives who are Hispanic or Latino ........................................... 13
+PCT15I. NONRELATIVES BY HOUSEHOLD TYPE (WHITE ALONE, NOT HISPANIC OR LATINO)
+Universe: Nonrelatives who are White alone, not Hispanic or Latino ............................ 13
+PCT17A. GROUP QUARTERS POPULATION BY SEX BY AGE BY GROUP QUARTERS TYPE (WHITE
+ALONE)
+Universe: Population in group quarters who are White alone................................... 75
+PCT17B. GROUP QUARTERS POPULATION BY SEX BY AGE BY GROUP QUARTERS TYPE (BLACK OR
+AFRICAN AMERICAN ALONE)
+Universe: Population in group quarters who are Black or African American alone................. 75
+PCT17C. GROUP QUARTERS POPULATION BY SEX BY AGE BY GROUP QUARTERS TYPE (AMERICAN
+INDIAN AND ALASKA NATIVE ALONE)
+Universe: Population in group quarters who are American Indian and Alaska Native alone ........ 75
+PCT17D. GROUP QUARTERS POPULATION BY SEX BY AGE BY GROUP QUARTERS TYPE (ASIAN
+ALONE)
+Universe: Population in group quarters who are Asian alone ................................... 75
+PCT17E. GROUP QUARTERS POPULATION BY SEX BY AGE BY GROUP QUARTERS TYPE (NATIVE
+HAWAIIAN ANDOTHER PACIFIC ISLANDER ALONE)
+Universe: Population in group quarters who are Native Hawaiian and Other Pacific Islander alone . 75
+PCT17F. GROUP QUARTERS POPULATION BY SEX BY AGE BY GROUP QUARTERS TYPE (SOME
+OTHER RACE ALONE)
+Universe: Population in group quarters who are Some other race alone ......................... 75
+PCT17G. GROUP QUARTERS POPULATION BY SEX BY AGE BY GROUP QUARTERS TYPE (TWO OR
+MORE RACES)
+Universe: Population in group quarters who are Two or more races ............................ 75
+PCT17H. GROUP QUARTERS POPULATION BY SEX BY AGE BY GROUP QUARTERS TYPE (HISPANIC
+OR LATINO)
+Universe: Population in group quarters who are Hispanic or Latino ............................. 75
+PCT17I. GROUP QUARTERS POPULATION BY SEX BY AGE BY GROUP QUARTERS TYPE (WHITE
+ALONE, NOT HISPANIC OR LATINO)
+Universe: Population in group quarters who are White alone, not Hispanic or Latino .............. 75
+H1. HOUSING UNITS
+Universe: Housing units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
+H2. URBAN AND RURAL (FINAL NATIONAL FILE ONLY)
+Universe: Housing units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+H3. OCCUPANCY STATUS
+Universe: Housing units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+H4. TENURE
+Universe: Occupied housing units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+H5. VACANCY STATUS
+Universe: Vacant housing units............................................................. 7
+H6. RACE OF HOUSEHOLDER
+Universe: Occupied housing units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+H7. HISPANIC OR LATINO HOUSEHOLDER BY RACE OF HOUSEHOLDER
+Universe: Occupied housing units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+H8. TOTAL RACES TALLIED FOR HOUSEHOLDERS
+Universe: Total races tallied for householders in occupied housing units ........................ 7
+H9. HISPANIC OR LATINO BY TOTAL RACES TALLIED FOR HOUSEHOLDERS
+Universe: Total races tallied for householders in occupied housing units......................... 15
+H10. TOTAL POPULATION IN OCCUPIED HOUSING UNITS
+Universe: Population in occupied housing units .............................................. 1
+H11. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE
+Universe: Population in occupied housing units .............................................. 3
+H12. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE
+Universe: Occupied housing units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+H13. HOUSEHOLD SIZE
+Universe: Occupied housing units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+H14. TENURE BY RACE OF HOUSEHOLDER
+Universe: Occupied housing units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+H15. TENURE BY HOUSEHOLD SIZE
+Universe: Occupied housing units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+H16. TENURE BY AGE OF HOUSEHOLDER
+Universe: Occupied housing units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+H17. TENURE BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) BY AGE OF HOUSEHOLDER
+Universe: Occupied housing units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 69
+H18. OCCUPIED HOUSING UNITS SUBSTITUTED
+Universe: Occupied housing units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+H19. IMPUTATION OF VACANCY STATUS
+Universe: Vacant housing units............................................................. 5
+H20. IMPUTATION OF TENURE
+Universe: Occupied housing units . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+H11A. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (WHITE ALONE
+HOUSEHOLDER)
+Universe: Population in occupied housing units with a householder who is White alone ........... 3
+H11B. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (BLACK OR AFRICAN
+AMERICAN ALONE HOUSEHOLDER)
+Universe: Population in occupied housing units with a householder who is Black or African American
+alone . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+H11C. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (AMERICAN INDIAN AND
+ALASKA NATIVE ALONE HOUSEHOLDER)
+Universe: Population in occupied housing units with a householder who is American Indian and
+Alaska Native alone ..................................................................... 3
+H11D. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (ASIAN ALONE
+HOUSEHOLDER)
+Universe: Population in occupied housing units with a householder who is Asian alone ........... 3
+H11E. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (NATIVE HAWAIIAN AND
+OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER)
+Universe: Population in occupied housing units with a householder who is Native Hawaiian and Other
+Pacific Islander alone .................................................................... 3
+H11F. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (SOME OTHER RACE ALONE
+HOUSEHOLDER)
+Universe: Population in occupied housing units with a householder who is Some other race alone . 3
+H11G. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (TWO OR MORE RACES
+HOUSEHOLDER)
+Universe: Population in occupied housing units with a householder who is Two or more races ..... 3
+H11H. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (HISPANIC OR LATINO
+HOUSEHOLDER)
+Universe: Population in occupied housing units with a householder who is Hispanic or Latino ..... 3
+H11I. TOTAL POPULATION IN OCCUPIED HOUSING UNITS BY TENURE (WHITE ALONE, NOT
+HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Population in occupied housing units with a householder who is White alone, not Hispanic
+or Latino . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+H12A. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (WHITE ALONE
+HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is White alone ...................... 3
+H12B. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (BLACK OR
+AFRICAN AMERICAN ALONE HOUSEHOLDER) [3]
+Universe: Occupied housing units with a householder who is Black or African American alone ..... 3
+H12C. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (AMERICAN INDIAN
+AND ALASKA NATIVE ALONE HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is American Indian and Alaska Native
+alone. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+H12D. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (ASIAN ALONE
+HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Asian alone ...................... 3
+H12E. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (NATIVE HAWAIIAN
+AND OTHER PACIFIC ISLANDER ALONE HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Native Hawaiian and Other Pacific
+Islander alone........................................................................... 3
+H12F. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (SOME OTHER
+RACE ALONE HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Some other race alone ............ 3
+H12G. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (TWO OR MORE
+RACES HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Two or more races ................ 3
+H12H. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (HISPANIC OR
+LATINO HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Hispanic or Latino ................. 3
+H12I. AVERAGE HOUSEHOLD SIZE OF OCCUPIED HOUSING UNITS BY TENURE (WHITE ALONE,
+NOT HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is White alone, not Hispanic or Latino . . 3
+H15A. TENURE BY HOUSEHOLD SIZE (WHITE ALONE HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is White alone ....................... 17
+H15B. TENURE BY HOUSEHOLD SIZE (BLACK OR AFRICAN AMERICAN ALONE HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Black or African American alone ..... 17
+H15C. TENURE BY HOUSEHOLD SIZE (AMERICAN INDIAN AND ALASKA NATIVE ALONE
+HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is American Indian and Alaska Native
+alone . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+H15D. TENURE BY HOUSEHOLD SIZE (ASIAN ALONE HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Asian alone ....................... 17
+H15E. TENURE BY HOUSEHOLD SIZE (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER ALONE
+HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Native Hawaiian and Other Pacific
+Islander alone........................................................................... 17
+H15F. TENURE BY HOUSEHOLD SIZE (SOME OTHER RACE ALONE HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Some other race alone ............. 17
+H15G. TENURE BY HOUSEHOLD SIZE (TWO OR MORE RACES HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Two or more races................. 17
+H15H. TENURE BY HOUSEHOLD SIZE (HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Hispanic or Latino ................. 17
+H15I. TENURE BY HOUSEHOLD SIZE (WHITE ALONE, NOT HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is White alone, not Hispanic and Latino. 17
+H16A. TENURE BY AGE OF HOUSEHOLDER (WHITE ALONE HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is White alone ....................... 19
+H16B. TENURE BY AGE OF HOUSEHOLDER (BLACK OR AFRICAN AMERICAN ALONE
+HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Black or African American alone ..... 19
+H16C. TENURE BY AGE OF HOUSEHOLDER (AMERICAN INDIAN AND ALASKA NATIVE ALONE
+HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is American Indian and Alaska Native
+alone . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+H16D. TENURE BY AGE OF HOUSEHOLDER (ASIAN ALONE HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Asian alone ....................... 19
+H16E. TENURE BY AGE OF HOUSEHOLDER (NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER
+ALONE HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Native Hawaiian and Other Pacific
+Islander alone........................................................................... 19
+H16F. TENURE BY AGE OF HOUSEHOLDER (SOME OTHER RACE ALONE HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Some other race alone ............. 19
+H16G. TENURE BY AGE OF HOUSEHOLDER (TWO OR MORE RACES HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Two or more races................. 19
+H16H. TENURE BY AGE OF HOUSEHOLDER (HISPANIC OR LATINO HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is Hispanic or Latino ................. 19
+H16I. TENURE BY AGE OF HOUSEHOLDER (WHITE ALONE, NOT HISPANIC OR LATINO
+HOUSEHOLDER)
+Universe: Occupied housing units with a householder who is White alone, not Hispanic or Latino . . 19

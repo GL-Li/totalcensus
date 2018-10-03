@@ -1,0 +1,14 @@
+---
+title: "Notes"
+author: "GL Li"
+date: "October 3, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Census 2000
+### reference is one digit shorter than that of 2010
+For example, the total population is P001001 in census 2000, while P0010001 in 2010. To keep the consistency, add a "0" to the those in census 2000.

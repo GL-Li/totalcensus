@@ -30,6 +30,39 @@
 "lookup_decennial_2010"
 
 
+# lookup_decennial_2000 ===========================================================
+#' Lookup data files and table contents of Census 2010
+#'
+#' @description This dataset includes all data fields of data files in census 2000
+#' summary file 1 (with urban/rural update). Fucntion \code{\link{search_tablecontents}}
+#' searches content in this dataset.
+#'
+#'
+#' @docType data
+#'
+#'
+#' @format A data.table with 8321 rows and 6 variables:
+#' \describe{
+#'   \item{file_segment}{sequence number of segment data files, from 1 to 48}
+#'   \item{table_content}{description of columns in a decennial table}
+#'   \item{reference}{reference of table content, such as "PCT0240019"}
+#'   \item{table_number}{table number such as "H1", "PCT22G"}
+#'   \item{table_name}{description of table, which has many table_content}
+#'   \item{universe}{the universe of the decennial data}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source 2010 Census Summary File 1
+#' \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
+#' all across chapter 6.
+#'
+#'
+
+"lookup_decennial_2000"
+
+
+
 # dict_decennial_table ============================================================
 #' Complete list of census tables
 #'
