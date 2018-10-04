@@ -1,0 +1,121 @@
+File Identification . . . . . . . . . . . . . FILEID 6 1 A/N XXXXX X
+State/US-Abbreviation (USPS) . STUSAB 2 7 AXXXXX X
+Summary Level............... SUMLEV 3 9 N XXXXX X
+Geographic Component ....... GEOCOMP 2 12 A/N XXXXX X
+Characteristic Iteration ........ CHARITER 3 14 A/N XXXXX X
+Characteristic Iteration File
+Sequence Number. . . . . . . . . . . CIFSN 2 17 A/N XXXXX X
+Logical Record Number ....... LOGRECNO 7 19 N XXXXX X
+Region ...................... REGION 1 26 A/N XXXXX X
+Division. . . . . . . . . . . . . . . . . . . . . . DIVISION 1 27 A/N XXXXX X
+State (Census) . . . . . . . . . . . . . . . STATECE 2 28 A/N XXXXX X
+State (FIPS) . . . . . . . . . . . . . . . . . STATE 2 30 A/N XXXXX X
+County ...................... COUNTY 3 32 A/N XXXX X
+County Size Code ............ COUNTYSC 2 35 A/N XXXX X
+County Subdivision (FIPS) ..... COUSUB 5 37 A/N X X X X
+FIPS County Subdivision Class
+Code....................... COUSUBCC 2 42 A/N X X X X
+County Subdivision Size Code . COUSUBSC 2 44 A/N X X X X
+Place (FIPS) . . . . . . . . . . . . . . . . . PLACE 5 46 A/N X X
+FIPS Place Class Code ....... PLACECC 2 51 A/N X X
+Place Description Code ....... PLACEDC 1 53 A/N XXXX X
+Place Size Code.............. PLACESC 2 54 A/N X X
+Census Tract................. TRACT 6 56 A/N X
+Block Group . . . . . . . . . . . . . . . . . BLKGRP 1 62 A/N
+Block. . . . . . . . . . . . . . . . . . . . . . . . BLOCK 4 63 A/N
+Internal Use Code . . . . . . . . . . . . IUC 2 67 A/N
+Consolidated City (FIPS) ...... CONCIT 5 69 A/N
+FIPS Consolidated City Class
+Code....................... CONCITCC 2 74 A/N
+Consolidated City Size Code . . . CONCITSC 2 76 A/N
+American Indian Area/Alaska
+Native Area/Hawaiian Home
+Land (Census) . . . . . . . . . . . . . . AIANHH 4 78 A/N
+American Indian Area/Alaska
+Native Area/Hawaiian Home
+Land (FIPS). . . . . . . . . . . . . . . . . AIANHHFP 5 82 A/N
+FIPS American Indian
+Area/Alaska Native
+Area/Hawaiian Home Land
+Class Code . . . . . . . . . . . . . . . . . AIANHHCC 2 87 A/N
+American Indian Trust
+Land/Hawaiian Home Land
+Indicator . . . . . . . . . . . . . . . . . . . . AIHHTLI 1 89 A/N
+American Indian Tribal
+Subdivision (Census) . . . . . . . . AITSCE 3 90 A/N
+American Indian Tribal
+Subdivision (FIPS). . . . . . . . . . . AITS 5 93 A/N
+FIPS American Indian Tribal
+Subdivision Class Code . . . . . . AITSCC 2 98 A/N
+Alaska Native Regional
+Corporation (FIPS). . . . . . . . . . . ANRC 5 100 A/N
+FIPS Alaska Native Regional
+Corporation Class Code ...... ANRCCC 2 105 A/N
+Metropolitan Statistical
+Area/Consolidated
+Metropolitan Statistical Area . . MSACMSA 4 107 A/N XXXX X
+MSA/CMSA Size Code ........ MASC 2 111 A/N XXXX X
+Consolidated Metropolitan
+Statistical Area .............. CMSA 2 113 A/N XXXX X
+Metropolitan Area Central City
+Indicator . . . . . . . . . . . . . . . . . . . . MACCI 1 115 A/N XXXX X
+Primary Metropolitan Statistical
+Area . . . . . . . . . . . . . . . . . . . . . . . PMSA 4 116 A/N XXXX X
+New England County
+Metropolitan Area............ NECMA 4 120 A/N XXXX X
+New England County
+Metropolitan Area Central City
+Indicator . . . . . . . . . . . . . . . . . . . . NECMACCI 1 124 A/N XXXX X
+New England County
+Metropolitan Area Size Code. . NECMASC 2 125 A/N XXXX X
+Extended Place Indicator . . . . . . EXI 1 127 A/N X
+Urban Area . . . . . . . . . . . . . . . . . . UA 5 128 A/N
+Urban Area Size Code ........ UASC 2 133 A/N
+Urban Area Type . . . . . . . . . . . . . UATYPE 1 135 A/N
+Urban/Rural . . . . . . . . . . . . . . . . . . UR 1 136 A/N
+Congressional District (106th) . . CD106 2 137 A/N
+Congressional District (108th) . . CD108 2 139 A/N
+Congressional District (109th) . . CD109 2 141 A/N
+Congressional District (110th) . . CD110 2 143 A/N
+State Legislative District (Upper
+Chamber)................... SLDU 3 145 A/N
+State Legislative District (Lower
+Chamber)................... SLDL 3 148 A/N
+Voting District . . . . . . . . . . . . . . . . VTD 6 151 A/N
+Voting District Indicator ........ VTDI 1 157 A/N
+ZIP Code Tabulation Area
+(3 digit). . . . . . . . . . . . . . . . . . . . . ZCTA3 3 158 A/N
+ZIP Code Tabulation Area
+(5 digit). . . . . . . . . . . . . . . . . . . . . ZCTA5 5 161 A/N
+Subbarrio (FIPS) ............. SUBMCD 5 166 A/N X
+FIPS Subbarrio Class Code.... SUBMCDCC 2 171 A/N X
+Area (Land) .................. AREALAND 14 173 A/N XXXXX X
+Area (Water) . . . . . . . . . . . . . . . . . AREAWATR 14 187 A/N X X X X X X
+Area Name – Legal/Statistical
+Area Description (LSAD)
+Term – Part Indicator. . . . . . . . . NAME 90 201 A/N XXXXX X
+Functional Status Code........ FUNCSTAT 1 291 A/N XXXXX X
+Geographic Change User Note
+Indicator . . . . . . . . . . . . . . . . . . . . GCUNI 1 292 A/N XXXXX
+Population Count (100%) ...... POP100 9 293 A/N XXXXX X
+Housing Unit Count (100%) .... HU100 9 302 A/N XXXXX X
+Internal Point (Latitude)........ INTPTLAT 9 311 A/N XXXXX X
+Internal Point (Longitude) ...... INTPTLON 10 320 A/N XXXXX X
+Legal/Statistical Area
+Description Code ............ LSADC 2 330 A/N XXXXX
+Part Flag . . . . . . . . . . . . . . . . . . . . PARTFLAG 1 332 A/N X X
+School District (Elementary).... SDELM 5 333 A/N
+School District (Secondary) .... SDSEC 5 338 A/N
+School District (Unified) ....... SDUNI 5 343 A/N
+Traffic Analysis Zone . . . . . . . . . . TAZ 6 348 A/N
+Oregon Urban Growth Area . . . . UGA 5 354 A/N
+Public Use Microdata Area –
+5% File. . . . . . . . . . . . . . . . . . . . . PUMA5 5 359 A/N
+Public Use Microdata Area –
+1% File. . . . . . . . . . . . . . . . . . . . . PUMA1 5 364 A/N
+Reserved . . . . . . . . . . . . . . . . . . . . RESERVE2 15 369 A/N
+Metropolitan Area Central City. . MACC 5 384 A/N
+Urban Area Central Place. . . . . . UACP 5 389 A/N
+Reserved . . . . . . . . . . . . . . . . . . . . RESERVED 7 394 A/N
+
+

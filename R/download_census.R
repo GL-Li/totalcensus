@@ -196,22 +196,60 @@ download_decennial_1_state_ <- function(year, state){
         .[abbr == "US", full := "National"]
 
     full <- state_names[abbr == state, full]
-    url <- paste0(
-        "https://www2.census.gov/census_2010/04-Summary_File_1/Urban_Rural_Update/",
-        full, "/", tolower(state), "2010.ur1.zip"
-    )
 
-    save_as <- paste0(path_to_census, "/", tolower(state), ".zip")
-    download.file(url, save_as, method = "auto")
+    if (year == 2010){
+        url <- paste0(
+            "https://www2.census.gov/census_2010/04-Summary_File_1/Urban_Rural_Update/",
+            full, "/", tolower(state), "2010.ur1.zip"
+        )
 
-    # unzip downloaded file
-    cat(paste0("Unzipping downloaded zip file of ", state, "\n"))
-    unzip(save_as, exdir = paste0(path_to_census, "/census", year, "/", state))
-    cat("File unzipped successfully\n")
+        save_as <- paste0(path_to_census, "/", tolower(state), ".zip")
+        download.file(url, save_as, method = "auto")
 
-    # delete downloaded file to save space
-    file.remove(save_as)
-    cat("Deleted downloaded zip file\n\n")
+        # unzip downloaded file
+        cat(paste0("Unzipping downloaded zip file of ", state, "\n"))
+        unzip(save_as, exdir = paste0(path_to_census, "/census", year, "/", state))
+        cat("File unzipped successfully\n")
+
+        # delete downloaded file to save space
+        file.remove(save_as)
+        cat("Deleted downloaded zip file\n\n")
+
+    } else if (year == 2000){
+        url_0 <- paste0(
+            "https://www2.census.gov/census_2000/datasets/Summary_File_1/",
+            full, "/"
+        )
+        save_as <- paste0(path_to_census, "/", tolower(state), ".zip")
+
+        # there are 39 file segments
+        file_segs <- c(paste0("0", 1:9), 10:39)
+        for (fs in file_segs){
+            url <- paste0(url_0, tolower(state), "000", fs, "_uf1.zip")
+            download.file(url, save_as, method = "auto")
+            unzip(save_as, exdir = paste0(path_to_census, "/census", year, "/", state))
+            file.remove(save_as)
+
+            # change file name so the numbers in consistent with 2010 file name
+            from <- paste0(path_to_census, "/census2000/", toupper(state),
+                               "/", tolower(state), "000", fs, ".uf1")
+            to <- paste0(path_to_census, "/census2000/", toupper(state),
+                             "/", tolower(state), "000", fs, "2000.uf1")
+            file.rename(from, to)
+        }
+
+        # geoheader file
+        download.file(paste0(url_0, tolower(state), "geo_uf1.zip"), save_as, method = "auto")
+        unzip(save_as, exdir = paste0(path_to_census, "/census", year, "/", state))
+        file.remove(save_as)
+        from <- paste0(path_to_census, "/census2000/", toupper(state),
+                       "/", tolower(state), "geo.uf1")
+        to <- paste0(path_to_census, "/census2000/", toupper(state),
+                     "/", tolower(state), "geo2000.uf1")
+        file.rename(from, to)
+
+    }
+
 }
 
 
