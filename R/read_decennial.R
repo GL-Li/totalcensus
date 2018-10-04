@@ -490,9 +490,17 @@ read_decennial_geo_ <- function(year,
 
 
     #=== read files and select columns ===
+    if (year == 2010){
+        file_extension = ".ur1"
+        dict_geoheader = dict_decennial_geoheader
+    } else if (year == 2000){
+        file_extension = ".uf1"
+        dict_geoheader = dict_decennial_geoheader_2000
+    }
 
     file <- paste0(path_to_census, "/census", year, "/", state, "/", tolower(state),
-                   "geo", year, ".ur1")
+                   "geo", year, file_extension)
+
     # use "Latin-1" for encoding special spanish latters such as ñ in Cañada
     geo <- fread(file, header = FALSE, sep = "\n", encoding = "Latin-1" ,
                  showProgress = show_progress)
@@ -511,16 +519,16 @@ read_decennial_geo_ <- function(year,
                 # place variable in () to add new columns
                 dt[, (ref) := as.numeric(str_sub(
                     geo[, V1],
-                    dict_decennial_geoheader[reference == ref, start],
-                    dict_decennial_geoheader[reference == ref, end]
+                    dict_geoheader[reference == ref, start],
+                    dict_geoheader[reference == ref, end]
                 ))]
             } else if (ref %in% c("LOGRECNO", "SUMLEV", "GEOCOMP")) {
                 message(paste(ref, "is already included in return by default.\n"))
             } else {
                 dt[, (ref) := str_trim(str_sub(
                     geo[, V1],
-                    dict_decennial_geoheader[reference == ref, start],
-                    dict_decennial_geoheader[reference == ref, end]
+                    dict_geoheader[reference == ref, start],
+                    dict_geoheader[reference == ref, end]
                 ))]
             }
         }
