@@ -216,6 +216,10 @@ download_decennial_1_state_ <- function(year, state){
         cat("Deleted downloaded zip file\n\n")
 
     } else if (year == 2000){
+        if (tolower(state) == "us"){
+            full <- "0Final_National"    # irregular directory
+        }
+
         url_0 <- paste0(
             "https://www2.census.gov/census_2000/datasets/Summary_File_1/",
             full, "/"

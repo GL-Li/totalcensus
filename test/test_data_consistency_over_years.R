@@ -89,3 +89,17 @@ B20005I_001 <- compare_acs5year("B20005I_001")
 B25010_001 <- compare_acs5year("B25010_001")
 B25068_001 <- compare_acs5year("B25068_001")
 B99084_001 <- compare_acs5year("B99084_001")
+
+
+# census 2000 =================================================================
+aaa = read_decennial(
+    year = 2000,
+    states = "RI",
+    table_contents = c("urban = P0020002", "rural = P0020005"),
+    areas = c("Providence city, RI",
+        "cousub = ri41500"),
+    summary_level = "*"
+)
+
+
+

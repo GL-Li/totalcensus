@@ -12,7 +12,7 @@ make_table_list <- function(){
     ##     2) table number and name such as P4. HISPANIC OR LATINO ORIGIN,
     ##     3) universe, which tells what the numbers are about
 
-    table_list <- fread("data_raw/table_list.csv") %>%
+    table_list <- fread("data_raw/census/census_2010/table_list.csv") %>%
         .[, universe := str_sub(universe, 11, nchar(universe))] %>%
         .[, table_number := str_extract(table_name, "^[^.]*")] %>%
         .[, table_name := str_replace(table_name, "^[^ ]*", "")] %>%
@@ -24,5 +24,5 @@ make_table_list <- function(){
 
 
 # save data to package datasets ================================================
-dict_decennial_table <- make_table_list()
-save(dict_decennial_table, file = "data/dict_decennial_table.RData")
+dict_decennial_table_2010 <- make_table_list()
+save(dict_decennial_table_2010, file = "data/dict_decennial_table_2010.RData")

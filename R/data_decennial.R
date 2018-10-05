@@ -63,7 +63,7 @@
 
 
 
-# dict_decennial_table ============================================================
+# dict_decennial_table 2010 ============================================================
 #' Complete list of census tables
 #'
 #' @description This dataset contains all census tables in census 2010 summary
@@ -89,10 +89,10 @@
 #' all across chapter 5.
 #'
 #'
-"dict_decennial_table"
+"dict_decennial_table_2010"
 
 
-# dict_decennial_geocomponent =====================================================
+# dict_decennial_geocomponent_2010 =====================================================
 #' List of geographic components and codes
 #'
 #' @description This dataset contains the geographic components and codes used in
@@ -117,10 +117,10 @@
 #' page 6-15
 #'
 #'
-"dict_decennial_geocomponent"
+"dict_decennial_geocomponent_2010"
 
 
-# dict_decennial_geoheader ========================================================
+# dict_decennial_geoheader_2010 ========================================================
 #' List of geographic headers
 #'
 #' @description  This dataset has the complete list of geographic header
@@ -145,7 +145,7 @@
 #' page 2-8
 #'
 #'
-"dict_decennial_geoheader"
+"dict_decennial_geoheader_2010"
 
 
 # dict_decennial_geoheader 2000 ================================================
@@ -178,7 +178,7 @@
 
 
 
-# dict_decennial_summarylevel =====================================================
+# dict_decennial_summarylevel_2010 =====================================================
 #' Summary levels available in Census 2010
 #'
 #' @description  This data contains summary levels and codes used in census 2010
@@ -204,10 +204,41 @@
 #'
 #'
 
-"dict_decennial_summarylevel"
+"dict_decennial_summarylevel_2010"
 
 
-# dict_all_geocomponent =====================================================
+
+# dict_decennial_summarylevel_2000 =====================================================
+#' Summary levels available in Census 2010
+#'
+#' @description  This data contains summary levels and codes used in census 2010
+#'  summary file 1 (with urban/rural update). Search with function \code{\link{search_summarylevels}}.
+#'
+#' @docType data
+#'
+#'
+#' @format A data.table with 165 rows and 4 variables
+#' \describe{
+#'   \item{code}{code of summary level}
+#'   \item{summary_level}{description of summary level}
+#'   \item{in_state_file}{wheather the summary level available in state files}
+#'   \item{in_US_file}{wheather the summary level available in national files}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source 2010 Census Summary File 1
+#' \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
+#' page 4-16 state summary file with urban/rural update
+#'
+#'
+#'
+
+"dict_decennial_summarylevel_2000"
+
+
+
+# dict_all_geocomponent_2010 =====================================================
 #' List of geographic components and codes
 #'
 #' @description This dataset contains all available geographic components and codes.
@@ -228,4 +259,4 @@
 #' page 6-15
 #'
 #'
-"dict_all_geocomponent"
+"dict_all_geocomponent_2010"

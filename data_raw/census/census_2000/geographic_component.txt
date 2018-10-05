@@ -1,0 +1,99 @@
+00 Not a geographic component
+01 Urban
+02 Urban—in central place of urban area
+03 Urban—not in central place of urban area
+04 Urban—in urbanized area
+05 Urban—in urbanized area of 5,000,000 or more population
+06 Urban—in urbanized area of 2,500,000 to 4,999,999 population
+07 Urban—in urbanized area of 1,000,000 to 2,499,999 population
+08 Urban—in urbanized area of 500,000 to 999,999 population
+09 Urban—in urbanized area of 250,000 to 499,999 population
+10 Urban—in urbanized area of 100,000 to 249,999 population
+11 Urban—in urbanized area of 50,000 to 99,999 population
+12 Urban—in urbanized area—in central place of urbanized area
+13 Urban—in urbanized area of 5,000,000 or more population—in central place of urbanized area
+14 Urban—in urbanized area of 2,500,000 to 4,999,999 population—in central place of urbanized area
+15 Urban—in urbanized area of 1,000,000 to 2,499,999 population—in central place of urbanized area
+16 Urban—in urbanized area of 500,000 to 999,999 population—in central place of urbanized area
+17 Urban—in urbanized area of 250,000 to 499,999 population—in central place of urbanized area
+18 Urban—in urbanized area of 100,000 to 249,999 population—in central place of urbanized area
+19 Urban—in urbanized area of 50,000 to 99,999 population—in central place of urbanized area
+20 Urban—in urbanized area—not in central place of urbanized area
+21 Urban—in urbanized area of 5,000,000 or more population—not in central place of urbanized area
+22 Urban—in urbanized area of 2,500,000 to 4,999,999 population—not in central place of urbanized area
+23 Urban—in urbanized area of 1,000,000 to 2,499,999 population—not in central place of urbanized area
+24 Urban—in urbanized area of 500,000 to 999,999 population—not in central place of urbanized area
+25 Urban—in urbanized area of 250,000 to 499,999 population—not in central place of urbanized area
+26 Urban—in urbanized area of 100,000 to 249,999 population—not in central place of urbanized area
+27 Urban—in urbanized area of 50,000 to 99,999 population—not in central place of urbanized area
+28 Urban—in urban cluster
+29 Urban—in urban cluster of 25,000 to 49,999 population
+30 Urban—in urban cluster of 10,000 to 24,999 population
+31 Urban—in urban cluster of 5,000 to 9,999 population
+32 Urban—in urban cluster of 2,500 to 4,999 population
+33 Urban—in urban cluster—inside central place
+34 Urban—in urban cluster of 25,000 to 49,999 population—inside central place
+35 Urban—in urban cluster of 10,000 to 24,999 population—inside central place
+36 Urban—in urban cluster of 5,000 to 9,999 population—inside central place
+37 Urban—in urban cluster of 2,500 to 4,999 population—inside central place
+38 Urban—in urban cluster—not in central place
+39 Urban—in urban cluster of 25,000 to 49,999 population—not in central place
+40 Urban—in urban cluster of 10,000 to 24,999 population—not in central place
+41 Urban—in urban cluster of 5,000 to 9,999 population—not in central place
+42 Urban—in urban cluster of 2,500 to 4,999 population—not in central place
+43 Rural
+44 Rural—place
+45 Rural—place of 2,500 or more population
+46 Rural—place of 1,000 to 2,499 population
+47 Rural—place of less than 1,000 population
+48 Rural—not in place
+49 Rural—farm
+50 Urban portion of extended city
+51 Rural portion of extended city
+52 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA)
+53 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 5,000,000 or more population
+54 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 2,500,000 to 4,999,999 population
+55 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 1,000,000 to 2,499,999 population
+56 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 500,000 to 999,999 population
+57 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 250,000 to 499,999 population
+58 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 100,000 to 249,999 population
+59 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 50,000 to 99,999 population
+60 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA)— urban
+61 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA)— urban—in urbanized area
+62 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA)— urban—in urban cluster
+63 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA)— rural
+64 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA)—in MSA/CMSA central city
+65 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 5,000,000 or more population—in MSA/CMSA central city
+66 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 2,500,000 to 4,999,999 population—in MSA/CMSA central city
+67 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 1,000,000 to 2,499,999 population—in MSA/CMSA central city
+68 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 500,000 to 999,999 population—in MSA/CMSA central city
+69 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 250,000 to 499,999 population—in MSA/CMSA central city
+70 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 100,000 to 249,999 population—in MSA/CMSA central city
+71 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 50,000 to 99,999 population—in MSA/CMSA central city
+72 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA)— not in MSA/CMSA central city
+73 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 5,000,000 or more population—not in MSA/CMSA central city
+74 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 2,500,000 to 4,999,999 population—not in MSA/CMSA central city
+75 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 1,000,000 to 2,499,999 population—not in MSA/CMSA central city
+76 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 500,000 to 999,999 population—not in MSA/CMSA central city
+77 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 250,000 to 499,999 population—not in MSA/CMSA central city
+78 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 100,000 to 249,999 population—not in MSA/CMSA central city
+79 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA) of 50,000 to 99,999 population—not in MSA/CMSA central city
+80 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA)— not in MSA/CMSA central city—urban
+81 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA)— not in MSA/CMSA central city—urban—in urbanized area
+82 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA)— not in MSA/CMSA central city—urban—in urban cluster
+83 In metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA)— not in MSA/CMSA central city—rural
+84 Not in metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA)
+85 Not in metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA)—urban
+86 Not in metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA)—urban—inside urbanized area
+87 Not in metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA)—urban—inside urban cluster
+88 Not in metropolitan statistical area (MSA)/consolidated metropolitan statistical area (CMSA)—rural
+89 American Indian reservation and trust land—Federal Tribe
+90 American Indian reservation and trust land—State Tribe
+91 Oklahoma Tribal Statistical Area
+92 Tribal Designated Statistical Area
+93 Alaska Native Village Statistical Area
+94 State Designated American Indian Statistical Area
+95 Hawaiian Home Land
+96 In New England County Metropolitan Area
+97 In New England County Metropolitan Area—in central city
+98 In New England County Metropolitan Area—not in central city

@@ -82,8 +82,13 @@ search_geoheaders <- function(survey, keyword = "*", view = TRUE) {
 
 search_tablecontents <- function(survey, keyword = "*", year = NULL, view = TRUE) {
 
-    if (survey %in% c("decennial", "dec")) dt <- generate_decennial_tablecontents_()
-    if (survey == "acs") dt <- generate_acs_tablecontents_()
+    if (survey %in% c("decennial", "dec")){
+        cat(paste0("Be aware that the same reference may point to different ",
+                   "table content in census 2000 and 2010."))
+        dt <- generate_decennial_tablecontents_()
+    } else if (survey == "acs"){
+        dt <- generate_acs_tablecontents_()
+    }
 
     keywords <- unlist(str_split(tolower(keyword), " "))
     for (kw in keywords){

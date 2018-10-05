@@ -5,23 +5,23 @@ library(stringr)
 
 
 # all available geographic component
-dict_all_geocomponent_2010 <- fread("data_raw/census/census_2010/geographic_component", sep = "\n", header = FALSE) %>%
+dict_all_geocomponent_2000 <- fread("data_raw/census/census_2000/geographic_component.txt", sep = "\n", header = FALSE) %>%
     # first two letters are code and others are description
     .[, .(code = str_sub(V1, 1, 2),
           geo_component = str_sub(V1, 3, nchar(V1)))] %>%
     setkey(code)
 
-save(dict_all_geocomponent_2010, file = "data/dict_all_geocomponent_2010.RData")
+save(dict_all_geocomponent_2000, file = "data/dict_all_geocomponent_2000.RData")
 
 
 # geocomponent used in decennial 2010. This data is created after
 # read_decennial() is created.
 make_decennial_component <- function(){
-    state <- read_decennial(2010, states_DC, geo_comp = "*") %>%
+    state <- read_decennial(2000, states_DC, geo_comp = "*") %>%
         .[, .(code = unique(GEOCOMP))] %>%
         .[, state_file := "yes"] %>%
         setkey(code)
-    us <- read_decennial(2010, "US", , geo_comp = "*") %>%
+    us <- read_decennial(2000, "US", , geo_comp = "*") %>%
         .[, .(code = unique(GEOCOMP))] %>%
         .[, US_file := "yes"] %>%
         setkey(code)

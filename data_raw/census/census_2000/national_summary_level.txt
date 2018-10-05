@@ -1,0 +1,63 @@
+010 United States
+020 Region
+030 Division
+040 State
+050 State-County
+060 State-County-County Subdivision
+070 State-County-County Subdivision-Place/Remainder
+160 State-Place
+155 State-Place-County
+170 State-Consolidated City
+172 State-Consolidated City-Place Within Consolidated City
+500 State-Congressional District (106th)
+250 American Indian Area/Alaska Native Area/Hawaiian Home Land
+260 American Indian Area/Alaska Native Area/Hawaiian Home Land-State
+270 American Indian Area/Alaska Native Area/Hawaiian Home Land-State-County
+271 American Indian Area/Alaska Native Area/Hawaiian Home Land-State-CountyCounty Subdivision
+273 American Indian Area/Alaska Native Area/Hawaiian Home Land-StateCounty-County Subdivision-Place/Remainder
+252 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)
+262 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-State
+272 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-State-County
+275 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-State-County-County Subdivision
+276 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-State-County-County Subdivision-Place/Remainder
+254 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land
+264 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home LandState
+274 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land-State-County
+277 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land-State-County-County Subdivision
+278 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land-State-County-County Subdivision-Place/Remainder
+256 Specified American Indian Area -Tribal Census Tract
+291 Specified American Indian Area (Reservation or Statistical Entity Only)-Tribal Census Tract
+292 Specified American Indian Area (Off-Reservation Trust Land Only)-Tribal Census Tract
+258 Specified American Indian Area-Tribal Census Tract-Tribal Block Group
+293 Specified American Indian Area (Reservation or Statistical Entity Only)-Tribal Census Tract-Tribal Block Group
+294 Specified American Indian Area (Off-Reservation Trust Land Only)-Tribal Census Tract-Tribal Block Group
+251 American IndianArea/Alaska NativeArea/Hawaiian Home Land-Tribal Subdivision/Remainder
+253 American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-Tribal Subdivision/Remainder
+255 American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home LandTribal Subdivision/Remainder
+257 Specified American Indian Area-Tribal Subdivision/Remainder-Tribal Census Tract
+259 Specified American Indian Area-Tribal Subdivision/Remainder-Census TractTribal Block Group
+290 American Indian Area/Alaska Native Area/Hawaiian Home Land-Tribal Subdivision/Remainder-State
+230 State-Alaska Native Regional Corporation
+380 Metropolitan Statistical Area/Consolidated Metropolitan Statistical Area
+381 Metropolitan Statistical Area/Consolidated Metropolitan Statistical Area-State
+382 Metropolitan Statistical Area/Consolidated Metropolitan Statistical Area-StateCentral City
+383 Metropolitan Statistical Area/Consolidated Metropolitan Statistical Area-StateCounty
+384 Metropolitan Statistical Area/Consolidated Metropolitan Statistical Area-State [6 states only CT, ME, MA, NH, RI, VT]-County-County Subdivision
+385 Consolidated Metropolitan Statistical Area-Primary Metropolitan Statistical Area
+386 Consolidated Metropolitan Statistical Area-Primary Metropolitan Statistical AreaState
+387 Consolidated Metropolitan Statistical Area-Primary Metropolitan Statistical Area-State-County
+388 Consolidated Metropolitan Statistical Area-Primary Metropolitan Statistical Area-State [6 states only CT, ME, MA, NH, RI, VT]-CountyCounty Subdivision
+370 New England County Metropolitan Area
+371 New England County Metropolitan Area-State
+372 New England County Metropolitan Area-State-Central City
+373 New England County Metropolitan Area-State-County
+400 Urban Area
+410 Urban Area-State
+460 Urban Area-State-Central Place
+462 Urban Area-State-Consolidated City
+464 Urban Area-State-Consolidated City-Place Within Consolidated City
+430 Urban Area-State-County
+440 Urban Area-State-County-County Subdivision
+450 Urban Area-State-County-County Subdivision-Place/Remainder
+850 3-digit ZIP Code Tabulation Area
+860 5-digit ZIP Code Tabulation Area

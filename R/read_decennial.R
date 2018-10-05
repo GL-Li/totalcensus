@@ -255,7 +255,7 @@ read_decennial_areas_ <- function(year,
     if (!is.null(areas)) geo_headers <- unique(dt_areas[, geoheader])
 
     # switch summary level and geocomponent
-    summary_level <- switch_summarylevel(summary_level)
+    summary_level <- switch_summarylevel(summary_level, year)
     geo_comp <- switch_geocomp(geo_comp)
 
 
@@ -379,7 +379,7 @@ read_decennial_geoheaders_ <- function(year,
     if (!is.null(geo_headers)) geo_headers <- toupper(geo_headers)
 
     # switch summary level to code
-    summary_level <- switch_summarylevel(summary_level)
+    summary_level <- switch_summarylevel(summary_level, year)
     geo_comp <- switch_geocomp(geo_comp)
 
 
@@ -492,7 +492,7 @@ read_decennial_geo_ <- function(year,
     #=== read files and select columns ===
     if (year == 2010){
         file_extension = ".ur1"
-        dict_geoheader = dict_decennial_geoheader
+        dict_geoheader = dict_decennial_geoheader_2010
     } else if (year == 2000){
         file_extension = ".uf1"
         dict_geoheader = dict_decennial_geoheader_2000
@@ -572,17 +572,20 @@ read_decennial_1_file_tablecontents_ <- function(year,
 
     #=== read data ===
 
-    if (year == 2010){
-        lookup_decennial <- lookup_decennial_2010
-    }
+    lookup <- get(paste0("lookup_decennial_", year))
 
     # determine location of the flds in file_seg
-    all_contents <- lookup_decennial[file_segment == file_seg, reference]
+    all_contents <- lookup[file_segment == file_seg, reference]
     loc <- which(all_contents %in% table_contents)
     cols <- paste0("V", loc)
 
+    if (year == 2010){
+        file_extension = ".ur1"
+    } else if (year == 2000){
+        file_extension = ".uf1"
+    }
     file <- paste0(path_to_census, "/census", year, "/", state, "/", tolower(state),
-                   "000", file_seg, year, ".ur1")
+                   "000", file_seg, year, file_extension)
 
     if (show_progress) {
         cat(paste("Reading", state, "file", file_seg, "\n"))
