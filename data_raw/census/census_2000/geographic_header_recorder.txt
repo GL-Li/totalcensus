@@ -1,5 +1,5 @@
 File Identification . . . . . . . . . . . . . FILEID 6 1 A/N XXXXX X
-State/US-Abbreviation (USPS) . STUSAB 2 7 AXXXXX X
+State/US Abbreviation (USPS) . STUSAB 2 7 AXXXXX X
 Summary Level............... SUMLEV 3 9 N XXXXX X
 Geographic Component ....... GEOCOMP 2 12 A/N XXXXX X
 Characteristic Iteration ........ CHARITER 3 14 A/N XXXXX X
@@ -10,7 +10,7 @@ Region ...................... REGION 1 26 A/N XXXXX X
 Division. . . . . . . . . . . . . . . . . . . . . . DIVISION 1 27 A/N XXXXX X
 State (Census) . . . . . . . . . . . . . . . STATECE 2 28 A/N XXXXX X
 State (FIPS) . . . . . . . . . . . . . . . . . STATE 2 30 A/N XXXXX X
-County ...................... COUNTY 3 32 A/N XXXX X
+County (FIPS) ...................... COUNTY 3 32 A/N XXXX X
 County Size Code ............ COUNTYSC 2 35 A/N XXXX X
 County Subdivision (FIPS) ..... COUSUB 5 37 A/N X X X X
 FIPS County Subdivision Class
@@ -84,16 +84,16 @@ Chamber)................... SLDL 3 148 A/N
 Voting District . . . . . . . . . . . . . . . . VTD 6 151 A/N
 Voting District Indicator ........ VTDI 1 157 A/N
 ZIP Code Tabulation Area
-(3 digit). . . . . . . . . . . . . . . . . . . . . ZCTA3 3 158 A/N
+(3-Digit). . . . . . . . . . . . . . . . . . . . . ZCTA3 3 158 A/N
 ZIP Code Tabulation Area
-(5 digit). . . . . . . . . . . . . . . . . . . . . ZCTA5 5 161 A/N
+(5-Digit). . . . . . . . . . . . . . . . . . . . . ZCTA5 5 161 A/N
 Subbarrio (FIPS) ............. SUBMCD 5 166 A/N X
 FIPS Subbarrio Class Code.... SUBMCDCC 2 171 A/N X
 Area (Land) .................. AREALAND 14 173 A/N XXXXX X
 Area (Water) . . . . . . . . . . . . . . . . . AREAWATR 14 187 A/N X X X X X X
-Area Name – Legal/Statistical
+Area Name-Legal/Statistical
 Area Description (LSAD)
-Term – Part Indicator. . . . . . . . . NAME 90 201 A/N XXXXX X
+Term-Part Indicator. . . . . . . . . NAME 90 201 A/N XXXXX X
 Functional Status Code........ FUNCSTAT 1 291 A/N XXXXX X
 Geographic Change User Note
 Indicator . . . . . . . . . . . . . . . . . . . . GCUNI 1 292 A/N XXXXX

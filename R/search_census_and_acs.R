@@ -29,14 +29,24 @@
 #' @export
 #'
 search_geoheaders <- function(survey, keyword = "*", view = TRUE) {
+    if (survey %in% c("dec", "decennial")){
+        dict <- generate_decennial_geoheaders_()
+    } else if (survey == "acs5"){
+        dict <- generate_acs5_geoheaders_()
+    } else if (survey == "acs1"){
+        cat(paste0("Some of 2005 fields are mofified to be consistent with ",
+                   "later years. Run View(dict_acs_geoheader_2005_1year) ",
+                   "to check for original field description."))
+        dict <- generate_acs1_geoheaders_()
 
-    dict <- get(paste0("dict_", survey, "_geoheader"))
+    } else {
+        message('Survey must be "dec", "decennial", "acs5", or "acs1"')
+    }
 
     dt1 <- dict[grepl(tolower(keyword), tolower(reference))]
     dt2 <- dict[grepl(tolower(keyword), tolower(field))]
 
     dt <- rbindlist(list(dt1, dt2)) %>%
-        .[, .(field, reference)] %>%
         unique()
 
     if (view) View(dt, paste(keyword, "found"))
@@ -261,6 +271,87 @@ search_tables <- function(survey, keyword = '*', view = TRUE){
 # the reference are reserved over years, however the table_content and table_name has slight
 # difference which gives trouble in merge data. We will only use reference for
 # data merge and keep only one table content and table name.
+
+generate_decennial_geoheaders_ <- function(){
+    # generate dict_decennial_geoheaders for all years
+    dict_2010 <- dict_decennial_geoheader_2010 %>%
+        .[, .(reference, field)] %>%
+        .[, census_2010 := "yes"]
+    dict_2000 <- dict_decennial_geoheader_2000 %>%
+        .[, .(reference, field)] %>%
+        .[, census_2000 := "yes"]
+    dict <- merge(dict_2010, dict_2000, by = c("reference", "field"), all = TRUE)
+
+    return(dict)
+}
+
+
+generate_acs5_geoheaders_ <- function(){
+    dict_2009 <- dict_acs_geoheader_2009_5year %>%
+        .[, .(reference, field)] %>%
+        .[, acs5_2009 := "yes"] %>%
+        .[reference != "BLANK"]
+
+    # reference and field are the same for non-BLANKS after 2010
+    # dict_2010 <- dict_acs_geoheader_2010 %>%
+    #     .[, .(reference, field)] %>%
+    #     .[, acs5_2010 := "yes"] %>%
+    #     .[reference != "BLANK"]
+    dict_2011_now <- dict_acs_geoheader_2011_now %>%
+        .[, .(reference, field)] %>%
+        .[, acs5_2010_to_now := "yes"] %>%
+        .[reference != "BLANK"]
+    dict <- purrr::reduce(
+        list(dict_2011_now, dict_2009),
+        merge, by = c("reference", "field"), all = TRUE
+    )
+
+    return(dict)
+}
+
+generate_acs1_geoheaders_ <- function(){
+    dict_2005 <- dict_acs_geoheader_2005_1year %>%
+        .[, .(reference, field)] %>%
+        .[, acs1_2005 := "yes"] %>%
+        .[reference != "BLANK"] %>%
+        .[reference == "COUSUB", field := "County Subdivision (FIPS)"] %>%
+        .[reference == "GEOID", field := "Geographic Identifier"] %>%
+        .[reference == "MEMI", field := "Metropolitan/Micropolitan Indicator Flag"] %>%
+        .[reference == "METDIV", field := "Metropolitan Statistical AreaMetropolitan Division"] %>%
+        .[reference == "PLACE", field := "Place (FIPS Code)"] %>%
+        .[reference == "PUMA5", field := "Public Use Microdata Area - 5% File"] %>%
+        .[reference == "SDELM", field := "State-School District (Elementary)"] %>%
+        .[reference == "SDSEC", field := "State-School District (Secondary)"] %>%
+        .[reference == "SDUNI", field := "State-School District (Unified)"] %>%
+        .[reference == "STUSAB", field := "State Postal Abbreviation"] %>%
+        .[reference == "SUMLEV", field := "Summary Level"] %>%
+        .[reference == "NAME", field := "Area Name"] %>%
+        .[reference == "US", field := "US"]
+    dict_2006_2008 <- dict_acs_geoheader_2006_2008_1year %>%
+        .[, .(reference, field)] %>%
+        .[, acs1_2006_to_2008 := "yes"] %>%
+        .[reference != "BLANK"]
+    dict_2009 <- dict_acs_geoheader_2009_1year %>%
+        .[, .(reference, field)] %>%
+        .[, acs1_2009 := "yes"] %>%
+        .[reference != "BLANK"]
+
+    # reference and field are the same for non-BLANKS after 2010
+    # dict_2010 <- dict_acs_geoheader_2010 %>%
+    #     .[, .(reference, field)] %>%
+    #     .[, acs1_2010 := "yes"] %>%
+    #     .[reference != "BLANK"]
+    dict_2011_now <- dict_acs_geoheader_2011_now %>%
+        .[, .(reference, field)] %>%
+        .[, acs1_2010_to_now := "yes"] %>%
+        .[reference != "BLANK"]
+    dict <- purrr::reduce(
+        list(dict_2011_now, dict_2009, dict_2006_2008, dict_2005),
+        merge, by = c("reference", "field"), all = TRUE
+    )
+
+    return(dict)
+}
 
 modify_lookup_table_ <- function(period, year){
     p_y <- paste0("acs", period, "_", year)

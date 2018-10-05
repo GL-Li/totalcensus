@@ -11,6 +11,7 @@ dict_decennial_geoheader_2000 <- fread("data_raw/census/census_2000/geographic_h
     .[, line := ifelse(is.na(line), shift(line, type = "lead"), line)] %>%
     .[, paste(V1, collapse = " "), by = line] %>%
     .[, field := str_extract(V1, "^[^\\.]+")] %>%
+    .[, field := str_remove(field, " +$")] %>%
     .[, V1 := str_remove(V1, "^[^\\.]*\\.+ ")] %>%
     .[, V1 := str_remove(V1, "^[\\.]*(\\. )+")] %>%
     .[, reference := str_extract(V1, "^[^ ]+ ")] %>%

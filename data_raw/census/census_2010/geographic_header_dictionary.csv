@@ -1,6 +1,6 @@
 field, reference, size, start
 File Identification, FILEID, 6, 1
-State/U .S . Abbreviation (USPS), STUSAB, 2, 7
+State/US Abbreviation (USPS), STUSAB, 2, 7
 Summary Level, SUMLEV, 3, 9
 Geographic Component, GEOCOMP, 2, 12
 Characteristic Iteration, CHARITER, 3, 14
@@ -51,8 +51,8 @@ Urban Area Size Code, UASC, 2, 150
 Urban Area Type, UATYPE, 1, 152
 Urban/Rural, UR, 1, 153
 Congressional District (111th), CD, 2, 154
-State Legislative District (Upper Chamber) (Year 1), SLDU, 3, 156
-State Legislative District (Lower Chamber) (Year 1), SLDL, 3, 159
+State Legislative District (Upper Chamber), SLDU, 3, 156
+State Legislative District (Lower Chamber), SLDL, 3, 159
 Voting District, VTD, 6, 162
 Voting District Indicator, VTDI, 1, 168
 Reserved, RESERVE2, 3, 169
