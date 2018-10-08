@@ -1,38 +1,77 @@
-# find the summary level has been used and merge with census summary level
+# find the summary level that has been used and merge with census summary level
 
 library(data.table)
 library(magrittr)
 library(purrr)
 
-state_acs5year <- read_acs5year(states_DC, 2015) %>%
-    .[, .(code = unique(SUMLEV))] %>%
-    .[, state_acs5 := "yes"] %>%
-    setkey(code)
+generate_summary_level <- function(survey, year){
+    if (survey %in% c("dec", "decennial")){
+        state <- read_decennial(year, states_DC)
+        us <- read_decennial(year, "US")
+    } else if (survey == "acs5"){
+        state <- read_acs5year(year, states_DC)
+        us <- read_acs5year(year, "US")
+    } else if (survey == "acs1"){
+        state <- read_acs1year(year, states_DC)
+        us <- read_acs1year(year, "US")
+    }
 
-us_acs5year <- read_acs5year("US", 2015) %>%
-    .[, .(code = unique(SUMLEV))] %>%
-    .[, US_acs5 := "yes"] %>%
-    setkey(code)
+    state <- state[, .(code = unique(SUMLEV))] %>%
+        .[, (paste0("state_", year)) := "yes"] %>%
+        setkey(code)
+    us <- us[, .(code = unique(SUMLEV))] %>%
+        .[, (paste0("US_", year)) := "yes"] %>%
+        setkey(code)
 
-state_acs1year <- read_acs1year(states_DC, 2016) %>%
-    .[, .(code = unique(SUMLEV))] %>%
-    .[, state_acs1 := "yes"] %>%
-    setkey(code)
+    dict <- merge(state, us, all = TRUE) %>%
+        dict_all_summarylevel[., on = .(code)]
 
-us_acs1year <- read_acs1year("US", 2016) %>%
-    .[, .(code = unique(SUMLEV))] %>%
-    .[, US_acs1 := "yes"] %>%
-    setkey(code)
+    return(dict)
+}
 
-dict_acs_summarylevel <- reduce(list(state_acs1year, us_acs1year,
-                                     state_acs5year, us_acs5year),
-                                merge, all = TRUE) %>%
-    dict_census_summarylevel[, .(code, summary_level)][.] %>%
-    .[is.na(state_acs1), state_acs1 := "-"] %>%
-    .[is.na(US_acs1), US_acs1 := "-"] %>%
-    .[is.na(state_acs5), state_acs5 := "-"] %>%
-    .[is.na(US_acs5), US_acs5 := "-"]
+# acs1year summary level ======================================================
+S2017 <- generate_summary_level("acs1", 2017)
+S2016 <- generate_summary_level("acs1", 2016)
+S2015 <- generate_summary_level("acs1", 2015)
+S2014 <- generate_summary_level("acs1", 2014)
+S2013 <- generate_summary_level("acs1", 2013)
+S2012 <- generate_summary_level("acs1", 2012)
+S2011 <- generate_summary_level("acs1", 2011)
+S2010 <- generate_summary_level("acs1", 2010)
+S2009 <- generate_summary_level("acs1", 2009)
+S2008 <- generate_summary_level("acs1", 2008)
+S2007 <- generate_summary_level("acs1", 2007)
+S2006 <- generate_summary_level("acs1", 2006)
+S2005 <- generate_summary_level("acs1", 2005)
 
 
-save(dict_acs_summarylevel, file = "data/dict_acs_summarylevel.RData")
+# same from 2006 to 2017, one row different from 2005
+dict_acs1_summarylevel <- merge(S2017, S2005,
+                                by = c("code", "summary_level"),
+                                all = TRUE) %>%
+    .[, .(code, summary_level,
+          state_2006_to_now = state_2017, state_2005,
+          US_2005_to_now = US_2017)]
+
+save(dict_acs1_summarylevel, file = "data/dict_acs1_summarylevel.RData")
+
+
+# acs5year summary level ======================================================
+S2016 <- generate_summary_level("acs5", 2016)
+S2015 <- generate_summary_level("acs5", 2015)
+S2014 <- generate_summary_level("acs5", 2014)
+S2013 <- generate_summary_level("acs5", 2013)
+S2012 <- generate_summary_level("acs5", 2012)
+S2011 <- generate_summary_level("acs5", 2011)
+S2010 <- generate_summary_level("acs5", 2010)
+S2009 <- generate_summary_level("acs5", 2009)
+
+dict_acs5_summarylevel <- purrr::reduce(list(S2016, S2012, S2011, S2010, S2009),
+                                merge, by = c("code", "summary_level"),
+                                all = TRUE) %>%
+    .[, .(code, summary_level,
+          state_2013_to_now = state_2016, state_2012, state_2009_to_2011 = state_2011,
+          US_2011_to_now = US_2016, US_2010, US_2009)]
+
+save(dict_acs5_summarylevel, file = "data/dict_acs5_summarylevel.RData")
 

@@ -539,7 +539,7 @@ read_acs1year_geo_ <- function(year,
                    tolower(state), ".csv")
 
     if (year >= 2011){
-        dict_geoheader <- dict_acs_geoheader
+        dict_geoheader <- dict_acs_geoheader_2011_now
     } else if (year == 2010){
         dict_geoheader <- dict_acs_geoheader_2010
     }else if (year == 2009){

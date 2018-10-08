@@ -348,6 +348,10 @@ download_acs5year_1_state_ <- function(year, state){
 
     full <- state_names[abbr == state, full]
 
+    if (year == 2009 & toupper(state) == "DC"){
+        full <- "DistrictofColumbia"  # all other years DistrictOfColumbia
+    }
+
     # all geography not tracts and block groups
     url_1 <- paste0(
         "https://www2.census.gov/programs-surveys/acs/summary_file/",
@@ -606,6 +610,16 @@ download_acs1year_1_state_ <- function(year, state){
         )
     }
 
+    if (year == 2005){
+        if (toupper(state) == "US"){
+            full <- "0UnitedStates"    #
+        }
+        url <- paste0(
+            "https://www2.census.gov/programs-surveys/acs/summary_file/2005/data/",
+            full, "/", "all_", tolower(state), ".zip"
+        )
+    }
+
     save_as <- paste0(path_to_census, "/", tolower(state), ".zip")
     download.file(url, save_as, method = "auto")
 
@@ -655,7 +669,48 @@ download_acs1year_1_state_ <- function(year, state){
         )
         geo_save_as <- paste0(path_to_year, "/g", year, "1", tolower(state), ".txt")
         download.file(geo_url, geo_save_as, method = "auto")
+
     } else if (year == 2005){
+        # directory and format change every year !!!!
+        if (toupper(state) == "US"){
+            full <- "UnitedStates"    # have to change back from www2 site
+        }
+        directory <- paste0(path_to_year, "/prt03/ftp2/sumfile/", full)
+        for (f in list.files(directory, pattern = "*.zip")){
+            unzip(paste0(directory, "/", f), exdir = path_to_year)
+        }
+
+        # move out of the unzipped directory
+        zip_dir <- paste0(path_to_year, "/tab4/sumfile/prod/data")
+        for (f in list.files(zip_dir, pattern = "*")){
+            #m20061us0143000.txt
+            f1 <- str_remove_all(f, "\\.|-") %>%
+                str_remove("...$")
+            yr <- str_extract(f1, "....$")  # year
+            tp <- str_remove(f1, "....$") %>%    # type
+                str_extract(".$")
+            num <- str_remove(f1, ".....$") %>%   # file number
+                str_extract("....$")
+            st <- str_extract(f1, "^..")   # state
+            new_name <- paste0(tp, yr, "1", st, num, "000.txt")
+
+            file.rename(paste0(zip_dir, "/", f), paste0(path_to_year, "/", new_name))
+        }
+
+        # delete the directory
+        unlink(paste0(path_to_year, "/prt03"), recursive = TRUE)
+        unlink(paste0(path_to_year, "/tab4"), recursive = TRUE)
+
+        # have to download geography file seperately
+        if (toupper(state) == "US"){
+            full <- "0UnitedStates"
+        }
+        geo_url <- paste0(
+            "https://www2.census.gov/programs-surveys/acs/summary_file/2005/data/",
+            full, "/", tolower(state), "geo.2005-1yr"
+        )
+        geo_save_as <- paste0(path_to_year, "/g", year, "1", tolower(state), ".txt")
+        download.file(geo_url, geo_save_as, method = "auto")
 
     }
 

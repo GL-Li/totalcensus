@@ -19,12 +19,12 @@ make_acs_lookup <- function(period, year){
     # period : 1 or 5 year
     # year : year of the survey
     file_lookup <- paste0(
-        "data_raw/",
+        "data_raw/acs/",
         "ACS_", period, "yr_Seq_Table_Number_Lookup_", year, ".txt"
     )
 
     file_lookup_xls <- paste0(
-        "data_raw/",
+        "data_raw/acs/",
         "ACS_", period, "yr_Seq_Table_Number_Lookup_", year, ".xls"
     )
 
@@ -44,6 +44,10 @@ make_acs_lookup <- function(period, year){
             .[!is.na(table_number)] %>%
             .[, file_segment := as.character(as.integer(file_segment))] %>%
             .[, reference := as.integer(str_extract(reference, "[0-9]*"))] %>%
+
+            # correct a mistake in original xls file
+            .[file_segment == "2" & reference == 4, reference := 3] %>%
+
             .[, .(reference = 1:reference), by = .(table_number, file_segment, table_name)] %>%
             .[, .(table_number, file_segment, reference = as.character(reference), table_name)]
     } else {
