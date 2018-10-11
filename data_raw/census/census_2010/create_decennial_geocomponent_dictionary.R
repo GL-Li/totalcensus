@@ -9,6 +9,7 @@ dict_all_geocomponent_2010 <- fread("data_raw/census/census_2010/geographic_comp
     # first two letters are code and others are description
     .[, .(code = str_sub(V1, 1, 2),
           geo_component = str_sub(V1, 3, nchar(V1)))] %>%
+    .[, geo_component := str_trim(geo_component)] %>%
     setkey(code)
 
 save(dict_all_geocomponent_2010, file = "data/dict_all_geocomponent_2010.RData")

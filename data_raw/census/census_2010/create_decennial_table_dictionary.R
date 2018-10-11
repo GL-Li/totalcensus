@@ -15,10 +15,14 @@ make_table_list <- function(){
     table_list <- fread("data_raw/census/census_2010/table_list.csv") %>%
         .[, universe := str_sub(universe, 11, nchar(universe))] %>%
         .[, table_number := str_extract(table_name, "^[^.]*")] %>%
-        .[, table_name := str_replace(table_name, "^[^ ]*", "")] %>%
-        .[, year := 2010] %>%
-        setcolorder(c("year", "table_ref", "table_number", "table_name", "universe")) %>%
-        setkey(table_ref)
+        .[, table_name := str_replace(table_name, "^[^ ]* ", "")] %>%
+        .[, table_ref := {tmp1 = str_extract(table_number, "^[:upper:]+")
+                          tmp2 = str_remove(table_number, "^[:upper:]+")
+                          tmp3 = ifelse(str_length(tmp2) == 1, paste0("00", tmp2), paste0("0", tmp2))
+                          tmp4 = paste0(tmp1, tmp3)
+                          .(tmp4)}] %>%
+        #.[, year := 2010] %>%
+        setcolorder(c("table_number", "table_name", "universe", "table_ref"))
     return(table_list)
 }
 

@@ -2,50 +2,60 @@ library(data.table)
 library(magrittr)
 library(purrr)
 
-# dict_acs_table ===========================================================
+# dict_acs_table
 # the table_number are reserved across years, however the table_name has slight
 # difference which gives trouble in merge data. We will only use table_number for
 # data merge and keep only one table name.
-acs1_2014 <- lookup_acs1year_2014[, .(table_number, name_acs1_2014 = table_name)] %>%
-    unique() %>%
-    .[, acs1_2014 := "yes"] %>%
-    setkey(table_number)
 
-acs1_2015 <- lookup_acs1year_2015[, .(table_number, name_acs1_2015 = table_name)] %>%
-    unique() %>%
-    .[, acs1_2015 := "yes"] %>%
-    setkey(table_number)
-
-acs1_2016 <- lookup_acs1year_2016[, .(table_number, name_acs1_2016 = table_name)] %>%
-    unique() %>%
-    .[, acs1_2016 := "yes"] %>%
-    setkey(table_number)
+make_acs_tables <- function(survey, year){
+    lookup <- get(paste0("lookup_", survey, "year_", year))
+    table <- lookup[, .(table_number, table_name, universe)] %>%
+        .[, universe := str_remove(universe, "^Universe: ")] %>%
+        setnames(c("table_name", "universe"),
+                 c(paste0("name_", year), paste0("universe_", year))) %>%
+        unique(by = "table_number") %>%
+        .[, (paste0(survey, "_", year)) := "yes"]
+}
 
 
-acs5_2015 <- lookup_acs5year_2015[, .(table_number, name_acs5_2015 = table_name)] %>%
-    unique() %>%
-    .[, acs5_2015 := "yes"] %>%
-    setkey(table_number)
+# acs1 ====
 
-acs5_2016 <- lookup_acs5year_2016[, .(table_number, name_acs5_2016 = table_name)] %>%
-    unique() %>%
-    .[, acs5_2016 := "yes"] %>%
-    setkey(table_number)
+# make tables of year 2005 - 2017
+for (year in 2005:2017){
+    assign(paste0("acs1_", year), make_acs_tables("acs1", year))
+}
+
+# merge all tables, use newer names if possible
+acs1_table <- reduce(lapply(paste0("acs1_", 2005:2017), get),
+                           merge, by = "table_number", all = TRUE)
+
+for (year in 2005:2017){
+    acs1_table[get(paste0("acs1_", year)) == "yes", table_name := get(paste0("name_", year))]
+    acs1_table[get(paste0("acs1_", year)) == "yes", universe := get(paste0("universe_", year))]
+}
+
+dict_acs1_table <- acs1_table[, c("table_number", "table_name", paste0("acs1_", 2017:2005), "universe"),
+                              with = FALSE]
+
+save(dict_acs1_table, file = "data/dict_acs1_table.RData")
 
 
-dict_acs_table <- reduce(list(acs1_2014, acs1_2015, acs1_2016, acs5_2015, acs5_2016), merge, all = TRUE) %>%
-    # consolidate table_names
-    .[acs1_2014 == "yes", table_name := name_acs1_2014] %>%
-    .[acs1_2015 == "yes", table_name := name_acs1_2015] %>%
-    .[acs1_2016 == "yes", table_name := name_acs1_2016] %>%
-    .[acs5_2015 == "yes", table_name := name_acs5_2015] %>%
-    .[acs5_2016 == "yes", table_name := name_acs5_2016] %>%
-    .[, .(table_number, table_name, acs5_2016, acs5_2015, acs1_2016, acs1_2015, acs1_2014)] %>%
-    .[is.na(acs5_2016), acs5_2016 := "-"] %>%
-    .[is.na(acs5_2015), acs5_2015 := "-"] %>%
-    .[is.na(acs1_2016), acs1_2016 := "-"] %>%
-    .[is.na(acs1_2015), acs1_2015 := "-"] %>%
-    .[is.na(acs1_2014), acs1_2014 := "-"]
 
-save(dict_acs_table, file = "data/dict_acs_table.RData")
+# acs5 ====
+for (year in 2009:2016){
+    assign(paste0("acs5_", year), make_acs_tables("acs5", year))
+}
 
+# merge all tables, use newer names if possible
+acs5_table <- reduce(lapply(paste0("acs5_", 2009:2016), get),
+                     merge, by = "table_number", all = TRUE)
+
+for (year in 2009:2016){
+    acs5_table[get(paste0("acs5_", year)) == "yes", table_name := get(paste0("name_", year))]
+    acs5_table[get(paste0("acs5_", year)) == "yes", universe := get(paste0("universe_", year))]
+}
+
+dict_acs5_table <- acs5_table[, c("table_number", "table_name", paste0("acs5_", 2016:2009), "universe"),
+                              with = FALSE]
+
+save(dict_acs5_table, file = "data/dict_acs5_table.RData")

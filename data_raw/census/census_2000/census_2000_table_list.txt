@@ -230,7 +230,7 @@ ALONE)
 Universe: People who are Some other race alone ............................................ 27
 P27G. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) (TWO OR MORE RACES)
 Universe: People who are Two or more races................................................ 27
-P28H. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) (HISPANIC OR LATINO)
+P27H. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) (HISPANIC OR LATINO)
 Universe: People who are Hispanic or Latino ................................................ 27
 P27I. RELATIONSHIP BY HOUSEHOLD TYPE (INCLUDING LIVING ALONE) (WHITE ALONE, NOT
 HISPANIC OR LATINO)

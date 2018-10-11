@@ -573,3 +573,18 @@ convert_geocomp_name <- function(dt){
 
     return(dt)
 }
+
+
+select_columns <- function(df, contains){
+    # select column names that contain element in a vector contains
+
+    # Args____
+    # df: a data frame or data table
+    # contains: such as 2010:2013 and c("aaa", "bbb")
+
+    cols <- names(df)
+    selected <- str_detect(cols, paste0(contains, collapse = "|"))
+    selected_cols <- cols[selected]
+
+    return(selected_cols)
+}

@@ -5,10 +5,12 @@ library(stringr)
 
 
 # all available geographic component
-dict_all_geocomponent_2000 <- fread("data_raw/census/census_2000/geographic_component.txt", sep = "\n", header = FALSE) %>%
+dict_all_geocomponent_2000 <- fread("data_raw/census/census_2000/geographic_component.txt",
+                                    sep = "\n", header = FALSE) %>%
     # first two letters are code and others are description
     .[, .(code = str_sub(V1, 1, 2),
           geo_component = str_sub(V1, 3, nchar(V1)))] %>%
+    .[, geo_component := str_trim(geo_component)] %>%
     setkey(code)
 
 save(dict_all_geocomponent_2000, file = "data/dict_all_geocomponent_2000.RData")
@@ -21,7 +23,7 @@ make_decennial_component <- function(){
         .[, .(code = unique(GEOCOMP))] %>%
         .[, state_file := "yes"] %>%
         setkey(code)
-    us <- read_decennial(2000, "US", , geo_comp = "*") %>%
+    us <- read_decennial(2000, "US", geo_comp = "*") %>%
         .[, .(code = unique(GEOCOMP))] %>%
         .[, US_file := "yes"] %>%
         setkey(code)
@@ -39,8 +41,8 @@ make_decennial_component <- function(){
 
 dict_tmp <- make_decennial_component()
 
-dict_decennial_geocomponent_2010 <- dict_all_geocomponent_2010[dict_tmp] %>%
+dict_decennial_geocomponent_2000 <- dict_all_geocomponent_2000[dict_tmp] %>%
     .[order(code)]
 
-save(dict_decennial_geocomponent_2010, file = "data/dict_decennial_geocomponent_2010.RData")
+save(dict_decennial_geocomponent_2000, file = "data/dict_decennial_geocomponent_2000.RData")
 
