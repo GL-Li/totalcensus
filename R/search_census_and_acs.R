@@ -1,13 +1,13 @@
 # user functions =======================================================
 
 
-#' Search table contents in data files
+#' Search Table Contents
 #'
 #' @description Search in lookup datasets of each survey to find references of
-#' for table_contents argument in function \code{\link{read_decennial}},
+#' table_contents argument in function \code{\link{read_decennial}},
 #' \code{\link{read_acs1year}}, and \code{\link{read_acs5year}}.
 #'
-#' @param survey survey type, including "dec", decennial", "acs1" or "acs5".
+#' @param survey survey type, including "dec" (or "decennial"), "acs1" or "acs5".
 #' @param years year or ending year of the survey, can be a single year such as
 #' 2010 or a vector like 2014:2016.
 #' @param keywords keyword to search in code or description, in the form like
@@ -111,12 +111,13 @@ search_tablecontents <- function(survey, years = NULL, keywords = NULL, view = T
 
 
 
-#' Search geographic headers
+#' Search Geographic Headers
 #'
 #' @description Search in field reference or description of geographic header
-#' records.
+#' records to find the reference of "geo_headers" argument in function \code{\link{read_decennial}},
+#' \code{\link{read_acs1year}}, and \code{\link{read_acs5year}}.
 #'
-#' @param survey survey type, including "dec", decennial", "acs1" or "acs5".
+#' @param survey survey type, including "dec" (or "decennial"), "acs1" or "acs5".
 #' @param years year or ending year of the survey, can be a single year such as
 #' 2010 or a vector like 2014:2016.
 #' @param keywords keyword to search in code or description, in the form like
@@ -228,11 +229,13 @@ search_geoheaders <- function(survey, years = NULL, keywords = NULL, view = TRUE
 
 
 
-#' Search summary levels
+#' Search Summary Levels
 #'
-#' @description Search code or description of summary levels
+#' @description Search code or description of summary levels for summary_level
+#' argument in  function \code{\link{read_decennial}},
+#' \code{\link{read_acs1year}}, and \code{\link{read_acs5year}}.
 #'
-#' @param survey survey type, including "dec", decennial", "acs1" or "acs5".
+#' @param survey survey type, including "dec" (or "decennial"), "acs1" or "acs5".
 #' @param years year or ending year of the survey, can be a single year such as
 #' 2010 or a vector like 2014:2016.
 #' @param keywords keyword to search in code or description, in the form like
@@ -350,9 +353,11 @@ search_summarylevels <- function(survey, years=NULL, keywords = NULL, view = TRU
 
 
 
-#' Search geographic components
+#' Search Geographic Components
 #'
-#' @description Search the code or content of geographic components
+#' @description Search the code or content of geographic components for geo_comp
+#' argument in function \code{\link{read_decennial}},
+#' \code{\link{read_acs1year}}, and \code{\link{read_acs5year}}.
 #'
 #' @details The most frequently used geographic components are:
 #'
@@ -360,7 +365,7 @@ search_summarylevels <- function(survey, years=NULL, keywords = NULL, view = TRU
 #' 01 : urban
 #' 43 : rural
 #'
-#' @param survey survey type, including "dec", decennial", "acs1" or "acs5".
+#' @param survey survey type, including "dec" (or "decennial"), "acs1" or "acs5".
 #' @param years year or ending year of the survey, can be a single year such as
 #' 2010 or a vector like 2014:2016.
 #' @param keywords keyword to search in code or description, in the form like
@@ -476,9 +481,11 @@ search_geocomponents <- function(survey, years = NULL, keywords = NULL, view = T
 
 
 #'
-#' Search decennial and acs tables by years and keywords.
+#' Search Tables
 #'
-#' @param survey survey type, including "dec", decennial", "acs1" or "acs5".
+#' @description Search table numbers and description.
+#'
+#' @param survey survey type, including "dec" (or "decennial"), "acs1" or "acs5".
 #' @param years year or ending year of the survey, can be a single year such as
 #' 2010 or a vector like 2014:2016.
 #' @param keywords keyword to search in code or description, in the form like
