@@ -2,14 +2,18 @@
 % Please edit documentation in R/search_census_and_acs.R
 \name{search_geocomponents}
 \alias{search_geocomponents}
-\title{Search geographic components}
+\title{Search Geographic Components}
 \usage{
-search_geocomponents(survey, keyword = "*", view = TRUE)
+search_geocomponents(survey, years = NULL, keywords = NULL, view = TRUE)
 }
 \arguments{
-\item{survey}{"decennial" or "acs"}
+\item{survey}{survey type, including "dec" (or "decennial"), "acs1" or "acs5".}
 
-\item{keyword}{keyword to search in code or description, "*" for any words.}
+\item{years}{year or ending year of the survey, can be a single year such as
+2010 or a vector like 2014:2016.}
+
+\item{keywords}{keyword to search in code or description, in the form like
+"abc def dsdfsa". Rows with all words are returned.}
 
 \item{view}{display the search result with View if TRUE}
 }
@@ -17,25 +21,25 @@ search_geocomponents(survey, keyword = "*", view = TRUE)
 A data.table
 }
 \description{
-Search the code or content of geographic components
+Search the code or content of geographic components for geo_comp
+argument in function \code{\link{read_decennial}},
+\code{\link{read_acs1year}}, and \code{\link{read_acs5year}}.
 }
 \details{
 The most frequently used geographic components are:
 
 00 : all geographic component
-
 01 : urban
-
 43 : rural
 }
 \examples{
 # Change view = TRUE (default) to View the returned data.
-aaa <- search_geocomponents("decennial", "urban", view = FALSE)
-bbb <- search_geocomponents("acs", "43", view = FALSE)
+aaa <- search_geocomponents("decennial", 2010, "urban", view = FALSE)
+bbb <- search_geocomponents("acs5", 2011:2015, "43", view = FALSE)
 
 \dontrun{
   # view all geocomponents
-  search_geocomponents("decennial")
+  search_geocomponents("dec")
   search_geocomponents("acs")
 }
 

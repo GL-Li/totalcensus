@@ -2,14 +2,18 @@
 % Please edit documentation in R/search_census_and_acs.R
 \name{search_tables}
 \alias{search_tables}
-\title{search decennial and acs tables by keyword in table numbers or table descriptions}
+\title{Search Tables}
 \usage{
-search_tables(survey, keyword = "*", view = TRUE)
+search_tables(survey, years = NULL, keywords = NULL, view = TRUE)
 }
 \arguments{
-\item{survey}{"decennial" or "acs"}
+\item{survey}{survey type, including "dec" (or "decennial"), "acs1" or "acs5".}
 
-\item{keyword}{keyword to search in code or description.}
+\item{years}{year or ending year of the survey, can be a single year such as
+2010 or a vector like 2014:2016.}
+
+\item{keywords}{keyword to search in code or description, in the form like
+"abc def dsdfsa". Rows with all words are returned.}
 
 \item{view}{display the search result with View if TRUE}
 }
@@ -17,17 +21,17 @@ search_tables(survey, keyword = "*", view = TRUE)
 A data.table
 }
 \description{
-search decennial and acs tables by keyword in table numbers or table descriptions
+Search table numbers and description.
 }
 \examples{
 # Change view = TRUE (default) to View the returned data.
-aaa <- search_tables("decennial", "occupancy", view = FALSE)
-bbb <- search_tables("acs", "detailed race", view = FALSE)
+aaa <- search_tables("dec", 2010, "occupancy", view = FALSE)
+bbb <- search_tables("acs5", 2014:2016, "detailed race", view = FALSE)
 
 \dontrun{
   # view all tables
-  search_tables("decennial")
-  search_tables("acs")
+  search_tables("dec")
+  search_tables("acs1")
 }
 
 

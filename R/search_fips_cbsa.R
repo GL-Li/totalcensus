@@ -1,4 +1,4 @@
-#' Search FIPS codes
+#' Search FIPS Codes
 #'
 #' @description  Search FIPS code of a states, counties, county subdivisions, places, or
 #' consolidated cities in dataset \code{\link{dict_fips}}. The search also returns
@@ -18,7 +18,7 @@
 #' and \code{\link{dict_decennial_summarylevel}} are for
 #' State-Place. Always use 160 in census data.
 #'
-#' @param keyword keyword to be searched in NAMES or FIPS.
+#' @param keywords keyword to be searched in NAMES or FIPS.
 #' @param state abbreviation of a state.
 #' @param view display the search result with View if TRUE.
 #'
@@ -42,11 +42,12 @@
 #'
 #'
 
-search_fips <- function(keyword = "*", state = NULL, view = TRUE) {
+search_fips <- function(keywords = NULL, state = NULL, view = TRUE) {
 
     if (is.null(state)) state <- "*"
     dt <- dict_fips[state_abbr %like% toupper(state)]
 
+    if (is.null(keywords)) keywords <- "*"
     keywords <- unlist(str_split(tolower(keyword), " "))
     for (kw in keywords){
         # combine all rows to form a new column for search

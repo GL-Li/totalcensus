@@ -2,25 +2,28 @@
 % Please edit documentation in R/search_census_and_acs.R
 \name{search_geoheaders}
 \alias{search_geoheaders}
-\title{Search geographic headers}
+\title{Search Geographic Headers}
 \usage{
-search_geoheaders(survey, keyword = "*", view = TRUE)
+search_geoheaders(survey, years = NULL, keywords = NULL, view = TRUE)
 }
 \arguments{
-\item{survey}{type of survey, either "decennial" or "acs".}
+\item{survey}{survey type, including "dec" (or "decennial"), "acs1" or "acs5".}
 
-\item{keyword}{keyword in description or reference. The default "*" includes
-all geoheaders.}
+\item{years}{year or ending year of the survey, can be a single year such as
+2010 or a vector like 2014:2016.}
 
-\item{view}{display the search result with View() if TRUE}
+\item{keywords}{keyword to search in code or description, in the form like
+"abc def dsdfsa". Rows with all words are returned.}
+
+\item{view}{display the search result with View if TRUE}
 }
 \value{
 data.table matching the search criteria
 }
 \description{
 Search in field reference or description of geographic header
-with keyword in dataset \code{\link{dict_decennial_geoheader}} or
-\code{\link{dict_acs_geoheader}}.
+records to find the reference of "geo_headers" argument in function \code{\link{read_decennial}},
+\code{\link{read_acs1year}}, and \code{\link{read_acs5year}}.
 }
 \examples{
 # Change view = TRUE (default) to View the returned data.
@@ -28,12 +31,12 @@ with keyword in dataset \code{\link{dict_decennial_geoheader}} or
 aaa <- search_geoheaders("decennial", "india", view = FALSE)
 
 # search for lattitude
-bbb <- search_geoheaders("decennial", "latitu", view = FALSE)
+bbb <- search_geoheaders("dec", 2010, "latitu", view = FALSE)
 
 
 \dontrun{
-  # browse all geoheaders in ACS in View()
-  search_geoheaders("acs")
+  # browse all geoheaders in ACS i year in View()
+  search_geoheaders("acs1")
 }
 
 }

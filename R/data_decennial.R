@@ -92,6 +92,35 @@
 "dict_decennial_table_2010"
 
 
+# dict_decennial_table 2000 ============================================================
+#' Complete list of census tables
+#'
+#' @description This dataset contains all census tables in census 2010 summary
+#' file 1 (with urban/rural update).
+#'
+#'
+#' @docType data
+#'
+#'
+#' @format A data.table with 333 rows and 4 variables:
+#' \describe{
+#'   \item{table_ref}{reference code such as "H0010", "PCT022G"}
+#'   \item{table_number}{table number such as "H1", "PCT22G"}
+#'   \item{table_name}{description of the table}
+#'   \item{universe}{universe of the data}
+#' }
+
+#'
+#' @keywords datasets
+#'
+#' @source 2010 Census Summary File 1
+#' \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
+#' all across chapter 5.
+#'
+#'
+"dict_decennial_table_2000"
+
+
 # dict_decennial_geocomponent_2010 =====================================================
 #' List of geographic components and codes
 #'
@@ -118,6 +147,35 @@
 #'
 #'
 "dict_decennial_geocomponent_2010"
+
+
+# dict_decennial_geocomponent_2000 =====================================================
+#' List of geographic components and codes
+#'
+#' @description This dataset contains the geographic components and codes used in
+#' Census 2010 summary file 1 (with urban/rural update). Search geographic components
+#' with function \code{\link{search_geocomponents}}.
+#'
+#' @docType data
+#'
+#'
+#' @format A data.table with 96 rows and 4 variables:
+#' \describe{
+#'   \item{code}{code for the geocomponent, such as "01" and "M3"}
+#'   \item{geo_component}{description of the geographic component}
+#'   \item{in_state_file}{wheather the geocomponent available in state files}
+#'   \item{in_US_file}{wheather the geocomponent available in national files}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source  2010 Census Summary File 1
+#' \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
+#' page 6-15
+#'
+#'
+"dict_decennial_geocomponent_2000"
+
 
 
 # dict_decennial_geoheader_2010 ========================================================
@@ -260,3 +318,28 @@
 #'
 #'
 "dict_all_geocomponent_2010"
+
+
+
+# dict_all_geocomponent_2000 =====================================================
+#' List of geographic components and codes
+#'
+#' @description This dataset contains all available geographic components and codes.
+#'
+#' @docType data
+#'
+#'
+#' @format A data.table with 96 rows and 4 variables:
+#' \describe{
+#'   \item{code}{code for the geocomponent, such as "01" and "M3"}
+#'   \item{geo_component}{description of the geographic component}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source  2010 Census Summary File 1
+#' \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
+#' page 6-15
+#'
+#'
+"dict_all_geocomponent_2000"

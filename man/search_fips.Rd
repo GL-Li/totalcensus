@@ -2,12 +2,12 @@
 % Please edit documentation in R/search_fips_cbsa.R
 \name{search_fips}
 \alias{search_fips}
-\title{Search FIPS codes}
+\title{Search FIPS Codes}
 \usage{
-search_fips(keyword = "*", state = NULL, view = TRUE)
+search_fips(keywords = NULL, state = NULL, view = TRUE)
 }
 \arguments{
-\item{keyword}{keyword to be searched in NAMES or FIPS.}
+\item{keywords}{keyword to be searched in NAMES or FIPS.}
 
 \item{state}{abbreviation of a state.}
 

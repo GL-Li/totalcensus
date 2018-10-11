@@ -2,16 +2,18 @@
 % Please edit documentation in R/search_census_and_acs.R
 \name{search_tablecontents}
 \alias{search_tablecontents}
-\title{Search table contents in data files}
+\title{Search Table Contents}
 \usage{
-search_tablecontents(survey, keyword = "*", year = NULL, view = TRUE)
+search_tablecontents(survey, years = NULL, keywords = NULL, view = TRUE)
 }
 \arguments{
-\item{survey}{either "decennial" for decenial or "acs" or American Community Survey.}
+\item{survey}{survey type, including "dec" (or "decennial"), "acs1" or "acs5".}
 
-\item{keyword}{keyword to be searched}
+\item{years}{year or ending year of the survey, can be a single year such as
+2010 or a vector like 2014:2016.}
 
-\item{year}{ending year of the survey}
+\item{keywords}{keyword to search in code or description, in the form like
+"abc def dsdfsa". Rows with all words are returned.}
 
 \item{view}{display the search result with View if TRUE}
 }
@@ -20,23 +22,23 @@ A data.table
 }
 \description{
 Search in lookup datasets of each survey to find references of
-for table_contents argument in function \code{\link{read_decennial}},
+table_contents argument in function \code{\link{read_decennial}},
 \code{\link{read_acs1year}}, and \code{\link{read_acs5year}}.
 }
 \examples{
 # Change view = TRUE (default) to View the returned data.
 # search by what you want
-aaa <- search_tablecontents("decennial", "federal prison", view = FALSE)
+aaa <- search_tablecontents("dec", 2000, "federal prison", view = FALSE)
 
 # search by table reference
-bbb <- search_tablecontents("acs", "B02003", view = FALSE)
+bbb <- search_tablecontents("acs1", 2010:2015, "B02003", view = FALSE)
 
 \dontrun{
   # view all decennial census table contents
-  search_tablecontents("decennial")
+  search_tablecontents("dec")
 
-  # view all ACS table contents
-  search_tablecontents("acs")
+  # view all ACS 5 year table contents
+  search_tablecontents("acs5")
 }
 
 }
