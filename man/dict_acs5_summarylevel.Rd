@@ -4,17 +4,19 @@
 \name{dict_acs5_summarylevel}
 \alias{dict_acs5_summarylevel}
 \title{List of summary levels used in ACS 5 year surverys}
-\format{A data.table with 87 rows and 6 variables
+\format{A data.table with 87 rows and 8 variables
 \describe{
   \item{code}{code of summary level}
   \item{summary_level}{description of summary level}
-  \item{state_acs1}{wheather a summary level available in 1-year survey state files}
-  \item{US_acs1}{wheather a summary level available in 1-year survey national files}
-  \item{state_acs5}{wheather a summary level available in 5-year survey state files}
-  \item{US_acs5}{wheather a summary level available in 5-year survey national files}
+  \item{state_2013_to_now}{wheather a summary level available in state files since 2013}
+  \item{state_2012}{wheather a summary level available in state files in 2012}
+  \item{state_2009_to_2011}{wheather a summary level available in state files in 2009 - 2011}
+  \item{US_2011_to_now}{wheather a summary level available in national files since 2011 }
+  \item{US_2010}{wheather a summary level available in national files in 2010 }
+  \item{US_2009}{wheather a summary level available in national files in 2009 }
 }}
 \source{
-generated from lookup datasets
+generated from lookup datasets of years 2009 - 2016
 }
 \usage{
 dict_acs5_summarylevel

@@ -3,13 +3,14 @@
 \docType{data}
 \name{lookup_acs1year_2005}
 \alias{lookup_acs1year_2005}
-\title{ACS 1-year 2008 file segment and table lookup data}
-\format{A data.table with 30558 rows and 7 variables
+\title{ACS 1-year 2005 file segment and table lookup data}
+\format{A data.table with 27246 rows and 7 variables
 \describe{
   \item{file_segment}{sequence number of segment data files, from "0001" to "0166"}
   \item{table_content}{description of columns in a table}
   \item{reference}{reference of the table content, such as "B01001_002". The reference
         is used to extract data of table content.}
+  \item{restriction}{restrictions applied the the table_content}
   \item{table_number}{table number such as "B01001"}
   \item{table_name}{description of table. A table has multiple columns (table_content)}
   \item{universe}{the universe of the data}

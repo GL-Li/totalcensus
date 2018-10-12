@@ -3,7 +3,7 @@
 \docType{data}
 \name{dict_decennial_geoheader_2010}
 \alias{dict_decennial_geoheader_2010}
-\title{List of geographic headers}
+\title{List of geographic headers in census 2010}
 \format{A data.table with 101 rows and 4 variables
 \describe{
   \item{reference}{reference of the geoheader record}

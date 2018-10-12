@@ -14,14 +14,12 @@
 \source{
 2016 ACS Summary File
 \href{https://www2.census.gov/programs-surveys/acs/summary_file/2016/documentation/tech_docs/2016_SummaryFile_Tech_Doc.pdf}{technical documentation},
-page 10 - 11.
+page 10.
 }
 \usage{
 dict_acs_geoheader_2011_now
 }
 \description{
-This dataset has the complete list of geographic header
-references and their discription used in ACS 1-year and 5-year summary file.
-Search the dataset with function \code{\link{search_geoheaders}}.
+List of geographic headers used in American Community Survey since 2011
 }
 \keyword{datasets}

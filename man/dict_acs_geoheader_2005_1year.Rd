@@ -3,8 +3,8 @@
 \docType{data}
 \name{dict_acs_geoheader_2005_1year}
 \alias{dict_acs_geoheader_2005_1year}
-\title{List of geographic headers used in American Community Survey since 2011}
-\format{A data.table with 53 rows and 4 variables
+\title{List of geographic headers used in 2005 ACS 1 year survey}
+\format{A data.table with 35 rows and 4 variables
 \describe{
   \item{reference}{reference of the geoheader}
   \item{field}{description of the geoheader}
@@ -12,16 +12,14 @@
   \item{end}{ending position of the geoheader in geography file}
 }}
 \source{
-2016 ACS Summary File
-\href{https://www2.census.gov/programs-surveys/acs/summary_file/2016/documentation/tech_docs/2016_SummaryFile_Tech_Doc.pdf}{technical documentation},
-page 10 - 11.
+2005 ACS Summary File
+\href{https://www2.census.gov/programs-surveys/acs/summary_file/2005/documentation/ACS_2005_SF_Tech_Doc.pdf?#}{technical documentation},
+page 12.
 }
 \usage{
 dict_acs_geoheader_2005_1year
 }
 \description{
-This dataset has the complete list of geographic header
-references and their discription used in ACS 1-year and 5-year summary file.
-Search the dataset with function \code{\link{search_geoheaders}}.
+List of geographic headers used in 2005 ACS 1 year survey
 }
 \keyword{datasets}

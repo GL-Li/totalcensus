@@ -3,7 +3,7 @@
 \docType{data}
 \name{lookup_decennial_2000}
 \alias{lookup_decennial_2000}
-\title{Lookup data files and table contents of Census 2010}
+\title{Lookup data files and table contents of Census 2000}
 \format{A data.table with 8321 rows and 6 variables:
 \describe{
   \item{file_segment}{sequence number of segment data files, from 1 to 48}
@@ -14,16 +14,16 @@
   \item{universe}{the universe of the decennial data}
 }}
 \source{
-2010 Census Summary File 1
-\href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
-all across chapter 6.
+2000 Census Summary File 1
+\href{https://www.census.gov/prod/cen2000/doc/sf1.pdf}{technical documentation}
+chapter 7.
 }
 \usage{
 lookup_decennial_2000
 }
 \description{
 This dataset includes all data fields of data files in census 2000
-summary file 1 (with urban/rural update). Fucntion \code{\link{search_tablecontents}}
+summary file 1. Fucntion \code{\link{search_tablecontents}}
 searches content in this dataset.
 }
 \keyword{datasets}

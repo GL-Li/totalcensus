@@ -4,40 +4,40 @@ library(totalcensus)
 test_search_xxx <- function(){
     ### search_geoheaders test, results will be different after adding new data
 
-    geoheader_1 <- search_geoheaders("decennial", "india", view = FALSE)
-    stopifnot(dim(geoheader_1) == c(10, 2))
+    geoheader_1 <- search_geoheaders("decennial", 2010, "india", view = FALSE)
+    stopifnot(dim(geoheader_1) == c(10, 3))
 
-    geo_header_2 <- search_geoheaders("decennial", "latitu", view = FALSE)
-    stopifnot(dim(geo_header_2) == c(1, 2))
+    geo_header_2 <- search_geoheaders("decennial", 2010, "latitu", view = FALSE)
+    stopifnot(dim(geo_header_2) == c(1, 3))
 
 
     # search_tablecontents test ====
-    tablecontent_1 <- search_tablecontents("decennial", "federal prison", view = FALSE)
+    tablecontent_1 <- search_tablecontents("decennial", 2010, "federal prison", view = FALSE)
     stopifnot(dim(tablecontent_1) == c(16, 5))
 
-    tablecontent_2 <- search_tablecontents("acs", "B02003", view = FALSE)
-    stopifnot(dim(tablecontent_2) == c(71, 9))
+    tablecontent_2 <- search_tablecontents("acs1", 2015, "B02003", view = FALSE)
+    stopifnot(dim(tablecontent_2) == c(71, 5))
 
     # search_summurylevels test ====
-    sumlev_1 = search_summarylevels("decennial", "block", view = FALSE)
-    stopifnot(dim(sumlev_1) == c(9, 4))
+    sumlev_1 = search_summarylevels("decennial", keywords = "block", view = FALSE)
+    stopifnot(dim(sumlev_1) == c(17, 5))
 
-    sumlev_2 <- search_summarylevels("acs", "40", view = FALSE)
-    stopifnot(dim(sumlev_2) == c(4, 6))
+    sumlev_2 <- search_summarylevels("acs1", keywords = "040", view = FALSE)
+    stopifnot(dim(sumlev_2) == c(1, 5))
 
     # search_geocomponents test ====
-    geocomp_1 <- search_geocomponents("decennial", "urban", view = FALSE)
-    stopifnot(dim(geocomp_1) == c(30, 4))
+    geocomp_1 <- search_geocomponents("decennial", 2010, "urban", view = FALSE)
+    stopifnot(dim(geocomp_1) == c(30, 5))
 
-    geocomp_2 <- search_geocomponents("acs", "43", view = FALSE)
-    stopifnot(dim(geocomp_2) == c(1, 6))
+    geocomp_2 <- search_geocomponents("acs5", 2013:2016, "43", view = FALSE)
+    stopifnot(dim(geocomp_2) == c(1, 4))
 
     # search_tables test ====
-    table_1 <- search_tables("decennial", "occupancy", view = FALSE)
+    table_1 <- search_tables("decennial", 2000, "occupancy", view = FALSE)
     stopifnot(dim(table_1) == c(1, 5))
 
-    table_2 <- search_tables("acs", "detailed race", view = FALSE)
-    stopifnot(dim(table_2) == c(6, 7))
+    table_2 <- search_tables("acs1", 2009:2013, "detailed race", view = FALSE)
+    stopifnot(dim(table_2) == c(6, 8))
 
     # search_fips test ====
     fips_1 <- search_fips("lincoln", "RI", view = FALSE)
@@ -51,7 +51,7 @@ test_search_xxx <- function(){
     stopifnot(dim(cbsa_1) == c(6, 12))
 
     cbsa_2 <- search_cbsa("new york", view = FALSE)
-    stopifnot(dim(cbsa_2) == c(25, 12))
+    stopifnot(dim(cbsa_2) == c(66, 12))
 
     message("=== passed all test for search_xxxx functions ===")
 }
@@ -240,6 +240,6 @@ test_convert_functions <- function(){
 
 # . ===========================================================================
 # run tests ====================================================================
-# test_search_xxx()
+test_search_xxx()
 test_read_xxx()
 test_convert_functions()

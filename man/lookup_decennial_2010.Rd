@@ -16,7 +16,7 @@
 \source{
 2010 Census Summary File 1
 \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
-all across chapter 6.
+chapter 6.
 }
 \usage{
 lookup_decennial_2010

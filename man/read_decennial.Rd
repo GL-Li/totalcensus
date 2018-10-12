@@ -26,13 +26,12 @@ For county, city, or town, must use the exact name as those in
 "Salt Lake City city, UT" must keep the "city" after "City".}
 
 \item{geo_headers}{vector of references of selected geographci headers to be
-included in the return. Browse geoheaders in \code{\link{dict_decennial_geoheader}}
-or search with \code{\link{search_geoheaders}}}
+included in the return. Search with \code{\link{search_geoheaders}}}
 
 \item{summary_level}{select which summary level to keep, default to keep all. It takes strings
 including "state", "county", "county subdivision", "place", "tract", "block group",
 and "block" for the most common levels. It also take code for level. Search all codes with
-\code{\link{search_summarylevels}} or browse \code{\link{dict_decennial_summarylevel}} .}
+\code{\link{search_summarylevels}}.}
 
 \item{geo_comp}{select which geographic component to keep, "*" to keep every geo-component,
 "total" for "00", "urban" for "01", "urbanized area" for "04",

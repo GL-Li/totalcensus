@@ -3,8 +3,8 @@
 \docType{data}
 \name{dict_decennial_summarylevel_2000}
 \alias{dict_decennial_summarylevel_2000}
-\title{Summary levels available in Census 2010}
-\format{A data.table with 165 rows and 4 variables
+\title{Summary levels available in Census 2000}
+\format{A data.table with 114 rows and 4 variables
 \describe{
   \item{code}{code of summary level}
   \item{summary_level}{description of summary level}
@@ -12,15 +12,15 @@
   \item{in_US_file}{wheather the summary level available in national files}
 }}
 \source{
-2010 Census Summary File 1
-\href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
-page 4-16 state summary file with urban/rural update
+2000 Census Summary File 1
+\href{https://www.census.gov/prod/cen2000/doc/sf1.pdf}{technical documentation}
+page 4-1.
 }
 \usage{
 dict_decennial_summarylevel_2000
 }
 \description{
-This data contains summary levels and codes used in census 2010
- summary file 1 (with urban/rural update). Search with function \code{\link{search_summarylevels}}.
+This data contains summary levels and codes used in census 2000
+ summary file 1. Search with function \code{\link{search_summarylevels}}.
 }
 \keyword{datasets}

@@ -3,20 +3,30 @@
 \docType{data}
 \name{dict_acs1_table}
 \alias{dict_acs1_table}
-\title{List of summary levels used in ACS 5 year surverys}
-\format{A data.table with 1324 rows and 6 variables:
+\title{List of summary levels used in ACS 1 year surverys}
+\format{A data.table with 1811 rows and 16 variables:
 \describe{
   \item{table_number}{table number such as "C27013"}
   \item{table_name}{description of the table}
-  \item{acs5_2015}{table available in 2015 ACS 5-year survey}
-  \item{acs1_2016}{table available in 2016 ACS 1-year survey}
-  \item{acs1_2015}{table available in 2015 ACS 1-year survey}
-  \item{acs1_2014}{table available in 2014 ACS 1-year survey}
+  \item{acs1_2017}{whether the table is available in 2017}
+  \item{acs1_2016}{whether the table is available in 2016}
+  \item{acs1_2015}{whether the table is available in 2015}
+  \item{acs1_2014}{whether the table is available in 2014}
+  \item{acs1_2013}{whether the table is available in 2013}
+  \item{acs1_2012}{whether the table is available in 2012}
+  \item{acs1_2011}{whether the table is available in 2011}
+  \item{acs1_2010}{whether the table is available in 2010}
+  \item{acs1_2009}{whether the table is available in 2009}
+  \item{acs1_2008}{whether the table is available in 2008}
+  \item{acs1_2007}{whether the table is available in 2007}
+  \item{acs1_2006}{whether the table is available in 2006}
+  \item{acs1_2005}{whether the table is available in 2005}
+  \item{universe}{universe of the table}
 }}
 \usage{
 dict_acs1_table
 }
 \description{
-List of summary levels used in ACS 5 year surverys
+List of summary levels used in ACS 1 year surverys
 }
 \keyword{datasets}

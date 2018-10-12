@@ -11,12 +11,10 @@
 #' 162 to 160 in search results.
 #' The summary levels in \code{\link{dict_fips}} are 010, 040, 050, 061, 162, and 170.
 #' The level 061 is for Minor Civil Division (MCD)/Census County Division (CCD) (10,000+). It
-#' does not appear in \code{\link{dict_decennial_summarylevel}} and
-#' \code{\link{dict_acs_summarylevel}}, which instead have 060 for County Subdivision.
+#' does not appear in those used in decennial census and ACS surveys,
+#' which instead have 060 for County Subdivision.
 #' Level 061 is part of 060 and is replaced with 060 in order to use the census data. Similarly,
-#' both level 162 in \code{\link{dict_fips}} and l60 in \code{\link{dict_decennial_summarylevel}}
-#' and \code{\link{dict_decennial_summarylevel}} are for
-#' State-Place. Always use 160 in census data.
+#' 162 is replaced with 160.
 #'
 #' @param keywords keyword to be searched in NAMES or FIPS.
 #' @param state abbreviation of a state.

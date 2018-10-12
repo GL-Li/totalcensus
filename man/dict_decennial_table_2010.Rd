@@ -3,18 +3,18 @@
 \docType{data}
 \name{dict_decennial_table_2010}
 \alias{dict_decennial_table_2010}
-\title{Complete list of census tables}
+\title{Complete list of 2010 census tables}
 \format{A data.table with 333 rows and 4 variables:
 \describe{
-  \item{table_ref}{reference code such as "H0010", "PCT022G"}
   \item{table_number}{table number such as "H1", "PCT22G"}
   \item{table_name}{description of the table}
   \item{universe}{universe of the data}
+  \item{table_ref}{reference code such as "H0010", "PCT022G"}
 }}
 \source{
 2010 Census Summary File 1
 \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
-all across chapter 5.
+chapter 5.
 }
 \usage{
 dict_decennial_table_2010

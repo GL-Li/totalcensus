@@ -612,7 +612,7 @@ download_acs1year_1_state_ <- function(year, state){
 
     if (year == 2005){
         if (toupper(state) == "US"){
-            full <- "0UnitedStates"    #
+            full <- "0UnitedStates"    # so irregular
         }
         url <- paste0(
             "https://www2.census.gov/programs-surveys/acs/summary_file/2005/data/",
@@ -700,6 +700,11 @@ download_acs1year_1_state_ <- function(year, state){
         # delete the directory
         unlink(paste0(path_to_year, "/prt03"), recursive = TRUE)
         unlink(paste0(path_to_year, "/tab4"), recursive = TRUE)
+
+        # some dumb zip files left in the path_to_year directory, delete!!
+        for (f in list.files(path_to_year, pattern = "*.zip")){
+            file.remove(paste0(path_to_year, "/", f))
+        }
 
         # have to download geography file seperately
         if (toupper(state) == "US"){

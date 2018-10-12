@@ -3,13 +3,14 @@
 \docType{data}
 \name{lookup_acs5year_2013}
 \alias{lookup_acs5year_2013}
-\title{ACS 5-year 2015 file segment and table lookup data}
-\format{A data.table with 22910 rows and 6 variables
+\title{ACS 5-year 2013 file segment and table lookup data}
+\format{A data.table with 22711 rows and 7 variables
 \describe{
   \item{file_segment}{sequence number of segment data files, from "0001" to "0122"}
   \item{table_content}{description of columns in a table}
   \item{reference}{reference of the table content, such as "B01001_002". The reference
         is used to extract data of table content.}
+  \item{restriction}{restrictions applied the the table_content}
   \item{table_number}{table number such as "B01001"}
   \item{table_name}{description of table. A table has multiple columns (table_content)}
   \item{universe}{the universe of the data}
@@ -22,6 +23,6 @@ Check for each year of ACS 1-year and 5-year
 lookup_acs5year_2013
 }
 \description{
-ACS 5-year 2015 file segment and table lookup data
+ACS 5-year 2013 file segment and table lookup data
 }
 \keyword{datasets}

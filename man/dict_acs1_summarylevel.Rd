@@ -3,20 +3,19 @@
 \docType{data}
 \name{dict_acs1_summarylevel}
 \alias{dict_acs1_summarylevel}
-\title{List of summary levels used in ACS 5 year surverys}
-\format{A data.table with 87 rows and 6 variables
+\title{List of summary levels used in ACS 1 year surverys}
+\format{A data.table with 23 rows and 5 variables
 \describe{
   \item{code}{code of summary level}
   \item{summary_level}{description of summary level}
-  \item{state_acs1}{wheather a summary level available in 1-year survey state files}
-  \item{US_acs1}{wheather a summary level available in 1-year survey national files}
-  \item{state_acs5}{wheather a summary level available in 5-year survey state files}
-  \item{US_acs5}{wheather a summary level available in 5-year survey national files}
+  \item{state_2006_to_now}{wheather a summary level available in state files since 2006}
+  \item{state_2005}{wheather a summary level available in state files in 2005}
+  \item{US_2005_to_now}{wheather a summary level available in national files since 2005}
 }}
 \usage{
 dict_acs1_summarylevel
 }
 \description{
-List of summary levels used in ACS 5 year surverys
+List of summary levels used in ACS 1 year surverys
 }
 \keyword{datasets}

@@ -3,25 +3,25 @@
 \docType{data}
 \name{dict_decennial_geocomponent_2000}
 \alias{dict_decennial_geocomponent_2000}
-\title{List of geographic components and codes}
-\format{A data.table with 96 rows and 4 variables:
+\title{List of geographic components and codes in census 2000}
+\format{A data.table with 98 rows and 4 variables:
 \describe{
   \item{code}{code for the geocomponent, such as "01" and "M3"}
   \item{geo_component}{description of the geographic component}
-  \item{in_state_file}{wheather the geocomponent available in state files}
-  \item{in_US_file}{wheather the geocomponent available in national files}
+  \item{state_file}{wheather the geocomponent available in state files}
+  \item{US_file}{wheather the geocomponent available in national files}
 }}
 \source{
-2010 Census Summary File 1
-\href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
-page 6-15
+2000 Census Summary File 1
+\href{https://www.census.gov/prod/cen2000/doc/sf1.pdf}{technical documentation}
+page 7-15
 }
 \usage{
 dict_decennial_geocomponent_2000
 }
 \description{
 This dataset contains the geographic components and codes used in
-Census 2010 summary file 1 (with urban/rural update). Search geographic components
+Census 2000 summary file 1. Search geographic components
 with function \code{\link{search_geocomponents}}.
 }
 \keyword{datasets}

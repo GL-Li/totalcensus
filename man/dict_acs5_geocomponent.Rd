@@ -3,20 +3,18 @@
 \docType{data}
 \name{dict_acs5_geocomponent}
 \alias{dict_acs5_geocomponent}
-\title{List of summary levels used in ACS 5 year surverys}
-\format{A data.table with 19 rows and 6 variables:
+\title{List of geographic components used in ACS 5 year surverys}
+\format{A data.table with 19 rows and 4 variables:
 \describe{
   \item{code}{code for the geocomponent, such as "01" and "M3"}
   \item{geo_component}{description of the geographic component}
-  \item{state_acs1}{wheather a geocomponent available in 1-year survey state files}
-  \item{US_acs1}{wheather a geocomponent available in 1-year survey national files}
-  \item{state_acs5}{wheather a geocomponent available in 5-year survey state files}
-  \item{US_acs5}{wheather a geocomponent available in 5-year survey national files}
+  \item{state_2009_to_now}{wheather a geocomponent available in state files since 2009}
+  \item{US_2009_to_now}{wheather a geocomponent available in national files since 2009}
 }}
 \usage{
 dict_acs5_geocomponent
 }
 \description{
-List of summary levels used in ACS 5 year surverys
+List of geographic components used in ACS 5 year surverys
 }
 \keyword{datasets}

@@ -3,8 +3,8 @@
 \docType{data}
 \name{dict_decennial_geoheader_2000}
 \alias{dict_decennial_geoheader_2000}
-\title{List of geographic headers}
-\format{A data.table with 101 rows and 4 variables
+\title{List of geographic headers in census 2000}
+\format{A data.table with 83 rows and 4 variables
 \describe{
   \item{reference}{reference of the geoheader record}
   \item{field}{description of the geoheader record field}
@@ -12,16 +12,16 @@
   \item{end}{ending position of the geoheader in the record}
 }}
 \source{
-2010 Census Summary File 1
-\href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}
-page 2-8
+2000 Census Summary File 1
+\href{https://www.census.gov/prod/cen2000/doc/sf1.pdf}{technical documentation}
+page 2-7
 }
 \usage{
 dict_decennial_geoheader_2000
 }
 \description{
 This dataset has the complete list of geographic header
-references and their discription used in Census 2010 summary file 1 (with
-urban/rural update). Search the dataset with function \code{\link{search_geoheaders}}.
+references and their discription used in Census 2000 summary file 1.
+Search the dataset with function \code{\link{search_geoheaders}}.
 }
 \keyword{datasets}

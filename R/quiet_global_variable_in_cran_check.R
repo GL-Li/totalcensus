@@ -34,5 +34,15 @@ utils::globalVariables(unique(c(
     "total_files", "content_acs1_2017", "name_acs1_2017", "universe_acs1_2017",
     "content_acs5_2013", "content_acs5_2014", "name_acs5_2013", "name_acs5_2014",
     "universe_acs5_2013", "universe_acs5_2014", "content_acs1_2013",
-    "name_acs1_2013", "universe_acs1_2013"
+    "name_acs1_2013", "universe_acs1_2013",
+    "US_file",  "acs1_2005", "acs1_2006_to_2008", "acs1_2009", "acs1_2010_to_now",
+    "acs5_2009", "acs5_2010_to_now", "census_2000", "census_2010",
+    "dict_acs1_geocomponent", "dict_acs1_summarylevel", "dict_acs1_table",
+    "dict_acs5_geocomponent", "dict_acs5_summarylevel", "dict_acs5_table",
+    "dict_acs_geoheader_2011_now", "dict_decennial_geocomponent_2000",
+    "dict_decennial_geocomponent_2010", "dict_decennial_geoheader_2000",
+    "dict_decennial_geoheader_2010", "dict_decennial_summarylevel_2000",
+    "dict_decennial_summarylevel_2010", "dict_decennial_table_2000",
+    "dict_decennial_table_2010", "in_US_file", "in_state_file",
+    "lookup_decennial_2000", "state_file", "table_number", "table_ref"
 )))

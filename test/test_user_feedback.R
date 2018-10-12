@@ -23,7 +23,7 @@ dc_test <- read_acs5year(
     summary_level = "tract"
 ) %>%
     .[, test_vars, with = FALSE]
-dt <-
+
 stopifnot(all(sapply(dc_test, is.numeric)))
 
 # issue #2, run without error ====

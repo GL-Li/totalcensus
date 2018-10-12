@@ -520,17 +520,20 @@ add_coord <- function(dt, state, geo_headers){
 
 
 
-switch_summarylevel <- function(summary_level, year){
+switch_summarylevel <- function(summary_level, year = NULL){
     # This function switch summary level from plain text to code
     common_level <- c("state", "county", "county subdivision", "place",
                       "tract", "block group", "block")
 
     if (summary_level %in% common_level){
-        if (year == 2000){
-            block_code <- "101"
-        } else if (year == 2010){
-            block_code <- "100"
+        if (!is.null(year)){
+            if (year == 2000){
+                block_code <- "101"
+            } else if (year == 2010){
+                block_code <- "100"
+            }
         }
+
         summary_level <- switch(summary_level,
                                 "state" = "040",
                                 "county" = "050",
