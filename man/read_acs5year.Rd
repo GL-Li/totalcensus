@@ -5,7 +5,7 @@
 \title{Read ACS 5-year estimates}
 \usage{
 read_acs5year(year, states, table_contents = NULL, areas = NULL,
-  geo_headers = NULL, summary_level = "*", geo_comp = "total",
+  geo_headers = NULL, summary_level = NULL, geo_comp = "total",
   with_margin = FALSE, with_acsgeoheaders = FALSE, show_progress = TRUE)
 }
 \arguments{
@@ -30,7 +30,7 @@ included in the return, like "COUNTY" or c("PLACE", "CBSA"). Browse
 geoheaders in \code{\link{dict_acs_geoheader}}
 or search with \code{\link{search_geoheaders}}}
 
-\item{summary_level}{select which summary level to keep, "*" to keep all. It takes string
+\item{summary_level}{select which summary level to keep, default to keep all. It takes string
 including "state", "county", "county subdivision", "place", "tract", "block group",
 and "block" for the most common levels. It also take code. Search all codes with
 \code{\link{search_summarylevels}} or browse \code{\link{dict_acs_summarylevel}} .}

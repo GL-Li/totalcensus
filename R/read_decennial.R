@@ -26,7 +26,7 @@
 #' @param geo_headers vector of references of selected geographci headers to be
 #'        included in the return. Browse geoheaders in \code{\link{dict_decennial_geoheader}}
 #'        or search with \code{\link{search_geoheaders}}
-#' @param summary_level select which summary level to keep, "*" to keep all. It takes strings
+#' @param summary_level select which summary level to keep, default to keep all. It takes strings
 #'        including "state", "county", "county subdivision", "place", "tract", "block group",
 #'        and "block" for the most common levels. It also take code for level. Search all codes with
 #'        \code{\link{search_summarylevels}} or browse \code{\link{dict_decennial_summarylevel}} .
@@ -94,7 +94,7 @@ read_decennial <- function(year,
                           table_contents = NULL,
                           areas = NULL,
                           geo_headers = NULL,
-                          summary_level = "*",
+                          summary_level = NULL,
                           geo_comp = "total",
                           show_progress = TRUE){
 
@@ -106,6 +106,8 @@ read_decennial <- function(year,
         ))
         return(NULL)
     }
+
+    if (is.null(summary_level)) summary_level <- "*"
 
     # allow lowerscase input
     states <- toupper(states)

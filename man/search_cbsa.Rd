@@ -2,12 +2,12 @@
 % Please edit documentation in R/search_fips_cbsa.R
 \name{search_cbsa}
 \alias{search_cbsa}
-\title{Search CBSA code and title}
+\title{Search Core Based Statistical Area (CBSA)}
 \usage{
-search_cbsa(keyword = "*", view = TRUE)
+search_cbsa(keywords = NULL, view = TRUE)
 }
 \arguments{
-\item{keyword}{keyword to be searched in CBSA or CBSA title.}
+\item{keywords}{keywords to be searched.}
 
 \item{view}{display the search result with View if TRUE.}
 }

@@ -22,7 +22,7 @@
 #'        included in the return, like "COUNTY" or c("PLACE", "CBSA"). Browse
 #'        geoheaders in \code{\link{dict_acs_geoheader}}
 #'        or search with \code{\link{search_geoheaders}}
-#' @param summary_level select which summary level to keep, "*" to keep all. It takes string
+#' @param summary_level select which summary level to keep, default to keep all. It takes string
 #'        including "state", "county", "county subdivision", "place", "tract", "block group",
 #'        and "block" for the most common levels. It also take code. Search all codes with
 #'        \code{\link{search_summarylevels}} or browse \code{\link{dict_acs_summarylevel}} .
@@ -81,7 +81,7 @@ read_acs5year <- function(year,
                           table_contents = NULL,
                           areas = NULL,
                           geo_headers = NULL,
-                          summary_level = "*",
+                          summary_level = NULL,
                           geo_comp = "total",
                           with_margin = FALSE,
                           with_acsgeoheaders = FALSE,
@@ -95,6 +95,8 @@ read_acs5year <- function(year,
         ))
         return(NULL)
     }
+
+    if (is.null(summary_level)) summary_level <- "*"
 
     # allow lowerscase input
     states <- toupper(states)
