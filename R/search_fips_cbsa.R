@@ -48,8 +48,8 @@ search_fips <- function(keywords = NULL, state = NULL, view = TRUE) {
     dt <- dict_fips[state_abbr %like% toupper(state)]
 
     if (is.null(keywords)) keywords <- "*"
-    keywords <- unlist(str_split(tolower(keyword), " "))
-    for (kw in keywords){
+    kws <- unlist(str_split(tolower(keywords), " "))
+    for (kw in kws){
         # combine all rows to form a new column for search
         dt <- dt[, comb := apply(dt[, c(1, 3:9)], 1, paste, collapse = " ")] %>%
             .[grepl(kw, tolower(comb))] %>%
@@ -59,14 +59,14 @@ search_fips <- function(keywords = NULL, state = NULL, view = TRUE) {
     # change to match those in census summary files
     dt[SUMLEV == "061", SUMLEV := "060"][SUMLEV == "162", SUMLEV := "160"]
 
-    if (view) View(dt, paste(keyword, "found"))
+    if (view) View(dt, paste(keywords, "found"))
 
     return(dt)
 }
 
 
 
-#' Search CBSA code and title
+#' Search Core Based Statistical Area (CBSA)
 #'
 #' @description  Search CBSA code of Core Based Statistical Area in dataset \code{\link{dict_cbsa}}.
 #' The search also returns which CSA (Combined Statistical Area) that contains
@@ -76,7 +76,7 @@ search_fips <- function(keywords = NULL, state = NULL, view = TRUE) {
 #' @details Quite often, multiple rows are returned. It is necessary
 #' to hand pick the right one you are really looking for.
 #'
-#' @param keyword keyword to be searched in CBSA or CBSA title.
+#' @param keywords keywords to be searched.
 #' @param view display the search result with View if TRUE.
 #'
 #' @return A data.table
@@ -97,18 +97,19 @@ search_fips <- function(keywords = NULL, state = NULL, view = TRUE) {
 #'
 #'
 
-search_cbsa <- function(keyword = "*", view = TRUE) {
+search_cbsa <- function(keywords = NULL, view = TRUE) {
     dt <- dict_cbsa
 
-    keywords <- unlist(str_split(tolower(keyword), " "))
-    for (kw in keywords){
+    if (is.null(keywords)) keywords <- "*"
+    kws <- unlist(str_split(tolower(keywords), " "))
+    for (kw in kws){
         # combine all rows to form a new column for search
-        dt <- dt[, comb := apply(dt[, c(1, 2)], 1, paste, collapse = " ")] %>%
+        dt <- dt[, comb := apply(dt[, c(1, 2, 3, 4)], 1, paste, collapse = " ")] %>%
             .[grepl(kw, tolower(comb))] %>%
             .[, comb := NULL]
     }
 
-    if (view) View(dt, paste(keyword, "found"))
+    if (view) View(dt, paste(keywords, "found"))
 
     return(dt)
 }
