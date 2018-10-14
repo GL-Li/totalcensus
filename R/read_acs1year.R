@@ -115,7 +115,9 @@ read_acs1year <- function(year,
         cat(paste0(
             "Do you want to download ",
             year,
-            " ACS 1-year survey summary files and save it to your computer? ",
+            " ACS 1-year survey summary files of states ",
+            paste0(not_downloaded, collapse = ", "),
+            " and save it to your computer? ",
             "It is necessary for extracting the data."
         ))
         continue <- switch(
@@ -124,7 +126,7 @@ read_acs1year <- function(year,
             FALSE
         )
         if (continue){
-            download_census("acs1year", year)
+            download_census("acs1", year, not_downloaded)
         } else {
             stop("You choose not to download data.")
         }

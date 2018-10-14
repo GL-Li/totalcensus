@@ -4,8 +4,7 @@
 \alias{download_census}
 \title{download census data}
 \usage{
-download_census(survey = NULL, year = NULL, states = c(states_DC, "US",
-  "PR"))
+download_census(survey, year, states)
 }
 \arguments{
 \item{survey}{Which survey to download from, "decennial", "acs5year", or "acs1year"}
@@ -15,8 +14,7 @@ download_census(survey = NULL, year = NULL, states = c(states_DC, "US",
 \item{states}{vector of abbreviations of states such as c("MA", "RI")}
 }
 \description{
-Download census data from United States Census bureau. By default
-it downloads summary files and extract summary files of Census 2010, ACS 5-year
-survey of 2015 and 2016, and ACS 1-year survey of 2016, 2015, and 2014. It also download
+Download decennial census and ACS 5-year and 1-year data from
+United States Census bureau. It also download
 generated data from Census 2010 if not exist.
 }

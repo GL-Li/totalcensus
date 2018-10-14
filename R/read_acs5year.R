@@ -109,10 +109,10 @@ read_acs5year <- function(year,
         download_generated_data()
     }
 
-    # check whether to download census data
+    # check whether to download acs5year data
     not_downloaded <- c()
     for (st in states){
-        # only check for this one file
+        # only check for geoheader file
         if (!file.exists(paste0(
             path_to_census, "/acs5year/", year, "/g", year, "5", tolower(st), ".csv"
         ))){
@@ -133,7 +133,7 @@ read_acs5year <- function(year,
             FALSE
         )
         if (continue){
-            download_census("acs5year", year, not_downloaded)
+            download_census("acs5", year, not_downloaded)
         } else {
             stop("You choose not to download data.")
         }
