@@ -120,9 +120,18 @@ read_decennial <- function(year,
     }
 
     # check whether to download census data
+    if (year == 2010) {
+        ext <- ".ur1"
+    } else if (year == 2000){
+        ext <- ".uf1"
+    }
     not_downloaded <- c()
     for (st in states){
-        if (!file.exists(paste0(path_to_census, "/census", year, "/", st))){
+        geo_file <- paste0(
+            path_to_census, "/census", year, "/", st, "/", tolower(st), "geo",
+            year, ext
+        )
+        if (!file.exists(geo_file)){
             not_downloaded <- c(not_downloaded, st)
         }
     }
