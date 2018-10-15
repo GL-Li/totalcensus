@@ -13,7 +13,7 @@
 #' @export
 #'
 
-download_census <- function(survey, year, states){
+download_census <- function(survey, year, states = c(states_DC, "US", "PR")){
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 

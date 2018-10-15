@@ -238,9 +238,7 @@ ggmap(south_bend) +
 Downloading data
 ----------------
 
-This package requires downloading census data to your local computer. You will be asked to download data when you call `read_xxxx` functions, or you can choose to download before calling `read_xxxx` function. You can downoad only the data you want. For example, if you care only the 2015 ACS 5-year survey data in the states of Massachusetts and New Hampshire, you can just download data of these two states, which takes a couple of GB disc space. Or you can download data of all most recent decennial Census, most recent ACS 5-year estimate, and most recent ACS 1-year estimate. You need about 200 GB free disc space to download them. The downloaded data will be extracted automatically to the folder `my_census_data`.
-
-It takes a long time to download and extract. You can stop downloading any time and then resume downloading by running the function again. I recommend downloading all recent decennial and ACS data when you are sleeping. A lot of fun to play with these data. Re-run the function to repair possible mistakes during download and extraction.
+This package requires downloading census data to your local computer. You will be asked to download data when you call `read_xxxx` functions, or you can choose to download before calling `read_xxxx` function. The downloaded data will be extracted automatically to the folder `my_census_data`.
 
 A set of data generated from Census 2010 will also be downloaded, which is used to fill missing geographic header records in ACS data.
 
@@ -248,20 +246,16 @@ Below are a few examples of data downloading.
 
 ``` r
 # download 2016 ACS 5-year survey data of MA and NH, a couple of GB
-download_census(survey = "acs5year", year = 2016, states = c("MA", "NH"))
+download_census(survey = "acs5", year = 2016, states = c("MA", "NH"))
 
-# download 2016 ACS 5-year survey of all states, ~52 GB
-download_census("acs5year", 2016)
+# download all data of 2016 ACS 5-year survey,  ~52 GB
+download_census("acs5", 2016)
 
-# download 2016 ACS 1-year survey. It is only 1.5 GB, so download for all states
-download_census("acs1year", 2016)
+# download all data of 2016 ACS 1-year survey. It is only 1.5 GB. 
+download_census("acs1", 2016)
 
 # download decennial census 2010, of state California, the largest state, 8.4 GB
-download_census("decennial", 2010, "CA")
-
-# download most recent datasets, ~200G in total, including 2010 decennial census
-# 2016 ACS 5-year survey, 2016 ACS 1-year survey.
-download_census()
+download_census("dec", 2010, "CA")
 ```
 
 The census data can be found on Census Bureau's website but you do not need to download them manually. Use the function above.
