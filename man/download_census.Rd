@@ -4,7 +4,7 @@
 \alias{download_census}
 \title{download census data}
 \usage{
-download_census(survey, year, states)
+download_census(survey, year, states = c(states_DC, "US", "PR"))
 }
 \arguments{
 \item{survey}{Which survey to download from, "decennial", "acs5year", or "acs1year"}

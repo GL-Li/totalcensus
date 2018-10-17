@@ -437,6 +437,7 @@ read_acs5year_geoheaders_ <- function(year,
                                       show_progress = show_progress) %>%
                 # convert STATE fips to state abbreviation
                 .[, state := convert_fips_to_names(STATE)] %>%
+                .[, STATE := NULL] %>%
                 setnames(geo_headers, paste0("acs_", geo_headers)) %>%
                 setkey(LOGRECNO)
         }else {

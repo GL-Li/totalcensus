@@ -6,7 +6,7 @@
 \usage{
 read_acs1year(year, states, table_contents = NULL, areas = NULL,
   geo_headers = NULL, summary_level = NULL, geo_comp = "total",
-  with_margin = FALSE, with_acsgeoheaders = FALSE, show_progress = TRUE)
+  with_margin = FALSE, show_progress = TRUE)
 }
 \arguments{
 \item{year}{year of the estimate}
@@ -42,8 +42,6 @@ geographic component. County subdivision and higher level have "00",
 "01", and "43". Census tract and lower level have only "00".}
 
 \item{with_margin}{read also margin of error in addition to estimate}
-
-\item{with_acsgeoheaders}{whether to keep geographic headers from ACS data}
 
 \item{show_progress}{whether to show progress in fread()}
 }

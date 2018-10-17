@@ -32,7 +32,6 @@
 #'        geographic component. County subdivision and higher level have "00",
 #'        "01", and "43". Census tract and lower level have only "00".
 #' @param with_margin  read also margin of error in addition to estimate
-#' @param with_acsgeoheaders whether to keep geographic headers from ACS data
 #' @param show_progress  whether to show progress in fread()
 
 #'
@@ -75,7 +74,6 @@ read_acs1year <- function(year,
                           summary_level = NULL,
                           geo_comp = "total",
                           with_margin = FALSE,
-                          with_acsgeoheaders = FALSE,
                           show_progress = TRUE){
 
     # check if the path to census is set
@@ -157,12 +155,12 @@ read_acs1year <- function(year,
     if (!is.null(areas)){
         dt <- read_acs1year_areas_(
             year, states, table_contents, areas, summary_level, geo_comp,
-            with_margin, with_acsgeoheaders, show_progress
+            with_margin, show_progress
         )
     } else {
         dt <- read_acs1year_geoheaders_(
             year, states, table_contents, geo_headers, summary_level, geo_comp,
-            with_margin, with_acsgeoheaders, show_progress
+            with_margin, show_progress
         )
     }
 
@@ -187,7 +185,6 @@ read_acs1year_areas_ <- function(year,
                                  summary_level = "*",
                                  geo_comp = "*",
                                  with_margin = FALSE,
-                                 with_acsgeoheaders = FALSE,
                                  show_progress = TRUE){
     # read ACS 1-year data of selected areas
     #
@@ -203,7 +200,6 @@ read_acs1year_areas_ <- function(year,
     # summary_level : summary level like "050"
     # geo_comp : geographic component such as "00", "01", and "43"
     # with_margin : read also margin of error in addition to estimate
-    # with_acsgeoheaders : whether to include geoheaders in ACS 1-year data
     # show_progress : whether to show progress in fread()n
     #
     # Return_____
@@ -264,23 +260,12 @@ read_acs1year_areas_ <- function(year,
 
     lst_state <- list()
     for (st in states) {
-        # read geography. do NOT read geo_headers from ACS data, instead read
-        # from GEOID_coord_XX later on, which is generated from Census 2010 and
-        # has much more geo_header data
-        if (with_acsgeoheaders){
             geo <- read_acs1year_geo_(year, st, c(geo_headers, "STATE"),
                                       show_progress = show_progress) %>%
                 # convert STATE fips to state abbreviation
                 .[, state := convert_fips_to_names(STATE)] %>%
-                setnames(geo_headers, paste0("acs_", geo_headers)) %>%
+                .[, STATE := NULL] %>%
                 setkey(LOGRECNO)
-        }else {
-            geo <- read_acs1year_geo_(year, st, "STATE",
-                                      show_progress = show_progress) %>%
-                # convert STATE fips to state abbreviation
-                .[, state := convert_fips_to_names(STATE)] %>%
-                setkey(LOGRECNO)
-        }
 
 
 
@@ -359,7 +344,6 @@ read_acs1year_geoheaders_ <- function(year,
                                       summary_level = "*",
                                       geo_comp = "*",
                                       with_margin = FALSE,
-                                      with_acsgeoheaders = FALSE,
                                       show_progress = TRUE){
     # read ACS 1-year data of selected geoheaders
     #
@@ -371,7 +355,6 @@ read_acs1year_geoheaders_ <- function(year,
     # summary_level : summary level like "050"
     # geo_comp : geographic component such as "00", "01", and "43"
     # with_margin : read also margin of error in addition to estimate
-    # with_acsgeoheaders whether to include geographic headers from ACS data
     # show_progress : whether to show progress in fread()n
     #
     # Return_____
@@ -419,25 +402,12 @@ read_acs1year_geoheaders_ <- function(year,
 
     lst_state <- list()
     for (st in states) {
-        # read geography. do NOT read geo_headers from ACS data, instead read
-        # from GEOID_coord_XX later on, which is generated from Census 2010 and
-        # has much more geo_header data
-        if (with_acsgeoheaders){
-            geo <- read_acs1year_geo_(year, st, c(geo_headers, "STATE"),
-                                      show_progress = show_progress) %>%
-                # convert STATE fips to state abbreviation
-                .[, state := convert_fips_to_names(STATE)] %>%
-                setnames(geo_headers, paste0("acs_", geo_headers)) %>%
-                setkey(LOGRECNO)
-        }else {
-            geo <- read_acs1year_geo_(year, st, "STATE",
-                                      show_progress = show_progress) %>%
-                # convert STATE fips to state abbreviation
-                .[, state := convert_fips_to_names(STATE)] %>%
-                .[, STATE := NULL] %>%
-                setkey(LOGRECNO)
-        }
-
+        geo <- read_acs1year_geo_(year, st, c(geo_headers, "STATE"),
+                                  show_progress = show_progress) %>%
+            # convert STATE fips to state abbreviation
+            .[, state := convert_fips_to_names(STATE)] %>%
+            .[, STATE := NULL] %>%
+            setkey(LOGRECNO)
 
         # read estimate and margin from each file
         if(!is.null(table_contents)){
@@ -456,7 +426,7 @@ read_acs1year_geoheaders_ <- function(year,
             acs <- geo
         }
 
-        # add coordinates and geoheaders from Census 2010 data
+        # add coordinates from Census 2010 data
         acs <- add_coord(acs, st, geo_headers)
 
 
