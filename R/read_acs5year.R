@@ -6,8 +6,8 @@
 #' it also returns total population and coordinates of selected geographic
 #' areas, as well as summary levels and geographic components.
 #'
-#' @param year  end year of the 5-year estimate
-#' @param states vector of state abbreviations, for example "IN" or c("MA", "RI").
+#' @param year  ending year of the 5-year estimate
+#' @param states vector of state abbreviations, such as "IN" and c("MA", "RI").
 #' @param table_contents selected references of contents in census tables. Users
 #'        can choose a name for each reference, such as in
 #'        c("abc = B01001_009", "fff = B00001_001").
@@ -21,19 +21,18 @@
 #' @param geo_headers vector of references of selected geographci headers to be
 #'        included in the return, like "COUNTY" or c("PLACE", "CBSA").
 #'        Search with \code{\link{search_geoheaders}}
-#' @param summary_level select which summary level to keep, default to keep all. It takes string
-#'        including "state", "county", "county subdivision", "place", "tract", "block group",
-#'        and "block" for the most common levels. It also take code. Search all codes with
-#'        \code{\link{search_summarylevels}} or browse \code{\link{dict_acs1_summarylevel}} .
-#' @param geo_comp select which geographic component to keep, "*" to keep every component,
-#'        "total" for "00", "urban" for "01", "urbanized area" for "04",
-#'        "urban cluster" for "28", "rural" for "43". Others should be input as code
-#'        which can be found with \code{\link{search_geocomponents}}. Availability
-#'        of geocomponent depends on summary level. State level contains all
-#'        geographic component. County subdivision and higher level have "00",
-#'        "01", and "43". Census tract and lower level have only "00".
-#' @param with_margin  read also margin of error in addition to estimate if TRUE
-#' @param with_acsgeoheaders whether to keep geographic headers from ACS data
+#' @param summary_level select which summary level to keep, default to keep all.
+#'        It takes string including "state", "county", "county subdivision",
+#'        "place", "tract", "block group", and "block" for the most common
+#'        levels. It also take code. Search all codes with
+#'        \code{\link{search_summarylevels}}.
+#' @param geo_comp select which geographic component to keep, "*" to keep every
+#'        geo-component, "total" for "00", "urban" for "01", "urbanized area"
+#'        for "04", "urban cluster" for "28", "rural" for "43". Others should
+#'        input code, which can be found with function
+#'        \code{\link{search_geocomponents}}. Availability of geocomponent
+#'        depends on summary level.
+#' @param with_margin  read also margin of error in addition to estimate
 #' @param show_progress  whether to show progress in fread()
 #'
 #' @return A data.table of selected data.
@@ -83,13 +82,13 @@ read_acs5year <- function(year,
                           summary_level = NULL,
                           geo_comp = "total",
                           with_margin = FALSE,
-                          with_acsgeoheaders = FALSE,
                           show_progress = TRUE){
 
     # check if the path to census is set
     if (Sys.getenv("PATH_TO_CENSUS") == ""){
         message(paste(
-            "Please set up the path to downloaded census data, following the instruction at",
+            "Please set up the path to downloaded census data",
+            "following the instruction at",
             "https://github.com/GL-Li/totalcensus."
         ))
         return(NULL)
@@ -114,7 +113,8 @@ read_acs5year <- function(year,
     for (st in states){
         # only check for geoheader file
         if (!file.exists(paste0(
-            path_to_census, "/acs5year/", year, "/g", year, "5", tolower(st), ".csv"
+            path_to_census, "/acs5year/", year, "/g", year, "5",
+            tolower(st), ".csv"
         ))){
             not_downloaded <- c(not_downloaded, st)
         }
@@ -125,7 +125,8 @@ read_acs5year <- function(year,
             year,
             " ACS 5-year survey summary files of states ",
             paste0(not_downloaded, collapse = ", "),
-            " and save it to your computer? It is necessary for extracting the data."
+            " and save it to your computer? ",
+            "It is necessary for extracting the data."
         ))
         continue <- switch(
             menu(c("yes", "no")),
@@ -165,19 +166,20 @@ read_acs5year <- function(year,
     if (!is.null(areas)){
         dt <- read_acs5year_areas_(
             year, states, table_contents, areas, summary_level, geo_comp,
-            with_margin, with_acsgeoheaders, show_progress
+            with_margin, show_progress
         )
     } else {
         dt <- read_acs5year_geoheaders_(
             year, states, table_contents, geo_headers, summary_level, geo_comp,
-            with_margin, with_acsgeoheaders, show_progress
+            with_margin, show_progress
         )
     }
 
     setnames(dt, table_contents, content_names)
 
     if (with_margin){
-        setnames(dt, paste0(table_contents, "_m"), paste0(content_names, "_margin"))
+        setnames(dt, paste0(table_contents, "_m"),
+                 paste0(content_names, "_margin"))
     }
 
     options(warn = 0)
@@ -196,7 +198,6 @@ read_acs5year_areas_ <- function(year,
                                  summary_level = "*",
                                  geo_comp = "*",
                                  with_margin = FALSE,
-                                 with_acsgeoheaders = FALSE,
                                  show_progress = TRUE){
     # read ACS 5-year data of selected areas
     #
@@ -212,7 +213,6 @@ read_acs5year_areas_ <- function(year,
     # summary_level : summary level like "050"
     # geo_comp : geographic component such as "00", "01", and "43"
     # with_margin : read also margin of error in addition to estimate
-    # with_acsgeoheaders whether to include geographic headers from ACS data
     # show_progress : whether to show progress in fread()n
     #
     # Return_____
@@ -266,7 +266,8 @@ read_acs5year_areas_ <- function(year,
 
     for (content in table_contents) {
         if (!tolower(content) %in% tolower(lookup$reference)){
-            stop(paste("The table content reference", content, "does not exist."))
+            stop(paste("The table content reference",
+                       content, "does not exist."))
         }
     }
 
@@ -274,33 +275,21 @@ read_acs5year_areas_ <- function(year,
 
     lst_state <- list()
     for (st in states) {
-        # read geography. do NOT read geo_headers from ACS data, instead read
-        # from GEOID_coord_XX later on, which is generated from Census 2010 and
-        # has much more geo_header data
-        if (with_acsgeoheaders){
-            geo <- read_acs5year_geo_(year, st, c(geo_headers, "STATE"),
+            geo <- read_acs5year_geo_(year, st, geo_headers,
                                       show_progress = show_progress) %>%
-                # convert STATE fips to state abbreviation
-                .[, state := convert_fips_to_names(STATE)] %>%
-                setnames(geo_headers, paste0("acs_", geo_headers)) %>%
                 setkey(LOGRECNO)
-        }else {
-            geo <- read_acs5year_geo_(year, st, "STATE",
-                                      show_progress = show_progress) %>%
-                # convert STATE fips to state abbreviation
-                .[, state := convert_fips_to_names(STATE)] %>%
-                setkey(LOGRECNO)
-        }
 
 
         # read estimate and margin from each file
         if(!is.null(table_contents)){
-            # get files for table contents, follow the notation of read_tablecontent.R
-            dt <- read_acs5year_tablecontents_(year, st, table_contents,
-                                               "e", show_progress)
+            # get files for table contents
+            dt <- read_acs5year_tablecontents_(
+                year, st, table_contents, "e", show_progress
+            )
             if (with_margin) {
-                margin <- read_acs5year_tablecontents_(year, st, table_contents,
-                                                       "m", show_progress)
+                margin <- read_acs5year_tablecontents_(
+                    year, st, table_contents, "m", show_progress
+                )
 
                 dt <- merge(dt, margin)
             }
@@ -311,7 +300,7 @@ read_acs5year_areas_ <- function(year,
         }
 
         # add coordinates
-        acs <- add_coord(acs, st, geo_headers)
+        acs <- add_coord(acs, st)
 
 
         # To determine what PLACE or COUSUB a tract or block group (partially)
@@ -319,15 +308,14 @@ read_acs5year_areas_ <- function(year,
         # in generate_geoid_coordinate.R
         acs <- add_geoheader(acs, st, geo_headers, summary_level)
 
-        lst_state[[st]] <- acs[SUMLEV %like% summary_level & GEOCOMP %like% geo_comp]
+        lst_state[[st]] <- acs[SUMLEV %like% summary_level &
+                               GEOCOMP %like% geo_comp]
 
     }
 
     combined <- rbindlist(lst_state) %>%
-        .[, ":=" (LOGRECNO = NULL, STATE = NULL)] %>%
-        convert_geocomp_name() %>%
-        # convert NA in state to nothing for selection below
-        .[is.na(state), state := ""]
+        .[, LOGRECNO := NULL] %>%
+        convert_geocomp_name()
 
     if (!is.null(table_contents)){
         setnames(combined, paste0(table_contents, "_e"), table_contents)
@@ -340,8 +328,9 @@ read_acs5year_areas_ <- function(year,
     } else {
         selected <- map(
             1:nrow(dt_areas),
-            function(x) combined[get(dt_areas[x, geoheader]) %like% dt_areas[x, code] &
-                                     state %like% dt_areas[x, state]] %>%
+            function(x)
+                combined[get(dt_areas[x, geoheader]) %like% dt_areas[x, code] &
+                             STUSAB %like% dt_areas[x, state]] %>%
                 .[, area := dt_areas[x, name]]
         ) %>%
             rbindlist() %>%
@@ -350,9 +339,16 @@ read_acs5year_areas_ <- function(year,
     }
 
     # reorder columns
-    begin <- c("area", "GEOID", "lon", "lat")
-    end <- c("GEOCOMP", "SUMLEV", "NAME")
-    setcolorder(selected, c(begin, setdiff(names(selected), c(begin, end)), end))
+    begin <- c("area", "GEOID", "NAME", "STUSAB")
+    end <- c("GEOCOMP", "SUMLEV", "lon", "lat")
+    if (with_margin){
+        # estimate and margin together
+        contents <- paste0(rep(table_contents, each = 2),
+                           rep(c("", "_m"), length(table_contents)))
+    } else {
+        contents <- table_contents
+    }
+    setcolorder(selected, c(begin, contents, end))
 
     return(selected)
 }
@@ -368,7 +364,6 @@ read_acs5year_geoheaders_ <- function(year,
                                       summary_level = "*",
                                       geo_comp = "*",
                                       with_margin = FALSE,
-                                      with_acsgeoheaders = FALSE,
                                       show_progress = TRUE){
     # read ACS 5-year data of selected geoheaders
     #
@@ -380,7 +375,6 @@ read_acs5year_geoheaders_ <- function(year,
     # summary_level : summary level like "050"
     # geo_comp : geographic component such as "00", "01", and "43"
     # with_margin : read also margin of error in addition to estimate
-    # with_acsgeoheaders whether to include geographic headers from ACS data
     # show_progress : whether to show progress in fread()n
     #
     # Return_____
@@ -421,7 +415,8 @@ read_acs5year_geoheaders_ <- function(year,
 
     for (content in table_contents) {
         if (!tolower(content) %in% tolower(lookup$reference)){
-            stop(paste("The table content reference", content, "does not exist."))
+            stop(paste("The table content reference",
+                       content, "does not exist."))
         }
     }
 
@@ -429,30 +424,14 @@ read_acs5year_geoheaders_ <- function(year,
 
     lst_state <- list()
     for (st in states) {
-        # read geography. do NOT read geo_headers from ACS data, instead read
-        # from GEOID_coord_XX later on, which is generated from Census 2010 and
-        # has much more geo_header data
-        if (with_acsgeoheaders){
-            geo <- read_acs5year_geo_(year, st, c(geo_headers, "STATE"),
-                                      show_progress = show_progress) %>%
-                # convert STATE fips to state abbreviation
-                .[, state := convert_fips_to_names(STATE)] %>%
-                .[, STATE := NULL] %>%
-                setnames(geo_headers, paste0("acs_", geo_headers)) %>%
-                setkey(LOGRECNO)
-        }else {
-            geo <- read_acs5year_geo_(year, st, "STATE",
-                                      show_progress = show_progress) %>%
-                # convert STATE fips to state abbreviation
-                .[, state := convert_fips_to_names(STATE)] %>%
-                .[, STATE := NULL] %>%
-                setkey(LOGRECNO)
-        }
+        geo <- read_acs5year_geo_(year, st, geo_headers,
+                                  show_progress = show_progress) %>%
+            setkey(LOGRECNO)
 
 
         # read estimate and margin from each file
         if(!is.null(table_contents)){
-            # get files for table contents, follow the notation of read_tablecontent.R
+            # get files for table contents
             dt <- read_acs5year_tablecontents_(year, st, table_contents,
                                                "e", show_progress)
             if (with_margin) {
@@ -468,14 +447,15 @@ read_acs5year_geoheaders_ <- function(year,
         }
 
         # add coordinates and geoheaders from Census 2010 data
-        acs <- add_coord(acs, st, geo_headers)
+        acs <- add_coord(acs, st)
 
         # To determine what PLACE or COUSUB a tract or block group (partially)
         # blongs, replace PLACE and COUSUB with those obtained from census 2010
         # in generate_geoid_coordinate.R
         acs <- add_geoheader(acs, st, geo_headers, summary_level)
 
-        lst_state[[st]] <- acs[SUMLEV %like% summary_level & GEOCOMP %like% geo_comp]
+        lst_state[[st]] <- acs[SUMLEV %like% summary_level &
+                               GEOCOMP %like% geo_comp]
 
     }
 
@@ -487,21 +467,18 @@ read_acs5year_geoheaders_ <- function(year,
         setnames(combined, paste0(table_contents, "_e"), table_contents)
     }
 
-    if (length(geo_headers) == 1 &&
-        geo_headers %in% c("STATE", "COUNTY", "PLACE", "COUNTY", "CBSA", "COUSUB")){
-        combined[, area := convert_fips_to_names(get(geo_headers), state, geo_headers, states)]
-    }
-
-
     # reorder columns
-    if (length(geo_headers) == 1 &&
-        geo_headers %in% c("STATE", "COUNTY", "PLACE", "COUNTY", "CBSA", "COUSUB")){
-        begin <- c("area", "GEOID", "lon", "lat")
+    begin <- c("GEOID", "NAME", "STUSAB")
+    end <- c("GEOCOMP", "SUMLEV", "lon", "lat")
+
+    if (with_margin){
+        # estimate and margin together
+        contents <- paste0(rep(table_contents, each = 2),
+                           rep(c("", "_m"), length(table_contents)))
     } else {
-        begin <- c("GEOID", "lon", "lat")
+        contents <- table_contents
     }
-    end <- c("GEOCOMP", "SUMLEV", "NAME")
-    setcolorder(combined, c(begin, setdiff(names(combined), c(begin, end)), end))
+    setcolorder(combined, c(begin, geo_headers, contents, end))
 
     return(combined)
 }
@@ -520,9 +497,9 @@ read_acs5year_geo_ <- function(year,
     # GEOCOMP
 
     # Args_____
-    # year : integer, year of 5-year census
-    # state : string, state abbreviation such as "MA"
-    # geo_headers : string vector of geographic headers such as c("PLACE", "CBSA")
+    # year : ending year of 5-year census
+    # state : state abbreviation such as "MA"
+    # geo_headers : vector of geographic headers such as c("PLACE", "CBSA")
     # show_progress : wheather to show the progress of fread()
     #
     # Return_____
@@ -531,22 +508,25 @@ read_acs5year_geo_ <- function(year,
     # Examples_____
     # aaa = read_acs5year_geo_(2015, "ri", c(NAME, STATE))
 
-
-
-    #=== prepare arguments ===
-
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
-    # allow lowercase input for state and geo_headers
+    # allow uppercase and lowercase input for state and geo_headers
     state <- tolower(state)
+
+    # default geoheaders are always included in output. Do not include them in
+    # the geo_headers argument
+    default_geoheaders <- c("GEOID", "STUSAB", "NAME",
+                            "LOGRECNO", "SUMLEV", "GEOCOMP")
     geo_headers <- toupper(geo_headers) %>%
-        unique()
+        unique() %>%
+        setdiff(default_geoheaders)
 
     if (show_progress) {
-        cat("\nReading", toupper(state), year, "ACS 5-year survey geography file\n")
+        cat("\nReading", toupper(state), year,
+            "ACS 5-year survey geography file\n")
     }
 
-    #=== read file ===
+    # geographic header records files are different in 2009 and 2010
     if (year >= 2011){
         dict_geoheader <- dict_acs_geoheader_2011_now
     } else if (year == 2010){
@@ -565,7 +545,7 @@ read_acs5year_geo_ <- function(year,
     geo <- fread(file, header = FALSE, encoding = "Latin-1" ,
                  showProgress = show_progress, colClasses = "character") %>%
         setnames(dict_geoheader$reference) %>%
-        .[, c(c("GEOID", "NAME", "LOGRECNO", "SUMLEV", "GEOCOMP"), geo_headers), with = FALSE] %>%
+        .[, c(default_geoheaders, geo_headers), with = FALSE] %>%
         .[, LOGRECNO := as.numeric(LOGRECNO)] %>%
         setkey(LOGRECNO)
 
@@ -581,11 +561,11 @@ read_acs5year_1_file_tablecontents_ <- function(year, state, file_seg,
     # read selected table contents from a single file segement
     #
     # Args_____
-    # year : end year of the 5-year survey
+    # year : ending year of the 5-year survey
     # state : abbreviation of a state, such as "IN"
     # file_seg : sequence of a file segment, such as "0034"
-    # table_contents : vector of references of table contents in above file segment
-    # est_marg : which data to read, "e" for estimate and "m" for margin of error
+    # table_contents : references of table contents in above file segment
+    # est_marg : which data to read, "e" for estimate and "m" for margin
     # show_progress : whether to show progress of fread()
     #
     # Return_____
@@ -604,7 +584,8 @@ read_acs5year_1_file_tablecontents_ <- function(year, state, file_seg,
     col_names <- lookup[file_segment == file_seg] %>%
         # get rid of references ending with ".5", which are not in the file
         .[str_extract(reference, "..$") != ".5", reference]
-    ommitted <- c("FILEID", "FILETYPE", "STUSAB", "CHARITER", "SEQUENCE", "LOGRECNO")
+    ommitted <- c("FILEID", "FILETYPE", "STUSAB",
+                  "CHARITER", "SEQUENCE", "LOGRECNO")
     col_names <- c(ommitted, col_names)
 
     # row bind data in group1 and group2
@@ -648,15 +629,6 @@ read_acs5year_1_file_tablecontents_ <- function(year, state, file_seg,
         # add "_e" or "_m" to show the data is estimate or margin
         setnames(table_contents, paste0(table_contents, "_", est_marg)) %>%
         setkey(LOGRECNO)
-
-    # # convert non-numeric columns to numeric
-    # # some missing data are denoted as ".", which lead to the whole column read
-    # # as character
-    # for (col in names(combined)){
-    #     if (is.character(combined[, get(col)])){
-    #         combined[, (col) := as.numeric(get(col))]
-    #     }
-    # }
 
     return(combined)
 }
