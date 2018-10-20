@@ -181,6 +181,168 @@ read_acs1year <- function(year,
 
 
 # internal functions ===========================================================
+# Args_____
+# year: integer, year of the survey
+# state: state abbreviation
+# geo_headers : vector of geographic headers such as c("PLACE", "CBSA")
+# table_contents: vector of the table content references like
+#     c("B01001_009", "B00001_001", "B10001_002")
+# est_marg: stringe, read estimate data or margin of error data, takes value
+#     "e" for estimate and "m" for margin of error
+# show_progress: wheather to show progress of fread()
+#
+
+
+read_acs1year_filesegment_ <- function(year,
+                          state,
+                          file_seg,
+                          est_marg = "e",
+                          show_progress = TRUE){
+    # read all data in a file segment and assign right column names
+
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
+    # get column names from file segment, then add six ommitted ones
+    lookup <- get(paste0("lookup_acs1year_", year))
+    table_contents <- lookup[file_segment == file_seg, reference]
+    ommitted <- c("FILEID", "FILETYPE", "STUSAB", "CHARITER",
+                  "SEQUENCE", "LOGRECNO")
+    col_names <- c(ommitted, table_contents)
+
+    file <- paste0(path_to_census, "/acs1year/", year, "/", est_marg, year, "1",
+                   tolower(state), file_seg, "000.txt")
+
+    if (show_progress){
+        cat("\nReading", toupper(state), year,
+            "ACS 1-year survey file segment",
+            paste0(file_seg, "_", est_marg, "."))
+    }
+    dt <- fread(file, header = FALSE, showProgress = show_progress) %>%
+        setnames(col_names) %>%
+        # add "_e" or "_m" to show the data is estimate or margin
+        setnames(table_contents, paste0(table_contents, "_", est_marg))
+
+    # convert non-numeric columns to numeric
+    # some missing data are denoted as ".", which lead to the whole column read
+    # as character
+    for (col in names(dt)){
+        if (is.character(dt[, get(col)])){
+            dt[, (col) := as.numeric(get(col))]
+        }
+    }
+
+    return(dt)
+
+}
+
+
+read_acs1year_1_file_tablecontents_ <- function(year,
+                                                state,
+                                                file_seg,
+                                                table_contents,
+                                                est_marg = "e",
+                                                show_progress = TRUE){
+    # select table_contents from one file segment
+
+    table_contents <- paste0(table_contents, "_", est_marg)
+
+    dt <- read_acs1year_filesegment_(year, state, file_seg, est_marg, show_progress) %>%
+        .[, c("LOGRECNO", table_contents), with = FALSE] %>%
+        setkey(LOGRECNO)
+
+
+    return(dt)
+}
+
+
+read_acs1year_tablecontents_ <- function(year, state, table_contents,
+                                         est_marg = "e",
+                                         show_progress = TRUE){
+    # select table_contents that could be from multiple file segment of a state
+
+    # locate data files for the content
+    lookup <- get(paste0("lookup_acs1year_", year))
+    file_content <- lookup_tablecontents(table_contents, lookup)
+
+    dt <- purrr::map2(file_content[, file_seg],
+                      file_content[, table_contents],
+                      function(x, y) read_acs1year_1_file_tablecontents_(
+                          year, state, file_seg = x, table_contents = y,
+                          est_marg = est_marg,
+                          show_progress = show_progress
+                      )) %>%
+        purrr::reduce(merge, all = TRUE)
+
+    return(dt)
+}
+
+
+
+read_acs1year_geoheader_file_ <- function(year,
+                                          state,
+                                          show_progress = TRUE) {
+    # read all data in a geographic record file and assign column names
+
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
+    # allow uppercase and lowercase input for state and geo_headers
+    state <- tolower(state)
+
+    if (show_progress) {
+        cat("\nReading", toupper(state), year,
+            "ACS 1-year survey geography file.")
+    }
+
+    file <- paste0(path_to_census, "/acs1year/", year, "/g", year, "1",
+                   tolower(state), ".csv")
+
+    # geographic header records file varies from year to year
+    if (year >= 2011){
+        dict_geoheader <- dict_acs_geoheader_2011_now
+    } else if (year == 2010){
+        dict_geoheader <- dict_acs_geoheader_2010
+    }else if (year == 2009){
+        dict_geoheader <- dict_acs_geoheader_2009_1year
+    } else if (year >= 2006 & year <= 2008){
+        dict_geoheader <- dict_acs_geoheader_2006_2008_1year
+    } else if (year == 2005){
+        dict_geoheader <- dict_acs_geoheader_2005_1year
+    }
+
+    # use "Latin-1" for encoding special spanish latters such as ñ in Cañada
+    # read all columns and then select as the file is not as big as those in
+    # decennial census.
+    geo <- fread(file, header = FALSE, encoding = "Latin-1" ,
+                 showProgress = show_progress, colClasses = "character") %>%
+        setnames(dict_geoheader$reference) %>%
+        .[, LOGRECNO := as.numeric(LOGRECNO)]
+
+    return(geo)
+}
+
+
+
+read_acs1year_geo_ <- function(year,
+                               state,
+                               geo_headers = NULL,
+                               show_progress = TRUE) {
+    # read selected geoheaders from geographic header records
+
+    # default geoheaders are always included in output. Do not include them in
+    # the geo_headers argument
+    default_geoheaders <- c("GEOID", "STUSAB", "NAME",
+                            "LOGRECNO", "SUMLEV", "GEOCOMP")
+    geo_headers <- toupper(geo_headers) %>%
+        unique() %>%
+        setdiff(default_geoheaders)
+
+    geo <- read_acs1year_geoheader_file_(year, state, show_progress) %>%
+        .[, c(default_geoheaders, geo_headers), with = FALSE] %>%
+        setkey(LOGRECNO)
+
+    return(geo)
+}
+
 
 read_acs1year_areas_ <- function(year,
                                  states,
@@ -463,109 +625,10 @@ read_acs1year_geoheaders_ <- function(year,
 
 
 
-read_acs1year_geo_ <- function(year,
-                               state,
-                               geo_headers = NULL,
-                               show_progress = TRUE) {
-    # Read geography file of one state of ACS 1-year survey and return a
-    # data.table
-
-    # Args_____
-    # year : year of ACS 1-year survey
-    # state : state abbreviation such as "MA"
-    # geo_headers : vector of geographic headers such as c("PLACE", "CBSA")
-    # show_progress : wheather to show the progress of fread()
-    #
-    # Return_____
-    # a data.table with key of LOGRECNO
-
-
-    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
-
-    # allow uppercase and lowercase input for state and geo_headers
-    state <- tolower(state)
-
-    # default geoheaders are always included in output. Do not include them in
-    # the geo_headers argument
-    default_geoheaders <- c("GEOID", "STUSAB", "NAME",
-                            "LOGRECNO", "SUMLEV", "GEOCOMP")
-    geo_headers <- toupper(geo_headers) %>%
-        unique() %>%
-        setdiff(default_geoheaders)
-
-    if (show_progress) {
-        cat("Reading", toupper(state), year,
-            "ACS 1-year survey geography file\n")
-    }
-
-    file <- paste0(path_to_census, "/acs1year/", year, "/g", year, "1",
-                   tolower(state), ".csv")
-
-    # geographic header records file varies from year to year
-    if (year >= 2011){
-        dict_geoheader <- dict_acs_geoheader_2011_now
-    } else if (year == 2010){
-        dict_geoheader <- dict_acs_geoheader_2010
-    }else if (year == 2009){
-        dict_geoheader <- dict_acs_geoheader_2009_1year
-    } else if (year >= 2006 & year <= 2008){
-        dict_geoheader <- dict_acs_geoheader_2006_2008_1year
-    } else if (year == 2005){
-        dict_geoheader <- dict_acs_geoheader_2005_1year
-    }
-
-    # use "Latin-1" for encoding special spanish latters such as ñ in Cañada
-    # read all columns and then select as the file is not as big as those in
-    # decennial census.
-    geo <- fread(file, header = FALSE, encoding = "Latin-1" ,
-                 showProgress = show_progress, colClasses = "character") %>%
-        setnames(dict_geoheader$reference) %>%
-        .[, c(default_geoheaders, geo_headers), with = FALSE] %>%
-        .[, LOGRECNO := as.numeric(LOGRECNO)] %>%
-        setkey(LOGRECNO)
-
-    return(geo)
-}
 
 
 
 
-read_acs1year_1_file_tablecontents_ <- function(year, state, file_seg,
-                                                table_contents, est_marg = "e",
-                                                show_progress = TRUE){
-
-    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
-
-    # get column names from file segment, then add six ommitted ones
-    lookup <- get(paste0("lookup_acs1year_", year))
-    col_names <- lookup[file_segment == file_seg] %>%
-        # get rid of references ending with ".5", which are not in the file
-        .[str_extract(reference, "..$") != ".5", reference]
-    ommitted <- c("FILEID", "FILETYPE", "STUSAB", "CHARITER",
-                  "SEQUENCE", "LOGRECNO")
-    col_names <- c(ommitted, col_names)
-
-    file <- paste0(path_to_census, "/acs1year/", year, "/", est_marg, year, "1",
-                   tolower(state), file_seg, "000.txt")
-
-    dt <- fread(file, header = FALSE, showProgress = show_progress) %>%
-        setnames(names(.), col_names) %>%
-        .[, c("LOGRECNO", table_contents), with = FALSE] %>%
-        # add "_e" or "_m" to show the data is estimate or margin
-        setnames(table_contents, paste0(table_contents, "_", est_marg)) %>%
-        setkey(LOGRECNO)
-
-    # convert non-numeric columns to numeric
-    # some missing data are denoted as ".", which lead to the whole column read
-    # as character
-    for (col in names(dt)){
-        if (is.character(dt[, get(col)])){
-            dt[, (col) := as.numeric(get(col))]
-        }
-    }
-
-    return(dt)
-}
 
 
 
@@ -578,43 +641,6 @@ read_acs1year_1_file_tablecontents_ <- function(year, state, file_seg,
 # )
 
 
-read_acs1year_tablecontents_ <- function(year, state, table_contents,
-                                         est_marg = "e",
-                                         show_progress = TRUE){
-    # Read ACS table_contents from 1-year survey and return a data.table
-    #
-    # Args_____
-    # year: integer, year of the survey
-    # state: state abbreviation
-    # table_contents: vector of the table content references
-    # est_marg: stringe, read estimate data or margin of error data, takes value
-    #     "e" for estimate and "m" for margin of error
-    # show_progress: wheather to show progress of fread()
-    #
-    # Return_____
-    # a data table keyed with LOGRECNO
-    #
-    # Examples_____
-    # table_contents = c("B01001_009", "B00001_001", "B10001_002")
-    # read_acs1year_tablecontents_(2015, "RI", table_contents)
-
-
-
-    # locate data files for the content
-    lookup <- get(paste0("lookup_acs1year_", year))
-    file_content <- lookup_tablecontents(table_contents, lookup)
-
-    dt <- purrr::map2(file_content[, file_seg],
-                      file_content[, table_contents],
-                      function(x, y) read_acs1year_1_file_tablecontents_(
-                          year, state, file_seg = x, table_contents = y,
-                          est_marg = est_marg,
-                          show_progress = show_progress
-                      )) %>%
-        purrr::reduce(merge, all = TRUE)
-
-    return(dt)
-}
 
 
 

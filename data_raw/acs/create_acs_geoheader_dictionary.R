@@ -42,7 +42,7 @@ save(dict_acs_geoheader_2006_2008_1year, file = "data/dict_acs_geoheader_2006_20
 
 
 # 2005, the earliest year available has different format ====
-dict_acs_geoheader_2005_1year <- fread("data_raw/acs_geoheader_2005_1year.csv") %>%
+dict_acs_geoheader_2005_1year <- fread("data_raw/acs/acs_geoheader_2005_1year.csv") %>%
     .[, end := start + size - 1] %>%
     .[, size := NULL] %>%
     .[, type := NULL]

@@ -523,7 +523,7 @@ read_acs5year_geo_ <- function(year,
 
     if (show_progress) {
         cat("\nReading", toupper(state), year,
-            "ACS 5-year survey geography file\n")
+            "ACS 5-year survey geography file.")
     }
 
     # geographic header records files are different in 2009 and 2010

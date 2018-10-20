@@ -1,5 +1,26 @@
 library(totalcensus)
 
+
+# read_acs1year_filesegment ===================================================
+aaa <- totalcensus:::read_acs1year_filesegment_(2005, "RI", "0003")
+
+
+# read_acs1year_1_file_tablecontents ==========================================
+aaa <- totalcensus:::read_acs1year_1_file_tablecontents_(
+    2005, "RI", "0003", c("B02005_042", "C02003_001"), "m"
+)
+
+
+# read_acs1year_tablecontents_ ==================================================
+aaa <- totalcensus:::read_acs1year_tablecontents_(
+    2005, "RI", c("B02005_042", "C02003_001", "B01001_002", "B01001_026")
+)
+
+
+# read_acs1year_geoheader_file_ ================================================
+aaa <- totalcensus:::read_acs1year_geoheader_file_(2005, "RI")
+
+
 # read_acs1year_geo_() =========================================================
 aaa <- totalcensus:::read_acs1year_geo_(
     year = 2005,
@@ -21,10 +42,10 @@ aaa <- totalcensus:::read_acs1year_geo_(
     geo_headers = dict_acs_geoheader_2005_1year$reference
 )
 cols <- c("GEOID", "STUSAB", "NAME", "LOGRECNO", "SUMLEV", "GEOCOMP",
-          "FILEID", "US", "REGION", "DIVISION", "STATE", "COUNTY", "COUSUB",
-          "PLACE", "AINDN", "CBSA", "METDIV", "CSA", "CNECTA", "NECTA",
-          "NECTADIV", "UA", "CD2000", "BST", "PUMA5", "SDELM", "SDSEC",
-          "SDUNI", "UR", "MEMI", "MEMIR", "PCI", "CD1990", "FIPSMCD", "FIPSPL")
+          "FILEID", "US", "REGION", "DIVISION", "STATE", "COUNTY", "MCD",
+          "PL", "AINDN", "CBSA", "METDIV", "CSA", "CNECTA", "NECTA", "NECTADIV",
+          "UA", "CD2000", "BST", "PUMA5", "SDELM", "SDSEC", "SDUNI", "UR",
+          "MEMI", "MEMIR", "PCI", "CD1990", "COUSUB", "PLACE")
 stopifnot(names(aaa) == cols)
 
 
@@ -114,4 +135,40 @@ aaa <- read_acs1year(
     summary_level = "place"
 )
 stopifnot(dim(aaa) == c(142, 10))
+
+
+
+
+
+# _________________________ ===================================================
+# check all file segments =====================================================
+read_segment <- function(year, state, fs){
+    aaa <- totalcensus:::read_acs1year_filesegment_(
+        year = year,
+        state = state,
+        file_seg = fs
+    )
+}
+
+read_all_segment <- function(year, state = "RI", first_seg = 1){
+    look <- get(paste0("lookup_acs1year_", year))
+    n_fs <- max(as.integer(look$file_segment))
+    for (i in first_seg:n_fs){
+
+        if (i < 10){
+            fs <- paste0("000", i)
+        } else if (i < 100){
+            fs <- paste0("00", i)
+        } else {
+            fs <- paste0("0", i)
+        }
+
+        #print(fs)
+
+        read_segment(year, state, fs)
+    }
+}
+
+read_all_segment(2015)
+
 

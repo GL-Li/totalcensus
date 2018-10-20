@@ -9,8 +9,8 @@ REGION, Census Region, 1, 22, geographic
 DIVISION, Census Division, 1, 23, geographic
 STATE, State (FIPS Code), 2, 24, geographic
 COUNTY, County of current residence, 3, 26, geographic
-COUSUB, Minor Civil Division of current residence, 3, 29, geographic
-PLACE, Place of current residence, 4, 32, geographic
+MCD, Minor Civil Division of current residence, 3, 29, geographic
+PL, Place of current residence, 4, 32, geographic
 AINDN, American Indian and Alaska Native Area, 4, 36, geographic
 CBSA, Metropolitan and Micropolitan Statistical Area, 5, 40, geographic
 METDIV, Metro politan Division, 5, 45, geographic
@@ -30,7 +30,7 @@ MEMI, Metro politan/Micropolitan Indicator Flag, 1, 96, geographic
 MEMIR, Metropolitan/Micropolitan Indicator Recode, 1, 97, geographic
 PCI, Principal City Indicator, 1, 98, geographic
 CD1990, 1990 Congressional District, 2, 99, geographic
-FIPSMCD, Federal Information Processing Standards state and Minor Civil Division code, 5, 101, geographic
-FIPSPL, Place code (Federal Information Processing Standards), 5, 106, geographic
+COUSUB, Federal Information Processing Standards state and Minor Civil Division code, 5, 101, geographic
+PLACE, Place code (Federal Information Processing Standards), 5, 106, geographic
 GEOID, Geographic identification, 40, 111, geographic
 NAME, Name of an area, 200, 151, geographic

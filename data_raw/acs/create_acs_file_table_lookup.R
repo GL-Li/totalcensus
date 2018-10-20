@@ -38,18 +38,36 @@ make_acs_lookup <- function(period, year){
     }
 
     if (year == 2005){
+        table_shell <- read_excel("data_raw/acs/ACS_tables_Sum_file_shells_2005_1yr.xls", col_types = "text") %>%
+            .[, 1:4] %>%
+            setDT() %>%
+            setnames(c("table_number", "table_seq", "table_content", "file_segment")) %>%
+            .[!is.na(table_seq) & !str_detect(table_seq, "\\.")] %>%
+            .[as.integer(table_seq) < 1000, reference := paste0(table_number, "_", table_seq)] %>%
+            .[as.integer(table_seq) < 100, reference := paste0(table_number, "_","0", table_seq)] %>%
+            .[as.integer(table_seq) < 10, reference := paste0(table_number, "_","00", table_seq)] %>%
+            .[, table_seq := NULL]
+
         dt <- setDT(dt) %>%
-            .[, c(2, 3, 4, 7), with = FALSE] %>%
-            setnames(1:4, c("table_number", "file_segment", "reference", "table_name")) %>%
-            .[!is.na(table_number)] %>%
-            .[, file_segment := as.character(as.integer(file_segment))] %>%
-            .[, reference := as.integer(str_extract(reference, "[0-9]*"))] %>%
+            .[, c(2, 3, 7), with = FALSE] %>%
+            setnames(c("table_number", "file_segment", "table_name"))
 
-            # correct a mistake in original xls file
-            .[file_segment == "2" & reference == 4, reference := 3] %>%
+        name <- dt[!is.na(table_number)]
+        universe <- dt[is.na(table_number), .(universe = table_name)] %>%
+            .[, universe := str_remove(universe, "^Universe:  ")]
+        dt <- cbind(name, universe)
 
-            .[, .(reference = 1:reference), by = .(table_number, file_segment, table_name)] %>%
-            .[, .(table_number, file_segment, reference = as.character(reference), table_name)]
+        # a table content may appear in multiple file segment, join with file_seg too
+        lookup_acs1year_2005 <- dt[table_shell, on = .(table_number, file_segment)] %>%
+            .[, restriction := "unknown"] %>%
+            setcolorder(c("file_segment", "table_content", "reference", "restriction",
+                       "table_number", "table_name", "universe"))
+
+        save(lookup_acs1year_2005, file = "data/lookup_acs1year_2005.RData",
+             compress = "xz", compression_level = 9)
+
+        return(lookup_acs1year_2005)
+
     } else {
         dt <- setDT(dt) %>%
             .[, c(2, 3, 4, 8), with = FALSE] %>%
@@ -82,7 +100,7 @@ make_acs_lookup <- function(period, year){
     # Appendices.xls files are not available for years earlier than 2013
     if (year >= 2013){
         file_restriction <- paste0(
-            "data_raw/",
+            "data_raw/acs/",
             "ACS_", year, "_SF_", period, "YR_Appendices.xls"
         )
 
