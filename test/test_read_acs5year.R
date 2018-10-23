@@ -1,6 +1,43 @@
 library(totalcensus)
 
-# read_acs1year_geo_() =========================================================
+
+# read_acs5year_filesegment() ===================================================
+aaa <- totalcensus:::read_acs5year_filesegment_(2009, "RI", "0003", 1)
+bbb <- totalcensus:::read_acs5year_filesegment_(2009, "RI", "0003", 2)
+
+
+# read_acs5year_1_file_tablecontents ===========================================
+aaa <- totalcensus:::read_acs5year_1_file_tablecontents_(
+    year = 2009,
+    state = "RI",
+    file_seg = "0003",
+    group = 1,
+    table_contents = c("B08519_022", "B08519_045")
+)
+bbb <- totalcensus:::read_acs5year_1_file_tablecontents_(
+    year = 2009,
+    state = "RI",
+    file_seg = "0003",
+    group = 2,
+    table_contents = c("B08519_022", "B08519_045")
+)
+
+
+# read_acs5year_tablecontents_() ==============================================
+aaa <- totalcensus:::read_acs5year_tablecontents_(
+    2009, "RI", 1, c("B01001A_003", "B24124_024", "B08519_022", "B08519_045")
+)
+bbb <- totalcensus:::read_acs5year_tablecontents_(
+    2009, "RI", 2, c("B01001A_003", "B24124_024", "B08519_022", "B08519_045")
+)
+
+
+# read_acs5year_geoheader_file_() ==============================================
+aaa <- totalcensus:::read_acs5year_geoheader_file_(2009, "RI")
+
+
+
+# read_acs5year_geo_() =========================================================
 aaa <- totalcensus:::read_acs5year_geo_(
     year = 2009,
     state = "RI"
@@ -46,7 +83,7 @@ aaa <- totalcensus:::read_acs5year_geo_(
 stopifnot(dim(aaa) == c(7043, 45))
 
 
-# read_acs1_geoheaders_() ======================================================
+# read_acs5_geoheaders_() ======================================================
 aaa <- totalcensus:::read_acs5year_geoheaders_(
     year = 2010,
     states = "RI",
@@ -60,28 +97,28 @@ stopifnot(names(aaa) == cols)
 aaa <- totalcensus:::read_acs5year_geoheaders_(
     year = 2016,
     states = "RI",
-    table_contents = c("B01001_002", "B01001_026"),  # reference only
+    table_contents = c("B01001_002", "B01001_026", "B07410_002"),  # reference only
     geo_headers =  c("STATE", "COUNTY"),
     with_margin = TRUE
 )
 stopifnot(aaa[7, 6] == 385559)
 
 
-# read_acs1year_areas_() =======================================================
+# read_acs5year_areas_() =======================================================
 aaa <- totalcensus:::read_acs5year_areas_(
     year = 2016,
     states = c("UT", "RI"),
-    table_contents = c("B01001_002", "B01001_026"),
+    table_contents = c("B01001_002", "B01001_026", "B07410_002"),
     areas = c("Salt Lake City city, UT",
               "Providence city, RI",
               "PLACE = RI19180"),
-    summary_level = "place",
+    summary_level = "block group",
     with_margin = TRUE
 )
-stopifnot(aaa[3, 5] == 39609)
+stopifnot(aaa[3, 5] == 685)
 
 
-# read_acs1year() ==============================================================
+# read_acs5year() ==============================================================
 # provide geo_headers
 aaa <- read_acs5year(
     year = 2015,
@@ -123,7 +160,6 @@ aaa <- read_acs5year(
     areas = c("Salt Lake City city, UT",
               "Providence city, RI",
               "PLACE = RI19180"),
-    summary_level = "place",
     with_margin = TRUE
 )
 cols <- c("area", "GEOID", "NAME", "STUSAB", "population", "population_margin",

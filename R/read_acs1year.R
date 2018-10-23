@@ -217,19 +217,54 @@ read_acs1year_filesegment_ <- function(year,
             "ACS 1-year survey file segment",
             paste0(file_seg, "_", est_marg, "."))
     }
-    dt <- fread(file, header = FALSE, showProgress = show_progress) %>%
-        setnames(col_names) %>%
-        # add "_e" or "_m" to show the data is estimate or margin
-        setnames(table_contents, paste0(table_contents, "_", est_marg))
+
+    dt <- tryCatch({
+        fread(file, header = FALSE, showProgress = show_progress) %>%
+            setnames(col_names)
+    }, error = function(err){
+        message("\nPlease double check the original data: ")
+        message(err)
+        # if error, return a empty data.table
+        dt <- setnames(data.table(matrix(nrow = 0, ncol = length(col_names))),
+                       col_names) %>%
+            .[, LOGRECNO := as.integer(LOGRECNO)]
+        return(dt)
+    })
+
+    # # do not guess a wrong original data
+    # if (ncol(dt) < length(col_names)){
+    #     message(paste0("\nWarning: number of columns of file segment ",
+    #                    file_seg, " is ", ncol(dt),
+    #                    " but number of reference provided in lookup ",
+    #                    "file is ", length(col_names), ". only the first ",
+    #                    ncol(dt), " references are asssigned to data"))
+    #     col_names <- col_names[1:ncol(dt)]
+    #     table_contents <- table_contents[1:(ncol(dt) - 6)]
+    # } else if (ncol(dt) > length(col_names)){
+    #     message(paste0("\nWarning: number of columns of file segment ",
+    #                    file_seg, " is ", ncol(dt),
+    #                    " but number of reference provided in lookup ",
+    #                    "file is ", length(col_names), ". only the first ",
+    #                    length(col_names),
+    #                    " data columns are asssigned with a reference"))
+    #     dt <- dt[, 1:length(col_names)]
+    # }
+    #
+    # setnames(dt, col_names)
 
     # convert non-numeric columns to numeric
     # some missing data are denoted as ".", which lead to the whole column read
     # as character
-    for (col in names(dt)){
+    for (col in table_contents){
         if (is.character(dt[, get(col)])){
             dt[, (col) := as.numeric(get(col))]
         }
     }
+
+
+    # add "_e" or "_m" to show the data is estimate or margin
+    setnames(dt, table_contents, paste0(table_contents, "_", est_marg))
+
 
     return(dt)
 

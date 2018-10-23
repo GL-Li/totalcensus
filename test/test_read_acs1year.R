@@ -142,15 +142,16 @@ stopifnot(dim(aaa) == c(142, 10))
 
 # _________________________ ===================================================
 # check all file segments =====================================================
-read_segment <- function(year, state, fs){
+read_segment <- function(year, state, fs, est_marg){
     aaa <- totalcensus:::read_acs1year_filesegment_(
         year = year,
         state = state,
-        file_seg = fs
+        file_seg = fs,
+        est_marg = est_marg
     )
 }
 
-read_all_segment <- function(year, state = "RI", first_seg = 1){
+read_all_segment <- function(year, state = "RI", first_seg = 1, est_marg = "e"){
     look <- get(paste0("lookup_acs1year_", year))
     n_fs <- max(as.integer(look$file_segment))
     for (i in first_seg:n_fs){
@@ -165,10 +166,10 @@ read_all_segment <- function(year, state = "RI", first_seg = 1){
 
         #print(fs)
 
-        read_segment(year, state, fs)
+        read_segment(year, state, fs, est_marg)
     }
 }
 
-read_all_segment(2015)
+read_all_segment(2005, "RI", 1, "e")
 
 
