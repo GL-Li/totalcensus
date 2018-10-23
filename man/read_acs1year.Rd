@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_acs1year.R
 \name{read_acs1year}
 \alias{read_acs1year}
-\title{Read ACS 1-year estimates}
+\title{Read summary file 1 of ACS 1-year estimates}
 \usage{
 read_acs1year(year, states, table_contents = NULL, areas = NULL,
   geo_headers = NULL, summary_level = NULL, geo_comp = "total",
@@ -11,7 +11,7 @@ read_acs1year(year, states, table_contents = NULL, areas = NULL,
 \arguments{
 \item{year}{year of the estimate}
 
-\item{states}{vector of state abbreviations, for example "IN" or c("MA", "RI").}
+\item{states}{vector of state abbreviations, such as "IN" and c("MA", "RI").}
 
 \item{table_contents}{selected references of contents in census tables. Users
 can choose a name for each reference, such as in
@@ -28,18 +28,18 @@ For county, city, or town, must use the exact name as those in
 \item{geo_headers}{vector of references of selected geographci headers to be
 included in the return. Search with \code{\link{search_geoheaders}}}
 
-\item{summary_level}{select which summary level to keep, default to keep all. It takes strings
-including "state", "county", "county subdivision", "place", "tract", "block group",
-and "block" for the most common levels. It also take code. Search all codes with
-\code{\link{search_summarylevels}} or browse \code{\link{dict_acs1_summarylevel}} .}
+\item{summary_level}{select which summary level to keep, default to keep all.
+It takes strings including "state", "county", "county subdivision",
+"place", "tract", "block group", and "block" for the most common
+levels. It also take code. Search all codes with
+\code{\link{search_summarylevels}}.}
 
-\item{geo_comp}{select which geographic component to keep, "*" to keep every geo-component,
-"total" for "00", "urban" for "01", "urbanized area" for "04",
-"urban cluster" for "28", "rural" for "43". Others should input code
-which can be found with \code{\link{search_geocomponents}}. Availability
-of geocomponent depends on summary level. State level contains all
-geographic component. County subdivision and higher level have "00",
-"01", and "43". Census tract and lower level have only "00".}
+\item{geo_comp}{select which geographic component to keep, "*" to keep every
+geo-component, "total" for "00", "urban" for "01", "urbanized area"
+for "04", "urban cluster" for "28", "rural" for "43". Others should
+input code, which can be found with function
+\code{\link{search_geocomponents}}. Availability of geocomponent
+depends on summary level.}
 
 \item{with_margin}{read also margin of error in addition to estimate}
 

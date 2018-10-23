@@ -84,7 +84,8 @@ read_acs5year <- function(year,
                           with_margin = FALSE,
                           show_progress = TRUE){
 
-    # check if the path to census is set
+    ### check if the path to census is set ###
+
     if (Sys.getenv("PATH_TO_CENSUS") == ""){
         message(paste(
             "Please set up the path to downloaded census data",
@@ -94,14 +95,10 @@ read_acs5year <- function(year,
         return(NULL)
     }
 
-    if (is.null(summary_level)) summary_level <- "*"
 
-    # allow lowerscase input
-    states <- toupper(states)
+    ### check whether to download data ###
 
-    # check whether to download data
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
-
 
     # check if need to download generated data from census2010
     if (!file.exists(paste0(path_to_census, "/generated_data"))){
@@ -141,6 +138,10 @@ read_acs5year <- function(year,
     }
 
 
+    ### read data ###
+
+    if (is.null(summary_level)) summary_level <- "*"
+    states <- toupper(states)    # allow lowcase input
     if (is.null(areas) + is.null(geo_headers) == 0){
         stop("Must keep at least one of arguments areas and geo_headers NULL")
     }
@@ -158,7 +159,8 @@ read_acs5year <- function(year,
     content_names <- organize_tablecontents(table_contents) %>%
         .[, name]
     table_contents <- organize_tablecontents(table_contents) %>%
-        .[, reference]
+        .[, reference] %>%
+        toupper()    # allow lowcase in reference input
 
     # turn off warning, fread() gives warnings when read non-scii characters.
     options(warn = -1)
@@ -169,6 +171,7 @@ read_acs5year <- function(year,
             with_margin, show_progress
         )
     } else {
+        geo_headers <- unique(geo_headers)
         dt <- read_acs5year_geoheaders_(
             year, states, table_contents, geo_headers, summary_level, geo_comp,
             with_margin, show_progress
@@ -348,9 +351,6 @@ read_acs5year_geoheader_file_ <- function(year,
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
-    # allow uppercase and lowercase input for state and geo_headers
-    state <- tolower(state)
-
     if (show_progress) {
         cat("\nReading", toupper(state), year,
             "ACS 5-year survey geography file.")
@@ -418,10 +418,6 @@ read_acs5year_areas_ <- function(year,
     # 1:     PLACE 62360    UT     Providence city, UT
     # 2:    COUNTY   005    RI      Newport County, RI
     dt_areas <- convert_areas(areas)
-
-    states <- toupper(states)
-    # # toupper(NULL) ---> character(0) will cause trouble
-    # if (!is.null(table_contents)) table_contents <- toupper(table_contents)
 
     # this is used to extract geographic headers
     if (!is.null(areas)) geo_headers <- unique(dt_areas[, geoheader])
@@ -676,18 +672,3 @@ read_acs5year_geoheaders_ <- function(year,
 
     return(combined)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

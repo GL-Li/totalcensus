@@ -76,7 +76,8 @@ read_acs1year <- function(year,
                           with_margin = FALSE,
                           show_progress = TRUE){
 
-    # check if the path to census is set
+    ### check if the path to census is set ###
+
     if (Sys.getenv("PATH_TO_CENSUS") == ""){
         message(paste(
             "Please set up the path to downloaded census data, ",
@@ -86,19 +87,15 @@ read_acs1year <- function(year,
         return(NULL)
     }
 
-    if (is.null(summary_level)) summary_level <- "*"
 
-     # allow lowerscase input
-    states <- toupper(states)
+    ### check whether to download data ###
 
-    # check whether to download data
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
     # check if need to download generated data from census2010
     if (!file.exists(paste0(path_to_census, "/generated_data"))){
         download_generated_data()
     }
-
 
     # check whether to download census data
     not_downloaded <- c()
@@ -132,6 +129,11 @@ read_acs1year <- function(year,
         }
     }
 
+
+    ### read data ###
+
+    if (is.null(summary_level)) summary_level <- "*"
+    states <- toupper(states)    # allow lowerscase input
     if (is.null(areas) + is.null(geo_headers) == 0){
         stop("Must keep at least one of arguments areas and geo_headers NULL")
     }
@@ -141,7 +143,6 @@ read_acs1year <- function(year,
     if (any(grepl("B01003_001", table_contents))){
         message("B01003_001 is the population column.")
     }
-
     table_contents <- table_contents[!grepl("B01003_001", table_contents)]
     table_contents <- c("population = B01003_001", table_contents) %>%
         unique()
@@ -149,7 +150,8 @@ read_acs1year <- function(year,
     content_names <- organize_tablecontents(table_contents) %>%
         .[, name]
     table_contents <- organize_tablecontents(table_contents) %>%
-        .[, reference]
+        .[, reference] %>%
+        toupper()    # allow lowcase in reference input
 
     # turn off warning, fread() gives warnings when read non-scii characters.
     options(warn = -1)
@@ -160,6 +162,7 @@ read_acs1year <- function(year,
             with_margin, show_progress
         )
     } else {
+        geo_headers <- unique(geo_headers)
         dt <- read_acs1year_geoheaders_(
             year, states, table_contents, geo_headers, summary_level, geo_comp,
             with_margin, show_progress
@@ -231,26 +234,6 @@ read_acs1year_filesegment_ <- function(year,
         return(dt)
     })
 
-    # # do not guess a wrong original data
-    # if (ncol(dt) < length(col_names)){
-    #     message(paste0("\nWarning: number of columns of file segment ",
-    #                    file_seg, " is ", ncol(dt),
-    #                    " but number of reference provided in lookup ",
-    #                    "file is ", length(col_names), ". only the first ",
-    #                    ncol(dt), " references are asssigned to data"))
-    #     col_names <- col_names[1:ncol(dt)]
-    #     table_contents <- table_contents[1:(ncol(dt) - 6)]
-    # } else if (ncol(dt) > length(col_names)){
-    #     message(paste0("\nWarning: number of columns of file segment ",
-    #                    file_seg, " is ", ncol(dt),
-    #                    " but number of reference provided in lookup ",
-    #                    "file is ", length(col_names), ". only the first ",
-    #                    length(col_names),
-    #                    " data columns are asssigned with a reference"))
-    #     dt <- dt[, 1:length(col_names)]
-    # }
-    #
-    # setnames(dt, col_names)
 
     # convert non-numeric columns to numeric
     # some missing data are denoted as ".", which lead to the whole column read
@@ -320,11 +303,8 @@ read_acs1year_geoheader_file_ <- function(year,
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
-    # allow uppercase and lowercase input for state and geo_headers
-    state <- tolower(state)
-
     if (show_progress) {
-        cat("\nReading", toupper(state), year,
+        cat("\nReading", state, year,
             "ACS 1-year survey geography file.")
     }
 
@@ -389,56 +369,12 @@ read_acs1year_areas_ <- function(year,
                                  show_progress = TRUE){
     # read ACS 1-year data of selected areas
     #
-    # Args_____
-    # year :  end year of the 5-year survey
-    # states : vector of abbreviations of states such as c("MA", "RI")
-    # table_contents :  vector of reference of available table contents
-    # areas : For metro area, in the format like "New York metro".
-    #      For county, city, or town, must use the exact name as those in
-    #      \code{\link{dict_fips}} in the format like "kent county, RI",
-    #     "Boston city, MA", and "Lincoln town, RI". And special examples like
-    #     "Salt Lake City city, UT" must keep the "city" after "City".
-    # summary_level : summary level like "050"
-    # geo_comp : geographic component such as "00", "01", and "43"
-    # with_margin : read also margin of error in addition to estimate
-    # show_progress : whether to show progress in fread()n
-    #
-    # Return_____
-    # A data.table
-    #
-    # Examples_____
-    # aaa = read_acs1year_areas_(
-    #     year = 2015,
-    #     states = "ri",
-    #     table_contents = "B01001_009",
-    #     areas = c("Lincoln town, ri", "PLACE = RI59000", "providence metro"),
-    #     summary_level = "county subdivision"
-    # )
-    #
-    # bbb <- read_acs1year_areas_(
-    #     year = 2015,
-    #     states = c("ut", "ri"),
-    #     table_contents = c("B01001_009", "B00001_001"),
-    #     areas = c("Lincoln Town, RI",
-    #               "Kent county, RI",
-    #               "Salt Lake City city, UT",
-    #               "Salt Lake metro",
-    #               "Providence city, RI"),
-    #     summary_level = "county subdivision"
-    # )
-
-    #=== prepare arguments ===
 
     # convert areas to the form of data.table
     #    geoheader  code state                    name
     # 1:     PLACE 62360    UT     Providence city, UT
     # 2:    COUNTY   005    RI      Newport County, RI
     dt_areas <- convert_areas(areas)
-
-
-    states <- toupper(states)
-    # toupper(NULL) ---> character(0) will cause trouble
-    if (!is.null(table_contents)) table_contents <- toupper(table_contents)
 
     # this is used to extract geographic headers
     if (!is.null(areas)) geo_headers <- unique(dt_areas[, geoheader])
@@ -545,44 +481,7 @@ read_acs1year_geoheaders_ <- function(year,
                                       show_progress = TRUE){
     # read ACS 1-year data of selected geoheaders
     #
-    # Args_____
-    # year :  year of the survey
-    # states : vector of abbreviations of states such as c("MA", "RI")
-    # table_contents :  vector of reference of available table contents
-    # geo_headers : vector of geographic headers such as c("COUNTY", "PLACE").
-    # summary_level : summary level like "050"
-    # geo_comp : geographic component such as "00", "01", and "43"
-    # with_margin : read also margin of error in addition to estimate
-    # show_progress : whether to show progress in fread()
-    #
-    # Return_____
-    # A data.table
-    #
-    # Examples_____
-    # Area names are given when available if there is only one geoheader.
-    # aaa = read_acs1year_geoheaders_(
-    #     year = 2015,
-    #     states = "ri",
-    #     table_contents = "B01001_009",
-    #     geo_headers = c("COUSUB"),
-    #     summary_level = "county subdivision"
-    # )
-    #
-    # No area names are given if there are multiple geoheaders.
-    # bbb <- read_acs1year_geoheaders_(
-    #     year = 2015,
-    #     states = c("ut", "ri"),
-    #     table_contents = c("B01001_009", "B00001_001"),
-    #     geo_headers = c("PLACE"),
-    #     summary_level = "place"
-    # )
 
-    #=== prepare arguments ===
-
-    states <- toupper(states)
-    geo_headers <- unique(geo_headers)
-    # toupper(NULL) ---> character(0) will cause trouble
-    if (!is.null(table_contents)) table_contents <- toupper(table_contents)
 
     # switch summary level to code when it is given as plain text
     summary_level <- switch_summarylevel(summary_level)
@@ -654,30 +553,3 @@ read_acs1year_geoheaders_ <- function(year,
 
     return(combined)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-# # example
-# aaa <- read_acs1year_tablecontents_(
-#     year = 2015,
-#     state = "ri",
-#     table_contents = c("B01001_009", "B00001_001", "B10001_002"),
-#     est_marg = "m"
-# )
-
-
-
-
-
-
-

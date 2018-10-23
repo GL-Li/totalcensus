@@ -6,12 +6,12 @@
 \usage{
 read_acs5year(year, states, table_contents = NULL, areas = NULL,
   geo_headers = NULL, summary_level = NULL, geo_comp = "total",
-  with_margin = FALSE, with_acsgeoheaders = FALSE, show_progress = TRUE)
+  with_margin = FALSE, show_progress = TRUE)
 }
 \arguments{
-\item{year}{end year of the 5-year estimate}
+\item{year}{ending year of the 5-year estimate}
 
-\item{states}{vector of state abbreviations, for example "IN" or c("MA", "RI").}
+\item{states}{vector of state abbreviations, such as "IN" and c("MA", "RI").}
 
 \item{table_contents}{selected references of contents in census tables. Users
 can choose a name for each reference, such as in
@@ -29,22 +29,20 @@ For county, city, or town, must use the exact name as those in
 included in the return, like "COUNTY" or c("PLACE", "CBSA").
 Search with \code{\link{search_geoheaders}}}
 
-\item{summary_level}{select which summary level to keep, default to keep all. It takes string
-including "state", "county", "county subdivision", "place", "tract", "block group",
-and "block" for the most common levels. It also take code. Search all codes with
-\code{\link{search_summarylevels}} or browse \code{\link{dict_acs1_summarylevel}} .}
+\item{summary_level}{select which summary level to keep, default to keep all.
+It takes string including "state", "county", "county subdivision",
+"place", "tract", "block group", and "block" for the most common
+levels. It also take code. Search all codes with
+\code{\link{search_summarylevels}}.}
 
-\item{geo_comp}{select which geographic component to keep, "*" to keep every component,
-"total" for "00", "urban" for "01", "urbanized area" for "04",
-"urban cluster" for "28", "rural" for "43". Others should be input as code
-which can be found with \code{\link{search_geocomponents}}. Availability
-of geocomponent depends on summary level. State level contains all
-geographic component. County subdivision and higher level have "00",
-"01", and "43". Census tract and lower level have only "00".}
+\item{geo_comp}{select which geographic component to keep, "*" to keep every
+geo-component, "total" for "00", "urban" for "01", "urbanized area"
+for "04", "urban cluster" for "28", "rural" for "43". Others should
+input code, which can be found with function
+\code{\link{search_geocomponents}}. Availability of geocomponent
+depends on summary level.}
 
-\item{with_margin}{read also margin of error in addition to estimate if TRUE}
-
-\item{with_acsgeoheaders}{whether to keep geographic headers from ACS data}
+\item{with_margin}{read also margin of error in addition to estimate}
 
 \item{show_progress}{whether to show progress in fread()}
 }

@@ -178,3 +178,39 @@ aaa <- read_acs5year(
     summary_level = "block group"
 )
 stopifnot(dim(aaa) == c(370, 11))
+
+
+
+# check all file segments =====================================================
+read_segment <- function(year, state, fs, group, est_marg){
+    aaa <- totalcensus:::read_acs5year_filesegment_(
+        year = year,
+        state = state,
+        file_seg = fs,
+        group = group,
+        est_marg = est_marg
+    )
+}
+
+read_all_segment <- function(year, state = "RI", first_seg = 1, group = 1,
+                             est_marg = "e"){
+    look <- get(paste0("lookup_acs5year_", year))
+    n_fs <<- max(as.integer(look$file_segment))
+    for (i in first_seg:n_fs){
+
+        if (i < 10){
+            fs <- paste0("000", i)
+        } else if (i < 100){
+            fs <- paste0("00", i)
+        } else {
+            fs <- paste0("0", i)
+        }
+
+        #print(fs)
+
+        read_segment(year, state, fs, group, est_marg)
+    }
+}
+
+read_all_segment(2009, "RI", 1, 2, "e")
+

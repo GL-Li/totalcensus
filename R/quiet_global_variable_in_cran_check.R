@@ -44,5 +44,6 @@ utils::globalVariables(unique(c(
     "dict_decennial_geoheader_2010", "dict_decennial_summarylevel_2000",
     "dict_decennial_summarylevel_2010", "dict_decennial_table_2000",
     "dict_decennial_table_2010", "in_US_file", "in_state_file",
-    "lookup_decennial_2000", "state_file", "table_number", "table_ref"
+    "lookup_decennial_2000", "state_file", "table_number", "table_ref",
+    "STUSAB"
 )))
