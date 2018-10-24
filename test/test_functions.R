@@ -72,14 +72,14 @@ test_read_xxx <- function(){
 
 
     dec_2 = read_decennial(
-        year = 2010,
+        year = 2000,
         states = "US",
         table_contents = c("urban = P0020002", "rural = P0020005"),
         geo_headers = "PLACE",
         summary_level = "*"
     )
-    stopifnot(dim(dec_2) == c(381434, 10))
-    stopifnot(sum(is.na(dec_2$area)) == 254891)
+    stopifnot(dim(dec_2) == c(280318, 10))
+    stopifnot(sum(is.na(dec_2$area)) == 173022)
 
 
     # read multiple table contents and areas from multiple states
@@ -136,8 +136,8 @@ test_read_xxx <- function(){
         summary_level = "block group",
         with_margin = TRUE
     )
-    stopifnot(dim(acs5_1) == c(1239, 16))
-    stopifnot(sum(acs5_1$population_margin) == 426092)
+    stopifnot(dim(acs5_1) == c(314, 16))
+    stopifnot(sum(acs5_1$population_margin) == 92245)
 
 
     # read data using geoheaders
@@ -148,8 +148,7 @@ test_read_xxx <- function(){
         geo_headers = "PLACE",
         summary_level = "block group"
     )
-    stopifnot(dim(acs5_2) == c(3777, 12))
-    stopifnot(sum(is.na(acs5_2$area)) == 904)
+    stopifnot(dim(acs5_2) == c(3777, 11))
 
 
     test_vars <- c( "B01001_001", "B19049_001", "B19301_001", "B19001_001", "B19101_001")
@@ -186,7 +185,7 @@ test_read_xxx <- function(){
         summary_level = "county",
         with_margin = TRUE
     )
-    stopifnot(dim(acs1_2) == c(10, 15))
+    stopifnot(dim(acs1_2) == c(10, 14))
     stopifnot(sum(acs1_2$male) == 1760676)
 
 
@@ -199,8 +198,8 @@ test_read_xxx <- function(){
         summary_level = "310",
         with_margin = TRUE
     )
-    stopifnot(dim(acs1_3) == c(511, 15))
-    stopifnot(sum(is.na(acs1_3$area)) == 14)
+    stopifnot(dim(acs1_3) == c(511, 14))
+    stopifnot(sum(acs1_3$female) == 146881362)
 
     message("=== passed all test for read_xxx functions ===")
 }
