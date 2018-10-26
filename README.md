@@ -9,16 +9,11 @@ Download summary files from [Census Bureau](https://www2.census.gov/) and extrac
 Update
 ------
 
-**10/12/2018**: Decennial Census 2000 is added to the package in the development version.
+**10/25/2018**: Package `totalcensus` v0.5.0 is on CRAN now. It includes
 
-**9/29/2018**: Now include all 1-year and 5-year American Community Survey data in summary file 1 in the development version:
-
+-   Decennial census 2000 and 2010
 -   ACS 1 year: 2005 - 2017
 -   ACS 5 year: 2009 - 2016
-
-**2/5/2018**: Package `totalcensus` v0.3.0 is on CRAN now.
-
-**1/17/2018**: Please reinstall the updated version. You do not need to re-download census data, but need to update generated data by running
 
 ``` r
 download_generated_data()
