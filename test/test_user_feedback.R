@@ -71,3 +71,32 @@ NY_PCT12I <- read_decennial(
     states = "NY",
     table_contents = c("PCT012I001", "PCT012I009")
 )
+
+
+# issue #8 ====
+library(purrr)
+
+data("lookup_acs5year_2016")
+
+test_vars <- c("B19013_001", "B19025_001", "B19037_001")
+
+test1 <- totalcensus::read_acs5year(
+    year = 2016,
+    states = "DC",
+    table_contents = test_vars,
+    geo_headers = c("TRACT", "BLKGRP"),
+    with_margin = TRUE,
+    show_progress = TRUE
+)
+
+test2 <- purrr::map(
+    .x = test_vars,
+    .f = ~totalcensus::read_acs5year(
+        year = 2016,
+        states = "DC",
+        table_contents = .x,
+        geo_headers = c("TRACT"),
+        with_margin = TRUE,
+        show_progress = TRUE
+    )
+)

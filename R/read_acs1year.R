@@ -222,7 +222,8 @@ read_acs1year_filesegment_ <- function(year,
     }
 
     dt <- tryCatch({
-        fread(file, header = FALSE, showProgress = show_progress) %>%
+        fread(file, header = FALSE, showProgress = show_progress,
+              integer64 = "numeric") %>%
             setnames(col_names)
     }, error = function(err){
         message("\nPlease double check the original data: ")
