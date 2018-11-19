@@ -28,6 +28,8 @@ library(data.table)
 library(dplyr)
 library(ggplot2)
 library(ggmap)
+goog_api <- Sys.getenv("GOOGLE_API_KEY")
+register_google(goog_api)
 # in selected counties
 county_race <- read_acs1year(
     year = 2016,
