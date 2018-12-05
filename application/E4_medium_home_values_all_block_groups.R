@@ -64,6 +64,18 @@ home_ny <- read_acs5year(
     .[order(home_value)]
 
 
+home_ny <- read_acs5year(
+    year = 2016,
+    states = "NY",
+    table_contents = "home_value = B25077_001",
+    areas = "New York metro",
+    summary_level = "block group",
+    with_margin = FALSE
+) %>%
+    .[!is.na(home_value)] %>%
+    .[order(home_value)]
+
+
 ny_map <- get_map("new york city", zoom = 11, color = "bw")
 
 ggmap(ny_map) +

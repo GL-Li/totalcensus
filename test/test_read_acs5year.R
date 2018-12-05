@@ -170,11 +170,9 @@ stopifnot(names(aaa) == cols)
 
 aaa <- read_acs5year(
     year = 2016,
-    states = c("UT", "RI"),
+    states = c("RI", "MA"),
     table_contents = c("male = B01001_002", "female = B01001_026"),
-    areas = c("Salt Lake City city, UT",
-              "Providence city, RI",
-              "PLACE = RI19180"),
+    areas = "Providence metro",
     summary_level = "block group"
 )
 stopifnot(dim(aaa) == c(370, 11))
@@ -213,4 +211,5 @@ read_all_segment <- function(year, state = "RI", first_seg = 1, group = 1,
 }
 
 read_all_segment(2009, "RI", 1, 2, "e")
+
 

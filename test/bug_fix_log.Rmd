@@ -1,0 +1,25 @@
+---
+title: "Bug Fix History"
+author: "GL Li"
+date: "December 5, 2018"
+output: html_document
+---
+
+```{r}
+library(totalcensus)
+```
+
+# read_acs5() unable to read metro data, 20181205 
+
+This is a bug to v0.5.0, which yield zero rows of data for the following code:
+```{r}
+home_ny <- read_acs5year(
+    year = 2016,
+    states = "NY",
+    table_contents = "home_value = B25077_001",
+    areas = "New York metro",
+    summary_level = "block group",
+    with_margin = FALSE
+)
+```
+

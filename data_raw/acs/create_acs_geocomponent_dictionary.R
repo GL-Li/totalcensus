@@ -1,6 +1,5 @@
 # find the geocomponents that have been used and merge with census summary level
 
-# find the summary level that has been used and merge with census summary level
 
 library(data.table)
 library(magrittr)

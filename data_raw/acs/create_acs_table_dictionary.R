@@ -42,20 +42,20 @@ save(dict_acs1_table, file = "data/dict_acs1_table.RData")
 
 
 # acs5 ====
-for (year in 2009:2016){
+for (year in 2009:2017){
     assign(paste0("acs5_", year), make_acs_tables("acs5", year))
 }
 
 # merge all tables, use newer names if possible
-acs5_table <- reduce(lapply(paste0("acs5_", 2009:2016), get),
+acs5_table <- reduce(lapply(paste0("acs5_", 2009:2017), get),
                      merge, by = "table_number", all = TRUE)
 
-for (year in 2009:2016){
+for (year in 2009:2017){
     acs5_table[get(paste0("acs5_", year)) == "yes", table_name := get(paste0("name_", year))]
     acs5_table[get(paste0("acs5_", year)) == "yes", universe := get(paste0("universe_", year))]
 }
 
-dict_acs5_table <- acs5_table[, c("table_number", "table_name", paste0("acs5_", 2016:2009), "universe"),
+dict_acs5_table <- acs5_table[, c("table_number", "table_name", paste0("acs5_", 2017:2009), "universe"),
                               with = FALSE]
 
 save(dict_acs5_table, file = "data/dict_acs5_table.RData")
