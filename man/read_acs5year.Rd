@@ -6,7 +6,7 @@
 \usage{
 read_acs5year(year, states, table_contents = NULL, areas = NULL,
   geo_headers = NULL, summary_level = NULL, geo_comp = "total",
-  with_margin = FALSE, show_progress = TRUE)
+  with_margin = FALSE, dec_fill = FALSE, show_progress = TRUE)
 }
 \arguments{
 \item{year}{ending year of the 5-year estimate}
@@ -43,6 +43,10 @@ input code, which can be found with function
 depends on summary level.}
 
 \item{with_margin}{read also margin of error in addition to estimate}
+
+\item{dec_fill}{wether to fill geo_headers codes with data from decennial census. The
+codes in ACS summary file are incomplete. "dec2010" using decennial
+census 2010 data}
 
 \item{show_progress}{whether to show progress in fread()}
 }

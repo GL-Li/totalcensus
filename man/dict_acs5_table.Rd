@@ -4,7 +4,7 @@
 \name{dict_acs5_table}
 \alias{dict_acs5_table}
 \title{List of summary levels used in ACS 5 year surverys}
-\format{A data.table with 1082 rows and 11 variables:
+\format{A data.table with 1163 rows and 12 variables:
 \describe{
   \item{table_number}{table number such as "C27013"}
   \item{table_name}{description of the table}

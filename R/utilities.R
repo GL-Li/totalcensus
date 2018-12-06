@@ -513,7 +513,7 @@ add_geoheader <- function(dt, state, geo_headers, summary_level,
 add_coord <- function(dt, state, geo_headers = NULL){
     # Add coordinates to dt read from ACS 1-year and ACS 5-year surveys.
     #
-    # The summary file 1 of ACS 1-year or 5-year surveys does not have
+    # The summary file of ACS 1-year or 5-year surveys does not have
     # (lon, lat) of geographic area. In addition, it also has missing code of
     # geo_headers. This function adds coordinates and codes to dt using data
     # generated from Census 2010 summary file 1 based on GEOID. The data.table

@@ -17,9 +17,12 @@ home_ny <- read_acs5year(
     year = 2016,
     states = "NY",
     table_contents = "home_value = B25077_001",
-    areas = "New York metro",
+    #areas = "New York metro",
+    geo_headers = "CBSA",
     summary_level = "block group",
-    with_margin = FALSE
+    dec_fill = "dec2010"
 )
 ```
+
+Solution: add a parameter `dec_fill`, which allows to fill code of geoheaders with decennial census 2010 data.
 

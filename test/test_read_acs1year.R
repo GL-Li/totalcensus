@@ -96,7 +96,7 @@ aaa <- totalcensus:::read_acs1year_areas_(
     summary_level = "place",
     with_margin = TRUE
 )
-stopifnot(aaa[3, 5] == 40454)
+stopifnot(aaa[3, 6] == 40454)
 
 
 # read_acs1year() ==============================================================
@@ -107,7 +107,8 @@ aaa <- read_acs1year(
     table_contents = c("male = B01001_002", "female = B01001_026"),
     geo_headers = c("COUNTY", "CBSA"),
     summary_level = "county",
-    with_margin = TRUE
+    with_margin = TRUE,
+    dec_fill = "dec2010"
 )
 stopifnot(dim(aaa) == c(10, 15))
 
@@ -122,7 +123,7 @@ aaa <- read_acs1year(
     summary_level = "place",
     with_margin = TRUE
 )
-cols <- c("area", "GEOID", "NAME", "STUSAB", "population", "population_margin",
+cols <- c("area", "GEOID", "NAME", "STUSAB", "PLACE", "population", "population_margin",
           "male", "male_margin", "female", "female_margin", "GEOCOMP",
           "SUMLEV", "lon", "lat")
 stopifnot(names(aaa) == cols)

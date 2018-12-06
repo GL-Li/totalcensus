@@ -33,6 +33,9 @@
 #'        \code{\link{search_geocomponents}}. Availability of geocomponent
 #'        depends on summary level.
 #' @param with_margin  read also margin of error in addition to estimate
+#' @param dec_fill wether to fill geo_headers codes with data from decennial census. The
+#'        codes in ACS summary file are incomplete. "dec2010" using decennial
+#'        census 2010 data
 #' @param show_progress  whether to show progress in fread()
 #'
 #' @return A data.table of selected data.
@@ -82,6 +85,7 @@ read_acs5year <- function(year,
                           summary_level = NULL,
                           geo_comp = "total",
                           with_margin = FALSE,
+                          dec_fill = FALSE,
                           show_progress = TRUE){
 
     ### check if the path to census is set ###
@@ -168,13 +172,13 @@ read_acs5year <- function(year,
     if (!is.null(areas)){
         dt <- read_acs5year_areas_(
             year, states, table_contents, areas, summary_level, geo_comp,
-            with_margin, show_progress
+            with_margin, dec_fill, show_progress
         )
     } else {
         geo_headers <- unique(geo_headers)
         dt <- read_acs5year_geoheaders_(
             year, states, table_contents, geo_headers, summary_level, geo_comp,
-            with_margin, show_progress
+            with_margin, dec_fill, show_progress
         )
     }
 
@@ -412,6 +416,7 @@ read_acs5year_areas_ <- function(year,
                                  summary_level = "*",
                                  geo_comp = "*",
                                  with_margin = FALSE,
+                                 dec_fill = FALSE,
                                  show_progress = TRUE){
 
     # convert areas to the form of data.table
@@ -496,8 +501,12 @@ read_acs5year_areas_ <- function(year,
         }
 
         # add coordinates
-        acs <- add_coord(acs, st)
-
+        if (is.null(dec_fill)){
+            acs <- add_coord(acs, st)
+        } else if (dec_fill == "dec2010"){
+            acs[, (geo_headers) := NULL]
+            acs <- add_coord(acs, st, geo_headers)
+        }
 
         # To determine what PLACE or COUSUB a tract or block group (partially)
         # blongs, replace PLACE and COUSUB with those obtained from census 2010
@@ -529,9 +538,10 @@ read_acs5year_areas_ <- function(year,
                              STUSAB %like% dt_areas[x, state]] %>%
                 .[, area := dt_areas[x, name]]
         ) %>%
-            rbindlist() %>%
-            # no use of the geoheaders
-            .[, unique(dt_areas[, geoheader]) := NULL]
+            rbindlist()
+        # %>%
+        #     # no use of the geoheaders
+        #     .[, unique(dt_areas[, geoheader]) := NULL]
     }
 
     # reorder columns
@@ -544,7 +554,7 @@ read_acs5year_areas_ <- function(year,
     } else {
         contents <- table_contents
     }
-    setcolorder(selected, c(begin, contents, end))
+    setcolorder(selected, c(begin, geo_headers, contents, end))
 
     return(selected)
 }
@@ -560,6 +570,7 @@ read_acs5year_geoheaders_ <- function(year,
                                       summary_level = "*",
                                       geo_comp = "*",
                                       with_margin = FALSE,
+                                      dec_fill = FALSE,
                                       show_progress = TRUE){
 
     # states <- toupper(states)
@@ -637,8 +648,13 @@ read_acs5year_geoheaders_ <- function(year,
             acs <- geo
         }
 
-        # add coordinates and geoheaders from Census 2010 data
-        acs <- add_coord(acs, st)
+        # add coordinates from census 2010 data
+        if (is.null(dec_fill)){
+            acs <- add_coord(acs, st)
+        } else if (dec_fill == "dec2010"){
+            acs[, (geo_headers) := NULL]
+            acs <- add_coord(acs, st, geo_headers)
+        }
 
         # To determine what PLACE or COUSUB a tract or block group (partially)
         # blongs, replace PLACE and COUSUB with those obtained from census 2010
