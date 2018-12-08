@@ -32,7 +32,7 @@
 #'        \code{\link{search_geocomponents}}. Availability of geocomponent
 #'        depends on summary level.
 #' @param with_margin  read also margin of error in addition to estimate
-#' @param dec_fill wether to fill geo_headers codes with data from decennial
+#' @param dec_fill whether to fill geo_headers codes with data from decennial
 #'        census. The #'        codes in ACS summary file are incomplete.
 #'        "dec2010" using decennial census 2010 data.
 #' @param show_progress  whether to show progress in fread()

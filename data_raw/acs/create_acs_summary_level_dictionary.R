@@ -30,6 +30,7 @@ generate_summary_level <- function(survey, year){
 }
 
 # acs1year summary level ======================================================
+# The same since 2006. Just check when new year added
 S2017 <- generate_summary_level("acs1", 2017)
 S2016 <- generate_summary_level("acs1", 2016)
 S2015 <- generate_summary_level("acs1", 2015)
@@ -57,6 +58,8 @@ save(dict_acs1_summarylevel, file = "data/dict_acs1_summarylevel.RData")
 
 
 # acs5year summary level ======================================================
+# The same since 2013. Just check when new year added
+S2017 <- generate_summary_level("acs5", 2017)
 S2016 <- generate_summary_level("acs5", 2016)
 S2015 <- generate_summary_level("acs5", 2015)
 S2014 <- generate_summary_level("acs5", 2014)

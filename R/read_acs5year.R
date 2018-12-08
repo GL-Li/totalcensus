@@ -33,7 +33,7 @@
 #'        \code{\link{search_geocomponents}}. Availability of geocomponent
 #'        depends on summary level.
 #' @param with_margin  read also margin of error in addition to estimate
-#' @param dec_fill wether to fill geo_headers codes with data from decennial census. The
+#' @param dec_fill whether to fill geo_headers codes with data from decennial census. The
 #'        codes in ACS summary file are incomplete. "dec2010" using decennial
 #'        census 2010 data
 #' @param show_progress  whether to show progress in fread()
@@ -85,7 +85,7 @@ read_acs5year <- function(year,
                           summary_level = NULL,
                           geo_comp = "total",
                           with_margin = FALSE,
-                          dec_fill = FALSE,
+                          dec_fill = NULL,
                           show_progress = TRUE){
 
     ### check if the path to census is set ###
@@ -416,7 +416,7 @@ read_acs5year_areas_ <- function(year,
                                  summary_level = "*",
                                  geo_comp = "*",
                                  with_margin = FALSE,
-                                 dec_fill = FALSE,
+                                 dec_fill = NULL,
                                  show_progress = TRUE){
 
     # convert areas to the form of data.table
@@ -570,7 +570,7 @@ read_acs5year_geoheaders_ <- function(year,
                                       summary_level = "*",
                                       geo_comp = "*",
                                       with_margin = FALSE,
-                                      dec_fill = FALSE,
+                                      dec_fill = NULL,
                                       show_progress = TRUE){
 
     # states <- toupper(states)

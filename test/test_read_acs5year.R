@@ -127,7 +127,7 @@ aaa <- read_acs5year(
     geo_headers = c("COUNTY", "CBSA"),
     summary_level = "county",
     with_margin = TRUE,
-    dec_fill = TRUE
+    dec_fill = NULL
 )
 stopifnot(aaa[2, 5] == 14940)
 

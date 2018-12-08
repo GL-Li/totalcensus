@@ -1,10 +1,10 @@
 Package: totalcensus
 Type: Package
-Title: Extract High Resolution Census Data
-Version: 0.5.0
+Title: Extract Decennial Census and American Community Survey Data
+Version: 0.5.1
 Author: Guanglai Li
 Maintainer: Guanglai Li <liguanglai@gmail.com>
-Date: 2018-10-25
+Date: 2018-12-7
 Description: Download summary files from Census Bureau <https://www2.census.gov/> 
     and extract data, in particular high resolution data at 
     block, block group, and tract level, from decennial census and 

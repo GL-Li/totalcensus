@@ -72,8 +72,9 @@ compare_acs5year <- function(table_content){
                 read5(2013, table_content),
                 read5(2014, table_content),
                 read5(2015, table_content),
-                read5(2016, table_content)) %>%
-        .[, year := c(2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016)]
+                read5(2016, table_content),
+                read5(2017, table_content)) %>%
+        .[, year := c(2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017)]
     ggplot <- ggplot(dt, aes_string("year", table_content)) +
         geom_point() +
         geom_line() +

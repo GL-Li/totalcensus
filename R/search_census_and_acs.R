@@ -57,8 +57,8 @@ search_tablecontents <- function(survey, years = NULL, keywords = NULL, view = T
                    "NA means data not collected."))
         dt <- generate_acs5_tablecontents_()
         if (!is.null(years)){
-            if (min(years) < 2009 | max(years) > 2016){
-                message("Only 2009 - 2016 are available for acs 5 year surveys.")
+            if (min(years) < 2009 | max(years) > 2017){
+                message("Only 2009 - 2017 are available for acs 5 year surveys.")
                 return(NULL)
             }
             selected_cols <- select_columns(dt, years)
@@ -707,6 +707,7 @@ generate_acs5_tablecontents_ <- function(){
     acs5_2014 <- modify_lookup_table_(5, 2014)
     acs5_2015 <- modify_lookup_table_(5, 2015)
     acs5_2016 <- modify_lookup_table_(5, 2016)
+    acs5_2017 <- modify_lookup_table_(5, 2017)
 
     dict_acs_tablecontent <- reduce(list(acs5_2009,
                                          acs5_2010,
@@ -715,7 +716,8 @@ generate_acs5_tablecontents_ <- function(){
                                          acs5_2013,
                                          acs5_2014,
                                          acs5_2015,
-                                         acs5_2016),
+                                         acs5_2016,
+                                         acs5_2017),
                                     merge, by = "reference", all = TRUE) %>%
 
         # add the following lines for year since 2013
@@ -731,10 +733,14 @@ generate_acs5_tablecontents_ <- function(){
         .[!is.na(acs5_2016), ":=" (table_content = content_acs5_2016,
                                    table_name = name_acs5_2016,
                                    universe = universe_acs5_2016)] %>%
+        .[!is.na(acs5_2017), ":=" (table_content = content_acs5_2017,
+                                   table_name = name_acs5_2017,
+                                   universe = universe_acs5_2017)] %>%
 
         # include all years and surveys
         .[, .(reference, table_content, table_name,
-              acs5_2016, acs5_2015, acs5_2014, acs5_2013, acs5_2012, acs5_2011,
+              acs5_2017, acs5_2016, acs5_2015, acs5_2014,
+              acs5_2013, acs5_2012, acs5_2011,
               acs5_2010, acs5_2009,
               universe)]
 }

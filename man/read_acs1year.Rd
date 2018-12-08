@@ -43,7 +43,7 @@ depends on summary level.}
 
 \item{with_margin}{read also margin of error in addition to estimate}
 
-\item{dec_fill}{wether to fill geo_headers codes with data from decennial
+\item{dec_fill}{whether to fill geo_headers codes with data from decennial
 census. The #'        codes in ACS summary file are incomplete.
 "dec2010" using decennial census 2010 data.}
 
