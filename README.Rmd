@@ -25,6 +25,8 @@ Download summary files from [Census Bureau](https://www2.census.gov/) and extrac
 
 
 ## Update
+**12/7/2018** 2017 ACS 5 year data is added to the package.
+
 **10/25/2018**: Package `totalcensus` v0.5.0 is on CRAN now. It includes
 
 - Decennial census 2000 and 2010
@@ -247,25 +249,9 @@ ggmap(south_bend) +
 
 
 ## Downloading data
-This package requires downloading census data to your local computer. You will be asked to download data when you call `read_xxxx` functions, or you can choose to download before calling `read_xxxx` function. The downloaded data will be extracted automatically to the folder `my_census_data`. 
+This package requires downloading census data to your local computer. You will be asked to download data when you call `read_xxxx` functions. The downloaded data will be extracted automatically to the folder `my_census_data`. 
 
 A set of data generated from Census 2010 will also be downloaded, which is used to fill missing geographic header records in ACS data.  
-
-Below are a few examples of data downloading.
-
-```{r eval = FALSE}
-# download 2016 ACS 5-year survey data of MA and NH, a couple of GB
-download_census(survey = "acs5", year = 2016, states = c("MA", "NH"))
-
-# download all data of 2016 ACS 5-year survey,  ~52 GB
-download_census("acs5", 2016)
-
-# download all data of 2016 ACS 1-year survey. It is only 1.5 GB. 
-download_census("acs1", 2016)
-
-# download decennial census 2010, of state California, the largest state, 8.4 GB
-download_census("dec", 2010, "CA")
-```
 
 The census data can be found on Census Bureau's website but you do not need to download them manually. Use the function above.
 
