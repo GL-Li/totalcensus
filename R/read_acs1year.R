@@ -240,14 +240,14 @@ read_acs1year_filesegment_ <- function(year,
     })
 
 
-    # convert non-numeric columns to numeric
-    # some missing data are denoted as ".", which lead to the whole column read
-    # as character
-    for (col in table_contents){
-        if (is.character(dt[, get(col)])){
-            dt[, (col) := as.numeric(get(col))]
-        }
-    }
+    # # convert non-numeric columns to numeric
+    # # some missing data are denoted as ".", which lead to the whole column read
+    # # as character
+    # for (col in table_contents){
+    #     if (is.character(dt[, get(col)])){
+    #         dt[, (col) := as.numeric(get(col))]
+    #     }
+    # }
 
 
     # add "_e" or "_m" to show the data is estimate or margin
@@ -273,6 +273,14 @@ read_acs1year_1_file_tablecontents_ <- function(year,
         .[, c("LOGRECNO", table_contents), with = FALSE] %>%
         setkey(LOGRECNO)
 
+    # convert non-numeric columns to numeric
+    # some missing data are denoted as ".", which lead to the whole column read
+    # as character
+    for (col in table_contents){
+        if (is.character(dt[, get(col)])){
+            dt[, (col) := as.numeric(get(col))]
+        }
+    }
 
     return(dt)
 }

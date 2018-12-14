@@ -19,24 +19,18 @@ knitr::opts_chunk$set(
 
 [![Build Status](https://travis-ci.org/GL-Li/totalcensus.svg?branch=master)](https://travis-ci.org/GL-Li/totalcensus)
 
-# Extract High Resolution Census Data
+# Extract Decennial Census and American Community Survey Data
 
-Download summary files from [Census Bureau](https://www2.census.gov/) and extract data, in particular high resolution data at block, block group, and tract level, from decennial censuses and American Community Survey 1-year and 5-year estimates.
+Download summary files from [Census Bureau](https://www2.census.gov/) and extract data of decennial censuses and American Community Surveys from your local computer.
 
 
 ## Update
-**12/7/2018** 2017 ACS 5 year data is added to the package.
-
-**10/25/2018**: Package `totalcensus` v0.5.0 is on CRAN now. It includes
+**12/7/2018**: Package `totalcensus` v0.5.1 is on CRAN. It includes
 
 - Decennial census 2000 and 2010
 - ACS 1 year: 2005 - 2017
-- ACS 5 year: 2009 - 2016
+- ACS 5 year: 2009 - 2017
 
-
-```{r eval=FALSE}
-download_generated_data()
-```
 
 ## Installation and setup
 
@@ -54,6 +48,7 @@ devtools::install_github("GL-Li/totalcensus")
 This package requires downloading census data and you need to create a folder to store the downloaded data. Let's call the folder `my_census_data` and assume the full path to this folder is `xxxxx/my_census_data`. Run the function below to set the path for the package.
 
 ```{r eval = FALSE}
+library(totalcensus)
 set_path_to_census("xxxxx/my_census_data")
 ```
 
@@ -73,7 +68,8 @@ home_national <- read_acs5year(
     year = 2015,
     states = states_DC,   # all 50 states plus DC
     table_contents = "home_value = B25077_001",
-    summary_level = "block group"
+    summary_level = "block group", 
+    with_margin = TRUE
 )
 ```
 

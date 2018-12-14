@@ -3,28 +3,21 @@
 [![Build
 Status](https://travis-ci.org/GL-Li/totalcensus.svg?branch=master)](https://travis-ci.org/GL-Li/totalcensus)
 
-Extract High Resolution Census Data
-===================================
+Extract Decennial Census and American Community Survey Data
+===========================================================
 
 Download summary files from [Census Bureau](https://www2.census.gov/)
-and extract data, in particular high resolution data at block, block
-group, and tract level, from decennial censuses and American Community
-Survey 1-year and 5-year estimates.
+and extract data of decennial censuses and American Community Surveys
+from your local computer.
 
 Update
 ------
 
-**12/7/2018** 2017 ACS 5 year data is added to the package.
-
-**10/25/2018**: Package `totalcensus` v0.5.0 is on CRAN now. It includes
+**12/7/2018**: Package `totalcensus` v0.5.1 is on CRAN. It includes
 
 -   Decennial census 2000 and 2010
 -   ACS 1 year: 2005 - 2017
--   ACS 5 year: 2009 - 2016
-
-``` r
-download_generated_data()
-```
+-   ACS 5 year: 2009 - 2017
 
 Installation and setup
 ----------------------
@@ -48,6 +41,7 @@ folder to store the downloaded data. Let’s call the folder
 package.
 
 ``` r
+library(totalcensus)
 set_path_to_census("xxxxx/my_census_data")
 ```
 

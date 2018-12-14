@@ -285,14 +285,15 @@ read_acs5year_filesegment_ <- function(year,
     #
     # setnames(dt, col_names)
 
-    # convert non-numeric columns to numeric
-    # some missing data are denoted as ".", which lead to the whole column read
-    # as character
-    for (col in table_contents){
-        if (is.character(dt[, get(col)])){
-            dt[, (col) := as.numeric(get(col))]
-        }
-    }
+    # # convert non-numeric columns to numeric
+    # # some missing data are denoted as ".", which lead to the whole column read
+    # # as character
+    # do this conversion in read_acs5year_1_file_tablecontents
+    # for (col in table_contents){
+    #     if (is.character(dt[, get(col)])){
+    #         dt[, (col) := as.numeric(get(col))]
+    #     }
+    # }
 
 
     setnames(dt, table_contents, paste0(table_contents, "_", est_marg)) %>%
@@ -317,6 +318,15 @@ read_acs5year_1_file_tablecontents_ <- function(year,
                                      show_progress) %>%
         .[, c("LOGRECNO", table_contents), with = FALSE] %>%
         setkey(LOGRECNO)
+
+    # convert non-numeric columns to numeric
+    # some missing data are denoted as ".", which lead to the whole column read
+    # as character
+    for (col in table_contents){
+        if (is.character(dt[, get(col)])){
+            dt[, (col) := as.numeric(get(col))]
+        }
+    }
 
     return(dt)
 }

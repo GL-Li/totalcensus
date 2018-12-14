@@ -127,7 +127,7 @@ aaa <- read_acs5year(
     geo_headers = c("COUNTY", "CBSA"),
     summary_level = "county",
     with_margin = TRUE,
-    dec_fill = NULL
+    dec_fill = "dec2010"
 )
 stopifnot(aaa[2, 5] == 14940)
 
@@ -175,7 +175,7 @@ aaa <- read_acs5year(
     table_contents = c("male = B01001_002", "female = B01001_026"),
     areas = "Providence metro",
     summary_level = "block group",
-    dec_fill = TRUE
+    dec_fill = "dec2010"
 )
 stopifnot(dim(aaa) == c(1205, 12))
 
