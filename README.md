@@ -2,6 +2,7 @@
 
 [![Build
 Status](https://travis-ci.org/GL-Li/totalcensus.svg?branch=master)](https://travis-ci.org/GL-Li/totalcensus)
+![](https://cranlogs.r-pkg.org/badges/grand-total/totalcensus)
 
 Extract Decennial Census and American Community Survey Data
 ===========================================================
@@ -73,7 +74,8 @@ home_national <- read_acs5year(
     year = 2015,
     states = states_DC,   # all 50 states plus DC
     table_contents = "home_value = B25077_001",
-    summary_level = "block group"
+    summary_level = "block group", 
+    with_margin = TRUE
 )
 ```
 
