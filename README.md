@@ -3,6 +3,7 @@
 [![Build
 Status](https://travis-ci.org/GL-Li/totalcensus.svg?branch=master)](https://travis-ci.org/GL-Li/totalcensus)
 ![](https://cranlogs.r-pkg.org/badges/grand-total/totalcensus)
+![](https://cranlogs.r-pkg.org/badges/totalcensus)
 
 Extract Decennial Census and American Community Survey Data
 ===========================================================
