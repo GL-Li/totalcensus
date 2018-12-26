@@ -183,6 +183,8 @@ read_decennial <- function(year,
         dt <- read_decennial_areas_(
             year, states, table_contents, areas, summary_level, geo_comp,
             show_progress
+
+            # add GEOID and NAME based on STUSAB and (lon, lat)
         )
     } else {
         dt <- read_decennial_geoheaders_(

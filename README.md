@@ -2,6 +2,7 @@
 
 [![Build
 Status](https://travis-ci.org/GL-Li/totalcensus.svg?branch=master)](https://travis-ci.org/GL-Li/totalcensus)
+![](http://www.r-pkg.org/badges/version/totalcensus)
 ![](https://cranlogs.r-pkg.org/badges/grand-total/totalcensus)
 ![](https://cranlogs.r-pkg.org/badges/totalcensus)
 
