@@ -288,9 +288,8 @@ read_decennial_areas_ <- function(year,
         # from GEOID_coord_XX later on, which is generated from Census 2010 and
         # has much more geo_header data
         geo <- read_decennial_geo_(year, st,
-                                   c(geo_headers, "STATE", "INTPTLON", "INTPTLAT"),
+                                   c(geo_headers, "STATE"),
                                    show_progress = show_progress) %>%
-            setnames(c("INTPTLON", "INTPTLAT"), c("lon", "lat")) %>%
             # convert STATE fips to state abbreviation
             .[, state := convert_fips_to_names(STATE)] %>%
             setkey(LOGRECNO)
@@ -412,9 +411,8 @@ read_decennial_geoheaders_ <- function(year,
         # from GEOID_coord_XX later on, which is generated from decennial 2010 and
         # has much more geo_header data
         geo <- read_decennial_geo_(year, st,
-                                   c(geo_headers, "STATE", "INTPTLON", "INTPTLAT"),
+                                   c(geo_headers, "STATE"),
                                    show_progress = show_progress) %>%
-            setnames(c("INTPTLON", "INTPTLAT"), c("lon", "lat")) %>%
             # convert STATE fips to state abbreviation
             .[, state := convert_fips_to_names(STATE)] %>%
             setkey(LOGRECNO)
@@ -493,7 +491,8 @@ read_decennial_geo_ <- function(year,
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
     state <- toupper(state)
-    geo_headers <- toupper(geo_headers) %>%
+    # always keep NAME, lon and lat
+    geo_headers <- c(toupper(geo_headers), "NAME", "INTPTLON", "INTPTLAT") %>%
         unique()
 
     if (show_progress) {
@@ -519,6 +518,7 @@ read_decennial_geo_ <- function(year,
 
     # always keep the following geoheaders in the output data
     dt <- geo[, .(LOGRECNO = as.numeric(str_sub(V1, 19, 25)),
+                  STUSAB = str_sub(V1, 7, 8),
                   SUMLEV = str_sub(V1, 9, 11),
                   GEOCOMP = str_sub(V1, 12, 13))]
 
@@ -546,7 +546,18 @@ read_decennial_geo_ <- function(year,
         }
     }
 
-    # use key LOGRECNO for joining with data
+    setnames(dt, c("INTPTLON", "INTPTLAT"), c("lon", "lat"))
+
+    # add GEOID and NAME from generated data (not include blocks)
+    file_gen <- sprintf("%s/generated_data/geoid_coord/geoid_coord_%s.csv",
+                        path_to_census, state)
+    generated <- fread(file_gen) %>%
+        .[, .(GEOID, LOGRECNO, acs_NAME)]
+    dt <- generated[dt, on = .(LOGRECNO)] %>%
+        setcolorder(c("LOGRECNO", "GEOID", "NAME", "acs_NAME", "STUSAB",
+                      "SUMLEV", "GEOCOMP", "lon", "lat"))
+
+
     setkey(dt, LOGRECNO)
 
     return(dt)
