@@ -71,18 +71,18 @@ aaa <- totalcensus:::read_acs1year_geoheaders_(
     states = "RI",
     geo_headers =  c("STATE", "CBSA")
 )
-cols <- c("GEOID", "NAME", "STUSAB", "STATE", "CBSA", "GEOCOMP", "SUMLEV",
-          "lon", "lat")
+cols <- c("GEOID", "NAME", "STATE", "CBSA", "GEOCOMP", "SUMLEV", "state",
+          "STUSAB", "lon", "lat")
 stopifnot(names(aaa) == cols)
 
 
 aaa <- totalcensus:::read_acs1year_geoheaders_(
-    year = 2016,
-    states = "RI",
+    year = 2017,
+    states = "US",
     table_contents = c("B01001_002", "B01001_026"),  # reference only
     geo_headers =  c("STATE", "COUNTY")
 )
-stopifnot(aaa[7, 6] == 386406)
+stopifnot(aaa[7, 6] == 550273)
 
 
 # read_acs1year_areas_() =======================================================
@@ -96,7 +96,7 @@ aaa <- totalcensus:::read_acs1year_areas_(
     summary_level = "place",
     with_margin = TRUE
 )
-stopifnot(aaa[3, 6] == 40454)
+stopifnot(aaa[3, 5] == 40454)
 
 
 # read_acs1year() ==============================================================
@@ -110,7 +110,7 @@ aaa <- read_acs1year(
     with_margin = TRUE,
     dec_fill = "dec2010"
 )
-stopifnot(dim(aaa) == c(10, 15))
+stopifnot(dim(aaa) == c(10, 16))
 
 # provided areas
 aaa <- read_acs1year(
@@ -123,9 +123,9 @@ aaa <- read_acs1year(
     summary_level = "place",
     with_margin = TRUE
 )
-cols <- c("area", "GEOID", "NAME", "STUSAB", "PLACE", "population", "population_margin",
+cols <- c("area", "GEOID", "NAME", "PLACE", "population", "population_margin",
           "male", "male_margin", "female", "female_margin", "GEOCOMP",
-          "SUMLEV", "lon", "lat")
+          "SUMLEV", "state", "STUSAB", "lon", "lat")
 stopifnot(names(aaa) == cols)
 
 
@@ -135,7 +135,7 @@ aaa <- read_acs1year(
     table_contents = c("male = B01001_002", "female = B01001_026"),
     summary_level = "place"
 )
-stopifnot(dim(aaa) == c(142, 10))
+stopifnot(dim(aaa) == c(142, 11))
 
 
 

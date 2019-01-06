@@ -38,6 +38,12 @@ generate_census_data_ <- function(states =  c(states_DC, "PR", "US")){
                 path_to_census, '" to store the generated data.')
     }
 
+    # delete old file before each time fwrite to it as using append = TRUE
+    file_name <- paste0(path_to_census, "/generated_data/acs_geoid_name/acs_geoid_name.csv")
+    if (file.exists(file_name)){
+        file.remove(file_name)
+    }
+
 
     # all summary levels used in ACS data
     acs_summarylevels <- c("010", "020", "030", "040", "050", "060", "070",
@@ -182,13 +188,19 @@ generate_census_data_ <- function(states =  c(states_DC, "PR", "US")){
         geoid_acs5year <- read_acs5year_geo_(year = 2010, state = st) %>%
             # only interest in these SUMLEV
             .[SUMLEV %in% acs_summarylevels] %>%
-            .[, .(acs_NAME = NAME, GEOID)]
+            .[, .(GEOID, acs_NAME = NAME)]
+
+        # acs_geoid_name save to csv as one file
+        if(!dir.exists(paste0(path_to_census, "/generated_data/acs_geoid_name"))){
+            dir.create(paste0(path_to_census, "/generated_data/acs_geoid_name"))
+        }
+        file_name <- paste0(path_to_census, "/generated_data/acs_geoid_name/acs_geoid_name.csv")
+        fwrite(geoid_acs5year, file = file_name, append = TRUE)
 
         # combine and reorder columns
         first4 <- c("GEOID", "lon", "lat", "NAME")
-        #GEOID_coordinate <- geoid_coord[geoid_acs5year, on = .(GEOID)] %>%
-        GEOID_coordinate <- merge(geoid_coord, geoid_acs5year, by = "GEOID",
-                                  all = TRUE) %>%
+        GEOID_coordinate <- geoid_coord[geoid_acs5year, on = .(GEOID)] %>%
+            .[, acs_NAME := NULL] %>%
             setcolorder(c(first4, setdiff(names(.), first4)))
 
         # save to csv

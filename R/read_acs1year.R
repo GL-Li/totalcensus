@@ -412,8 +412,10 @@ read_acs1year_areas_ <- function(year,
 
     lst_state <- list()
     for (st in states) {
-        geo <- read_acs1year_geo_(year, st, geo_headers,
+        geo <- read_acs1year_geo_(year, st, c(geo_headers, "STATE"),
                                   show_progress = show_progress) %>%
+            # convert STATE fips to state abbreviation
+            .[, state := convert_fips_to_names(STATE)] %>%
             setkey(LOGRECNO)
 
 
@@ -450,6 +452,7 @@ read_acs1year_areas_ <- function(year,
 
     combined <- rbindlist(lst_state) %>%
         .[, LOGRECNO := NULL] %>%
+        .[, STATE := NULL] %>%
         convert_geocomp_name()
 
     if (!is.null(table_contents)){
@@ -475,8 +478,8 @@ read_acs1year_areas_ <- function(year,
     }
 
     # reorder columns
-    begin <- c("area", "GEOID", "NAME", "STUSAB")
-    end <- c("GEOCOMP", "SUMLEV", "lon", "lat")
+    begin <- c("area", "GEOID", "NAME")
+    end <- c("GEOCOMP", "SUMLEV", "state", "STUSAB", "lon", "lat")
     if (with_margin){
         # estimate and margin together
         contents <- paste0(rep(table_contents, each = 2),
@@ -522,8 +525,11 @@ read_acs1year_geoheaders_ <- function(year,
 
     lst_state <- list()
     for (st in states) {
-        geo <- read_acs1year_geo_(year, st, geo_headers,
+        geo <- read_acs1year_geo_(year, st,
+                                  c(geo_headers, "STATE"),
                                   show_progress = show_progress) %>%
+            # convert STATE fips to state abbreviation
+            .[, state := convert_fips_to_names(STATE)] %>%
             setkey(LOGRECNO)
 
         # read estimate and margin from each file
@@ -560,14 +566,17 @@ read_acs1year_geoheaders_ <- function(year,
         .[, LOGRECNO := NULL] %>%
         convert_geocomp_name()
 
+    if (!"STATE" %in% geo_headers){
+        combined[, STATE := NULL]
+    }
 
     if (!is.null(table_contents)){
         setnames(combined, paste0(table_contents, "_e"), table_contents)
     }
 
     # reorder columns
-    begin <- c("GEOID", "NAME", "STUSAB")
-    end <- c("GEOCOMP", "SUMLEV", "lon", "lat")
+    begin <- c("GEOID", "NAME")
+    end <- c("GEOCOMP", "SUMLEV", "state", "STUSAB", "lon", "lat")
 
     if (with_margin){
         # estimate and margin together

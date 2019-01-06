@@ -129,7 +129,7 @@ aaa <- read_acs5year(
     with_margin = TRUE,
     dec_fill = "dec2010"
 )
-stopifnot(aaa[2, 5] == 14940)
+stopifnot(aaa[2, 4] == 14940)
 
 
 aaa <- read_acs5year(
@@ -140,7 +140,7 @@ aaa <- read_acs5year(
     summary_level = "block group",
     with_margin = TRUE
 )
-stopifnot(aaa[1000, 10] == 358)
+stopifnot(aaa[1000, 9] == 358)
 
 
 aaa <- read_acs5year(
@@ -150,12 +150,12 @@ aaa <- read_acs5year(
     geo_headers = "PLACE",
     summary_level = "place"
 )
-stopifnot(dim(aaa) == c(1522, 11))
+stopifnot(dim(aaa) == c(1522, 12))
 
 
 # provided areas
 aaa <- read_acs5year(
-    year = 2016,
+    year = 2017,
     states = c("UT", "RI"),
     table_contents = c("male = B01001_002", "female = B01001_026"),
     areas = c("Salt Lake City city, UT",
@@ -163,22 +163,28 @@ aaa <- read_acs5year(
               "PLACE = RI19180"),
     with_margin = TRUE
 )
-cols <- c("area", "GEOID", "NAME", "STUSAB", "PLACE", "population", "population_margin",
+cols <- c("area", "GEOID", "NAME", "PLACE", "population", "population_margin",
           "male", "male_margin", "female", "female_margin", "GEOCOMP",
-          "SUMLEV", "lon", "lat")
+          "SUMLEV", "state", "STUSAB", "lon", "lat")
 stopifnot(names(aaa) == cols)
 
 
 aaa <- read_acs5year(
-    year = 2016,
+    year = 2017,
     states = c("RI", "MA"),
     table_contents = c("male = B01001_002", "female = B01001_026"),
     areas = "Providence metro",
     summary_level = "block group",
     dec_fill = "dec2010"
 )
-stopifnot(dim(aaa) == c(1205, 12))
+stopifnot(dim(aaa) == c(1205, 13))
 
+
+aaa <- read_acs5year(
+    2017, "RI",
+    geo_headers = "PLACE",
+    summary_level = "block group"
+)
 
 
 # check all file segments =====================================================

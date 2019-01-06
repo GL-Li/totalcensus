@@ -289,6 +289,7 @@ read_decennial_areas_ <- function(year,
         # has much more geo_header data
         geo <- read_decennial_geo_(year, st,
                                    c(geo_headers, "STATE"),
+                                   summary_level,
                                    show_progress = show_progress) %>%
             # convert STATE fips to state abbreviation
             .[, state := convert_fips_to_names(STATE)] %>%
@@ -333,11 +334,23 @@ read_decennial_areas_ <- function(year,
         .[, unique(dt_areas[, geoheader]) := NULL] %>%
         convert_geocomp_name()
 
+    # add acs_NAME
+    if (summary_level != "*"){
+        selected <- add_acsname(selected)
+    }
+
+    if (summary_level != "*"){
+        begin <- c("area", "GEOID", "NAME", "acs_NAME")
+    } else {
+        begin <- c("area", "NAME")
+    }
+    end <- c("GEOCOMP", "SUMLEV", "state", "STUSAB", "lon", "lat")
+
     # reorder columns
     # begin <- c("area", "lon", "lat")
     # end <- c("GEOCOMP", "SUMLEV")
     # setcolorder(selected, c(begin, setdiff(names(selected), c(begin, end)), end))
-    setcolorder(selected, c("area", "lon", "lat", "state", table_contents, "GEOCOMP", "SUMLEV"))
+    setcolorder(selected, c(begin, table_contents, end))
 
     return(selected)
 }
@@ -351,7 +364,7 @@ read_decennial_geoheaders_ <- function(year,
                                   summary_level = "*",
                                   geo_comp = "*",
                                   show_progress = TRUE){
-    # read decennial census data of selected areas
+    # read decennial census data of selected geoheaders
     #
     # Args_____
     # year :  end year of the 5-year survey
@@ -412,6 +425,7 @@ read_decennial_geoheaders_ <- function(year,
         # has much more geo_header data
         geo <- read_decennial_geo_(year, st,
                                    c(geo_headers, "STATE"),
+                                   summary_level,
                                    show_progress = show_progress) %>%
             # convert STATE fips to state abbreviation
             .[, state := convert_fips_to_names(STATE)] %>%
@@ -444,21 +458,17 @@ read_decennial_geoheaders_ <- function(year,
         combined[, STATE := NULL]
     }
 
-
-    if (length(geo_headers) == 1 &&
-        geo_headers %in% c("STATE", "COUNTY", "PLACE", "COUNTY", "CBSA", "COUSUB")){
-            combined[, area := convert_fips_to_names(get(geo_headers), state, geo_headers, states)]
+    # add acs_NAME
+    if (summary_level != "*"){
+        combined <- add_acsname(combined)
     }
 
-
-    # reorder columns
-    if (length(geo_headers) == 1 &&
-        geo_headers %in% c("STATE", "COUNTY", "PLACE", "COUNTY", "CBSA", "COUSUB")){
-            begin <- c("area", "lon", "lat", "state")
+    if (summary_level != "*"){
+        begin <- c("GEOID", "NAME", "acs_NAME")
     } else {
-        begin <- c("lon", "lat", "state")
+        begin <- c("NAME")
     }
-    end <- c("GEOCOMP", "SUMLEV")
+    end <- c("GEOCOMP", "SUMLEV", "state", "STUSAB", "lon", "lat")
     setcolorder(combined, c(begin, geo_headers, table_contents, end))
 
     return(combined)
@@ -472,28 +482,37 @@ read_decennial_geoheaders_ <- function(year,
 read_decennial_geo_ <- function(year,
                                 state,
                                 geo_headers = NULL,
+                                summary_level = "*",
                                 show_progress = TRUE) {
     # This function reads the geographic record file of one state and returns a
     # data.table with columns of LOGRECNO, SUNLEV, GEOCOMP plus geoheaders
-    # given in argument geo_headers of the
+    # given in argument geo_headers. In addition, it generate GEOID for
+    # summary_levels used in ACS summary files with utility function add_geoid()
 
-    # Args_____
-    # year : integrer, year of the decennial census, such as 2010
-    # state : string, abbreviation of a state, such as "IN"
-    # geo_headers : string vector of geoheaders, such as c("CBSA", "PLACE")
-    # show_progress : wheather to show progress in fread()
-    #
-    # Return_____
-    # a data.table keyed with LOGRECNO
+
 
 
     #=== prepare arguments ===
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
     state <- toupper(state)
-    # always keep NAME, lon and lat
-    geo_headers <- c(toupper(geo_headers), "NAME", "INTPTLON", "INTPTLAT") %>%
-        unique()
+
+    geoheaders_alway_keep <- c("LOGRECNO", "GEOCOMP", "NAME", "STUSAB",
+                               "INTPTLON", "INTPTLAT")
+
+    if (summary_level != "*"){
+        geoid_geoheaders <- get_geoheaders_of_summarylevel(summary_level)
+        geoheaders <- c(toupper(geo_headers), geoheaders_alway_keep,
+                         geoid_geoheaders) %>%
+            unique() %>%
+            # SUMLEV processed seperately
+            setdiff("SUMLEV")
+    } else {
+        geoheaders <- c(toupper(geo_headers), geoheaders_alway_keep) %>%
+            unique() %>%
+            setdiff("SUMLEV")
+    }
+
 
     if (show_progress) {
         cat(paste("Reading", state, "geographic header record file\n"))
@@ -514,53 +533,50 @@ read_decennial_geo_ <- function(year,
 
     # use "Latin-1" for encoding special spanish latters such as ñ in Cañada
     geo <- fread(file, header = FALSE, sep = "\n", encoding = "Latin-1" ,
-                 showProgress = show_progress)
+                 showProgress = show_progress) %>%
+        # select summary level here
+        .[, SUMLEV := str_sub(V1, 9, 11)] %>%
+        .[SUMLEV %like% summary_level]
 
-    # always keep the following geoheaders in the output data
-    dt <- geo[, .(LOGRECNO = as.numeric(str_sub(V1, 19, 25)),
-                  STUSAB = str_sub(V1, 7, 8),
-                  SUMLEV = str_sub(V1, 9, 11),
-                  GEOCOMP = str_sub(V1, 12, 13))]
-
-    # add all selected fields to output data
-    if (!is.null(geo_headers)) {
-        for (ref in geo_headers) {
-            # identify numeric geohearders
-            if (ref %in% c("INTPTLAT", "INTPTLON", "AREALAND", "AREAWATR",
-                           "POP100", "HU100")) {
-                # place variable in () to add new columns
-                dt[, (ref) := as.numeric(str_sub(
-                    geo[, V1],
-                    dict_geoheader[reference == ref, start],
-                    dict_geoheader[reference == ref, end]
-                ))]
-            } else if (ref %in% c("LOGRECNO", "SUMLEV", "GEOCOMP")) {
-                message(paste(ref, "is already included in return by default.\n"))
-            } else {
-                dt[, (ref) := str_trim(str_sub(
-                    geo[, V1],
-                    dict_geoheader[reference == ref, start],
-                    dict_geoheader[reference == ref, end]
-                ))]
-            }
+    # add all selected geoheaders to output
+    for (ref in geoheaders) {
+        # identify numeric geohearders
+        if (ref %in% c("LOGRECNO", "INTPTLAT", "INTPTLON", "AREALAND",
+                       "AREAWATR", "POP100", "HU100")) {
+            # place variable in () to add new columns
+            geo[, (ref) := as.numeric(str_sub(
+                geo[, V1],
+                dict_geoheader[reference == ref, start],
+                dict_geoheader[reference == ref, end]
+            ))]
+        } else {
+            geo[, (ref) := str_trim(str_sub(
+                geo[, V1],
+                dict_geoheader[reference == ref, start],
+                dict_geoheader[reference == ref, end]
+            ))]
         }
     }
 
-    setnames(dt, c("INTPTLON", "INTPTLAT"), c("lon", "lat"))
+    geo[, V1 := NULL]
+    setnames(geo, c("INTPTLON", "INTPTLAT"), c("lon", "lat"))
 
-    # add GEOID and NAME from generated data (not include blocks)
-    file_gen <- sprintf("%s/generated_data/geoid_coord/geoid_coord_%s.csv",
-                        path_to_census, state)
-    generated <- fread(file_gen) %>%
-        .[, .(GEOID, LOGRECNO, acs_NAME)]
-    dt <- generated[dt, on = .(LOGRECNO)] %>%
-        setcolorder(c("LOGRECNO", "GEOID", "NAME", "acs_NAME", "STUSAB",
-                      "SUMLEV", "GEOCOMP", "lon", "lat"))
+    if (summary_level != "*"){
+        add_geoid(geo, summary_level)
+        gh_to_keep <- c("LOGRECNO", "GEOID", "NAME", "STUSAB",
+                        setdiff(geo_headers, c("INTPTLAT", "INTPTLON")),
+                        "GEOCOMP", "SUMLEV", "lon", "lat") %>%
+            unique()
+    } else {
+        gh_to_keep <- c("LOGRECNO", "NAME", "STUSAB",
+                        setdiff(geo_headers, c("INTPTLAT", "INTPTLON")),
+                        "GEOCOMP", "SUMLEV", "lon", "lat") %>%
+            unique()
+    }
 
+    setkey(geo, LOGRECNO)
 
-    setkey(dt, LOGRECNO)
-
-    return(dt)
+    return(geo[, gh_to_keep, with = FALSE])
 }
 
 

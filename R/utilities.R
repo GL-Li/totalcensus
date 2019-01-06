@@ -510,6 +510,7 @@ add_geoheader <- function(dt, state, geo_headers, summary_level,
 
 
 
+
 add_coord <- function(dt, state, geo_headers = NULL){
     # Add coordinates to dt read from ACS 1-year and ACS 5-year surveys.
     #
@@ -613,4 +614,227 @@ select_columns <- function(df, contains){
     selected_cols <- cols[selected]
 
     return(selected_cols)
+}
+
+
+# add GEOID ====================================================================
+# The following functions help add GEOID to decennial census data, which is not
+# provided in the summary file 1.
+
+get_geoheaders_of_summarylevel <- function(summary_level){
+    # get geoheaders that required to generate GEOID of a given summary level
+
+    if (summary_level == "010") {
+        geoheaders <- c("GEOCOMP")
+    } else if (summary_level == "020"){
+        geoheaders <- c("GEOCOMP", "REGION")
+    } else if (summary_level == "030"){
+        geoheaders <- c("GEOCOMP", "DIVISION")
+    } else if (summary_level == "040"){
+        geoheaders <- c("GEOCOMP", "STATE")
+    } else if (summary_level == "050"){
+        geoheaders <- c("GEOCOMP", "STATE", "COUNTY")
+    } else if (summary_level == "060"){
+        geoheaders <- c("GEOCOMP", "STATE", "COUNTY", "COUSUB")
+    } else if (summary_level == "070"){
+        geoheaders <- c("GEOCOMP", "STATE", "COUNTY", "COUSUB", "PLACE")
+    } else if (summary_level == "140"){
+        geoheaders <- c("GEOCOMP", "STATE", "COUNTY", "TRACT")
+    } else if (summary_level == "150"){
+        geoheaders <- c("GEOCOMP", "STATE", "COUNTY", "TRACT", "BLKGRP")
+    } else if (summary_level == "100"){
+        # first digit of BLOCK is BLKGRP
+        geoheaders <- c("GEOCOMP", "STATE", "COUNTY", "TRACT", "BLOCK")
+    } else if (summary_level == "155"){
+        geoheaders <- c("GEOCOMP", "STATE", "PLACE", "COUNTY")
+    } else if (summary_level == "160"){
+        geoheaders <- c("GEOCOMP", "STATE", "PLACE")
+    } else if (summary_level == "170"){
+        geoheaders <- c("GEOCOMP", "STATE", "CONCIT")
+    } else if (summary_level == "172"){
+        geoheaders <- c("GEOCOMP", "STATE", "CONCIT", "PLACE")
+    } else if (summary_level == "230"){
+        geoheaders <- c("GEOCOMP", "STATE", "ANRC")
+    } else if (summary_level == "250"){
+        geoheaders <- c("GEOCOMP", "AIANHH")
+    } else if (summary_level == "251"){
+        geoheaders <- c("GEOCOMP", "AIANHH", "AITSCE")
+    } else if (summary_level == "252"){
+        geoheaders <- c("GEOCOMP", "AIANHH", "AIHHTLI")
+    } else if (summary_level == "254"){
+        # same as 252, one is R one is T
+        geoheaders <- c("GEOCOMP", "AIANHH", "AIHHTLI")
+    } else if (summary_level == "256"){
+        geoheaders <- c("GEOCOMP", "AIANHH", "TTRACT")
+    } else if (summary_level == "258"){
+        geoheaders <- c("GEOCOMP", "AIANHH", "TTRACT", "TBLKGRP")
+    } else if (summary_level == "260"){
+        geoheaders <- c("GEOCOMP", "AIANHH", "STATE")
+    } else if (summary_level == "269"){
+        geoheaders <- c("GEOCOMP", "AIANHH", "STATE", "PLACE")
+    } else if (summary_level == "270"){
+        geoheaders <- c("GEOCOMP", "AIANHH", "STATE", "COUNTY")
+    } else if (summary_level == "280"){
+        geoheaders <- c("GEOCOMP", "STATE", "AIANHH")
+    } else if (summary_level == "283"){
+        geoheaders <- c("GEOCOMP", "STATE", "AIANHH", "AIHHTLI")
+    } else if (summary_level == "286"){
+        # same as 283
+        geoheaders <- c("GEOCOMP", "STATE", "AIANHH", "AIHHTLI")
+    } else if (summary_level == "290"){
+        geoheaders <- c("GEOCOMP", "AIANHH", "AITSCE", "STATE")
+    } else if (summary_level == "291"){
+        geoheaders <- c("GEOCOMP", "AIANHH", "AIHHTLI", "TTRACT")
+    } else if (summary_level == "292"){
+        geoheaders <- c("GEOCOMP", "AIANHH", "AIHHTLI", "TTRACT")
+    } else if (summary_level == "293"){
+        geoheaders <- c("GEOCOMP", "AIANHH", "AIHHTLI", "TTRACT", "TBLKGRP")
+    } else if (summary_level == "294"){
+        geoheaders <- c("GEOCOMP", "AIANHH", "AIHHTLI", "TTRACT", "TBLKGRP")
+    } else if (summary_level == "310"){
+        geoheaders <- c("GEOCOMP", "CBSA")
+    } else if (summary_level == "311"){
+        geoheaders <- c("GEOCOMP", "CBSA", "STATE")
+    } else if (summary_level == "312"){
+        geoheaders <- c("GEOCOMP", "CBSA", "STATE", "PLACE")
+    } else if (summary_level == "313"){
+        geoheaders <- c("GEOCOMP", "CBSA", "STATE", "COUNTY")
+    } else if (summary_level == "314"){
+        geoheaders <- c("GEOCOMP", "CBSA", "METDIV")
+    } else if (summary_level == "315"){
+        geoheaders <- c("GEOCOMP", "CBSA", "METDIV", "STATE")
+    } else if (summary_level == "316"){
+        geoheaders <- c("GEOCOMP", "CBSA", "METDIV", "STATE", "COUNTY")
+    } else if (summary_level == "320"){
+        geoheaders <- c("GEOCOMP", "STATE", "CBSA")
+    } else if (summary_level == "321"){
+        geoheaders <- c("GEOCOMP", "STATE", "CBSA", "PLACE")
+    } else if (summary_level == "322"){
+        geoheaders <- c("GEOCOMP", "STATE", "CBSA", "COUNTY")
+    } else if (summary_level == "323"){
+        geoheaders <- c("GEOCOMP", "STATE", "CBSA", "METDIV")
+    } else if (summary_level == "324"){
+        geoheaders <- c("GEOCOMP", "STATE", "CBSA", "METDIV", "COUNTY")
+    } else if (summary_level == "330"){
+        geoheaders <- c("GEOCOMP", "CSA")
+    } else if (summary_level == "331"){
+        geoheaders <- c("GEOCOMP", "CSA", "STATE")
+    } else if (summary_level == "332"){
+        geoheaders <- c("GEOCOMP", "CSA", "CBSA")
+    } else if (summary_level == "333"){
+        geoheaders <- c("GEOCOMP", "CSA", "CBSA", "STATE")
+    } else if (summary_level == "335"){
+        geoheaders <- c("GEOCOMP", "CNECTA")
+    } else if (summary_level == "336"){
+        geoheaders <- c("GEOCOMP", "CNECTA", "STATE")
+    } else if (summary_level == "337"){
+        geoheaders <- c("GEOCOMP", "CNECTA", "NECTA")
+    } else if (summary_level == "338"){
+        geoheaders <- c("GEOCOMP", "CNECTA", "NECTA", "STATE")
+    } else if (summary_level == "340"){
+        geoheaders <- c("GEOCOMP", "STATE", "CSA")
+    } else if (summary_level == "341"){
+        geoheaders <- c("GEOCOMP", "STATE", "CSA", "CBSA")
+    } else if (summary_level == "345"){
+        geoheaders <- c("GEOCOMP", "STATE", "CNECTA")
+    } else if (summary_level == "346"){
+        geoheaders <- c("GEOCOMP", "STATE", "CNECTA", "NECTA")
+    } else if (summary_level == "350"){
+        geoheaders <- c("GEOCOMP", "NECTA")
+    } else if (summary_level == "351"){
+        geoheaders <- c("GEOCOMP", "NECTA", "STATE")
+    } else if (summary_level == "352"){
+        geoheaders <- c("GEOCOMP", "NECTA", "STATE", "PLACE")
+    } else if (summary_level == "353"){
+        geoheaders <- c("GEOCOMP", "NECTA", "STATE", "COUNTY")
+    } else if (summary_level == "354"){
+        geoheaders <- c("GEOCOMP", "NECTA", "STATE", "COUNTY", "COUSUB")
+    } else if (summary_level == "355"){
+        geoheaders <- c("GEOCOMP", "NECTA", "NECTADIV")
+    } else if (summary_level == "356"){
+        geoheaders <- c("GEOCOMP", "NECTA", "NECTADIV", "STATE")
+    } else if (summary_level == "357"){
+        geoheaders <- c("GEOCOMP", "NECTA", "NECTADIV", "STATE", "COUNTY")
+    } else if (summary_level == "358"){
+        geoheaders <- c("GEOCOMP", "NECTA", "NECTADIV", "STATE", "COUNTY", "COUSUB")
+    } else if (summary_level == "360"){
+        geoheaders <- c("GEOCOMP", "STATE", "NECTA")
+    } else if (summary_level == "361"){
+        geoheaders <- c("GEOCOMP", "STATE", "NECTA", "PLACE")
+    } else if (summary_level == "362"){
+        geoheaders <- c("GEOCOMP", "STATE", "NECTA", "COUNTY")
+    } else if (summary_level == "363"){
+        geoheaders <- c("GEOCOMP", "STATE", "NECTA", "COUNTY", "COUSUB")
+    } else if (summary_level == "364"){
+        geoheaders <- c("GEOCOMP", "STATE", "NECTA", "NECTADIV")
+    } else if (summary_level == "365"){
+        geoheaders <- c("GEOCOMP", "STATE", "NECTA", "NECTADIV", "COUNTY")
+    } else if (summary_level == "366"){
+        geoheaders <- c("GEOCOMP", "STATE", "NECTA", "NECTADIV", "COUNTY", "COUSUB")
+    } else if (summary_level == "400"){
+        geoheaders <- c("GEOCOMP", "UA")
+    } else if (summary_level == "410"){
+        geoheaders <- c("GEOCOMP", "UA", "STATE")
+    } else if (summary_level == "430"){
+        geoheaders <- c("GEOCOMP", "UA", "STATE", "COUNTY")
+    } else if (summary_level == "500"){
+        geoheaders <- c("GEOCOMP", "STATE", "CD")
+    } else if (summary_level == "510"){
+        geoheaders <- c("GEOCOMP", "STATE", "CD", "COUNTY")
+    } else if (summary_level == "550"){
+        geoheaders <- c("GEOCOMP", "STATE", "CD", "AIANHH")
+    } else if (summary_level == "610"){
+        geoheaders <- c("GEOCOMP", "STATE", "SLDU")
+    } else if (summary_level == "612"){
+        geoheaders <- c("GEOCOMP", "STATE", "SLDU", "COUNTY")
+    } else if (summary_level == "620"){
+        geoheaders <- c("GEOCOMP", "STATE", "SLDL")
+    } else if (summary_level == "622"){
+        geoheaders <- c("GEOCOMP", "STATE", "SLDL", "COUNTY")
+    } else if (summary_level == "795"){
+        geoheaders <- c("GEOCOMP", "STATE", "PUMA")
+    } else if (summary_level == "860"){
+        geoheaders <- c("GEOCOMP", "ZCTA5")
+    } else if (summary_level == "950"){
+        geoheaders <- c("GEOCOMP", "STATE", "SDELM")
+    } else if (summary_level == "960"){
+        geoheaders <- c("GEOCOMP", "STATE", "SDSEC")
+    } else if (summary_level == "970"){
+        geoheaders <- c("GEOCOMP", "STATE", "SDUNI")
+    }
+
+    return(geoheaders)
+}
+
+add_geoid <- function(dt, summary_level){
+    # add GEOID to data.table dt that has geoheaders of summary_level
+    geoheaders <- get_geoheaders_of_summarylevel(summary_level)
+    # add first three element to GEOID
+    dt[, GEOID := paste0(summary_level, get("GEOCOMP"), "US")]
+    # add all others
+    for (gh in geoheaders[2:length(geoheaders)]){
+        dt[, GEOID := paste0(GEOID, get(gh))]
+    }
+
+    return(dt)
+}
+
+
+# add ACS names to decennial census data ======================================
+add_acsname <- function(dt){
+    # assign acs_NAME to decennial census data
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
+    file_name <- paste0(path_to_census,
+                        "/generated_data/acs_geoid_name/acs_geoid_name.csv")
+    generated <- fread(file_name) %>%
+        .[, .(geoid_tmp = GEOID, acs_NAME)]
+
+    # for block in dt, give the tract name from ACS
+    dt[, geoid_tmp := GEOID]
+    dt[GEOID %like% "10000US", geoid_tmp := paste0("14000US", str_sub(GEOID, 8, 18))]
+
+
+    dt <- generated[dt, on = .(geoid_tmp)] %>%
+        .[, geoid_tmp := NULL]
 }
