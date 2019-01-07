@@ -58,7 +58,9 @@ set_path_to_census("xxxxx/my_census_data")
 
 The [census API](https://www.census.gov/data/developers/guidance/api-user-guide.Available_Data.html) offers most data in decennial censuses and ACS estimates for download and API-based packages such as `tidycensus`, `censusapi` and `acs` make the downloading very convenient in R. So why we need another package?
 
-The major benefit of using package `totalcensus` is that it makes census data extraction more flexible and gives you full access and control of all census data downloaded to you own computer. It is particularly convenient to extract high resolution data at census tract, block group, and block level.
+One advantage is that once you downloaded the summary files, you do not need internet anymore and everything is on your own computer. You do not need to worry about internet interruption or government shutdown. You have total control of the data.
+
+Another benefit of using package `totalcensus` is that it makes census data extraction more flexible. It is particularly convenient to extract high resolution data at census tract, block group, and block level for a large area.
 
 Here is an example of how we extract the median home values in **all** block groups in the United States from 2011-2015 ACS 5-year survey with this package. You simply need to call the function `read_acs5year()`. It takes 15 seconds for my 4-years old laptop to return the data of all 217,739 block groups. In addition to the table contents we request, we also get the population and coordinate of each block group.
 
@@ -107,8 +109,8 @@ The function arguments serve as filters to select the data you want:
 
 Functions `read_acs1year()` and `read_acs5year()` have additional argument:
 
-- with_margin: whether to read magin of error of the estimate.
-- dec_fill: whether to fill geo_headers codes with data from decennial census. The codes in ACS summary file are often incomplete. To use decennial census 2010 data to fill the missing values, set the argment to "dec2010".
+- with_margin: whether to read margin of error of the estimate.
+- dec_fill: whether to fill geo_headers codes with data from decennial census. The codes in ACS summary file are often incomplete. To use decennial census 2010 data to fill the missing values, set the argument to "dec2010".
 
 ### the `search_xxxx()` functions
 
@@ -128,7 +130,7 @@ Then we need to check if 2016 ACS 1-year estimate has the rent data. We run `sea
 
 We do not need to specify `areas` and `geo_headers` as we are extracting all geographic areas matches the conditions.
 
-Below is the code that gives what we want. The first time you use `read_xxxx()` functions to read data files, you will be asked to download data generated from decenial census 2010 and summary files required for this function call, in this case, 2016 ACS 1-year summary files. Choose 1 to continue. 
+Below is the code that gives what we want. The first time you use `read_xxxx()` functions to read data files, you will be asked to download data generated from decennial census 2010 and summary files required for this function call, in this case, 2016 ACS 1-year summary files. Choose 1 to continue. 
 
 ```{r eval = FALSE}
 rent <- read_acs1year(
