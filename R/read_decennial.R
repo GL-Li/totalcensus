@@ -115,8 +115,19 @@ read_decennial <- function(year,
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
     # check if need to download generated data from census2010
-    if (!file.exists(paste0(path_to_census, "/generated_data"))){
+    generated_data <- paste0(path_to_census, "/generated_data")
+    if (!file.exists(generated_data)){
         download_generated_data()
+    } else {
+        version_file <- paste0(generated_data, "/version.txt")
+        if (!file.exists(version_file)){
+            download_generated_data()
+        } else {
+            version = readChar(version_file, 5)
+            if (version != "0.6.0"){
+                download_generated_data()
+            }
+        }
     }
 
     # check whether to download census data

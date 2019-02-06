@@ -1,5 +1,39 @@
 library(tidycensus)
-census_api_key("ab664ab627f56ed01df0b97a25f6f473598a7fec")
+census_api_key(Sys.getenv("CENSUS_API"))
+
+vars10 <- c("P005003", "P005004", "P005006", "P004003")
+# example from ?get_decennial
+system.time({
+    il <- get_decennial(geography = "county", variables = vars10, year = 2010,
+                        summary_var = "P001001", state = "IL")
+})
+
+
+system.time({
+    il <- get_decennial(geography = "place", variables = vars10, year = 2010,
+                        summary_var = "P001001", state = "IL")
+})
+
+
+system.time({
+    RI <- get_decennial(geography = "tract", variables = vars10, year = 2010,
+                        summary_var = "P001001", state = "RI", county = "Providence")
+})
+
+system.time({
+    RI <- get_decennial(geography = "block", variables = vars10, year = 2010,
+                        summary_var = "P001001", state = "RI", county = "Providence")
+})
+
+system.time({
+    for (cou in c("Los Angeles", "Orange", "San Diego")){
+        CA <- get_decennial(geography = "tract", variables = vars10, year = 2010,
+                            summary_var = "P001001", state = "CA", county = cou)
+        assign(cou, CA)
+    }
+
+})
+
 
 vars10 <- c("P0010001")
 

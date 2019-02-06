@@ -2,9 +2,15 @@
 
 library(acs)
 
-api.key.install("ab664ab627f56ed01df0b97a25f6f473598a7fec")
+api.key.install(Sys.getenv("CENSUS_API"))
 
 # no urban/rural update available
+system.time({
+    acs.fetch(dataset = "sf1",
+              endyear = 2010,
+              geography = geo.make(state = "RI", county = "Kent", tract = "*", block = "*"),
+              variable = c("P0020001", "P0020002", "P0020003", "P0020004", "P0020005"))
+})
 acs.fetch(dataset = "sf1",
           endyear = 2010,
           geography = geo.make(state = "RI", county = "*"),
@@ -19,7 +25,7 @@ acs.fetch(dataset = "sf1",
 
 # cannot get block data
 # the lowest is block group
-acs.fetch(dataset = "sf1",
+aaa <- acs.fetch(dataset = "sf1",
           endyear = 2010,
           geography = geo.make(state = "RI", county = "Kent", tract = "*", block = "*"),
           variable = c("P0020001", "P0020002", "P0020003", "P0020004", "P0020005"))
