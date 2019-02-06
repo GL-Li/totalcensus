@@ -1,7 +1,7 @@
 Package: totalcensus
 Type: Package
 Title: Extract Decennial Census and American Community Survey Data
-Version: 0.5.1
+Version: 0.6.1
 Author: Guanglai Li
 Maintainer: Guanglai Li <liguanglai@gmail.com>
 Date: 2019-02-06

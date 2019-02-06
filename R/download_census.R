@@ -64,7 +64,7 @@ download_generated_data <- function(){
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
-    url <- "https://s3.amazonaws.com/gl-shared-data/generated_census_data_060.zip"
+    url <- "https://s3.amazonaws.com/gl-shared-data/generated_census_data_v060.zip"
     download.file(url, paste0(path_to_census, "/tmp.zip"))
     unzip(
         paste0(path_to_census, "/tmp.zip"),
