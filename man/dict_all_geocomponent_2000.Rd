@@ -3,7 +3,6 @@
 \docType{data}
 \name{dict_all_geocomponent_2000}
 \alias{dict_all_geocomponent_2000}
-\alias{dict_all_geocomponent_2000}
 \title{List of all geographic components, 2000 version}
 \format{A data.table with 99 rows and 2 variables:
 \describe{
@@ -21,8 +20,6 @@ dict_all_geocomponent_2000
 dict_all_geocomponent_2000
 }
 \description{
-List of all geographic components, 2000 version
-
 This dataset contains all available geographic components and codes.
 }
 \keyword{datasets}

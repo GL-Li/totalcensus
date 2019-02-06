@@ -4,7 +4,8 @@
 \alias{search_tablecontents}
 \title{Search Table Contents}
 \usage{
-search_tablecontents(survey, years = NULL, keywords = NULL, view = TRUE)
+search_tablecontents(survey, years = NULL, keywords = NULL,
+  view = TRUE)
 }
 \arguments{
 \item{survey}{survey type, including "dec" (or "decennial"), "acs1" or "acs5".}
