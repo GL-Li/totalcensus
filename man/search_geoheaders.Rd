@@ -28,7 +28,7 @@ records to find the reference of "geo_headers" argument in function \code{\link{
 \examples{
 # Change view = TRUE (default) to View the returned data.
 # search geoheader that contains keyword "india" in decennial 2010
-aaa <- search_geoheaders("decennial", "india", view = FALSE)
+aaa <- search_geoheaders("decennial", 2000, "india", view = FALSE)
 
 # search for lattitude
 bbb <- search_geoheaders("dec", 2010, "latitu", view = FALSE)

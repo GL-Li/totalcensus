@@ -41,7 +41,7 @@ bbb <- search_geocomponents("acs5", 2011:2015, "43", view = FALSE)
 \dontrun{
   # view all geocomponents
   search_geocomponents("dec")
-  search_geocomponents("acs")
+  search_geocomponents("acs5")
 }
 
 }

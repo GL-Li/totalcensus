@@ -22,9 +22,6 @@
 #' # search by what you want
 #' aaa <- search_tablecontents("dec", 2000, "federal prison", view = FALSE)
 #'
-#' # search by table reference
-#' bbb <- search_tablecontents("acs1", 2010:2015, "B02003", view = FALSE)
-#'
 #' \dontrun{
 #'   # view all decennial census table contents
 #'   search_tablecontents("dec")
@@ -129,7 +126,7 @@ search_tablecontents <- function(survey, years = NULL, keywords = NULL, view = T
 #' @examples
 #' # Change view = TRUE (default) to View the returned data.
 #' # search geoheader that contains keyword "india" in decennial 2010
-#' aaa <- search_geoheaders("decennial", "india", view = FALSE)
+#' aaa <- search_geoheaders("decennial", 2000, "india", view = FALSE)
 #'
 #' # search for lattitude
 #' bbb <- search_geoheaders("dec", 2010, "latitu", view = FALSE)
@@ -384,7 +381,7 @@ search_summarylevels <- function(survey, years=NULL, keywords = NULL, view = TRU
 #' \dontrun{
 #'   # view all geocomponents
 #'   search_geocomponents("dec")
-#'   search_geocomponents("acs")
+#'   search_geocomponents("acs5")
 #' }
 #'
 #' @export
