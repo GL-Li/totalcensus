@@ -9,7 +9,10 @@ Download summary files from [Census Bureau](https://www2.census.gov/) and extrac
 Update
 ------
 
-**2/7/2019**: Version 0.6.1 is on CRAN. - Added GEOID to decennial census for selected summary levels so that it will be easier to compare the same geographic areas in decennial census and American Community Survey. - `read_acs1year()` and `read_acs5year()` run faster in the new version.
+**2/7/2019**: Version 0.6.1 is on CRAN.
+
+-   Added GEOID to decennial census for selected summary levels so that it will be easier to compare the same geographic areas in decennial census and American Community Survey.
+-   `read_acs1year()` and `read_acs5year()` run faster in the new version.
 
 **12/7/2018**: Package `totalcensus` v0.5.1 is on CRAN. It includes
 
