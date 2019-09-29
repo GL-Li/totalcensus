@@ -9,15 +9,10 @@ Download summary files from [Census Bureau](https://www2.census.gov/) and extrac
 Update
 ------
 
-**2/7/2019**: Version 0.6.1 is on CRAN.
-
--   Added GEOID to decennial census for selected summary levels so that it will be easier to compare the same geographic areas in decennial census and American Community Survey.
--   `read_acs1year()` and `read_acs5year()` run faster in the new version.
-
-**12/7/2018**: Package `totalcensus` v0.5.1 is on CRAN. It includes
+**9/29/2019**: Version 0.6.2 is on CRAN. The 2018 ACS 1 year data, which was released on 9/26/2019, was added to the package. The package now includes:
 
 -   Decennial census 2000 and 2010
--   ACS 1 year: 2005 - 2017
+-   ACS 1 year: 2005 - 2018
 -   ACS 5 year: 2009 - 2017
 
 Installation and setup
