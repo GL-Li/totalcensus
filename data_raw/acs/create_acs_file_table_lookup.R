@@ -157,6 +157,7 @@ lookup_acs5year_2010 <- make_acs_lookup(5, 2010)
 lookup_acs5year_2009 <- make_acs_lookup(5, 2009)
 
 # ACS 1-year
+lookup_acs1year_2018 <- make_acs_lookup(1, 2018)
 lookup_acs1year_2017 <- make_acs_lookup(1, 2017)
 lookup_acs1year_2016 <- make_acs_lookup(1, 2016)
 lookup_acs1year_2015 <- make_acs_lookup(1, 2015)

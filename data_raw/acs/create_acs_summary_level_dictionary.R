@@ -31,6 +31,7 @@ generate_summary_level <- function(survey, year){
 
 # acs1year summary level ======================================================
 # The same since 2006. Just check when new year added
+S2018 <- generate_summary_level("acs1", 2018)
 S2017 <- generate_summary_level("acs1", 2017)
 S2016 <- generate_summary_level("acs1", 2016)
 S2015 <- generate_summary_level("acs1", 2015)
@@ -46,7 +47,7 @@ S2006 <- generate_summary_level("acs1", 2006)
 S2005 <- generate_summary_level("acs1", 2005)
 
 
-# same from 2006 to 2017, one row different from 2005
+# same from 2006 to 2018, one row different from 2005
 dict_acs1_summarylevel <- merge(S2017, S2005,
                                 by = c("code", "summary_level"),
                                 all = TRUE) %>%

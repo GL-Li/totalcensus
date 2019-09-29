@@ -756,6 +756,7 @@ generate_acs1_tablecontents_ <- function(){
     acs1_2015 <- modify_lookup_table_(1, 2015)
     acs1_2016 <- modify_lookup_table_(1, 2016)
     acs1_2017 <- modify_lookup_table_(1, 2017)
+    acs1_2018 <- modify_lookup_table_(1, 2018)
 
     dict_acs_tablecontent <- reduce(list(acs1_2005,
                                          acs1_2006,
@@ -769,7 +770,8 @@ generate_acs1_tablecontents_ <- function(){
                                          acs1_2014,
                                          acs1_2015,
                                          acs1_2016,
-                                         acs1_2017),
+                                         acs1_2017,
+                                         acs1_2018),
                                     merge, by = "reference", all = TRUE) %>%
 
         # add the following lines for year since 2013
@@ -788,9 +790,13 @@ generate_acs1_tablecontents_ <- function(){
         .[!is.na(acs1_2017), ":=" (table_content = content_acs1_2017,
                                    table_name = name_acs1_2017,
                                    universe = universe_acs1_2017)] %>%
+        .[!is.na(acs1_2018), ":=" (table_content = content_acs1_2018,
+                                   table_name = name_acs1_2018,
+                                   universe = universe_acs1_2018)] %>%
 
         # include all years and surveys
         .[, .(reference, table_content, table_name,
+              acs1_2018,
               acs1_2017, acs1_2016, acs1_2015, acs1_2014, acs1_2013, acs1_2012,
               acs1_2011, acs1_2010, acs1_2009, acs1_2008, acs1_2007, acs1_2006,
               acs1_2005,

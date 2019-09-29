@@ -67,8 +67,7 @@ test_read_xxx <- function(){
         geo_headers = "CBSA",
         summary_level = "county subdivision"
     )
-    stopifnot(dim(dec_1) == c(36642, 10))
-    stopifnot(sum(is.na(dec_1$area)) == 13737)
+    stopifnot(dim(dec_1) == c(36642, 13))
 
 
     dec_2 = read_decennial(
@@ -78,8 +77,7 @@ test_read_xxx <- function(){
         geo_headers = "PLACE",
         summary_level = "*"
     )
-    stopifnot(dim(dec_2) == c(280318, 10))
-    stopifnot(sum(is.na(dec_2$area)) == 173022)
+    stopifnot(dim(dec_2) == c(280318, 11))
 
 
     # read multiple table contents and areas from multiple states
@@ -95,7 +93,7 @@ test_read_xxx <- function(){
         ),
         summary_level = "block"
     )
-    stopifnot(dim(dec_3) == c(28981, 9))
+    stopifnot(dim(dec_3) == c(28981, 13))
     stopifnot(sum(dec_3$population) == 1258789)
 
 
@@ -106,12 +104,12 @@ test_read_xxx <- function(){
         year = 2010,
         states = "US",
         table_contents = c("urban = P0020002", "rural = P0020005"),
-        geo_headers = c("NAME", "CBSA"),
+        geo_headers = c("CBSA"),
         summary_level = "county subdivision",
         geo_comp = "*"
     ) %>%
         .[CBSA == "39300"]
-    stopifnot(dim(dec_4) == c(183, 10))
+    stopifnot(dim(dec_4) == c(183, 13))
     stopifnot(sum(dec_4$population) == 3201704)
 
 
@@ -136,7 +134,7 @@ test_read_xxx <- function(){
         summary_level = "block group",
         with_margin = TRUE
     )
-    stopifnot(dim(acs5_1) == c(314, 16))
+    stopifnot(dim(acs5_1) == c(314, 21))
     stopifnot(sum(acs5_1$population_margin) == 92245)
 
 
@@ -148,7 +146,7 @@ test_read_xxx <- function(){
         geo_headers = "PLACE",
         summary_level = "block group"
     )
-    stopifnot(dim(acs5_2) == c(3777, 11))
+    stopifnot(dim(acs5_2) == c(3777, 12))
 
 
     test_vars <- c( "B01001_001", "B19049_001", "B19301_001", "B19001_001", "B19101_001")
@@ -172,7 +170,7 @@ test_read_xxx <- function(){
         summary_level = "place",
         with_margin = TRUE
     )
-    stopifnot(dim(acs1_1) == c(3, 14))
+    stopifnot(dim(acs1_1) == c(3, 16))
     stopifnot(sum(acs1_1$population_margin) == 196)
 
 
@@ -185,7 +183,7 @@ test_read_xxx <- function(){
         summary_level = "county",
         with_margin = TRUE
     )
-    stopifnot(dim(acs1_2) == c(10, 14))
+    stopifnot(dim(acs1_2) == c(10, 15))
     stopifnot(sum(acs1_2$male) == 1760676)
 
 
@@ -198,7 +196,7 @@ test_read_xxx <- function(){
         summary_level = "310",
         with_margin = TRUE
     )
-    stopifnot(dim(acs1_3) == c(511, 14))
+    stopifnot(dim(acs1_3) == c(511, 15))
     stopifnot(sum(acs1_3$female) == 146881362)
 
     message("=== passed all test for read_xxx functions ===")

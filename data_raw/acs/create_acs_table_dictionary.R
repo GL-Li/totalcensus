@@ -20,21 +20,22 @@ make_acs_tables <- function(survey, year){
 
 # acs1 ====
 
-# make tables of year 2005 - 2017
-for (year in 2005:2017){
+latest_year <- 2018
+# make tables of year 2005 - latest_year
+for (year in 2005:latest_year){
     assign(paste0("acs1_", year), make_acs_tables("acs1", year))
 }
 
 # merge all tables, use newer names if possible
-acs1_table <- reduce(lapply(paste0("acs1_", 2005:2017), get),
+acs1_table <- reduce(lapply(paste0("acs1_", 2005:latest_year), get),
                            merge, by = "table_number", all = TRUE)
 
-for (year in 2005:2017){
+for (year in 2005:latest_year){
     acs1_table[get(paste0("acs1_", year)) == "yes", table_name := get(paste0("name_", year))]
     acs1_table[get(paste0("acs1_", year)) == "yes", universe := get(paste0("universe_", year))]
 }
 
-dict_acs1_table <- acs1_table[, c("table_number", "table_name", paste0("acs1_", 2017:2005), "universe"),
+dict_acs1_table <- acs1_table[, c("table_number", "table_name", paste0("acs1_", latest_year:2005), "universe"),
                               with = FALSE]
 
 save(dict_acs1_table, file = "data/dict_acs1_table.RData")

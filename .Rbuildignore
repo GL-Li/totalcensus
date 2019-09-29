@@ -7,4 +7,4 @@ application
 README.*
 ^\.travis\.yml$
 test
-notes
+update_notes

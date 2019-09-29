@@ -218,6 +218,6 @@ read_all_segment <- function(year, state = "RI", first_seg = 1, group = 1,
     }
 }
 
-read_all_segment(2009, "RI", 1, 2, "e")
+read_all_segment(2017, "RI", 1, 2, "e")
 
 

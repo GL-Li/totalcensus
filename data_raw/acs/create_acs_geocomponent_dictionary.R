@@ -42,6 +42,7 @@ generate_geocomponent <- function(survey, year){
 
 # acs1year geocomponent ======================================================
 # same since 2009. Just check when adding new year
+S2018 <- generate_geocomponent("acs1", 2018)
 S2017 <- generate_geocomponent("acs1", 2017)
 S2016 <- generate_geocomponent("acs1", 2016)
 S2015 <- generate_geocomponent("acs1", 2015)
@@ -57,7 +58,7 @@ S2006 <- generate_geocomponent("acs1", 2006)
 S2005 <- generate_geocomponent("acs1", 2005)
 
 
-# same from 2009 to 2017, 2005, 6, 7, 8 are different
+# same from 2009 to 2018, 2005, 6, 7, 8 are different
 dict_acs1_geocomponent <- purrr::reduce(list(S2017, S2008, S2007, S2006, S2005),
                                         merge, by = c("code", "geo_component"),
                                         all = TRUE) %>%

@@ -142,6 +142,7 @@ stopifnot(dim(aaa) == c(142, 11))
 
 
 # _________________________ ===================================================
+
 # check all file segments =====================================================
 read_segment <- function(year, state, fs, est_marg){
     aaa <- totalcensus:::read_acs1year_filesegment_(
@@ -171,6 +172,6 @@ read_all_segment <- function(year, state = "RI", first_seg = 1, est_marg = "e"){
     }
 }
 
-read_all_segment(2005, "RI", 1, "e")
+read_all_segment(2018, "RI", 1, "e")
 
 

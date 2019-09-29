@@ -8,6 +8,7 @@
 \describe{
   \item{table_number}{table number such as "C27013"}
   \item{table_name}{description of the table}
+  \item{acs1_2017}{whether the table is available in 2018}
   \item{acs1_2017}{whether the table is available in 2017}
   \item{acs1_2016}{whether the table is available in 2016}
   \item{acs1_2015}{whether the table is available in 2015}
