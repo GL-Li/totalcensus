@@ -146,6 +146,7 @@ make_acs_lookup <- function(period, year){
 
 
 # ACS 5-year
+lookup_acs5year_2018 <- make_acs_lookup(5, 2018)
 lookup_acs5year_2017 <- make_acs_lookup(5, 2017)
 lookup_acs5year_2016 <- make_acs_lookup(5, 2016)
 lookup_acs5year_2015 <- make_acs_lookup(5, 2015)
