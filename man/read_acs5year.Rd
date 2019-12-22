@@ -4,9 +4,18 @@
 \alias{read_acs5year}
 \title{Read ACS 5-year estimates}
 \usage{
-read_acs5year(year, states, table_contents = NULL, areas = NULL,
-  geo_headers = NULL, summary_level = NULL, geo_comp = "total",
-  with_margin = FALSE, dec_fill = NULL, show_progress = TRUE)
+read_acs5year(
+  year,
+  states,
+  table_contents = NULL,
+  areas = NULL,
+  geo_headers = NULL,
+  summary_level = NULL,
+  geo_comp = "total",
+  with_margin = FALSE,
+  dec_fill = NULL,
+  show_progress = TRUE
+)
 }
 \arguments{
 \item{year}{ending year of the 5-year estimate}

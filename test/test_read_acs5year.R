@@ -182,7 +182,7 @@ stopifnot(dim(aaa) == c(1205, 13))
 
 aaa <- read_acs5year(
     2017, "RI",
-    geo_headers = "PLACE",
+    geo_headers = c("PLACE"),
     summary_level = "block group"
 )
 

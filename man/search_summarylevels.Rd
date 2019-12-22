@@ -4,8 +4,7 @@
 \alias{search_summarylevels}
 \title{Search Summary Levels}
 \usage{
-search_summarylevels(survey, years = NULL, keywords = NULL,
-  view = TRUE)
+search_summarylevels(survey, years = NULL, keywords = NULL, view = TRUE)
 }
 \arguments{
 \item{survey}{survey type, including "dec" (or "decennial"), "acs1" or "acs5".}

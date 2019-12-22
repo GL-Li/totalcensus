@@ -78,7 +78,7 @@
 #'     year = 2010,
 #'     states = "US",
 #'     table_contents = c("urban = P0020002", "rural = P0020005"),
-#'     geo_headers = c("NAME", "CBSA"),
+#'     geo_headers = "CBSA",
 #'     summary_level = "county subdivision",
 #'     geo_comp = "*"
 #' ) %>%

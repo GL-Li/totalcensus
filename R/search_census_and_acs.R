@@ -526,8 +526,8 @@ search_tables <- function(survey, years = NULL, keywords = NULL, view = TRUE){
         # generated in data_raw/acs with read_acsxyear()
         dt <- dict_acs5_table
         if (!is.null(years)){
-            if (min(years) < 2009 | max(years) > 2016){
-                message("Only 2009 - 2016 are available for acs 5 year surveys.")
+            if (min(years) < 2009 | max(years) > 2018){
+                message("Only 2009 - 2018 are available for acs 5 year surveys.")
                 return(NULL)
             }
 
@@ -538,8 +538,8 @@ search_tables <- function(survey, years = NULL, keywords = NULL, view = TRUE){
     } else if (survey == "acs1"){
         dt <- dict_acs1_table
         if (!is.null(years)){
-            if (min(years) < 2005 | max(years) > 2017){
-                message("Only 2005 - 2017 are available for acs 1 year surveys.")
+            if (min(years) < 2005 | max(years) > 2018){
+                message("Only 2005 - 2018 are available for acs 1 year surveys.")
                 return(NULL)
             }
 

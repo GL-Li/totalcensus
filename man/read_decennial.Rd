@@ -4,9 +4,16 @@
 \alias{read_decennial}
 \title{Read decennial census data}
 \usage{
-read_decennial(year, states, table_contents = NULL, areas = NULL,
-  geo_headers = NULL, summary_level = NULL, geo_comp = "total",
-  show_progress = TRUE)
+read_decennial(
+  year,
+  states,
+  table_contents = NULL,
+  areas = NULL,
+  geo_headers = NULL,
+  summary_level = NULL,
+  geo_comp = "total",
+  show_progress = TRUE
+)
 }
 \arguments{
 \item{year}{year of the decennial census}
@@ -89,10 +96,10 @@ ccc <- read_decennial(
     year = 2010,
     states = "US",
     table_contents = c("urban = P0020002", "rural = P0020005"),
-    geo_headers = c("NAME", "CBSA"),
+    geo_headers = "CBSA",
     summary_level = "county subdivision",
     geo_comp = "*"
-) \%>\%
+) %>%
     .[CBSA == "39300"]
 }
 

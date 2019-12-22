@@ -4,8 +4,7 @@
 \alias{search_geocomponents}
 \title{Search Geographic Components}
 \usage{
-search_geocomponents(survey, years = NULL, keywords = NULL,
-  view = TRUE)
+search_geocomponents(survey, years = NULL, keywords = NULL, view = TRUE)
 }
 \arguments{
 \item{survey}{survey type, including "dec" (or "decennial"), "acs1" or "acs5".}

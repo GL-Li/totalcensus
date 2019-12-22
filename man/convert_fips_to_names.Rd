@@ -4,8 +4,12 @@
 \alias{convert_fips_to_names}
 \title{convert fips codes to names of a geographies}
 \usage{
-convert_fips_to_names(FIPs, states = NULL, geo_header = "STATE",
-  in_states = NULL)
+convert_fips_to_names(
+  FIPs,
+  states = NULL,
+  geo_header = "STATE",
+  in_states = NULL
+)
 }
 \arguments{
 \item{FIPs}{string vector of fips code such as c("021", "002")}

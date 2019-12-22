@@ -4,9 +4,18 @@
 \alias{read_acs1year}
 \title{Read summary file 1 of ACS 1-year estimates}
 \usage{
-read_acs1year(year, states, table_contents = NULL, areas = NULL,
-  geo_headers = NULL, summary_level = NULL, geo_comp = "total",
-  with_margin = FALSE, dec_fill = NULL, show_progress = TRUE)
+read_acs1year(
+  year,
+  states,
+  table_contents = NULL,
+  areas = NULL,
+  geo_headers = NULL,
+  summary_level = NULL,
+  geo_comp = "total",
+  with_margin = FALSE,
+  dec_fill = NULL,
+  show_progress = TRUE
+)
 }
 \arguments{
 \item{year}{year of the estimate}
