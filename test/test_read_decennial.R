@@ -81,10 +81,11 @@ bbb = read_decennial(
 )
 
 ccc <- read_decennial(
-    2010, "US",
+    year = 2010,
+    states = c("RI", "UT"),
     areas = c("place = ut62360",
               "Providence city, RI",
               "cousub = ri41500",
               "cbsa = 39300"),
-    summary_level = "county subdivision"
+    summary_level = "block"
 )

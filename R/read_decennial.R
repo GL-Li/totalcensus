@@ -72,8 +72,6 @@
 #'
 #'
 #' # read table contents of all county subdivisions in Providence metro
-#' library(data.table)
-#' library(magrittr)
 #' ccc <- read_decennial(
 #'     year = 2010,
 #'     states = "US",
@@ -81,8 +79,7 @@
 #'     geo_headers = "CBSA",
 #'     summary_level = "county subdivision",
 #'     geo_comp = "*"
-#' ) %>%
-#'     .[CBSA == "39300"]
+#' )
 #' }
 #'
 #' @export
@@ -177,25 +174,25 @@ read_decennial <- function(year,
     }
 
     # add population to table contents so that it will never empty
-    if (any(grepl("P0010001", table_contents))){
-        message("P0010001 is the population column.")
+    # if (any(grepl("P0010001", table_contents))){
+    #     message("P0010001 is the population column.")
+    # }
+
+    # table_contents <- table_contents[!grepl("P0010001", table_contents)]
+    # table_contents <- c("population = P0010001", table_contents) %>%
+    #    unique()
+
+    if (!is.null(table_contents)){
+        content_names <- organize_tablecontents(table_contents) %>%
+            .[, name]
+        table_contents <- organize_tablecontents(table_contents) %>%
+            .[, reference]
     }
-
-    table_contents <- table_contents[!grepl("P0010001", table_contents)]
-    table_contents <- c("population = P0010001", table_contents) %>%
-        unique()
-
-    content_names <- organize_tablecontents(table_contents) %>%
-        .[, name]
-    table_contents <- organize_tablecontents(table_contents) %>%
-        .[, reference]
 
     if (!is.null(areas)){
         dt <- read_decennial_areas_(
             year, states, table_contents, areas, summary_level, geo_comp,
             show_progress
-
-            # add GEOID and NAME based on STUSAB and (lon, lat)
         )
     } else {
         dt <- read_decennial_geoheaders_(
@@ -204,7 +201,9 @@ read_decennial <- function(year,
         )
     }
 
-    setnames(dt, table_contents, content_names)
+    if (!is.null(table_contents)){
+        setnames(dt, table_contents, content_names)
+    }
 
     options(warn = 0)
     return(dt)
@@ -351,9 +350,9 @@ read_decennial_areas_ <- function(year,
     }
 
     if (summary_level != "*"){
-        begin <- c("area", "GEOID", "NAME", "acs_NAME")
+        begin <- c("area", "GEOID", "NAME", "acs_NAME", "population")
     } else {
-        begin <- c("area", "NAME")
+        begin <- c("area", "NAME", "population")
     }
     end <- c("GEOCOMP", "SUMLEV", "state", "STUSAB", "lon", "lat")
 
@@ -480,7 +479,8 @@ read_decennial_geoheaders_ <- function(year,
         begin <- c("NAME")
     }
     end <- c("GEOCOMP", "SUMLEV", "state", "STUSAB", "lon", "lat")
-    setcolorder(combined, c(begin, geo_headers, table_contents, end))
+    setcolorder(combined,
+                c(begin, geo_headers, "population", table_contents, end))
 
     return(combined)
 }
@@ -508,8 +508,8 @@ read_decennial_geo_ <- function(year,
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
     state <- toupper(state)
 
-    geoheaders_alway_keep <- c("LOGRECNO", "GEOCOMP", "NAME", "STUSAB",
-                               "INTPTLON", "INTPTLAT")
+    geoheaders_alway_keep <- c("LOGRECNO", "GEOCOMP", "NAME", "POP100",
+                               "STUSAB", "INTPTLON", "INTPTLAT")
 
     if (summary_level != "*"){
         geoid_geoheaders <- get_geoheaders_of_summarylevel(summary_level)
@@ -570,18 +570,17 @@ read_decennial_geo_ <- function(year,
     }
 
     geo[, V1 := NULL]
-    setnames(geo, c("INTPTLON", "INTPTLAT"), c("lon", "lat"))
+    setnames(geo, c("POP100", "INTPTLON", "INTPTLAT"),
+             c("population", "lon", "lat"))
 
     if (summary_level != "*"){
         add_geoid(geo, summary_level)
-        gh_to_keep <- c("LOGRECNO", "GEOID", "NAME", "STUSAB",
-                        setdiff(geo_headers, c("INTPTLAT", "INTPTLON")),
-                        "GEOCOMP", "SUMLEV", "lon", "lat") %>%
+        gh_to_keep <- c("LOGRECNO", "GEOID", "NAME", "population", "STUSAB",
+                        geo_headers, "GEOCOMP", "SUMLEV", "lon", "lat") %>%
             unique()
     } else {
-        gh_to_keep <- c("LOGRECNO", "NAME", "STUSAB",
-                        setdiff(geo_headers, c("INTPTLAT", "INTPTLON")),
-                        "GEOCOMP", "SUMLEV", "lon", "lat") %>%
+        gh_to_keep <- c("LOGRECNO", "NAME", "population", "STUSAB",
+                        geo_headers, "GEOCOMP", "SUMLEV", "lon", "lat") %>%
             unique()
     }
 
