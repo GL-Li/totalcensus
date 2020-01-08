@@ -27,4 +27,4 @@ Suggests:
     rmarkdown,
     ggmap,
     ggplot2
-RoxygenNote: 7.0.0
+RoxygenNote: 7.0.2
