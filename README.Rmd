@@ -93,6 +93,7 @@ There are additional benefits of using this package:
 
 ## How to use the package
 ### `read_xxxx()` functions
+
 The package has three functions to read decennial census, ACS 5-year survey, and ACS 1-year survey: `read_decennial()`, `read_acs5year()`, and `read_acs1year()`. They are similar but as these datasets are so different, we prefer to keep three separate functions, one for each. 
 
 The function arguments serve as filters to select the data you want:
