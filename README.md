@@ -9,14 +9,14 @@ Extract Decennial Census and American Community Survey Data
 ===========================================================
 
 Download summary files from [Census Bureau](https://www2.census.gov/)
-and extract data of decennial censuses and American Community Surveys
-from your local computer.
+and extract data from the summary files.
 
 Update
 ------
 
 **1/8/2020**: Version 0.6.3 is on CRAN. The 2018 ACS 5 year data was
-added to the package. The package now includes:
+added to the package. The package now includes all latest data since
+2000:
 
 -   Decennial census 2000 and 2010
 -   ACS 1 year: 2005 - 2018
@@ -48,36 +48,32 @@ library(totalcensus)
 set_path_to_census("xxxxx/my_census_data")
 ```
 
-Why another R census package
-----------------------------
+Introduction
+------------
 
-The [census
-API](https://www.census.gov/data/developers/guidance/api-user-guide.Available_Data.html)
-offers most data in decennial censuses and ACS estimates for download
-and API-based packages such as `tidycensus`, `censusapi` and `acs` make
-the downloading very convenient in R. So why we need another package?
+This package extract data directly from summary files of Decennial
+Censuses and American Community Surveys (ACS). The summary files store
+the summary data compiled directly from the original survey
+questionnaires filled out by each household. They are the most
+comprehensive datasets available to the public. By directly accessing
+the summary files, we are able to extract any data offered by Decennial
+Census and ACS.
 
-One advantage is that once you downloaded the summary files, you do not
-need internet anymore and everything is on your own computer. You do not
-need to worry about internet interruption or government shutdown. You
-have total control of the data.
-
-Another benefit of using package `totalcensus` is that it makes census
-data extraction more flexible. It is particularly convenient to extract
-high resolution data at census tract, block group, and block level for a
-large area.
+By downloading summary file to your computer, it is particularly fast
+and convenient to extract high resolution data at census tract, block
+group, and block level for a large area.
 
 Here is an example of how we extract the median home values in **all**
 block groups in the United States from 2011-2015 ACS 5-year survey with
 this package. You simply need to call the function `read_acs5year()`. It
-takes 15 seconds for my 4-years old laptop to return the data of all
+takes 15 seconds for my 7-years old laptop to return the data of all
 217,739 block groups. In addition to the table contents we request, we
 also get the population and coordinate of each block group.
 
 ``` r
 library(totalcensus)
 home_national <- read_acs5year(
-    year = 2015,
+    year = 2018,
     states = states_DC,   # all 50 states plus DC
     table_contents = "home_value = B25077_001",
     summary_level = "block group"
@@ -99,12 +95,7 @@ There are additional benefits of using this package:
     only provide data in summary file 1 before urban/rural update.
 -   You can get all block groups that belong or partially belong to a
     city. Original census data do not provide city information for a
-    block group as a block group may not uniquely belong to a city.
-    However, large cities have most block groups within their boundaries
-    and only a small number of block groups run across the borders. The
-    block group level data provide valuable spatial information of a
-    city. This is particularly helpful for ACS 5-year surveys which
-    cover data down to the level of block groups.
+    block group as a block group may not exclusively belong to a city.
 -   It provides longitude and latitude of the internal point of a
     geographic area for easy and quick mapping. You do not always need
     shape files to make nice maps, as in the map shown above.
@@ -124,8 +115,8 @@ There are additional benefits of using this package:
     entities](https://gl-li.netlify.com/2017/12/28/use-totalcensus-package-to-determine-relationship-between-geographic-entities/);
     an application example.
 
-Basic application
------------------
+Basic applications
+------------------
 
 ### the `read_xxxx()` functions
 
@@ -184,7 +175,7 @@ A property management company wants to know the most recent rents in
 major cities in the US. How to get the data?
 
 We first need to determine which survey to read. For most recent survey
-data, we want to read 2016 ACS 1-year estimates, which provide data for
+data, we want to read 2018 ACS 1-year estimates, which provide data for
 geographic areas with population over 65000.
 
 We also need to determine which data files to read. We know summary
@@ -193,7 +184,7 @@ level of cities is “160” or “place”. Browsing with
 in state files of ACS 1-year estimates. So we will read all the state
 files.
 
-Then we need to check if 2016 ACS 1-year estimate has the rent data. We
+Then we need to check if 2018 ACS 1-year estimate has the rent data. We
 run `search_tablecontents("acs1")` to open the dataset with `View()` in
 RStudio. You can provide keywords to search in the function but it is
 better to do the search in RStudio with filters. There are so many
@@ -207,12 +198,12 @@ all geographic areas matches the conditions.
 Below is the code that gives what we want. The first time you use
 `read_xxxx()` functions to read data files, you will be asked to
 download data generated from decennial census 2010 and summary files
-required for this function call, in this case, 2016 ACS 1-year summary
+required for this function call, in this case, 2018 ACS 1-year summary
 files. Choose 1 to continue.
 
 ``` r
 rent <- read_acs1year(
-    year = 2016,
+    year = 2018,
     states = states_DC,
     table_contents = "rent = B25064_001",
     summary_level = "place"
