@@ -4,11 +4,13 @@
 \name{dict_all_summarylevel}
 \alias{dict_all_summarylevel}
 \title{List of all summary levels}
-\format{A data.table with 216 rows and 2 variables
+\format{
+A data.table with 216 rows and 2 variables
 \describe{
   \item{code}{code of summary level}
   \item{summary_level}{description of summary level}
-}}
+}
+}
 \source{
 \href{https://factfinder.census.gov/help/en/summary_level_code_list.htm}{Summary level code list}
 }

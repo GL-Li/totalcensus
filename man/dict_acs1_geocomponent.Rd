@@ -4,7 +4,8 @@
 \name{dict_acs1_geocomponent}
 \alias{dict_acs1_geocomponent}
 \title{List of geographic components used in ACS 1 year surverys}
-\format{A data.table with 28 rows and 9 variables:
+\format{
+A data.table with 28 rows and 9 variables:
 \describe{
   \item{code}{code for the geocomponent, such as "01" and "M3"}
   \item{geo_component}{description of the geographic component}
@@ -16,7 +17,8 @@
   \item{US_2006}{wheather a geocomponent available in national files in 2006}
   \item{US_2005}{wheather a geocomponent available in national files in 2005}
 
-}}
+}
+}
 \usage{
 dict_acs1_geocomponent
 }

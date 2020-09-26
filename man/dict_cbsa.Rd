@@ -4,7 +4,8 @@
 \name{dict_cbsa}
 \alias{dict_cbsa}
 \title{List CBSA code of Metropolitan Statistical Area/Micropolitan Statistical Area}
-\format{A data.table with 1882 rows and 12 variables:
+\format{
+A data.table with 1882 rows and 12 variables:
 \describe{
   \item{CBSA}{CBSA code}
   \item{CBSA_title}{CBSA title}
@@ -18,7 +19,8 @@
   \item{STATE}{FIPS of the state}
   \item{COUNTY}{FIPS of the county}
   \item{central_outlying}{is the counry a central or outlying county in the CBSA}
-}}
+}
+}
 \source{
 \href{http://www.nber.org/data/cbsa-fips-county-crosswalk.html}{List of CBSA}
 }

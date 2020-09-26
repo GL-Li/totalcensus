@@ -4,13 +4,15 @@
 \name{dict_decennial_table_2000}
 \alias{dict_decennial_table_2000}
 \title{Complete list of 2000 census tables}
-\format{A data.table with 286 rows and 4 variables:
+\format{
+A data.table with 286 rows and 4 variables:
 \describe{
   \item{table_number}{table number such as "H1", "PCT22G"}
   \item{table_name}{description of the table}
   \item{universe}{universe of the data}
   \item{table_ref}{reference code such as "H0010", "PCT022G"}
-}}
+}
+}
 \source{
 2000 Census Summary File 1
 \href{https://www.census.gov/prod/cen2000/doc/sf1.pdf}{technical documentation}

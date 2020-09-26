@@ -4,11 +4,19 @@
 \name{dict_all_geocomponent_2000}
 \alias{dict_all_geocomponent_2000}
 \title{List of all geographic components, 2000 version}
-\format{A data.table with 99 rows and 2 variables:
+\format{
+A data.table with 99 rows and 2 variables:
 \describe{
   \item{code}{code for the geocomponent, such as "01" and "M3"}
   \item{geo_component}{description of the geographic component}
-}}
+}
+
+A data.table with 99 rows and 2 variables:
+\describe{
+  \item{code}{code for the geocomponent, such as "01" and "M3"}
+  \item{geo_component}{description of the geographic component}
+}
+}
 \source{
 2000 Census Summary File 1
 \href{https://www.census.gov/prod/cen2000/doc/sf1.pdf}{technical documentation}

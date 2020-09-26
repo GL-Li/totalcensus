@@ -4,7 +4,9 @@
 \name{states_DC}
 \alias{states_DC}
 \title{Vector of the abbreviations of 50 states and DC}
-\format{A vector of 51 element}
+\format{
+A vector of 51 element
+}
 \usage{
 data("states_DC")
 }

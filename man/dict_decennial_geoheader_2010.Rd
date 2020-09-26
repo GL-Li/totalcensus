@@ -4,13 +4,15 @@
 \name{dict_decennial_geoheader_2010}
 \alias{dict_decennial_geoheader_2010}
 \title{List of geographic headers in census 2010}
-\format{A data.table with 101 rows and 4 variables
+\format{
+A data.table with 101 rows and 4 variables
 \describe{
   \item{reference}{reference of the geoheader record}
   \item{field}{description of the geoheader record field}
   \item{start}{starting position of the geoheader in the record}
   \item{end}{ending position of the geoheader in the record}
-}}
+}
+}
 \source{
 2010 Census Summary File 1
 \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}

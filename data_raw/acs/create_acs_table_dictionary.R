@@ -20,7 +20,7 @@ make_acs_tables <- function(survey, year){
 
 # acs1 ====
 
-latest_year <- 2018
+latest_year <- 2019
 # make tables of year 2005 - latest_year
 for (year in 2005:latest_year){
     assign(paste0("acs1_", year), make_acs_tables("acs1", year))

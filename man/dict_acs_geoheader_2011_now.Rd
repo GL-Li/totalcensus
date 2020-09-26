@@ -4,13 +4,15 @@
 \name{dict_acs_geoheader_2011_now}
 \alias{dict_acs_geoheader_2011_now}
 \title{List of geographic headers used in American Community Survey since 2011}
-\format{A data.table with 53 rows and 4 variables
+\format{
+A data.table with 53 rows and 4 variables
 \describe{
   \item{reference}{reference of the geoheader}
   \item{field}{description of the geoheader}
   \item{start}{starting position of the geoheader in geography file}
   \item{end}{ending position of the geoheader in geography file}
-}}
+}
+}
 \source{
 2016 ACS Summary File
 \href{https://www2.census.gov/programs-surveys/acs/summary_file/2016/documentation/tech_docs/2016_SummaryFile_Tech_Doc.pdf}{technical documentation},

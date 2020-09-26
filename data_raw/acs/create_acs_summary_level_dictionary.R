@@ -31,6 +31,7 @@ generate_summary_level <- function(survey, year){
 
 # acs1year summary level ======================================================
 # The same since 2006. Just check when new year added
+S2019 <- generate_summary_level("acs1", 2019)
 S2018 <- generate_summary_level("acs1", 2018)
 S2017 <- generate_summary_level("acs1", 2017)
 S2016 <- generate_summary_level("acs1", 2016)

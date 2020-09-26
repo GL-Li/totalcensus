@@ -42,6 +42,7 @@ generate_geocomponent <- function(survey, year){
 
 # acs1year geocomponent ======================================================
 # same since 2009. Just check when adding new year
+S2019 <- generate_geocomponent("acs1", 2019)
 S2018 <- generate_geocomponent("acs1", 2018)
 S2017 <- generate_geocomponent("acs1", 2017)
 S2016 <- generate_geocomponent("acs1", 2016)

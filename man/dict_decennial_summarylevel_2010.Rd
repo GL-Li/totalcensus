@@ -4,13 +4,15 @@
 \name{dict_decennial_summarylevel_2010}
 \alias{dict_decennial_summarylevel_2010}
 \title{Summary levels available in Census 2010}
-\format{A data.table with 165 rows and 4 variables
+\format{
+A data.table with 165 rows and 4 variables
 \describe{
   \item{code}{code of summary level}
   \item{summary_level}{description of summary level}
   \item{in_state_file}{wheather the summary level available in state files}
   \item{in_US_file}{wheather the summary level available in national files}
-}}
+}
+}
 \source{
 2010 Census Summary File 1
 \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}

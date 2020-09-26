@@ -4,13 +4,15 @@
 \name{dict_decennial_geocomponent_2010}
 \alias{dict_decennial_geocomponent_2010}
 \title{List of geographic components and codes in census 2010}
-\format{A data.table with 96 rows and 4 variables:
+\format{
+A data.table with 96 rows and 4 variables:
 \describe{
   \item{code}{code for the geocomponent, such as "01" and "M3"}
   \item{geo_component}{description of the geographic component}
   \item{state_file}{wheather the geocomponent available in state files}
   \item{US_file}{wheather the geocomponent available in national files}
-}}
+}
+}
 \source{
 2010 Census Summary File 1
 \href{https://www.census.gov/prod/cen2010/doc/sf1.pdf}{technical documentation}

@@ -4,7 +4,8 @@
 \name{dict_fips}
 \alias{dict_fips}
 \title{List of FIPS code as of 2016 in the US}
-\format{A data.table with 43934 rows and 9 variables:
+\format{
+A data.table with 43934 rows and 9 variables:
 \describe{
   \item{state_full}{full name of a state such as "Alabama"}
   \item{state_abbr}{abbreviation of a state such as "AL"}
@@ -15,7 +16,8 @@
   \item{PLACE}{FIPS code of place}
   \item{CONCIT}{FIPS code of CONsolidated CITy}
   \item{NAME}{name of the entry in the row}
-}}
+}
+}
 \source{
 \href{https://www.census.gov/geographies/reference-files/2016/demo/popest/2016-fips.html}{List of FIPS as of 2016}
 }

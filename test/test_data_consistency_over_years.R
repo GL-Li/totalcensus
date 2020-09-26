@@ -34,9 +34,10 @@ compare_acs1year <- function(table_content){
                 read1(2015, table_content),
                 read1(2016, table_content),
                 read1(2017, table_content),
-                read1(2018, table_content)) %>%
+                read1(2018, table_content),
+                read1(2019, table_content)) %>%
         .[, year := c(2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,
-                      2014, 2015, 2016, 2017, 2018)]
+                      2014, 2015, 2016, 2017, 2018, 2019)]
     ggplot <- ggplot(dt, aes_string("year", table_content)) +
         geom_point() +
         geom_line() +
@@ -50,8 +51,8 @@ B12006_001 <- compare_acs1year("B12006_001")
 B20005I_001 <- compare_acs1year("B20005I_001")
 B24040_001 <- compare_acs1year("B24040_001")
 B25068_001 <- compare_acs1year("B25068_001")
-C01001A_001 <- compare_acs1year("C01001A_001")
-C27014_001 <- compare_acs1year("C27014_001")
+# C01001A_001 <- compare_acs1year("C01001A_001")
+# C27014_001 <- compare_acs1year("C27014_001")
 
 
 # compare acs5year over years ==================================================

@@ -4,13 +4,15 @@
 \name{dict_acs_geoheader_2009_5year}
 \alias{dict_acs_geoheader_2009_5year}
 \title{List of geographic headers used in ACS 5 year survey ending 2009}
-\format{A data.table with 51 rows and 4 variables
+\format{
+A data.table with 51 rows and 4 variables
 \describe{
   \item{reference}{reference of the geoheader}
   \item{field}{description of the geoheader}
   \item{start}{starting position of the geoheader in geography file}
   \item{end}{ending position of the geoheader in geography file}
-}}
+}
+}
 \source{
 2009 ACS Summary File
 \href{https://www2.census.gov/programs-surveys/acs/summary_file/2009/documentation/5_year/ACS_2005-2009_SF_Tech_Doc.pdf?#}{technical documentation},

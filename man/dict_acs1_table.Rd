@@ -4,11 +4,13 @@
 \name{dict_acs1_table}
 \alias{dict_acs1_table}
 \title{List of summary levels used in ACS 1 year surverys}
-\format{A data.table with 1811 rows and 16 variables:
+\format{
+A data.table with 1811 rows and 16 variables:
 \describe{
   \item{table_number}{table number such as "C27013"}
   \item{table_name}{description of the table}
-  \item{acs1_2017}{whether the table is available in 2018}
+  \item{acs1_2019}{whether the table is available in 2019}
+  \item{acs1_2018}{whether the table is available in 2018}
   \item{acs1_2017}{whether the table is available in 2017}
   \item{acs1_2016}{whether the table is available in 2016}
   \item{acs1_2015}{whether the table is available in 2015}
@@ -23,7 +25,8 @@
   \item{acs1_2006}{whether the table is available in 2006}
   \item{acs1_2005}{whether the table is available in 2005}
   \item{universe}{universe of the table}
-}}
+}
+}
 \usage{
 dict_acs1_table
 }

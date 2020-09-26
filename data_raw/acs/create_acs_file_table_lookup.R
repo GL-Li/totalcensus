@@ -99,9 +99,11 @@ make_acs_lookup <- function(period, year){
 
     # Appendices.xls files are not available for years earlier than 2013
     if (year >= 2013){
+
+        append_extension <- ifelse(year >= 2019, 'xlsx', 'xls')
         file_restriction <- paste0(
             "data_raw/acs/",
-            "ACS_", year, "_SF_", period, "YR_Appendices.xls"
+            "ACS_", year, "_SF_", period, "YR_Appendices.", append_extension
         )
 
         restrict <- read_excel(file_restriction) %>%
@@ -158,6 +160,7 @@ lookup_acs5year_2010 <- make_acs_lookup(5, 2010)
 lookup_acs5year_2009 <- make_acs_lookup(5, 2009)
 
 # ACS 1-year
+lookup_acs1year_2019 <- make_acs_lookup(1, 2019)
 lookup_acs1year_2018 <- make_acs_lookup(1, 2018)
 lookup_acs1year_2017 <- make_acs_lookup(1, 2017)
 lookup_acs1year_2016 <- make_acs_lookup(1, 2016)
