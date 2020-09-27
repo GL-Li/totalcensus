@@ -1,7 +1,6 @@
 ---
 title: "Notes"
 author: "GL Li"
-date: "October 3, 2018"
 output: html_document
 ---
 
@@ -15,3 +14,11 @@ For example, the total population is P001001 in census 2000, while P0010001 in 2
 
 ### list of tables
 P27H is mistaken as P28H. Corrected in the txt file.
+
+
+
+## 20200926: combine data to reduce package size 
+- Reason: after adding 2019 ACS 1 year data, the package size increased to 5.2 M, which is above the CRAN limit. 
+- Solution: combine data `lookup_acs1year_2019`, `lookup_acs1year_2018`, ... .... The original data has columns `file_segment`,  `table_content` `reference`, `restriction`, `table_number`, `table_name`, `universe`. Many are the same across data. To reduce the total size: 
+    - keep columns `file_segment`, table_content`, and `reference` for each file.
+    - merge columns `reference`, `restriction`, `table_number`, `table_name`, and `universe` into a seperate table.

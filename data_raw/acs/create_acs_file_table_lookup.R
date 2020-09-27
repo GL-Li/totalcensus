@@ -135,12 +135,12 @@ make_acs_lookup <- function(period, year){
     # }
 
 
-    # save to R/data/
-    dict_name <- paste0("lookup_acs", period, "year_", year)
-    assign(dict_name, dict)
-    save_as <- paste0("data/lookup_acs", period, "year_", year, ".RData" )
-    save(list = dict_name, file = save_as,
-         compress = "xz", compression_level = 9)
+    # # save to R/data/
+    # dict_name <- paste0("lookup_acs", period, "year_", year)
+    # assign(dict_name, dict)
+    # save_as <- paste0("data/lookup_acs", period, "year_", year, ".RData" )
+    # save(list = dict_name, file = save_as,
+    #      compress = "xz", compression_level = 9)
 
     return(dict)
 }
@@ -159,7 +159,10 @@ lookup_acs5year_2011 <- make_acs_lookup(5, 2011)
 lookup_acs5year_2010 <- make_acs_lookup(5, 2010)
 lookup_acs5year_2009 <- make_acs_lookup(5, 2009)
 
-# ACS 1-year
+lookup_acs5year_all_years <- totalcensus:::generate_acs5_tablecontents_()
+
+
+# ACS 1-year =================================================================
 lookup_acs1year_2019 <- make_acs_lookup(1, 2019)
 lookup_acs1year_2018 <- make_acs_lookup(1, 2018)
 lookup_acs1year_2017 <- make_acs_lookup(1, 2017)
@@ -175,6 +178,20 @@ lookup_acs1year_2008 <- make_acs_lookup(1, 2008)
 lookup_acs1year_2007 <- make_acs_lookup(1, 2007)
 lookup_acs1year_2006 <- make_acs_lookup(1, 2006)
 lookup_acs1year_2005 <- make_acs_lookup(1, 2005)
+
+table_content_acs1year_all_years <- totalcensus:::generate_acs1_tablecontents_()
+save(table_content_acs1year_all_years,
+     file = "data/table_content_acs1year_all_years.RData",
+     compress = "xz", compression_level = 9)
+for (yr in 2005:2019){
+    tmp1 <- paste0("lookup_acs1year_", yr)
+    tmp2 <- get(paste0("lookup_acs1year_", yr)) %>%
+        .[, .(file_segment,  table_content, reference)]
+    assign(tmp1, tmp2)
+    file_name <- paste0("data/lookup_acs1year_", yr, ".RData")
+    save(list = tmp1, file = file_name,
+         compress = "xz", compression_level = 9)
+}
 
 
 # # save to data/

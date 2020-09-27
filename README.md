@@ -14,12 +14,12 @@ and extract data from the summary files.
 Update
 ------
 
-**1/8/2020**: Version 0.6.3 is on CRAN. The 2018 ACS 5 year data was
+**9/26/2020**: Version 0.6.4 is on CRAN. The 2019 ACS 1 year data was
 added to the package. The package now includes all latest data since
 2000:
 
 -   Decennial census 2000 and 2010
--   ACS 1 year: 2005 - 2018
+-   ACS 1 year: 2005 - 2019
 -   ACS 5 year: 2009 - 2018
 
 Installation and setup

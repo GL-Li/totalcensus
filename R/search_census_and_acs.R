@@ -54,7 +54,7 @@ search_tablecontents <- function(survey, years = NULL, keywords = NULL, view = T
                    "NA means data not collected."))
         dt <- generate_acs5_tablecontents_()
         if (!is.null(years)){
-            if (min(years) < 2009 | max(years) > 2017){
+            if (min(years) < 2009 | max(years) > 2018){
                 message("Only 2009 - 2017 are available for acs 5 year surveys.")
                 return(NULL)
             }
@@ -65,10 +65,10 @@ search_tablecontents <- function(survey, years = NULL, keywords = NULL, view = T
     } else if (survey == "acs1"){
         cat(paste0("Ristrictions of table content in each year. ",
                    "NA means data not collected."))
-        dt <- generate_acs1_tablecontents_()
+        dt <- table_content_acs1year_all_years # generate_acs1_tablecontents_()
         if (!is.null(years)){
-            if (min(years) < 2005 | max(years) > 2017){
-                message("Only 2005 - 2017 are available for acs 1 year surveys.")
+            if (min(years) < 2005 | max(years) > 2019){
+                message("Only 2005 - 2019 are available for acs 1 year surveys.")
                 return(NULL)
             }
             selected_cols <- select_columns(dt, years)
@@ -762,6 +762,7 @@ generate_acs1_tablecontents_ <- function(){
     acs1_2016 <- modify_lookup_table_(1, 2016)
     acs1_2017 <- modify_lookup_table_(1, 2017)
     acs1_2018 <- modify_lookup_table_(1, 2018)
+    acs1_2019 <- modify_lookup_table_(1, 2019)
 
     dict_acs_tablecontent <- reduce(list(acs1_2005,
                                          acs1_2006,
@@ -776,7 +777,8 @@ generate_acs1_tablecontents_ <- function(){
                                          acs1_2015,
                                          acs1_2016,
                                          acs1_2017,
-                                         acs1_2018),
+                                         acs1_2018,
+                                         acs1_2019),
                                     merge, by = "reference", all = TRUE) %>%
 
         # add the following lines for year since 2013
@@ -798,10 +800,13 @@ generate_acs1_tablecontents_ <- function(){
         .[!is.na(acs1_2018), ":=" (table_content = content_acs1_2018,
                                    table_name = name_acs1_2018,
                                    universe = universe_acs1_2018)] %>%
+        .[!is.na(acs1_2019), ":=" (table_content = content_acs1_2019,
+                                   table_name = name_acs1_2019,
+                                   universe = universe_acs1_2019)] %>%
 
         # include all years and surveys
         .[, .(reference, table_content, table_name,
-              acs1_2018,
+              acs1_2019, acs1_2018,
               acs1_2017, acs1_2016, acs1_2015, acs1_2014, acs1_2013, acs1_2012,
               acs1_2011, acs1_2010, acs1_2009, acs1_2008, acs1_2007, acs1_2006,
               acs1_2005,

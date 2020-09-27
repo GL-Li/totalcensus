@@ -270,6 +270,48 @@
 
 
 
+# table_content_acs1year_all_years =============================================
+#' ACS 1-year table contents of all years
+#'
+#' There is slightly difference in the table contents of each year.
+#'
+#' @docType data
+#'
+#' @format A data.table with 27246 rows and 7 variables
+#' \describe{
+#'   \item{reference}{reference of the table content, such as "B01001_002". The reference
+#'         is used to extract data of table content.}
+#'   \item{table_content}{description of columns in a table}
+#'   \item{table_name}{table names}
+#'   \item{acs1_2019}{restriction and availability of table content in 2019}
+#'   \item{acs1_2018}{restriction and availability of table content in 2018}
+#'   \item{acs1_2017}{restriction and availability of table content in 2017}
+#'   \item{acs1_2017}{restriction and availability of table content in 2016}
+#'   \item{acs1_2015}{restriction and availability of table content in 2015}
+#'   \item{acs1_2014}{restriction and availability of table content in 2014}
+#'   \item{acs1_2013}{restriction and availability of table content in 2013}
+#'   \item{acs1_2012}{restriction and availability of table content in 2012}
+#'   \item{acs1_2011}{restriction and availability of table content in 2011}
+#'   \item{acs1_2010}{restriction and availability of table content in 2010}
+#'   \item{acs1_2009}{restriction and availability of table content in 2009}
+#'   \item{acs1_2008}{restriction and availability of table content in 2008}
+#'   \item{acs1_2007}{restriction and availability of table content in 2007}
+#'   \item{acs1_2006}{restriction and availability of table content in 2006}
+#'   \item{acs1_2005}{restriction and availability of table content in 2005}
+#'   \item{uiverse}{the universe of the data}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source Check for each year of ACS 1-year and 5-year
+#' \href{https://www.census.gov/programs-surveys/acs/technical-documentation/summary-file-documentation.2015.html}{Sequence Number/Table Number Lookup File}.
+#'
+
+"table_content_acs1year_all_years"
+
+
+
+
 # lookup_acs1year_2019 =========================================================
 #' ACS 1-year 2019 file segment and table lookup data
 #'
@@ -283,10 +325,6 @@
 #'   \item{table_content}{description of columns in a table}
 #'   \item{reference}{reference of the table content, such as "B01001_002". The reference
 #'         is used to extract data of table content.}
-#'   \item{restriction}{restrictions applied the the table_content}
-#'   \item{table_number}{table number such as "B01001"}
-#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
-#'   \item{universe}{the universe of the data}
 #' }
 #'
 #' @keywords datasets
@@ -313,10 +351,6 @@
 #'   \item{table_content}{description of columns in a table}
 #'   \item{reference}{reference of the table content, such as "B01001_002". The reference
 #'         is used to extract data of table content.}
-#'   \item{restriction}{restrictions applied the the table_content}
-#'   \item{table_number}{table number such as "B01001"}
-#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
-#'   \item{universe}{the universe of the data}
 #' }
 #'
 #' @keywords datasets
@@ -342,10 +376,6 @@
 #'   \item{table_content}{description of columns in a table}
 #'   \item{reference}{reference of the table content, such as "B01001_002". The reference
 #'         is used to extract data of table content.}
-#'   \item{restriction}{restrictions applied the the table_content}
-#'   \item{table_number}{table number such as "B01001"}
-#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
-#'   \item{universe}{the universe of the data}
 #' }
 #'
 #' @keywords datasets
@@ -370,10 +400,6 @@
 #'   \item{table_content}{description of columns in a table}
 #'   \item{reference}{reference of the table content, such as "B01001_002". The reference
 #'         is used to extract data of table content.}
-#'   \item{restriction}{restrictions applied the the table_content}
-#'   \item{table_number}{table number such as "B01001"}
-#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
-#'   \item{universe}{the universe of the data}
 #' }
 #'
 #' @keywords datasets
@@ -398,10 +424,6 @@
 #'   \item{table_content}{description of columns in a table}
 #'   \item{reference}{reference of the table content, such as "B01001_002". The reference
 #'         is used to extract data of table content.}
-#'   \item{restriction}{restrictions applied the the table_content}
-#'   \item{table_number}{table number such as "B01001"}
-#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
-#'   \item{universe}{the universe of the data}
 #' }
 #'
 #' @keywords datasets
@@ -426,10 +448,6 @@
 #'   \item{table_content}{description of columns in a table}
 #'   \item{reference}{reference of the table content, such as "B01001_002". The reference
 #'         is used to extract data of table content.}
-#'   \item{restriction}{restrictions applied the the table_content}
-#'   \item{table_number}{table number such as "B01001"}
-#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
-#'   \item{universe}{the universe of the data}
 #' }
 #'
 #' @keywords datasets
@@ -455,10 +473,6 @@
 #'   \item{table_content}{description of columns in a table}
 #'   \item{reference}{reference of the table content, such as "B01001_002". The reference
 #'         is used to extract data of table content.}
-#'   \item{restriction}{restrictions applied the the table_content}
-#'   \item{table_number}{table number such as "B01001"}
-#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
-#'   \item{universe}{the universe of the data}
 #' }
 #'
 #' @keywords datasets
@@ -482,10 +496,6 @@
 #'   \item{table_content}{description of columns in a table}
 #'   \item{reference}{reference of the table content, such as "B01001_002". The reference
 #'         is used to extract data of table content.}
-#'   \item{restriction}{restrictions applied the the table_content}
-#'   \item{table_number}{table number such as "B01001"}
-#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
-#'   \item{universe}{the universe of the data}
 #' }
 #'
 #' @keywords datasets
@@ -510,10 +520,6 @@
 #'   \item{table_content}{description of columns in a table}
 #'   \item{reference}{reference of the table content, such as "B01001_002". The reference
 #'         is used to extract data of table content.}
-#'   \item{restriction}{restrictions applied the the table_content}
-#'   \item{table_number}{table number such as "B01001"}
-#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
-#'   \item{universe}{the universe of the data}
 #' }
 #'
 #' @keywords datasets
@@ -538,10 +544,6 @@
 #'   \item{table_content}{description of columns in a table}
 #'   \item{reference}{reference of the table content, such as "B01001_002". The reference
 #'         is used to extract data of table content.}
-#'   \item{restriction}{restrictions applied the the table_content}
-#'   \item{table_number}{table number such as "B01001"}
-#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
-#'   \item{universe}{the universe of the data}
 #' }
 #'
 #' @keywords datasets
@@ -566,10 +568,6 @@
 #'   \item{table_content}{description of columns in a table}
 #'   \item{reference}{reference of the table content, such as "B01001_002". The reference
 #'         is used to extract data of table content.}
-#'   \item{restriction}{restrictions applied the the table_content}
-#'   \item{table_number}{table number such as "B01001"}
-#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
-#'   \item{universe}{the universe of the data}
 #' }
 #'
 #' @keywords datasets
@@ -595,10 +593,6 @@
 #'   \item{table_content}{description of columns in a table}
 #'   \item{reference}{reference of the table content, such as "B01001_002". The reference
 #'         is used to extract data of table content.}
-#'   \item{restriction}{restrictions applied the the table_content}
-#'   \item{table_number}{table number such as "B01001"}
-#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
-#'   \item{universe}{the universe of the data}
 #' }
 #'
 #' @keywords datasets
@@ -623,10 +617,6 @@
 #'   \item{table_content}{description of columns in a table}
 #'   \item{reference}{reference of the table content, such as "B01001_002". The reference
 #'         is used to extract data of table content.}
-#'   \item{restriction}{restrictions applied the the table_content}
-#'   \item{table_number}{table number such as "B01001"}
-#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
-#'   \item{universe}{the universe of the data}
 #' }
 #'
 #' @keywords datasets
@@ -650,10 +640,6 @@
 #'   \item{table_content}{description of columns in a table}
 #'   \item{reference}{reference of the table content, such as "B01001_002". The reference
 #'         is used to extract data of table content.}
-#'   \item{restriction}{restrictions applied the the table_content}
-#'   \item{table_number}{table number such as "B01001"}
-#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
-#'   \item{universe}{the universe of the data}
 #' }
 #'
 #' @keywords datasets
@@ -679,10 +665,6 @@
 #'   \item{table_content}{description of columns in a table}
 #'   \item{reference}{reference of the table content, such as "B01001_002". The reference
 #'         is used to extract data of table content.}
-#'   \item{restriction}{restrictions applied the the table_content}
-#'   \item{table_number}{table number such as "B01001"}
-#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
-#'   \item{universe}{the universe of the data}
 #' }
 #'
 #' @keywords datasets

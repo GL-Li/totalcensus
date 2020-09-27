@@ -48,5 +48,6 @@ utils::globalVariables(unique(c(
     "STUSAB", "content_acs5_2017", "name_acs5_2017", "universe_acs5_2017",
     "DIVISION", "REGION", "acs_NAME", "geoid_tmp", "content_acs1_2018",
     "name_acs1_2018", "universe_acs1_2018", "content_acs5_2018",
-    "name_acs5_2018", "universe_acs5_2018"
+    "name_acs5_2018", "universe_acs5_2018", "content_acs1_2019", "name_acs1_2019",
+    "universe_acs1_2019", "table_content_acs1year_all_years"
 )))
