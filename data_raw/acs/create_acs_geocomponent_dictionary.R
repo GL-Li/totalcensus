@@ -76,6 +76,8 @@ save(dict_acs1_geocomponent, file = "data/dict_acs1_geocomponent.RData")
 
 # acs5year geocomponent ======================================================
 # The same since 2009. Just check when new year added
+S2019 <- generate_geocomponent("acs5", 2019)
+S2018 <- generate_geocomponent("acs5", 2018)
 S2017 <- generate_geocomponent("acs5", 2017)
 S2016 <- generate_geocomponent("acs5", 2016)
 S2015 <- generate_geocomponent("acs5", 2015)
@@ -86,11 +88,13 @@ S2011 <- generate_geocomponent("acs5", 2011)
 S2010 <- generate_geocomponent("acs5", 2010)
 S2009 <- generate_geocomponent("acs5", 2009)
 
-dict_acs5_geocomponent <- purrr::reduce(list(S2017, S2016, S2012, S2011, S2010, S2009),
+dict_acs5_geocomponent <- purrr::reduce(list(S2019, S2018, S2017, S2016, S2015,
+                                             S2014, S2013, S2012, S2011, S2010,
+                                             S2009),
                                         merge, by = c("code", "geo_component"),
                                         all = TRUE) %>%
     .[, .(code, geo_component,
-          state_2009_to_now = state_2016,
+          state_2009_to_now = state_2019,
           US_2009_to_now = US_2016)]
 
 save(dict_acs5_geocomponent, file = "data/dict_acs5_geocomponent.RData")

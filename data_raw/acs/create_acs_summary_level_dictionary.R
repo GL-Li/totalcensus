@@ -61,6 +61,8 @@ save(dict_acs1_summarylevel, file = "data/dict_acs1_summarylevel.RData")
 
 # acs5year summary level ======================================================
 # The same since 2013. Just check when new year added
+S2019 <- generate_summary_level("acs5", 2019)
+S2018 <- generate_summary_level("acs5", 2018)
 S2017 <- generate_summary_level("acs5", 2017)
 S2016 <- generate_summary_level("acs5", 2016)
 S2015 <- generate_summary_level("acs5", 2015)
@@ -71,11 +73,13 @@ S2011 <- generate_summary_level("acs5", 2011)
 S2010 <- generate_summary_level("acs5", 2010)
 S2009 <- generate_summary_level("acs5", 2009)
 
-dict_acs5_summarylevel <- purrr::reduce(list(S2016, S2012, S2011, S2010, S2009),
+dict_acs5_summarylevel <- purrr::reduce(list(S2019, S2018, S2017, S2016, S2015,
+                                             S2014, S2013, S2012, S2011, S2010,
+                                             S2009),
                                 merge, by = c("code", "summary_level"),
                                 all = TRUE) %>%
     .[, .(code, summary_level,
-          state_2013_to_now = state_2016, state_2012, state_2009_to_2011 = state_2011,
+          state_2013_to_now = state_2019, state_2012, state_2009_to_2011 = state_2011,
           US_2011_to_now = US_2016, US_2010, US_2009)]
 
 save(dict_acs5_summarylevel, file = "data/dict_acs5_summarylevel.RData")

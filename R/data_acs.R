@@ -1,3 +1,31 @@
+# lookup_acs5year_2019 =========================================================
+#' ACS 5-year 2019 file segment and table lookup data
+#'
+#' @docType data
+#'
+#' @format A data.table with 27039 rows and 7 variables
+#' \describe{
+#'   \item{file_segment}{sequence number of segment data files, from "0001" to "0122"}
+#'   \item{table_content}{description of columns in a table}
+#'   \item{reference}{reference of the table content, such as "B01001_002". The reference
+#'         is used to extract data of table content.}
+#'   \item{restriction}{restrictions applied the the table_content}
+#'   \item{table_number}{table number such as "B01001"}
+#'   \item{table_name}{description of table. A table has multiple columns (table_content)}
+#'   \item{universe}{the universe of the data}
+#' }
+#'
+#' @keywords datasets
+#'
+#' @source Check for each year of ACS 1-year and 5-year
+#' \href{https://www.census.gov/programs-surveys/acs/technical-documentation/summary-file-documentation.2019.html}{Sequence Number/Table Number Lookup File}.
+#'
+
+"lookup_acs5year_2019"
+
+
+
+
 # lookup_acs5year_2018 =========================================================
 #' ACS 5-year 2018 file segment and table lookup data
 #'
@@ -883,10 +911,13 @@
 #' @docType data
 #'
 #'
-#' @format A data.table with 1163 rows and 12 variables:
+#' @format A data.table with 1174 rows and 14 variables:
 #' \describe{
 #'   \item{table_number}{table number such as "C27013"}
 #'   \item{table_name}{description of the table}
+#'   \item{acs5_2019}{whether the table is available in 2019}
+#'   \item{acs5_2018}{whether the table is available in 2018}
+#'   \item{acs5_2017}{whether the table is available in 2017}
 #'   \item{acs5_2016}{whether the table is available in 2016}
 #'   \item{acs5_2015}{whether the table is available in 2015}
 #'   \item{acs5_2014}{whether the table is available in 2014}
@@ -906,7 +937,7 @@
 
 
 # dict_acs5_summary level ======================================================
-#' List of summary levels used in ACS 5 year surverys
+#' List of summary levels used in ACS 5 year surveys
 #'
 #' @docType data
 #'
