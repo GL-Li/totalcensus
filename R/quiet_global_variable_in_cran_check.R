@@ -46,8 +46,9 @@ utils::globalVariables(unique(c(
     "dict_decennial_table_2010", "in_US_file", "in_state_file",
     "lookup_decennial_2000", "state_file", "table_number", "table_ref",
     "STUSAB", "content_acs5_2017", "name_acs5_2017", "universe_acs5_2017",
-    "DIVISION", "REGION", "acs_NAME", "geoid_tmp", "content_acs1_2018",
-    "name_acs1_2018", "universe_acs1_2018", "content_acs5_2018",
-    "name_acs5_2018", "universe_acs5_2018", "content_acs1_2019", "name_acs1_2019",
-    "universe_acs1_2019", "table_content_acs1year_all_years"
+    "DIVISION", "REGION", "acs_NAME", "geoid_tmp",
+    "content_acs1_2018", "name_acs1_2018", "universe_acs1_2018",
+    "content_acs5_2018", "name_acs5_2018", "universe_acs5_2018",
+    "content_acs1_2019", "name_acs1_2019", "universe_acs1_2019", "table_content_acs1year_all_years",
+    "content_acs5_2019", "name_acs5_2019", "universe_acs5_2019"
 )))

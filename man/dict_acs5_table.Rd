@@ -5,10 +5,13 @@
 \alias{dict_acs5_table}
 \title{List of summary levels used in ACS 5 year surverys}
 \format{
-A data.table with 1163 rows and 12 variables:
+A data.table with 1174 rows and 14 variables:
 \describe{
   \item{table_number}{table number such as "C27013"}
   \item{table_name}{description of the table}
+  \item{acs5_2019}{whether the table is available in 2019}
+  \item{acs5_2018}{whether the table is available in 2018}
+  \item{acs5_2017}{whether the table is available in 2017}
   \item{acs5_2016}{whether the table is available in 2016}
   \item{acs5_2015}{whether the table is available in 2015}
   \item{acs5_2014}{whether the table is available in 2014}

@@ -3,7 +3,7 @@
 \docType{data}
 \name{dict_acs5_summarylevel}
 \alias{dict_acs5_summarylevel}
-\title{List of summary levels used in ACS 5 year surverys}
+\title{List of summary levels used in ACS 5 year surveys}
 \format{
 A data.table with 87 rows and 8 variables
 \describe{
@@ -24,6 +24,6 @@ generated from lookup datasets of years 2009 - 2016
 dict_acs5_summarylevel
 }
 \description{
-List of summary levels used in ACS 5 year surverys
+List of summary levels used in ACS 5 year surveys
 }
 \keyword{datasets}

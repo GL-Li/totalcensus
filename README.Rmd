@@ -49,6 +49,7 @@ This package requires downloading census data and you need to create a folder to
 
 ```{r eval = FALSE}
 library(totalcensus)
+# Use "/" to specify path even for Windows. Do not use "\".
 set_path_to_census("xxxxx/my_census_data")
 ```
 
