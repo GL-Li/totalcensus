@@ -14,13 +14,13 @@ and extract data from the summary files.
 Update
 ------
 
-**9/26/2020**: Version 0.6.4 is on CRAN. The 2019 ACS 1 year data was
+**12/10/2020**: Version 0.6.5 is on CRAN. The 2019 ACS 5 year data was
 added to the package. The package now includes all latest data since
 2000:
 
 -   Decennial census 2000 and 2010
 -   ACS 1 year: 2005 - 2019
--   ACS 5 year: 2009 - 2018
+-   ACS 5 year: 2009 - 2019
 
 Installation and setup
 ----------------------
@@ -45,6 +45,7 @@ package.
 
 ``` r
 library(totalcensus)
+# Use "/" to specify path even for Windows. Do not use "\".
 set_path_to_census("xxxxx/my_census_data")
 ```
 
