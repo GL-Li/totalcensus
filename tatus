@@ -1,0 +1,966 @@
+[33mcommit 9a0f2cb87bf4903bae852a93c2a72c609d063730[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Dec 11 12:05:23 2020 -0500
+
+    update readme
+
+[33mcommit edd73e7727dfeaca5a1da1ef434aec4a32cde0d7[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Dec 10 21:22:26 2020 -0500
+
+    v0.6.5
+
+[33mcommit 51cb1c7913f753d7985be9d7fad52d5c1f3e72e5[m
+Merge: e97f71a 4fb0776
+Author: Guanglai Li <liguanglai@gmail.com>
+Date:   Thu Dec 10 19:29:49 2020 -0500
+
+    Merge pull request #19 from robbfitzsimmons/master
+    
+    Update with 2019 ACS 5-year data.
+
+[33mcommit 4fb0776db60230c95e738ea04b2d7ec6411eb6d6[m
+Author: Robb Fitzsimmons <robb@linnaean.co>
+Date:   Thu Dec 10 15:08:00 2020 -0600
+
+    Confirm 2019 acs5 tests pass
+
+[33mcommit 831a06d13f0bc5a1f6e3a3fc0dd4c1bc5e391665[m
+Author: Robb Fitzsimmons <robb@linnaean.co>
+Date:   Thu Dec 10 15:00:52 2020 -0600
+
+    Update for 2019 ACS 5-year, published 2020-12-10.
+
+[33mcommit e97f71a4ea3652392736fcf18bbf2f7518f01a07[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Sep 26 20:49:30 2020 -0400
+
+    v0.6.4
+
+[33mcommit c33e6a3c831793ef3112861dc49d1b0b11e4ef89[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Sep 26 16:01:52 2020 -0400
+
+    update 2019 ACS 1 year
+
+[33mcommit 98dbc0aa156f0f34dcacebea1972cd10fbbd3fa7[m
+Merge: a28c46e eaae4f5
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Jul 3 09:13:51 2020 -0400
+
+    restructure RADME
+
+[33mcommit a28c46e20a41b5c3980ab488867672b4896bc512[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Jul 3 08:25:20 2020 -0400
+
+    update README
+
+[33mcommit eaae4f584ff1279c9fcd224273f2183ea9e0eb7a[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Jul 3 08:25:20 2020 -0400
+
+    update README
+
+[33mcommit e462959f1278f452a97e4a5598d3770160451099[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Jan 8 16:38:37 2020 -0500
+
+    v0.6.3
+
+[33mcommit 53b19abe02fa216059308dd241ccabe190ad248e[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Dec 22 23:57:41 2019 -0500
+
+    use POP100 for population
+
+[33mcommit 897773eaa1f4a62c5aa68765738813d5ffc1b09b[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Dec 21 21:27:04 2019 -0500
+
+    v0.6.3
+
+[33mcommit 67239e9c8a3f0c02c8b69b8be90b6ffd2a5c5fcb[m
+Merge: af3cb28 81353b1
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Dec 21 19:47:25 2019 -0500
+
+    Merge pull request #14 from robbfitzsimmons/master
+    
+    Update with 2018 ACS 5-year data.
+
+[33mcommit 81353b1d40ee95589f3ca1a42e499e67e7258592[m
+Author: Robb Fitzsimmons <robb@linnaean.co>
+Date:   Fri Dec 20 16:51:05 2019 -0600
+
+    Update with 2018 ACS 5-year
+
+[33mcommit af3cb283d0f3aeb59b6080cc8ac4e1ac5c4cea4e[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Sep 29 08:34:05 2019 -0400
+
+    update readme
+
+[33mcommit 59a38f03603cbbfcab574db802f2d381c9dbb833[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Sep 29 08:07:26 2019 -0400
+
+    v0.6.2
+
+[33mcommit 0a61ab6e36d3d2bd5b3e7ee39845d8e8d0a4d031[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Feb 7 09:16:30 2019 -0500
+
+    readme 0.6.1
+
+[33mcommit a2788e16f1b9885b5b4cd8b6d6c4d05e9b2ff557[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Feb 7 09:15:05 2019 -0500
+
+    v0.6.1
+
+[33mcommit 19d5e973c4467ae62e4d9f1d240807e96b44e358[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Feb 6 07:50:53 2019 -0500
+
+    v0.6.1 typo
+
+[33mcommit 450c7117b730ff8b45ad52adc1f1d692ba61bc29[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Feb 6 07:30:33 2019 -0500
+
+    v061
+
+[33mcommit 7985e98479ddb4229dc031dd2aa4b081fa1b090a[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Feb 6 07:14:37 2019 -0500
+
+    v0.6.1 test
+
+[33mcommit c6282f80853324e2dffe10ce1c5d0ccb697751d2[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Jan 6 22:03:52 2019 -0500
+
+    readme
+
+[33mcommit 7221468b9440bb7baf6dcc71c1b3c0ff48da0a66[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Jan 6 22:01:57 2019 -0500
+
+    readme
+
+[33mcommit 6e524bb7cf09a316d0f30cbda103a3771f65a9e9[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Jan 6 14:39:43 2019 -0500
+
+    v0.6.0, change read_decennial output
+
+[33mcommit d2ecb580c5003fb81a874dc5e4f09c4e1b413f70[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Dec 29 08:17:45 2018 -0500
+
+    half way
+
+[33mcommit c5a81d45c974d77cc9ba2d2807f95608a5b2af5b[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Dec 26 15:17:27 2018 -0500
+
+    save before major change
+
+[33mcommit 7c715e038f5ddec1dae08610d7ab457ae208488d[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Dec 20 06:53:15 2018 -0500
+
+    readme
+
+[33mcommit a81fe611cb48490e17bd88e7ef95c69ce22dd440[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Dec 14 16:00:49 2018 -0500
+
+    update README
+
+[33mcommit 6a8823c6c891d9e44f92a6d01c5757e1e836e418[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Dec 14 13:22:24 2018 -0500
+
+    show downloads
+
+[33mcommit 4743ec11e2d2be7e039964384f36dff186945fe7[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Dec 14 13:12:30 2018 -0500
+
+    speed up read_acsxxx by only coersing selected table_contents
+
+[33mcommit a9542819a58081e7978c0f8b99c02b32d0d1040b[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Dec 8 10:13:37 2018 -0500
+
+    update readme
+
+[33mcommit bf86209f71ed630464014264357f122e46be1388[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Dec 8 09:20:00 2018 -0500
+
+    v0.5.1
+
+[33mcommit 3642dbd39b59f77414e62d66c48fa5775ae772c0[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Dec 5 20:50:41 2018 -0500
+
+    allow add geoheaders from census 2010
+
+[33mcommit 49377a05b7bf26ff435689d7a32540aca60f75b4[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Dec 5 08:21:16 2018 -0500
+
+    add 2017 acs5year xls files
+
+[33mcommit 765503ddf3c1dc288d4e2e8c3fb4c8a6e71a222b[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Nov 19 06:24:23 2018 -0500
+
+    fix issue #8
+
+[33mcommit cfff7faf407a3a61b166f10a9b4964f8b397589b[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Nov 19 06:16:01 2018 -0500
+
+    add more application examples
+
+[33mcommit 0ec5834c37896753c7c34ab42c0d4dd941bb2c75[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Oct 26 06:26:30 2018 -0400
+
+    v0.5.0 on CRAN
+
+[33mcommit 0ffeeec1debbbbe86824680707a716a27cd1ae82[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Oct 24 15:11:28 2018 -0400
+
+    v0.5.0
+
+[33mcommit 64a210a697859c34d159e3c287289b827d0ac2c9[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Tue Oct 23 17:32:38 2018 -0400
+
+    better message
+
+[33mcommit a6e58a82d05c21469568e5b961df99a19f2e5310[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Tue Oct 23 15:50:07 2018 -0400
+
+    done with acs
+
+[33mcommit 7557939b1106f6a503e768ced44fee6929e71765[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Oct 20 10:51:47 2018 -0400
+
+    acs1year, basic reading function
+
+[33mcommit 463f406daab866622723c428bc708fdf9383f903[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Oct 18 07:23:33 2018 -0400
+
+    finished revising read_acs5year
+
+[33mcommit 1d833557b83c1c7c9c4faf39592774f9d0fdbe3c[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Oct 17 21:57:28 2018 -0400
+
+    finish revise read_acs1year
+
+[33mcommit 136e7a356e0e37267d81b09ae1c98deda4b0d770[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Tue Oct 16 20:56:07 2018 -0400
+
+    simply read_acs1year by removing with_acsgeoheader
+
+[33mcommit 22afd2779cb935334b445971268b1a890ba154a8[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Oct 15 06:09:48 2018 -0400
+
+    update README
+
+[33mcommit 69f2c1e5fa2fb601ad1d6024214b8c7cd905cc05[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Oct 14 20:31:20 2018 -0400
+
+    check state download with geo file
+
+[33mcommit fa0ff2e9fc9bc4c84db351867c91cb43e77ec556[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Oct 14 15:25:09 2018 -0400
+
+    download by state
+
+[33mcommit 7275e6e3a265c8aab9afcc2e7e04f9a6374ad5a0[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Oct 12 15:42:02 2018 -0400
+
+    update README
+
+[33mcommit 434a87c363f5e18a22181a56fbd21506a6f494bf[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Oct 12 15:30:08 2018 -0400
+
+    v0.4.0
+
+[33mcommit 5bf55250689eead71a3ec6383548f8aafe2dcc04[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Oct 12 07:01:40 2018 -0400
+
+    update data_decennial.R
+
+[33mcommit 884252fdc2a350d212b38d64b00b38c82eaec295[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Oct 12 05:58:48 2018 -0400
+
+    revised search_fips_cbsa
+
+[33mcommit 5a166ec3c7d19277ce94c75fd6c1422fc6ac0b99[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Oct 11 14:03:08 2018 -0400
+
+    pass documentation
+
+[33mcommit 8470d96d39dcec20cc765ec9d722d418b00dc6d3[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Oct 11 09:49:15 2018 -0400
+
+    finished search_census_and_acs.R
+
+[33mcommit 749aa4fbd0c8055fa31a1dc66969019284079c39[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Oct 11 06:30:32 2018 -0400
+
+    revised all search_xxxx functions
+
+[33mcommit 369609d1e61dacc0e4abe779568ab663098eb0f6[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Oct 7 20:18:16 2018 -0400
+
+    revised search_summarylevels
+
+[33mcommit c17fef0e7889124250d3e6e7643e8abe12d650b0[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Oct 5 10:08:31 2018 -0400
+
+    revised search_geoheaders
+
+[33mcommit 25083dbbc1bc541a1ee5b39f883ebd1b19efef0f[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Oct 5 06:26:53 2018 -0400
+
+    census 2000 working now
+
+[33mcommit 89a3493e15ddcbb1b7287c6c6588022fd65eaf31[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Oct 4 06:17:58 2018 -0400
+
+    modify read_decennial_geo_ for cencus 2000
+
+[33mcommit 664f84e05da825e95a6fd15acc9d1c5eccef6f73[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Oct 4 05:59:13 2018 -0400
+
+    add dict_decennial_gerheader_2000
+
+[33mcommit 1dba297f6b37d79db05f09d78d1b5d35a7df40a9[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Oct 3 18:34:21 2018 -0400
+
+    add census 2000 lookup table
+
+[33mcommit 06b932ed2c27fb83b4796fc777b4454792540122[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Sep 29 09:31:33 2018 -0400
+
+    readme
+
+[33mcommit b9cf273d23d9bb1a6f02e9e645fe25005f59928d[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Sep 29 09:22:07 2018 -0400
+
+    update readme.md
+
+[33mcommit 92e3e4874a57fce40e6072a12e01dc2c730af0ec[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Sep 29 09:20:00 2018 -0400
+
+    update readme
+
+[33mcommit 09922a82c79ca30c4616b051134335181600b2c7[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Sep 29 09:10:04 2018 -0400
+
+    include all ACS summary file 1
+
+[33mcommit 84ce60ba08bc406ccbfb551403a997205c3e561f[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Sep 26 16:55:54 2018 -0400
+
+    include acs 5 year 2009 - 2016
+
+[33mcommit 19e74e2e74cfc6fe166aa2e134143a462841a1c4[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Sep 26 06:27:11 2018 -0400
+
+    quiet global variables
+
+[33mcommit cd633970dc0c422424cdacd6df3ec8c65dadd4b0[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Sep 24 07:35:31 2018 -0400
+
+    add dict documentation
+
+[33mcommit 647595837f1ae096126ff8d8ee8ffe5449a7f3b1[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Sep 24 06:34:56 2018 -0400
+
+    add 2008 and 2010 acs data
+
+[33mcommit 5f54ed97867ec7b81b0ec27748346c13ee7cc0ce[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Sep 19 06:59:36 2018 -0400
+
+    before changing read_acs5year
+
+[33mcommit 2291cb8c6f2e87aad9c1f4ebaa58380e8f4d632b[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Aug 18 08:08:05 2018 -0400
+
+    modified test_user_feedback.R
+
+[33mcommit 1f538d445e2d21c2a279b63418c0c403fa2736ca[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Aug 9 23:09:47 2018 -0400
+
+    issue #4
+
+[33mcommit 5a6a4e46f515d91d07376408460379fabde2efe3[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Apr 22 21:34:39 2018 -0400
+
+    HTML to R
+
+[33mcommit f336af525d5ceebd9debca5cfd8d4b9aaac18eef[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Mar 2 10:17:15 2018 -0500
+
+    fix issue #1
+
+[33mcommit cc774787a29433e3fe84df70a4bfc6f373349d24[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Mar 2 09:34:05 2018 -0500
+
+    issue #1 as numeric
+
+[33mcommit 2f099f88e7903f69e642b8201f97d42956a03142[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Tue Feb 27 12:25:46 2018 -0500
+
+    fix issue #1
+
+[33mcommit b4eef41ca5b986bd82860386728395845602c333[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Feb 7 09:45:51 2018 -0500
+
+    update README, on CRAN now
+
+[33mcommit af1e00438fe56616f57cc1ff0dfaa11f2ae00091[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Jan 28 08:03:12 2018 -0500
+
+    fix bug: show_progress
+
+[33mcommit d8ff9a5926cc5b3f1b838e0352033eccc1596015[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Jan 27 11:22:33 2018 -0500
+
+    update readme
+
+[33mcommit 74bbdb45addf7c03abd6b3fdea4b55654205f16c[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Jan 26 15:19:00 2018 -0500
+
+    move tmp directory into dontrun
+
+[33mcommit 41d1055c077d71f45a54627b0ae01d8e0f96bed2[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Jan 26 14:42:40 2018 -0500
+
+    download data to tmp dir
+
+[33mcommit 6586abe18ede711bc515de1aaa26bcc7f66064dc[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Jan 25 21:02:58 2018 -0500
+
+    move examples out of do not run
+
+[33mcommit fe4e98f31bc9435d538b1130235beb0ba2a21a52[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Jan 24 15:51:47 2018 -0500
+
+    change grep to grepl
+
+[33mcommit 82dad31a5d6f6cf7f7996115efefef75c6f02cb6[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Jan 24 15:36:01 2018 -0500
+
+    fix bug in set_path_to_census
+
+[33mcommit dc7b5f7822bd83ce8149b6834b2462bc0eeb25dd[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Jan 24 14:41:18 2018 -0500
+
+    for CRAN'
+
+[33mcommit 5d244336b9ea5aa88681972afee963e31c16f181[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Jan 21 19:48:04 2018 -0500
+
+    remove html file from github
+
+[33mcommit b6828e6a6b7897d78b01a675af3d3db67aa27a4b[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Jan 21 19:40:14 2018 -0500
+
+    README.Rmd to md
+
+[33mcommit 10b16c262fb1114018d21315bc3ab0a4f11ad0c3[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Jan 20 16:06:26 2018 -0500
+
+    fix not run problem
+
+[33mcommit b58b069a16831bc8a056e9fc33f25c7b102cadee[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Jan 20 15:26:44 2018 -0500
+
+    add test files
+
+[33mcommit 6158317d6fb38ed3174870e44daef9242e4184c5[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Jan 20 08:11:25 2018 -0500
+
+    add full names of place and cbsa
+
+[33mcommit 756a488f2980926fe730d0af4c537ffa1ee004a8[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Jan 17 22:14:08 2018 -0500
+
+    fix download_generated_data
+
+[33mcommit ca3ec1701a3c76447937a449ad18bd02ba2746f1[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Jan 17 21:53:04 2018 -0500
+
+    delete uppercase geoheaders
+
+[33mcommit 0d0d72533ca27c695a64ed562c44bb827179095d[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Jan 17 21:25:30 2018 -0500
+
+    correct a link
+
+[33mcommit 4f42e52ca8efbfd80ab531acd950a65656f7dbb4[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Jan 17 20:36:41 2018 -0500
+
+    use uppercase
+
+[33mcommit 4601ba273f1bb57a4ab334d8515b70d3ecad5823[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Jan 17 20:20:29 2018 -0500
+
+    generated place and cousub fips from census 2010
+
+[33mcommit 46b25ff53e85832d7d49315485bedc1b9075d876[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Dec 30 20:17:22 2017 -0500
+
+    update README
+
+[33mcommit 10ed151c2801b1816e9944c620aed831e1a990a9[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Dec 29 21:12:23 2017 -0500
+
+    add reading materials
+
+[33mcommit 59935cf4a6c03f4ddf15ad433146c1fe2115c820[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Dec 27 21:52:38 2017 -0500
+
+    add more reading materials to readme
+
+[33mcommit 6e8192ad9a3463674d2dcc75d87df60c90945218[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Dec 9 21:06:07 2017 -0500
+
+    try again link
+
+[33mcommit 28bdbe034328ff7562bec625f1bbe8bc7f3afa18[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Dec 9 21:03:13 2017 -0500
+
+    try markdown section link again
+
+[33mcommit fabdbae579c81f42380b01879961b6433668a55d[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Dec 9 21:00:19 2017 -0500
+
+    markdown link to section
+
+[33mcommit 0d6cc6cf94a3fd16390cd702034df3dfa81e140a[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Dec 9 20:48:33 2017 -0500
+
+    add 2016 ACS 5-year lookup documentation
+
+[33mcommit d11e383b9dea8ae4a4fb09310f5d13a129c65d70[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Dec 9 20:42:08 2017 -0500
+
+    all reading 2016 ACS 5-year data
+
+[33mcommit 51f2307b87530b13f3e9bc5750d3485c670790ce[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Dec 7 22:08:05 2017 -0500
+
+    allow download data when run read_xxx functions
+
+[33mcommit 0255c1d423ae319e57de0ab0db69fd97afb0fa66[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Dec 7 07:09:58 2017 -0500
+
+    add examples from stackoverflow
+
+[33mcommit b83ff511a9259c8a4f7979b46d7d9a5412935b70[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Tue Dec 5 07:51:11 2017 -0500
+
+    add area to only common geoheaders
+
+[33mcommit 48548a7b495260c3477af4e4b8ddcfc4994d3e00[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Dec 4 22:33:14 2017 -0500
+
+    dir.create one level a time
+
+[33mcommit cd8b135316b63ff5a708ea55aec454fbf2b2e598[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Dec 4 22:14:40 2017 -0500
+
+    more windows test
+
+[33mcommit a7bac1b11a9389d4794ac9cf34959d183fe3b6ff[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Dec 4 22:07:28 2017 -0500
+
+    test windows
+
+[33mcommit 286bc8b283ffdabed9c0c6c39a1f3c6702388b4e[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Dec 4 19:36:58 2017 -0500
+
+    fix Windows path issue
+
+[33mcommit d76ccfd9906e4432a752c06035c1884941bfb7f6[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Dec 4 18:13:21 2017 -0500
+
+    fix: windows does not take / at end of a directory
+
+[33mcommit ea5454861f43814323487a996c00a8fcf770b183[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Dec 4 16:53:39 2017 -0500
+
+    repair uploading error
+
+[33mcommit 4048df8931060954fa0bfa5133cfbc58597b553a[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Dec 4 15:56:48 2017 -0500
+
+    simplify download_census
+
+[33mcommit 12237b817b71253592af1b7d71ca07123aa8a508[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Dec 4 12:01:10 2017 -0500
+
+    update functions read_xxx so it can take NULL table_contents
+
+[33mcommit 9801e17551b64e7cafef2562e284fe2c9be83684[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Dec 4 10:07:21 2017 -0500
+
+    typos
+
+[33mcommit d2345fb78636e1d30c16113137f819f14bdbf52a[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Dec 4 10:06:09 2017 -0500
+
+    typos
+
+[33mcommit 919c4eab8048c1f61416265d1645396f6d161c8a[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Dec 4 09:03:51 2017 -0500
+
+    add function download_generated_data
+
+[33mcommit 3e0c128edf36fdbdecc1c510a3198b566fbd6424[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Dec 4 06:40:18 2017 -0500
+
+    tested for windows
+
+[33mcommit c8949336b13404282f0aed5c8945fde64c8f2440[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Dec 3 20:17:32 2017 -0500
+
+    add extraction check to download_census
+
+[33mcommit 34e1ea674d38e3b746440a8eef20cb06eebcc4aa[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Dec 2 20:56:28 2017 -0500
+
+    scale R version down to 3.2.1
+
+[33mcommit e384b377c65d7c4ddcc81ae03853d38a2c9ac839[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Dec 2 20:35:20 2017 -0500
+
+    ready for test on other computers
+
+[33mcommit 23c7b345da53acb400997888bf96c3754404ce01[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Dec 2 08:26:15 2017 -0500
+
+    add restrictions to ACS lookup and names of table contents
+
+[33mcommit bc36029549a59a95f898af4645cf3522c3d9f5a6[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Nov 29 20:48:54 2017 -0500
+
+    README.Rmd
+
+[33mcommit e62d2f162bb6e0dbb36d6bdb738e53cd37d732bc[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Nov 27 19:51:48 2017 -0500
+
+    v0.2 good version
+
+[33mcommit b4c1eccc1a8a05f4b869c4f9ccbfbd4bcec55992[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Nov 26 08:07:27 2017 -0500
+
+    convert state from NA to ""
+
+[33mcommit b9f763e2fab3b929388f9ba9dfbabdffcd9d83d5[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Nov 23 23:01:54 2017 -0500
+
+    replace census with decennial in data and functions
+
+[33mcommit 6f4dfc92d857593562d39f0e18f68370d0d6f0ea[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Nov 23 21:33:36 2017 -0500
+
+    convert common geocomp from code to name
+
+[33mcommit c26dd81649f2d8efc00f2653fe2557a07a5d6f73[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Nov 23 20:48:25 2017 -0500
+
+    revise applications
+
+[33mcommit a038bb55bbe176dd69a8501129c362bed0f06eea[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Tue Nov 21 15:49:40 2017 -0500
+
+    add download_census() to automate downloading and extracting
+
+[33mcommit 09381fd92aabf94a776b3f65d2594376d6409a15[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Nov 19 21:15:36 2017 -0500
+
+    revise add_geoheader() to work with summary level *
+
+[33mcommit 6ad3571203e33722c7709e2eee1dee92fd031b7d[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Nov 19 20:35:19 2017 -0500
+
+    remove LOGRECNO from add_coord()
+
+[33mcommit b648d2018f5560d929afd4a97318c72c91018329[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Nov 19 11:43:08 2017 -0500
+
+    version 2 working
+
+[33mcommit a1f2ba67e84a8f55adc47bb6828ae64751f8eaf4[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Nov 16 11:04:49 2017 -0500
+
+    tmp before major revision
+
+[33mcommit 42dc73ad778c62a6e2e3eb706017f761b4b9a520[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Nov 6 07:16:40 2017 -0500
+
+    before reorganize code with modules
+
+[33mcommit a2e17bcba2aa87789cf7eaceeaa777b60fc294a1[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Nov 4 11:04:29 2017 -0400
+
+    save before change function argument
+
+[33mcommit 2a5a3845700c6ea0051817e421167b6fd2922b49[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Nov 3 09:41:54 2017 -0400
+
+    rename to totalcensus
+
+[33mcommit 3f45f3c054d26b584d8a387befc6751dfe0c3278[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Oct 27 14:55:26 2017 -0400
+
+    set path_to_census
+
+[33mcommit 382928f7b5ea984a57cf72e29a4481cc8a048bf0[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Oct 27 14:02:04 2017 -0400
+
+    before major revision
+
+[33mcommit 5a84d9f04a930c51bd32c7b63993cb5b95e651a0[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Oct 26 09:00:03 2017 -0400
+
+    add ACS functions
+
+[33mcommit e7f6e50b17e5aae66c22c8e94c878c0fc37747db[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Oct 20 20:08:47 2017 -0400
+
+    include SUMLEV and GEOCOMP as parameters in read_2010census
+
+[33mcommit 8719360fed25d71f1e70575c74ee4b196799d6f9[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Oct 16 20:26:31 2017 -0400
+
+    correct non_ascii code warning
+
+[33mcommit 4c6675b00799a6423a725b5b02d6cc74dd4ee4e8[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Oct 16 20:08:59 2017 -0400
+
+    add cbsa data and search, and read_2010census for multiple states
+
+[33mcommit 3e1e0407858df1bf8cf40d19a6547990f7bc2dc6[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Thu Oct 12 18:41:04 2017 -0400
+
+    include SUMLEV and GEOCOMP in return
+
+[33mcommit e687ed081d74bcec7f4ae2360550b14b9b3e90b7[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Oct 9 10:36:07 2017 -0400
+
+    finish docs of all function and data
+
+[33mcommit de0f00237a703ee0b9151c6e63b84b86a03fe75c[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Tue Oct 3 08:27:10 2017 -0400
+
+    update README.md
+
+[33mcommit c0bc376d063cc3c51b4069eeadd85921aa746bec[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Oct 1 21:19:50 2017 -0400
+
+    add Travis build pass
+
+[33mcommit 933a2cc88109047c322b22a8b0ecf16e8ea6923b[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Oct 1 20:43:58 2017 -0400
+
+    only one note after check
+
+[33mcommit 40645dfbd2f45b06003be021ed86c060e324f3dc[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sat Sep 30 22:00:58 2017 -0400
+
+    use travis
+
+[33mcommit ebe2630fead96036da232f30015f2f99bb0220a7[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Sep 29 15:25:15 2017 -0400
+
+    add README.md
+
+[33mcommit 22965aa120822c179790a7d0eb8ac888703e4a0e[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Sep 29 15:07:49 2017 -0400
+
+    move data.table under Depends
+
+[33mcommit 26cef4d8902b3f8f2d864650be688136b8678250[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Fri Sep 29 15:00:09 2017 -0400
+
+    upload to github
+
+[33mcommit a5c866ca6efc67afdd9f6345e75d0dce2c5cc200[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Sep 27 08:48:51 2017 -0400
+
+    Renamed columns according to summary file 1 technical documentation
+
+[33mcommit 5ef8880a1c7de819ae2abadd5359b69318eafbc0[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Tue Sep 26 15:27:57 2017 -0400
+
+    reviewed all search_xxx.R files and deleted county fips files
+
+[33mcommit 9e1390552db4293dabb2177aafa6dc417dae0fff[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Tue Sep 26 14:28:17 2017 -0400
+
+    reviewed all data_xxx_dict.R files
+
+[33mcommit 385e7541533f7fdf1efdeae97028b6f62faf594b[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Sep 25 21:37:14 2017 -0400
+
+    delete county fips data and doc
+
+[33mcommit 7073bc4899c5f7eb70591d8c5e5d3a9800f6f70d[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Mon Sep 25 21:34:55 2017 -0400
+
+    V0.1.1
+
+[33mcommit 58ec07e611615ac1c83fe0af17bd9a0243a7739c[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Sep 20 15:17:33 2017 -0400
+
+    add vignette templates
+
+[33mcommit 3376710ec76736a468f4af0528e8d52b3a4c0836[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Sun Sep 17 11:05:47 2017 -0400
+
+    v-0.1.0
+
+[33mcommit 2365c7f1e1fa01d17c3aa6e33b77431b6654f8f7[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Sep 13 15:23:02 2017 -0400
+
+    done with all data file dictioary
+
+[33mcommit be26e66885f9ae8c23032502cc9893dd9038f2b6[m
+Author: GL-Li <liguanglai@gmail.com>
+Date:   Wed Sep 6 07:04:19 2017 -0400
+
+    create geographic related file as initial commit

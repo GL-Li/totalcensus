@@ -625,7 +625,17 @@ read_decennial_1_file_tablecontents_ <- function(year,
 
     # determine location of the flds in file_seg
     all_contents <- lookup[file_segment == file_seg, reference]
-    loc <- which(all_contents %in% table_contents)
+
+    # The line below is a bug, which is not the true order of table contents
+    # loc <- which(all_contents %in% table_contents)
+
+    # the new loc
+    loc <- integer(length(table_contents))
+    for (i in 1:length(table_contents)){
+        idx <- which(all_contents %in% table_contents[i])
+        loc[i] <- idx
+    }
+
     cols <- paste0("V", loc)
 
     if (year == 2010){
