@@ -15,6 +15,8 @@
 
 download_census <- function(survey, year, states = c(states_DC, "US", "PR")){
 
+    options(timeout = 7200)
+
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
     # to work in Windows, do not end the path of a directory with "/"
@@ -31,6 +33,8 @@ download_census <- function(survey, year, states = c(states_DC, "US", "PR")){
     } else {
         message('Please select a survey from "dec" (or "decennial"), "acs5", or "acs1".')
     }
+
+    options(timeout = 60)
 }
 
 
