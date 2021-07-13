@@ -50,7 +50,7 @@ search_tablecontents <- function(survey, years = NULL, keywords = NULL, view = T
         }
 
     } else if (survey == "acs5"){
-        cat(paste0("Ristrictions of table content in each year. ",
+        cat(paste0("Restrictions of table content in each year. ",
                    "NA means data not collected."))
         dt <- generate_acs5_tablecontents_()
         if (!is.null(years)){
@@ -63,7 +63,7 @@ search_tablecontents <- function(survey, years = NULL, keywords = NULL, view = T
         }
 
     } else if (survey == "acs1"){
-        cat(paste0("Ristrictions of table content in each year. ",
+        cat(paste0("Restrictions of table content in each year. ",
                    "NA means data not collected."))
         dt <- table_content_acs1year_all_years # generate_acs1_tablecontents_()
         if (!is.null(years)){
