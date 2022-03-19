@@ -6,7 +6,8 @@
 #' United States Census bureau. It also download
 #' generated data from Census 2010 if not exist.
 #'
-#' @param survey Which survey to download from, "decennial", "acs5year", or "acs1year"
+#' @param survey Which survey to download from, "decennial", "acs5year", ,
+#' "acs1year", or "redistricting".
 #' @param year year or ending year of the survey
 #' @param states vector of abbreviations of states such as c("MA", "RI")
 #'
@@ -30,8 +31,10 @@ download_census <- function(survey, year, states = c(states_DC, "US", "PR")){
         download_acs5year_(year, states)
     } else if (survey == "acs1"){
         download_acs1year_(year, states)
+    } else if (survey == "redistricting") {
+        download_redistricting_(year, states)
     } else {
-        message('Please select a survey from "dec" (or "decennial"), "acs5", or "acs1".')
+        message('Please select a survey from "dec" (or "decennial"), "acs5", "acs1", or "redistricting".')
     }
 
     options(timeout = 60)
@@ -566,6 +569,74 @@ download_acs1year_1_state_ <- function(year, state){
 }
 
 
+download_redistricting_ <- function(year, states){
+
+    i <- 0
+    N <- length(states)
+    for (st in states){
+        i <- i + 1
+        cat(paste0("Downloading ", i, " of ", N, " states.\n"))
+        cat(paste0("Downloading ", st, " summary files of Census ", year, ".\n"))
+        download_redistricting_1_state_(year, st)
+    }
+}
+
+
+
+download_redistricting_1_state_ <- function(year, state){
+    # download census 2020 redistricting data from:
+    # https://www2.census.gov/programs-surveys/decennial/2020/data/01-Redistricting_File--PL_94-171/
+    #
+    # Args_____
+    # year: census year
+    # state : abbreviation of the state
+
+    state <- toupper(state)
+
+    # temp folder to hold all downloaded data
+    path_to_census <- Sys.getenv("PATH_TO_CENSUS")
+
+
+    # construct right names for url
+    state_names <- dict_fips[, .(full = state_full, abbr = state_abbr)] %>%
+        unique() %>%
+        .[, full := str_replace_all(full, " ", "_")] %>%
+        # the US data is named as "National" in the download sites
+        .[abbr == "US", full := "National"]
+
+    full <- state_names[abbr == state, full]
+
+    if (year == 2020){
+        url <- paste0(
+            "https://www2.census.gov/programs-surveys/decennial/2020/data/01-Redistricting_File--PL_94-171/",
+            full, "/", tolower(state), "2020.pl.zip"
+        )
+
+        save_as <- paste0(path_to_census, "/", tolower(state), ".zip")
+        download.file(url, save_as, method = "auto")
+
+        # unzip downloaded file
+        cat(paste0("Unzipping downloaded zip file of ", state, "\n"))
+        unzip(save_as, exdir = paste0(path_to_census, "/redistricting", year, "/", state))
+        cat("File unzipped successfully\n")
+
+        # delete downloaded file to save space
+        file.remove(save_as)
+        cat("Deleted downloaded zip file\n\n")
+
+    } else if (year == 2030){
+        # waiting for 10 years
+    }
+
+}
+
+
+
+
+
+
+
+
 
 
 convert_geo_txt2csv_acs1year_ <- function(txt_file, year){
@@ -606,4 +677,6 @@ convert_geo_txt2csv_acs1year_ <- function(txt_file, year){
 
     return(geo)
 }
+
+
 

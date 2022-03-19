@@ -1,0 +1,87 @@
+040 State
+050 State-County
+060 State-County-County Subdivision
+067 State-County-County Subdivision-Subminor Civil Division
+140 State-County-Census Tract
+150 State-County-Census Tract-Block Group
+155 State-Place-County
+160 State-Place
+155 State-Place-County
+160 State-Place
+170 State-Consolidated City
+172 State-Consolidated City-Place Within Consolidated City
+230 State-Alaska Native Regional Corporation
+280 State-American Indian Area/Alaska Native Area/Hawaiian Home Land
+281 State-American Indian Area-Tribal Subdivision/Remainder
+282 State-American Indian Area/Alaska Native Area/Hawaiian Home Land-County
+283 State-American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)
+285 State-American Indian Area/Alaska Native Area (Reservation or Statistical Entity Only)-County
+286 State-American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land
+288 State-American Indian Area (Off-Reservation Trust Land Only)/Hawaiian Home Land-County
+500 State-Congressional District6
+510 State-Congressional District-County
+511 State-Congressional District-County-Census Tract
+512 State-County-Congressional District
+521 State-Congressional District-County-County Subdivision
+531 State-Congressional District-Place/Remainder
+532 State-Place-Congressional District
+541 State-Congressional District-Consolidated City
+550 State-Congressional District-American Indian Area/Alaska Native Area/Hawaiian Home Land
+553 State-Congressional District-American Indian Area-Tribal Subdivision/Remainder
+570 State-Congressional District-School District (Elementary)/Remainder
+571 State-Congressional District-School District (Secondary)/Remainder
+572 State-Congressional District-School District (Unified)/Remainder
+610 State-State Legislative District (Upper Chamber)
+612 State-State Legislative District (Upper Chamber)-County
+613 State-State Legislative District (Upper Chamber)-County-County Subdivision
+614 State-State Legislative District (Upper Chamber)-Place/Remainder
+615 State-State Legislative District (Upper Chamber)-Consolidated City
+616 State-State Legislative District (Upper Chamber)-American Indian Area/Alaska
+617 State-State Legislative District (Upper Chamber)-School District (Elementary)/Remainder
+618 State-State Legislative District (Upper Chamber)-School District (Secondary)/Remainder
+619 State-State Legislative District (Upper Chamber)-School District (Unified)/Remainder
+620 State-State Legislative District (Lower Chamber)
+622 State-State Legislative District (Lower Chamber)-County
+623 State-State Legislative District (Lower Chamber)-County-County Subdivision
+624 State-State Legislative District (Lower Chamber)-Place/Remainder
+625 State-State Legislative District (Lower Chamber)-Consolidated City
+626 State-State Legislative District (Lower Chamber)-American Indian Area/Alaska Native Area/Hawaiian Home Land
+627 State-State Legislative District (Lower Chamber)-School District (Elementary)/Remainder
+628 State-State Legislative District (Lower Chamber)-School District (Secondary)/Remainder
+629 State-State Legislative District (Lower Chamber)-School District (Unified)/Remainder
+630 State-State Legislative District (Upper Chamber)-County-Voting District/Remainder
+631 State-State Legislative District (Upper Chamber)-County-Census Tract
+632 State-State Legislative District (Upper Chamber)-County-County Subdivision-Subminor Civil Division
+633 State-State Legislative District (Upper Chamber)-American Indian Area-Tribal Subdivision/Remainder
+634 State-State Legislative District (Upper Chamber)-Alaska Native Regional Corporation
+635 State-State Legislative District (Lower Chamber)-County-Voting District/Remainder
+636 State-State Legislative District (Lower Chamber)-County-Census Tract
+637 State-State Legislative District (Lower Chamber)-County-County Subdivision-Subminor Civil Division
+638 State-State Legislative District (Lower Chamber)-American Indian Area-Tribal Subdivision/Remainder
+639 State-State Legislative District (Lower Chamber)-Alaska Native Regional Corporation
+640 State-County-State Legislative District (Upper Chamber)
+641 State-County-State Legislative District (Lower Chamber)
+642 State-Place-State Legislative District (Upper Chamber)
+643 State-Place-State Legislative District (Lower Chamber)
+700 State-County-Voting District/Remainder
+701 State-County-Voting District/Remainder-Place/Remainder
+702 State-County-Voting District/Remainder-Consolidated City
+703 State-County-Voting District/Remainder-American Indian Area/Alaska Native Area/Hawaiian Home Land
+704 State-County-Voting District/Remainder-American Indian Area-Tribal Subdivision/Remainder
+705 State-County-Voting District/Remainder-Alaska Native Regional Corporation
+706 State-County-Voting District/Remainder-School District (Elementary)/Remainder
+707 State-County-Voting District/Remainder-School District (Secondary)/Remainder
+708 State-County-Voting District/Remainder-School District (Unified)/Remainder
+709 State-County-Voting District/Remainder-Census Tract
+710 State-County-Voting District/Remainder-County Subdivision
+715 State-County-Voting District/Remainder-County Subdivision-Subminor Civil Division
+720 State-County-Voting District/Remainder-County Subdivision-Place/Remainder
+730 State-County-Voting District/Remainder-County Subdivision-Place/Remainder-Census Tract
+735 State-County-Voting District/Remainder-County Subdivision-Subminor Civil Division-Census Tract
+740 State-County-Voting District/Remainder-County Subdivision-Place/Remainder-Census Tract-Block Group
+745 State-County-Voting District/Remainder-County Subdivision-Subminor Civil Division-Census Tract-Block Group
+750 State-County-Voting District/Remainder-County Subdivision-Place/Remainder-Census Tract-Block Group-Block
+755 State-County-Voting District/Remainder-County Subdivision-Subminor Civil Division-Census Tract-Block Group-Block
+950 State-School District (Elementary)/Remainder
+960 State-School District (Secondary)/Remainder
+970 State-School District (Unified)/Remainder

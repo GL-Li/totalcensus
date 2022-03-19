@@ -76,6 +76,7 @@ save(dict_acs1_geocomponent, file = "data/dict_acs1_geocomponent.RData")
 
 # acs5year geocomponent ======================================================
 # The same since 2009. Just check when new year added
+S2020 <- generate_geocomponent("acs5", 2020)
 S2019 <- generate_geocomponent("acs5", 2019)
 S2018 <- generate_geocomponent("acs5", 2018)
 S2017 <- generate_geocomponent("acs5", 2017)

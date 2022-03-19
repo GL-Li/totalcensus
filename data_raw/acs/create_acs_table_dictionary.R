@@ -43,7 +43,7 @@ save(dict_acs1_table, file = "data/dict_acs1_table.RData")
 
 
 # acs5 ====
-latest_year = 2019
+latest_year = 2020
 for (year in 2009:latest_year){
     assign(paste0("acs5_", year), make_acs_tables("acs5", year))
 }
@@ -60,4 +60,5 @@ for (year in 2009:latest_year){
 dict_acs5_table <- acs5_table[, c("table_number", "table_name", paste0("acs5_", latest_year:2009), "universe"),
                               with = FALSE]
 
-save(dict_acs5_table, file = "data/dict_acs5_table.RData")
+save(dict_acs5_table, file = "data/dict_acs5_table.RData",
+     compress = "xz", compression_level = 9)

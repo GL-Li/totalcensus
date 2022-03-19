@@ -1,0 +1,152 @@
+File Identification
+State/U.S. Abbreviation (USPS)
+Characteristic Iteration
+Characteristic Iteration File Sequence Number
+Logical Record Number
+Total:
+- Population of one race:
+-- White alone
+-- Black or African American alone
+-- American Indian and Alaska Native alone
+-- Asian alone
+-- Native Hawaiian and Other Pacific Islander alone
+-- Some Other Race alone
+- Population of two or more races:
+-- Population of two races:
+--- White; Black or African American
+--- White; American Indian and Alaska Native
+--- White; Asian
+--- White; Native Hawaiian and Other Pacific Islander
+--- White; Some Other Race
+--- Black or African American; American Indian and Alaska Native
+--- Black or African American; Asian
+--- Black or African American; Native Hawaiian and Other Pacific Islander
+--- Black or African American; Some Other Race
+--- American Indian and Alaska Native; Asian
+--- American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander
+--- American Indian and Alaska Native; Some Other Race
+--- Asian; Native Hawaiian and Other Pacific Islander
+--- Asian; Some Other Race
+--- Native Hawaiian and Other Pacific Islander; Some Other Race
+-- Population of three races:
+--- White; Black or African American; American Indian and Alaska Native
+--- White; Black or African American; Asian
+--- White; Black or African American; Native Hawaiian and Other Pacific Islander
+--- White; Black or African American; Some Other Race
+--- White; American Indian and Alaska Native; Asian
+--- White; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander
+--- White; American Indian and Alaska Native; Some Other Race
+--- White; Asian; Native Hawaiian and Other Pacific Islander
+--- White; Asian; Some Other Race
+--- White; Native Hawaiian and Other Pacific Islander; Some Other Race
+--- Black or African American; American Indian and Alaska Native; Asian
+--- Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander
+--- Black or African American; American Indian and Alaska Native; Some Other Race
+--- Black or African American; Asian; Native Hawaiian and Other Pacific Islander
+--- Black or African American; Asian; Some Other Race
+--- Black or African American; Native Hawaiian and Other Pacific Islander; Some Other Race
+--- American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander
+--- American Indian and Alaska Native; Asian; Some Other Race
+--- American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some Other Race
+--- Asian; Native Hawaiian and Other Pacific Islander; Some Other Race
+-- Population of four races:
+--- White; Black or African American; American Indian and Alaska Native; Asian
+--- White; Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander
+--- White; Black or African American; American Indian and Alaska Native; Some Other Race
+--- White; Black or African American; Asian; Native Hawaiian and Other Pacific Islander
+--- White; Black or African American; Asian; Some Other Race
+--- White; Black or African American; Native Hawaiian and Other Pacific Islander; Some Other Race
+--- White; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander
+--- White; American Indian and Alaska Native; Asian; Some Other Race
+--- White; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some Other Race
+--- White; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race
+--- Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander
+--- Black or African American; American Indian and Alaska Native; Asian; Some Other Race
+--- Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some Other Race
+--- Black or African American; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race
+--- American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race
+-- Population of five races:
+--- White; Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander
+--- White; Black or African American; American Indian and Alaska Native; Asian; Some Other Race
+--- White; Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some Other Race
+--- White; Black or African American; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race
+--- White; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race
+--- Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race
+-- Population of six races:
+--- White; Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race
+Total:
+- Hispanic or Latino
+- Not Hispanic or Latino:
+-- Population of one race:
+--- White alone
+--- Black or African American alone
+--- American Indian and Alaska Native alone
+--- Asian alone
+--- Native Hawaiian and Other Pacific Islander alone
+--- Some Other Race alone
+-- Population of two or more races:
+--- Population of two races:
+---- White; Black or African American
+---- White; American Indian and Alaska Native
+---- White; Asian
+---- White; Native Hawaiian and Other Pacific Islander
+---- White; Some Other Race
+---- Black or African American; American Indian and Alaska Native
+---- Black or African American; Asian
+---- Black or African American; Native Hawaiian and Other Pacific Islander
+---- Black or African American; Some Other Race
+---- American Indian and Alaska Native; Asian
+---- American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander
+---- American Indian and Alaska Native; Some Other Race
+---- Asian; Native Hawaiian and Other Pacific Islander
+---- Asian; Some Other Race
+---- Native Hawaiian and Other Pacific Islander; Some Other Race
+--- Population of three races:
+---- White; Black or African American; American Indian and Alaska Native
+---- White; Black or African American; Asian
+---- White; Black or African American; Native Hawaiian and Other Pacific Islander
+---- White; Black or African American; Some Other Race
+---- White; American Indian and Alaska Native; Asian
+---- White; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander
+---- White; American Indian and Alaska Native; Some Other Race
+---- White; Asian; Native Hawaiian and Other Pacific Islander
+---- White; Asian; Some Other Race
+---- White; Native Hawaiian and Other Pacific Islander; Some Other Race
+---- Black or African American; American Indian and Alaska Native; Asian
+---- Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander
+---- Black or African American; American Indian and Alaska Native; Some Other Race
+---- Black or African American; Asian; Native Hawaiian and Other Pacific Islander
+---- Black or African American; Asian; Some Other Race
+---- Black or African American; Native Hawaiian and Other Pacific Islander; Some Other Race
+---- American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander
+---- American Indian and Alaska Native; Asian; Some Other Race
+---- American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some Other Race
+---- Asian; Native Hawaiian and Other Pacific Islander; Some Other Race
+--- Population of four races:
+---- White; Black or African American; American Indian and Alaska Native; Asian
+---- White; Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander
+---- White; Black or African American; American Indian and Alaska Native; Some Other Race
+---- White; Black or African American; Asian; Native Hawaiian and Other Pacific Islander
+---- White; Black or African American; Asian; Some Other Race
+---- White; Black or African American; Native Hawaiian and Other Pacific Islander; Some Other Race
+---- White; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander
+---- White; American Indian and Alaska Native; Asian; Some Other Race
+---- White; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some Other Race
+---- White; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race
+---- Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander
+---- Black or African American; American Indian and Alaska Native; Asian; Some Other Race
+---- Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some Other Race
+---- Black or African American; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race
+---- American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race
+--- Population of five races:
+---- White; Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander
+---- White; Black or African American; American Indian and Alaska Native; Asian; Some Other Race
+---- White; Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some Other Race
+---- White; Black or African American; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race
+---- White; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race
+---- Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race
+--- Population of six races:
+---- White; Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some Other Race
+Total:
+- Occupied
+- Vacant

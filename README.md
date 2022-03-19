@@ -1,18 +1,20 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
 [![Build
 Status](https://travis-ci.org/GL-Li/totalcensus.svg?branch=master)](https://travis-ci.org/GL-Li/totalcensus)
 ![](http://www.r-pkg.org/badges/version/totalcensus)
 ![](https://cranlogs.r-pkg.org/badges/grand-total/totalcensus)
 ![](https://cranlogs.r-pkg.org/badges/totalcensus)
 
-Extract Decennial Census and American Community Survey Data
-===========================================================
+# Extract Decennial Census and American Community Survey Data
 
 Download summary files from [Census Bureau](https://www2.census.gov/)
 and extract data from the summary files.
 
-Update
-------
+## Update
+
+**03/19/2022**: ACS 2016-2020 5-year data is available in the
+development version.
 
 **12/10/2020**: Version 0.6.5 is on CRAN. The 2019 ACS 5 year data was
 added to the package. The package now includes all latest data since
@@ -22,8 +24,7 @@ added to the package. The package now includes all latest data since
 -   ACS 1 year: 2005 - 2019
 -   ACS 5 year: 2009 - 2019
 
-Installation and setup
-----------------------
+## Installation and setup
 
 ### Installation
 
@@ -49,8 +50,7 @@ library(totalcensus)
 set_path_to_census("xxxxx/my_census_data")
 ```
 
-Introduction
-------------
+## Introduction
 
 This package extract data directly from summary files of Decennial
 Censuses and American Community Surveys (ACS). The summary files store
@@ -116,8 +116,7 @@ There are additional benefits of using this package:
     entities](https://gl-li.netlify.com/2017/12/28/use-totalcensus-package-to-determine-relationship-between-geographic-entities/);
     an application example.
 
-How to use the package
-----------------------
+## How to use the package
 
 ### `read_xxxx()` functions
 
@@ -133,33 +132,33 @@ The function arguments serve as filters to select the data you want:
 -   states: the states of which you want read geography and data files.
     In addition to 50 states and “DC”, you can choose from “PR” (Puerto
     Rico), plus a special one “US” for national files.
--   table\_contents: this parameter specifies which table contents you
-    want to read. Population is always returned even if table\_contents
+-   table_contents: this parameter specifies which table contents you
+    want to read. Population is always returned even if table_contents
     is NULL. Users can name the table contents in the format such as
     `c("male = B01001_002", "female = B01001_026")`.
 -   areas: if you know which metropolitan areas, counties, cities and
     towns you want to get data from, you can specify them here by name
     or FIPS code, for example,
     `c("New York metro", "PLACE = UT62360", "Salt Lake City city, UT")`.
--   geo\_headers: In case you do not know which areas to extract data,
+-   geo_headers: In case you do not know which areas to extract data,
     you can read all the geographic headers specified here and select
     areas after reading.
--   summary\_level: it determines which summary level data to extract.
+-   summary_level: it determines which summary level data to extract.
     Common ones like “state”, “county”, “place”, “county subdivision”,
     “tract”, “block group”, and “block” can be input as plain text.
     Others have to be given by code.
--   geo\_comp: specifies data of which geographic component you want.
+-   geo_comp: specifies data of which geographic component you want.
     Most common ones are “total”, “urban”, “urbanized area”, “urban
     cluster”, and “rural”. Others are provided by code.
 
 Functions `read_acs1year()` and `read_acs5year()` have additional
 argument:
 
--   with\_margin: whether to read margin of error of the estimate.
--   dec\_fill: whether to fill geo\_headers codes with data from
-    decennial census. The codes in ACS summary file are often
-    incomplete. To use decennial census 2010 data to fill the missing
-    values, set the argument to “dec2010”.
+-   with_margin: whether to read margin of error of the estimate.
+-   dec_fill: whether to fill geo_headers codes with data from decennial
+    census. The codes in ACS summary file are often incomplete. To use
+    decennial census 2010 data to fill the missing values, set the
+    argument to “dec2010”.
 
 ### `search_xxxx()` functions
 
@@ -170,8 +169,7 @@ codes.
 The following examples demonstrate how to use these `read_xxx()` and
 `search_xxx()` functions.
 
-Examples
---------
+## Examples
 
 ### Median gross rent in cities with population over 65000
 
@@ -194,7 +192,7 @@ RStudio. You can provide keywords to search in the function but it is
 better to do the search in RStudio with filters. There are so many
 tables that contains string “rent”. It takes some time to find the right
 one if you are not familiar with ACS tables. After some struggle, we
-think B25064\_001 is what we want.
+think B25064_001 is what we want.
 
 We do not need to specify `areas` and `geo_headers` as we are extracting
 all geographic areas matches the conditions.
@@ -329,8 +327,7 @@ ggmap(south_bend) +
 
 ![](figures/south_bend_block_black.png)
 
-Downloading data
-----------------
+## Downloading data
 
 This package requires downloading census data to your local computer.
 You will be asked to download data when you call `read_xxxx` functions.

@@ -7,7 +7,8 @@
 download_census(survey, year, states = c(states_DC, "US", "PR"))
 }
 \arguments{
-\item{survey}{Which survey to download from, "decennial", "acs5year", or "acs1year"}
+\item{survey}{Which survey to download from, "decennial", "acs5year", ,
+"acs1year", or "redistricting".}
 
 \item{year}{year or ending year of the survey}
 

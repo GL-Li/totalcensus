@@ -50,5 +50,7 @@ utils::globalVariables(unique(c(
     "content_acs1_2018", "name_acs1_2018", "universe_acs1_2018",
     "content_acs5_2018", "name_acs5_2018", "universe_acs5_2018",
     "content_acs1_2019", "name_acs1_2019", "universe_acs1_2019", "table_content_acs1year_all_years",
-    "content_acs5_2019", "name_acs5_2019", "universe_acs5_2019"
+    "content_acs5_2019", "name_acs5_2019", "universe_acs5_2019",
+    "content_acs5_2020", "name_acs5_2020", "universe_acs5_2020",
+    "dict_redistricting_geoheader_2020"
 )))

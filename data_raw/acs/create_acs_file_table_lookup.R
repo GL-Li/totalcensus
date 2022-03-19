@@ -129,18 +129,18 @@ make_acs_lookup <- function(period, year){
                       "table_number", "table_name", "universe")) %>%
         .[order(file_segment)]
 
-    # if (year == 2005){
-    #     # use 2006 table name to replace 2005 table name
-    #     L2006 <- lookup_acs1year_2006[, .(reference, table_name)]
-    # }
+    if (year == 2005){
+        # use 2006 table name to replace 2005 table name
+        L2006 <- lookup_acs1year_2006[, .(reference, table_name)]
+    }
 
 
-    # # save to R/data/
-    # dict_name <- paste0("lookup_acs", period, "year_", year)
-    # assign(dict_name, dict)
-    # save_as <- paste0("data/lookup_acs", period, "year_", year, ".RData" )
-    # save(list = dict_name, file = save_as,
-    #      compress = "xz", compression_level = 9)
+    # save to R/data/
+    dict_name <- paste0("lookup_acs", period, "year_", year)
+    assign(dict_name, dict)
+    save_as <- paste0("data/lookup_acs", period, "year_", year, ".RData" )
+    save(list = dict_name, file = save_as,
+         compress = "xz", compression_level = 9)
 
     return(dict)
 }
@@ -148,17 +148,18 @@ make_acs_lookup <- function(period, year){
 
 
 # ACS 5-year =================================================================
-lookup_acs5year_2019 <- make_acs_lookup(5, 2019)
-lookup_acs5year_2018 <- make_acs_lookup(5, 2018)
-lookup_acs5year_2017 <- make_acs_lookup(5, 2017)
-lookup_acs5year_2016 <- make_acs_lookup(5, 2016)
-lookup_acs5year_2015 <- make_acs_lookup(5, 2015)
-lookup_acs5year_2014 <- make_acs_lookup(5, 2014)
-lookup_acs5year_2013 <- make_acs_lookup(5, 2013)
-lookup_acs5year_2012 <- make_acs_lookup(5, 2012)
-lookup_acs5year_2011 <- make_acs_lookup(5, 2011)
-lookup_acs5year_2010 <- make_acs_lookup(5, 2010)
-lookup_acs5year_2009 <- make_acs_lookup(5, 2009)
+lookup_acs5year_2020 <- make_acs_lookup(5, 2020)
+# lookup_acs5year_2019 <- make_acs_lookup(5, 2019)
+# lookup_acs5year_2018 <- make_acs_lookup(5, 2018)
+# lookup_acs5year_2017 <- make_acs_lookup(5, 2017)
+# lookup_acs5year_2016 <- make_acs_lookup(5, 2016)
+# lookup_acs5year_2015 <- make_acs_lookup(5, 2015)
+# lookup_acs5year_2014 <- make_acs_lookup(5, 2014)
+# lookup_acs5year_2013 <- make_acs_lookup(5, 2013)
+# lookup_acs5year_2012 <- make_acs_lookup(5, 2012)
+# lookup_acs5year_2011 <- make_acs_lookup(5, 2011)
+# lookup_acs5year_2010 <- make_acs_lookup(5, 2010)
+# lookup_acs5year_2009 <- make_acs_lookup(5, 2009)
 
 lookup_acs5year_all_years <- totalcensus:::generate_acs5_tablecontents_()
 

@@ -707,6 +707,7 @@ generate_acs5_tablecontents_ <- function(){
     acs5_2017 <- modify_lookup_table_(5, 2017)
     acs5_2018 <- modify_lookup_table_(5, 2018)
     acs5_2019 <- modify_lookup_table_(5, 2019)
+    acs5_2020 <- modify_lookup_table_(5, 2020)
 
     dict_acs_tablecontent <- reduce(list(acs5_2009,
                                          acs5_2010,
@@ -718,7 +719,8 @@ generate_acs5_tablecontents_ <- function(){
                                          acs5_2016,
                                          acs5_2017,
                                          acs5_2018,
-                                         acs5_2019),
+                                         acs5_2019,
+                                         acs5_2020),
                                     merge, by = "reference", all = TRUE) %>%
 
         # add the following lines for year since 2013
@@ -743,10 +745,13 @@ generate_acs5_tablecontents_ <- function(){
         .[!is.na(acs5_2019), ":=" (table_content = content_acs5_2019,
                                    table_name = name_acs5_2019,
                                    universe = universe_acs5_2019)] %>%
+        .[!is.na(acs5_2020), ":=" (table_content = content_acs5_2020,
+                                   table_name = name_acs5_2020,
+                                   universe = universe_acs5_2020)] %>%
 
         # include all years and surveys
         .[, .(reference, table_content, table_name,
-              acs5_2019, acs5_2018, acs5_2017, acs5_2016, acs5_2015,
+              acs5_2019, acs5_2019, acs5_2018, acs5_2017, acs5_2016, acs5_2015,
               acs5_2014, acs5_2013, acs5_2012, acs5_2011,
               acs5_2010, acs5_2009,
               universe)]

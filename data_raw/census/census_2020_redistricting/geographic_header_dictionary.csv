@@ -1,0 +1,98 @@
+field, reference, size
+File Identification, FILEID, 6
+State/US Abbreviation (USPS), STUSAB, 2
+Summary Level, SUMLEV, 3
+Geographic Variant, GEOVAR, 2
+Geographic Component, GEOCOMP, 2
+Characteristic Iteration, CHARITER, 3
+Characteristic Iteration File Sequence Number, CIFSN, 2
+Logical Record Number, LOGRECNO, 7
+Geographic Record Identifier, GEOID, 60
+Geographic Code Identifier, GEOCODE, 51
+Region, REGION, 1
+Division, DIVISION, 1
+State (FIPS), STATE, 2
+State (NS), STATENS, 8
+County (FIPS), COUNTY, 3
+FIPS County Class Code, COUNTYCC, 2
+County (NS), COUNTYNS, 8
+County Subdivision (FIPS), COUSUB, 5
+FIPS County Subdivision Class Code, COUSUBCC, 2
+County Subdivision (NS), COUSUBNS, 8
+Subminor Civil Division (FIPS), SUBMCD, 5
+FIPS Subminor Civil Division Class Code, SUBMCDCC, 2
+Subminor Civil Division (NS), SUBMCDNS, 8
+Estate (FIPS), ESTATE, 5
+FIPS Estate Class Code, ESTATECC, 2
+Estate (NS), ESTATENS, 8
+Consolidated City (FIPS), CONCIT, 5
+FIPS Consolidated City Class Code, CONCITCC, 2
+Consolidated City (NS), CONCITNS, 8
+Place (FIPS), PLACE, 5
+FIPS Place Class Code, PLACECC, 2
+Place (NS), PLACENS, 8
+Census Tract, TRACT, 6
+Block Group, BLKGRP, 1
+Block, BLOCK, 4
+American Indian Area/Alaska Native Area/Hawaiian Home Land (Census), AIANHH, 4
+American Indian Trust Land/Hawaiian Home Land Indicator, AIHHTLI, 1
+American Indian Area/Alaska Native Area/Hawaiian Home Land (FIPS), AIANHHFP, 5
+FIPS American Indian Area/Alaska Native Area/Hawaiian Home Land Class Code, AIANHHCC, 2
+American Indian Area/Alaska Native Area/Hawaiian Home Land (NS), AIANHHNS, 8
+American Indian Tribal Subdivision (Census), AITS, 3
+American Indian Tribal Subdivision (FIPS), AITSFP, 5
+FIPS American Indian Tribal Subdivision Class Code, AITSCC, 2
+American Indian Tribal Subdivision (NS), AITSNS, 8
+Tribal Census Tract, TTRACT, 6
+Tribal Block Group, TBLKGRP, 1
+Alaska Native Regional Corporation (FIPS), ANRC, 5
+FIPS Alaska Native Regional Corporation Class Code, ANRCCC, 2
+Alaska Native Regional Corporation (NS), ANRCNS, 8
+Metropolitan Statistical Area/Micropolitan Statistical Area, CBSA, 5
+Metropolitan/Micropolitan Indicator, MEMI, 1
+Combined Statistical Area, CSA, 3
+Metropolitan Division, METDIV, 5
+New England City and Town Area, NECTA, 5
+NECTA Metropolitan/Micropolitan Indicator, NMEMI, 1
+Combined New England City and Town Area, CNECTA, 3
+New England City and Town Area Division, NECTADIV, 5
+Metropolitan Statistical Area/Micropolitan Statistical Area Principal City Indicator, CBSAPCI, 1
+New England City and Town Area Principal City Indicator, NECTAPCI, 1
+Urban Area, UA, 5
+Urban Area Type, UATYPE, 1
+Urban/Rural, UR, 1
+Congressional District (116th), CD116, 2
+Congressional District (118th), CD118, 2
+Congressional District (119th), CD119, 2
+Congressional District (120th), CD120, 2
+Congressional District (121st), CD121, 2
+State Legislative District (Upper Chamber) (2018), SLDU18, 3
+State Legislative District (Upper Chamber) (2022), SLDU22, 3
+State Legislative District (Upper Chamber) (2024), SLDU24, 3
+State Legislative District (Upper Chamber) (2026), SLDU26, 3
+State Legislative District (Upper Chamber) (2028), SLDU28, 3
+State Legislative District (Lower Chamber) (2018), SLDL18, 3
+State Legislative District (Lower Chamber) (2022), SLDL22, 3
+State Legislative District (Lower Chamber) (2024), SLDL24, 3
+State Legislative District (Lower Chamber) (2026), SLDL26, 3
+State Legislative District (Lower Chamber) (2028), SLDL28, 3
+Voting District, VTD, 6
+Voting District Indicator, VTDI, 1
+ZIP Code Tabulation Area (5-Digit), ZCTA, 5
+School District (Elementary), SDELM, 5
+School District (Secondary), SDSEC, 5
+School District (Unified), SDUNI, 5
+Public Use Microdata Area, PUMA, 5
+Area (Land), AREALAND, 14
+Area (Water), AREAWATR, 14
+Area Base Name, BASENAME, 100
+Area Name-Legal/Statistical Area Description (LSAD) Term-Part Indicator, NAME, 125
+Functional Status Code, FUNCSTAT, 1
+Geographic Change User Note Indicator, GCUNI, 1
+Population Count (100%), POP100, 9
+Housing Unit Count (100%), HU100, 9
+Internal Point (Latitude), INTPTLAT, 11
+Internal Point (Longitude), INTPTLON, 12
+Legal/Statistical Area Description Code, LSADC, 2
+Part Flag, PARTFLAG, 1
+Urban Growth Area, UGA, 5

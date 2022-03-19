@@ -1,0 +1,60 @@
+---
+title: "Census 2020 redistricting data"
+output: 
+    html_notebook:
+        number_section: true
+date: "8/8/2021"
+---
+
+# Key message
+- Will be released on 8/16/2021
+- Technical documentation is [here](https://www2.census.gov/programs-surveys/decennial/2020/technical-documentation/complete-tech-docs/summary-file/2020Census_PL94_171Redistricting_StatesTechDoc_English.pdf).
+- Only has 6 tables:
+    - P1: Race
+        - 71 cells
+        - Universe: Total population
+    - P2: Hispanic or Latino, and Not Hispanic or Latino by Race
+        - 73 cells
+        - Universe: Total population
+    - P3: Race for the Population 18 Years and Over
+        - 71 cells
+        - Universe: Total population 18 years and over
+    - P4: Hispanic or Latino, and Not Hispanic or Latino by Race for the Population 18 Years and Over
+        - 73 cells
+        - Universe: Total population 18 years and over
+    - P5: Group Quarters Population by Major Group Quarters Type
+        - 10 cells
+        - Universe: Population in group quarters
+    - H1: Occupancy Status
+        - 3 cells
+        - Universe: Housing units
+
+# Data structure and segmentation
+
+## Data files
+As there are only a small number of tables, the data structure is very different from summary file 1. It is much simpler. All data are split into 4 files:
+
+- Geographic header file
+- File01 (table P1 and P2)
+- File02 (table P3, P4, and H1)
+- File03 (Table P5)
+
+## How to extract data
+
+As the dataset is small, we will write function to extract data directly from the raw data file. No built-in data will be added to the package.
+
+```{r}
+read_2020_redistricting <- function(){
+    states, 
+    table_contents = NULL, 
+    geo_headers = NULL,
+    summary_level = NULL
+}
+```
+
+
+### Geo_headers
+The geographic header file is a fixed width file, in which each row matches that of File01, File02, and File03 by Logical Record Number, LOGRECNO, as the case in summary file 1.
+
+### File 01 (page 6-25)
+

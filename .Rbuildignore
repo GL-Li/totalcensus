@@ -8,3 +8,4 @@ README.*
 ^\.travis\.yml$
 test
 update_notes
+deleted_files

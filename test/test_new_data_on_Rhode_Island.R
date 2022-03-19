@@ -11,7 +11,7 @@ refs <- search_tablecontents("acs5", view = FALSE) %>%
     sample(100)
 
 for (ref in refs){
-    aaa = read_acs5year(2019, 'RI', table_contents = ref)
+    aaa = read_acs5year(2020, 'RI', table_contents = ref)
     cat("\n=== output ===\n")
     print(dim(aaa))
 }
