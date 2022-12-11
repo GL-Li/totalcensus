@@ -44,7 +44,7 @@ Download summary files from [Census Bureau](https://www2.census.gov/) and extrac
 # development version
 devtools::install_github("GL-Li/totalcensus")
 
-# from CRAN, 2020 and 2021 ACS 5-year not included yest.
+# from CRAN, 2020 and 2021 ACS 5-year not included yet.
 install.packages("totalcensus")
 
 
