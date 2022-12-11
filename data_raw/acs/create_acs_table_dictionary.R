@@ -43,7 +43,7 @@ save(dict_acs1_table, file = "data/dict_acs1_table.RData")
 
 
 # acs5 ====
-latest_year = 2020
+latest_year = 2021
 for (year in 2009:latest_year){
     assign(paste0("acs5_", year), make_acs_tables("acs5", year))
 }

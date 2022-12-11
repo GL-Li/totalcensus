@@ -25,6 +25,8 @@ Download summary files from [Census Bureau](https://www2.census.gov/) and extrac
 
 
 ## Update
+**12/11/2022**: ACS 2017-2021 5-year data is available in the development version.
+
 **03/19/2022**: ACS 2016-2020 5-year data is available in the development version.
 
 **12/10/2020**: Version 0.6.5 is on CRAN. The 2019 ACS 5 year data was added to the package. The package now includes all latest data since 2000:
@@ -39,11 +41,13 @@ Download summary files from [Census Bureau](https://www2.census.gov/) and extrac
 ### Installation
 
 ```{r eval = FALSE}
-# from CRAN
-install.packages("totalcensus")
-
 # development version
 devtools::install_github("GL-Li/totalcensus")
+
+# from CRAN, 2020 and 2021 ACS 5-year not included yest.
+install.packages("totalcensus")
+
+
 ```
 
 ### Setup

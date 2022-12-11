@@ -13,6 +13,9 @@ and extract data from the summary files.
 
 ## Update
 
+**12/11/2022**: ACS 2017-2021 5-year data is available in the
+development version.
+
 **03/19/2022**: ACS 2016-2020 5-year data is available in the
 development version.
 
@@ -29,11 +32,11 @@ added to the package. The package now includes all latest data since
 ### Installation
 
 ``` r
-# from CRAN
-install.packages("totalcensus")
-
 # development version
 devtools::install_github("GL-Li/totalcensus")
+
+# from CRAN, 2020 and 2021 ACS 5-year not included yest.
+install.packages("totalcensus")
 ```
 
 ### Setup

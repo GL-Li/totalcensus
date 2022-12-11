@@ -1,10 +1,10 @@
 Package: totalcensus
 Type: Package
 Title: Extract Decennial Census and American Community Survey Data
-Version: 0.6.6
+Version: 0.6.7
 Author: Guanglai Li
 Maintainer: Guanglai Li <liguanglai@gmail.com>
-Date: 2022-03-19
+Date: 2022-12-11
 Description: Download summary files from Census Bureau <https://www2.census.gov/> 
     and extract data, in particular high resolution data at 
     block, block group, and tract level, from decennial census and 
@@ -25,6 +25,5 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown,
-    ggmap,
     ggplot2
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1

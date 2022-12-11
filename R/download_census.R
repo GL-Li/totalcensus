@@ -291,6 +291,22 @@ download_acs5year_1_state_ <- function(year, state){
         "_Tracts_Block_Groups_Only.zip"
     )
 
+    # changes in 2021, and hope the same after
+    if (year >= 2021) {
+        url_1 <- paste0(
+            "https://www2.census.gov/programs-surveys/acs/summary_file/",
+            year, "/sequence-based-SF/data/", "5_year_by_state/", full,
+            "_All_Geographies_Not_Tracts_Block_Groups.zip"
+        )
+        url_2 <- paste0(
+            "https://www2.census.gov/programs-surveys/acs/summary_file/",
+            year, "/sequence-based-SF/data/", "5_year_by_state/", full,
+            "_Tracts_Block_Groups_Only.zip"
+        )
+    }
+
+
+
     for (i in c(1, 2)){
         url <- get(paste0("url_", i))
         save_as <- paste0(path_to_census, "/", tolower(state), ".zip")

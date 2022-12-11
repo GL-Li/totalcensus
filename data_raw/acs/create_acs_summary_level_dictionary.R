@@ -61,6 +61,7 @@ save(dict_acs1_summarylevel, file = "data/dict_acs1_summarylevel.RData")
 
 # acs5year summary level ======================================================
 # The same since 2013. Just check when new year added
+S2021 <- generate_summary_level("acs5", 2021)
 S2020 <- generate_summary_level("acs5", 2020)
 S2019 <- generate_summary_level("acs5", 2019)
 S2018 <- generate_summary_level("acs5", 2018)
