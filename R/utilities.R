@@ -642,7 +642,7 @@ get_geoheaders_of_summarylevel <- function(summary_level){
         geoheaders <- c("GEOCOMP", "STATE", "COUNTY", "TRACT")
     } else if (summary_level == "150"){
         geoheaders <- c("GEOCOMP", "STATE", "COUNTY", "TRACT", "BLKGRP")
-    } else if (summary_level == "100"){
+    } else if (summary_level %in% c("100", "101")){
         # first digit of BLOCK is BLKGRP
         geoheaders <- c("GEOCOMP", "STATE", "COUNTY", "TRACT", "BLOCK")
     } else if (summary_level == "155"){
