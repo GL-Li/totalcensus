@@ -92,10 +92,10 @@ read_decennial <- function(year,
                           geo_headers = NULL,
                           summary_level = NULL,
                           geo_comp = "total",
-                          show_progress = TRUE){
+                          show_progress = TRUE) {
 
     # check if the path to census is set
-    if (Sys.getenv("PATH_TO_CENSUS") == ""){
+    if (Sys.getenv("PATH_TO_CENSUS") == "") {
         message(paste(
             "Please set up the path to downloaded census data, following the instruction at",
             "https://github.com/GL-Li/totalcensus."
@@ -113,15 +113,15 @@ read_decennial <- function(year,
 
     # check if need to download generated data from census2010
     generated_data <- paste0(path_to_census, "/generated_data")
-    if (!file.exists(generated_data)){
+    if (!file.exists(generated_data)) {
         download_generated_data()
     } else {
         version_file <- paste0(generated_data, "/version.txt")
-        if (!file.exists(version_file)){
+        if (!file.exists(version_file)) {
             download_generated_data()
         } else {
             version = readChar(version_file, 5)
-            if (version != "0.6.0"){
+            if (version != "0.6.0") {
                 download_generated_data()
             }
         }
@@ -130,20 +130,20 @@ read_decennial <- function(year,
     # check whether to download census data
     if (year == 2010) {
         ext <- ".ur1"
-    } else if (year == 2000){
+    } else if (year == 2000) {
         ext <- ".uf1"
     }
     not_downloaded <- c()
-    for (st in states){
+    for (st in states) {
         geo_file <- paste0(
             path_to_census, "/census", year, "/", st, "/", tolower(st), "geo",
             year, ext
         )
-        if (!file.exists(geo_file)){
+        if (!file.exists(geo_file)) {
             not_downloaded <- c(not_downloaded, st)
         }
     }
-    if (length(not_downloaded) > 0){
+    if (length(not_downloaded) > 0) {
         cat(paste0(
             "Do you want to download decennial census ",
             year,
@@ -156,7 +156,7 @@ read_decennial <- function(year,
             TRUE,
             FALSE
         )
-        if (continue){
+        if (continue) {
             download_census("decennial", year, not_downloaded)
         } else {
             stop("You choose not to download data.")
@@ -169,12 +169,12 @@ read_decennial <- function(year,
     options(warn = -1)
 
 
-    if (is.null(areas) + is.null(geo_headers) == 0){
+    if (is.null(areas) + is.null(geo_headers) == 0) {
         stop("Must keep at least one of arguments areas and geo_headers NULL")
     }
 
     # add population to table contents so that it will never empty
-    # if (any(grepl("P0010001", table_contents))){
+    # if (any(grepl("P0010001", table_contents))) {
     #     message("P0010001 is the population column.")
     # }
 
@@ -182,14 +182,14 @@ read_decennial <- function(year,
     # table_contents <- c("population = P0010001", table_contents) %>%
     #    unique()
 
-    if (!is.null(table_contents)){
+    if (!is.null(table_contents)) {
         content_names <- organize_tablecontents(table_contents) %>%
             .[, name]
         table_contents <- organize_tablecontents(table_contents) %>%
             .[, reference]
     }
 
-    if (!is.null(areas)){
+    if (!is.null(areas)) {
         dt <- read_decennial_areas_(
             year, states, table_contents, areas, summary_level, geo_comp,
             show_progress
@@ -201,7 +201,7 @@ read_decennial <- function(year,
         )
     }
 
-    if (!is.null(table_contents)){
+    if (!is.null(table_contents)) {
         setnames(dt, table_contents, content_names)
     }
 
@@ -220,7 +220,7 @@ read_decennial_areas_ <- function(year,
                                   areas,
                                   summary_level = "*",
                                   geo_comp = "total",
-                                  show_progress = TRUE){
+                                  show_progress = TRUE) {
     # read decennial census data of selected areas
     #
     # Args_____
@@ -285,7 +285,7 @@ read_decennial_areas_ <- function(year,
     lookup <- get(paste0("lookup_decennial_", year))
 
     for (content in table_contents) {
-        if (!tolower(content) %in% tolower(lookup$reference)){
+        if (!tolower(content) %in% tolower(lookup$reference)) {
             stop(paste("The table content reference", content, "does not exist."))
         }
     }
@@ -306,7 +306,7 @@ read_decennial_areas_ <- function(year,
             setkey(LOGRECNO)
 
         # read data from each file
-        if(!is.null(table_contents)){
+        if(!is.null(table_contents)) {
             # get files for table contents
             dt <- read_decennial_tablecontents_(year, st, table_contents,
                                                 show_progress)
@@ -345,11 +345,11 @@ read_decennial_areas_ <- function(year,
         convert_geocomp_name()
 
     # add acs_NAME
-    if (summary_level != "*"){
+    if (summary_level != "*") {
         selected <- add_acsname(selected)
     }
 
-    if (summary_level != "*"){
+    if (summary_level != "*") {
         begin <- c("area", "GEOID", "NAME", "acs_NAME", "population")
     } else {
         begin <- c("area", "NAME", "population")
@@ -373,7 +373,7 @@ read_decennial_geoheaders_ <- function(year,
                                   geo_headers = NULL,
                                   summary_level = "*",
                                   geo_comp = "*",
-                                  show_progress = TRUE){
+                                  show_progress = TRUE) {
     # read decennial census data of selected geoheaders
     #
     # Args_____
@@ -421,7 +421,7 @@ read_decennial_geoheaders_ <- function(year,
     lookup <- get(paste0("lookup_decennial_", year))
 
     for (content in table_contents) {
-        if (!tolower(content) %in% tolower(lookup$reference)){
+        if (!tolower(content) %in% tolower(lookup$reference)) {
             stop(paste("The table content reference", content, "does not exist."))
         }
     }
@@ -442,7 +442,7 @@ read_decennial_geoheaders_ <- function(year,
             setkey(LOGRECNO)
 
         # read data from each file
-        if(!is.null(table_contents)){
+        if(!is.null(table_contents)) {
             # get files for table contents, follow the notation of read_tablecontent.R
             dt <- read_decennial_tablecontents_(year, st, table_contents,
                                                 show_progress)
@@ -464,16 +464,16 @@ read_decennial_geoheaders_ <- function(year,
     combined <- rbindlist(lst_state) %>%
         .[, LOGRECNO := NULL] %>%
         convert_geocomp_name()
-    if (!"STATE" %in% geo_headers){
+    if (!"STATE" %in% geo_headers) {
         combined[, STATE := NULL]
     }
 
     # add acs_NAME
-    if (summary_level != "*"){
+    if (summary_level != "*") {
         combined <- add_acsname(combined)
     }
 
-    if (summary_level != "*"){
+    if (summary_level != "*") {
         begin <- c("GEOID", "NAME", "acs_NAME")
     } else {
         begin <- c("NAME")
@@ -511,7 +511,7 @@ read_decennial_geo_ <- function(year,
     geoheaders_alway_keep <- c("LOGRECNO", "GEOCOMP", "NAME", "POP100",
                                "STUSAB", "INTPTLON", "INTPTLAT")
 
-    if (summary_level != "*"){
+    if (summary_level != "*") {
         geoid_geoheaders <- get_geoheaders_of_summarylevel(summary_level)
         geoheaders <- c(toupper(geo_headers), geoheaders_alway_keep,
                          geoid_geoheaders) %>%
@@ -531,10 +531,10 @@ read_decennial_geo_ <- function(year,
 
 
     #=== read files and select columns ===
-    if (year == 2010){
+    if (year == 2010) {
         file_extension = ".ur1"
         dict_geoheader = dict_decennial_geoheader_2010
-    } else if (year == 2000){
+    } else if (year == 2000) {
         file_extension = ".uf1"
         dict_geoheader = dict_decennial_geoheader_2000
     }
@@ -573,7 +573,7 @@ read_decennial_geo_ <- function(year,
     setnames(geo, c("POP100", "INTPTLON", "INTPTLAT"),
              c("population", "lon", "lat"))
 
-    if (summary_level != "*"){
+    if (summary_level != "*") {
         add_geoid(geo, summary_level)
         gh_to_keep <- c("LOGRECNO", "GEOID", "NAME", "population", "STUSAB",
                         geo_headers, "GEOCOMP", "SUMLEV", "lon", "lat") %>%
@@ -599,7 +599,7 @@ read_decennial_1_file_tablecontents_ <- function(year,
                                                  state,
                                                  file_seg,
                                                  table_contents = NULL,
-                                                 show_progress = TRUE){
+                                                 show_progress = TRUE) {
     # Read selected table content in one data file of a state and return a
     # data.table, which has columns of LOGRECNO and selected table contents
 
@@ -631,16 +631,16 @@ read_decennial_1_file_tablecontents_ <- function(year,
 
     # the new loc
     loc <- integer(length(table_contents))
-    for (i in 1:length(table_contents)){
+    for (i in 1:length(table_contents)) {
         idx <- which(all_contents %in% table_contents[i])
         loc[i] <- idx
     }
 
     cols <- paste0("V", loc)
 
-    if (year == 2010){
+    if (year == 2010) {
         file_extension = ".ur1"
-    } else if (year == 2000){
+    } else if (year == 2000) {
         file_extension = ".uf1"
     }
     file <- paste0(path_to_census, "/census", year, "/", state, "/", tolower(state),
@@ -663,7 +663,7 @@ read_decennial_1_file_tablecontents_ <- function(year,
 read_decennial_tablecontents_ <- function(year,
                                           state,
                                           table_contents = NULL,
-                                          show_progress = TRUE){
+                                          show_progress = TRUE) {
     # Read table_contents from multiple files of a state.
 
     # Args_____

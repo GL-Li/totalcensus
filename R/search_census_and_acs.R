@@ -35,13 +35,13 @@
 
 search_tablecontents <- function(survey, years = NULL, keywords = NULL, view = TRUE) {
 
-    if (survey %in% c("decennial", "dec")){
+    if (survey %in% c("decennial", "dec")) {
         cat(paste0("Be aware that the same reference may point to different ",
                    "table content in census 2000 and 2010."))
         dt <- generate_decennial_tablecontents_()
-        if (!is.null(years)){
-            for (yr in years){
-                if (!(yr %in% c(2000, 2010))){
+        if (!is.null(years)) {
+            for (yr in years) {
+                if (!(yr %in% c(2000, 2010))) {
                     message("Only 2000 and 2010 are available for decennial census. ")
                     return(NULL)
                 }
@@ -49,12 +49,12 @@ search_tablecontents <- function(survey, years = NULL, keywords = NULL, view = T
             dt <- dt[year %in% years]
         }
 
-    } else if (survey == "acs5"){
+    } else if (survey == "acs5") {
         cat(paste0("Restrictions of table content in each year. ",
                    "NA means data not collected."))
         dt <- generate_acs5_tablecontents_()
-        if (!is.null(years)){
-            if (min(years) < 2009 | max(years) > 2019){
+        if (!is.null(years)) {
+            if (min(years) < 2009 | max(years) > 2019) {
                 message("Only 2009 - 2019 are available for acs 5 year surveys.")
                 return(NULL)
             }
@@ -62,12 +62,12 @@ search_tablecontents <- function(survey, years = NULL, keywords = NULL, view = T
             dt <- dt[, c("reference", "table_content", "table_name", selected_cols, "universe"), with = FALSE]
         }
 
-    } else if (survey == "acs1"){
+    } else if (survey == "acs1") {
         cat(paste0("Restrictions of table content in each year. ",
                    "NA means data not collected."))
         dt <- table_content_acs1year_all_years # generate_acs1_tablecontents_()
-        if (!is.null(years)){
-            if (min(years) < 2005 | max(years) > 2019){
+        if (!is.null(years)) {
+            if (min(years) < 2005 | max(years) > 2019) {
                 message("Only 2005 - 2019 are available for acs 1 year surveys.")
                 return(NULL)
             }
@@ -80,7 +80,7 @@ search_tablecontents <- function(survey, years = NULL, keywords = NULL, view = T
         return(NULL)
     }
 
-    if (!is.null(keywords)){
+    if (!is.null(keywords)) {
         keywords <- str_trim(keywords) %>%
             tolower()
 
@@ -93,7 +93,7 @@ search_tablecontents <- function(survey, years = NULL, keywords = NULL, view = T
 
         dt[, comb := NULL]
         # keywords <- unlist(str_split(tolower(keyword), " "))
-        # for (kw in keywords){
+        # for (kw in keywords) {
         #     # combine all rows to form a new column for search
         #     dt <- dt[, comb := apply(dt, 1, paste, collapse = " ")] %>%
         #         .[grepl(kw, tolower(comb))] %>%
@@ -140,11 +140,11 @@ search_tablecontents <- function(survey, years = NULL, keywords = NULL, view = T
 #' @export
 #'
 search_geoheaders <- function(survey, years = NULL, keywords = NULL, view = TRUE) {
-    if (survey %in% c("decennial", "dec")){
+    if (survey %in% c("decennial", "dec")) {
         dt <- generate_decennial_geoheaders_()
-        if (!is.null(years)){
-            for (yr in years){
-                if (!(yr %in% c(2000, 2010))){
+        if (!is.null(years)) {
+            for (yr in years) {
+                if (!(yr %in% c(2000, 2010))) {
                     message("Only 2000 and 2010 are available for decennial census. ")
                     return(NULL)
                 }
@@ -153,19 +153,19 @@ search_geoheaders <- function(survey, years = NULL, keywords = NULL, view = TRUE
             dt <- dt[, c("reference", "field", selected_cols), with = FALSE]
         }
 
-    } else if (survey == "acs5"){
+    } else if (survey == "acs5") {
         dt <- generate_acs5_geoheaders_()
-        if (!is.null(years)){
-            if (min(years) < 2009 | max(years) > 2019){
+        if (!is.null(years)) {
+            if (min(years) < 2009 | max(years) > 2019) {
                 message("Only 2009 - 2019 are available for acs 5 year surveys.")
                 return(NULL)
             }
 
             selected_cols <- c()
-            for (yr in years){
-                if (yr >= 2010){
+            for (yr in years) {
+                if (yr >= 2010) {
                     selected_cols <- c(selected_cols, "acs5_2010_to_now")
-                } else if (yr == 2009){
+                } else if (yr == 2009) {
                     selected_cols <- c(selected_cols, "acs5_2009")
                 }
             }
@@ -173,23 +173,23 @@ search_geoheaders <- function(survey, years = NULL, keywords = NULL, view = TRUE
             dt <- dt[, c("reference", "field", selected_cols), with = FALSE]
         }
 
-    } else if (survey == "acs1"){
+    } else if (survey == "acs1") {
         dt <- generate_acs1_geoheaders_()
-        if (!is.null(years)){
-            if (min(years) < 2005 | max(years) > 2019){
+        if (!is.null(years)) {
+            if (min(years) < 2005 | max(years) > 2019) {
                 message("Only 2005 - 2019 are available for acs 1 year surveys.")
                 return(NULL)
             }
 
             selected_cols <- c()
-            for (yr in years){
-                if (yr >= 2010){
+            for (yr in years) {
+                if (yr >= 2010) {
                     selected_cols <- c(selected_cols, "acs1_2010_to_now")
-                } else if (yr == 2009){
+                } else if (yr == 2009) {
                     selected_cols <- c(selected_cols, "acs1_2009")
-                } else if (yr %in% 2006:2008){
+                } else if (yr %in% 2006:2008) {
                     selected_cols <- c(selected_cols, "acs1_2006_to_2008")
-                } else if (yr == 2005){
+                } else if (yr == 2005) {
                     selected_cols <- c(selected_cols, "acs1_2005")
                 }
             }
@@ -203,7 +203,7 @@ search_geoheaders <- function(survey, years = NULL, keywords = NULL, view = TRUE
         return(NULL)
     }
 
-    if (!is.null(keywords)){
+    if (!is.null(keywords)) {
         keywords <- str_trim(keywords) %>%
             tolower()
 
@@ -257,14 +257,14 @@ search_geoheaders <- function(survey, years = NULL, keywords = NULL, view = TRUE
 #'
 
 
-search_summarylevels <- function(survey, years=NULL, keywords = NULL, view = TRUE){
+search_summarylevels <- function(survey, years=NULL, keywords = NULL, view = TRUE) {
 
-    if (survey %in% c("decennial", "dec")){
+    if (survey %in% c("decennial", "dec")) {
         dt <- generate_decennial_summary_level_()
 
-        if (!is.null(years)){
-            for (yr in years){
-                if (!(yr %in% c(2000, 2010))){
+        if (!is.null(years)) {
+            for (yr in years) {
+                if (!(yr %in% c(2000, 2010))) {
                     message("Only 2000 and 2010 are available for decennial census. ")
                     return(NULL)
                 }
@@ -272,25 +272,25 @@ search_summarylevels <- function(survey, years=NULL, keywords = NULL, view = TRU
             dt <- dt[year %in% years]
         }
 
-    } else if (survey == "acs5"){
+    } else if (survey == "acs5") {
         dt <- dict_acs5_summarylevel
-        if (!is.null(years)){
-            if (min(years) < 2009 | max(years) > 2019){
+        if (!is.null(years)) {
+            if (min(years) < 2009 | max(years) > 2019) {
                 message("Only 2009 - 2019 are available for acs 5 year surveys.")
                 return(NULL)
             }
 
             selected_cols <- c()
-            for (yr in years){
-                if (yr >= 2013){
+            for (yr in years) {
+                if (yr >= 2013) {
                     selected_cols <- c(selected_cols, "state_2013_to_now", "US_2011_to_now")
-                } else if (yr == 2012){
+                } else if (yr == 2012) {
                     selected_cols <- c(selected_cols, "state_2012", "US_2011_to_now")
-                } else if (yr == 2011){
+                } else if (yr == 2011) {
                     selected_cols <- c(selected_cols, "state_2009_to_2011", "US_2011_to_now")
-                } else if (yr == 2010){
+                } else if (yr == 2010) {
                     selected_cols <- c(selected_cols, "state_2009_to_2011", "US_2010")
-                } else if (yr == 2009){
+                } else if (yr == 2009) {
                     selected_cols <- c(selected_cols, "state_2009_to_2011", "US_2009")
                 }
             }
@@ -307,10 +307,10 @@ search_summarylevels <- function(survey, years=NULL, keywords = NULL, view = TRU
             dt <- dt[, c("code", "summary_level", selected_cols), with = FALSE]
         }
 
-    } else if (survey == "acs1"){
+    } else if (survey == "acs1") {
         dt <- dict_acs1_summarylevel
-        if (!is.null(years)){
-            if (min(years) < 2005 | max(years) > 2017){
+        if (!is.null(years)) {
+            if (min(years) < 2005 | max(years) > 2017) {
                 message("Only 2005 - 2017 are available for acs 1 year surveys.")
                 return(NULL)
             }
@@ -321,7 +321,7 @@ search_summarylevels <- function(survey, years=NULL, keywords = NULL, view = TRU
         return(NULL)
     }
 
-    if (!is.null(keywords)){
+    if (!is.null(keywords)) {
         keywords <- tolower(keywords) %>%
             str_trim()
         dt <- dt[, comb := str_c(tolower(code), tolower(summary_level), sep = " ")]
@@ -388,14 +388,14 @@ search_summarylevels <- function(survey, years=NULL, keywords = NULL, view = TRU
 #'
 
 
-search_geocomponents <- function(survey, years = NULL, keywords = NULL, view = TRUE){
+search_geocomponents <- function(survey, years = NULL, keywords = NULL, view = TRUE) {
 
-    if (survey %in% c("decennial", "dec")){
+    if (survey %in% c("decennial", "dec")) {
         dt <- generate_decennial_geocomponent_()
 
-        if (!is.null(years)){
-            for (yr in years){
-                if (!(yr %in% c(2000, 2010))){
+        if (!is.null(years)) {
+            for (yr in years) {
+                if (!(yr %in% c(2000, 2010))) {
                     message("Only 2000 and 2010 are available for decennial census. ")
                     return(NULL)
                 }
@@ -403,32 +403,32 @@ search_geocomponents <- function(survey, years = NULL, keywords = NULL, view = T
             dt <- dt[year %in% years]
         }
 
-    } else if (survey == "acs5"){
-        if (!is.null(years)){
-            if (min(years) < 2009 | max(years) > 2019){
+    } else if (survey == "acs5") {
+        if (!is.null(years)) {
+            if (min(years) < 2009 | max(years) > 2019) {
                 message("Only 2009 - 2019 are available for acs 5 year surveys.")
                 return(NULL)
             }
         }
         dt <- dict_acs5_geocomponent
 
-    } else if (survey == "acs1"){
+    } else if (survey == "acs1") {
         dt <- dict_acs1_geocomponent
-        if (!is.null(years)){
-            if (min(years) < 2005 | max(years) > 2019){
+        if (!is.null(years)) {
+            if (min(years) < 2005 | max(years) > 2019) {
                 message("Only 2005 - 2019 are available for acs 1 year surveys.")
                 return(NULL)
             }
 
             selected_cols <- c()
-            for (yr in years){
-                if (yr >= 2009){
+            for (yr in years) {
+                if (yr >= 2009) {
                     selected_cols <- c(selected_cols, "state_2009_to_now", "US_2009_to_now")
-                } else if (yr %in% 2007:2008){
+                } else if (yr %in% 2007:2008) {
                     selected_cols <- c(selected_cols, "state_2007_2008", "US_2007_2008")
-                } else if (yr == 2006){
+                } else if (yr == 2006) {
                     selected_cols <- c(selected_cols, "state_2005_2006", "US_2006")
-                } else if (yr == 2005){
+                } else if (yr == 2005) {
                     selected_cols <- c(selected_cols, "state_2005_2006", "US_2005")
                 }
             }
@@ -449,7 +449,7 @@ search_geocomponents <- function(survey, years = NULL, keywords = NULL, view = T
         return(NULL)
     }
 
-    if (!is.null(keywords)){
+    if (!is.null(keywords)) {
         keywords <- tolower(keywords) %>%
             str_trim()
         dt <- dt[, comb := str_c(tolower(code), tolower(geo_component), sep = " ")]
@@ -508,13 +508,13 @@ search_geocomponents <- function(survey, years = NULL, keywords = NULL, view = T
 #' @export
 #'
 
-search_tables <- function(survey, years = NULL, keywords = NULL, view = TRUE){
+search_tables <- function(survey, years = NULL, keywords = NULL, view = TRUE) {
 
-    if (survey %in% c("decennial", "dec")){
+    if (survey %in% c("decennial", "dec")) {
         dt <- generate_decennial_table_()
-        if (!is.null(years)){
-            for (yr in years){
-                if (!(yr %in% c(2000, 2010))){
+        if (!is.null(years)) {
+            for (yr in years) {
+                if (!(yr %in% c(2000, 2010))) {
                     message("Only 2000 and 2010 are available for decennial census. ")
                     return(NULL)
                 }
@@ -522,11 +522,11 @@ search_tables <- function(survey, years = NULL, keywords = NULL, view = TRUE){
             dt <- dt[year %in% years]
         }
 
-    } else if (survey == "acs5"){
+    } else if (survey == "acs5") {
         # generated in data_raw/acs with read_acsxyear()
         dt <- dict_acs5_table
-        if (!is.null(years)){
-            if (min(years) < 2009 | max(years) > 2019){
+        if (!is.null(years)) {
+            if (min(years) < 2009 | max(years) > 2019) {
                 message("Only 2009 - 2019 are available for acs 5 year surveys.")
                 return(NULL)
             }
@@ -535,10 +535,10 @@ search_tables <- function(survey, years = NULL, keywords = NULL, view = TRUE){
             dt <- dt[, c("table_number", "table_name", selected_cols, "universe"), with = FALSE]
         }
 
-    } else if (survey == "acs1"){
+    } else if (survey == "acs1") {
         dt <- dict_acs1_table
-        if (!is.null(years)){
-            if (min(years) < 2005 | max(years) > 2019){
+        if (!is.null(years)) {
+            if (min(years) < 2005 | max(years) > 2019) {
                 message("Only 2005 - 2019 are available for acs 1 year surveys.")
                 return(NULL)
             }
@@ -552,7 +552,7 @@ search_tables <- function(survey, years = NULL, keywords = NULL, view = TRUE){
         return(NULL)
     }
 
-    if (!is.null(keywords)){
+    if (!is.null(keywords)) {
         keywords <- tolower(keywords) %>%
             str_trim()
         dt <- dt[, comb := apply(dt, 1, paste, collapse = " ")]
@@ -582,7 +582,7 @@ search_tables <- function(survey, years = NULL, keywords = NULL, view = TRUE){
 # difference which gives trouble in merge data. We will only use reference for
 # data merge and keep only one table content and table name.
 
-generate_decennial_geoheaders_ <- function(){
+generate_decennial_geoheaders_ <- function() {
     # generate dict_decennial_geoheaders for all years
     dict_2010 <- dict_decennial_geoheader_2010 %>%
         .[, .(reference, field)] %>%
@@ -596,7 +596,7 @@ generate_decennial_geoheaders_ <- function(){
 }
 
 
-generate_acs5_geoheaders_ <- function(){
+generate_acs5_geoheaders_ <- function() {
     dict_2009 <- dict_acs_geoheader_2009_5year %>%
         .[, .(reference, field)] %>%
         .[, acs5_2009 := "yes"] %>%
@@ -619,7 +619,7 @@ generate_acs5_geoheaders_ <- function(){
     return(dict)
 }
 
-generate_acs1_geoheaders_ <- function(){
+generate_acs1_geoheaders_ <- function() {
     dict_2005 <- dict_acs_geoheader_2005_1year %>%
         .[, .(reference, field)] %>%
         .[, acs1_2005 := "yes"] %>%
@@ -663,7 +663,7 @@ generate_acs1_geoheaders_ <- function(){
     return(dict)
 }
 
-modify_lookup_table_ <- function(period, year){
+modify_lookup_table_ <- function(period, year) {
     p_y <- paste0("acs", period, "_", year)
 
     dt <- get(paste0("lookup_acs", period, "year_", year)) %>%
@@ -675,7 +675,7 @@ modify_lookup_table_ <- function(period, year){
                    p_y)) %>%
         setkey(reference)
 
-    if (year >= 2013){
+    if (year >= 2013) {
         dt[is.na(get(p_y)), (p_y) := "no restriction"]
     }
 
@@ -685,7 +685,7 @@ modify_lookup_table_ <- function(period, year){
 
 
 
-generate_decennial_tablecontents_ <- function(){
+generate_decennial_tablecontents_ <- function() {
     L2010 = copy(lookup_decennial_2010)
     L2000 = copy(lookup_decennial_2000)
     lookup_decennial <- rbindlist(list(L2010[, year := 2010],
@@ -695,7 +695,7 @@ generate_decennial_tablecontents_ <- function(){
 }
 
 
-generate_acs5_tablecontents_ <- function(){
+generate_acs5_tablecontents_ <- function() {
     acs5_2009 <- modify_lookup_table_(5, 2009)
     acs5_2010 <- modify_lookup_table_(5, 2010)
     acs5_2011 <- modify_lookup_table_(5, 2011)
@@ -763,7 +763,7 @@ generate_acs5_tablecontents_ <- function(){
               universe)]
 }
 
-generate_acs1_tablecontents_ <- function(){
+generate_acs1_tablecontents_ <- function() {
     acs1_2005 <- modify_lookup_table_(1, 2005)
     acs1_2006 <- modify_lookup_table_(1, 2006)
     acs1_2007 <- modify_lookup_table_(1, 2007)
@@ -831,7 +831,7 @@ generate_acs1_tablecontents_ <- function(){
 
 
 
-generate_decennial_summary_level_ <- function(){
+generate_decennial_summary_level_ <- function() {
     S2000 <- copy(dict_decennial_summarylevel_2000) %>%
         .[, year := 2000]
     S2010 <- copy(dict_decennial_summarylevel_2010) %>%
@@ -844,7 +844,7 @@ generate_decennial_summary_level_ <- function(){
 }
 
 
-generate_decennial_geocomponent_ <- function(){
+generate_decennial_geocomponent_ <- function() {
     G2010 <- copy(dict_decennial_geocomponent_2010) %>%
         .[, year := 2010]
     G2000 <- copy(dict_decennial_geocomponent_2000) %>%
@@ -858,7 +858,7 @@ generate_decennial_geocomponent_ <- function(){
     return(dict)
 }
 
-generate_decennial_table_ <- function(){
+generate_decennial_table_ <- function() {
     T2010 <- copy(dict_decennial_table_2010) %>%
         .[, .(table_number, table_name, universe, table_ref)] %>%
         .[, year := 2010]

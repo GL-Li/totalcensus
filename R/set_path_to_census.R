@@ -7,7 +7,7 @@
 #' @export
 
 # This function is modified from census_api_key() in package tidycensus, MIT liscence
-set_path_to_census <- function (path){
+set_path_to_census <- function (path) {
 
     # windows does not recognize directory ending with "/", so delete it if path
     # is end with "/"
@@ -66,7 +66,7 @@ set_path_to_census <- function (path){
         # recover to initial working directory
         setwd(initial_wd)
 
-    } else if (choice == "temporary"){
+    } else if (choice == "temporary") {
         Sys.setenv(PATH_TO_CENSUS = tempdir())
     }
 }

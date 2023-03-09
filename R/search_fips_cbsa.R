@@ -47,7 +47,7 @@ search_fips <- function(keywords = NULL, state = NULL, view = TRUE) {
 
     if (is.null(keywords)) keywords <- "*"
     kws <- unlist(str_split(tolower(keywords), " "))
-    for (kw in kws){
+    for (kw in kws) {
         # combine all rows to form a new column for search
         dt <- dt[, comb := apply(dt[, c(1, 3:9)], 1, paste, collapse = " ")] %>%
             .[grepl(kw, tolower(comb))] %>%
@@ -100,7 +100,7 @@ search_cbsa <- function(keywords = NULL, view = TRUE) {
 
     if (is.null(keywords)) keywords <- "*"
     kws <- unlist(str_split(tolower(keywords), " "))
-    for (kw in kws){
+    for (kw in kws) {
         # combine all rows to form a new column for search
         dt <- dt[, comb := apply(dt[, c(1, 2, 3, 4)], 1, paste, collapse = " ")] %>%
             .[grepl(kw, tolower(comb))] %>%

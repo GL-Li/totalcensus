@@ -78,11 +78,11 @@ read_acs1year <- function(year,
                           geo_comp = "total",
                           with_margin = FALSE,
                           dec_fill = NULL,
-                          show_progress = TRUE){
+                          show_progress = TRUE) {
 
     ### check if the path to census is set ###
 
-    if (Sys.getenv("PATH_TO_CENSUS") == ""){
+    if (Sys.getenv("PATH_TO_CENSUS") == "") {
         message(paste(
             "Please set up the path to downloaded census data, ",
             "following the instruction at",
@@ -98,15 +98,15 @@ read_acs1year <- function(year,
 
     # check if need to download generated data from census2010
     generated_data <- paste0(path_to_census, "/generated_data")
-    if (!file.exists(generated_data)){
+    if (!file.exists(generated_data)) {
         download_generated_data()
     } else {
         version_file <- paste0(generated_data, "/version.txt")
-        if (!file.exists(version_file)){
+        if (!file.exists(version_file)) {
             download_generated_data()
         } else {
             version = readChar(version_file, 5)
-            if (version != "0.6.0"){
+            if (version != "0.6.0") {
                 download_generated_data()
             }
         }
@@ -114,16 +114,16 @@ read_acs1year <- function(year,
 
     # check whether to download census data
     not_downloaded <- c()
-    for (st in states){
+    for (st in states) {
         # only check for this one file
         if (!file.exists(paste0(
             path_to_census, "/acs1year/", year, "/g", year, "1",
             tolower(st), ".csv"
-        ))){
+        ))) {
             not_downloaded <- c(not_downloaded, st)
         }
     }
-    if (length(not_downloaded) > 0){
+    if (length(not_downloaded) > 0) {
         cat(paste0(
             "Do you want to download ",
             year,
@@ -137,7 +137,7 @@ read_acs1year <- function(year,
             TRUE,
             FALSE
         )
-        if (continue){
+        if (continue) {
             download_census("acs1", year, not_downloaded)
         } else {
             stop("You choose not to download data.")
@@ -149,13 +149,13 @@ read_acs1year <- function(year,
 
     if (is.null(summary_level)) summary_level <- "*"
     states <- toupper(states)    # allow lowerscase input
-    if (is.null(areas) + is.null(geo_headers) == 0){
+    if (is.null(areas) + is.null(geo_headers) == 0) {
         stop("Must keep at least one of arguments areas and geo_headers NULL")
     }
 
     # add population to table contents so that it will never empty, remove it
     # from table_contents if "B01003_001" is included.
-    if (any(grepl("B01003_001", table_contents))){
+    if (any(grepl("B01003_001", table_contents))) {
         message("B01003_001 is the population column.")
     }
     table_contents <- table_contents[!grepl("B01003_001", table_contents)]
@@ -171,7 +171,7 @@ read_acs1year <- function(year,
     # turn off warning, fread() gives warnings when read non-scii characters.
     options(warn = -1)
 
-    if (!is.null(areas)){
+    if (!is.null(areas)) {
         dt <- read_acs1year_areas_(
             year, states, table_contents, areas, summary_level, geo_comp,
             with_margin, dec_fill, show_progress
@@ -186,7 +186,7 @@ read_acs1year <- function(year,
 
     setnames(dt, table_contents, content_names)
 
-    if (with_margin){
+    if (with_margin) {
         setnames(dt,
                  paste0(table_contents, "_m"),
                  paste0(content_names, "_margin"))
@@ -215,7 +215,7 @@ read_acs1year_filesegment_ <- function(year,
                                        state,
                                        file_seg,
                                        est_marg = "e",
-                                       show_progress = TRUE){
+                                       show_progress = TRUE) {
     # read all data in a file segment and assign right column names
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
@@ -230,7 +230,7 @@ read_acs1year_filesegment_ <- function(year,
     file <- paste0(path_to_census, "/acs1year/", year, "/", est_marg, year, "1",
                    tolower(state), file_seg, "000.txt")
 
-    if (show_progress){
+    if (show_progress) {
         cat("\nReading", toupper(state), year,
             "ACS 1-year survey file segment",
             paste0(file_seg, "_", est_marg, "."))
@@ -240,7 +240,7 @@ read_acs1year_filesegment_ <- function(year,
         fread(file, header = FALSE, showProgress = show_progress,
               integer64 = "numeric") %>%
             setnames(col_names)
-    }, error = function(err){
+    }, error = function(err) {
         message("\nPlease double check the original data: ")
         message(err)
         # if error, return a empty data.table
@@ -254,8 +254,8 @@ read_acs1year_filesegment_ <- function(year,
     # # convert non-numeric columns to numeric
     # # some missing data are denoted as ".", which lead to the whole column read
     # # as character
-    # for (col in table_contents){
-    #     if (is.character(dt[, get(col)])){
+    # for (col in table_contents) {
+    #     if (is.character(dt[, get(col)])) {
     #         dt[, (col) := as.numeric(get(col))]
     #     }
     # }
@@ -275,7 +275,7 @@ read_acs1year_1_file_tablecontents_ <- function(year,
                                                 file_seg,
                                                 table_contents,
                                                 est_marg = "e",
-                                                show_progress = TRUE){
+                                                show_progress = TRUE) {
     # select table_contents from one file segment
 
     table_contents <- paste0(table_contents, "_", est_marg)
@@ -287,8 +287,8 @@ read_acs1year_1_file_tablecontents_ <- function(year,
     # convert non-numeric columns to numeric
     # some missing data are denoted as ".", which lead to the whole column read
     # as character
-    for (col in table_contents){
-        if (is.character(dt[, get(col)])){
+    for (col in table_contents) {
+        if (is.character(dt[, get(col)])) {
             dt[, (col) := as.numeric(get(col))]
         }
     }
@@ -299,7 +299,7 @@ read_acs1year_1_file_tablecontents_ <- function(year,
 
 read_acs1year_tablecontents_ <- function(year, state, table_contents,
                                          est_marg = "e",
-                                         show_progress = TRUE){
+                                         show_progress = TRUE) {
     # select table_contents that could be from multiple file segment of a state
 
     # locate data files for the content
@@ -336,15 +336,15 @@ read_acs1year_geoheader_file_ <- function(year,
                    tolower(state), ".csv")
 
     # geographic header records file varies from year to year
-    if (year >= 2011){
+    if (year >= 2011) {
         dict_geoheader <- dict_acs_geoheader_2011_now
-    } else if (year == 2010){
+    } else if (year == 2010) {
         dict_geoheader <- dict_acs_geoheader_2010
-    }else if (year == 2009){
+    }else if (year == 2009) {
         dict_geoheader <- dict_acs_geoheader_2009_1year
-    } else if (year >= 2006 & year <= 2008){
+    } else if (year >= 2006 & year <= 2008) {
         dict_geoheader <- dict_acs_geoheader_2006_2008_1year
-    } else if (year == 2005){
+    } else if (year == 2005) {
         dict_geoheader <- dict_acs_geoheader_2005_1year
     }
 
@@ -391,7 +391,7 @@ read_acs1year_areas_ <- function(year,
                                  geo_comp = "*",
                                  with_margin = FALSE,
                                  dec_fill = NULL,
-                                 show_progress = TRUE){
+                                 show_progress = TRUE) {
     # read ACS 1-year data of selected areas
     #
 
@@ -413,7 +413,7 @@ read_acs1year_areas_ <- function(year,
     lookup <- get(paste0("lookup_acs1year_", year))
 
     for (content in table_contents) {
-        if (!tolower(content) %in% tolower(lookup$reference)){
+        if (!tolower(content) %in% tolower(lookup$reference)) {
             stop(paste("The table content reference", content,
                        "does not exist."))
         }
@@ -432,7 +432,7 @@ read_acs1year_areas_ <- function(year,
 
 
         # read estimate and margin from each file
-        if(!is.null(table_contents)){
+        if(!is.null(table_contents)) {
             # get files for table contents
             dt <- read_acs1year_tablecontents_(
                 year, st, table_contents, "e", show_progress
@@ -449,9 +449,9 @@ read_acs1year_areas_ <- function(year,
         }
 
         # add coordinates from census 2010 data
-        if (is.null(dec_fill)){
+        if (is.null(dec_fill)) {
             acs <- add_coord(acs, st)
-        } else if (dec_fill == "dec2010"){
+        } else if (dec_fill == "dec2010") {
             acs[, (geo_headers) := NULL]
             acs <- add_coord(acs, st, geo_headers)
         }
@@ -466,7 +466,7 @@ read_acs1year_areas_ <- function(year,
         .[, STATE := NULL] %>%
         convert_geocomp_name()
 
-    if (!is.null(table_contents)){
+    if (!is.null(table_contents)) {
         setnames(combined, paste0(table_contents, "_e"), table_contents)
     }
 
@@ -491,7 +491,7 @@ read_acs1year_areas_ <- function(year,
     # reorder columns
     begin <- c("area", "GEOID", "NAME")
     end <- c("GEOCOMP", "SUMLEV", "state", "STUSAB", "lon", "lat")
-    if (with_margin){
+    if (with_margin) {
         # estimate and margin together
         contents <- paste0(rep(table_contents, each = 2),
                            rep(c("", "_m"), length(table_contents)))
@@ -514,7 +514,7 @@ read_acs1year_geoheaders_ <- function(year,
                                       geo_comp = "*",
                                       with_margin = FALSE,
                                       dec_fill = NULL,
-                                      show_progress = TRUE){
+                                      show_progress = TRUE) {
     # read ACS 1-year data of selected geoheaders
     #
 
@@ -527,7 +527,7 @@ read_acs1year_geoheaders_ <- function(year,
     lookup <- get(paste0("lookup_acs1year_", year))
 
     for (content in table_contents) {
-        if (!tolower(content) %in% tolower(lookup$reference)){
+        if (!tolower(content) %in% tolower(lookup$reference)) {
             stop(paste("This table content", content, "does not exist."))
         }
     }
@@ -544,7 +544,7 @@ read_acs1year_geoheaders_ <- function(year,
             setkey(LOGRECNO)
 
         # read estimate and margin from each file
-        if(!is.null(table_contents)){
+        if(!is.null(table_contents)) {
             # get files for table contents
             dt <- read_acs1year_tablecontents_(year, st, table_contents,
                                                "e", show_progress)
@@ -561,9 +561,9 @@ read_acs1year_geoheaders_ <- function(year,
         }
 
         # add coordinates from census 2010 data
-        if (is.null(dec_fill)){
+        if (is.null(dec_fill)) {
             acs <- add_coord(acs, st)
-        } else if (dec_fill == "dec2010"){
+        } else if (dec_fill == "dec2010") {
             acs[, (geo_headers) := NULL]
             acs <- add_coord(acs, st, geo_headers)
         }
@@ -577,11 +577,11 @@ read_acs1year_geoheaders_ <- function(year,
         .[, LOGRECNO := NULL] %>%
         convert_geocomp_name()
 
-    if (!"STATE" %in% geo_headers){
+    if (!"STATE" %in% geo_headers) {
         combined[, STATE := NULL]
     }
 
-    if (!is.null(table_contents)){
+    if (!is.null(table_contents)) {
         setnames(combined, paste0(table_contents, "_e"), table_contents)
     }
 
@@ -589,7 +589,7 @@ read_acs1year_geoheaders_ <- function(year,
     begin <- c("GEOID", "NAME")
     end <- c("GEOCOMP", "SUMLEV", "state", "STUSAB", "lon", "lat")
 
-    if (with_margin){
+    if (with_margin) {
         # estimate and margin together
         contents <- paste0(rep(table_contents, each = 2),
                            rep(c("", "_m"), length(table_contents)))

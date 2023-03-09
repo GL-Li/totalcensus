@@ -14,22 +14,22 @@
 #' @export
 #'
 
-download_census <- function(survey, year, states = c(states_DC, "US", "PR")){
+download_census <- function(survey, year, states = c(states_DC, "US", "PR")) {
 
     options(timeout = 7200)
 
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
     # to work in Windows, do not end the path of a directory with "/"
-    if (!file.exists(paste0(path_to_census, "/generated_data"))){
+    if (!file.exists(paste0(path_to_census, "/generated_data"))) {
         download_generated_data()
     }
 
-    if (survey %in% c("decennial", "dec")){
+    if (survey %in% c("decennial", "dec")) {
         download_decennial_(year, states)
-    } else if (survey == "acs5"){
+    } else if (survey == "acs5") {
         download_acs5year_(year, states)
-    } else if (survey == "acs1"){
+    } else if (survey == "acs1") {
         download_acs1year_(year, states)
     } else if (survey == "redistricting") {
         download_redistricting_(year, states)
@@ -49,7 +49,7 @@ download_census <- function(survey, year, states = c(states_DC, "US", "PR")){
 #' @export
 #'
 
-download_generated_data <- function(){
+download_generated_data <- function() {
     # get user permission
     cat(paste(
         "Do you want to download data generated from decennial census 2010?",
@@ -60,7 +60,7 @@ download_generated_data <- function(){
         TRUE,
         FALSE
     )
-    if (!continue){
+    if (!continue) {
         stop("You choose not to download data.")
     }
 
@@ -85,7 +85,7 @@ download_generated_data <- function(){
         recursive = TRUE
     ))
 
-    if (n_files == total_files){
+    if (n_files == total_files) {
         cat("Extraction is successful\n\n")
     } else {
         cat("Last downloading or extraction has problem. Download and extract again.")
@@ -98,7 +98,7 @@ download_generated_data <- function(){
 
 # internal functions ===========================================================
 
-download_decennial_ <- function(year, states){
+download_decennial_ <- function(year, states) {
 
     # states <- toupper(states)
     # path_to_census <- Sys.getenv("PATH_TO_CENSUS")
@@ -106,23 +106,23 @@ download_decennial_ <- function(year, states){
     # path_to_year <- paste0(path_to_census, "/census", year)
     #
     #
-    # if (!dir.exists(path_to_year)){
+    # if (!dir.exists(path_to_year)) {
     #     dir.create(path_to_year)
     # }
 
     i <- 0
     N <- length(states)
-    for (st in states){
+    for (st in states) {
         i <- i + 1
         cat(paste0("Downloading ", i, " of ", N, " states.\n"))
         cat(paste0("Downloading ", st, " summary files of Census ", year, ".\n"))
         download_decennial_1_state_(year, st)
-        # if (file.exists(paste0(path_to_year, "/download_record.csv"))){
+        # if (file.exists(paste0(path_to_year, "/download_record.csv"))) {
         #     record <- fread(paste0(path_to_year, "/download_record.csv"))
         #
         #     finished_states <- record[, state]
         #
-        #     if (st %in% finished_states){
+        #     if (st %in% finished_states) {
         #         n_files <- length(list.files(
         #             paste0(path_to_year, "/", toupper(st))
         #         ))
@@ -131,7 +131,7 @@ download_decennial_ <- function(year, states){
         #         # force it to 50
         #         if (st == "RI" && n_files == 54) n_files <- 50
         #
-        #         if (n_files == total_files){
+        #         if (n_files == total_files) {
         #             message(paste0(st, " data has already been downloaded and extracted.\n"))
         #         } else {
         #             download_decennial_1_state_(year, st)
@@ -153,7 +153,7 @@ download_decennial_ <- function(year, states){
 
 
 
-download_decennial_1_state_ <- function(year, state){
+download_decennial_1_state_ <- function(year, state) {
     # download decennial census data from:
     # census 2010: https://www2.census.gov/census_2010/04-Summary_File_1/Urban_Rural_Update/
     #
@@ -176,7 +176,7 @@ download_decennial_1_state_ <- function(year, state){
 
     full <- state_names[abbr == state, full]
 
-    if (year == 2010){
+    if (year == 2010) {
         url <- paste0(
             "https://www2.census.gov/census_2010/04-Summary_File_1/Urban_Rural_Update/",
             full, "/", tolower(state), "2010.ur1.zip"
@@ -194,8 +194,8 @@ download_decennial_1_state_ <- function(year, state){
         file.remove(save_as)
         cat("Deleted downloaded zip file\n\n")
 
-    } else if (year == 2000){
-        if (tolower(state) == "us"){
+    } else if (year == 2000) {
+        if (tolower(state) == "us") {
             full <- "0Final_National"    # irregular directory
         }
 
@@ -207,7 +207,7 @@ download_decennial_1_state_ <- function(year, state){
 
         # there are 39 file segments
         file_segs <- c(paste0("0", 1:9), 10:39)
-        for (fs in file_segs){
+        for (fs in file_segs) {
             url <- paste0(url_0, tolower(state), "000", fs, "_uf1.zip")
             download.file(url, save_as, method = "auto")
             unzip(save_as, exdir = paste0(path_to_census, "/census", year, "/", state))
@@ -237,10 +237,10 @@ download_decennial_1_state_ <- function(year, state){
 
 
 
-download_acs5year_ <- function(year, states){
+download_acs5year_ <- function(year, states) {
     i <- 0
     N <- length(states)
-    for (st in states){
+    for (st in states) {
         i <- i + 1
         cat(paste0("Downloading ", i, " of ", N, " states.\n"))
         cat(paste0("Downloading ", st, " summary files of ACS 5-year ending at ", year, ".\n"))
@@ -250,7 +250,7 @@ download_acs5year_ <- function(year, states){
 
 
 
-download_acs5year_1_state_ <- function(year, state){
+download_acs5year_1_state_ <- function(year, state) {
     # download site at https://www2.census.gov/programs-surveys/acs/summary_file/
     #
     # Args_____
@@ -273,7 +273,7 @@ download_acs5year_1_state_ <- function(year, state){
 
     full <- state_names[abbr == state, full]
 
-    if (year == 2009 & toupper(state) == "DC"){
+    if (year == 2009 & toupper(state) == "DC") {
         full <- "DistrictofColumbia"  # all other years DistrictOfColumbia
     }
 
@@ -307,7 +307,7 @@ download_acs5year_1_state_ <- function(year, state){
 
 
 
-    for (i in c(1, 2)){
+    for (i in c(1, 2)) {
         url <- get(paste0("url_", i))
         save_as <- paste0(path_to_census, "/", tolower(state), ".zip")
 
@@ -324,12 +324,12 @@ download_acs5year_1_state_ <- function(year, state){
         cat("Deleted downloaded zip file\n\n")
 
         # move geography files out of group 1 and 2
-        for (ext in c(".csv", ".txt")){
+        for (ext in c(".csv", ".txt")) {
             from <- paste0(path_to_year, "/group", i, "/g", year, "5",
                            tolower(state), ext)
             to <- paste0(path_to_year, "/g", year, "5",
                          tolower(state), ext)
-            if(file.exists(from)){
+            if(file.exists(from)) {
                 file.rename(from, to)
             }
         }
@@ -338,7 +338,7 @@ download_acs5year_1_state_ <- function(year, state){
         # not exist
         csv_file <- paste0(path_to_year, "/g", year, "5",
                            tolower(state), ".csv")
-        if (!file.exists(csv_file)){
+        if (!file.exists(csv_file)) {
             txt_file <- paste0(path_to_year, "/g", year, "5",
                                tolower(state), ".txt")
             dt_csv <- convert_geo_txt2csv_acs5year_(txt_file, year)
@@ -350,7 +350,7 @@ download_acs5year_1_state_ <- function(year, state){
 
 
 
-convert_geo_txt2csv_acs5year_ <- function(txt_file, year){
+convert_geo_txt2csv_acs5year_ <- function(txt_file, year) {
     # In some years the acs5year data do not have geoheader record file in .csv
     # format but only .txt format. The txt format have all geo headers in one
     # line and can be split by positions. This function is to convert the txt
@@ -361,18 +361,18 @@ convert_geo_txt2csv_acs5year_ <- function(txt_file, year){
 
     geo <- fread(txt_file, header = FALSE, sep = "\n", encoding = "Latin-1")
 
-    if (year >= 2011){
+    if (year >= 2011) {
         dict <- dict_acs_geoheader_2011_now
-    } else if (year == 2010){
+    } else if (year == 2010) {
         dict <- dict_acs_geoheader_2010
-    }else if (year == 2009){
+    }else if (year == 2009) {
         dict <- dict_acs_geoheader_2009_5year
     }
 
-    for (i in 1:nrow(dict)){
+    for (i in 1:nrow(dict)) {
         ref <- dict[i, reference]
         # avoid duplicated BLANK columns
-        if (ref == "BLANK"){
+        if (ref == "BLANK") {
             ref <- paste0(ref, "_", i)
         }
         geo[, (ref) := str_sub(V1, dict[i, start], dict[i, end])]
@@ -386,10 +386,10 @@ convert_geo_txt2csv_acs5year_ <- function(txt_file, year){
 }
 
 
-download_acs1year_ <- function(year, states){
+download_acs1year_ <- function(year, states) {
     i <- 0
     N <- length(states)
-    for (st in states){
+    for (st in states) {
         i <- i + 1
         cat(paste0("Downloading ", i, " of ", N, " states.\n"))
         cat(paste0("Downloading ", st, " summary files of ACS 1-year of ", year, ".\n"))
@@ -398,7 +398,7 @@ download_acs1year_ <- function(year, states){
 }
 
 
-download_acs1year_1_state_ <- function(year, state){
+download_acs1year_1_state_ <- function(year, state) {
 
     # Args_____
     # year : year of the survey
@@ -420,21 +420,21 @@ download_acs1year_1_state_ <- function(year, state){
 
 
     # construct url to data files.
-    if (year >= 2010){
+    if (year >= 2010) {
         url <- paste0(
             "https://www2.census.gov/programs-surveys/acs/summary_file/",
             year, "/data/1_year_by_state/", full, "_All_Geographies.zip"
         )
     }
 
-    if (year == 2009){
+    if (year == 2009) {
         url <- paste0(
             "https://www2.census.gov/programs-surveys/acs/summary_file/",
             year, "/data/1_year_by_state/", full, ".zip"
         )
     }
 
-    if (year %in% 2007:2008){
+    if (year %in% 2007:2008) {
         url <- paste0(
             "https://www2.census.gov/programs-surveys/acs/summary_file/",
             year, "/data/1_year/",
@@ -442,7 +442,7 @@ download_acs1year_1_state_ <- function(year, state){
         )
     }
 
-    if (year == 2006){
+    if (year == 2006) {
         url <- paste0(
             "https://www2.census.gov/programs-surveys/acs/summary_file/",
             year, "/data/",
@@ -450,8 +450,8 @@ download_acs1year_1_state_ <- function(year, state){
         )
     }
 
-    if (year == 2005){
-        if (toupper(state) == "US"){
+    if (year == 2005) {
+        if (toupper(state) == "US") {
             full <- "0UnitedStates"    # so irregular
         }
         url <- paste0(
@@ -472,22 +472,22 @@ download_acs1year_1_state_ <- function(year, state){
 
 
     # 2005 - 2008 file formats are not consistent. treat by each year
-    if (year == 2008){
-        for (f in list.files(path_to_year, pattern = "*.zip")){
+    if (year == 2008) {
+        for (f in list.files(path_to_year, pattern = "*.zip")) {
             unzip(paste0(path_to_year, "/", f), exdir = path_to_year)
             file.remove(paste0(path_to_year, "/", f))
         }
 
-    } else if (year == 2007){
+    } else if (year == 2007) {
         # directory and format change every year !!!!
         directory <- paste0(path_to_year, "/prt03/sumfile/", full)
-        for (f in list.files(directory, pattern = "*.zip")){
+        for (f in list.files(directory, pattern = "*.zip")) {
             unzip(paste0(directory, "/", f), exdir = path_to_year)
         }
 
         # move out of the unzipped directory
         zip_dir <- paste0(path_to_year, "/tab4/sumfile/prod/2007/data")
-        for (f in list.files(zip_dir, pattern = "*.txt")){
+        for (f in list.files(zip_dir, pattern = "*.txt")) {
             file.rename(paste0(zip_dir, "/", f), paste0(path_to_year, "/", f))
         }
 
@@ -514,19 +514,19 @@ download_acs1year_1_state_ <- function(year, state){
         geo_save_as <- paste0(path_to_year, "/g", year, "1", tolower(state), ".txt")
         download.file(geo_url, geo_save_as, method = "auto")
 
-    } else if (year == 2005){
+    } else if (year == 2005) {
         # directory and format change every year !!!!
-        if (toupper(state) == "US"){
+        if (toupper(state) == "US") {
             full <- "UnitedStates"    # have to change back from www2 site
         }
         directory <- paste0(path_to_year, "/prt03/ftp2/sumfile/", full)
-        for (f in list.files(directory, pattern = "*.zip")){
+        for (f in list.files(directory, pattern = "*.zip")) {
             unzip(paste0(directory, "/", f), exdir = path_to_year)
         }
 
         # move out of the unzipped directory
         zip_dir <- paste0(path_to_year, "/tab4/sumfile/prod/data")
-        for (f in list.files(zip_dir, pattern = "*")){
+        for (f in list.files(zip_dir, pattern = "*")) {
             # in the format like m20061us0143000.txt
             f1 <- str_remove_all(f, "\\.|-") %>%
                 str_remove("...$")
@@ -546,12 +546,12 @@ download_acs1year_1_state_ <- function(year, state){
         unlink(paste0(path_to_year, "/tab4"), recursive = TRUE)
 
         # some stupid zip files left in the path_to_year directory, delete!!
-        for (f in list.files(path_to_year, pattern = "*.zip")){
+        for (f in list.files(path_to_year, pattern = "*.zip")) {
             file.remove(paste0(path_to_year, "/", f))
         }
 
         # have to download geography file seperately
-        if (toupper(state) == "US"){
+        if (toupper(state) == "US") {
             full <- "0UnitedStates"
         }
         geo_url <- paste0(
@@ -569,7 +569,7 @@ download_acs1year_1_state_ <- function(year, state){
     # not exist.
     csv_file <- paste0(path_to_year, "/g", year, "1",
                        tolower(state), ".csv")
-    if (!file.exists(csv_file)){
+    if (!file.exists(csv_file)) {
         txt_file <- paste0(path_to_year, "/g", year, "1",
                            tolower(state), ".txt")
         dt_csv <- convert_geo_txt2csv_acs1year_(txt_file, year)
@@ -585,11 +585,11 @@ download_acs1year_1_state_ <- function(year, state){
 }
 
 
-download_redistricting_ <- function(year, states){
+download_redistricting_ <- function(year, states) {
 
     i <- 0
     N <- length(states)
-    for (st in states){
+    for (st in states) {
         i <- i + 1
         cat(paste0("Downloading ", i, " of ", N, " states.\n"))
         cat(paste0("Downloading ", st, " summary files of Census ", year, ".\n"))
@@ -599,7 +599,7 @@ download_redistricting_ <- function(year, states){
 
 
 
-download_redistricting_1_state_ <- function(year, state){
+download_redistricting_1_state_ <- function(year, state) {
     # download census 2020 redistricting data from:
     # https://www2.census.gov/programs-surveys/decennial/2020/data/01-Redistricting_File--PL_94-171/
     #
@@ -622,7 +622,7 @@ download_redistricting_1_state_ <- function(year, state){
 
     full <- state_names[abbr == state, full]
 
-    if (year == 2020){
+    if (year == 2020) {
         url <- paste0(
             "https://www2.census.gov/programs-surveys/decennial/2020/data/01-Redistricting_File--PL_94-171/",
             full, "/", tolower(state), "2020.pl.zip"
@@ -640,7 +640,7 @@ download_redistricting_1_state_ <- function(year, state){
         file.remove(save_as)
         cat("Deleted downloaded zip file\n\n")
 
-    } else if (year == 2030){
+    } else if (year == 2030) {
         # waiting for 10 years
     }
 
@@ -655,7 +655,7 @@ download_redistricting_1_state_ <- function(year, state){
 
 
 
-convert_geo_txt2csv_acs1year_ <- function(txt_file, year){
+convert_geo_txt2csv_acs1year_ <- function(txt_file, year) {
     # In some years the acs5year data do not have geoheader record file in .csv
     # format but only .txt format. The txt format have all geo headers in one
     # line and can be split by positions. This function is to convert the txt
@@ -666,22 +666,22 @@ convert_geo_txt2csv_acs1year_ <- function(txt_file, year){
 
     geo <- fread(txt_file, header = FALSE, sep = "\n", encoding = "Latin-1")
 
-    if (year >= 2011){
+    if (year >= 2011) {
         dict <- dict_acs_geoheader_2011_now
-    } else if (year == 2010){
+    } else if (year == 2010) {
         dict <- dict_acs_geoheader_2010
-    }else if (year == 2009){
+    }else if (year == 2009) {
         dict <- dict_acs_geoheader_2009_1year
-    } else if (year >= 2006 & year <= 2008){
+    } else if (year >= 2006 & year <= 2008) {
         dict <- dict_acs_geoheader_2006_2008_1year
-    } else if (year == 2005){
+    } else if (year == 2005) {
         dict <- dict_acs_geoheader_2005_1year
     }
 
-    for (i in 1:nrow(dict)){
+    for (i in 1:nrow(dict)) {
         ref <- dict[i, reference]
         # avoid duplicated BLANK columns
-        if (ref == "BLANK"){
+        if (ref == "BLANK") {
             ref <- paste0(ref, "_", i)
         }
         geo[, (ref) := str_sub(V1, dict[i, start], dict[i, end])]

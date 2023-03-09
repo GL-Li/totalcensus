@@ -27,23 +27,23 @@ convert_fips_to_names <- function(FIPs,
 
     states <- toupper(states)
     # make data.table for later to join
-    if (geo_header %in% c("STATE")){
+    if (geo_header %in% c("STATE")) {
         FIPs <- data.table(fips = FIPs)
     } else if (geo_header %in% c("COUNTY", "PLACE", "COUSUB", "CBSA")) {
         FIPs <- data.table(fips = FIPs, state = states)
     }
 
 
-    if (geo_header == "STATE"){
+    if (geo_header == "STATE") {
         fips_geo <- dict_fips[SUMLEV == "040", .(state = state_abbr, fips = STATE)]
         names <- fips_geo[FIPs, on = .(fips)] %>%
             .[, state]
-    } else if (geo_header == "COUNTY"){
+    } else if (geo_header == "COUNTY") {
         fips_geo <- dict_fips[SUMLEV == "050",
                               .(state = state_abbr, county = NAME, fips = COUNTY)]
         names <- fips_geo[FIPs, on = .(fips, state)] %>%
             .[, county]
-    } else if (geo_header %in% c("PLACE", "COUSUB", "CBSA")){
+    } else if (geo_header %in% c("PLACE", "COUSUB", "CBSA")) {
         names <- get_name_from_census2010(FIPs, geo_header, in_states)
 
     } else {
