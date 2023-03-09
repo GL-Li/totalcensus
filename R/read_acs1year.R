@@ -432,7 +432,7 @@ read_acs1year_areas_ <- function(year,
 
 
         # read estimate and margin from each file
-        if(!is.null(table_contents)) {
+        if (!is.null(table_contents)) {
             # get files for table contents
             dt <- read_acs1year_tablecontents_(
                 year, st, table_contents, "e", show_progress
@@ -544,7 +544,7 @@ read_acs1year_geoheaders_ <- function(year,
             setkey(LOGRECNO)
 
         # read estimate and margin from each file
-        if(!is.null(table_contents)) {
+        if (!is.null(table_contents)) {
             # get files for table contents
             dt <- read_acs1year_tablecontents_(year, st, table_contents,
                                                "e", show_progress)

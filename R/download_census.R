@@ -329,7 +329,7 @@ download_acs5year_1_state_ <- function(year, state) {
                            tolower(state), ext)
             to <- paste0(path_to_year, "/g", year, "5",
                          tolower(state), ext)
-            if(file.exists(from)) {
+            if (file.exists(from)) {
                 file.rename(from, to)
             }
         }

@@ -306,7 +306,7 @@ read_decennial_areas_ <- function(year,
             setkey(LOGRECNO)
 
         # read data from each file
-        if(!is.null(table_contents)) {
+        if (!is.null(table_contents)) {
             # get files for table contents
             dt <- read_decennial_tablecontents_(year, st, table_contents,
                                                 show_progress)
@@ -442,7 +442,7 @@ read_decennial_geoheaders_ <- function(year,
             setkey(LOGRECNO)
 
         # read data from each file
-        if(!is.null(table_contents)) {
+        if (!is.null(table_contents)) {
             # get files for table contents, follow the notation of read_tablecontent.R
             dt <- read_decennial_tablecontents_(year, st, table_contents,
                                                 show_progress)

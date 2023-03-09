@@ -32,7 +32,7 @@ generate_census_data_ <- function(states =  c(states_DC, "PR", "US")) {
     path_to_census <- Sys.getenv("PATH_TO_CENSUS")
 
     # create a subdirectory to hold all generated data
-    if(!dir.exists(paste0(path_to_census, "/generated_data"))) {
+    if (!dir.exists(paste0(path_to_census, "/generated_data"))) {
         dir.create(paste0(path_to_census, "/generated_data"))
         message('A subdirectory "generated_data/" is created under "',
                 path_to_census, '" to store the generated data.')
@@ -191,7 +191,7 @@ generate_census_data_ <- function(states =  c(states_DC, "PR", "US")) {
             .[, .(GEOID, acs_NAME = NAME)]
 
         # acs_geoid_name save to csv as one file
-        if(!dir.exists(paste0(path_to_census, "/generated_data/acs_geoid_name"))) {
+        if (!dir.exists(paste0(path_to_census, "/generated_data/acs_geoid_name"))) {
             dir.create(paste0(path_to_census, "/generated_data/acs_geoid_name"))
         }
         file_name <- paste0(path_to_census, "/generated_data/acs_geoid_name/acs_geoid_name.csv")
@@ -205,7 +205,7 @@ generate_census_data_ <- function(states =  c(states_DC, "PR", "US")) {
 
         # save to csv
 
-        if(!dir.exists(paste0(path_to_census, "/generated_data/geoid_coord"))) {
+        if (!dir.exists(paste0(path_to_census, "/generated_data/geoid_coord"))) {
             dir.create(paste0(path_to_census, "/generated_data/geoid_coord"))
         }
         file_name <- paste0(path_to_census, "/generated_data/geoid_coord/geoid_coord_", st, ".csv")
@@ -227,7 +227,7 @@ generate_census_data_ <- function(states =  c(states_DC, "PR", "US")) {
             # add back LOGRECNO in census 2010
             geoid_coord[, .(LOGRECNO, GEOID)][., on = .(GEOID)]
 
-        if(!dir.exists(paste0(path_to_census, "/generated_data/blkgrp_geoid_place"))) {
+        if (!dir.exists(paste0(path_to_census, "/generated_data/blkgrp_geoid_place"))) {
             dir.create(paste0(path_to_census, "/generated_data/blkgrp_geoid_place"))
         }
         file_name <- paste0(path_to_census, "/generated_data/blkgrp_geoid_place/blkgrp_geoid_place_", st, ".csv")
@@ -245,7 +245,7 @@ generate_census_data_ <- function(states =  c(states_DC, "PR", "US")) {
             # add back LOGRECNO
             geoid_coord[, .(LOGRECNO, GEOID)][., on = .(GEOID)]
 
-        if(!dir.exists(paste0(path_to_census, "/generated_data/blkgrp_geoid_cousub"))) {
+        if (!dir.exists(paste0(path_to_census, "/generated_data/blkgrp_geoid_cousub"))) {
             dir.create(paste0(path_to_census, "/generated_data/blkgrp_geoid_cousub"))
         }
         file_name <- paste0(path_to_census, "/generated_data/blkgrp_geoid_cousub/blkgrp_geoid_cousub_", st, ".csv")
@@ -263,7 +263,7 @@ generate_census_data_ <- function(states =  c(states_DC, "PR", "US")) {
             # add back LOGRECNO
             geoid_coord[, .(LOGRECNO, GEOID)][., on = .(GEOID)]
 
-        if(!dir.exists(paste0(path_to_census, "/generated_data/tract_geoid_place"))) {
+        if (!dir.exists(paste0(path_to_census, "/generated_data/tract_geoid_place"))) {
             dir.create(paste0(path_to_census, "/generated_data/tract_geoid_place"))
         }
         file_name <- paste0(path_to_census,
@@ -282,7 +282,7 @@ generate_census_data_ <- function(states =  c(states_DC, "PR", "US")) {
             # add back LOGRECNO
             geoid_coord[, .(LOGRECNO, GEOID)][., on = .(GEOID)]
 
-        if(!dir.exists(paste0(path_to_census, "/generated_data/tract_geoid_cousub"))) {
+        if (!dir.exists(paste0(path_to_census, "/generated_data/tract_geoid_cousub"))) {
             dir.create(paste0(path_to_census, "/generated_data/tract_geoid_cousub"))
         }
         file_name <- paste0(path_to_census,
@@ -315,7 +315,7 @@ generate_fips_ <- function(geo_header, st, geo) {
         .[, STATE := NULL]
 
     geoheader <- tolower(geo_header)
-    if(!dir.exists(paste0(path_to_census, "/generated_data/fips_", geoheader))) {
+    if (!dir.exists(paste0(path_to_census, "/generated_data/fips_", geoheader))) {
         dir.create(paste0(path_to_census, "/generated_data/fips_", geoheader))
     }
     file_name <- paste0(path_to_census,

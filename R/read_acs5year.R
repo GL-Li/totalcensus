@@ -252,7 +252,7 @@ read_acs5year_filesegment_ <- function(year,
             paste0(file_seg, "_", est_marg, " of group ", group, "."))
     }
 
-    # if(toupper(state) == "US" & group == 2) {
+    # if (toupper(state) == "US" & group == 2) {
     #     # US has empty files in group2 as it has no data at tract and block
     #     # group level, which causes fread error
     #     dt = NULL
@@ -477,7 +477,7 @@ read_acs5year_areas_ <- function(year,
 
 
         # read estimate and margin from each file
-        if(!is.null(table_contents)) {
+        if (!is.null(table_contents)) {
 
             if (summary_level == "*") {
                 dt1 <- read_acs5year_tablecontents_(
@@ -630,7 +630,7 @@ read_acs5year_geoheaders_ <- function(year,
 
 
         # read estimate and margin from each file
-        if(!is.null(table_contents)) {
+        if (!is.null(table_contents)) {
 
             if (summary_level == "*") {
                 dt1 <- read_acs5year_tablecontents_(
